@@ -1,0 +1,137 @@
+{
+  "mcpServers": {
+    "Code-Analysis": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.servers.code_analysis"
+      ],
+      "env": {
+        "ENABLE_ACCESSIBILITY_CHECKS": "true",
+        "WCAG_LEVEL": "AAA",
+        "DYSLEXIA_FRIENDLY": "true"
+      }
+    },
+    
+    "HyperCode-Compiler": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.compiler"
+      ],
+      "env": {
+        "TARGET_BACKENDS": "javascript,python,wasm,quantum",
+        "AI_NATIVE": "true"
+      }
+    },
+    
+    "AI-Gateway": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.ai_gateway"
+      ],
+      "env": {
+        "SUPPORTED_MODELS": "gpt4,claude,mistral,ollama",
+        "MULTI_MODEL_FAILOVER": "true",
+        "RAG_ENABLED": "true"
+      }
+    },
+    
+    "Knowledge-Graph": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.knowledge_graph"
+      ],
+      "env": {
+        "RDF_SUPPORT": "true",
+        "SPARQL_QUERIES": "true",
+        "AUTO_UPDATE": "true"
+      }
+    },
+    
+    "Research-Automation": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.research"
+      ],
+      "env": {
+        "ARXIV_ENABLED": "true",
+        "SEMANTIC_SCHOLAR": "true",
+        "GITHUB_MINING": "true",
+        "AUTO_SYNTHESIS": "true"
+      }
+    },
+    
+    "Accessibility-Auditor": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.accessibility"
+      ],
+      "env": {
+        "WCAG_LEVEL": "AAA",
+        "NEURODIVERGENT_CHECKS": "true",
+        "DYSLEXIA_FONTS": "true",
+        "ADHD_OPTIMIZATION": "true",
+        "AUTISM_ACCESSIBILITY": "true"
+      }
+    },
+    
+    "File-System": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.servers.file_system"
+      ]
+    },
+    
+    "Web-Search": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.servers.web_search"
+      ],
+      "env": {
+        "RESEARCH_FOCUS": "programming_languages,ai_compatibility,neurodiversity"
+      }
+    },
+    
+    "Human-Input": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp.servers.human_input"
+      ],
+      "env": {
+        "HYPERFOCUS_MODE": "true",
+        "ADHD_FRIENDLY": "true"
+      }
+    },
+    
+    "GitHub-Integration": {
+      "type": "command",
+      "command": "python",
+      "args": [
+        "-m",
+        "hypercode.mcp.github"
+      ],
+      "env": {
+        "AUTO_COMMIT": "true",
+        "SEMANTIC_VERSIONING": "true",
+        "CI_CD_INTEGRATION": "true"
+      }
+    }
+  }
+}
