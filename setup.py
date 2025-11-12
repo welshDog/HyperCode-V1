@@ -37,17 +37,17 @@ setup(
     # Production dependencies
     install_requires=[
         # Core language & compilation
-        "antlr4-python3-runtime==4.13.1",
-        "pydantic==2.5.0",
+        "antlr4-python3-runtime>=4.13.1,<5.0.0",
+        "pydantic>=2.5.0,<3.0.0",
         
         # AI & LLM
-        "openai==1.3.5",
-        "anthropic==0.7.1",
-        "mistralai==0.0.11",
-        "ollama==0.1.0",
+        "openai>=1.3.5,<2.0.0",
+        "anthropic>=0.7.1,<1.0.0",
+        "mistralai>=0.0.11,<1.0.0",
+        "ollama>=0.1.0,<1.0.0",
         
         # Vector databases & RAG
-        "langchain==0.1.3",
+        "langchain>=0.1.3,<1.0.0",
         "pinecone-client==3.0.0",
         
         # Web scraping
