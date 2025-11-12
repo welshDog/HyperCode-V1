@@ -1,57 +1,66 @@
-
-# core/tokens.py
-
+from enum import Enum, auto
 from dataclasses import dataclass
-from enum import Enum
+from typing import Any
 
 class TokenType(Enum):
-    # Data types
-    NUMBER = "NUMBER"
-    STRING = "STRING"
-    IDENTIFIER = "IDENTIFIER"
-    
     # Keywords
-    KEYWORD = "KEYWORD"
+    IF = auto()
+    ELSE = auto()
+    FOR = auto()
+    WHILE = auto()
+    FUN = auto()
+    RETURN = auto()
+    LET = auto()
+    CONST = auto()
+    VAR = auto()
+    PRINT = auto()
+    TRUE = auto()
+    FALSE = auto()
+    NIL = auto()
+    CLASS = auto()
+
+    # Literals
+    IDENTIFIER = auto()
+    STRING = auto()
+    NUMBER = auto()
 
     # Operators
-    PLUS = "PLUS"
-    MINUS = "MINUS"
-    MULTIPLY = "MULTIPLY"
-    DIVIDE = "DIVIDE"
-    ASSIGN = "ASSIGN"
-    
-    # Punctuation
-    LPAREN = "LPAREN"
-    RPAREN = "RPAREN"
-    LBRACE = "LBRACE"
-    RBRACE = "RBRACE"
-    SEMICOLON = "SEMICOLON"
-    COMMA = "COMMA"
+    PLUS = auto()
+    MINUS = auto()
+    STAR = auto()
+    SLASH = auto()
+    EQUAL = auto()
+    EQUAL_EQUAL = auto()
+    BANG = auto()
+    BANG_EQUAL = auto()
+    LESS = auto()
+    LESS_EQUAL = auto()
+    GREATER = auto()
+    GREATER_EQUAL = auto()
 
-    # Special
-    EOF = "EOF" # End of File
-    ILLEGAL = "ILLEGAL" # Illegal character
+    # Punctuation
+    LPAREN = auto()
+    RPAREN = auto()
+    LBRACE = auto()
+    RBRACE = auto()
+    LBRACKET = auto()
+    RBRACKET = auto()
+    COMMA = auto()
+    SEMICOLON = auto()
+    COLON = auto()
+    DOT = auto()
+
+    # Other
+    UNKNOWN = auto()
+    EOF = auto()
 
 @dataclass
 class Token:
     type: TokenType
-    value: any = None
-    line: int = 1
-    column: int = 1
+    lexeme: str
+    literal: Any
+    line: int
+    column: int
 
-    def __repr__(self):
-        return f"Token({self.type.name}, {repr(self.value)}, line={self.line}, col={self.column})"
-
-# --- Keyword Map ---
-KEYWORDS = {
-    "let",
-    "const",
-    "fun",
-    "return",
-    "if",
-    "else",
-    "true",
-    "false",
-    "null",
-    "print", # For simple output
-}
+    def __str__(self):
+        return f"Token({self.type.name}, {self.lexeme!r}, literal={self.literal!r}, line={self.line}, col={self.column})"

@@ -1,24 +1,18 @@
-# Copyright 2025 welshDog (Lyndz Williams)
-#
-# Licensed under the MIT License (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://opensource.org/licenses/MIT
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+import sys
+from .repl import run_repl, run
 
-"""
-Main entry point for the HyperCode package.
-
-Allows running the REPL via `python -m hypercode`.
-"""
-
-from .repl import main
+def main():
+    if len(sys.argv) > 1:
+        filepath = sys.argv[1]
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
+                source = f.read()
+            run(source)
+        except FileNotFoundError:
+            print(f"Error: File not found at '{filepath}'")
+            sys.exit(1)
+    else:
+        run_repl()
 
 if __name__ == "__main__":
     main()
