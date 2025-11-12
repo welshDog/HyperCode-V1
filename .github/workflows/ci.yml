@@ -1,20 +1,44 @@
-# Copyright 2025 welshDog (Lyndz Williams)
-#
-# Licensed under the MIT License (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     https://opensource.org/licenses/MIT
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+# .github/workflows/ci.yml
+name: CI
 
-"""
-GitHub Actions CI/CD workflows
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-File: .github\workflows\ci.yml
-"""
-
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+        
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .[dev]
+        
+    - name: Run tests
+      run: |
+        python -m pytest tests/ -v
+        
+    - name: Run type checking
+      run: |
+        mypy hypercode/ tests/
+        
+    - name: Run linter
+      run: |
+        ruff check hypercode/ tests/
+        
+    - name: Run formatter
+      run: |
+        black --check hypercode/ tests/
