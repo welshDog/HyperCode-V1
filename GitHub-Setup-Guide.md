@@ -1,13 +1,25 @@
 # 🎯 HyperCode: GitHub Repository Setup Guide
 ## From Zero to Production-Ready in 5 Steps
 
+## 📋 Table of Contents
+- [🚀 Quick Start](#-quick-start)
+- [📁 Project Structure](#-project-structure--initial-files)
+- [⚙️ Configuration](#️-configuration)
+- [🔧 Development Setup](#-development-setup)
+- [🤝 Team Collaboration](#-team-collaboration)
+- [🚨 Troubleshooting](#-troubleshooting)
+- [🔒 Security](#-security)
+- [🧹 Repository Maintenance](#-repository-maintenance)
+
 **Duration**: 30 minutes  
 **Difficulty**: Intermediate  
 **Prerequisites**: GitHub account, Git CLI, Python 3.10+  
 
 ---
 
-## 🚀 Step 1: Create GitHub Repository
+## 🚀 Quick Start
+
+### 1. Create GitHub Repository
 
 ### 1.1 Initialize on GitHub
 
@@ -33,7 +45,7 @@ cd hypercode
 
 ---
 
-## 📁 Step 2: Project Structure & Initial Files
+## 📁 Project Structure & Initial Files
 
 ### 2.1 Create Directory Structure
 
@@ -67,37 +79,39 @@ touch {Dockerfile,docker-compose.yml,requirements.txt,requirements-dev.txt,.rele
 
 ---
 
-## 📝 Step 3: Essential Configuration Files
+## ⚙️ Configuration
+
+### 3.1 Essential Configuration Files
 
 ### 3.1 `requirements.txt` (Production Dependencies)
 
 ```
-# Core
-antlr4-python3-runtime==4.13.1
-pydantic==2.5.0
+# Core dependencies
+antlr4-python3-runtime>=4.13.1,<5.0.0
+pydantic>=2.5.0,<3.0.0
 
-# AI & LLM
-openai==1.3.5
-anthropic==0.7.1
-mistralai==0.0.11
-ollama==0.1.0
+# AI & LLM integrations
+openai>=1.3.5,<2.0.0
+anthropic>=0.7.1,<1.0.0
+mistralai>=0.0.11,<1.0.0
+ollama>=0.1.0,<1.0.0
 
 # Vector DB & RAG
-pinecone-client==3.0.0
-weaviate-client==4.1.1
-milvus==2.4.0
+pinecone-client>=3.0.0,<4.0.0
+weaviate-client>=4.1.1,<5.0.0
+milvus>=2.4.0,<3.0.0
 
 # Web scraping & research
-requests==2.31.0
-beautifulsoup4==4.12.2
-aiohttp==3.9.1
-selenium==4.15.0
+requests>=2.31.0,<3.0.0
+beautifulsoup4>=4.12.2,<5.0.0
+aiohttp>=3.9.1,<4.0.0
+selenium>=4.15.0,<5.0.0
 
 # Semantic Web
-rdflib==7.0.0
+rdflib>=7.0.0,<8.0.0
 
 # Utilities
-python-dotenv==1.0.0
+python-dotenv>=1.0.0,<2.0.0
 click==8.1.7
 pyyaml==6.0.1
 ```
@@ -224,6 +238,12 @@ EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
   CMD python -c "import requests; requests.get('http://localhost:8000/health')"
 
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1
+
+# Run the application
 CMD ["python", "-m", "uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
@@ -424,6 +444,83 @@ git commit -m "🚀 feat: HyperCode initial setup
 - Configure semantic versioning
 - Add pre-commit hooks
 - Initialize Python dependencies"
+
+## 🤝 Team Collaboration
+
+### Branching Strategy
+- `main`: Production-ready code (protected branch)
+- `develop`: Integration branch for features
+- `feature/*`: New features
+- `bugfix/*`: Bug fixes
+- `hotfix/*`: Critical production fixes
+
+### Code Review Process
+1. Create a feature branch from `develop`
+2. Make your changes with clear, atomic commits
+3. Push to your fork and open a Pull Request
+4. Request reviews from at least one team member
+5. Address all review comments
+6. Ensure all tests pass before merging
+
+### Commit Message Guidelines
+```
+<type>(<scope>): <subject>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**Types**: feat, fix, docs, style, refactor, test, chore
+
+## 🚨 Troubleshooting
+
+### Common Issues
+
+#### Docker Build Fails
+- **Error**: `ModuleNotFoundError`
+- **Solution**: Ensure all dependencies are listed in `requirements.txt`
+
+#### CI/CD Pipeline Fails
+- **Error**: Tests failing
+- **Solution**: Run tests locally with `pytest` and check for environment variables
+
+#### Dependency Conflicts
+- **Error**: `ResolutionImpossible` during `pip install`
+- **Solution**: Use `pipdeptree` to identify conflicts and update dependencies
+
+## 🔒 Security
+
+### Secrets Management
+- Store sensitive data in GitHub Secrets
+- Use environment variables for local development (`.env` file)
+- Never commit API keys or credentials
+
+### Dependency Scanning
+- Enable Dependabot for automated dependency updates
+- Regularly run `safety check` to identify vulnerabilities
+- Review and update dependencies monthly
+
+## 🧹 Repository Maintenance
+
+### Monthly Tasks
+1. Update dependencies
+2. Review and close stale issues/PRs
+3. Update documentation
+4. Review and update CI/CD workflows
+5. Check for security vulnerabilities
+
+### Performance Optimization
+- Monitor CI/CD pipeline duration
+- Optimize test suite speed
+- Clean up unused branches
+- Archive old releases
+
+### Documentation Updates
+- Keep `README.md` up to date
+- Update API documentation
+- Add examples for new features
+- Document breaking changes in `CHANGELOG.md`
 
 # Push to GitHub
 git push origin main
