@@ -1,5 +1,6 @@
 import pytest
-from hypercode.core.lexer import Lexer, Token, TokenType
+from dataclasses import asdict
+from hypercode.core.lexer import Lexer, Token, TokenType, LexerError
 
 def test_lexer_escaped_strings():
     """Test handling of strings with escaped characters."""
@@ -129,6 +130,122 @@ def test_lexer_error_handling():
     
     assert "Invalid character" in str(excinfo.value)
     assert "line 1, column 9" in str(excinfo.value)
+
+def test_lexer_hex_numbers():
+    """Test hexadecimal number literals."""
+    source = "0x1A 0x2f 0xDEADBEEF 0x123abc 0XFF"
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    numbers = [t for t in tokens if t.type == TokenType.NUMBER]
+    assert len(numbers) == 5
+    assert [t.value for t in numbers] == ['0x1A', '0x2f', '0xDEADBEEF', '0x123abc', '0XFF']
+    assert [t.literal for t in numbers] == [26, 47, 0xDEADBEEF, 0x123ABC, 0xFF]
+
+def test_lexer_binary_numbers():
+    """Test binary number literals."""
+    source = "0b1010 0b0011 0b1111_0000 0B0101"
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    numbers = [t for t in tokens if t.type == TokenType.NUMBER]
+    assert len(numbers) == 4
+    assert [t.value for t in numbers] == ['0b1010', '0b0011', '0b1111_0000', '0B0101']
+    assert [t.literal for t in numbers] == [10, 3, 0b11110000, 0b0101]
+
+def test_lexer_scientific_notation():
+    """Test scientific notation numbers."""
+    source = "1e3 2.5e-2 1.23e+4 1E5 1e-3"
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    numbers = [t for t in tokens if t.type == TokenType.NUMBER]
+    assert len(numbers) == 5
+    assert [t.literal for t in numbers] == [1e3, 2.5e-2, 1.23e4, 1e5, 1e-3]
+
+def test_lexer_string_escapes():
+    """Test string escape sequences."""
+    source = r'"Line 1\nLine 2" "Tab\tcharacter" "Quote: \"" "Backslash: \\" "\x41\x42\x43"'
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    strings = [t for t in tokens if t.type == TokenType.STRING]
+    assert len(strings) == 5
+    assert strings[0].literal == '\"Line 1\\nLine 2\"'
+    assert strings[1].literal == '\"Tab\\tcharacter\"'
+    assert strings[2].literal == '\"Quote: \\\"\"'
+    assert strings[3].literal == '\"Backslash: \\\\\"'
+    assert strings[4].literal == '\"\\x41\\x42\\x43\"'
+
+def test_lexer_keywords():
+    """Test all language keywords."""
+    keywords = [
+        "if", "else", "for", "while", "match", "case", "default",
+        "fun", "return", "yield", "await", "let", "const", "var",
+        "print", "input", "true", "false", "nil", "class", "interface",
+        "extends", "implements", "this", "super", "new", "import",
+        "export", "from", "as", "try", "catch", "finally", "throw"
+    ]
+    
+    for keyword in keywords:
+        lexer = Lexer(keyword)
+        tokens = lexer.tokenize()
+        assert len(tokens) == 2  # Keyword + EOF
+        assert tokens[0].type != TokenType.IDENTIFIER
+        assert tokens[0].value == keyword
+
+def test_lexer_position_tracking():
+    """Test that line and column numbers are tracked correctly."""
+    source = """
+let x = 42
+if x > 10 {
+    print("Hello")
+}"""
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    # Check positions of key tokens
+    assert tokens[0].line == 2 and tokens[0].column == 1  # let
+    assert tokens[1].line == 2 and tokens[1].column == 5  # x
+    assert tokens[2].line == 2 and tokens[2].column == 7  # =
+    assert tokens[3].line == 2 and tokens[3].column == 9  # 42
+    assert tokens[4].line == 3 and tokens[4].column == 1  # if
+    assert tokens[8].line == 3 and tokens[8].column == 10  # {
+    assert tokens[9].line == 4 and tokens[9].column == 5  # print
+
+def test_lexer_error_recovery():
+    """Test that the lexer can recover from errors."""
+    source = 'let x = @#$ 42 "valid" 123'
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    # Should still parse valid tokens after errors
+    assert len(lexer.errors) == 3  # One for each invalid character
+    
+    # Check that valid tokens are still found
+    valid_tokens = [t for t in tokens if t.type != TokenType.UNKNOWN]
+    assert len(valid_tokens) == 4  # let, x, =, 42, "valid", 123 + EOF
+    assert valid_tokens[0].type == TokenType.LET
+    assert valid_tokens[1].type == TokenType.IDENTIFIER
+    assert valid_tokens[2].type == TokenType.EQUAL
+    assert valid_tokens[3].type == TokenType.NUMBER
+    assert valid_tokens[3].literal == 42
+    assert valid_tokens[4].type == TokenType.STRING
+    assert valid_tokens[5].type == TokenType.NUMBER
+    assert valid_tokens[5].literal == 123
+
+def test_lexer_error_messages():
+    """Test that error messages are properly generated."""
+    source = '"unterminated string\nlet x = 42'
+    lexer = Lexer(source)
+    tokens = lexer.tokenize()
+    
+    assert len(lexer.errors) == 1
+    error = lexer.errors[0]
+    assert "Unterminated string" in error.message
+    assert error.line == 1
+    assert error.column == 1
+    assert error.length == len('"unterminated string')
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

@@ -1,5 +1,7 @@
 # 🚀 hypercode
 
+> **🌟 [Our Vision & Mission →](VISION.md)** - Understand the philosophy and future of HyperCode
+
 HyperCode: Neurodivergent-First Programming Language with AI Compatibility
 
 ## ✨ Features

@@ -2411,21 +2411,98 @@ def test_refactor_extract_function():
     
     # Open a document with code to refactor
     server.handle_request({
-        "jsonrutable
-<parameter name="textDocument">{
+        "jsonrpc": "2.0",
+        "method": "textDocument/didOpen",
+        "params": {
+            "textDocument": {
   "uri": "file:///project/test.hc",
-  "languageId": "hypercode",
-  "version": 1,
-  "text": "function processData(data) {\n  // Calculate the sum\n  let sum = 0;\n  for (let i = 0; i < data.length; i++) {\n    sum += data[i];\n  }\n  \n  // Calculate the average\n  let average = sum / data.length;\n  \n  // Filter values above average\n  let result = [];\n  for (let i = 0; i < data.length; i++) {\n    if (data[i] > average) {\n      result.push(data[i]);\n    }\n  }\n  \n  return result;\n}"
-}
-</parameter>
-<parameter name="range">{
-  "start": {
-    "line": 2,
-    "character": 2
-  },
-  "end": {
-    "line": 5,
-    "character": 3
-  }
-}</parameter>
+                "languageId": "hypercode",
+                "version": 1,
+                "text": "function processData(data) {\n  // Calculate the sum\n  let sum = 0;\n  for (let i = 0; i < data.length; i++) {\n    sum += data[i];\n  }\n  \n  // Calculate the average\n  let average = sum / data.length;\n  \n  // Filter values above average\n  let result = [];\n  for (let i = 0; i < data.length; i++) {\n    if (data[i] > average) {\n      result.push(data[i]);\n    }\n  }\n  \n  return result;\n}"
+            }
+        }
+    })
+    
+    # Get code actions for refactoring
+    response = server.handle_request({
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "textDocument/codeAction",
+        "params": {
+            "textDocument": {
+                "uri": "file:///project/test.hc"
+            },
+            "range": {
+                "start": {
+                    "line": 2,
+                    "character": 2
+                },
+                "end": {
+                    "line": 5,
+                    "character": 3
+                }
+            },
+            "context": {
+                "only": ["refactor.extract"]
+            }
+        }
+    })
+    
+    # Check that we got some code actions
+    assert "result" in response
+    assert isinstance(response["result"], list)
+    assert len(response["result"]) > 0
+    
+    # Check that one of the actions is to extract a function
+    action_titles = [action["title"] for action in response["result"]]
+    assert any("Extract function" in title for title in action_titles)
+    
+    # Apply the "Extract function" action
+    extract_action = next(
+        action for action in response["result"]
+        if "Extract function" in action["title"]
+    )
+    
+    # Apply the edit
+    edit_params = {
+        "textDocument": {
+            "uri": "file:///project/test.hc",
+            "version": 1
+        },
+        "edits": extract_action["edit"]["changes"]["file:///project/test.hc"]
+    }
+    
+    edit_response = server.handle_request({
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "workspace/applyEdit",
+        "params": {
+            "label": "Extract function",
+            "edit": {
+                "changes": {
+                    "file:///project/test.hc": edit_params["edits"]
+                }
+            }
+        }
+    })
+    
+    # Check that the edit was applied
+    assert "applied" in edit_response.get("result", {})
+    assert edit_response["result"]["applied"] is True
+    
+    # Get the updated document
+    document_response = server.handle_request({
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "textDocument/documentSymbol",
+        "params": {
+            "textDocument": {
+                "uri": "file:///project/test.hc"
+            }
+        }
+    })
+    
+    # The new function should now exist
+    assert "result" in document_response
+    symbols = document_response["result"]
+    assert any(symbol["kind"] == 12 and "newFunction" in symbol["name"] for symbol in symbols) # 12 is Function
