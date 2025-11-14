@@ -20,20 +20,20 @@ It converts source code into a sequence of tokens for further processing.
 """
 
 from dataclasses import dataclass
-from typing import List, Optional, Dict, Tuple, Pattern, Union
+from typing import List, Optional, Dict, Tuple, Pattern, Union, Any
 import re
-from .token_types import TokenType, TOKEN_MAP
+from .tokens import TokenType, Token as BaseToken
 
-@dataclass
-class Token:
-    """Represents a single token in the source code."""
-    type: TokenType
-    value: str
-    line: int
-    column: int
+# The Token class is now imported from tokens.py, but we'll keep the same interface
+Token = BaseToken
 
-    def __str__(self):
-        return f"{self.type.name}({repr(self.value)}) at {self.line}:{self.column}"
+class LexerError(Exception):
+    """Exception raised for errors in the lexer."""
+    def __init__(self, message: str, line: int, column: int):
+        self.message = message
+        self.line = line
+        self.column = column
+        super().__init__(f"{message} at line {line}, column {column}")
 
 class Lexer:
     """
@@ -49,60 +49,46 @@ class Lexer:
         'else': TokenType.ELSE,
         'for': TokenType.FOR,
         'while': TokenType.WHILE,
-        'function': TokenType.FUNCTION,
+        'function': TokenType.FUN,  # Changed from FUNCTION to FUN to match tokens.py
         'return': TokenType.RETURN,
         'let': TokenType.LET,
         'const': TokenType.CONST,
         'var': TokenType.VAR,
         'true': TokenType.TRUE,
         'false': TokenType.FALSE,
-        'null': TokenType.NULL,
+        'null': TokenType.NIL,  # Changed from NULL to NIL to match tokens.py
         'print': TokenType.PRINT
     }
     
     # Token specifications - ordered by priority (longer patterns first)
     TOKENS = [
-        # Whitespace first
-        (TokenType.WHITESPACE, r'\s+'),
+        # Skip whitespace and comments (they won't be included in the token stream)
+        (None, r'\s+'),  # Whitespace
+        (None, r'#[^\r\n]*|//[^\r\n]*|/\*[\s\S]*?\*/'),  # Comments
         
         # Multi-character operators (must come before single-character ones)
-        (TokenType.STAR_STAR, r'\*\*'),
-        (TokenType.SLASH_SLASH, r'//'),
-        
-        # Comments (after operators to avoid conflicts)
-        (TokenType.COMMENT, r'#[^\r\n]*|//[^\r\n]*|/\*[\s\S]*?\*/'),
         (TokenType.EQUAL_EQUAL, r'=='),
         (TokenType.BANG_EQUAL, r'!='),
         (TokenType.LESS_EQUAL, r'<='),
         (TokenType.GREATER_EQUAL, r'>='),
-        (TokenType.ARROW, r'->'),
         
         # Single-character operators
         (TokenType.PLUS, r'\+'),
         (TokenType.MINUS, r'-'),
-        (TokenType.STAR, r'\*'),
+        (TokenType.STAR, r'\*'),  # Handles both * and ** (handled in parser)
         (TokenType.SLASH, r'/'),
-        (TokenType.PERCENT, r'%'),
         (TokenType.EQUAL, r'='),
         (TokenType.BANG, r'!'),
         (TokenType.LESS, r'<'),
         (TokenType.GREATER, r'>'),
+        
         # String literals (handle both single and double quoted strings with escaped quotes)
         (TokenType.STRING, r'"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\''),
         
         # Numbers (handle integers, decimals, and scientific notation)
-        (TokenType.NUMBER, r'\d+\.\d+([eE][+-]?\d+)?|\d+[eE][+-]?\d+|\.\d+([eE][+-]?\d+)?|0[xX][0-9a-fA-F]+|0[bB][01]+|0[oO]?[0-7]+|\d+'),
+        (TokenType.NUMBER, r'\d+(?:_?\d+)*\.\d+([eE][+-]?\d+)?|\d+(?:_?\d+)*[eE][+-]?\d+|\.\d+([eE][+-]?\d+)?|0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO]?[0-7_]+|\d+(?:_?\d+)*'),
         
-        # Single-character operators and punctuation
-        (TokenType.PLUS, r'\+'),
-        (TokenType.MINUS, r'-'),
-        (TokenType.STAR, r'\*'),
-        (TokenType.SLASH, r'/'),
-        (TokenType.PERCENT, r'%'),
-        (TokenType.BANG, r'!'),
-        (TokenType.EQUAL, r'='),
-        (TokenType.LESS, r'<'),
-        (TokenType.GREATER, r'>'),
+        # Punctuation
         (TokenType.LPAREN, r'\('),
         (TokenType.RPAREN, r'\)'),
         (TokenType.LBRACE, r'\{'),
@@ -180,12 +166,10 @@ class Lexer:
                 # Update position first for accurate line/column tracking
                 self._update_position(value)
                 
-                # Skip whitespace and comments by default
-                if token_type in (TokenType.WHITESPACE, TokenType.COMMENT):
-                    # Only skip if it's not a SLASH_SLASH operator
-                    if token_type != TokenType.SLASH_SLASH or value != '//':
-                        self.pos = match.end()
-                        return True
+                # Skip tokens with None type (whitespace and comments)
+                if token_type is None:
+                    self.pos = match.end()
+                    return True
                 
                 # Special handling for identifiers that might be keywords
                 if token_type == TokenType.IDENTIFIER and value in self.KEYWORDS:
@@ -217,14 +201,67 @@ class Lexer:
         # Add any additional newlines from the text
         self.line += text.count('\n')
 
-    def _add_token(self, token_type: TokenType, value: str):
-        """Add a token to the token list."""
-        self.tokens.append(Token(
-            type=token_type,
-            value=value,
-            line=self.line,
-            column=self.column - len(value)
-        ))
+    def _add_token(self, token_type: TokenType, lexeme: str):
+        """Add a token to the token list.
+        
+        Args:
+            token_type: The type of the token.
+            lexeme: The lexeme of the token (the actual text from the source).
+        """
+        if token_type is not None:
+            # For literals, we need to set the appropriate value
+            literal = None
+            if token_type == TokenType.NUMBER:
+                try:
+                    if lexeme.lower().startswith('0x'):
+                        # Parse as hexadecimal
+                        literal = int(lexeme, 16)
+                    elif lexeme.lower().startswith('0b'):
+                        # Parse as binary
+                        literal = int(lexeme[2:], 2)
+                    elif lexeme.lower().startswith('0o'):
+                        # Parse as octal
+                        literal = int(lexeme[2:], 8)
+                    else:
+                        # Try to parse as int first, then as float
+                        try:
+                            # Handle underscores in numbers (e.g., 1_000_000)
+                            clean_lexeme = lexeme.replace('_', '')
+                            literal = int(clean_lexeme)
+                        except ValueError:
+                            try:
+                                literal = float(clean_lexeme)
+                            except ValueError:
+                                # If we can't parse it as a number, keep literal as None
+                                pass
+                except Exception as e:
+                    # If there's any error in parsing, keep literal as None
+                    pass
+            elif token_type == TokenType.STRING:
+                # Remove the quotes from the string literal
+                literal = lexeme[1:-1]
+                # Handle escape sequences
+                try:
+                    # Use a simple approach to handle common escape sequences
+                    literal = literal.encode().decode('unicode_escape')
+                except:
+                    # If there's an error in unescaping, keep the original
+                    pass
+            elif token_type in (TokenType.TRUE, TokenType.FALSE):
+                literal = token_type == TokenType.TRUE
+            elif token_type == TokenType.NIL:
+                literal = None
+            
+            self.tokens.append(Token(
+                type=token_type,
+                lexeme=lexeme,
+                literal=literal,
+                line=self.line,
+                column=self.column - len(lexeme)
+            ))
+            
+            # For debugging
+            # print(f"Added token: {self.tokens[-1]}")
 
     def _handle_unknown(self):
         """Handle unknown characters in the source."""

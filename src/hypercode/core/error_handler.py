@@ -1,5 +1,5 @@
 from .lexer import Token
-from .token_types import TokenType
+from .tokens import TokenType
 
 def report_parse_error(token: Token, message: str) -> None:
     if token.type == TokenType.EOF:

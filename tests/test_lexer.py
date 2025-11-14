@@ -14,9 +14,9 @@ def test_lexer_basic_tokens():
         (TokenType.EOF, ""),
     ]
     
-    for (exp_type, exp_value), token in zip(expected, tokens):
+    for (exp_type, exp_lexeme), token in zip(expected, tokens):
         assert token.type == exp_type
-        assert token.value == exp_value
+        assert token.lexeme == exp_lexeme
 
 def test_lexer_strings():
     source = '"hello"'
@@ -24,7 +24,7 @@ def test_lexer_strings():
     tokens = lexer.tokenize()
     
     assert tokens[0].type == TokenType.STRING
-    assert tokens[0].value == '"hello"'
+    assert tokens[0].lexeme == '"hello"'
 
 @pytest.mark.parametrize("source,expected_type", [
     ("+", TokenType.PLUS),

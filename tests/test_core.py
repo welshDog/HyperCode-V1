@@ -23,7 +23,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 from hypercode.core.lexer import Lexer
-from core.parser import Parser
+from hypercode.core.parser import Parser
 
 def run_test(source_code: str):
     """Test the lexer and parser with the given source code."""
@@ -31,15 +31,15 @@ def run_test(source_code: str):
     
     try:
         # Test Lexer
-        lexer = Lexer()
-        tokens = lexer.tokenize(source_code)
+        lexer = Lexer(source_code)
+        tokens = lexer.tokenize()
         print("\nTokens:")
         for token in tokens:
             print(f"  {token}")
         
         # Test Parser
         parser = Parser(tokens)
-        ast = parser.parse_program()
+        ast = parser.parse()
         print("\nAST:")
         print(ast)
         print("\n✅ Core components test passed!")

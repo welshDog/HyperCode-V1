@@ -1,65 +1,27 @@
-# 🚀 hypercode
+﻿# HyperCode Project
 
-> **🌟 [Our Vision & Mission →](VISION.md)** - Understand the philosophy and future of HyperCode
+## Project Structure
 
-HyperCode: Neurodivergent-First Programming Language with AI Compatibility
+- [/docs](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/docs:0:0-0:0) - Documentation and project information
+- /src - Source code
+  - [/hypercode](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode:0:0-0:0) - Main package
+  - [/backends](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/backends:0:0-0:0) - Backend implementations
+  - [/core](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/core:0:0-0:0) - Core functionality
+  - [/tools](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/tools:0:0-0:0) - Development tools
+  - [/scripts](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/scripts:0:0-0:0) - Utility scripts
+- [/tests](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/tests:0:0-0:0) - Test files
+- [/examples](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/examples:0:0-0:0) - Example code
+- /assets - Static assets
+  - /images - Image files
+- [/config](cci:7://file:///c:/Users/lyndz/Downloads/HyperCode/hypercode/config:0:0-0:0) - Configuration files
+- /temp - Temporary files
 
-## ✨ Features
+## Getting Started
 
-- **Neurodivergent-First Design**: Built with accessibility in mind
-- **AI Compatibility**: Seamless integration with LLMs
-- **Multi-Backend**: Compile to various targets (Python, JavaScript, WebAssembly, etc.)
-- **Extensible**: Easy to add new language features and backends
+1. Clone the repository
+2. Install dependencies: pip install -r config/requirements.txt
+3. Run the application: python -m hypercode
 
-## 🚀 Quick Start
+## Development
 
-```bash
-# Clone the repository
-git clone https://github.com/welshDog/hypercode.git
-cd hypercode
-
-# Set up virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scriptsctivate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run the HyperCode REPL
-python -m hypercode
-```
-
-## 📚 Documentation
-
-Check out our [documentation](docs/README.md) for detailed usage instructions.
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## ♿ Accessibility Features
-
-HyperCode is designed with neurodiversity in mind:
-
-### Visual Design
-- High contrast color schemes
-- Dyslexia-friendly fonts (via IDE integration)
-- Syntax highlighting optimized for color blindness
-
-### Cognitive Features
-- Predictable, consistent syntax
-- Minimal cognitive load
-- Clear error messages with visual aids
-
-### Customization
-- Adjustable font sizes
-- Customizable keybindings
-- Screen reader support
-
-### Getting Help
-- [Accessibility Guide](docs/accessibility.md)
-- Request accommodations via [Discord](https://discord.gg/hypercode)
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for development guidelines.

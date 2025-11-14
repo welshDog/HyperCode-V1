@@ -1,7 +1,7 @@
 import pytest
 from hypercode.core.lexer import Lexer, Token
 from hypercode.core.parser import Parser
-from hypercode.core.token_types import TokenType
+from hypercode.core.tokens import TokenType
 from hypercode.core.ast import *
 
 def test_parse_literal():

@@ -1,9 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Optional, Union
 
-# Forward declaration for Token
-class Token:
-    pass
+from .tokens import Token
 
 # Base Node class
 class Node:

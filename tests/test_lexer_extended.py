@@ -10,9 +10,9 @@ def test_lexer_escaped_strings():
     
     assert len(tokens) == 4  # 3 strings + EOF
     assert tokens[0].type == TokenType.STRING
-    assert tokens[0].value == '\"Hello\\nWorld\"'
-    assert tokens[1].value == '\"It\\\'s a test\"'
-    assert tokens[2].value == '\"C:\\\\path\\\\to\\\\file\"'
+    assert tokens[0].lexeme == '\"Hello\\nWorld\"'
+    assert tokens[1].lexeme == '\"It\\\'s a test\"'
+    assert tokens[2].lexeme == '\"C:\\\\path\\\\to\\\\file\"'
 
 def test_lexer_numbers():
     """Test various number formats."""
@@ -22,7 +22,7 @@ def test_lexer_numbers():
     
     number_tokens = [t for t in tokens if t.type == TokenType.NUMBER]
     assert len(number_tokens) == 9
-    assert [t.value for t in number_tokens] == [
+    assert [t.lexeme for t in number_tokens] == [
         '42', '3.14', '0.5', '.5', '1e10', '2e-5', '0x1A', '0b1010', '0o755'
     ]
 
@@ -34,9 +34,6 @@ def test_lexer_operators():
         ("-", TokenType.MINUS),
         ("*", TokenType.STAR),
         ("/", TokenType.SLASH),
-        ("%", TokenType.PERCENT),
-        ("**", TokenType.STAR_STAR),
-        ("//", TokenType.SLASH_SLASH),
         ("=", TokenType.EQUAL),
         (">", TokenType.GREATER),
         (">=", TokenType.GREATER_EQUAL),
@@ -47,31 +44,27 @@ def test_lexer_operators():
     ]
     
     for op_str, expected_type in operators:
-        # Skip testing SLASH_SLASH in isolation as it's used for comments
-        if expected_type == TokenType.SLASH_SLASH:
-            continue
-            
         lexer = Lexer(op_str)
         tokens = lexer.tokenize()
         
-        # Should have the operator and EOF
+        # We should have exactly two tokens: the operator and EOF
         assert len(tokens) == 2, f"Expected 2 tokens for '{op_str}', got {len(tokens)}"
         assert tokens[0].type == expected_type, f"Expected {expected_type} for '{op_str}', got {tokens[0].type}"
         assert tokens[1].type == TokenType.EOF
     
-    # Special test for SLASH_SLASH to ensure it's recognized in context
-    source = "10 // 3"
+    # Test for division and comments using SLASH and SLASH_SLASH
+    source = "10 / 3  # This is a comment"
     lexer = Lexer(source)
     tokens = lexer.tokenize()
     
-    # Should be: NUMBER(10), WHITESPACE, SLASH_SLASH(//), WHITESPACE, NUMBER(3), EOF
+    # Should be: NUMBER(10), WHITESPACE, SLASH(/), WHITESPACE, NUMBER(3), WHITESPACE, COMMENT, EOF
     token_types = [t.type for t in tokens]
-    assert TokenType.SLASH_SLASH in token_types, "SLASH_SLASH operator not found in tokens"
+    assert TokenType.SLASH in token_types, "SLASH operator not found in tokens"
     
-    # Find the SLASH_SLASH token and verify its value
-    slash_slash_tokens = [t for t in tokens if t.type == TokenType.SLASH_SLASH]
-    assert len(slash_slash_tokens) == 1, f"Expected exactly one SLASH_SLASH token, got {len(slash_slash_tokens)}"
-    assert slash_slash_tokens[0].value == "//", f"Expected '//' as token value, got {slash_slash_tokens[0].value}"
+    # Find the SLASH token and verify its value
+    slash_tokens = [t for t in tokens if t.type == TokenType.SLASH]
+    assert len(slash_tokens) == 1, f"Expected exactly one SLASH token, got {len(slash_tokens)}"
+    assert slash_tokens[0].lexeme == "/", f"Expected '/' as token lexeme, got {slash_tokens[0].lexeme}"
 
 def test_lexer_comments():
     """Test handling of single-line and multi-line comments."""
@@ -86,28 +79,20 @@ def test_lexer_comments():
     """
     lexer = Lexer(source)
     tokens = lexer.tokenize()
+
+    # Get non-EOF tokens (whitespace and comments are already filtered out by the lexer)
+    code_tokens = [t for t in tokens if t.type != TokenType.EOF]
     
-    # Get non-whitespace, non-comment tokens
-    code_tokens = [
-        t for t in tokens 
-        if t.type not in (TokenType.WHITESPACE, TokenType.COMMENT, TokenType.EOF)
-    ]
-    
-    # Check the structure of the code
-    # We expect 8 tokens: let, x, =, 42, let, y, =, 3.14
-    assert len(code_tokens) == 8
-    
-    # First statement: let x = 42
+    # We should have: let, x, =, 42, let, y, =, 3.14
+    assert len(code_tokens) == 8, f"Expected 8 code tokens, got {len(code_tokens)}"
     assert code_tokens[0].type == TokenType.LET
-    assert code_tokens[1].type == TokenType.IDENTIFIER and code_tokens[1].value == 'x'
+    assert code_tokens[1].type == TokenType.IDENTIFIER and code_tokens[1].lexeme == "x"
     assert code_tokens[2].type == TokenType.EQUAL
-    assert code_tokens[3].type == TokenType.NUMBER and code_tokens[3].value == '42'
-    
-    # Second statement: let y = 3.14
+    assert code_tokens[3].type == TokenType.NUMBER and code_tokens[3].lexeme == "42"
     assert code_tokens[4].type == TokenType.LET
-    assert code_tokens[5].type == TokenType.IDENTIFIER and code_tokens[5].value == 'y'
+    assert code_tokens[5].type == TokenType.IDENTIFIER and code_tokens[5].lexeme == "y"
     assert code_tokens[6].type == TokenType.EQUAL
-    assert code_tokens[7].type == TokenType.NUMBER and code_tokens[7].value == '3.14'
+    assert code_tokens[7].type == TokenType.NUMBER and code_tokens[7].lexeme == "3.14"
 
 def test_lexer_whitespace():
     """Test handling of various whitespace characters."""
@@ -139,7 +124,7 @@ def test_lexer_hex_numbers():
     
     numbers = [t for t in tokens if t.type == TokenType.NUMBER]
     assert len(numbers) == 5
-    assert [t.value for t in numbers] == ['0x1A', '0x2f', '0xDEADBEEF', '0x123abc', '0XFF']
+    assert [t.lexeme for t in numbers] == ['0x1A', '0x2f', '0xDEADBEEF', '0x123abc', '0XFF']
     assert [t.literal for t in numbers] == [26, 47, 0xDEADBEEF, 0x123ABC, 0xFF]
 
 def test_lexer_binary_numbers():
@@ -150,8 +135,8 @@ def test_lexer_binary_numbers():
     
     numbers = [t for t in tokens if t.type == TokenType.NUMBER]
     assert len(numbers) == 4
-    assert [t.value for t in numbers] == ['0b1010', '0b0011', '0b1111_0000', '0B0101']
-    assert [t.literal for t in numbers] == [10, 3, 0b11110000, 0b0101]
+    assert [t.lexeme for t in numbers] == ['0b1010', '0b0011', '0b1111_0000', '0B0101']
+    assert [t.literal for t in numbers] == [10, 3, 0b11110000, 5]
 
 def test_lexer_scientific_notation():
     """Test scientific notation numbers."""

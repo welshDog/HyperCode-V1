@@ -13,8 +13,8 @@
 # limitations under the License.
 
 """
-Multi-backend compilation targets
+Core HyperCode language implementation
 
-File: backends\quantum.py
+File: core\optimizer.py
 """
 

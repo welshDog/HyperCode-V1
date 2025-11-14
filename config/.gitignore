@@ -1,7 +1,7 @@
-# Python
+﻿# Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.class
 *.so
 .Python
 build/
@@ -21,7 +21,7 @@ wheels/
 *.egg
 
 # Virtual Environment
-.venv/
+.venv
 venv/
 ENV/
 
@@ -30,29 +30,9 @@ ENV/
 .idea/
 *.swp
 *.swo
-*~
-
-# Environment variables
-.env
-
-# Local development
-*.log
-local_settings.py
-db.sqlite3
-
-# Build files
-build/
-dist/
-hypercode.egg-info/
-
-# Temp files
-temp/
-*.tmp
-
-# System Files
-.DS_Store
-Thumbs.db
 
 # Project specific
-assets/
-*.pdf
+temp/
+*.log
+.env
+.DS_Store

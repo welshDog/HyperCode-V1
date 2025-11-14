@@ -1,4 +1,4 @@
-[build-system]
+﻿[build-system]
 requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 authors = [
-    {name = "welshDog", email = "your.email@example.com"}
+    {name = "hypercode"}
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
