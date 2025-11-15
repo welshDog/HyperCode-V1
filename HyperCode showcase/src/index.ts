@@ -11,7 +11,7 @@ class HyperCode {
    */
   public execute(code: string): void {
     const lines = code.split('\n').map(line => line.trim()).filter(line => line);
-    
+
     for (const line of lines) {
       this.executeLine(line);
     }
@@ -32,7 +32,7 @@ class HyperCode {
       // Example: LOOP 3 => ECHO "Hello"
       const [countPart, actionPart] = line.split('=>').map(s => s.trim());
       const count = parseInt(countPart.replace('LOOP', '').trim(), 10);
-      
+
       for (let i = 0; i < count; i++) {
         this.executeLine(actionPart);
       }
@@ -56,7 +56,7 @@ class HyperCode {
   private extractString(line: string, command: string): string {
     const content = line.substring(command.length).trim();
     // Remove surrounding quotes if present
-    if ((content.startsWith('"') && content.endsWith('"')) || 
+    if ((content.startsWith('"') && content.endsWith('"')) ||
         (content.startsWith("'") && content.endsWith("'"))) {
       return content.substring(1, content.length - 1);
     }

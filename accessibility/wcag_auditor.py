@@ -17,4 +17,3 @@ Neurodivergent-first accessibility tools
 
 File: accessibility\wcag_auditor.py
 """
-

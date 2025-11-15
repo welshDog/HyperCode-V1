@@ -17,4 +17,3 @@ Automated research paper collection and synthesis
 
 File: live_research\doc_generator.py
 """
-

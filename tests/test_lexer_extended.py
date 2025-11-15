@@ -1,6 +1,4 @@
-
 import pytest
-
 from hypercode.core.lexer import Lexer, TokenType
 
 

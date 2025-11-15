@@ -1,14 +1,18 @@
 # 🤝 Contributing to HyperCode
 
-First off, **thank you** for considering contributing to HyperCode! 💓 Whether you're fixing a typo, proposing a feature, or building an entire module, you're helping reshape how minds interact with code.
+First off, **thank you** for considering contributing to HyperCode! 💓 Whether you're
+fixing a typo, proposing a feature, or building an entire module, you're helping reshape
+how minds interact with code.
 
-**This is a judgment-free, inclusive space.** We welcome contributions from all backgrounds, skill levels, and neurotypes. No gatekeeping. Period.
+**This is a judgment-free, inclusive space.** We welcome contributions from all
+backgrounds, skill levels, and neurotypes. No gatekeeping. Period.
 
 ---
 
 ## 🎯 Code of Conduct
 
-We are committed to providing a welcoming and inclusive environment for all contributors. We expect all community members to:
+We are committed to providing a welcoming and inclusive environment for all
+contributors. We expect all community members to:
 
 - **Be respectful** of different perspectives, experiences, and identities
 - **Be patient** with beginners and those learning
@@ -16,7 +20,8 @@ We are committed to providing a welcoming and inclusive environment for all cont
 - **Report harm** privately to maintainers without public shaming
 - **Celebrate differences** — neurodivergence, backgrounds, cultures, abilities
 
-**Zero tolerance for discrimination, harassment, or exclusion.** If you experience or witness this, report it immediately.
+**Zero tolerance for discrimination, harassment, or exclusion.** If you experience or
+witness this, report it immediately.
 
 ---
 
@@ -80,7 +85,8 @@ npm run dev
 
 Found a bug? **Help us fix it!**
 
-1. Check [existing issues](https://github.com/HyperCode-Labs/HyperCode/issues) to avoid duplicates
+1. Check [existing issues](https://github.com/HyperCode-Labs/HyperCode/issues) to avoid
+   duplicates
 2. [Create a new issue](https://github.com/HyperCode-Labs/HyperCode/issues/new) with:
    - Clear title describing the bug
    - Steps to reproduce
@@ -89,6 +95,7 @@ Found a bug? **Help us fix it!**
    - Screenshots or code examples if relevant
 
 **Bug Report Template:**
+
 ```
 ### Description
 [Clear explanation of the issue]
@@ -119,14 +126,17 @@ Found a bug? **Help us fix it!**
 
 Have a killer idea? **We want to hear it!**
 
-1. Check [discussions](https://github.com/HyperCode-Labs/HyperCode/discussions) for similar ideas
-2. [Open a new discussion](https://github.com/HyperCode-Labs/HyperCode/discussions/new) or issue with:
+1. Check [discussions](https://github.com/HyperCode-Labs/HyperCode/discussions) for
+   similar ideas
+2. [Open a new discussion](https://github.com/HyperCode-Labs/HyperCode/discussions/new)
+   or issue with:
    - Compelling title and description
    - Use cases and examples
    - Why this feature matters for HyperCode's vision
    - Possible implementation approaches (if you have thoughts)
 
 **Feature Request Template:**
+
 ```
 ### Feature Description
 [What should HyperCode be able to do?]
@@ -153,6 +163,7 @@ Have a killer idea? **We want to hear it!**
 Good documentation makes HyperCode accessible to everyone.
 
 **What we need:**
+
 - Clearer explanations
 - More examples (especially for neurodivergent learners)
 - Better accessibility (alt text, captions, dyslexia-friendly formatting)
@@ -160,6 +171,7 @@ Good documentation makes HyperCode accessible to everyone.
 - Tutorials and guides
 
 **How to contribute:**
+
 1. Identify what needs improvement
 2. Create a branch: `git checkout -b docs/your-improvement`
 3. Make clear, accessible edits
@@ -172,11 +184,15 @@ Good documentation makes HyperCode accessible to everyone.
 Ready to code? **Awesome!**
 
 **Before you start:**
-1. Check [open issues](https://github.com/HyperCode-Labs/HyperCode/issues) and [discussions](https://github.com/HyperCode-Labs/HyperCode/discussions) for what's needed
+
+1. Check [open issues](https://github.com/HyperCode-Labs/HyperCode/issues) and
+   [discussions](https://github.com/HyperCode-Labs/HyperCode/discussions) for what's
+   needed
 2. Comment on an issue to claim it (avoid duplicate work)
 3. For major features, open a discussion first to align with the vision
 
 **Code Quality Standards:**
+
 - Follow the existing code style
 - Write clear, self-documenting code
 - Add comments for non-obvious logic
@@ -185,6 +201,7 @@ Ready to code? **Awesome!**
 - Format code with `npm run lint`
 
 **Accessibility in Code:**
+
 - Use accessible variable and function names
 - Avoid deeply nested logic
 - Add comments explaining "why," not just "what"
@@ -221,6 +238,7 @@ git commit -m "docs: clarify AI integration guide"
 ```
 
 **Commit Message Format:**
+
 ```
 <type>: <subject>
 
@@ -238,6 +256,7 @@ git push origin feature/amazing-feature
 ```
 
 Then on GitHub:
+
 1. Click "Create Pull Request"
 2. Fill out the PR template with:
    - What this PR does
@@ -247,6 +266,7 @@ Then on GitHub:
    - Any breaking changes
 
 **PR Template:**
+
 ```
 ## Description
 [Brief description of changes]
@@ -303,11 +323,13 @@ Once approved, your contribution gets merged and you're in the credits!
 ## 🎓 Learning Resources
 
 **New to open source?**
+
 - [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 - [First Timers Only](https://www.firsttimersonly.com/)
 - [Good First Issue](https://goodfirstissue.dev/)
 
 **HyperCode-specific:**
+
 - [Getting Started Guide](../docs/getting-started.md)
 - [Language Reference](../docs/language-reference.md)
 - [Architecture Overview](../docs/architecture.md)
@@ -326,6 +348,7 @@ Once approved, your contribution gets merged and you're in the credits!
 ## 🌟 Recognition
 
 Contributors are recognized in:
+
 - [CONTRIBUTORS.md](./CONTRIBUTORS.md)
 - GitHub contributors graph
 - Release notes for major contributions
@@ -345,8 +368,10 @@ Contributors are recognized in:
 
 ### Ready to Contribute?
 
-**[Pick an Issue](https://github.com/HyperCode-Labs/HyperCode/issues)** | **[Start a Discussion](https://github.com/HyperCode-Labs/HyperCode/discussions)** | **[Read Docs](../docs/)**
+**[Pick an Issue](https://github.com/HyperCode-Labs/HyperCode/issues)** |
+**[Start a Discussion](https://github.com/HyperCode-Labs/HyperCode/discussions)** |
+**[Read Docs](../docs/)**
 
-*HyperCode grows because of people like you. Thank you! 💓*
+_HyperCode grows because of people like you. Thank you! 💓_
 
 </div>

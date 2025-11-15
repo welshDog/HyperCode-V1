@@ -9,7 +9,14 @@
     "test": "jest",
     "lint": "eslint src/**/*.ts"
   },
-  "keywords": ["windsurf", "spatial", "visualization", "adhd", "accessibility", "mind-map"],
+  "keywords": [
+    "windsurf",
+    "spatial",
+    "visualization",
+    "adhd",
+    "accessibility",
+    "mind-map"
+  ],
   "author": "HyperCode Team",
   "license": "MIT",
   "devDependencies": {
@@ -33,7 +40,11 @@
   "engines": {
     "vscode": "^1.85.0"
   },
-  "activationEvents": ["onLanguage:python", "onLanguage:javascript", "onCommand:spatialVisualizer.open"],
+  "activationEvents": [
+    "onLanguage:python",
+    "onLanguage:javascript",
+    "onCommand:spatialVisualizer.open"
+  ],
   "contributes": {
     "commands": [
       {

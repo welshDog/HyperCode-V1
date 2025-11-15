@@ -17,4 +17,3 @@ Semantic knowledge graph management
 
 File: knowledge_graph\sparql_query.py
 """
-

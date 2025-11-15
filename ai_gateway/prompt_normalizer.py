@@ -17,4 +17,3 @@ AI model compatibility layer
 
 File: ai_gateway\prompt_normalizer.py
 """
-

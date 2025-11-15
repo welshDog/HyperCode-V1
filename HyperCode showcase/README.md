@@ -21,15 +21,18 @@
 
 ## 🎯 What is HyperCode?
 
-**HyperCode is not just another programming language.** It's a revolutionary movement to reimagine how *all* minds—especially neurodivergent ones—interact with code, logic, and intelligent systems.
+**HyperCode is not just another programming language.** It's a revolutionary movement to
+reimagine how _all_ minds—especially neurodivergent ones—interact with code, logic, and
+intelligent systems.
 
 ### The Core Vision
 
-Programming languages are more than syntax. **They are an expression of *how* minds think.**
+Programming languages are more than syntax. **They are an expression of _how_ minds
+think.**
 
-- For neurodivergent coders, typical languages often don't fit brain patterns.  
-- For AI-powered code, static language design is outdated.  
-- Forgotten languages carry experimental truths that mainstream missed.  
+- For neurodivergent coders, typical languages often don't fit brain patterns.
+- For AI-powered code, static language design is outdated.
+- Forgotten languages carry experimental truths that mainstream missed.
 - Making programming accessible isn't optional—**it's essential for innovation.**
 
 ---
@@ -37,19 +40,32 @@ Programming languages are more than syntax. **They are an expression of *how* mi
 ## 🔥 Why HyperCode?
 
 ### ✨ Built for Neurodivergent Thinkers
-HyperCode prioritizes **spatial logic**, **minimal noise**, and **accessible visuals**. It's designed to work *with* how dyslexic, ADHD, and autistic brains naturally operate—not against them.
+
+HyperCode prioritizes **spatial logic**, **minimal noise**, and **accessible visuals**.
+It's designed to work _with_ how dyslexic, ADHD, and autistic brains naturally
+operate—not against them.
 
 ### 🧬 Resurrecting Forgotten Genius
-We draw inspiration from radical, experimental languages like **Plankalkül**, **Brainfuck**, and **Befunge**—languages that broke rules to open new possibilities. HyperCode integrates their creative power into the modern era.
+
+We draw inspiration from radical, experimental languages like **Plankalkül**,
+**Brainfuck**, and **Befunge**—languages that broke rules to open new possibilities.
+HyperCode integrates their creative power into the modern era.
 
 ### 🤖 Universal AI Compatibility
-HyperCode works seamlessly with **GPT**, **Claude**, **Mistral**, **Ollama**, and custom AI models—without costly rewrites. One codebase, unlimited AI power.
+
+HyperCode works seamlessly with **GPT**, **Claude**, **Mistral**, **Ollama**, and custom
+AI models—without costly rewrites. One codebase, unlimited AI power.
 
 ### 📊 Living Research Digital Paper
-This isn't static. HyperCode **auto-updates daily** powered by AI research agents and knowledge graphs. It evolves with the latest breakthroughs in AI, quantum computing, DNA coding, and neurodiversity-focused design.
+
+This isn't static. HyperCode **auto-updates daily** powered by AI research agents and
+knowledge graphs. It evolves with the latest breakthroughs in AI, quantum computing, DNA
+coding, and neurodiversity-focused design.
 
 ### 🌐 Open, Collaborative, Professional
-Built with real-world DevOps, CI/CD, automated quality checks, and versioning from day one. **Industry-grade. Community-driven. Ready for the world.**
+
+Built with real-world DevOps, CI/CD, automated quality checks, and versioning from day
+one. **Industry-grade. Community-driven. Ready for the world.**
 
 ---
 
@@ -80,23 +96,28 @@ FLOW [
 ```
 
 Compare to traditional code:
+
 ```javascript
-console.log("Hello, Beautiful Brain!");
+console.log('Hello, Beautiful Brain!');
 for (let i = 0; i < 3; i++) {
-  console.log("You belong here");
+  console.log('You belong here');
 }
 ```
 
-**See the difference?** HyperCode reads like poetry. It removes cognitive load. It *thinks* with you.
+**See the difference?** HyperCode reads like poetry. It removes cognitive load. It
+_thinks_ with you.
 
 ---
 
 ## 📚 Documentation
 
-- **[Getting Started Guide](./docs/getting-started.md)** — Your first steps with HyperCode
+- **[Getting Started Guide](./docs/getting-started.md)** — Your first steps with
+  HyperCode
 - **[Language Reference](./docs/language-reference.md)** — Complete syntax guide
-- **[Neurodivergent-Friendly Design](./docs/neurodivergent-design.md)** — How HyperCode prioritizes accessibility
-- **[AI Integration Guide](./docs/ai-integration.md)** — Connect with GPT, Claude, and more
+- **[Neurodivergent-Friendly Design](./docs/neurodivergent-design.md)** — How HyperCode
+  prioritizes accessibility
+- **[AI Integration Guide](./docs/ai-integration.md)** — Connect with GPT, Claude, and
+  more
 - **[Contributing Guide](./CONTRIBUTING.md)** — Join the movement
 - **[Roadmap](./ROADMAP.md)** — What's coming next
 
@@ -104,21 +125,22 @@ for (let i = 0; i < 3; i++) {
 
 ## 💡 Core Features
 
-| Feature | Description |
-|---------|-------------|
-| **Spatial Syntax** | Visual, pattern-based code flow instead of dense text |
-| **Minimal Noise** | No unnecessary symbols or complexity—just clarity |
-| **AI-Native** | Built to collaborate with intelligent systems from day one |
-| **Esoteric Roots** | Inspired by forgotten languages, radical ideas enabled |
-| **Accessible** | Designed for all minds, with dyslexia-friendly fonts and accessible docs |
-| **Open Source** | Community-driven, transparent, professional-grade |
-| **Living Docs** | Auto-updated research, never stale |
+| Feature            | Description                                                              |
+| ------------------ | ------------------------------------------------------------------------ |
+| **Spatial Syntax** | Visual, pattern-based code flow instead of dense text                    |
+| **Minimal Noise**  | No unnecessary symbols or complexity—just clarity                        |
+| **AI-Native**      | Built to collaborate with intelligent systems from day one               |
+| **Esoteric Roots** | Inspired by forgotten languages, radical ideas enabled                   |
+| **Accessible**     | Designed for all minds, with dyslexia-friendly fonts and accessible docs |
+| **Open Source**    | Community-driven, transparent, professional-grade                        |
+| **Living Docs**    | Auto-updated research, never stale                                       |
 
 ---
 
 ## 🎓 Learn by Example
 
 ### Spatial Logic (Easy on Dyslexic Brains)
+
 ```hypercode
 BLUEPRINT Circle {
   CORE => radius: number
@@ -127,6 +149,7 @@ BLUEPRINT Circle {
 ```
 
 ### AI Collaboration
+
 ```hypercode
 THINK-WITH ChatGPT [
   ASK "Generate a sorting algorithm"
@@ -136,6 +159,7 @@ THINK-WITH ChatGPT [
 ```
 
 ### Data Flow (Visual & Clear)
+
 ```hypercode
 FLOW [
   FETCH data
@@ -156,7 +180,7 @@ HyperCode is for **everyone**—especially those historically excluded from tech
 - Accessibility advocates
 - AI researchers and enthusiasts
 - Esoteric language enthusiasts
-- Anyone who believes code should be *beautiful*
+- Anyone who believes code should be _beautiful_
 
 **You belong here.** No gatekeeping. No judgment. Just collaboration.
 
@@ -186,7 +210,8 @@ HyperCode is for **everyone**—especially those historically excluded from tech
 
 ## 🤝 Contributing
 
-We're open to contributions from **all skill levels and backgrounds**. Whether you're a seasoned developer or picking up your first language:
+We're open to contributions from **all skill levels and backgrounds**. Whether you're a
+seasoned developer or picking up your first language:
 
 - **Code contributions**: Submit PRs to [improve HyperCode](./CONTRIBUTING.md)
 - **Documentation**: Help us write clear, accessible guides
@@ -221,12 +246,12 @@ HyperCode is released under the **MIT License**. See [LICENSE](./LICENSE) for de
 
 ## 🙌 The Manifesto
 
-> **Programming languages are more than syntax. They are an expression of *how* minds think.**
+> **Programming languages are more than syntax. They are an expression of _how_ minds
+> think.**
 >
-> For neurodivergent coders, typical languages often don't fit.  
-> For AI-powered code, static design is outdated.  
-> Forgotten languages carry experimental truths.  
-> Making programming accessible is essential for innovation.
+> For neurodivergent coders, typical languages often don't fit. For AI-powered code,
+> static design is outdated. Forgotten languages carry experimental truths. Making
+> programming accessible is essential for innovation.
 >
 > **HyperCode is the answer. Join us.**
 
@@ -240,7 +265,8 @@ HyperCode is released under the **MIT License**. See [LICENSE](./LICENSE) for de
 
 ## 💬 Get Involved
 
-- **Discussions**: [GitHub Discussions](https://github.com/HyperCode-Labs/HyperCode/discussions)
+- **Discussions**:
+  [GitHub Discussions](https://github.com/HyperCode-Labs/HyperCode/discussions)
 - **Report Bugs**: [GitHub Issues](https://github.com/HyperCode-Labs/HyperCode/issues)
 - **Chat with Us**: [Discord Community](https://discord.gg/hypercode) (coming soon)
 
@@ -258,11 +284,12 @@ Check our **[FAQ](./docs/FAQ.md)** or open a discussion. **No question is too sm
 
 **⭐ Star this repo if HyperCode resonates with you**
 
-**[Get Started Now](./docs/getting-started.md)** | **[View Roadmap](./ROADMAP.md)** | **[Contribute](./CONTRIBUTING.md)**
+**[Get Started Now](./docs/getting-started.md)** | **[View Roadmap](./ROADMAP.md)** |
+**[Contribute](./CONTRIBUTING.md)**
 
 ---
 
-*Built with 💓 for neurodivergent minds and the future of AI-human collaboration.*
+_Built with 💓 for neurodivergent minds and the future of AI-human collaboration._
 
 **HyperCode: Where forgotten genius meets the future. 🚀**
 

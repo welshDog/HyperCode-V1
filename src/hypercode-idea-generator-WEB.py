@@ -381,13 +381,13 @@ HTML = """
             const container = document.getElementById('ideas-container');
             const category = document.getElementById('category').value;
             const difficulty = document.getElementById('difficulty').value;
-            
+
             let filtered = ideas;
-            
+
             if (category) {
                 filtered = filtered.filter(i => i.category === category);
             }
-            
+
             if (difficulty) {
                 filtered = filtered.filter(i => i.difficulty === difficulty);
             }

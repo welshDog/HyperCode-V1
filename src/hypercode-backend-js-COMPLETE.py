@@ -166,10 +166,10 @@ function main() {
 // Execute program
 try {
     main();
-    
+
     // Print output
     console.log(outputBuffer.join(''));
-    
+
 } catch (error) {
     console.error('Runtime Error:', error.message);
     process.exit(1);

@@ -244,8 +244,8 @@ export class VisualizationPanel {
           </div>
 
           <div class="accessibility-note">
-            💡 <strong>Accessibility Tip:</strong> This visualization is designed for ADHD/neurodivergent brains. 
-            Use the "Switch Mode" button to find your preferred layout. High cognitive load scores indicate areas 
+            💡 <strong>Accessibility Tip:</strong> This visualization is designed for ADHD/neurodivergent brains.
+            Use the "Switch Mode" button to find your preferred layout. High cognitive load scores indicate areas
             that might benefit from refactoring.
           </div>
         </div>

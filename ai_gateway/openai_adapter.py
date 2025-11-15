@@ -18,6 +18,7 @@ AI model compatibility layer
 File: ai_gateway\openai_adapter.py
 """
 
+
 class OpenaiAdapterAdapter:
     """Adapter for Openai Adapter AI model."""
 

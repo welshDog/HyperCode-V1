@@ -27,9 +27,9 @@ export async function activate(context: vscode.ExtensionContext) {
         // Analyze current file
         const filePath = editor.document.uri.fsPath;
         const codeContent = editor.document.getText();
-        
+
         const analysis = await analyzer.analyze(codeContent, editor.document.languageId);
-        
+
         // Create visualization panel
         const panel = new VisualizationPanel(
           context.extensionUri,
@@ -37,7 +37,7 @@ export async function activate(context: vscode.ExtensionContext) {
           analysis,
           visualizer
         );
-        
+
         panel.show();
         vscode.window.showInformationMessage('✅ Spatial visualizer opened');
       } catch (error) {

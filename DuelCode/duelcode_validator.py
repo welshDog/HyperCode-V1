@@ -18,6 +18,7 @@ class Severity(Enum):
     WARNING = auto()
     INFO = auto()
 
+
 @dataclass
 class ValidationResult:
     message: str
@@ -25,34 +26,54 @@ class ValidationResult:
     line: Optional[int] = None
     col: Optional[int] = None
 
+
 class DuelCodeValidator:
     """Validates DuelCode documentation files against the required format."""
 
     # Supported programming languages for code blocks
     SUPPORTED_LANGUAGES = {
-        'python', 'javascript', 'typescript', 'java', 'c', 'cpp', 'csharp',
-        'go', 'rust', 'ruby', 'php', 'swift', 'kotlin', 'dart'
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "c",
+        "cpp",
+        "csharp",
+        "go",
+        "rust",
+        "ruby",
+        "php",
+        "swift",
+        "kotlin",
+        "dart",
     }
 
     def __init__(self, file_path: str):
         self.file_path = Path(file_path)
-        self.content = self.file_path.read_text(encoding='utf-8')
-        self.lines = self.content.split('\n')
+        self.content = self.file_path.read_text(encoding="utf-8")
+        self.lines = self.content.split("\n")
         self.results: List[ValidationResult] = []
         self._line_cache: Dict[str, List[Tuple[int, str]]] = {}
 
-    def _add_result(self, message: str, severity: Severity, line: Optional[int] = None) -> None:
+    def _add_result(
+        self, message: str, severity: Severity, line: Optional[int] = None
+    ) -> None:
         """Add a validation result with proper line number."""
         col = None
         if line is not None and 0 <= line < len(self.lines):
-            col = len(self.lines[line]) - len(self.lines[line].lstrip()) + 1 if self.lines[line].strip() else 1
+            col = (
+                len(self.lines[line]) - len(self.lines[line].lstrip()) + 1
+                if self.lines[line].strip()
+                else 1
+            )
         self.results.append(ValidationResult(message, severity, line, col))
 
     def _find_lines(self, pattern: str) -> List[Tuple[int, str]]:
         """Find all lines matching the pattern with their line numbers."""
         if pattern not in self._line_cache:
             self._line_cache[pattern] = [
-                (i, line) for i, line in enumerate(self.lines)
+                (i, line)
+                for i, line in enumerate(self.lines)
                 if re.search(pattern, line)
             ]
         return self._line_cache[pattern]
@@ -73,10 +94,10 @@ class DuelCodeValidator:
         """Validate the overall document structure."""
         # Check for required top-level sections
         required_sections = [
-            (r'^# .+', "Document title (H1)"),
-            (r'^## 🎯 Learning Objective', "Learning Objectives section"),
-            (r'^## 📋 Before You Start', "Before You Start checklist"),
-            (r'^## Part \d+:', "At least one Part section"),
+            (r"^# .+", "Document title (H1)"),
+            (r"^## 🎯 Learning Objective", "Learning Objectives section"),
+            (r"^## 📋 Before You Start", "Before You Start checklist"),
+            (r"^## Part \d+:", "At least one Part section"),
         ]
 
         for pattern, name in required_sections:
@@ -85,10 +106,10 @@ class DuelCodeValidator:
 
         # Check for proper section order
         section_order = [
-            (r'^# ', 'Document title'),
-            (r'^## 🎯', 'Learning Objectives'),
-            (r'^## 📋', 'Before You Start'),
-            (r'^## Part 1:', 'First Part section')
+            (r"^# ", "Document title"),
+            (r"^## 🎯", "Learning Objectives"),
+            (r"^## 📋", "Before You Start"),
+            (r"^## Part 1:", "First Part section"),
         ]
 
         last_index = -1
@@ -101,7 +122,7 @@ class DuelCodeValidator:
                 self._add_result(
                     f"Section out of order: {name} appears after a section that should come later",
                     Severity.ERROR,
-                    current_index
+                    current_index,
                 )
             last_index = current_index
 
@@ -109,7 +130,7 @@ class DuelCodeValidator:
         """Validate heading hierarchy and formatting."""
         headings = []
         for i, line in enumerate(self.lines):
-            if match := re.match(r'^(#{1,6})\s+(.+)$', line):
+            if match := re.match(r"^(#{1,6})\s+(.+)$", line):
                 level = len(match.group(1))
                 text = match.group(2).strip()
                 headings.append((i, level, text))
@@ -119,15 +140,13 @@ class DuelCodeValidator:
                     self._add_result(
                         "Headings should start with a capital letter",
                         Severity.WARNING,
-                        i
+                        i,
                     )
 
                 # Check for proper heading formatting (no trailing punctuation)
-                if text.endswith(('.', ':', ';', ',')):
+                if text.endswith((".", ":", ";", ",")):
                     self._add_result(
-                        "Headings should not end with punctuation",
-                        Severity.WARNING,
-                        i
+                        "Headings should not end with punctuation", Severity.WARNING, i
                     )
 
         # Check heading hierarchy
@@ -137,14 +156,14 @@ class DuelCodeValidator:
                 self._add_result(
                     "First heading should be a level 1 heading (#)",
                     Severity.ERROR,
-                    line_num
+                    line_num,
                 )
 
             if level > prev_level + 1:
                 self._add_result(
                     f"Heading level jumps from {prev_level} to {level}",
                     Severity.ERROR,
-                    line_num
+                    line_num,
                 )
 
             prev_level = level
@@ -157,37 +176,35 @@ class DuelCodeValidator:
 
         for i, line in enumerate(self.lines):
             # Check for code block start
-            if line.startswith('```'):
+            if line.startswith("```"):
                 if not in_code_block:
                     in_code_block = True
                     code_block_start = i
                     # Get language if specified
                     lang = line[3:].strip()
-                    if lang and not any(lang.lower() == l.lower() for l in self.SUPPORTED_LANGUAGES):
+                    if lang and not any(
+                        lang.lower() == l.lower() for l in self.SUPPORTED_LANGUAGES
+                    ):
                         self._add_result(
-                            f"Unsupported code language: {lang}",
-                            Severity.WARNING,
-                            i
+                            f"Unsupported code language: {lang}", Severity.WARNING, i
                         )
                     current_lang = lang.lower() if lang else None
                 else:
                     # Check for empty code blocks
                     if i - code_block_start <= 1:  # Only the opening line
                         self._add_result(
-                            "Empty code block",
-                            Severity.WARNING,
-                            code_block_start
+                            "Empty code block", Severity.WARNING, code_block_start
                         )
                     in_code_block = False
 
             # Inside code block checks
-            elif in_code_block and current_lang == 'python':
+            elif in_code_block and current_lang == "python":
                 # Example: Check for Python-specific issues
-                if '    ' in line and '\t' in line:
+                if "    " in line and "\t" in line:
                     self._add_result(
                         "Inconsistent indentation (mixing tabs and spaces)",
                         Severity.ERROR,
-                        i
+                        i,
                     )
 
     def validate_checklists(self) -> None:
@@ -197,26 +214,24 @@ class DuelCodeValidator:
 
         for i, line in enumerate(self.lines):
             # Detect checklist section
-            if line.strip() == '## 📋 Before You Start':
+            if line.strip() == "## 📋 Before You Start":
                 in_checklist = True
                 continue
-            if in_checklist and line.startswith('## '):
+            if in_checklist and line.startswith("## "):
                 in_checklist = False
                 break
 
-            if in_checklist and line.strip().startswith('- [ ]'):
+            if in_checklist and line.strip().startswith("- [ ]"):
                 item = line.strip()[5:].strip()
-                if not item.endswith('.'):
+                if not item.endswith("."):
                     self._add_result(
-                        "Checklist items should end with a period",
-                        Severity.WARNING,
-                        i
+                        "Checklist items should end with a period", Severity.WARNING, i
                     )
                 if not item[0].isupper():
                     self._add_result(
                         "Checklist items should start with a capital letter",
                         Severity.WARNING,
-                        i
+                        i,
                     )
                 checklist_items.append((i, item))
 
@@ -224,27 +239,25 @@ class DuelCodeValidator:
             self._add_result(
                 "Checklist should have at least 3 items",
                 Severity.WARNING,
-                0  # Will be adjusted to the checklist section
+                0,  # Will be adjusted to the checklist section
             )
 
     def validate_visual_elements(self) -> None:
         """Validate visual elements like diagrams, images, etc."""
         # Check for visual representation sections
-        visual_sections = self._find_lines(r'^### 📊 Visual Representation')
+        visual_sections = self._find_lines(r"^### 📊 Visual Representation")
 
         for line_num, _ in visual_sections:
             # Check if there's content after the visual representation heading
             has_content = False
             for i in range(line_num + 1, min(line_num + 5, len(self.lines))):
-                if self.lines[i].strip() and not self.lines[i].startswith('```'):
+                if self.lines[i].strip() and not self.lines[i].startswith("```"):
                     has_content = True
                     break
 
             if not has_content:
                 self._add_result(
-                    "Visual Representation section is empty",
-                    Severity.WARNING,
-                    line_num
+                    "Visual Representation section is empty", Severity.WARNING, line_num
                 )
 
     def validate_links(self) -> None:
@@ -252,27 +265,20 @@ class DuelCodeValidator:
         # Check for broken markdown links
         for i, line in enumerate(self.lines):
             # Check for markdown links [text](url)
-            for match in re.finditer(r'\[(?P<text>[^\]]+)\]\((?P<url>[^)]+)\)', line):
-                url = match.group('url')
+            for match in re.finditer(r"\[(?P<text>[^\]]+)\]\((?P<url>[^)]+)\)", line):
+                url = match.group("url")
                 # Skip anchor links for now
-                if url.startswith('#'):
+                if url.startswith("#"):
                     continue
 
                 # Check for empty link text
-                if not match.group('text').strip():
-                    self._add_result(
-                        "Link text cannot be empty",
-                        Severity.ERROR,
-                        i
-                    )
+                if not match.group("text").strip():
+                    self._add_result("Link text cannot be empty", Severity.ERROR, i)
 
                 # Check for URLs with spaces
-                if ' ' in url:
-                    self._add_result(
-                        f"URL contains spaces: {url}",
-                        Severity.ERROR,
-                        i
-                    )
+                if " " in url:
+                    self._add_result(f"URL contains spaces: {url}", Severity.ERROR, i)
+
 
 def print_validation_results(validator: DuelCodeValidator) -> None:
     """Print validation results in a user-friendly format."""
@@ -284,7 +290,7 @@ def print_validation_results(validator: DuelCodeValidator) -> None:
     by_severity: Dict[Severity, List[ValidationResult]] = {
         Severity.ERROR: [],
         Severity.WARNING: [],
-        Severity.INFO: []
+        Severity.INFO: [],
     }
 
     for result in validator.results:
@@ -299,10 +305,13 @@ def print_validation_results(validator: DuelCodeValidator) -> None:
         print("=" * (len(severity.name) + 10))
 
         for result in results:
-            location = f"line {result.line}" if result.line is not None else "unknown location"
+            location = (
+                f"line {result.line}" if result.line is not None else "unknown location"
+            )
             if result.col is not None:
                 location += f":{result.col}"
             print(f"• {result.message} (at {location})")
+
 
 def main() -> None:
     """Main entry point for the validator."""
@@ -330,6 +339,7 @@ def main() -> None:
         print("\n⚠️  Validation passed with warnings")
     else:
         print("\n✅ Validation passed successfully!")
+
 
 if __name__ == "__main__":
     main()

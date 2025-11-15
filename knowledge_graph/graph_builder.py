@@ -17,4 +17,3 @@ Semantic knowledge graph management
 
 File: knowledge_graph\graph_builder.py
 """
-

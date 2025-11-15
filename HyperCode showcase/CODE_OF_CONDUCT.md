@@ -2,9 +2,15 @@
 
 ## Our Commitment
 
-HyperCode is built on the principle that **all minds matter**. We are committed to providing a **welcoming, inclusive, and harassment-free** community for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, neurodivergence, nationality, personal appearance, race, religion, sexual identity, or sexual orientation.
+HyperCode is built on the principle that **all minds matter**. We are committed to
+providing a **welcoming, inclusive, and harassment-free** community for everyone,
+regardless of age, body size, disability, ethnicity, gender identity and expression,
+level of experience, neurodivergence, nationality, personal appearance, race, religion,
+sexual identity, or sexual orientation.
 
-**This Code of Conduct applies to all HyperCode spaces**: GitHub issues, discussions, pull requests, social media, community events, and any other channels where HyperCode community members interact.
+**This Code of Conduct applies to all HyperCode spaces**: GitHub issues, discussions,
+pull requests, social media, community events, and any other channels where HyperCode
+community members interact.
 
 ---
 
@@ -30,6 +36,7 @@ Community members are expected to:
 The following behaviors are NOT tolerated in any HyperCode space:
 
 **Harassment & Discrimination:**
+
 - Slurs, insults, or dehumanizing language based on protected characteristics
 - Targeted harassment, bullying, or intimidation
 - Unwanted sexual attention or advances
@@ -37,24 +44,28 @@ The following behaviors are NOT tolerated in any HyperCode space:
 - Doxxing or publishing private information without consent
 
 **Harmful Speech:**
+
 - Hate speech or promotion of hatred toward groups
 - Transphobic, ableist, racist, sexist, or otherwise discriminatory statements
 - Conspiracy theories targeting groups
 - Misgendering or deadnaming people (deliberately or repeatedly)
 
 **Disruptive Behavior:**
+
 - Spamming, flooding, or excessive off-topic posting
 - Derailing discussions intentionally
 - Trolling designed to provoke negative reactions
 - Promoting non-consensual intimate images
 
 **Professional Violations:**
+
 - Plagiarism or appropriation of others' work
 - Sharing confidential information
 - Sabotaging projects or contributions
 - Using HyperCode spaces for commercial spam
 
 **Technical Abuse:**
+
 - Malicious code contributions
 - Security vulnerabilities introduced intentionally
 - DDoS attacks or other technical harassment
@@ -64,12 +75,16 @@ The following behaviors are NOT tolerated in any HyperCode space:
 
 ## 🛡️ Commitment to Neurodivergent Inclusion
 
-HyperCode was built BY and FOR neurodivergent minds. We understand that neurodivergent people often face barriers in tech communities. Therefore:
+HyperCode was built BY and FOR neurodivergent minds. We understand that neurodivergent
+people often face barriers in tech communities. Therefore:
 
-- **We don't penalize neurodivergent behaviors** like stimming, asking for clarification multiple times, or taking breaks
-- **We adapt our communication** to different processing styles (written, visual, detailed, simplified)
+- **We don't penalize neurodivergent behaviors** like stimming, asking for clarification
+  multiple times, or taking breaks
+- **We adapt our communication** to different processing styles (written, visual,
+  detailed, simplified)
 - **We believe in access needs** and provide accommodations when requested
-- **We recognize that productivity looks different for different brains** and don't impose arbitrary deadlines
+- **We recognize that productivity looks different for different brains** and don't
+  impose arbitrary deadlines
 - **We welcome "weird" ideas**—they often lead to innovation
 
 ---
@@ -86,17 +101,21 @@ HyperCode was built BY and FOR neurodivergent minds. We understand that neurodiv
 ### Reporting Mechanisms
 
 **For GitHub Issues/PRs:**
+
 - Use GitHub's "Report" button on comments
 - Or mention `@moderators` in a comment
 
 **For Discussions:**
+
 - Flag the discussion/comment via GitHub's built-in tools
 - Or message a moderator directly
 
 **For Direct Messages or Private Harassment:**
+
 - Forward the message to `conduct@hypercode-labs.dev`
 
 **For Urgent Safety Issues:**
+
 - Contact local authorities if in immediate danger
 - Reach out to community safety coordinators
 
@@ -123,6 +142,7 @@ When we receive a report, we will:
 5. **Apply consequences proportionate to the harm**
 
 **Possible responses include:**
+
 - Private conversation with the involved person(s)
 - Public apology or explanation (if appropriate)
 - Temporary suspension from community spaces
@@ -131,6 +151,7 @@ When we receive a report, we will:
 - Escalation to authorities if laws are broken
 
 **Transparency:**
+
 - We'll communicate outcomes to those directly affected
 - We may share general patterns in community reports (without identifying individuals)
 - Appeals are possible if you disagree with a decision
@@ -155,6 +176,7 @@ The following result in immediate investigation and likely removal:
 **Making Mistakes**
 
 Everyone makes mistakes. If you:
+
 - Realize you violated this Code of Conduct
 - Want to apologize and make amends
 - Commit to changing your behavior
@@ -162,6 +184,7 @@ Everyone makes mistakes. If you:
 We appreciate it and will work with you on repair and growth.
 
 **Genuine Apologies Include:**
+
 - Acknowledgment of what you did
 - Understanding of why it was wrong
 - Commitment to change
@@ -197,7 +220,8 @@ Beyond this Code of Conduct, we strive for:
 
 This Code of Conduct is not final. We welcome feedback:
 
-- [Start a discussion](https://github.com/HyperCode-Labs/HyperCode/discussions) about this CoC
+- [Start a discussion](https://github.com/HyperCode-Labs/HyperCode/discussions) about
+  this CoC
 - Propose changes via pull request
 - Share your experiences (privately if needed) at `conduct@hypercode-labs.dev`
 
@@ -209,17 +233,22 @@ This Code of Conduct is not final. We welcome feedback:
 
 If you need support:
 
-- **LGBTQ+ Resources**: [The Trevor Project](https://www.thetrevorproject.org/), [Trans Lifeline](https://translifeline.org/)
+- **LGBTQ+ Resources**: [The Trevor Project](https://www.thetrevorproject.org/),
+  [Trans Lifeline](https://translifeline.org/)
 - **Disability Resources**: [The ADA National Network](https://adata.org/)
-- **Mental Health**: [Crisis Text Line](https://www.crisistextline.org/) (Text HOME to 741741)
-- **Neurodiversity**: [The Neurodiversity Hub](https://www.neurodiversity.org/), [Autistic Self Advocacy Network](https://autisticadvocacy.org/)
-- **Harassment Support**: [Crash Override Network](https://www.crashoverridenetwork.com/)
+- **Mental Health**: [Crisis Text Line](https://www.crisistextline.org/) (Text HOME
+  to 741741)
+- **Neurodiversity**: [The Neurodiversity Hub](https://www.neurodiversity.org/),
+  [Autistic Self Advocacy Network](https://autisticadvocacy.org/)
+- **Harassment Support**:
+  [Crash Override Network](https://www.crashoverridenetwork.com/)
 
 ---
 
 ## 🙏 Attribution
 
 This Code of Conduct was inspired by:
+
 - The [Contributor Covenant](https://www.contributor-covenant.org/)
 - The [Django Code of Conduct](https://www.djangoproject.com/conduct/)
 - The [Python Community Code of Conduct](https://www.python.org/community/diversity/)
@@ -234,7 +263,8 @@ For CoC violations or concerns:
 
 - **Email**: `conduct@hypercode-labs.dev`
 - **GitHub**: Report via built-in tools
-- **Private Discussion**: [Contact a moderator](https://github.com/HyperCode-Labs/HyperCode/discussions)
+- **Private Discussion**:
+  [Contact a moderator](https://github.com/HyperCode-Labs/HyperCode/discussions)
 
 ---
 
@@ -242,10 +272,11 @@ For CoC violations or concerns:
 
 ### Our Promise
 
-**HyperCode is a place where every mind is valued, every voice is heard, and every person belongs.**
+**HyperCode is a place where every mind is valued, every voice is heard, and every
+person belongs.**
 
 If this isn't your experience, tell us. We'll listen and we'll fix it.
 
-*Built for neurodivergent minds. Welcoming to all. No exceptions.* 💓
+_Built for neurodivergent minds. Welcoming to all. No exceptions._ 💓
 
 </div>

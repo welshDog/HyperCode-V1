@@ -18,6 +18,7 @@ AI model compatibility layer
 File: ai_gateway\ollama_adapter.py
 """
 
+
 class OllamaAdapterAdapter:
     """Adapter for Ollama Adapter AI model."""
 

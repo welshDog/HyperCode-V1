@@ -18,6 +18,7 @@ AI model compatibility layer
 File: ai_gateway\mistral_adapter.py
 """
 
+
 class MistralAdapterAdapter:
     """Adapter for Mistral Adapter AI model."""
 

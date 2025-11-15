@@ -18,6 +18,7 @@ AI model compatibility layer
 File: ai_gateway\claude_adapter.py
 """
 
+
 class ClaudeAdapterAdapter:
     """Adapter for Claude Adapter AI model."""
 

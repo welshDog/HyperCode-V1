@@ -11,7 +11,8 @@ from duelcode_validator import DuelCodeValidator, print_validation_results
 def test_valid_file() -> bool:
     """Test with a valid DuelCode file."""
     test_file = Path("test_valid.md")
-    test_file.write_text("""# Sample DuelCode Tutorial
+    test_file.write_text(
+        """# Sample DuelCode Tutorial
 
 ## 🎯 Learning Objectives
 
@@ -46,7 +47,9 @@ graph TD
 def hello():
     print("Hello, DuelCode!")
 ```
-""", encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
 
     validator = DuelCodeValidator(str(test_file))
     is_valid = validator.validate()
@@ -58,17 +61,20 @@ def hello():
     test_file.unlink()
     return is_valid
 
+
 def test_invalid_file() -> bool:
     """Test with an invalid DuelCode file."""
     test_file = Path("test_invalid.md")
-    test_file.write_text("""# Missing Sections
+    test_file.write_text(
+        """# Missing Sections
 
 This file is missing required sections.
 
 ```python
 def bad():
     pass  # No language specified
-""")
+"""
+    )
 
     validator = DuelCodeValidator(str(test_file))
     is_valid = validator.validate()
@@ -79,6 +85,7 @@ def bad():
 
     test_file.unlink()
     return is_valid
+
 
 def main() -> int:
     """Run the test suite."""
@@ -93,6 +100,7 @@ def main() -> int:
     print(f"❌ Invalid file test: {'PASSED' if invalid_failed else 'FAILED'}")
 
     return 0 if (valid_passed and invalid_failed) else 1
+
 
 if __name__ == "__main__":
     sys.exit(main())
