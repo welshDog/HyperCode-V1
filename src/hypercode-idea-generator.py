@@ -23,7 +23,7 @@ IDEAS = {
                 "impact": "High - Enables 3D visualization for spatial thinkers",
                 "effort": "Medium - Requires parser & visualization updates",
                 "votes": 0,
-                "community": "Autistic & visual-spatial developers"
+                "community": "Autistic & visual-spatial developers",
             },
             {
                 "id": "ld_002",
@@ -32,7 +32,7 @@ IDEAS = {
                 "impact": "High - ADHD-friendly, improves focus",
                 "effort": "Low - Lexer output enhancement",
                 "votes": 0,
-                "community": "All neurodivergent learners"
+                "community": "All neurodivergent learners",
             },
             {
                 "id": "ld_003",
@@ -41,10 +41,9 @@ IDEAS = {
                 "impact": "Medium - Reduces repetition, improves readability",
                 "effort": "Medium - Parser enhancement",
                 "votes": 0,
-                "community": "Dyslexic developers"
+                "community": "Dyslexic developers",
             },
         ],
-        
         "intermediate": [
             {
                 "id": "ld_004",
@@ -53,7 +52,7 @@ IDEAS = {
                 "impact": "High - Code organization, reusability",
                 "effort": "High - Major parser/compiler work",
                 "votes": 0,
-                "community": "Advanced learners"
+                "community": "Advanced learners",
             },
             {
                 "id": "ld_005",
@@ -62,7 +61,7 @@ IDEAS = {
                 "impact": "High - Improves code clarity",
                 "effort": "High - Semantic analysis needed",
                 "votes": 0,
-                "community": "All developers"
+                "community": "All developers",
             },
             {
                 "id": "ld_006",
@@ -71,10 +70,9 @@ IDEAS = {
                 "impact": "High - Positions HyperCode for quantum era",
                 "effort": "Medium - Parser + backend work",
                 "votes": 0,
-                "community": "Research & quantum-curious developers"
+                "community": "Research & quantum-curious developers",
             },
         ],
-        
         "advanced": [
             {
                 "id": "ld_007",
@@ -83,7 +81,7 @@ IDEAS = {
                 "impact": "High - Cutting edge, research-oriented",
                 "effort": "High - New backend design",
                 "votes": 0,
-                "community": "Researchers, bio-computing enthusiasts"
+                "community": "Researchers, bio-computing enthusiasts",
             },
             {
                 "id": "ld_008",
@@ -92,11 +90,10 @@ IDEAS = {
                 "impact": "Very High - Hypercode's ultimate power",
                 "effort": "Very High - Major research effort",
                 "votes": 0,
-                "community": "Advanced researchers"
+                "community": "Advanced researchers",
             },
-        ]
+        ],
     },
-    
     "features_tooling": {
         "beginner": [
             {
@@ -106,7 +103,7 @@ IDEAS = {
                 "impact": "Very High - Lowers barrier to entry",
                 "effort": "Medium - React/Vue + compiler WASM",
                 "votes": 0,
-                "community": "All developers"
+                "community": "All developers",
             },
             {
                 "id": "ft_002",
@@ -115,7 +112,7 @@ IDEAS = {
                 "impact": "High - Better developer experience",
                 "effort": "Medium - VS Code extension API",
                 "votes": 0,
-                "community": "All developers"
+                "community": "All developers",
             },
             {
                 "id": "ft_003",
@@ -124,10 +121,9 @@ IDEAS = {
                 "impact": "High - Expands reach",
                 "effort": "Medium - Backend compiler",
                 "votes": 0,
-                "community": "Python developers"
+                "community": "Python developers",
             },
         ],
-        
         "intermediate": [
             {
                 "id": "ft_004",
@@ -136,7 +132,7 @@ IDEAS = {
                 "impact": "High - Web-native performance",
                 "effort": "High - WASM compilation pipeline",
                 "votes": 0,
-                "community": "Web developers"
+                "community": "Web developers",
             },
             {
                 "id": "ft_005",
@@ -145,7 +141,7 @@ IDEAS = {
                 "impact": "Very High - Game-changing UX",
                 "effort": "High - AI integration, prompt engineering",
                 "votes": 0,
-                "community": "All developers"
+                "community": "All developers",
             },
             {
                 "id": "ft_006",
@@ -154,10 +150,9 @@ IDEAS = {
                 "impact": "High - Enables pair programming",
                 "effort": "High - Websockets, CRDT needed",
                 "votes": 0,
-                "community": "Collaborative teams"
+                "community": "Collaborative teams",
             },
         ],
-        
         "advanced": [
             {
                 "id": "ft_007",
@@ -166,7 +161,7 @@ IDEAS = {
                 "impact": "Very High - Cutting edge research",
                 "effort": "Very High - Quantum expertise needed",
                 "votes": 0,
-                "community": "Quantum researchers"
+                "community": "Quantum researchers",
             },
             {
                 "id": "ft_008",
@@ -175,11 +170,10 @@ IDEAS = {
                 "impact": "Very High - Novel research area",
                 "effort": "Very High - Interdisciplinary",
                 "votes": 0,
-                "community": "Biotech researchers"
+                "community": "Biotech researchers",
             },
-        ]
+        ],
     },
-    
     "community": {
         "beginner": [
             {
@@ -189,7 +183,7 @@ IDEAS = {
                 "impact": "High - Builds community, creates content",
                 "effort": "Low - Org effort only",
                 "votes": 0,
-                "community": "All levels"
+                "community": "All levels",
             },
             {
                 "id": "cm_002",
@@ -198,7 +192,7 @@ IDEAS = {
                 "impact": "High - Onboarding excellence",
                 "effort": "Medium - Content creation & facilitation",
                 "votes": 0,
-                "community": "Beginners"
+                "community": "Beginners",
             },
             {
                 "id": "cm_003",
@@ -207,10 +201,9 @@ IDEAS = {
                 "impact": "High - Inspiration & learning",
                 "effort": "Medium - Content creation",
                 "votes": 0,
-                "community": "All learners"
+                "community": "All learners",
             },
         ],
-        
         "intermediate": [
             {
                 "id": "cm_004",
@@ -219,7 +212,7 @@ IDEAS = {
                 "impact": "High - Visibility & credibility",
                 "effort": "Medium - Speaking, travel",
                 "votes": 0,
-                "community": "Dev community at large"
+                "community": "Dev community at large",
             },
             {
                 "id": "cm_005",
@@ -228,7 +221,7 @@ IDEAS = {
                 "impact": "Very High - Long-term growth",
                 "effort": "High - Relationship building",
                 "votes": 0,
-                "community": "Students & academics"
+                "community": "Students & academics",
             },
             {
                 "id": "cm_006",
@@ -237,10 +230,9 @@ IDEAS = {
                 "impact": "High - Community bonding",
                 "effort": "High - Event organization",
                 "votes": 0,
-                "community": "All levels"
+                "community": "All levels",
             },
         ],
-        
         "advanced": [
             {
                 "id": "cm_007",
@@ -249,7 +241,7 @@ IDEAS = {
                 "impact": "Very High - Sustainability",
                 "effort": "High - Business development",
                 "votes": 0,
-                "community": "Project sustainability"
+                "community": "Project sustainability",
             },
             {
                 "id": "cm_008",
@@ -258,11 +250,10 @@ IDEAS = {
                 "impact": "Very High - Long-term vision",
                 "effort": "Very High - Legal, governance",
                 "votes": 0,
-                "community": "Movement sustainability"
+                "community": "Movement sustainability",
             },
-        ]
+        ],
     },
-    
     "accessibility": {
         "beginner": [
             {
@@ -272,7 +263,7 @@ IDEAS = {
                 "impact": "High - Dyslexic developers",
                 "effort": "Low - UI enhancement",
                 "votes": 0,
-                "community": "Dyslexic developers"
+                "community": "Dyslexic developers",
             },
             {
                 "id": "ac_002",
@@ -281,7 +272,7 @@ IDEAS = {
                 "impact": "High - ADHD developers",
                 "effort": "Medium - UI/UX work",
                 "votes": 0,
-                "community": "ADHD developers"
+                "community": "ADHD developers",
             },
             {
                 "id": "ac_003",
@@ -290,10 +281,9 @@ IDEAS = {
                 "impact": "High - Autistic developers",
                 "effort": "Low - Settings panel",
                 "votes": 0,
-                "community": "Autistic developers"
+                "community": "Autistic developers",
             },
         ],
-        
         "intermediate": [
             {
                 "id": "ac_004",
@@ -302,7 +292,7 @@ IDEAS = {
                 "impact": "High - Blind/visually impaired",
                 "effort": "Medium - Testing + fixes",
                 "votes": 0,
-                "community": "Blind developers"
+                "community": "Blind developers",
             },
             {
                 "id": "ac_005",
@@ -311,7 +301,7 @@ IDEAS = {
                 "impact": "High - Motor impairment support",
                 "effort": "Medium - UI refactor",
                 "votes": 0,
-                "community": "Motor-impaired developers"
+                "community": "Motor-impaired developers",
             },
             {
                 "id": "ac_006",
@@ -320,10 +310,9 @@ IDEAS = {
                 "impact": "High - Cognitive disabilities",
                 "effort": "Medium - UX design",
                 "votes": 0,
-                "community": "Cognitively disabled learners"
+                "community": "Cognitively disabled learners",
             },
         ],
-        
         "advanced": [
             {
                 "id": "ac_007",
@@ -332,7 +321,7 @@ IDEAS = {
                 "impact": "Very High - Evidence-based improvement",
                 "effort": "High - Academic partnerships",
                 "votes": 0,
-                "community": "Research community"
+                "community": "Research community",
             },
             {
                 "id": "ac_008",
@@ -341,80 +330,81 @@ IDEAS = {
                 "impact": "Very High - Sustainability",
                 "effort": "High - Program creation",
                 "votes": 0,
-                "community": "Accessibility professionals"
+                "community": "Accessibility professionals",
             },
-        ]
-    }
+        ],
+    },
 }
 
 # ============================================================================
 # IDEA GENERATOR ENGINE
 # ============================================================================
 
+
 class HyperCodeIdeaGenerator:
     """
     AI-Powered Idea Generator for HyperCode community input.
-    
+
     Generates recommendations across categories & difficulty levels.
     Tracks community voting to identify most-wanted features.
     """
-    
+
     def __init__(self):
         self.ideas = IDEAS
         self.votes = {}
-        
+
     def get_ideas_by_category(self, category: str, level: str = None):
         """
         Get ideas by category and optionally by difficulty level.
-        
+
         Args:
             category: 'language_design', 'features_tooling', 'community', 'accessibility'
             level: 'beginner', 'intermediate', 'advanced' (optional)
-            
+
         Returns:
             List of ideas
         """
         if category not in self.ideas:
             return []
-        
+
         if level:
             return self.ideas[category].get(level, [])
         else:
             all_ideas = []
-            for difficulty_level in ['beginner', 'intermediate', 'advanced']:
+            for difficulty_level in ["beginner", "intermediate", "advanced"]:
                 all_ideas.extend(self.ideas[category].get(difficulty_level, []))
             return all_ideas
-    
+
     def get_top_ideas(self, limit: int = 10):
         """Get most-voted ideas across all categories."""
         all_ideas = []
         for category in self.ideas:
             for level in self.ideas[category]:
                 all_ideas.extend(self.ideas[category][level])
-        
+
         # Sort by votes descending
-        top_ideas = sorted(all_ideas, key=lambda x: x['votes'], reverse=True)
+        top_ideas = sorted(all_ideas, key=lambda x: x["votes"], reverse=True)
         return top_ideas[:limit]
-    
+
     def vote_for_idea(self, idea_id: str):
         """Vote for an idea."""
         for category in self.ideas:
             for level in self.ideas[category]:
                 for idea in self.ideas[category][level]:
-                    if idea['id'] == idea_id:
-                        idea['votes'] += 1
+                    if idea["id"] == idea_id:
+                        idea["votes"] += 1
                         return True
         return False
-    
+
     def get_trending_ideas(self):
         """Get trending ideas (high votes + recent activity)."""
         top_ideas = self.get_top_ideas(5)
         return top_ideas
-    
+
     def format_idea_card(self, idea: dict) -> str:
         """
         Format idea for display.
-        
+
         Returns:
             Formatted string for rendering
         """
@@ -431,69 +421,66 @@ class HyperCodeIdeaGenerator:
 ╚══════════════════════════════════════════════════╝
 """
 
+
 # ============================================================================
 # CLI INTERFACE
 # ============================================================================
 
+
 def main():
     """Interactive idea generator CLI"""
-    import sys
-    
+
     generator = HyperCodeIdeaGenerator()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("🚀 HyperCode Idea Generator")
-    print("="*60)
+    print("=" * 60)
     print("\nCategories:")
     print("  1. language_design  - Core language features")
     print("  2. features_tooling - Tools & backends")
     print("  3. community        - Community initiatives")
     print("  4. accessibility    - Accessibility features")
     print()
-    
+
     category = input("Choose category (1-4): ").strip()
     categories = {
         "1": "language_design",
         "2": "features_tooling",
         "3": "community",
-        "4": "accessibility"
+        "4": "accessibility",
     }
-    
+
     category_key = categories.get(category)
     if not category_key:
         print("❌ Invalid category")
         return
-    
+
     print("\nDifficulty Levels:")
     print("  1. Beginner      - Easy, low effort")
     print("  2. Intermediate  - Medium complexity")
     print("  3. Advanced      - High effort, major impact")
     print()
-    
+
     level = input("Choose difficulty (1-3): ").strip()
-    levels = {
-        "1": "beginner",
-        "2": "intermediate",
-        "3": "advanced"
-    }
-    
+    levels = {"1": "beginner", "2": "intermediate", "3": "advanced"}
+
     level_key = levels.get(level)
     if not level_key:
         print("❌ Invalid difficulty")
         return
-    
+
     # Get ideas
     ideas = generator.get_ideas_by_category(category_key, level_key)
-    
+
     print(f"\n📋 Ideas for {category_key} ({level_key}):\n")
-    
+
     for idx, idea in enumerate(ideas, 1):
         print(generator.format_idea_card(idea))
         print()
-    
-    print("\n" + "="*60)
+
+    print("\n" + "=" * 60)
     print("✨ Vote for your favorite idea by its ID!")
-    print("="*60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":

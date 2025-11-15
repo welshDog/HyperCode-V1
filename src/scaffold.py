@@ -12,10 +12,10 @@ This script creates:
 """
 
 import os
-import sys
 import stat
-from pathlib import Path
+import sys
 from datetime import datetime
+from pathlib import Path
 
 # Project metadata
 PROJECT_NAME = "hypercode"
@@ -23,72 +23,117 @@ AUTHOR = "welshDog (Lyndz Williams)"
 AUTHOR_EMAIL = "hello@hypercode.dev"
 VERSION = "0.1.0"
 LICENSE = "MIT"
-DESCRIPTION = "HyperCode: Neurodivergent-First Programming Language with AI Compatibility"
+DESCRIPTION = (
+    "HyperCode: Neurodivergent-First Programming Language with AI Compatibility"
+)
 
 # Define the complete project structure
 PROJECT_STRUCTURE = {
     # Core language modules
     "core": {
-        "files": ["__init__.py", "lexer.py", "parser.py", "semantic_analyzer.py", "optimizer.py", "cli.py"],
-        "description": "Core HyperCode language implementation"
+        "files": [
+            "__init__.py",
+            "lexer.py",
+            "parser.py",
+            "semantic_analyzer.py",
+            "optimizer.py",
+            "cli.py",
+        ],
+        "description": "Core HyperCode language implementation",
     },
-    
     # Compilation backends
     "backends": {
-        "files": ["__init__.py", "javascript.py", "python.py", "wasm.py", "quantum.py", "dna.py"],
-        "description": "Multi-backend compilation targets"
+        "files": [
+            "__init__.py",
+            "javascript.py",
+            "python.py",
+            "wasm.py",
+            "quantum.py",
+            "dna.py",
+        ],
+        "description": "Multi-backend compilation targets",
     },
-    
     # AI model integration
     "ai_gateway": {
-        "files": ["__init__.py", "base_gateway.py", "openai_adapter.py", "claude_adapter.py", 
-                  "mistral_adapter.py", "ollama_adapter.py", "prompt_normalizer.py", "rag_engine.py"],
-        "description": "AI model compatibility layer"
+        "files": [
+            "__init__.py",
+            "base_gateway.py",
+            "openai_adapter.py",
+            "claude_adapter.py",
+            "mistral_adapter.py",
+            "ollama_adapter.py",
+            "prompt_normalizer.py",
+            "rag_engine.py",
+        ],
+        "description": "AI model compatibility layer",
     },
-    
     # Accessibility features
     "accessibility": {
-        "files": ["__init__.py", "wcag_auditor.py", "dyslexia_formatter.py", "adhd_optimizer.py", 
-                  "autism_preset.py", "sensory_customizer.py"],
-        "description": "Neurodivergent-first accessibility tools"
+        "files": [
+            "__init__.py",
+            "wcag_auditor.py",
+            "dyslexia_formatter.py",
+            "adhd_optimizer.py",
+            "autism_preset.py",
+            "sensory_customizer.py",
+        ],
+        "description": "Neurodivergent-first accessibility tools",
     },
-    
     # Knowledge graphs
     "knowledge_graph": {
-        "files": ["__init__.py", "graph_builder.py", "sparql_query.py", "update_agent.py"],
-        "description": "Semantic knowledge graph management"
+        "files": [
+            "__init__.py",
+            "graph_builder.py",
+            "sparql_query.py",
+            "update_agent.py",
+        ],
+        "description": "Semantic knowledge graph management",
     },
-    
     # Research automation
     "live_research": {
-        "files": ["__init__.py", "research_crawler.py", "paper_indexer.py", "synthesis_engine.py", 
-                  "doc_generator.py", "github_publisher.py"],
-        "description": "Automated research paper collection and synthesis"
+        "files": [
+            "__init__.py",
+            "research_crawler.py",
+            "paper_indexer.py",
+            "synthesis_engine.py",
+            "doc_generator.py",
+            "github_publisher.py",
+        ],
+        "description": "Automated research paper collection and synthesis",
     },
-    
     # Test suite
     "tests": {
-        "files": ["__init__.py", "test_lexer.py", "test_parser.py", "test_backends.py", 
-                  "test_ai_gateway.py", "test_accessibility.py", "test_integration.py"],
-        "description": "Comprehensive test suite"
+        "files": [
+            "__init__.py",
+            "test_lexer.py",
+            "test_parser.py",
+            "test_backends.py",
+            "test_ai_gateway.py",
+            "test_accessibility.py",
+            "test_integration.py",
+        ],
+        "description": "Comprehensive test suite",
     },
-    
     # Example programs
     "examples": {
         "files": ["hello_world.hc", "fibonacci.hc", "game_loop.hc", "quantum_demo.hc"],
-        "description": "Example HyperCode programs"
+        "description": "Example HyperCode programs",
     },
-    
     # Documentation
     "docs": {
-        "files": ["LANGUAGE_SPEC.md", "AI_COMPAT.md", "ACCESSIBILITY.md", "ARCHITECTURE.md", "CONTRIBUTING.md"],
-        "description": "Complete documentation"
+        "files": [
+            "LANGUAGE_SPEC.md",
+            "AI_COMPAT.md",
+            "ACCESSIBILITY.md",
+            "ARCHITECTURE.md",
+            "CONTRIBUTING.md",
+        ],
+        "description": "Complete documentation",
     },
-    
     # GitHub workflows
     ".github/workflows": {
         "files": ["ci.yml", "cd.yml", "research.yml", "security.yml"],
-        "description": "GitHub Actions CI/CD workflows"
+        "description": "GitHub Actions CI/CD workflows",
     },
 }
 
@@ -108,13 +153,13 @@ ROOT_FILES = [
 def create_directories():
     """Create all required directories."""
     print("📁 Creating directory structure...")
-    
+
     # Create main package directories
-    for directory in PROJECT_STRUCTURE.keys():
+    for directory in PROJECT_STRUCTURE:
         path = Path(directory)
         path.mkdir(parents=True, exist_ok=True)
         (path / "__init__.py").touch()  # Ensure each directory is a Python package
-    
+
     # Additional directories
     directories = [
         "tests",
@@ -123,26 +168,26 @@ def create_directories():
         ".github/workflows",
         "scripts",
         "templates",
-        "notebooks/research"
+        "notebooks/research",
     ]
-    
+
     for directory in directories:
         path = Path(directory)
         path.mkdir(parents=True, exist_ok=True)
-        
+
     # Create README and other root files
     create_root_files()
-    
+
     print("✅ Directory structure created")
 
 
 def create_python_files():
     """Create all Python files with proper docstrings and structure."""
     print("📝 Generating Python files...")
-    
+
     # Current year for license headers
     current_year = datetime.now().year
-    
+
     # License header template
     license_header = f"""# Copyright {current_year} {AUTHOR}
 #
@@ -164,40 +209,52 @@ def create_python_files():
     for directory, config in PROJECT_STRUCTURE.items():
         for filename in config["files"]:
             filepath = Path(directory) / filename
-            
+
             # Skip if file exists
             if filepath.exists():
                 continue
-                
+
             # Create file with appropriate content
-            with open(filepath, 'w', encoding='utf-8') as f:
+            with open(filepath, "w", encoding="utf-8") as f:
                 # Add license header
                 f.write(license_header)
-                
+
                 # Add module docstring
                 if filename != "__init__.py":
-                    f.write(f'"""\n{config["description"]}\n\nFile: {filepath}\n"""\n\n')
-                    
+                    f.write(
+                        f'"""\n{config["description"]}\n\nFile: {filepath}\n"""\n\n'
+                    )
+
                     # Add basic class/function template for non-empty files
                     if filename not in ["__init__.py"]:
                         module_name = filename[:-3]  # Remove .py
-                        class_name = ''.join(word.capitalize() for word in module_name.split('_'))
-                        
+                        class_name = "".join(
+                            word.capitalize() for word in module_name.split("_")
+                        )
+
                         if filename in ["lexer.py", "parser.py"]:
-                            f.write(f'class {class_name}:\n    """{config["description"]}"""\n\n    def __init__(self):\n        pass\n')
-                        elif filename.endswith('_adapter.py'):
-                            f.write(f'class {class_name}Adapter:\n    """Adapter for {module_name.replace("_", " ").title()} AI model."""\n\n    def __init__(self, api_key=None):\n        self.api_key = api_key\n')
-                        elif filename.endswith('_preset.py'):
-                            f.write('"""Preset configurations for different neurotypes."""\n\n')
-                            f.write('NEURO_PRESETS = {\n    "dyslexia": {\n        "font": "opendyslexic",\n        "spacing": 1.2,\n        "colors": "dark_theme"\n    },\n    "adhd": {\n        "minimal_ui": True,\n        "focus_mode": True,\n        "distraction_free": True\n    }\n}\n')
-                        
+                            f.write(
+                                f'class {class_name}:\n    """{config["description"]}"""\n\n    def __init__(self):\n        pass\n'
+                            )
+                        elif filename.endswith("_adapter.py"):
+                            f.write(
+                                f'class {class_name}Adapter:\n    """Adapter for {module_name.replace("_", " ").title()} AI model."""\n\n    def __init__(self, api_key=None):\n        self.api_key = api_key\n'
+                            )
+                        elif filename.endswith("_preset.py"):
+                            f.write(
+                                '"""Preset configurations for different neurotypes."""\n\n'
+                            )
+                            f.write(
+                                'NEURO_PRESETS = {\n    "dyslexia": {\n        "font": "opendyslexic",\n        "spacing": 1.2,\n        "colors": "dark_theme"\n    },\n    "adhd": {\n        "minimal_ui": True,\n        "focus_mode": True,\n        "distraction_free": True\n    }\n}\n'
+                            )
+
     print("✅ Python files created with appropriate structure")
 
 
 def create_example_files():
     """Create example HyperCode files."""
     print("\n📚 Creating example programs...")
-    
+
     examples = {
         "examples/hello_world.hc": """; HyperCode: Hello World
 ; Print 'H' (ASCII 72)
@@ -223,7 +280,7 @@ def create_example_files():
 <.
 """,
     }
-    
+
     for file_path, content in examples.items():
         path = Path(file_path)
         if not path.exists():
@@ -234,7 +291,7 @@ def create_example_files():
 def create_root_files():
     """Create root-level configuration files with appropriate content."""
     print("📄 Creating root configuration files...")
-    
+
     # Create README.md
     readme_content = f"""# 🚀 {PROJECT_NAME}
 
@@ -256,7 +313,7 @@ cd {PROJECT_NAME}
 
 # Set up virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -277,7 +334,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 This project is licensed under the {LICENSE} License - see the [LICENSE](LICENSE) file for details.
 """
-    
+
     # Create requirements.txt
     requirements_content = """# Core Dependencies
 antlr4-python3-runtime>=4.13.1,<5.0.0
@@ -440,7 +497,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """,
-        "pyproject.toml": """[build-system]
+        "pyproject.toml": r"""[build-system]
 requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
@@ -471,25 +528,25 @@ addopts = "-v --cov=hypercode --cov-report=term-missing"
     # Create each file with its content
     for filename, content in files_to_create.items():
         if not Path(filename).exists():
-            with open(filename, 'w', encoding='utf-8') as f:
+            with open(filename, "w", encoding="utf-8") as f:
                 f.write(content)
-    
+
     # Make setup.py executable
-    if os.name != 'nt':  # Not needed on Windows
-        os.chmod('setup.py', os.stat('setup.py').st_mode | stat.S_IEXEC)
-    
+    if os.name != "nt":  # Not needed on Windows
+        os.chmod("setup.py", os.stat("setup.py").st_mode | stat.S_IEXEC)
+
     print("✅ Root configuration files created")
 
 
 def create_healthcheck():
     """Create the healthcheck script for Docker."""
     print("🔍 Creating healthcheck script...")
-    
+
     scripts_dir = Path("scripts")
     scripts_dir.mkdir(exist_ok=True)
-    
+
     healthcheck_path = scripts_dir / "healthcheck.sh"
-    
+
     if not healthcheck_path.exists():
         healthcheck_content = """#!/bin/sh
 # Health check for HyperCode services
@@ -513,48 +570,50 @@ fi
 echo "All services are healthy"
 exit 0
 """
-        with open(healthcheck_path, 'w', encoding='utf-8') as f:
+        with open(healthcheck_path, "w", encoding="utf-8") as f:
             f.write(healthcheck_content)
-        
+
         # Make the script executable (Unix-like systems)
-        if os.name != 'nt':
+        if os.name != "nt":
             healthcheck_path.chmod(0o755)
-    
+
     print("✅ Healthcheck script created")
 
 
 def print_summary():
     """Print summary of created structure."""
     print("\n✨ Project scaffolding complete! 🎉\n")
-    
+
     # Project structure summary
     print("📁 Project Structure:")
     print("├── hypercode/               # Main package")
     for directory, config in PROJECT_STRUCTURE.items():
         print(f"│   ├── {directory.ljust(18)} # {config['description']}")
-    
+
     # Additional directories
     print("├── tests/                  # Test suite")
     print("├── examples/               # Example HyperCode programs")
     print("├── docs/                   # Documentation")
     print("├── scripts/                # Utility scripts")
     print("└── .github/workflows/      # GitHub Actions workflows\n")
-    
+
     # Next steps
     print("🚀 Next Steps:")
     print("1. Set up your development environment:")
     print("   python -m venv venv")
     print("   source venv/bin/activate  # On Windows: venv\\Scripts\\activate")
-    print("   pip install -e '.[dev,ai]'  # Install in development mode with all extras\n")
-    
+    print(
+        "   pip install -e '.[dev,ai]'  # Install in development mode with all extras\n"
+    )
+
     print("2. Run the tests:")
     print("   pytest -v\n")
-    
+
     print("3. Start the development server:")
     print("   python -m hypercode.cli\n")
-    
+
     print("4. Open your browser to http://localhost:8000\n")
-    
+
     print("💡 Tip: Run 'make help' to see available development commands")
     print("🔧 Happy coding! 🚀\n")
 
@@ -563,20 +622,20 @@ def main():
     """Main scaffolding function."""
     try:
         print("🚀 Starting HyperCode project setup...\n")
-        
+
         # Create the project structure
         create_directories()
         create_python_files()
         create_example_files()
         create_healthcheck()
-        
+
         # Print success message and next steps
         print("\n" + "=" * 50)
         print("✅ Project setup completed successfully!")
         print("=" * 50 + "\n")
-        
+
         print_summary()
-        
+
         return 0
     except KeyboardInterrupt:
         print("\n\n❌ Setup cancelled by user")
@@ -584,6 +643,7 @@ def main():
     except Exception as e:
         print(f"\n❌ Error during setup: {str(e)}", file=sys.stderr)
         import traceback
+
         traceback.print_exc()
         return 1
 

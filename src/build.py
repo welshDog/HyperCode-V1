@@ -20,15 +20,17 @@ to a specified target language (currently, only Python is supported).
 """
 
 import argparse
-from pathlib import Path
 import sys
+from pathlib import Path
 
 # Add project root to the Python path to allow imports from core, backends, etc.
 sys.path.append(str(Path(__file__).parent))
 
-from hypercode.core.lexer import Lexer
-from core.parser import Parser
 from backends.python import PythonBackend
+
+from core.parser import Parser
+from hypercode.core.lexer import Lexer
+
 
 def build(source_file: str, target: str = "python"):
     """
@@ -63,7 +65,7 @@ def build(source_file: str, target: str = "python"):
     else:
         print(f"Error: Target '{target}' is not supported.")
         sys.exit(1)
-        
+
     output_code = backend.visit(ast)
     print("Successfully generated target code.")
 
@@ -72,22 +74,21 @@ def build(source_file: str, target: str = "python"):
     output_path = source_path.parent / output_filename
     output_path.write_text(output_code)
 
-    print(f"\n--- Generated Python Code ---\n")
+    print("\n--- Generated Python Code ---\n")
     print(output_code)
-    print(f"\n--- End Generated Code ---\n")
+    print("\n--- End Generated Code ---\n")
     print(f"✅ Successfully compiled to '{output_path}'")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build HyperCode source files.")
     parser.add_argument(
-        "source_file",
-        help="The path to the HyperCode source file (.hc)."
+        "source_file", help="The path to the HyperCode source file (.hc)."
     )
     parser.add_argument(
         "--target",
         default="python",
-        help="The target language for compilation (default: python)."
+        help="The target language for compilation (default: python).",
     )
     args = parser.parse_args()
 

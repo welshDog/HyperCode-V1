@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
+r"""
 Neurodivergent-first accessibility tools
 
 File: accessibility\dyslexia_formatter.py

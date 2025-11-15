@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
+r"""
 Automated research paper collection and synthesis
 
 File: live_research\paper_indexer.py

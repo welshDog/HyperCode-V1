@@ -25,10 +25,11 @@ sys.path.append(str(Path(__file__).parent.parent))
 from hypercode.core.lexer import Lexer
 from hypercode.core.parser import Parser
 
+
 def run_test(source_code: str):
     """Test the lexer and parser with the given source code."""
     print(f"Testing source:\n---\n{source_code}\n---")
-    
+
     try:
         # Test Lexer
         lexer = Lexer(source_code)
@@ -36,7 +37,7 @@ def run_test(source_code: str):
         print("\nTokens:")
         for token in tokens:
             print(f"  {token}")
-        
+
         # Test Parser
         parser = Parser(tokens)
         ast = parser.parse()
@@ -46,6 +47,7 @@ def run_test(source_code: str):
 
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
+
 
 if __name__ == "__main__":
     # Use a simple test case that the current parser can handle

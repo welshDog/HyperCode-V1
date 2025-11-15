@@ -10,12 +10,14 @@ Combining:
 + Modern AI integration + Accessibility-first design
 """
 
+from dataclasses import dataclass
 from enum import Enum
-from typing import Dict, List, Tuple, Optional, Any
-from dataclasses import dataclass, field
+from typing import Any, Dict, List, Tuple
+
 
 class TokenType(Enum):
     """Brainfuck-inspired core + modern aliases"""
+
     MOVE_RIGHT, MOVE_LEFT = ">", "<"
     INCREMENT, DECREMENT = "+", "-"
     OUTPUT, INPUT = ".", ","
@@ -27,6 +29,7 @@ class TokenType(Enum):
     IDENTIFIER = "IDENTIFIER"
     EOF = "EOF"
 
+
 @dataclass
 class Token:
     type: TokenType
@@ -34,11 +37,13 @@ class Token:
     line: int
     column: int
 
+
 class UserConfidenceLevel(Enum):
     BEGINNER = "beginner"
     INTERMEDIATE = "intermediate"
     ADVANCED = "advanced"
     EXPERT = "expert"
+
 
 class EnhancedLexer:
     """Smart tokenizer with escape handling + accessibility focus"""
@@ -48,12 +53,22 @@ class EnhancedLexer:
         self.line, self.column, self.position = 1, 1, 0
         self.source = ""
         self.brainfuck_ops = {
-            '>': ">", '<': "<", '+': "+", '-': "-",
-            '.': ".", ',': ",", '[': "[", ']': "]"
+            ">": ">",
+            "<": "<",
+            "+": "+",
+            "-": "-",
+            ".": ".",
+            ",": ",",
+            "[": "[",
+            "]": "]",
         }
         self.keywords = {
-            'let': "let", 'print': "print", 'if': "if",
-            'else': "else", 'loop': "loop", 'fn': "fn"
+            "let": "let",
+            "print": "print",
+            "if": "if",
+            "else": "else",
+            "loop": "loop",
+            "fn": "fn",
         }
 
     def tokenize(self, source: str) -> Tuple[List[Token], List[str]]:
@@ -63,28 +78,38 @@ class EnhancedLexer:
         while self.position < len(self.source):
             char = self.source[self.position]
 
-            if char in ' \t':
+            if char in " \t":
                 self.advance()
-            elif char == '\n':
+            elif char == "\n":
                 self.line += 1
                 self.column, self.position = 1, self.position + 1
-            elif char == '#':
-                while self.position < len(self.source) and self.source[self.position] != '\n':
+            elif char == "#":
+                while (
+                    self.position < len(self.source)
+                    and self.source[self.position] != "\n"
+                ):
                     self.advance()
-            elif char in '\"' + "'":  # String handling
+            elif char in '"' + "'":  # String handling
                 self.handle_string(char, errors)
             elif char.isdigit():
                 self.handle_number()
-            elif char.isalpha() or char == '_':
+            elif char.isalpha() or char == "_":
                 self.handle_identifier()
             elif char in self.brainfuck_ops:
-                self.tokens.append(Token(TokenType(self.brainfuck_ops[char]), char, self.line, self.column))
+                self.tokens.append(
+                    Token(
+                        TokenType(self.brainfuck_ops[char]),
+                        char,
+                        self.line,
+                        self.column,
+                    )
+                )
                 self.advance()
             else:
                 errors.append(f"Unknown char: {char} at L{self.line}:C{self.column}")
                 self.advance()
 
-        self.tokens.append(Token(TokenType.EOF, '', self.line, self.column))
+        self.tokens.append(Token(TokenType.EOF, "", self.line, self.column))
         return self.tokens, errors
 
     def handle_string(self, quote, errors):
@@ -93,10 +118,10 @@ class EnhancedLexer:
         value = ""
         while self.position < len(self.source):
             c = self.source[self.position]
-            if c == '\\' and self.position + 1 < len(self.source):
+            if c == "\\" and self.position + 1 < len(self.source):
                 next_c = self.source[self.position + 1]
-                if next_c in 'nt':
-                    value += '\n' if next_c == 'n' else '\t'
+                if next_c in "nt":
+                    value += "\n" if next_c == "n" else "\t"
                     self.advance()
                     self.advance()
                 else:
@@ -104,7 +129,9 @@ class EnhancedLexer:
                     self.advance()
             elif c == quote:
                 self.advance()
-                self.tokens.append(Token(TokenType.STRING, value, start_line, start_col))
+                self.tokens.append(
+                    Token(TokenType.STRING, value, start_line, start_col)
+                )
                 return
             else:
                 value += c
@@ -122,18 +149,33 @@ class EnhancedLexer:
     def handle_identifier(self):
         value = ""
         start_col = self.column
-        while self.position < len(self.source) and (self.source[self.position].isalnum() or self.source[self.position] == '_'):
+        while self.position < len(self.source) and (
+            self.source[self.position].isalnum() or self.source[self.position] == "_"
+        ):
             value += self.source[self.position]
             self.advance()
         token_type = self.keywords.get(value, "IDENTIFIER")
-        self.tokens.append(Token(TokenType(token_type) if token_type != "IDENTIFIER" else TokenType.IDENTIFIER, value, self.line, start_col))
+        self.tokens.append(
+            Token(
+                (
+                    TokenType(token_type)
+                    if token_type != "IDENTIFIER"
+                    else TokenType.IDENTIFIER
+                ),
+                value,
+                self.line,
+                start_col,
+            )
+        )
 
     def advance(self):
         self.position += 1
         self.column += 1
 
+
 class ContextAwareErrorMessenger:
     """Friendly, adaptive error messages"""
+
     def __init__(self):
         self.errors = []
 
@@ -143,8 +185,10 @@ class ContextAwareErrorMessenger:
         else:
             return f"L{line}:C{col} - {msg}"
 
+
 class SemanticContextStreamer:
     """Understand programmer intent from tokens"""
+
     def analyze(self, tokens: List[Token]) -> Dict[str, Any]:
         intent = "unknown"
         patterns = []
@@ -155,10 +199,16 @@ class SemanticContextStreamer:
                 intent, patterns = "conditional", ["branching"]
             elif token.type == TokenType.LOOP:
                 intent, patterns = "iteration", ["looping"]
-        return {"intent": intent, "patterns": patterns, "confidence": len(patterns) / 3.0}
+        return {
+            "intent": intent,
+            "patterns": patterns,
+            "confidence": len(patterns) / 3.0,
+        }
+
 
 class ConfidenceTracker:
     """Adapt system guidance to user skill level"""
+
     def __init__(self, level=UserConfidenceLevel.BEGINNER):
         self.level = level
         self.actions, self.errors = 0, 0
@@ -168,8 +218,10 @@ class ConfidenceTracker:
         if not success:
             self.errors += 1
 
+
 class HyperCodePOC:
     """Main system: Lexer + Error Messenger + Semantic Analyzer + Confidence Tracker"""
+
     def __init__(self, level=UserConfidenceLevel.BEGINNER):
         self.lexer = EnhancedLexer()
         self.error_messenger = ContextAwareErrorMessenger()
@@ -187,18 +239,19 @@ class HyperCodePOC:
             "intent": semantic["intent"],
             "patterns": semantic["patterns"],
             "confidence": min(semantic["confidence"], 1.0),
-            "errors": errors
+            "errors": errors,
         }
+
 
 # Demo
 if __name__ == "__main__":
     hc = HyperCodePOC()
 
     demos = [
-        ('let x = 42', 'Simple variable'),
-        ('print "Hello"', 'Output'),
-        ('if (x > 0) { print "yes" }', 'Conditional'),
-        ('loop { print "spin" }', 'Loop'),
+        ("let x = 42", "Simple variable"),
+        ('print "Hello"', "Output"),
+        ('if (x > 0) { print "yes" }', "Conditional"),
+        ('loop { print "spin" }', "Loop"),
     ]
 
     for code, desc in demos:

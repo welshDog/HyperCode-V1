@@ -1,10 +1,13 @@
-from typing import List, Optional
+from typing import List
+
+from .ast import *
 from .lexer import Token
 from .tokens import TokenType
-from .ast import *
+
 
 class ParseError(Exception):
     pass
+
 
 class Parser:
     def __init__(self, tokens: List[Token]):
@@ -35,24 +38,24 @@ class Parser:
 
     def var_declaration(self) -> Stmt:
         print("Starting var_declaration")
-        
+
         # The 'var' keyword has already been consumed by the match() call in declaration()
         # So we can directly consume the identifier
         print(f"Current token before IDENTIFIER: {self.peek()}")
         name = self.consume(TokenType.IDENTIFIER, "Expected variable name.")
         print(f"Got identifier: {name.value}")
-        
+
         # Parse the initializer if present
         initializer = None
         if self.match(TokenType.EQUAL):
             print("Found =, parsing expression")
             initializer = self.expression()
-        
+
         # Require semicolon at the end
         print(f"Current token before semicolon: {self.peek()}")
         self.consume(TokenType.SEMICOLON, "Expected ';' after variable declaration.")
         print("Successfully parsed variable declaration")
-        
+
         # Create and return the Var statement
         stmt = Var(name=name, initializer=initializer)
         print(f"Created Var statement: {stmt}")
@@ -112,7 +115,12 @@ class Parser:
 
     def comparison(self) -> Expr:
         expr = self.term()
-        while self.match(TokenType.GREATER, TokenType.GREATER_EQUAL, TokenType.LESS, TokenType.LESS_EQUAL):
+        while self.match(
+            TokenType.GREATER,
+            TokenType.GREATER_EQUAL,
+            TokenType.LESS,
+            TokenType.LESS_EQUAL,
+        ):
             operator = self.previous()
             right = self.term()
             expr = Binary(expr, operator, right)
@@ -192,6 +200,7 @@ class Parser:
 
     def error(self, token: Token, message: str) -> ParseError:
         from .error_handler import report_parse_error
+
         report_parse_error(token, message)
         return ParseError()
 
@@ -203,9 +212,13 @@ class Parser:
 
             # Only check for tokens that are statement starters
             if self.peek().type in (
-                TokenType.VAR, TokenType.IF, TokenType.FOR, 
-                TokenType.WHILE, TokenType.PRINT, TokenType.RETURN,
-                TokenType.FUNCTION
+                TokenType.VAR,
+                TokenType.IF,
+                TokenType.FOR,
+                TokenType.WHILE,
+                TokenType.PRINT,
+                TokenType.RETURN,
+                TokenType.FUNCTION,
             ):
                 return
 

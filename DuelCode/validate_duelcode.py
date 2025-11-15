@@ -8,7 +8,7 @@ It checks for required sections, formatting, and structure.
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Optional
+from typing import List, Tuple
 
 # Required sections and their validation patterns
 REQUIRED_SECTIONS = {
@@ -84,7 +84,7 @@ def main():
             print(f"  - {error}")
         print("\nDocumentation does not meet DuelCode standards!")
         sys.exit(1)
-    
+
     print("\n✅ Documentation meets DuelCode standards!")
     sys.exit(0)
 

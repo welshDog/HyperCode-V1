@@ -12,43 +12,45 @@ Features:
 - Colorized output (for ADHD/dyslexia)
 """
 
-from dataclasses import dataclass
-from typing import List, Optional, Tuple
-from enum import Enum
 import sys
+from dataclasses import dataclass
+from enum import Enum
+from typing import List, Optional
 
 
 class TokenType(Enum):
     """HyperCode token types - minimal yet powerful"""
+
     # Core operations (Brainfuck-inspired)
-    PUSH = "PUSH"           # > move pointer right
-    POP = "POP"             # < move pointer left
-    INCR = "INCR"           # + increment cell
-    DECR = "DECR"           # - decrement cell
-    OUTPUT = "OUTPUT"       # . output character
-    INPUT = "INPUT"         # , read character
-    LOOP_START = "LOOP_START"   # [ start loop
-    LOOP_END = "LOOP_END"       # ] end loop
-    
+    PUSH = "PUSH"  # > move pointer right
+    POP = "POP"  # < move pointer left
+    INCR = "INCR"  # + increment cell
+    DECR = "DECR"  # - decrement cell
+    OUTPUT = "OUTPUT"  # . output character
+    INPUT = "INPUT"  # , read character
+    LOOP_START = "LOOP_START"  # [ start loop
+    LOOP_END = "LOOP_END"  # ] end loop
+
     # HyperCode extensions
-    SPATIAL_2D = "SPATIAL_2D"   # @ enter 2D spatial mode
-    AI_NATIVE = "AI_NATIVE"     # # AI-native code marker
-    COMMENT = "COMMENT"         # ; comment line
-    
+    SPATIAL_2D = "SPATIAL_2D"  # @ enter 2D spatial mode
+    AI_NATIVE = "AI_NATIVE"  # # AI-native code marker
+    COMMENT = "COMMENT"  # ; comment line
+
     # Special
-    EOF = "EOF"             # End of file
-    UNKNOWN = "UNKNOWN"     # Unknown character
+    EOF = "EOF"  # End of file
+    UNKNOWN = "UNKNOWN"  # Unknown character
 
 
 @dataclass
 class Token:
     """Represents a single token with position tracking"""
+
     type: TokenType
     value: str
     position: int
     line: int
     column: int
-    
+
     def __repr__(self) -> str:
         """Neurodivergent-friendly representation"""
         return f"Token({self.type.value:15} | '{self.value}' | L{self.line}:C{self.column})"
@@ -56,6 +58,7 @@ class Token:
 
 class LexerError(Exception):
     """Lexer-specific errors with context"""
+
     def __init__(self, message: str, line: int, column: int):
         self.message = message
         self.line = line
@@ -66,33 +69,33 @@ class LexerError(Exception):
 class HyperCodeLexer:
     """
     Tokenizes HyperCode programs with accessibility features.
-    
+
     Design principles:
     - Clear error messages (neurodivergent-friendly)
     - Position tracking (helps with debugging)
     - Colorized output (optional, for visual learners)
     - Comments preserved (for documentation)
     """
-    
+
     # Token mapping (simple, explicit)
     TOKEN_MAP = {
-        '>': TokenType.PUSH,
-        '<': TokenType.POP,
-        '+': TokenType.INCR,
-        '-': TokenType.DECR,
-        '.': TokenType.OUTPUT,
-        ',': TokenType.INPUT,
-        '[': TokenType.LOOP_START,
-        ']': TokenType.LOOP_END,
-        '@': TokenType.SPATIAL_2D,
-        '#': TokenType.AI_NATIVE,
-        ';': TokenType.COMMENT,
+        ">": TokenType.PUSH,
+        "<": TokenType.POP,
+        "+": TokenType.INCR,
+        "-": TokenType.DECR,
+        ".": TokenType.OUTPUT,
+        ",": TokenType.INPUT,
+        "[": TokenType.LOOP_START,
+        "]": TokenType.LOOP_END,
+        "@": TokenType.SPATIAL_2D,
+        "#": TokenType.AI_NATIVE,
+        ";": TokenType.COMMENT,
     }
-    
+
     def __init__(self, source: str, filename: str = "<stdin>"):
         """
         Initialize lexer with source code.
-        
+
         Args:
             source: HyperCode source code
             filename: Source filename (for error reporting)
@@ -103,32 +106,32 @@ class HyperCodeLexer:
         self.line = 1
         self.column = 1
         self.tokens: List[Token] = []
-    
+
     def tokenize(self) -> List[Token]:
         """
         Convert HyperCode source to token stream.
-        
+
         Returns:
             List of Token objects
-            
+
         Raises:
             LexerError: On invalid syntax
         """
         self.tokens = []
-        
+
         while self.position < len(self.source):
             char = self.source[self.position]
-            
+
             # Handle comments (skip until end of line)
-            if char == ';':
+            if char == ";":
                 self._skip_comment()
                 continue
-            
+
             # Handle whitespace (track position but don't create tokens)
             if char.isspace():
                 self._advance_position(char)
                 continue
-            
+
             # Handle valid tokens
             if char in self.TOKEN_MAP:
                 token_type = self.TOKEN_MAP[char]
@@ -137,7 +140,7 @@ class HyperCodeLexer:
                     value=char,
                     position=self.position,
                     line=self.line,
-                    column=self.column
+                    column=self.column,
                 )
                 self.tokens.append(token)
                 self._advance_position(char)
@@ -147,89 +150,93 @@ class HyperCodeLexer:
                     f"Unexpected character: '{char}' (ASCII {ord(char)})\n"
                     f"Valid operations: > < + - . , [ ] @ # ;",
                     self.line,
-                    self.column
+                    self.column,
                 )
-        
+
         # Add EOF token
-        self.tokens.append(Token(
-            type=TokenType.EOF,
-            value="",
-            position=self.position,
-            line=self.line,
-            column=self.column
-        ))
-        
+        self.tokens.append(
+            Token(
+                type=TokenType.EOF,
+                value="",
+                position=self.position,
+                line=self.line,
+                column=self.column,
+            )
+        )
+
         return self.tokens
-    
+
     def _advance_position(self, char: str):
         """Update position tracking after processing character"""
         self.position += 1
-        
-        if char == '\n':
+
+        if char == "\n":
             self.line += 1
             self.column = 1
         else:
             self.column += 1
-    
+
     def _skip_comment(self):
         """Skip characters until end of line"""
-        while self.position < len(self.source) and self.source[self.position] != '\n':
+        while self.position < len(self.source) and self.source[self.position] != "\n":
             self._advance_position(self.source[self.position])
-    
+
     def get_tokens(self) -> List[Token]:
         """Return current token list"""
         return self.tokens
-    
-    def filter_tokens(self, exclude_types: Optional[List[TokenType]] = None) -> List[Token]:
+
+    def filter_tokens(
+        self, exclude_types: Optional[List[TokenType]] = None
+    ) -> List[Token]:
         """
         Get tokens excluding certain types.
-        
+
         Args:
             exclude_types: Token types to exclude
-            
+
         Returns:
             Filtered token list
         """
         if exclude_types is None:
             exclude_types = [TokenType.UNKNOWN, TokenType.EOF]
-        
+
         return [t for t in self.tokens if t.type not in exclude_types]
-    
+
     def print_tokens(self, colorize: bool = False):
         """
         Print tokens in readable format.
-        
+
         Args:
             colorize: Use ANSI colors (helps ADHD/dyslexia)
         """
         if colorize and sys.stdout.isatty():
             # Color codes for different token types
             colors = {
-                TokenType.PUSH: '\033[94m',      # Blue
-                TokenType.POP: '\033[94m',       # Blue
-                TokenType.INCR: '\033[92m',      # Green
-                TokenType.DECR: '\033[92m',      # Green
-                TokenType.OUTPUT: '\033[93m',    # Yellow
-                TokenType.INPUT: '\033[93m',     # Yellow
-                TokenType.LOOP_START: '\033[95m', # Magenta
-                TokenType.LOOP_END: '\033[95m',   # Magenta
-                TokenType.SPATIAL_2D: '\033[96m', # Cyan
-                TokenType.AI_NATIVE: '\033[91m',  # Red
+                TokenType.PUSH: "\033[94m",  # Blue
+                TokenType.POP: "\033[94m",  # Blue
+                TokenType.INCR: "\033[92m",  # Green
+                TokenType.DECR: "\033[92m",  # Green
+                TokenType.OUTPUT: "\033[93m",  # Yellow
+                TokenType.INPUT: "\033[93m",  # Yellow
+                TokenType.LOOP_START: "\033[95m",  # Magenta
+                TokenType.LOOP_END: "\033[95m",  # Magenta
+                TokenType.SPATIAL_2D: "\033[96m",  # Cyan
+                TokenType.AI_NATIVE: "\033[91m",  # Red
             }
-            reset = '\033[0m'
-            
+            reset = "\033[0m"
+
             for token in self.tokens:
-                color = colors.get(token.type, '')
+                color = colors.get(token.type, "")
                 print(f"{color}{token}{reset}")
         else:
             # Plain text output
             for token in self.tokens:
                 print(token)
-    
+
     def get_statistics(self) -> dict:
         """
         Get token statistics (useful for analysis).
-        
+
         Returns:
             Dictionary with token counts
         """
@@ -243,7 +250,7 @@ class HyperCodeLexer:
 def main():
     """CLI interface for the lexer"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(
         description="HyperCode Lexer - Tokenize HyperCode programs",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -252,60 +259,53 @@ Examples:
   python lexer.py program.hc
   python lexer.py program.hc --colorize
   echo "+++>." | python lexer.py -
-        """
+        """,
     )
-    
+
+    parser.add_argument("file", help="HyperCode source file (or - for stdin)")
     parser.add_argument(
-        'file',
-        help='HyperCode source file (or - for stdin)'
+        "--colorize",
+        action="store_true",
+        help="Use colored output (ADHD/dyslexia-friendly)",
     )
-    parser.add_argument(
-        '--colorize',
-        action='store_true',
-        help='Use colored output (ADHD/dyslexia-friendly)'
-    )
-    parser.add_argument(
-        '--stats',
-        action='store_true',
-        help='Show token statistics'
-    )
-    
+    parser.add_argument("--stats", action="store_true", help="Show token statistics")
+
     args = parser.parse_args()
-    
+
     # Read source
-    if args.file == '-':
+    if args.file == "-":
         source = sys.stdin.read()
-        filename = '<stdin>'
+        filename = "<stdin>"
     else:
         try:
-            with open(args.file, 'r') as f:
+            with open(args.file, "r") as f:
                 source = f.read()
             filename = args.file
         except FileNotFoundError:
             print(f"❌ Error: File not found: {args.file}", file=sys.stderr)
             return 1
-    
+
     # Tokenize
     try:
         lexer = HyperCodeLexer(source, filename)
         tokens = lexer.tokenize()
-        
+
         print(f"✅ Successfully tokenized: {filename}")
         print(f"   Total tokens: {len(tokens) - 1}")  # Exclude EOF
         print()
-        
+
         # Print tokens
         lexer.print_tokens(colorize=args.colorize)
-        
+
         # Print statistics
         if args.stats:
             print("\n📊 Token Statistics:")
             stats = lexer.get_statistics()
             for token_type, count in sorted(stats.items()):
                 print(f"   {token_type:15} : {count}")
-        
+
         return 0
-        
+
     except LexerError as e:
         print(f"❌ Lexer Error: {e}", file=sys.stderr)
         return 1

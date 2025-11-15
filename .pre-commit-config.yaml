@@ -1,0 +1,53 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+        args: [--maxkb=500]
+    -   id: debug-statements
+    -   id: requirements-txt-fixer
+
+-   repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+    -   id: black
+        language_version: python3
+        args: [--line-length=88]
+
+-   repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.1.4
+    hooks:
+    -   id: ruff
+        args: [--fix, --show-fixes]
+
+-   repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.6.1
+    hooks:
+    -   id: mypy
+        additional_dependencies: [types-requests, types-python-dateutil]
+        args: [--strict, --ignore-missing-imports]
+
+-   repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.3
+    hooks:
+    -   id: prettier
+        types_or: [yaml, json, markdown, html, css, scss, javascript, jsx, tsx, vue, graphql, mdx]
+        args: [--write, --prose-wrap=always, --print-width=88]
+
+-   repo: local
+    hooks:
+    -   id: pytest
+        name: Run tests
+        entry: pytest -xvs --tb=short --cov=hypercode --cov-report=term-missing
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
+
+ci:
+  autofix_commit_msg: "style: Auto-fix via pre-commit hooks"
+  autoupdate_commit_msg: "chore: update pre-commit hooks"
+  autoupdate_schedule: monthly

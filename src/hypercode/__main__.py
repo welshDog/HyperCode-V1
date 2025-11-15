@@ -1,11 +1,13 @@
 import sys
-from .repl import run_repl, run
+
+from .repl import run, run_repl
+
 
 def main():
     if len(sys.argv) > 1:
         filepath = sys.argv[1]
         try:
-            with open(filepath, 'r', encoding='utf-8') as f:
+            with open(filepath, "r", encoding="utf-8") as f:
                 source = f.read()
             run(source)
         except FileNotFoundError:
@@ -13,6 +15,7 @@ def main():
             sys.exit(1)
     else:
         run_repl()
+
 
 if __name__ == "__main__":
     main()

@@ -17,4 +17,3 @@ Comprehensive test suite
 
 File: tests\test_accessibility.py
 """
-

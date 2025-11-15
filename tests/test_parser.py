@@ -1,38 +1,40 @@
-import pytest
-from hypercode.core.lexer import Lexer, Token
+from hypercode.core.ast import *
+from hypercode.core.lexer import Lexer
 from hypercode.core.parser import Parser
 from hypercode.core.tokens import TokenType
-from hypercode.core.ast import *
+
 
 def test_parse_literal():
     source = "42;"
     tokens = Lexer(source).tokenize()
     parser = Parser(tokens)
     statements = parser.parse()
-    
+
     assert len(statements) == 1
     assert isinstance(statements[0], Expression)
     assert isinstance(statements[0].expression, Literal)
     assert statements[0].expression.value == 42
+
 
 def test_parse_variable_declaration():
     source = "var x = 42;"
     tokens = Lexer(source).tokenize()
     parser = Parser(tokens)
     statements = parser.parse()
-    
+
     assert len(statements) == 1
     assert isinstance(statements[0], Var)
     assert statements[0].name.value == "x"
     assert isinstance(statements[0].initializer, Literal)
     assert statements[0].initializer.value == 42
 
+
 def test_parse_binary_expression():
     source = "1 + 2 * 3;"
     tokens = Lexer(source).tokenize()
     parser = Parser(tokens)
     statements = parser.parse()
-    
+
     assert len(statements) == 1
     expr = statements[0].expression
     assert isinstance(expr, Binary)

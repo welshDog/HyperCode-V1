@@ -1,6 +1,7 @@
-from enum import Enum, auto
 from dataclasses import dataclass
+from enum import Enum, auto
 from typing import Any
+
 
 class TokenType(Enum):
     # Keywords
@@ -53,6 +54,7 @@ class TokenType(Enum):
     # Other
     UNKNOWN = auto()
     EOF = auto()
+
 
 @dataclass
 class Token:

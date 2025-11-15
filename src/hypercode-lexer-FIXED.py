@@ -10,30 +10,31 @@ Key improvements:
 5. Includes comprehensive test cases
 """
 
-from dataclasses import dataclass
-from typing import List, Optional, Tuple
-from enum import Enum
 import sys
+from dataclasses import dataclass
+from enum import Enum
+from typing import List
 
 
 class TokenType(Enum):
     """HyperCode token types"""
+
     # Core operations
-    PUSH = "PUSH"                   # >
-    POP = "POP"                     # <
-    INCR = "INCR"                   # +
-    DECR = "DECR"                   # -
-    OUTPUT = "OUTPUT"               # .
-    INPUT = "INPUT"                 # ,
-    LOOP_START = "LOOP_START"       # [
-    LOOP_END = "LOOP_END"           # ]
-    
+    PUSH = "PUSH"  # >
+    POP = "POP"  # <
+    INCR = "INCR"  # +
+    DECR = "DECR"  # -
+    OUTPUT = "OUTPUT"  # .
+    INPUT = "INPUT"  # ,
+    LOOP_START = "LOOP_START"  # [
+    LOOP_END = "LOOP_END"  # ]
+
     # String literals
-    STRING = "STRING"               # "..." or '...'
-    
+    STRING = "STRING"  # "..." or '...'
+
     # Comments
-    COMMENT = "COMMENT"             # ;
-    
+    COMMENT = "COMMENT"  # ;
+
     # Special
     EOF = "EOF"
     UNKNOWN = "UNKNOWN"
@@ -42,13 +43,14 @@ class TokenType(Enum):
 @dataclass
 class Token:
     """Represents a single token with position tracking"""
+
     type: TokenType
     value: str
     raw_value: str  # Original value (with escapes)
     position: int
     line: int
     column: int
-    
+
     def __repr__(self) -> str:
         """Readable representation"""
         if self.value != self.raw_value:
@@ -59,23 +61,24 @@ class Token:
 
 class LexerError(Exception):
     """Lexer error with context"""
+
     def __init__(self, message: str, line: int, column: int, context: str = ""):
         self.message = message
         self.line = line
         self.column = column
         self.context = context
-        
+
         error_msg = f"Line {line}, Col {column}: {message}"
         if context:
             error_msg += f"\n  Context: {context}"
-        
+
         super().__init__(error_msg)
 
 
 class HyperCodeLexerFixed:
     """
     Fixed lexer with proper string escape sequence handling.
-    
+
     Escape sequences supported:
     - \\" = escaped double quote
     - \\' = escaped single quote
@@ -86,37 +89,39 @@ class HyperCodeLexerFixed:
     - \\b = backspace
     - \\f = form feed
     """
-    
+
     # Escape sequence mappings
     ESCAPE_SEQUENCES = {
-        '"': '"',      # Escaped double quote
-        "'": "'",      # Escaped single quote
-        '\\': '\\',    # Escaped backslash
-        'n': '\n',     # Newline
-        't': '\t',     # Tab
-        'r': '\r',     # Carriage return
-        'b': '\b',     # Backspace
-        'f': '\f',     # Form feed
-        '0': '\0',     # Null character
+        '"': '"',  # Escaped double quote
+        "'": "'",  # Escaped single quote
+        "\\": "\\",  # Escaped backslash
+        "n": "\n",  # Newline
+        "t": "\t",  # Tab
+        "r": "\r",  # Carriage return
+        "b": "\b",  # Backspace
+        "f": "\f",  # Form feed
+        "0": "\0",  # Null character
     }
-    
+
     # Single character operations
     OPERATIONS = {
-        '>': TokenType.PUSH,
-        '<': TokenType.POP,
-        '+': TokenType.INCR,
-        '-': TokenType.DECR,
-        '.': TokenType.OUTPUT,
-        ',': TokenType.INPUT,
-        '[': TokenType.LOOP_START,
-        ']': TokenType.LOOP_END,
-        ';': TokenType.COMMENT,
+        ">": TokenType.PUSH,
+        "<": TokenType.POP,
+        "+": TokenType.INCR,
+        "-": TokenType.DECR,
+        ".": TokenType.OUTPUT,
+        ",": TokenType.INPUT,
+        "[": TokenType.LOOP_START,
+        "]": TokenType.LOOP_END,
+        ";": TokenType.COMMENT,
     }
-    
-    def __init__(self, source: str, filename: str = "<stdin>", preserve_escapes: bool = False):
+
+    def __init__(
+        self, source: str, filename: str = "<stdin>", preserve_escapes: bool = False
+    ):
         """
         Initialize lexer.
-        
+
         Args:
             source: Source code
             filename: Filename for error reporting
@@ -130,42 +135,42 @@ class HyperCodeLexerFixed:
         self.line = 1
         self.column = 1
         self.tokens: List[Token] = []
-    
+
     def tokenize(self) -> List[Token]:
         """
         Convert source to token stream.
-        
+
         Returns:
             List of tokens
-            
+
         Raises:
             LexerError: On invalid syntax
         """
         self.tokens = []
-        
+
         while self.position < len(self.source):
             char = self.source[self.position]
-            
+
             # Skip whitespace
             if char.isspace():
                 self._advance(char)
                 continue
-            
+
             # Comments (skip until end of line)
-            if char == ';':
+            if char == ";":
                 self._skip_comment()
                 continue
-            
+
             # String literals (double quotes)
             if char == '"':
                 self._parse_string('"')
                 continue
-            
+
             # String literals (single quotes)
             if char == "'":
                 self._parse_string("'")
                 continue
-            
+
             # Operations
             if char in self.OPERATIONS:
                 token_type = self.OPERATIONS[char]
@@ -175,58 +180,60 @@ class HyperCodeLexerFixed:
                     raw_value=char,
                     position=self.position,
                     line=self.line,
-                    column=self.column
+                    column=self.column,
                 )
                 self.tokens.append(token)
                 self._advance(char)
                 continue
-            
+
             # Unknown character
             raise LexerError(
                 f"Unexpected character: '{char}' (ASCII {ord(char)})",
                 self.line,
                 self.column,
-                f"Valid: > < + - . , [ ] ; or string literals"
+                "Valid: > < + - . , [ ] ; or string literals",
             )
-        
+
         # EOF token
-        self.tokens.append(Token(
-            type=TokenType.EOF,
-            value="",
-            raw_value="",
-            position=self.position,
-            line=self.line,
-            column=self.column
-        ))
-        
+        self.tokens.append(
+            Token(
+                type=TokenType.EOF,
+                value="",
+                raw_value="",
+                position=self.position,
+                line=self.line,
+                column=self.column,
+            )
+        )
+
         return self.tokens
-    
+
     def _parse_string(self, quote_char: str):
         """
         Parse string literal with escape sequence handling.
-        
+
         Args:
             quote_char: Quote character (" or ')
-            
+
         Raises:
             LexerError: If string is unterminated or contains invalid escapes
         """
         start_pos = self.position
         start_line = self.line
         start_col = self.column
-        
+
         raw_string = ""  # Keep original with escapes
         parsed_string = ""  # Convert escapes
-        
+
         self._advance(quote_char)  # Skip opening quote
-        
+
         while self.position < len(self.source):
             char = self.source[self.position]
-            
+
             # Closing quote (unescaped)
             if char == quote_char:
                 self._advance(char)
-                
+
                 # Create token
                 token = Token(
                     type=TokenType.STRING,
@@ -234,26 +241,26 @@ class HyperCodeLexerFixed:
                     raw_value=raw_string,
                     position=start_pos,
                     line=start_line,
-                    column=start_col
+                    column=start_col,
                 )
                 self.tokens.append(token)
                 return
-            
+
             # Escape sequence
-            if char == '\\':
+            if char == "\\":
                 raw_string += char
                 self._advance(char)
-                
+
                 if self.position >= len(self.source):
                     raise LexerError(
                         "Unterminated string: backslash at end of file",
                         self.line,
                         self.column,
-                        f"String started at line {start_line}, col {start_col}"
+                        f"String started at line {start_line}, col {start_col}",
                     )
-                
+
                 next_char = self.source[self.position]
-                
+
                 # Valid escape sequence?
                 if next_char in self.ESCAPE_SEQUENCES:
                     escaped_char = self.ESCAPE_SEQUENCES[next_char]
@@ -265,39 +272,39 @@ class HyperCodeLexerFixed:
                         f"Invalid escape sequence: '\\{next_char}'",
                         self.line,
                         self.column,
-                        f"Valid escapes: {', '.join(['\\\\' + k for k in self.ESCAPE_SEQUENCES.keys()])}"
+                        f"Valid escapes: {', '.join(['\\\\' + k for k in self.ESCAPE_SEQUENCES.keys()])}",
                     )
-                
+
                 continue
-            
+
             # Regular character
             raw_string += char
             parsed_string += char
             self._advance(char)
-        
+
         # Unterminated string
         raise LexerError(
             f"Unterminated string: missing closing {quote_char}",
             start_line,
             start_col,
-            f"String started here, expected {quote_char} before EOF"
+            f"String started here, expected {quote_char} before EOF",
         )
-    
+
     def _skip_comment(self):
         """Skip comment until end of line"""
-        while self.position < len(self.source) and self.source[self.position] != '\n':
+        while self.position < len(self.source) and self.source[self.position] != "\n":
             self._advance(self.source[self.position])
-    
+
     def _advance(self, char: str):
         """Update position after processing character"""
         self.position += 1
-        
-        if char == '\n':
+
+        if char == "\n":
             self.line += 1
             self.column = 1
         else:
             self.column += 1
-    
+
     def print_tokens(self, verbose: bool = True):
         """Print tokens in readable format"""
         for token in self.tokens:
@@ -311,60 +318,51 @@ class HyperCodeLexerFixed:
 # TEST SUITE
 # ============================================================================
 
+
 def run_tests():
     """Comprehensive test suite"""
-    
+
     test_cases = [
         # (description, source, expected_tokens)
-        (
-            "Simple double-quoted string",
-            '"hello"',
-            [("STRING", "hello")]
-        ),
-        (
-            "Simple single-quoted string",
-            "'world'",
-            [("STRING", "world")]
-        ),
+        ("Simple double-quoted string", '"hello"', [("STRING", "hello")]),
+        ("Simple single-quoted string", "'world'", [("STRING", "world")]),
         (
             "Multiple strings",
-            '"hello" \'world\'',
-            [("STRING", "hello"), ("STRING", "world")]
+            "\"hello\" 'world'",
+            [("STRING", "hello"), ("STRING", "world")],
         ),
         (
             "String with escaped double quote",
             '"escaped \\"quote\\""',
-            [("STRING", 'escaped "quote"')]
+            [("STRING", 'escaped "quote"')],
         ),
-        (
-            "String with escaped single quote",
-            "'it\\'s'",
-            [("STRING", "it's")]
-        ),
+        ("String with escaped single quote", "'it\\'s'", [("STRING", "it's")]),
         (
             "String with escaped backslash",
             '"path\\\\to\\\\file"',
-            [("STRING", "path\\to\\file")]
+            [("STRING", "path\\to\\file")],
         ),
-        (
-            "String with newline escape",
-            '"hello\\nworld"',
-            [("STRING", "hello\nworld")]
-        ),
+        ("String with newline escape", '"hello\\nworld"', [("STRING", "hello\nworld")]),
         (
             "String with tab escape",
             '"column1\\tcolumn2"',
-            [("STRING", "column1\tcolumn2")]
+            [("STRING", "column1\tcolumn2")],
         ),
         (
             "String with multiple escapes",
             '"say \\"hello\\nworld\\""',
-            [("STRING", 'say "hello\nworld"')]
+            [("STRING", 'say "hello\nworld"')],
         ),
         (
             "HyperCode with strings",
             '+++. "output"',
-            [("INCR", "+"), ("INCR", "+"), ("INCR", "+"), ("OUTPUT", "."), ("STRING", "output")]
+            [
+                ("INCR", "+"),
+                ("INCR", "+"),
+                ("INCR", "+"),
+                ("OUTPUT", "."),
+                ("STRING", "output"),
+            ],
         ),
         (
             "Complex mixed case",
@@ -374,26 +372,26 @@ def run_tests():
                 ("STRING", "world"),
                 ("PUSH", ">"),
                 ("POP", "<"),
-                ("INCR", "+")
-            ]
+                ("INCR", "+"),
+            ],
         ),
     ]
-    
-    print("\n" + "="*70)
+
+    print("\n" + "=" * 70)
     print("🧪 HYPERCODE LEXER - STRING HANDLING TESTS")
-    print("="*70 + "\n")
-    
+    print("=" * 70 + "\n")
+
     passed = 0
     failed = 0
-    
+
     for description, source, expected in test_cases:
         try:
             lexer = HyperCodeLexerFixed(source)
             tokens = lexer.tokenize()
-            
+
             # Filter out EOF token for comparison
             tokens = [t for t in tokens if t.type != TokenType.EOF]
-            
+
             # Check if token count matches
             if len(tokens) != len(expected):
                 print(f"❌ {description}")
@@ -402,14 +400,14 @@ def run_tests():
                 print(f"   Got: {[(t.type.value, repr(t.value)) for t in tokens]}")
                 failed += 1
                 continue
-            
+
             # Check each token
             all_match = True
             for token, (exp_type, exp_value) in zip(tokens, expected):
                 if token.type.value != exp_type or token.value != exp_value:
                     all_match = False
                     break
-            
+
             if all_match:
                 print(f"✅ {description}")
                 passed += 1
@@ -419,31 +417,31 @@ def run_tests():
                 print(f"   Expected: {expected}")
                 print(f"   Got: {[(t.type.value, repr(t.value)) for t in tokens]}")
                 failed += 1
-        
+
         except LexerError as e:
             print(f"❌ {description}")
             print(f"   Input: {source}")
             print(f"   Error: {e}")
             failed += 1
-        
+
         except Exception as e:
             print(f"❌ {description}")
             print(f"   Input: {source}")
             print(f"   Unexpected error: {e}")
             failed += 1
-    
+
     print()
-    print("="*70)
+    print("=" * 70)
     print(f"Results: {passed} passed, {failed} failed")
-    print("="*70 + "\n")
-    
+    print("=" * 70 + "\n")
+
     return failed == 0
 
 
 def main():
     """Main entry point"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(
         description="HyperCode Lexer - Fixed String Handling",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -452,38 +450,38 @@ Examples:
   python lexer_fixed.py --test
   python lexer_fixed.py '"hello\\"world"'
   echo 'echo "test"' | python lexer_fixed.py -
-        """
+        """,
     )
-    
-    parser.add_argument('input', nargs='?', help='Input to tokenize')
-    parser.add_argument('--test', action='store_true', help='Run test suite')
-    parser.add_argument('--verbose', action='store_true', help='Verbose output')
-    
+
+    parser.add_argument("input", nargs="?", help="Input to tokenize")
+    parser.add_argument("--test", action="store_true", help="Run test suite")
+    parser.add_argument("--verbose", action="store_true", help="Verbose output")
+
     args = parser.parse_args()
-    
+
     if args.test:
         return 0 if run_tests() else 1
-    
+
     if not args.input:
         parser.print_help()
         return 1
-    
+
     # Read input
-    if args.input == '-':
+    if args.input == "-":
         source = sys.stdin.read()
     else:
         source = args.input
-    
+
     try:
         lexer = HyperCodeLexerFixed(source)
         tokens = lexer.tokenize()
-        
-        print(f"✅ Successfully tokenized")
+
+        print("✅ Successfully tokenized")
         print(f"   Total tokens: {len(tokens) - 1}\n")
-        
+
         lexer.print_tokens(verbose=args.verbose)
         return 0
-    
+
     except LexerError as e:
         print(f"❌ Lexer Error: {e}")
         return 1

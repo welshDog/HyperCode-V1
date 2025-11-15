@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""
+r"""
 AI model compatibility layer
 
 File: ai_gateway\claude_adapter.py

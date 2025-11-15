@@ -443,7 +443,7 @@ HTML = """
 
 # Write to file
 if __name__ == "__main__":
-    with open('hypercode-idea-generator.html', 'w') as f:
+    with open("hypercode-idea-generator.html", "w") as f:
         f.write(HTML)
     print("✅ Created hypercode-idea-generator.html")
     print("📱 Open in browser to see the interactive idea generator!")
