@@ -38,6 +38,28 @@
 
 ---
 
+## 🏆 HyperCode Contributor Recognition
+
+Our badges celebrate your neurodivergent superpower:
+
+| Badge | Achievement | How to Earn |
+|-------|-------------|------------|
+| ![First Commit](.github/badges/badge_first_commit.png) | **First Commit** | Merge your first PR |
+| ![Code Contributor](.github/badges/badge_code_contrib.png) | **Code Contributor** | 5+ merged PRs |
+| ![Accessibility Pioneer](.github/badges/badge_accessibility.png) | **A11y Pioneer** | 3+ accessibility PRs |
+| ![AI Architect](.github/badges/badge_ai_architect.png) | **AI Architect** | Python/AI work |
+| ![Doc Hero](.github/badges/badge_doc_hero.png) | **Doc Hero** | 5+ doc PRs |
+| ![Design Wizard](.github/badges/badge_design_wizard.png) | **Design Wizard** | UI/UX contributions |
+| ![Hyperfocus Legend](.github/badges/badge_hyperfocus_legend.png) | **Hyperfocus Legend** | 50+ commits or major feature |
+
+## 👑 Core Contributors
+
+| Name | Badges | Role |
+|------|--------|------|
+| @welshDog | 🚀🔥⭐📚 | Founder, HYPERFOCUS LEGEND |
+
+---
+
 ## 🚀 Quick Start
 
 ### **Installation**
