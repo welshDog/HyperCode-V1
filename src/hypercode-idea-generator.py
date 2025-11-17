@@ -474,7 +474,7 @@ def main():
 
     print(f"\n📋 Ideas for {category_key} ({level_key}):\n")
 
-    for idx, idea in enumerate(ideas, 1):
+    for _idx, idea in enumerate(ideas, 1):
         print(generator.format_idea_card(idea))
         print()
 

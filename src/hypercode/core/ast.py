@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import List, Optional, Union
+from typing import TYPE_CHECKING, List, Optional, Union
 
-from .tokens import Token
+if TYPE_CHECKING:
+    from .tokens import Token
 
 
 # Base Node class

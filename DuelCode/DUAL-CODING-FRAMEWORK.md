@@ -1,15 +1,16 @@
 # HyperCode Dual Coding Implementation Guide
+
 ## Framework for All Documentation Pages
 
-**Purpose**: Template + standards for building neurodivergent-accessible docs  
-**Status**: Production-ready  
-**Updated**: November 11, 2025, 8:14 PM GMT
+**Purpose**: Template + standards for building neurodivergent-accessible docs
+**Status**: Production-ready **Updated**: November 11, 2025, 8:14 PM GMT
 
 ---
 
 ## 📋 The Dual Coding Page Template
 
-Every HyperCode tutorial follows this structure to engage both visual AND verbal brain systems:
+Every HyperCode tutorial follows this structure to engage both visual AND verbal brain
+systems:
 
 ### Section 1: Objective & Checklist (5 min)
 
@@ -17,11 +18,13 @@ Every HyperCode tutorial follows this structure to engage both visual AND verbal
 ## 🎯 Learning Objective
 
 By the end, you'll understand:
+
 - Key concept 1
 - Key concept 2
 - Key concept 3
 
 ## 📋 Before You Start (Checklist)
+
 - [ ] Prerequisite 1
 - [ ] Prerequisite 2
 - [ ] Prerequisite 3
@@ -34,6 +37,7 @@ By the end, you'll understand:
 ### Section 2: Concept Explanation (Dual Coded)
 
 **STRUCTURE:**
+
 - **Subheading** with emoji (visual cue)
 - **Visual Representation** (diagram, chart, ASCII art)
 - **Text Explanation** (clear, chunked)
@@ -68,6 +72,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### Section 3: Hands-On Code (Interactive)
 
 **STRUCTURE:**
+
 - Side-by-side: **Visual Table** + **Code Block**
 - Each row = one operation
 - Column 1: Operation
@@ -81,11 +86,11 @@ Think of it like writing a letter → putting in envelope → mailing it
 
 ### Side-by-Side View:
 
-| Operation | What Happens | Memory |
-|-----------|---|---|
-| `++++++++` | Increment 8 times | Value: 8 |
-| `++++++++++` | Increment 10 times | Value: 18 |
-| `.` | PRINT character | Output: [Character] |
+| Operation    | What Happens       | Memory              |
+| ------------ | ------------------ | ------------------- |
+| `++++++++`   | Increment 8 times  | Value: 8            |
+| `++++++++++` | Increment 10 times | Value: 18           |
+| `.`          | PRINT character    | Output: [Character] |
 
 ### Full Code:
 
@@ -107,6 +112,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### Section 4: Visualization (ASCII Diagrams)
 
 **STRUCTURE:**
+
 - Memory state diagram
 - Data flow diagram
 - Execution timeline
@@ -133,6 +139,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### Section 5: Challenge & Reflection
 
 **STRUCTURE:**
+
 - 2-3 challenges (easy → medium → hard)
 - Each with hints (expandable/collapsible)
 - Solutions provided (also expandable)
@@ -152,8 +159,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 <details>
 <summary>💡 Solution (Click to reveal)</summary>
 
-[CODE SOLUTION]
-[EXPECTED OUTPUT]
+[CODE SOLUTION] [EXPECTED OUTPUT]
 
 </details>
 ```
@@ -165,6 +171,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### Section 6: Common Mistakes
 
 **STRUCTURE:**
+
 - 3-5 common mistakes
 - Visual before/after
 - Clear explanation of why it's wrong
@@ -176,9 +183,10 @@ Think of it like writing a letter → putting in envelope → mailing it
 ## Part 5: Common Mistakes 🚨
 
 ### ❌ Mistake 1: [Description]
-
 ```
+
 [WRONG CODE]
+
 ```
 
 **Why**: [Explanation]
@@ -186,8 +194,11 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### ✅ Fix:
 
 ```
+
 [CORRECT CODE]
+
 ```
+
 ```
 
 **Why**: Prevents frustration, saves debugging time, builds metacognition.
@@ -197,6 +208,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ### Section 7: Key Takeaways
 
 **STRUCTURE:**
+
 - Summary table of concepts
 - Bulleted key ideas
 - Why it matters
@@ -208,11 +220,11 @@ Think of it like writing a letter → putting in envelope → mailing it
 
 ### What You Learned
 
-| Concept | Operation | Example |
-|---------|-----------|---------|
-| Increment | `+` | `++++` = 4 |
-| Move | `>` | `>` = next cell |
-| Print | `.` | `.` = output |
+| Concept   | Operation | Example         |
+| --------- | --------- | --------------- |
+| Increment | `+`       | `++++` = 4      |
+| Move      | `>`       | `>` = next cell |
+| Print     | `.`       | `.` = output    |
 
 ### Key Ideas
 
@@ -231,6 +243,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ## ♿ Accessibility Notes
 
 **This page uses:**
+
 - ✅ Dual Coding: Visuals + text side-by-side
 - ✅ Clear Spacing: Ample white space
 - ✅ Sans-serif Fonts: Better for dyslexia
@@ -253,6 +266,7 @@ Think of it like writing a letter → putting in envelope → mailing it
 ## 🚀 Next Steps
 
 After mastering [Topic], try:
+
 1. [Next Tutorial]
 2. [Intermediate Challenge]
 3. [Advanced Project]
@@ -396,23 +410,27 @@ Before publishing, verify:
 ## 🚀 Implementation Roadmap
 
 ### Phase 1: Pilot (Week 1)
+
 - [ ] Design tutorial-01-hello-world.md (DONE ✅)
 - [ ] Create visual design spec (this document)
 - [ ] Get feedback from 3 neurodivergent testers
 
 ### Phase 2: Expand (Week 2-3)
+
 - [ ] Convert existing docs to dual-coding format
 - [ ] Build HTML template for easy styling
 - [ ] Add dark mode toggle
 - [ ] Implement font-size customization
 
 ### Phase 3: Polish (Week 4)
+
 - [ ] Create CSS styleguide
 - [ ] Build reusable components
 - [ ] Add WCAG AAA audit
 - [ ] Launch documentation site
 
 ### Phase 4: Scale (Month 2+)
+
 - [ ] Create 5-10 more tutorials
 - [ ] Build interactive code playground
 - [ ] Add video alternatives (for audio learners)
@@ -422,22 +440,23 @@ Before publishing, verify:
 
 ## 💡 Key Principles Summary
 
-| Principle | Why | How |
-|-----------|-----|-----|
-| **Dual Coding** | Engages multiple brain systems | Visuals + text simultaneously |
-| **Chunking** | Reduces cognitive load | Short sections, clear breaks |
-| **Spacing** | Easier to process | Ample whitespace |
-| **Multiple Entry Points** | Different learning styles | Visuals, text, code, challenges |
-| **Clear Progress** | Reduces ADHD anxiety | Checklists, progress bars |
-| **Error Prevention** | Builds confidence | Address common mistakes upfront |
-| **Immediate Feedback** | Dopamine hits | Show expected output |
-| **Accessibility First** | Not an afterthought | Built into design from day 1 |
+| Principle                 | Why                            | How                             |
+| ------------------------- | ------------------------------ | ------------------------------- |
+| **Dual Coding**           | Engages multiple brain systems | Visuals + text simultaneously   |
+| **Chunking**              | Reduces cognitive load         | Short sections, clear breaks    |
+| **Spacing**               | Easier to process              | Ample whitespace                |
+| **Multiple Entry Points** | Different learning styles      | Visuals, text, code, challenges |
+| **Clear Progress**        | Reduces ADHD anxiety           | Checklists, progress bars       |
+| **Error Prevention**      | Builds confidence              | Address common mistakes upfront |
+| **Immediate Feedback**    | Dopamine hits                  | Show expected output            |
+| **Accessibility First**   | Not an afterthought            | Built into design from day 1    |
 
 ---
 
 ## 🎯 Success Metrics
 
 After implementing dual-coding docs:
+
 - **Completion Rate**: ↑ 40-60% (vs. traditional text-only)
 - **Time to Competency**: ↓ 30-50% faster
 - **Error Rate**: ↓ 25-40% fewer mistakes
@@ -455,12 +474,12 @@ After implementing dual-coding docs:
 
 ---
 
-**This framework ensures every HyperCode doc is neurodivergent-accessible by DEFAULT, not by accident.**
+**This framework ensures every HyperCode doc is neurodivergent-accessible by DEFAULT,
+not by accident.**
 
 **Let's build documentation that EMPOWERS, not excludes!** 🚀👊
 
 ---
 
-*Created*: November 11, 2025  
-*Status*: Ready for implementation  
-*Contact*: hello@hypercode.dev
+_Created_: November 11, 2025 _Status_: Ready for implementation _Contact_:
+hello@hypercode.dev

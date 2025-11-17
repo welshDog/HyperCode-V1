@@ -165,7 +165,8 @@ class DuelCodeEnhancedValidator:
 
         if objectives_count < 3:
             self._add_result(
-                f"Learning Objectives should have at least 3 items (found {objectives_count})",
+                f"Learning Objectives should have at least 3 items "
+                f"(found {objectives_count})",
                 Severity.WARNING,
                 start_line,
             )
@@ -213,13 +214,15 @@ class DuelCodeEnhancedValidator:
         """Check code quality in code blocks."""
         in_code_block = False
         current_lang = None
-        code_block_lines = []
+        code_block_lines: List[Tuple[int, str]] = []
 
         for i, line in enumerate(self.lines):
             if line.startswith("```"):
                 if in_code_block and code_block_lines:
                     self._analyze_code_block(
-                        code_block_lines, current_lang, i - len(code_block_lines) - 1
+                        code_block_lines,
+                        current_lang or "unknown",
+                        i - len(code_block_lines) - 1,
                     )
                     code_block_lines = []
                 else:
@@ -251,10 +254,10 @@ class DuelCodeEnhancedValidator:
             self._analyze_javascript_code(lines, start_line)
 
     def _analyze_python_code(
-        self, lines: List[Tuple[int, str]], start_line: int
+        self, lines: List[Tuple[int, str]], _start_line: int
     ) -> None:
         """Python-specific code analysis."""
-        for i, (line_num, line) in enumerate(lines):
+        for _i, (line_num, line) in enumerate(lines):
             # Check for print statements (suggest using logging in production code)
             if re.match(r"^\s*print\(", line):
                 self._add_result(
@@ -272,14 +275,15 @@ class DuelCodeEnhancedValidator:
                 )
 
     def _analyze_javascript_code(
-        self, lines: List[Tuple[int, str]], start_line: int
+        self, lines: List[Tuple[int, str]], _start_line: int
     ) -> None:
         """JavaScript/TypeScript-specific code analysis."""
-        for i, (line_num, line) in enumerate(lines):
+        for _i, (line_num, line) in enumerate(lines):
             # Check for console.log
             if "console.log(" in line and not line.strip().startswith("//"):
                 self._add_result(
-                    "Consider removing or commenting out console.log statements in production code",
+                    "Consider removing or commenting out console.log statements "
+                    "in production code",
                     Severity.INFO,
                     line_num,
                 )
@@ -311,7 +315,8 @@ class DuelCodeEnhancedValidator:
 
         if found_terms and not self._find_lines(r"^## 📚 Glossary"):
             self._add_result(
-                f"Document contains technical terms ({', '.join(found_terms[:3])}...). "
+                f"Document contains technical terms "
+                f"({', '.join(found_terms[:3])}...). "
                 "Consider adding a Glossary section.",
                 Severity.INFO,
                 0,
@@ -375,7 +380,11 @@ def print_validation_results(results: List[ValidationResult]) -> None:
         return
 
     # Group by severity
-    by_severity = {Severity.ERROR: [], Severity.WARNING: [], Severity.INFO: []}
+    by_severity: Dict[Severity, List[ValidationResult]] = {
+        Severity.ERROR: [],
+        Severity.WARNING: [],
+        Severity.INFO: [],
+    }
 
     for result in results:
         by_severity[result.severity].append(result)

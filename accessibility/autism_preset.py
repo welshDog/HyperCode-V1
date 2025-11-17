@@ -21,14 +21,6 @@ File: accessibility\autism_preset.py
 """Preset configurations for different neurotypes."""
 
 NEURO_PRESETS = {
-    "dyslexia": {
-        "font": "opendyslexic",
-        "spacing": 1.2,
-        "colors": "dark_theme"
-    },
-    "adhd": {
-        "minimal_ui": True,
-        "focus_mode": True,
-        "distraction_free": True
-    }
+    "dyslexia": {"font": "opendyslexic", "spacing": 1.2, "colors": "dark_theme"},
+    "adhd": {"minimal_ui": True, "focus_mode": True, "distraction_free": True},
 }

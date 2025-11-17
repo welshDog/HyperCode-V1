@@ -1,4 +1,5 @@
 # 🚀 HyperCode Dual Coding Quick Reference
+
 ## One-Page Cheat Sheet for Doc Writers
 
 **Print this. Post it. USE IT.** 👊
@@ -66,13 +67,13 @@ Visual SIMULTANEOUSLY with Text
 
 ## Visual Options (Pick One Per Concept)
 
-| Visual Type | When to Use | Example |
-|---|---|---|
+| Visual Type       | When to Use            | Example                 |
+| ----------------- | ---------------------- | ----------------------- |
 | **ASCII Diagram** | Show process/structure | Memory cells, data flow |
-| **Table** | Compare options | Operations vs. effects |
-| **Flowchart** | Show decision logic | If/then branches |
-| **Timeline** | Show sequence | Step-by-step execution |
-| **Matrix** | Show relationships | Features vs. neurotypes |
+| **Table**         | Compare options        | Operations vs. effects  |
+| **Flowchart**     | Show decision logic    | If/then branches        |
+| **Timeline**      | Show sequence          | Step-by-step execution  |
+| **Matrix**        | Show relationships     | Features vs. neurotypes |
 
 ---
 
@@ -122,9 +123,9 @@ Sections:       2-3rem (32-48px) spacing
 ### ❌ BAD (Text-Only)
 
 ```
-A variable stores a value in memory. When you create 
-a variable, the computer allocates memory space. 
-The name refers to this location. Later, you can 
+A variable stores a value in memory. When you create
+a variable, the computer allocates memory space.
+The name refers to this location. Later, you can
 access the value by using the name.
 ```
 
@@ -169,6 +170,7 @@ A **variable** = named box in memory
 **Challenge**: [Requires combining 2-3 concepts]
 
 **Steps**:
+
 1. [Step 1]
 2. [Step 2]
 3. [Step 3]
@@ -186,10 +188,12 @@ A **variable** = named box in memory
 **Challenge**: [Requires creative application]
 
 **Requirements**:
+
 - [Requirement 1]
 - [Requirement 2]
 
 **Hints**:
+
 1. [Hint about approach]
 2. [Hint about edge case]
 
@@ -210,15 +214,19 @@ A **variable** = named box in memory
 ## ❌ Mistake: [Description]
 
 ### Wrong Code:
+
 [CODE BLOCK - bad version]
 
 ### Why It Fails:
+
 [Short explanation of the problem]
 
 ### ✅ Correct:
+
 [CODE BLOCK - good version]
 
 ### Key Idea:
+
 [One sentence reinforcing the lesson]
 ```
 
@@ -230,6 +238,7 @@ A **variable** = named box in memory
 ## ♿ Accessibility Features
 
 **This page uses:**
+
 - ✅ Dual Coding (visual + text)
 - ✅ High contrast (WCAG AA)
 - ✅ Dyslexia-friendly fonts
@@ -241,8 +250,8 @@ A **variable** = named box in memory
 - ✅ No time limits
 - ✅ Multiple formats
 
-**Tested with**: Screen readers, keyboard nav, 
-dyslexic readers, ADHD brains, autistic learners
+**Tested with**: Screen readers, keyboard nav, dyslexic readers, ADHD brains, autistic
+learners
 ```
 
 ---
@@ -334,7 +343,8 @@ Chunked > Dense.
 
 ## The Golden Rule
 
-**If your page works for ADHD + Dyslexic + Autistic learners, it WILL work for everyone.**
+**If your page works for ADHD + Dyslexic + Autistic learners, it WILL work for
+everyone.**
 
 Accessibility isn't a side feature. It's the MAIN feature.
 
@@ -371,6 +381,7 @@ Accessibility isn't a side feature. It's the MAIN feature.
 ## Quick Stats
 
 **Dual Coding Results:**
+
 - 30-50% better retention
 - 40% fewer mistakes
 - 2x faster learning
@@ -383,16 +394,12 @@ Accessibility isn't a side feature. It's the MAIN feature.
 
 Print it. Laminate it. Tape it to your monitor.
 
-When writing HyperCode docs:
-✅ Check this sheet
-✅ Follow the pattern
-✅ Test with neurodivergent users
-✅ Iterate based on feedback
+When writing HyperCode docs: ✅ Check this sheet ✅ Follow the pattern ✅ Test with
+neurodivergent users ✅ Iterate based on feedback
 
 **That's it. That's how we build legendary docs.** 🚀👊
 
 ---
 
-*Created*: November 11, 2025  
-*For*: All HyperCode doc writers  
-*Purpose*: Make accessibility EASY, not optional
+_Created_: November 11, 2025 _For_: All HyperCode doc writers _Purpose_: Make
+accessibility EASY, not optional

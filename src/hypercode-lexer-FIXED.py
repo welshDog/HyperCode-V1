@@ -272,7 +272,7 @@ class HyperCodeLexerFixed:
                         f"Invalid escape sequence: '\\{next_char}'",
                         self.line,
                         self.column,
-                        f"Valid escapes: {', '.join(['\\\\' + k for k in self.ESCAPE_SEQUENCES.keys()])}",
+                        f"Valid escapes: {', '.join(['\\\\' + k for k in self.ESCAPE_SEQUENCES])}",
                     )
 
                 continue
@@ -467,10 +467,7 @@ Examples:
         return 1
 
     # Read input
-    if args.input == "-":
-        source = sys.stdin.read()
-    else:
-        source = args.input
+    source = sys.stdin.read() if args.input == "-" else args.input
 
     try:
         lexer = HyperCodeLexerFixed(source)
