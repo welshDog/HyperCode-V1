@@ -56,6 +56,7 @@ typeguard==4.1.5
 ```
 
 **Then run:**
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -65,6 +66,7 @@ pip install -r requirements.txt
 ### FIX #2: THE QUICK EDIT
 
 **Windows (Notepad):**
+
 ```
 C:\Users\lyndz\Downloads\HyperCode\hypercode\requirements.txt
 
@@ -74,6 +76,7 @@ Save
 ```
 
 **Mac/Linux (nano):**
+
 ```bash
 nano requirements.txt
 # Find the line with weaviate-client==4.1.1
@@ -82,6 +85,7 @@ nano requirements.txt
 ```
 
 **Then run:**
+
 ```bash
 pip cache purge
 pip install -r requirements.txt
@@ -117,16 +121,19 @@ python core/lexer.py
 **The ONE Line Solution:**
 
 Edit `requirements.txt` and change THIS:
+
 ```
 weaviate-client==4.1.1
 ```
 
 To THIS:
+
 ```
 weaviate-client==4.18.0
 ```
 
 Then run:
+
 ```bash
 pip install -r requirements.txt
 ```

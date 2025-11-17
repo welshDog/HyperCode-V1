@@ -3,6 +3,7 @@
 ## 🎯 Learning Objectives
 
 By the end of this tutorial, you will:
+
 - ✅ Understand how HyperCode operations work
 - ✅ Learn how to output text to the screen
 - ✅ Know the difference between code and output
@@ -425,12 +426,14 @@ You've completed HyperCode Tutorial Part 1: Hello World! 🎊
 ## 🎉 Conclusion
 
 Congratulations! You've successfully:
+
 - Created your first HyperCode program
 - Learned how memory cells work
 - Mastered the art of character output
 - Fixed common programming mistakes
 
 **Key Takeaways:**
+
 - Always initialize memory cells before output
 - Use `>` to move between memory cells
 - Each character requires specific ASCII values
@@ -463,7 +466,8 @@ Ready to level up? Here's your learning path:
 ## 🎓 Glossary
 
 - **Memory Cell**: A storage location that holds a number (0-255)
-- **ASCII**: American Standard Code for Information Interchange - maps numbers to characters
+- **ASCII**: American Standard Code for Information Interchange - maps numbers to
+  characters
 - **Pointer**: Indicates which memory cell is currently active
 - **Output**: Displaying information to the user
 
@@ -471,20 +475,21 @@ Ready to level up? Here's your learning path:
 
 ## ❓ FAQ
 
-**Q: Why does my program print nothing?**
-A: Check that you've incremented the memory cell before using `.` to output.
+**Q: Why does my program print nothing?** A: Check that you've incremented the memory
+cell before using `.` to output.
 
-**Q: What does the `>` symbol do?**
-A: It moves the pointer to the next memory cell to the right.
+**Q: What does the `>` symbol do?** A: It moves the pointer to the next memory cell to
+the right.
 
-**Q: Can I print multiple characters?**
-A: Yes! Set each character's ASCII value in sequence, using `.` after each one.
+**Q: Can I print multiple characters?** A: Yes! Set each character's ASCII value in
+sequence, using `.` after each one.
 
 ---
 
 ## 🙏 Acknowledgments
 
 Special thanks to:
+
 - The Brainfuck community for the original language concept
 - All contributors who helped improve these tutorials
 - You, for taking the first step on your HyperCode journey!

@@ -1,8 +1,8 @@
 # 🚀 HyperCode: Installation & Setup Guide
+
 ## Get Running in 5 Minutes! ⚡
 
-**Last Updated**: November 11, 2025  
-**Status**: Production-Ready Configuration  
+**Last Updated**: November 11, 2025 **Status**: Production-Ready Configuration
 
 ---
 
@@ -16,6 +16,7 @@ Before you start, make sure you have:
 - **pip** (comes with Python)
 
 Verify:
+
 ```bash
 python --version    # Should be 3.10+
 git --version       # Should be 2.30+
@@ -150,22 +151,26 @@ mypy core/
 ## 🧪 Running Tests
 
 ### All Tests
+
 ```bash
 pytest tests/ -v
 ```
 
 ### Specific Test File
+
 ```bash
 pytest tests/test_lexer.py -v
 ```
 
 ### With Coverage Report
+
 ```bash
 pytest tests/ -v --cov=core --cov-report=html
 # Open htmlcov/index.html in browser
 ```
 
 ### Watch Mode (Auto-run on changes)
+
 ```bash
 pytest-watch tests/
 ```
@@ -175,26 +180,31 @@ pytest-watch tests/
 ## 🔍 Code Quality Checks
 
 ### Format Code (Black)
+
 ```bash
 black core/ tests/
 ```
 
 ### Lint Code (Flake8)
+
 ```bash
 flake8 core/ tests/
 ```
 
 ### Type Check (MyPy)
+
 ```bash
 mypy core/
 ```
 
 ### Security Scan (Bandit)
+
 ```bash
 bandit -r core/
 ```
 
 ### All Checks (Pre-commit)
+
 ```bash
 pre-commit run --all-files
 ```
@@ -204,11 +214,13 @@ pre-commit run --all-files
 ## 🚀 Running the Lexer
 
 ### Direct Execution
+
 ```bash
 python core/lexer.py
 ```
 
 ### Import in Python
+
 ```python
 from core.lexer import HyperCodeLexer
 
@@ -235,6 +247,7 @@ for token in tokens:
 ### Problem: `ModuleNotFoundError: No module named 'core'`
 
 **Solution**: Make sure you're in the repo root and venv is activated
+
 ```bash
 pwd  # Should show .../hypercode
 which python  # Should show venv/bin/python
@@ -243,6 +256,7 @@ which python  # Should show venv/bin/python
 ### Problem: `pip install` fails
 
 **Solution**: Upgrade pip and try again
+
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -251,6 +265,7 @@ pip install -r requirements.txt
 ### Problem: Pre-commit hooks failing
 
 **Solution**: Install dependencies and try again
+
 ```bash
 pip install pre-commit
 pre-commit install
@@ -260,6 +275,7 @@ pre-commit run --all-files
 ### Problem: Tests failing
 
 **Solution**: Check Python version and dependencies
+
 ```bash
 python --version  # Must be 3.10+
 pytest --version
@@ -321,7 +337,7 @@ git push origin main
 
 ## 🎉 You're All Set!
 
-You now have HyperCode installed and ready to build! 
+You now have HyperCode installed and ready to build!
 
 **Next**: Check out [CONTRIBUTING.md](CONTRIBUTING.md) for development workflow.
 

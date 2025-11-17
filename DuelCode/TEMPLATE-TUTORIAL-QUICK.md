@@ -3,6 +3,7 @@
 ## 🎯 Learning Objectives
 
 By the end of this tutorial, you will:
+
 - ✅ [Objective 1]
 - ✅ [Objective 2]
 - ✅ [Objective 3]
@@ -37,15 +38,18 @@ By the end of this tutorial, you will:
 ```
 
 **What it does:**
+
 - [Explanation 1]
 - [Explanation 2]
 
 **Run it:**
+
 ```bash
 [Command to run]
 ```
 
 **Output:**
+
 ```text
 [Expected output]
 ```
@@ -77,6 +81,7 @@ By the end of this tutorial, you will:
 ## 🎉 Conclusion
 
 You learned:
+
 - [Key point 1]
 - [Key point 2]
 - [Key point 3]

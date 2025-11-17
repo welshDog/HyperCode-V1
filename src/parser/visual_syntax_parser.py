@@ -11,6 +11,7 @@ think "Finally, a language that gets me!"
 import re
 from dataclasses import dataclass
 from enum import Enum
+from pathlib import Path
 from typing import Any, Dict, List
 
 
@@ -68,11 +69,11 @@ class ParsedFunction:
 class VisualSyntaxParser:
     """🎨 Main parser for HyperCode's visual semantic syntax"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.semantic_patterns = self._build_semantic_patterns()
         self.color_scheme = self._build_color_scheme()
 
-    def _build_semantic_patterns(self) -> Dict[str, SemanticMarker]:
+    def _build_semantic_patterns(self) -> Dict[str, Dict[str, Any]]:
         """🔍 Build regex patterns for all semantic markers"""
         patterns = {}
 
@@ -94,7 +95,8 @@ class VisualSyntaxParser:
         }
 
         for emoji, keyword in annotation_map.items():
-            # Match: emoji @keyword("param") - the emoji is the marker, @keyword is the syntax
+            # Match: emoji @keyword("param") - the emoji is the marker,
+            # @keyword is the syntax
             pattern = rf"{emoji}\s*@{keyword}\s*\((.*?)\)"
             marker = next(m for m in SemanticMarker if m.value == emoji)
             patterns[emoji] = {"regex": re.compile(pattern), "marker": marker}
@@ -120,7 +122,7 @@ class VisualSyntaxParser:
 
     def parse_file(self, file_path: str) -> List[ParsedFunction]:
         """📄 Parse an entire HyperCode file"""
-        with open(file_path, "r", encoding="utf-8") as f:
+        with Path(file_path).open("r", encoding="utf-8") as f:
             content = f.read()
 
         return self.parse_content(content)
@@ -130,7 +132,7 @@ class VisualSyntaxParser:
         lines = content.split("\n")
         functions = []
         current_function = None
-        pending_annotations = []  # Store annotations found before function definition
+        pending_annotations: List[SemanticAnnotation] = []  # Store annotations
 
         for line_num, line in enumerate(lines, 1):
             line = line.strip()
@@ -152,7 +154,8 @@ class VisualSyntaxParser:
                 # Store annotations found before function definition
                 pending_annotations.extend(annotations)
             elif annotations and current_function:
-                # Add annotations found after function definition (shouldn't happen in normal syntax)
+                # Add annotations found after function definition
+                # (shouldn't happen in normal syntax)
                 current_function.annotations.extend(annotations)
 
             # Add function body lines
@@ -275,7 +278,7 @@ class VisualSyntaxParser:
         self, functions: List[ParsedFunction]
     ) -> Dict[str, Any]:
         """📊 Extract semantic summary for analysis"""
-        summary = {
+        summary: Dict[str, Any] = {
             "total_functions": len(functions),
             "marker_counts": {},
             "accessibility_features": [],
@@ -309,7 +312,7 @@ class VisualSyntaxParser:
         self, functions: List[ParsedFunction]
     ) -> Dict[str, Any]:
         """🧠 Validate neurodiversity-first design principles"""
-        compliance = {
+        compliance: Dict[str, Any] = {
             "score": 0,
             "issues": [],
             "recommendations": [],
@@ -354,7 +357,8 @@ class VisualSyntaxParser:
                 passed_checks += 1
             else:
                 compliance["issues"].append(
-                    f"Function '{func.name}' has too many annotations ({len(func.annotations)})"
+                    f"Function '{func.name}' has too many annotations "
+                    f"({len(func.annotations)})"
                 )
                 compliance["recommendations"].append(
                     f"Consider reducing annotations in '{func.name}'"

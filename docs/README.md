@@ -1,6 +1,7 @@
 # 🚀 hypercode
 
-> **🌟 [Our Vision & Mission →](VISION.md)** - Understand the philosophy and future of HyperCode
+> **🌟 [Our Vision & Mission →](VISION.md)** - Understand the philosophy and future of
+> HyperCode
 
 HyperCode: Neurodivergent-First Programming Language with AI Compatibility
 
@@ -35,31 +36,37 @@ Check out our [documentation](docs/README.md) for detailed usage instructions.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for
+details.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for
+details.
 
 ## ♿ Accessibility Features
 
 HyperCode is designed with neurodiversity in mind:
 
 ### Visual Design
+
 - High contrast color schemes
 - Dyslexia-friendly fonts (via IDE integration)
 - Syntax highlighting optimized for color blindness
 
 ### Cognitive Features
+
 - Predictable, consistent syntax
 - Minimal cognitive load
 - Clear error messages with visual aids
 
 ### Customization
+
 - Adjustable font sizes
 - Customizable keybindings
 - Screen reader support
 
 ### Getting Help
+
 - [Accessibility Guide](docs/accessibility.md)
 - Request accommodations via [Discord](https://discord.gg/hypercode)

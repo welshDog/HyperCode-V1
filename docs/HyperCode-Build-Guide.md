@@ -1,9 +1,9 @@
 # 🚀 HyperCode: Complete Implementation Starter Kit
+
 ## Build Instructions + Setup Guide (Phase 1: Foundation)
 
-**Status**: READY TO BUILD ⚡  
-**Updated**: November 11, 2025, 10:07 AM GMT  
-**Next Milestone**: Parser v0.1 Complete ✅
+**Status**: READY TO BUILD ⚡ **Updated**: November 11, 2025, 10:07 AM GMT **Next
+Milestone**: Parser v0.1 Complete ✅
 
 ---
 
@@ -203,28 +203,28 @@ pre-commit run --all-files
 # core/lexer.py (MINIMAL EXAMPLE)
 class HyperCodeLexer:
     """Tokenizes HyperCode programs (8-12 core operations)"""
-    
+
     TOKENS = {
         # Data operations
         'PUSH': r'>',          # Push value
         'POP': r'<',           # Pop value
         'INCR': r'\+',         # Increment
         'DECR': r'\-',         # Decrement
-        
+
         # I/O operations
         'OUTPUT': r'\.',       # Output character
         'INPUT': r',',         # Read character
-        
+
         # Control flow
         'LOOP_START': r'\[',   # Loop start
         'LOOP_END': r'\]',     # Loop end
-        
+
         # Custom HyperCode
         'SPATIAL_2D': r'@',    # 2D spatial marker
         'AI_NATIVE': r'#',     # AI-native mode
         'COMMENT': r';.*',     # Comments
     }
-    
+
     def tokenize(self, code: str):
         """Convert source to token stream"""
         tokens = []
@@ -232,7 +232,7 @@ class HyperCodeLexer:
             if char in self.TOKENS.values():
                 tokens.append(Token(char, type=self.classify(char)))
         return tokens
-    
+
     def classify(self, char: str) -> str:
         """Classify character to token type"""
         for token_type, pattern in self.TOKENS.items():
@@ -253,37 +253,37 @@ class HyperCodeLexer:
 # core/parser.py
 class HyperCodeParser:
     """Parses tokens into AST for compilation"""
-    
+
     def __init__(self, tokens):
         self.tokens = tokens
         self.pos = 0
         self.ast = []
-    
+
     def parse(self) -> list:
         """Generate AST from token stream"""
         while self.pos < len(self.tokens):
             token = self.tokens[self.pos]
-            
+
             if token.type == 'PUSH':
                 self.ast.append(Node('Push', value=token.value))
             elif token.type == 'LOOP_START':
                 loop_body = self.parse_loop()
                 self.ast.append(Node('Loop', body=loop_body))
             # ... more rules
-            
+
             self.pos += 1
-        
+
         return self.ast
-    
+
     def parse_loop(self) -> list:
         """Parse loop structure [...]"""
         body = []
         self.pos += 1  # Skip '['
-        
+
         while self.pos < len(self.tokens) and self.tokens[self.pos].type != 'LOOP_END':
             # Recursive parsing
             pass
-        
+
         self.pos += 1  # Skip ']'
         return body
 ```
@@ -300,21 +300,21 @@ class HyperCodeParser:
 # backends/javascript.py
 class JavaScriptBackend:
     """Compiles HyperCode AST to runnable JavaScript"""
-    
+
     def compile(self, ast: list) -> str:
         """Generate JavaScript code from AST"""
         js_code = """
         // HyperCode compiled to JavaScript
         const memory = new Uint8Array(30000);
         let ptr = 0;
-        
+
         """
-        
+
         for node in ast:
             js_code += self.compile_node(node)
-        
+
         return js_code
-    
+
     def compile_node(self, node) -> str:
         """Convert single AST node to JS"""
         if node.type == 'Push':
@@ -338,7 +338,7 @@ class JavaScriptBackend:
 # accessibility/wcag_auditor.py
 class WCAGAuditor:
     """Validates WCAG 2.1 Level AAA compliance"""
-    
+
     def audit_output(self, output_text: str, context: str = "web") -> dict:
         """Check accessibility compliance"""
         results = {
@@ -350,7 +350,7 @@ class WCAGAuditor:
             'keyboard_nav': self.verify_keyboard_access(),
         }
         return results
-    
+
     def apply_dyslexia_format(self, text: str) -> str:
         """Format for dyslexic readers"""
         return {
@@ -377,12 +377,12 @@ from abc import ABC, abstractmethod
 
 class AIGateway(ABC):
     """Abstract base for all AI model adapters"""
-    
+
     @abstractmethod
     def normalize_prompt(self, template: str, vars: dict) -> str:
         """Convert to model-specific format"""
         pass
-    
+
     @abstractmethod
     def standardize_response(self, response: dict) -> dict:
         """Normalize response to standard schema"""
@@ -391,14 +391,14 @@ class AIGateway(ABC):
 # ai_gateway/prompt_normalizer.py
 class PromptNormalizer:
     """Converts prompts for different model families"""
-    
+
     TEMPLATES = {
         'gpt': "SYSTEM: {system}\nUser: {prompt}",
         'claude': "Human: {prompt}\nAssistant:",
         'mistral': "<s>[INST] {prompt} [/INST]",
         'ollama': "{prompt}",
     }
-    
+
     def normalize(self, template: str, model_family: str, vars: dict) -> str:
         """Adapt prompt to target model"""
         target_template = self.TEMPLATES.get(model_family, template)
@@ -421,34 +421,34 @@ from datetime import datetime
 
 class ResearchCrawler:
     """Automated daily research collection"""
-    
+
     SOURCES = [
         'https://arxiv.org/list/cs.PL/recent',  # Programming Languages
         'https://api.semanticscholar.org/graph/v1/paper/search',
         'https://github.com/search?q=neurodivergent+accessibility',
     ]
-    
+
     async def daily_research_run(self):
         """Executes every 24 hours via GitHub Actions"""
         async with aiohttp.ClientSession() as session:
             # 1. Scrape new research
             papers = await self.scrape_papers(session)
-            
+
             # 2. Index in vector DB
             await self.index_papers(papers)
-            
+
             # 3. Generate synthesis report
             report = await self.synthesize_findings(papers)
-            
+
             # 4. Update knowledge graph
             await self.update_knowledge_graph(report)
-            
+
             # 5. Generate markdown
             markdown = self.generate_markdown(report)
-            
+
             # 6. Create GitHub PR
             await self.create_pr(markdown)
-            
+
             return report
 ```
 
@@ -459,7 +459,7 @@ name: Daily Research Update
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Every day at 6 AM GMT
+    - cron: "0 6 * * *" # Every day at 6 AM GMT
 
 jobs:
   research:
@@ -468,14 +468,14 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
+
       - name: Run research crawler
         run: python -m live_research.research_crawler
-      
+
       - name: Commit & push changes
         run: |
           git config user.email "bot@hypercode.dev"
@@ -503,27 +503,27 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
-    
+        python-version: ["3.10", "3.11", "3.12"]
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       - name: Install dependencies
         run: |
           pip install -r requirements-dev.txt
-      
+
       - name: Run linting (flake8)
         run: flake8 . --count --select=E9,F63,F7,F82
-      
+
       - name: Run type checking (mypy)
         run: mypy core/ ai_gateway/ accessibility/
-      
+
       - name: Run tests (pytest)
         run: pytest tests/ -v --cov=. --cov-report=xml
-      
+
       - name: Upload coverage
         uses: codecov/codecov-action@v3
 ```
@@ -559,13 +559,13 @@ CMD ["python", "-m", "uvicorn", "api:app", "--host", "0.0.0.0"]
 
 ```json
 {
-  "branches": ["main", {"name": "develop", "prerelease": "alpha"}],
+  "branches": ["main", { "name": "develop", "prerelease": "alpha" }],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/changelog", {"changelogFile": "CHANGELOG.md"}],
+    ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
     "@semantic-release/npm",
-    ["@semantic-release/git", {"assets": ["CHANGELOG.md", "package.json"]}],
+    ["@semantic-release/git", { "assets": ["CHANGELOG.md", "package.json"] }],
     "@semantic-release/github"
   ]
 }
@@ -629,40 +629,49 @@ git commit -m "test: add edge cases for quantum backend"
 ### Creating a Pull Request
 
 1. **Branch naming**:
+
    ```bash
    git checkout -b feat/parser-optimization
    git checkout -b fix/wcag-contrast-audit
    ```
 
 2. **Before push**:
+
    ```bash
    pre-commit run --all-files
    pytest tests/ -v
    ```
 
 3. **Push & create PR**:
+
    ```bash
    git push origin feat/parser-optimization
    ```
 
 4. **PR template** (auto-filled):
+
    ```markdown
    ## Description
+
    Describe the change and why.
-   
+
    ## Type of Change
+
    - [ ] Bug fix
    - [ ] New feature
    - [ ] Breaking change
    - [ ] Documentation
-   
+
    ## Testing
+
    How was this tested?
-   
+
    ## Accessibility
+
    Does this maintain WCAG 2.1 AAA?
-   
+
    ## Related Issues
+
    Fixes #123
    ```
 
@@ -671,11 +680,13 @@ git commit -m "test: add edge cases for quantum backend"
 ## 🚀 Next Steps After Phase 1
 
 **Week 13+**: Move to Phase 2 (AI Integration)
+
 - [ ] Complete RAG system for code generation
 - [ ] Multi-model orchestration framework
 - [ ] Automated test generation from specs
 
 **Production Readiness Checklist**:
+
 - [ ] 100% test coverage (core modules)
 - [ ] WCAG 2.1 AAA audit completed
 - [ ] All AI models tested & benchmarked
@@ -686,14 +697,12 @@ git commit -m "test: add edge cases for quantum backend"
 
 ## 📞 Support & Questions
 
-**GitHub Issues**: Bug reports & feature requests  
-**Discussions**: Questions & general chat  
-**Discord**: Real-time collaboration (link in README)  
-**Email**: hello@hypercode.dev  
+**GitHub Issues**: Bug reports & feature requests **Discussions**: Questions & general
+chat **Discord**: Real-time collaboration (link in README) **Email**:
+hello@hypercode.dev
 
 ---
 
 **This guide is LIVE. Check back weekly for updates!**
 
-*Last Updated: November 11, 2025, 10:07 AM GMT*  
-*Phase 1 Ready: ✅ Let's BUILD! 🚀*
+_Last Updated: November 11, 2025, 10:07 AM GMT_ _Phase 1 Ready: ✅ Let's BUILD! 🚀_

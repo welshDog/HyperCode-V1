@@ -12,16 +12,25 @@ from typing import Any, Dict, List
 
 # Add src to path for importing parser
 sys.path.append(str(Path(__file__).parent.parent.parent / "src" / "parser"))
-
-from visual_syntax_parser import ParsedFunction, SemanticAnnotation, VisualSyntaxParser
+try:
+    from visual_syntax_parser import (
+        ParsedFunction,
+        SemanticAnnotation,
+        VisualSyntaxParser,
+    )
+except ImportError:
+    # Fallback if parser module not available
+    ParsedFunction = Any
+    SemanticAnnotation = Any
+    VisualSyntaxParser = Any
 
 
 class HyperCodeSyntaxServer:
     """🎨 MCP Server for HyperCode Visual Syntax Integration"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.parser = VisualSyntaxParser()
-        self.cache = {}
+        self.cache: Dict[str, Any] = {}
 
     async def handle_request(self, request: Dict[str, Any]) -> Dict[str, Any]:
         """Handle MCP requests from IDE"""
@@ -30,7 +39,7 @@ class HyperCodeSyntaxServer:
         params = request.get("params", {})
 
         if method == "initialize":
-            return await self._initialize(params)
+            return self._initialize(params)
         elif method == "textDocument/didChange":
             return await self._document_changed(params)
         elif method == "textDocument/hover":
@@ -44,7 +53,7 @@ class HyperCodeSyntaxServer:
         else:
             return {"error": f"Unknown method: {method}"}
 
-    async def _initialize(self, params: Dict[str, Any]) -> Dict[str, Any]:
+    def _initialize(self, _params: Dict[str, Any]) -> Dict[str, Any]:
         """Initialize the MCP server"""
         return {
             "capabilities": {
@@ -109,7 +118,7 @@ class HyperCodeSyntaxServer:
 
         return {"contents": None}
 
-    async def _completion(self, params: Dict[str, Any]) -> Dict[str, Any]:
+    async def _completion(self, _params: Dict[str, Any]) -> Dict[str, Any]:
         """Provide completion for semantic annotations"""
         completions = []
 
@@ -141,7 +150,7 @@ class HyperCodeSyntaxServer:
     async def _parse_document(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Parse entire document and return semantic structure"""
         uri = params.get("uri")
-        content = self.cache.get(uri, "")
+        content = self.cache.get(uri or "", "")
 
         functions = self.parser.parse_content(content)
 
@@ -162,15 +171,15 @@ class HyperCodeSyntaxServer:
                 }
                 for func in functions
             ],
-            "neurodiversity_compliance": self.parser.calculate_neurodiversity_compliance(
-                functions
+            "neurodiversity_compliance": (
+                self.parser.calculate_neurodiversity_compliance(functions)
             ),
         }
 
     async def _validate_neurodiversity(self, params: Dict[str, Any]) -> Dict[str, Any]:
         """Validate neurodiversity compliance and provide suggestions"""
         uri = params.get("uri")
-        content = self.cache.get(uri, "")
+        content = self.cache.get(uri or "", "")
 
         functions = self.parser.parse_content(content)
         compliance = self.parser.calculate_neurodiversity_compliance(functions)
@@ -179,14 +188,22 @@ class HyperCodeSyntaxServer:
 
         # Check for missing accessibility annotations
         for func in functions:
-            has_accessibility = any(ann.marker.value == "🎯" for ann in func.annotations)
+            accessibility_marker = "🎯"
+            has_accessibility = any(
+                ann.marker.value == accessibility_marker for ann in func.annotations
+            )
             if not has_accessibility:
                 suggestions.append(
                     {
                         "line": func.line_start,
-                        "message": "Consider adding 🎯 @accessibility annotation for neurodiversity compliance",
+                        "message": (
+                            "Consider adding 🎯 @accessibility annotation "
+                            "for neurodiversity compliance"
+                        ),
                         "severity": "info",
-                        "suggestion": '🎯 @accessibility("high_contrast", "screen_reader")',
+                        "suggestion": (
+                            '🎯 @accessibility("high_contrast", "screen_reader")'
+                        ),
                     }
                 )
 
@@ -218,7 +235,10 @@ class HyperCodeSyntaxServer:
                             },
                         },
                         "severity": 2,  # Warning
-                        "message": f"High cognitive load ({cognitive_load:.1f}) - consider simplifying",
+                        "message": (
+                            f"High cognitive load ({cognitive_load:.1f}) - "
+                            "consider simplifying"
+                        ),
                         "source": "HyperCode Neurodiversity",
                     }
                 )
@@ -271,7 +291,7 @@ class HyperCodeSyntaxServer:
         return hover
 
 
-async def main():
+async def main() -> None:
     """Main MCP server loop"""
     server = HyperCodeSyntaxServer()
 

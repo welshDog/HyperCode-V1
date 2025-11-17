@@ -29,10 +29,10 @@ from backends.python import PythonBackend
 def start_repl():
     """Starts the HyperCode Read-Eval-Print Loop."""
     print("HyperCode REPL (type 'exit' to quit)")
-    
+
     lexer = Lexer()
     backend = PythonBackend()
-    
+
     # The context in which the generated Python code will be executed
     exec_context = {}
 
@@ -46,7 +46,7 @@ def start_repl():
 
             # 1. Lexing
             tokens = lexer.tokenize(source)
-            
+
             # 2. Parsing
             # The parser expects a semicolon at the end of statements.
             # For the REPL, we can be more lenient and add it if it's missing.
@@ -64,7 +64,7 @@ def start_repl():
             # The `exec` function executes the code in the given context.
             # We can inspect the `exec_context` to see variables.
             exec(python_code, exec_context)
-            
+
             # For simplicity, we don't print results yet, but the context is updated.
             # A more advanced REPL would parse expressions and print their values.
 

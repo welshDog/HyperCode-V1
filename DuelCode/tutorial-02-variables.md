@@ -3,6 +3,7 @@
 ## 🎯 Learning Objectives
 
 By the end of this tutorial, you will:
+
 - ✅ Understand what variables are in HyperCode
 - ✅ Learn how to store and retrieve values
 - ✅ Use the H (output) command to display values
@@ -54,16 +55,19 @@ H B
 ```
 
 **What it does:**
+
 - Stores the number 42 in cell A
 - Stores "Hello" in cell B
 - Displays both values
 
 **Run it:**
+
 ```bash
 hypercode run variables.hc
 ```
 
 **Output:**
+
 ```text
 42
 Hello
@@ -102,6 +106,7 @@ H age
 ## 🎉 Conclusion
 
 You learned:
+
 - Variables store data in memory cells
 - Use = to assign values
 - Use H to output values

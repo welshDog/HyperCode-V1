@@ -15,6 +15,5 @@
 """
 Semantic knowledge graph management
 
-File: knowledge_graph\update_agent.py
+File: knowledge_graph/update_agent.py
 """
-

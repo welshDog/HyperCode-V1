@@ -1,6 +1,7 @@
 # HyperCode Tutorial: Getting Started
 
 ## Table of Contents
+
 1. [Setting Up](#setting-up)
 2. [Your First Program](#your-first-program)
 3. [Working with Variables](#working-with-variables)
@@ -13,17 +14,21 @@
 ## Setting Up
 
 ### Prerequisites
+
 - Python 3.8+
 - Git (optional, for version control)
 
 ### Installation
+
 1. Clone the HyperCode repository:
+
    ```bash
    git clone https://github.com/yourusername/hypercode.git
    cd hypercode
    ```
 
 2. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -36,14 +41,15 @@
 ## Your First Program
 
 1. Create a new file called `hello.hc`:
+
    ```javascript
    // hello.hc
-   print("Welcome to HyperCode!")
-   
+   print("Welcome to HyperCode!");
+
    // Variables and basic math
-   const name = "Learner"
-   var age = 25
-   print(`Hello ${name}, you are ${age} years old!`)
+   const name = "Learner";
+   var age = 25;
+   print(`Hello ${name}, you are ${age} years old!`);
    ```
 
 2. Run the program:
@@ -54,24 +60,26 @@
 ## Working with Variables
 
 ### Basic Types
+
 ```javascript
 // Numbers
-var count = 10
-var price = 9.99
+var count = 10;
+var price = 9.99;
 
 // Strings
-const greeting = "Hello"
-const name = 'HyperCoder'
+const greeting = "Hello";
+const name = "HyperCoder";
 
 // Booleans
-var isActive = true
-var hasPermission = false
+var isActive = true;
+var hasPermission = false;
 
 // Null
-var emptyValue = null
+var emptyValue = null;
 ```
 
 ### Type Conversion
+
 ```javascript
 // String to number
 const strNum = "42"
@@ -88,6 +96,7 @@ const falsy = !!0        // false
 ## Control Flow
 
 ### If-Else Statements
+
 ```javascript
 var temperature = 22
 
@@ -101,6 +110,7 @@ if temperature > 30 {
 ```
 
 ### Loops
+
 ```javascript
 // While loop
 var i = 0
@@ -118,15 +128,17 @@ for var j = 0; j < 5; j = j + 1 {
 ## Functions and Reusability
 
 ### Basic Functions
+
 ```javascript
 function greet(name) {
-    return `Hello, ${name}!`
+  return `Hello, ${name}!`;
 }
 
-print(greet("Developer"))  // "Hello, Developer!"
+print(greet("Developer")); // "Hello, Developer!"
 ```
 
 ### Higher-Order Functions
+
 ```javascript
 // Function as argument
 function applyOperation(x, y, operation) {
@@ -143,6 +155,7 @@ print(applyOperation(5, 3, multiply))  // 15
 ## Working with Collections
 
 ### Lists
+
 ```javascript
 const fruits = ["apple", "banana", "cherry"]
 
@@ -157,19 +170,20 @@ for var i = 0; i < fruits.length(); i = i + 1 {
 ```
 
 ### Maps
+
 ```javascript
 const user = {
-    "name": "Alice",
-    "age": 30,
-    "isAdmin": true
-}
+  name: "Alice",
+  age: 30,
+  isAdmin: true,
+};
 
 // Access values
-print(user["name"])  // "Alice"
-print(user.age)      // 30
+print(user["name"]); // "Alice"
+print(user.age); // 30
 
 // Add/update
-user["email"] = "alice@example.com"
+user["email"] = "alice@example.com";
 ```
 
 ## Building a Simple Project
@@ -212,15 +226,18 @@ print(`Task completed: ${task.description}`)
 ## Next Steps
 
 1. **Explore More Features**
+
    - Error handling with try/catch
    - Modules and imports
    - File I/O operations
 
 2. **Join the Community**
+
    - [GitHub Discussions](https://github.com/yourusername/hypercode/discussions)
    - [Discord Channel](#) (coming soon)
 
 3. **Contribute**
+
    - Report issues
    - Submit pull requests
    - Improve documentation
@@ -231,4 +248,5 @@ print(`Task completed: ${task.description}`)
    - Automation scripts
 
 ---
-*Tutorial last updated: November 12, 2025*
+
+_Tutorial last updated: November 12, 2025_

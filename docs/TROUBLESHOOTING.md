@@ -1,9 +1,9 @@
 # 🔧 HyperCode: Dependency Troubleshooting Guide
+
 ## Quick Fixes for Installation Issues
 
-**Date**: November 11, 2025, 3:25 PM GMT  
-**Issue**: `weaviate-client==4.1.1` doesn't exist  
-**Solution**: Use version 4.18.0 instead ✅  
+**Date**: November 11, 2025, 3:25 PM GMT **Issue**: `weaviate-client==4.1.1` doesn't
+exist **Solution**: Use version 4.18.0 instead ✅
 
 ---
 
@@ -13,9 +13,8 @@
 ERROR: Could not find a version that satisfies the requirement weaviate-client==4.1.1
 ```
 
-**Why**: The package repository doesn't have that specific version.  
-**Real available**: 4.18.0, 4.17.0, 4.16.10, etc.  
-**What we did**: Updated to 4.18.0 ✅  
+**Why**: The package repository doesn't have that specific version. **Real available**:
+4.18.0, 4.17.0, 4.16.10, etc. **What we did**: Updated to 4.18.0 ✅
 
 ---
 
@@ -228,6 +227,7 @@ python core/lexer.py
 ### 1. Always Check PyPI First
 
 Before adding a dependency:
+
 ```bash
 # Check available versions
 pip index versions package-name
@@ -240,6 +240,7 @@ pip index versions weaviate-client
 ### 2. Use Flexible Versions (Optional)
 
 Instead of pinning exact versions, you can use:
+
 ```
 # Exact (most safe):
 weaviate-client==4.18.0
@@ -289,16 +290,19 @@ git push origin main
 ## 💾 For requirements-dev.txt
 
 Also needs the same fix! Replace:
+
 ```
 weaviate-client==4.1.1
 ```
 
 With:
+
 ```
 weaviate-client==4.18.0
 ```
 
 Then reinstall:
+
 ```bash
 pip install -r requirements-dev.txt
 ```
@@ -325,9 +329,8 @@ pytest tests/ -v
 
 ## 🎯 TLDR (Too Long, Didn't Read)
 
-**The Problem**: `weaviate-client==4.1.1` doesn't exist  
-**The Fix**: Change to `weaviate-client==4.18.0`  
-**The File**: Use [119] requirements-FIXED.txt  
+**The Problem**: `weaviate-client==4.1.1` doesn't exist **The Fix**: Change to
+`weaviate-client==4.18.0` **The File**: Use [119] requirements-FIXED.txt
 
 ```bash
 # Just do this:
@@ -343,6 +346,7 @@ pip install -r requirements.txt
 ## 🚀 You're Back on Track!
 
 After these steps, you'll be able to:
+
 ```bash
 pip install -r requirements.txt  # ✅ Works!
 python core/lexer.py             # ✅ Works!
@@ -354,11 +358,13 @@ pytest tests/ -v                 # ✅ Works!
 ## 📞 If Issues Persist
 
 1. **Check Python version**:
+
    ```bash
    python --version  # Must be 3.10+
    ```
 
 2. **Clear everything and reinstall**:
+
    ```bash
    pip uninstall -y -r requirements.txt
    pip cache purge
@@ -366,6 +372,7 @@ pytest tests/ -v                 # ✅ Works!
    ```
 
 3. **Try installing without version pins** (troubleshooting only):
+
    ```bash
    pip install weaviate-client  # Gets latest
    pip install openai anthropic  # Gets latest

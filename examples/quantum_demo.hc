@@ -17,4 +17,3 @@ Example HyperCode programs
 
 File: examples\quantum_demo.hc
 """
-

@@ -1,1 +1,46 @@
-{"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json", "name": "HyperCode", "scopeName": "source.hypercode", "patterns": [{"include": "#semantic-annotations"}], "repository": {"semantic-annotations": {"patterns": [{"name": "keyword.control.semantic.hypercode", "match": "([???????????????])\\s*(@(verifiable|ensures|requires|intent|accessibility|computation|operation|return))\\s*\\(", "captures": {"1": {"name": "punctuation.definition.semantic.hypercode entity.name.semantic.hypercode"}, "2": {"name": "keyword.control.semantic.hypercode"}, "3": {"name": "entity.name.type.semantic.hypercode"}}}}, {"name": "string.quoted.double.semantic.hypercode", "begin": "([???????????????])\\s*@(verifiable|ensures|requires|intent|accessibility|computation|operation|return)\\s*\\(", "end": "\\)", "patterns": [{"name": "string.quoted.double.semantic.hypercode", "match": "\\"([^\\"]*)\\""}]}, {"name": "entity.name.function.hypercode", "match": "\\b(function)\\s+([a-zA-Z_][a-zA-Z0-9_]*)", "captures": {"1": {"name": "keyword.control.function.hypercode"}, "2": {"name": "entity.name.function.hypercode"}}}}, {"name": "storage.type.return.hypercode", "match": "->\\s*([A-Za-z][A-Za-z0-9_\\[\\],\\s]*)"}]}}
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HyperCode",
+  "scopeName": "source.hypercode",
+  "patterns": [{ "include": "#semantic-annotations" }],
+  "repository": {
+    "semantic-annotations": {
+      "patterns": [
+        {
+          "name": "keyword.control.semantic.hypercode",
+          "match": "([\ud83c\udfaf\ud83d\udd0d\ud83d\udcdd\u2705\u274c\u26a1\ud83d\ude80\ud83d\udd27\ud83d\udca1\ud83c\udfa8\ud83d\udd12\ud83c\udf10\ud83d\udcda\ud83c\udf93\ud83c\udfd7\ufe0f\u2699\ufe0f\ud83c\udfad\ud83d\udd2e\ud83c\udf1f\ud83d\udc8e\ud83d\udd25\ud83d\udcaf\ud83c\udfaa])\\s*(@(verifiable|ensures|requires|intent|accessibility|computation|operation|return))\\s*\\(",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.semantic.hypercode entity.name.semantic.hypercode"
+            },
+            "2": { "name": "keyword.control.semantic.hypercode" },
+            "3": { "name": "entity.name.type.semantic.hypercode" }
+          }
+        },
+        {
+          "name": "string.quoted.double.semantic.hypercode",
+          "begin": "([\ud83c\udfaf\ud83d\udd0d\ud83d\udcdd\u2705\u274c\u26a1\ud83d\ude80\ud83d\udd27\ud83d\udca1\ud83c\udfa8\ud83d\udd12\ud83c\udf10\ud83d\udcda\ud83c\udf93\ud83c\udfd7\ufe0f\u2699\ufe0f\ud83c\udfad\ud83d\udd2e\ud83c\udf1f\ud83d\udc8e\ud83d\udd25\ud83d\udcaf\ud83c\udfaa])\\s*@(verifiable|ensures|requires|intent|accessibility|computation|operation|return)\\s*\\(",
+          "end": "\\)",
+          "patterns": [
+            {
+              "name": "string.quoted.double.semantic.hypercode",
+              "match": "\\\"([^\\\"]*)\\\""
+            }
+          ]
+        },
+        {
+          "name": "entity.name.function.hypercode",
+          "match": "\\b(function)\\s+([a-zA-Z_][a-zA-Z0-9_]*)",
+          "captures": {
+            "1": { "name": "keyword.control.function.hypercode" },
+            "2": { "name": "entity.name.function.hypercode" }
+          }
+        },
+        {
+          "name": "storage.type.return.hypercode",
+          "match": "->\\s*([A-Za-z][A-Za-z0-9_\\[\\],\\s]*)"
+        }
+      ]
+    }
+  }
+}

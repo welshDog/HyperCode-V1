@@ -1,7 +1,9 @@
 # 🎯 HyperCode: GitHub Repository Setup Guide
+
 ## From Zero to Production-Ready in 5 Steps
 
 ## 📋 Table of Contents
+
 - [🚀 Quick Start](#-quick-start)
 - [📁 Project Structure](#-project-structure--initial-files)
 - [⚙️ Configuration](#️-configuration)
@@ -11,9 +13,8 @@
 - [🔒 Security](#-security)
 - [🧹 Repository Maintenance](#-repository-maintenance)
 
-**Duration**: 30 minutes  
-**Difficulty**: Intermediate  
-**Prerequisites**: GitHub account, Git CLI, Python 3.10+  
+**Duration**: 30 minutes **Difficulty**: Intermediate **Prerequisites**: GitHub account,
+Git CLI, Python 3.10+
 
 ---
 
@@ -25,9 +26,9 @@
 
 1. Go to **github.com/new**
 2. **Repository name**: `hypercode`
-3. **Description**: 
+3. **Description**:
    ```
-   🚀 HyperCode: Neurodivergent-First Programming Language 
+   🚀 HyperCode: Neurodivergent-First Programming Language
    with AI Compatibility & Forgotten Language Resurrection
    ```
 4. **Visibility**: Public (open-source)
@@ -169,10 +170,7 @@ jupyter==1.0.0
     [
       "@semantic-release/git",
       {
-        "assets": [
-          "CHANGELOG.md",
-          "package.json"
-        ]
+        "assets": ["CHANGELOG.md", "package.json"]
       }
     ],
     "@semantic-release/github"
@@ -267,16 +265,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ["3.10", "3.11", "3.12"]
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          cache: 'pip'
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -310,21 +308,21 @@ name: 🤖 Daily Research Update
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # 6 AM GMT daily
-  workflow_dispatch:     # Manual trigger
+    - cron: "0 6 * * *" # 6 AM GMT daily
+  workflow_dispatch: # Manual trigger
 
 jobs:
   research:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: "3.11"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -355,15 +353,15 @@ name: Deploy to Production
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -381,8 +379,11 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/hypercode:latest
             ${{ secrets.DOCKER_USERNAME }}/hypercode:${{ github.ref_name }}
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/hypercode:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/hypercode:buildcache,mode=max
+          cache-from:
+            type=registry,ref=${{ secrets.DOCKER_USERNAME }}/hypercode:buildcache
+          cache-to:
+            type=registry,ref=${{ secrets.DOCKER_USERNAME
+            }}/hypercode:buildcache,mode=max
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -464,11 +465,13 @@ git commit -m "🚀 feat: HyperCode initial setup
 
 ### Commit Message Guidelines
 ```
+
 <type>(<scope>): <subject>
 
 [optional body]
 
 [optional footer(s)]
+
 ```
 
 **Types**: feat, fix, docs, style, refactor, test, chore
@@ -585,4 +588,4 @@ pytest tests/test_lexer.py -v
 
 **You're now ready to BUILD!** 🚀👊
 
-*Last Updated: November 11, 2025*
+_Last Updated: November 11, 2025_

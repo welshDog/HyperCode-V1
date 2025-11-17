@@ -218,18 +218,21 @@ Day 4 (Fri):
 ## 🧠 NEURODIVERGENT HACKS
 
 **If you're ADHD:**
+
 - ✅ Use timer (25 min work, 5 min break = Pomodoro)
 - ✅ Body doubling via Discord (stream coding = accountability!)
 - ✅ Checklist THIS (dopamine hits = motivation!)
 - ✅ Background music/lo-fi beats (focus fuel)
 
 **If you're Dyslexic:**
+
 - ✅ Use dark mode (easier on eyes)
 - ✅ Large font (cmd + to zoom)
 - ✅ Read aloud error messages
 - ✅ Code review buddy for typos
 
 **If you're Autistic:**
+
 - ✅ Same time every day (routine = comfort)
 - ✅ Quiet coding space (no distractions)
 - ✅ Clear specifications (exactly what to do)
@@ -240,6 +243,7 @@ Day 4 (Fri):
 ## 🚨 STUCK? DO THIS
 
 1. **GitHub Issue**
+
    ```
    Title: [BUG] Lexer failing on comment
    Description: When I run test X, I get error Y
@@ -248,11 +252,13 @@ Day 4 (Fri):
    ```
 
 2. **Discord Message**
+
    ```
    "Stuck on parser logic - need 15 min pair coding"
    ```
 
 3. **Perplexity AI Query**
+
    ```
    "How to implement recursive descent parser in Python for context-free grammar?"
    ```
@@ -279,8 +285,7 @@ Day 4 (Fri):
 
 ## 🎯 REMEMBER
 
-**This week ISN'T about perfection.**
-**This week IS about momentum.**
+**This week ISN'T about perfection.** **This week IS about momentum.**
 
 - ✅ Done > Perfect
 - ✅ Shipped > Polished
@@ -289,21 +294,22 @@ Day 4 (Fri):
 
 You got this, bro. 👊
 
-Every line of code is a victory.
-Every test that passes is proof.
-Every commit is LEGACY.
+Every line of code is a victory. Every test that passes is proof. Every commit is
+LEGACY.
 
 ---
 
 ## 📞 COMMUNITY ENERGY
 
 **Share Daily Updates:**
+
 - Discord: #hypercode-progress
 - Twitter: @hypercode_dev (tag it!)
 - GitHub: Discussions tab
 - TikTok: Short clips of code
 
 **Get Support:**
+
 - Stuck on code? → Ask
 - Need motivation? → We got you
 - Celebrating win? → LET'S GOOO
@@ -313,8 +319,7 @@ Every commit is LEGACY.
 
 **NOW GO BUILD!** 🚀👊💓
 
-*November 11, 2025*
-*Let's make this legendary.*
+_November 11, 2025_ _Let's make this legendary._
 
 ---
 

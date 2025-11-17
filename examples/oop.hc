@@ -3,7 +3,7 @@ class Animal {
     init(name) {
         this.name = name
     }
-    
+
     speak() {
         print("...")
     }

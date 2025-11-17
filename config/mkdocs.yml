@@ -22,19 +22,19 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started:
-    - Installation: getting-started/installation.md
-    - First Program: getting-started/first-program.md
+      - Installation: getting-started/installation.md
+      - First Program: getting-started/first-program.md
   - Language Reference:
-    - Syntax: reference/syntax.md
-    - Types: reference/types.md
-    - Standard Library: reference/stdlib.md
+      - Syntax: reference/syntax.md
+      - Types: reference/types.md
+      - Standard Library: reference/stdlib.md
   - Examples:
-    - Hello World: examples/hello.md
-    - Fibonacci: examples/fibonacci.md
-    - OOP: examples/oop.md
+      - Hello World: examples/hello.md
+      - Fibonacci: examples/fibonacci.md
+      - OOP: examples/oop.md
   - Contributing:
-    - Code Style: contributing/code-style.md
-    - Development Setup: contributing/dev-setup.md
+      - Code Style: contributing/code-style.md
+      - Development Setup: contributing/dev-setup.md
 
 extra_css:
   - css/extra.css

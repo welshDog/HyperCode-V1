@@ -17,4 +17,3 @@ Example HyperCode programs
 
 File: examples\hello_world.hc
 """
-

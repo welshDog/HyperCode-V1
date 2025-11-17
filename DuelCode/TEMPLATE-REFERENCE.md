@@ -12,10 +12,10 @@
 
 ## Parameters
 
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| [param1] | [type] | [description] | [example] |
-| [param2] | [type] | [description] | [example] |
+| Parameter | Type   | Description   | Example   |
+| --------- | ------ | ------------- | --------- |
+| [param1]  | [type] | [description] | [example] |
+| [param2]  | [type] | [description] | [example] |
 
 ## Examples
 
@@ -27,6 +27,7 @@
 ```
 
 **Output:**
+
 ```text
 [Result]
 ```
@@ -39,6 +40,7 @@
 ```
 
 **Output:**
+
 ```text
 [Result]
 ```
@@ -69,10 +71,10 @@
 
 ## Troubleshooting
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| [Problem] | [Cause] | [Fix] |
-| [Problem] | [Cause] | [Fix] |
+| Issue     | Cause   | Solution |
+| --------- | ------- | -------- |
+| [Problem] | [Cause] | [Fix]    |
+| [Problem] | [Cause] | [Fix]    |
 
 ## See Also
 

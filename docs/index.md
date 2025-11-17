@@ -1,6 +1,7 @@
 # Welcome to HyperCode
 
-HyperCode is a neurodivergent-first programming language designed with AI compatibility in mind.
+HyperCode is a neurodivergent-first programming language designed with AI compatibility
+in mind.
 
 ## Features
 

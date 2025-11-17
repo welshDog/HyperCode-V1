@@ -3,8 +3,9 @@
 ## 🎯 Learning Objectives
 
 By the end of this tutorial, you will:
+
 - ✅ Perform basic arithmetic operations
-- ✅ Use math operators (+, -, *, /)
+- ✅ Use math operators (+, -, \*, /)
 - ✅ Store calculation results
 - ✅ Combine math with variables
 
@@ -26,7 +27,8 @@ By the end of this tutorial, you will:
 **Math Operations** = Using operators to calculate values
 
 **Key Points:**
-- HyperCode supports +, -, *, / operators
+
+- HyperCode supports +, -, \*, / operators
 - Operations follow order of operations
 - Results can be stored in variables
 
@@ -60,6 +62,7 @@ H result
 ```
 
 **What this does:**
+
 - Calculates 5 + 3
 - Stores result (8) in 'result' variable
 - Outputs the value
@@ -87,6 +90,7 @@ H quot
 ```
 
 **Expected output:**
+
 ```text
 15
 12
@@ -121,6 +125,7 @@ H result3
 ```
 
 **Try it yourself:**
+
 1. Change x and y values
 2. Add more operations
 3. Mix operations in one line
@@ -141,7 +146,7 @@ result = 2 + 3 * 4
 H result
 ```
 
-**Why it fails:** Multiplication happens before addition (3*4=12, then 2+12=14)
+**Why it fails:** Multiplication happens before addition (3\*4=12, then 2+12=14)
 
 ### ✅ Fix 1
 
@@ -210,7 +215,7 @@ H avg
 
 ### Challenge 3: Temperature Converter (Hard ⭐⭐⭐)
 
-**Goal**: Convert Celsius to Fahrenheit (F = C * 9/5 + 32)
+**Goal**: Convert Celsius to Fahrenheit (F = C \* 9/5 + 32)
 
 **Hint**: Be careful with order of operations!
 
@@ -238,13 +243,15 @@ H fahrenheit
 ## 🎉 Conclusion
 
 Congratulations! You've successfully:
+
 - Learned all basic math operations
 - Understood order of operations
 - Created calculator programs
 - Combined math with variables
 
 **Key Takeaways:**
-- Use +, -, *, / for math operations
+
+- Use +, -, \*, / for math operations
 - Parentheses control the order
 - Store results in variables
 - Math powers up your programs!
@@ -259,7 +266,8 @@ Ready to level up? Here's your learning path:
 2. **Tutorial 05: Conditional Logic** - Make decisions in code
 3. **Tutorial 06: Functions** - Create reusable code blocks
 
-**Recommended next step:** Try [Tutorial 04: Loops](tutorial-04-loops.md) to learn about repetition!
+**Recommended next step:** Try [Tutorial 04: Loops](tutorial-04-loops.md) to learn about
+repetition!
 
 ---
 
@@ -274,7 +282,7 @@ Ready to level up? Here's your learning path:
 
 ## 🎓 Glossary
 
-- **Operator**: A symbol that performs an operation (+, -, *, /)
+- **Operator**: A symbol that performs an operation (+, -, \*, /)
 - **Operand**: A value that an operator acts on
 - **Expression**: A combination of operators and operands
 - **Order of Operations**: Rules for which operations happen first
@@ -284,20 +292,21 @@ Ready to level up? Here's your learning path:
 
 ## ❓ FAQ
 
-**Q: Can I do complex math like square roots?**
-A: Basic HyperCode supports simple arithmetic. Advanced math functions are covered in Tutorial 15.
+**Q: Can I do complex math like square roots?** A: Basic HyperCode supports simple
+arithmetic. Advanced math functions are covered in Tutorial 15.
 
-**Q: What happens if I divide by zero?**
-A: HyperCode will show an error. Always check your divisor isn't zero!
+**Q: What happens if I divide by zero?** A: HyperCode will show an error. Always check
+your divisor isn't zero!
 
-**Q: Can I mix text and numbers?**
-A: Not directly. Numbers and text are different types. We'll cover type conversion in Tutorial 08.
+**Q: Can I mix text and numbers?** A: Not directly. Numbers and text are different
+types. We'll cover type conversion in Tutorial 08.
 
 ---
 
 ## 🙏 Acknowledgments
 
 Special thanks to:
+
 - The HyperCode math team for operator implementation
 - Tutorial testers who found edge cases
 - You, for completing this tutorial!
