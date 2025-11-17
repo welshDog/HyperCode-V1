@@ -71,6 +71,11 @@ Our badges celebrate your neurodivergent superpower:
 
 ## 🚀 Quick Start
 
+### **🎮 Try it Now (No Installation!)**
+
+**[Web Playground](https://welshdog.github.io/hypercode/web-playground/)** - Try
+HyperCode in your browser instantly!
+
 ### **Installation**
 
 ```bash
