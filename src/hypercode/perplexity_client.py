@@ -6,8 +6,7 @@ Handles communication with the Perplexity API.
 from typing import Dict, Optional
 
 import requests
-
-from ..config import Config
+from hypercode.config import Config
 
 
 class PerplexityClient:

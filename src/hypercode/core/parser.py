@@ -43,7 +43,7 @@ class Parser:
         # So we can directly consume the identifier
         print(f"Current token before IDENTIFIER: {self.peek()}")
         name = self.consume(TokenType.IDENTIFIER, "Expected variable name.")
-        print(f"Got identifier: {name.value}")
+        print(f"Got identifier: {name.lexeme}")
 
         # Parse the initializer if present
         initializer = None
@@ -154,7 +154,7 @@ class Parser:
             return Literal(False)
         if self.match(TokenType.TRUE):
             return Literal(True)
-        if self.match(TokenType.NULL):
+        if self.match(TokenType.NIL):
             return Literal(None)
 
         if self.match(TokenType.NUMBER, TokenType.STRING):
@@ -163,11 +163,11 @@ class Parser:
             if token.type == TokenType.NUMBER:
                 # Try to convert to int first, then float if needed
                 try:
-                    value = int(token.value)
+                    value = int(token.literal)
                 except ValueError:
-                    value = float(token.value)
+                    value = float(token.literal)
             else:  # STRING
-                value = token.value
+                value = token.literal
             return Literal(value)
 
         if self.match(TokenType.IDENTIFIER):

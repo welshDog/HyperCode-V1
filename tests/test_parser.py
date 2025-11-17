@@ -1,4 +1,9 @@
-from hypercode.core.ast import *
+from hypercode.core.ast import (
+    Binary,
+    Expression,
+    Literal,
+    Var,
+)
 from hypercode.core.lexer import Lexer
 from hypercode.core.parser import Parser
 from hypercode.core.tokens import TokenType
@@ -24,7 +29,7 @@ def test_parse_variable_declaration():
 
     assert len(statements) == 1
     assert isinstance(statements[0], Var)
-    assert statements[0].name.value == "x"
+    assert statements[0].name.lexeme == "x"
     assert isinstance(statements[0].initializer, Literal)
     assert statements[0].initializer.value == 42
 
