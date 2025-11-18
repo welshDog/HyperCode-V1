@@ -162,6 +162,4 @@ if __name__ == "__main__":
     print("✅ Memory persists between sessions")
     print("✅ Search functionality finds relevant documents")
 
-    print(
-        "\n🚀 Your Perplexity API now has access to and remembers your research data!"
-    )
+    print("\n🚀 Your Perplexity API now has access to and remembers your research data!")

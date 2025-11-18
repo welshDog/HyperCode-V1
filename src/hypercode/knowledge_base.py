@@ -6,15 +6,12 @@ Manages research data from Perplexity Space for API context
 
 import hashlib
 import json
-import uuid
-import hashlib
+from collections import defaultdict
+from dataclasses import asdict, dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Any
-from dataclasses import dataclass, asdict, field
-from collections import defaultdict
-import re
-import unicodedata
+from typing import Any, Dict, List, Optional
+
 
 @dataclass
 class ResearchDocument:
@@ -40,7 +37,7 @@ class ResearchDocument:
         """Generate unique ID from content hash"""
         content_hash = hashlib.md5(self.content.encode()).hexdigest()[:8]
         return f"doc_{content_hash}"
-    
+
     def validate(self) -> bool:
         """Validate document data"""
         if not self.title or len(self.title.strip()) == 0:
@@ -52,11 +49,11 @@ class ResearchDocument:
         if len(self.content) > 1000000:
             raise ValueError("Content too long (max 1MB)")
         return True
-    
+
     def update_timestamp(self):
         """Update the last_updated timestamp"""
         self.last_updated = datetime.now().isoformat()
-        if hasattr(self, 'version'):
+        if hasattr(self, "version"):
             self.version += 1
 
 
@@ -119,7 +116,7 @@ class HyperCodeKnowledgeBase:
                         self.documents[doc_id] = ResearchDocument(**doc_data)
                 print(f"✅ Loaded {len(self.documents)} documents from knowledge base")
             except Exception as e:
-                print(f"⚠️ Error loading knowledge base: {e}")
+                print(f"⚠️ Error loading knowledge base: {str(e)}")
                 self.documents = {}
         else:
             print("📝 Creating new knowledge base")
@@ -133,7 +130,7 @@ class HyperCodeKnowledgeBase:
                 json.dump(data, f, indent=2, ensure_ascii=False)
             print(f"💾 Saved {len(self.documents)} documents to knowledge base")
         except Exception as e:
-            print(f"❌ Error saving knowledge base: {e}")
+            print(f"❌ Error saving knowledge base: {str(e)}")
 
     def add_document(
         self,
@@ -272,63 +269,72 @@ class HyperCodeKnowledgeBase:
             self.save()
             return True
         return False
-    
+
     def update_document(self, doc_id: str, **kwargs) -> bool:
         """Update an existing document"""
         if doc_id not in self.documents:
             return False
-        
+
         doc = self.documents[doc_id]
         for key, value in kwargs.items():
             if hasattr(doc, key):
                 setattr(doc, key, value)
-        
+
         doc.update_timestamp()
         self.save()
         return True
-    
-    def search_by_tags(self, tags: List[str], operator: str = "AND") -> List[ResearchDocument]:
+
+    def search_by_tags(
+        self, tags: List[str], operator: str = "AND"
+    ) -> List[ResearchDocument]:
         """Search documents by tags with AND/OR operators"""
         results = []
-        
+
         for doc in self.documents.values():
             doc_tags = set(doc.tags)
             search_tags = set(tags)
-            
+
             if operator == "AND":
                 if search_tags.issubset(doc_tags):
                     results.append(doc)
             elif operator == "OR":
                 if doc_tags.intersection(search_tags):
                     results.append(doc)
-        
+
         return results
-    
+
     def get_document_statistics(self) -> Dict[str, Any]:
         """Get statistics about the knowledge base"""
         total_docs = len(self.documents)
         tag_counts = defaultdict(int)
         total_content_length = 0
-        
+
         for doc in self.documents.values():
             for tag in doc.tags:
                 tag_counts[tag] += 1
             total_content_length += len(doc.content)
-        
+
         return {
             "total_documents": total_docs,
             "total_content_length": total_content_length,
             "average_content_length": total_content_length / max(total_docs, 1),
             "unique_tags": len(tag_counts),
             "tag_distribution": dict(tag_counts),
-            "oldest_document": min((doc.created_at for doc in self.documents.values()), default=None),
-            "newest_document": max((doc.created_at for doc in self.documents.values()), default=None),
+            "oldest_document": min(
+                (doc.created_at for doc in self.documents.values()), default=None
+            ),
+            "newest_document": max(
+                (doc.created_at for doc in self.documents.values()), default=None
+            ),
         }
-    
+
     def export_format(self, format_type: str = "json") -> str:
         """Export knowledge base in different formats"""
         if format_type == "json":
-            return json.dumps({doc_id: asdict(doc) for doc_id, doc in self.documents.items()}, indent=2)
+            return json.dumps(
+                {doc_id: asdict(doc) for doc_id, doc in self.documents.items()},
+                indent=2,
+            )
         elif format_type == "markdown":
             lines = ["# HyperCode Knowledge Base Export\n"]
             for doc in self.documents.values():
@@ -343,7 +349,7 @@ class HyperCodeKnowledgeBase:
             return "\n".join(lines)
         else:
             raise ValueError(f"Unsupported format: {format_type}")
-    
+
     def validate_all_documents(self) -> List[str]:
         """Validate all documents and return list of errors"""
         errors = []
@@ -353,25 +359,25 @@ class HyperCodeKnowledgeBase:
             except ValueError as e:
                 errors.append(f"Document {doc_id} ({doc.title}): {str(e)}")
         return errors
-    
+
     def cleanup_duplicates(self) -> int:
         """Remove duplicate documents based on content hash"""
         seen_hashes = set()
         duplicates = []
-        
+
         for doc_id, doc in self.documents.items():
             content_hash = hashlib.md5(doc.content.encode()).hexdigest()
             if content_hash in seen_hashes:
                 duplicates.append(doc_id)
             else:
                 seen_hashes.add(content_hash)
-        
+
         for doc_id in duplicates:
             del self.documents[doc_id]
-        
+
         if duplicates:
             self.save()
-        
+
         return len(duplicates)
 
 

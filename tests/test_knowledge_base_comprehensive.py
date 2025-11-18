@@ -520,9 +520,9 @@ class TestKnowledgeBaseEdgeCases:
         doc_id = edge_case_kb.add_document(
             title="Document with None tags",
             content="This document has None tags",
-            tags=None
+            tags=None,
         )
-        
+
         doc_with_no_tags = edge_case_kb.get_document(doc_id)
         assert doc_with_no_tags is not None
         # Tags should be converted to empty list

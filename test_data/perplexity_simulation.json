@@ -20,12 +20,7 @@
     "title": "Perplexity Space Integration Protocol",
     "content": "\n            Integration between HyperCode and Perplexity Space enables:\n            \n            - Real-time collaboration\n            - Knowledge sharing\n            - AI model integration\n            - Research data management\n            - Community contributions\n            \n            API endpoints:\n            - GET /api/hypercode/search\n            - POST /api/hypercode/documents\n            - PUT /api/hypercode/documents/:id\n            - DELETE /api/hypercode/documents/:id\n            \n            Authentication via OAuth2 with Perplexity Space accounts.\n            ",
     "url": "https://perplexity.space/hypercode/integration",
-    "tags": [
-      "integration",
-      "api",
-      "perplexity-space",
-      "collaboration"
-    ],
+    "tags": ["integration", "api", "perplexity-space", "collaboration"],
     "created_at": "2025-11-18T19:57:59.119992",
     "last_updated": "2025-11-18T19:57:59.119992"
   },

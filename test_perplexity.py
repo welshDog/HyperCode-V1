@@ -15,15 +15,15 @@ from hypercode.perplexity_client import PerplexityClient
 
 def test_perplexity_connection():
     """Test Perplexity API with detailed logging"""
-    print("🔍 Testing Perplexity API Connection...")
+    print("Testing Perplexity API Connection...")
     print("=" * 50)
 
     try:
         # Initialize client
         client = PerplexityClient()
-        print("✅ Client initialized")
-        print(f"🔑 API Key: {client.api_key[:10]}...{client.api_key[-10:]}")
-        print(f"🌐 Base URL: {client.base_url}")
+        print("Client initialized")
+        print(f"API Key: {client.api_key[:10]}...{client.api_key[-10:]}")
+        print(f"Base URL: {client.base_url}")
 
         # Test query related to AI Research
         test_prompt = """
@@ -31,32 +31,32 @@ def test_perplexity_connection():
         of the neurodivergent-first programming language design?
         """
 
-        print("\n📝 Sending test query...")
+        print("\nSending test query...")
         print(f"Prompt: {test_prompt[:100]}...")
 
         response = client.query(test_prompt)
 
         if "error" in response:
-            print(f"❌ API Error: {response}")
+            print(f"API Error: {response}")
             return False
 
-        print("✅ API Response received!")
+        print("API Response received!")
         print(f"Response type: {type(response)}")
 
         # Extract content
         if "choices" in response and response["choices"]:
             content = response["choices"][0]["message"]["content"]
-            print("\n📄 Response Content:")
+            print("\nResponse Content:")
             print("-" * 40)
             print(content)
             print("-" * 40)
             return True
         else:
-            print(f"❌ Unexpected response format: {response}")
+            print(f"Unexpected response format: {response}")
             return False
 
     except Exception as e:
-        print(f"❌ Exception occurred: {e}")
+        print(f"Exception occurred: {e}")
         import traceback
 
         traceback.print_exc()
@@ -65,7 +65,7 @@ def test_perplexity_connection():
 
 def test_ai_research_integration():
     """Test integration with AI Research document content"""
-    print("\n🧪 Testing AI Research Integration...")
+    print("\nTesting AI Research Integration...")
     print("=" * 50)
 
     try:
@@ -79,25 +79,25 @@ def test_ai_research_integration():
         ]
 
         for i, query in enumerate(queries, 1):
-            print(f"\n🔍 Query {i}: {query}")
+            print(f"Query {i}: {query}")
             response = client.query(query)
 
             if "error" in response:
-                print(f"❌ Error: {response['error']}")
+                print(f"[ERROR] Error: {response['error']}")
                 continue
 
             if "choices" in response and response["choices"]:
                 content = response["choices"][0]["message"]["content"]
-                print(f"✅ Response: {content[:200]}...")
+                print(f"[OK] Response: {content[:200]}...")
             else:
-                print(f"❌ Unexpected format: {response}")
+                print(f"[ERROR] Unexpected format: {response}")
 
     except Exception as e:
-        print(f"❌ Integration test failed: {e}")
+        print(f"[ERROR] Integration test failed: {e}")
 
 
 if __name__ == "__main__":
-    print("🚀 HyperCode + Perplexity AI Test Suite")
+    print("HyperCode + Perplexity AI Test Suite")
     print("=" * 60)
 
     # Test basic connection
@@ -106,6 +106,6 @@ if __name__ == "__main__":
     if success:
         # Test AI Research integration
         test_ai_research_integration()
-        print("\n🎉 All tests completed!")
+        print("\n[SUCCESS] All tests completed!")
     else:
-        print("\n❌ Basic connection failed - skipping integration tests")
+        print("\n[FAILED] Basic connection failed - skipping integration tests")
