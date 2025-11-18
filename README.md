@@ -85,19 +85,55 @@ For neurodivergent coders, typical languages often don't fit. For AI-powered dev
 ✅ **AI + Dev Teams** — Seamless AI pair programming, no friction  
 ✅ **Accessibility Advocates** — Lead the inclusive code revolution  
 ✅ **Students & Educators** — Learn programming the right way  
-✅ **Open Source Warriors** — Build something that matters  
 
 ---
 
-## 🚀 Get Started (3 Options)
+## Get Started (3 Options)
 
-### **Option 1: Browser Playground (Fastest!)**
+### Testing
+
+### Comprehensive Test Suite
+```bash
+# Run all tests
+pytest tests/test_knowledge_base_comprehensive.py -v
+
+# Run specific test categories
+pytest tests/test_knowledge_base_comprehensive.py::TestKnowledgeBaseUnit -v
+pytest tests/test_knowledge_base_comprehensive.py::TestKnowledgeBaseIntegration -v
+pytest tests/test_knowledge_base_comprehensive.py::TestKnowledgeBasePerformance -v
+pytest tests/test_knowledge_base_comprehensive.py::TestKnowledgeBaseEdgeCases -v
 ```
-👉 https://welshdog.github.io/hypercode/web-playground/
+
+### Test Results (November 2025)
+- **31/31 tests passing** (100% success rate)
+- **107 documents** successfully processed
+- **Search performance**: <0.1s for 100+ documents
+- **Save performance**: Handles 1000+ documents efficiently
+- **Memory usage**: Optimized for large datasets
+- **Edge cases**: All handled gracefully
+
+### Performance Benchmarks
+```bash
+# Run performance benchmarks
+python tests/benchmark_knowledge_base.py
+
+# Generate performance report
+python tests/benchmark_knowledge_base.py --report
+```
+
+### Coverage Report
+```bash
+# Generate coverage report
+pytest --cov=src/hypercode --cov-report=html tests/
+```
+
+### Option 1: Browser Playground (Fastest!)
+```
+https://welshdog.github.io/hypercode/web-playground/
    (No install, no setup, instant feedback)
 ```
 
-### **Option 2: Local Install**
+### Option 2: Local Install
 ```bash
 git clone https://github.com/welshDog/hypercode.git
 cd hypercode

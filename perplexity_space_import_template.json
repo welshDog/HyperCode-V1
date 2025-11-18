@@ -1,0 +1,16 @@
+{
+  "documents": [
+    {
+      "title": "Example: HyperCode Overview",
+      "content": "\n                HyperCode is a revolutionary programming language designed for neurodivergent developers.\n                It features multiple syntax modes, AI integration, and advanced compilation backends.\n                Key innovations include spatial programming, natural language interfaces, and\n                built-in accessibility features.\n                ",
+      "url": "https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ",
+      "tags": ["overview", "introduction", "concepts"]
+    },
+    {
+      "title": "Example: Implementation Roadmap",
+      "content": "\n                Phase 1: Core language specification and basic compiler\n                Phase 2: AI integration and neurodivergent features\n                Phase 3: Multi-backend support (quantum, DNA)\n                Phase 4: Spatial programming paradigm\n                Phase 5: Natural language programming\n                ",
+      "url": null,
+      "tags": ["roadmap", "implementation", "phases"]
+    }
+  ]
+}

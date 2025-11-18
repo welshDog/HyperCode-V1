@@ -27,7 +27,7 @@ class PerplexityClient:
                 "Please set the PERPLEXITY_API_KEY environment variable."
             )
 
-    def query(self, prompt: str, model: str = "sonar-small-online") -> Dict:
+    def query(self, prompt: str, model: str = "sonar-pro") -> Dict:
         """Send a query to the Perplexity API.
 
         Args:
