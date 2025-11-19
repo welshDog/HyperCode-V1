@@ -35,24 +35,24 @@ circuit = quantum(2)
 # HyperCode: ~134 tokens (43% reduction)
 function teleportation() -> Circuit
     circuit = quantum(3, classical: 2)
-    
+
     # Create entangled pair
     circuit
         |> hadamard qubit[1]
         |> cnot qubit[1] -> qubit[2]
-        
+
     # Bell measurement
     circuit
         |> cnot qubit[0] -> qubit[1]
         |> hadamard qubit[0]
         |> measure qubit[0] -> classical[0]
         |> measure qubit[1] -> classical[1]
-        
+
     # Conditional operations
     circuit
         |> conditional_x qubit[2] when classical[0] == 1
         |> conditional_z qubit[2] when classical[1] == 1
-        
+
     return circuit
 
 # === Grover's Algorithm ===
@@ -87,19 +87,19 @@ function teleportation() -> Circuit
 # HyperCode: ~178 tokens (43% reduction)
 function grover_search(n_qubits: Int, marked_item: Int) -> Circuit
     circuit = quantum(n_qubits)
-    
+
     # Initialize superposition
     circuit |> apply_hadamard_all
-    
+
     # Oracle for marked item
     circuit
         |> oracle marked_item
         |> phase_shift marked_item
-        
+
     # Diffusion operator (inversion about mean)
     circuit
         |> diffusion_operator
-        
+
     return circuit
 
 # Helper functions for clarity
@@ -138,15 +138,15 @@ function diffusion_operator(circuit: Circuit) -> Circuit
 # HyperCode: ~112 tokens (43% reduction)
 function quantum_fourier_transform(n_qubits: Int) -> Circuit
     circuit = quantum(n_qubits)
-    
+
     for j in 0..n_qubits-1
         circuit
             |> hadamard qubit[j]
             |> apply_controlled_phase_shifts j n_qubits
-            
+
     # Reverse qubit order
     circuit |> reverse_qubits
-    
+
     return circuit
 
 function apply_controlled_phase_shifts(circuit: Circuit, j: Int, n: Int) -> Circuit
@@ -173,21 +173,21 @@ function apply_controlled_phase_shifts(circuit: Circuit, j: Int, n: Int) -> Circ
 function vqe_ansatz(theta: List[Float], n_qubits: Int) -> Circuit
     circuit = quantum(n_qubits)
     layers = theta.length / (2 * n_qubits)
-    
+
     for layer in 0..layers-1
         offset = layer * 2 * n_qubits
-        
+
         # Ry rotations
         for i in 0..n_qubits-1
             circuit |> ry theta[offset + 2*i] on: qubit[i]
-            
+
         # Entangling CNOTs
         circuit |> apply_linear_entanglement n_qubits
-        
+
         # Rz rotations
         for i in 0..n_qubits-1
             circuit |> rz theta[offset + 2*i + 1] on: qubit[i]
-            
+
     return circuit
 
 function apply_linear_entanglement(circuit: Circuit, n_qubits: Int) -> Circuit
@@ -214,12 +214,12 @@ function apply_linear_entanglement(circuit: Circuit, n_qubits: Int) -> Circuit
 # HyperCode: ~123 tokens (35% reduction)
 function shor_error_correction() -> Circuit
     circuit = quantum(9, classical: 3)
-    
+
     # Encoding phase
     circuit
         |> encode_logical_qubit 0
         |> apply_error_detection
-        
+
     return circuit
 
 function encode_logical_qubit(circuit: Circuit, logical: Int) -> Circuit
@@ -255,11 +255,11 @@ function encode_block(circuit: Circuit, start: Int) -> Circuit
 # HyperCode: ~134 tokens (43% reduction)
 function quantum_neural_layer(weights: List[Float], n_qubits: Int) -> Circuit
     circuit = quantum(n_qubits)
-    
+
     # Single-qubit rotations
     for i in 0..n_qubits-1
         circuit |> ry weights[i] on: qubit[i]
-        
+
     # Entangling layer with parameterized gates
     for i in 0..n_qubits-1
         for j in i+1..n_qubits-1
@@ -268,7 +268,7 @@ function quantum_neural_layer(weights: List[Float], n_qubits: Int) -> Circuit
                 |> cnot qubit[i] -> qubit[j]
                 |> rz weights[weight_index] on: qubit[j]
                 |> cnot qubit[i] -> qubit[j]
-                
+
     return circuit
 
 # === Token Efficiency Summary ===

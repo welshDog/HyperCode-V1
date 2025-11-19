@@ -15,7 +15,7 @@
 
 # HyperCode (Token-Optimized):
 guard user else return "User not found"
-guard user.is_active else return "User inactive"  
+guard user.is_active else return "User inactive"
 guard user.has_permission else return "Access denied"
 return user.get_data()
 
@@ -123,19 +123,19 @@ transformed = point
 function calculate_fibonacci(n: Int) -> Int
     """
     Calculate the nth Fibonacci number using optimal iteration.
-    
+
     Examples:
         calculate_fibonacci(0)  # returns 0
-        calculate_fibonacci(1)  # returns 1  
+        calculate_fibonacci(1)  # returns 1
         calculate_fibonacci(10) # returns 55
-    
+
     Time Complexity: O(n)
     Space Complexity: O(1)
     """
     guard n < 0 else raise ValueError "n must be non-negative"
     guard n == 0 else return 0
     guard n == 1 else return 1
-    
+
     a, b = 0, 1
     repeat n-1 times
         a, b = b, a + b
@@ -146,7 +146,7 @@ property "fibonacci is monotonic increasing"
     for_all n in range(0, 100)
         assert calculate_fibonacci(n) <= calculate_fibonacci(n + 1)
 
-property "fibonacci recurrence relation"  
+property "fibonacci recurrence relation"
     for_all n in range(2, 50)
         assert calculate_fibonacci(n) == calculate_fibonacci(n-1) + calculate_fibonacci(n-2)
 
@@ -155,7 +155,7 @@ property "fibonacci recurrence relation"
 # Python: 156 tokens for basic user validation
 # HyperCode: 89 tokens (43% reduction)
 
-# Python: 87 tokens for simple loop  
+# Python: 87 tokens for simple loop
 # HyperCode: 42 tokens (52% reduction)
 
 # Python: 134 tokens for error handling

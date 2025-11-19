@@ -13,7 +13,7 @@
 import web
 
 server = WebServer()
-route server.get "/" 
+route server.get "/"
     return {"Hello": "World"}
 
 # === Request Handling with Guards ===
@@ -140,9 +140,9 @@ websocket server.ws "/ws"
 # HyperCode: ~112 tokens (44% reduction)
 route server.post "/upload"
     file = request.file
-    guard file.extension not in [".jpg", ".png"] 
+    guard file.extension not in [".jpg", ".png"]
         else raise HTTPError 400 "Invalid file type"
-    guard file.size > 10MB 
+    guard file.size > 10MB
         else raise HTTPError 400 "File too large"
     contents = await file.read
     file_path = "uploads/{file.filename}"
@@ -175,7 +175,7 @@ route server.get "/api/posts"
         data: posts,
         pagination: {
             page: page,
-            limit: limit, 
+            limit: limit,
             total: total,
             pages: total / limit |> ceil
         }

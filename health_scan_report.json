@@ -3,12 +3,8 @@
   "health_data": {
     "project_structure": {
       "structure_score": 70,
-      "issues": [
-        "Missing essential file: requirements.txt"
-      ],
-      "recommendations": [
-        "Create requirements.txt"
-      ],
+      "issues": ["Missing essential file: requirements.txt"],
+      "recommendations": ["Create requirements.txt"],
       "files_analyzed": 5114
     },
     "dependencies": {
@@ -23,10 +19,7 @@
         "Missing security configuration: .github/dependabot.yml",
         "Missing security configuration: .env.example"
       ],
-      "recommendations": [
-        "Create .github/dependabot.yml",
-        "Create .env.example"
-      ]
+      "recommendations": ["Create .github/dependabot.yml", "Create .env.example"]
     },
     "overall_score": 135
   },

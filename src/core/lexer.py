@@ -1,3 +1,10 @@
+"""
+HyperCode Lexer Module
+
+Tokenizes HyperCode source code into a stream of tokens for parsing.
+Handles keywords, identifiers, literals, operators, and special syntax.
+"""
+
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
@@ -6,6 +13,15 @@ from .tokens import Token, TokenType
 
 @dataclass
 class LexerError:
+    """
+    Represents a lexical analysis error.
+
+    Attributes:
+        message: Description of the error
+        line: Line number where the error occurred (1-based)
+        column: Column number where the error occurred (1-based)
+        length: Length of the problematic token (default: 1)
+    """
     message: str
     line: int
     column: int
@@ -30,6 +46,12 @@ class Lexer:
     """
 
     def __init__(self, source: str):
+        """
+        Initialize the lexer with source code.
+
+        Args:
+            source: The source code string to tokenize
+        """
         self.source = source
         self.tokens: List[Token] = []
         self.errors: List[LexerError] = []

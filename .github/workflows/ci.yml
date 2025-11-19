@@ -71,28 +71,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-      
+          python-version: "3.11"
+
       - name: Install security tools
         run: |
           pip install bandit safety pip-audit
-      
+
       - name: Run Bandit (security linter)
         run: bandit -r src/ ai_gateway/ accessibility/ -f json -o bandit-report.json
         continue-on-error: true
-      
+
       - name: Run Safety (vulnerability scanner)
         run: safety check --json
         continue-on-error: true
-      
+
       - name: Run pip-audit (dependency audit)
         run: pip-audit --require-hashes --desc
         continue-on-error: true
-      
+
       - name: Upload security reports
         uses: actions/upload-artifact@v4
         with:

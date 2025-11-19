@@ -50,7 +50,7 @@ cube = create_box width height depth
 # HyperCode: ~178 tokens (43% reduction)
 function transform_object(obj: SpatialObject, transforms: List[Transform]) -> SpatialObject
     return transforms
-        |> reduce obj (current, transform) => 
+        |> reduce obj (current, transform) =>
             match transform.type
                 "rotate" => current.rotate transform.axis transform.angle
                 "scale" => current.scale transform.factor
@@ -86,7 +86,7 @@ function raycast_from_camera(camera: Camera, mouse: Vector2, objects: List[Spati
 #     this.cellSize = cellSize;
 #     this.grid = new Map();
 #   }
-#   
+#
 #   add(object) {
 #     const cell = this.getCell(object.position);
 #     if (!this.grid.has(cell)) {
@@ -94,7 +94,7 @@ function raycast_from_camera(camera: Camera, mouse: Vector2, objects: List[Spati
 #     }
 #     this.grid.get(cell).push(object);
 #   }
-#   
+#
 #   getCell(position) {
 #     const x = Math.floor(position.x / this.cellSize);
 #     const y = Math.floor(position.y / this.cellSize);
@@ -123,10 +123,10 @@ nearby = spatial_grid.query radius: 20 around: [x, y, z]
 #     const dz = points[i].z - points[i-1].z;
 #     distances.push(Math.sqrt(dx*dx + dy*dy + dz*dz));
 #   }
-#   
+#
 #   const totalDistance = distances.reduce((a, b) => a + b, 0);
 #   const avgDistance = totalDistance / distances.length;
-#   
+#
 #   if (avgDistance < 0.1) return 'tap';
 #   if (avgDistance > 1.0) return 'swipe';
 #   return 'drag';
@@ -138,9 +138,9 @@ function recognize_gesture(points: List[Point3D]) -> Gesture
         |> pairwise
         |> map (p1, p2) => distance p1 p2
         |> filter d => d > 0.01
-    
+
     avg_distance = distances.average
-    
+
     match avg_distance
         < 0.1 => Gesture.Tap
         > 1.0 => Gesture.Swipe
@@ -153,9 +153,9 @@ function recognize_gesture(points: List[Point3D]) -> Gesture
 #   const closedSet = new Set();
 #   const cameFrom = new Map();
 #   const gScore = new Map();
-#   
+#
 #   gScore.set(start, 0);
-#   
+#
 #   while (openSet.length > 0) {
 #     let current = openSet[0];
 #     for (let i = 1; i < openSet.length; i++) {
@@ -163,11 +163,11 @@ function recognize_gesture(points: List[Point3D]) -> Gesture
 #         current = openSet[i];
 #       }
 #     }
-#     
+#
 #     if (current.equals(end)) {
 #       return reconstructPath(cameFrom, current);
 #     }
-#     
+#
 #     openSet.splice(openSet.indexOf(current), 1);
 #     closedSet.add(current);
 #   }
@@ -180,23 +180,23 @@ function find_path(start: Point3D, end: Point3D, obstacles: List[Obstacle]) -> P
     closed_set = Set()
     came_from = Map()
     g_score = Map {start: 0}
-    
+
     while not open_set.empty
         current = open_set.pop_lowest_priority
-        
+
         guard current != end else return reconstruct_path came_from current
-        
+
         closed_set.add current
-        
+
         for neighbor in current.neighbors obstacles
             tentative_g = g_score[current] + distance current neighbor
-            
+
             guard neighbor not in g_score or tentative_g < g_score[neighbor] else continue
-            
+
             came_from[neighbor] = current
             g_score[neighbor] = tentative_g
             f_score = tentative_g + heuristic neighbor end
-            
+
             open_set.push neighbor priority: f_score
 
 # === Spatial Audio ===
@@ -205,11 +205,11 @@ function find_path(start: Point3D, end: Point3D, obstacles: List[Obstacle]) -> P
 #   const distance = listener.position.distanceTo(source.position);
 #   const volume = Math.max(0, 1 - distance / 10);
 #   audio.volume = volume;
-#   
+#
 #   const direction = source.position.clone().sub(listener.position).normalize();
 #   const angle = Math.atan2(direction.x, direction.z);
 #   audio.pan = Math.sin(angle);
-#   
+#
 #   const height = (source.position.y - listener.position.y) / 10;
 #   audio.height = height;
 # }
@@ -218,7 +218,7 @@ function find_path(start: Point3D, end: Point3D, obstacles: List[Obstacle]) -> P
 function set_spatial_audio(audio: Audio, listener: Listener, source: AudioSource)
     distance = distance listener.position source.position
     direction = normalize source.position - listener.position
-    
+
     audio
         |> volume max(0, 1 - distance / 10)
         |> pan sin atan2 direction.x direction.z
@@ -234,7 +234,7 @@ function set_spatial_audio(audio: Audio, listener: Listener, source: AudioSource
 #       const obj2 = objects[j];
 #       const distance = obj1.position.distanceTo(obj2.position);
 #       const minDistance = obj1.radius + obj2.radius;
-#       
+#
 #       if (distance < minDistance) {
 #         collisions.push({
 #           object1: obj1,
@@ -265,13 +265,13 @@ function check_collisions(objects: List[Sphere]) -> List[Collision]
 #   for (const obj of objects) {
 #     // Apply gravity
 #     obj.velocity.y += gravity * dt;
-#     
+#
 #     // Update position
 #     obj.position.add(obj.velocity.clone().multiplyScalar(dt));
-#     
+#
 #     // Apply damping
 #     obj.velocity.multiplyScalar(0.99);
-#     
+#
 #     // Ground collision
 #     if (obj.position.y < obj.radius) {
 #       obj.position.y = obj.radius;
@@ -285,19 +285,19 @@ function update_physics(objects: List[PhysicsObject], dt: Float, gravity: Float 
     for obj in objects
         # Apply forces
         obj.velocity.y += gravity * dt
-        
+
         # Update position
         obj.position += obj.velocity * dt
-        
+
         # Apply damping
         obj.velocity *= 0.99
-        
+
         # Handle collisions
         obj = handle_ground_collision obj
 
 function handle_ground_collision(obj: PhysicsObject) -> PhysicsObject
     guard obj.position.y < obj.radius else return obj
-    
+
     obj.position.y = obj.radius
     obj.velocity.y *= -0.8  # Bounce factor
     return obj
@@ -321,13 +321,13 @@ function handle_ground_collision(obj: PhysicsObject) -> PhysicsObject
 function visualize_spatial_data(data: List[Float], bounds: BoundingBox) -> PointCloud
     points = data
         |> enumerate
-        |> map (index, value) => 
+        |> map (index, value) =>
             normalized = (value - data.min) / (data.max - data.min)
             x = bounds.min.x + (bounds.width * index / data.length)
             y = bounds.min.y + normalized * bounds.height
             z = bounds.min.z + sin(index * 0.1) * 10
             Point3D [x, y, z]
-    
+
     return PointCloud points
 
 # === Token Efficiency Summary ===
