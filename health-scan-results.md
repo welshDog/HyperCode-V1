@@ -222,6 +222,8 @@ addopts = "-v --cov=src --cov=ai_gateway --cov=accessibility"
 
 [tool.bandit]
 exclude_dirs = ["/tests", "/docs", "/examples"]
+```
+
 Create lock file for reproducibility:
 
 bash

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperCode CodeMap - Interactive Architecture</title>
+    <style>
+        :root {
+            --color-bg-primary: #0a0e27;
+            --color-bg-secondary: #1a1f3a;
+            --color-surface: #252b4a;
+            --color-accent-purple: #b794f6;
+            --color-accent-cyan: #32b8c6;
+            --color-accent-green: #4ade80;
+            --color-accent-orange: #fb923c;
+            --color-accent-red: #f87171;
+            --color-text-primary: #f5f5f5;
+            --color-text-secondary: #a7a9a9;
+            --color-border: rgba(167, 169, 169, 0.3);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--color-bg-secondary);
+            border-right: 1px solid var(--color-border);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--color-accent-cyan), var(--color-accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar .subtitle {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .filter-section {
+            margin-bottom: 24px;
+        }
+
+        .filter-section h3 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-accent-cyan);
+        }
+
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text-primary);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: rgba(50, 184, 198, 0.1);
+            border-color: var(--color-accent-cyan);
+        }
+
+        .filter-btn.active {
+            background: rgba(50, 184, 198, 0.2);
+            border-color: var(--color-accent-cyan);
+        }
+
+        .filter-btn .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .legend {
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .legend h3 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 8px;
+            color: var(--color-text-secondary);
+        }
+
+        .legend-item .color-box {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        /* Canvas Area */
+        .canvas-area {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: grab;
+        }
+
+        .canvas.grabbing {
+            cursor: grabbing;
+        }
+
+        .canvas-content {
+            position: absolute;
+            width: 3000px;
+            height: 2000px;
+            transform-origin: 0 0;
+        }
+
+        /* Nodes */
+        .node {
+            position: absolute;
+            min-width: 180px;
+            background: var(--color-surface);
+            border: 2px solid;
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .node.core { border-color: var(--color-accent-purple); }
+        .node.ai { border-color: var(--color-accent-cyan); }
+        .node.parsing { border-color: var(--color-accent-green); }
+        .node.devops { border-color: var(--color-accent-orange); }
+        .node.ui { border-color: var(--color-accent-red); }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .node-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .node-title {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .node-desc {
+            font-size: 11px;
+            color: var(--color-text-secondary);
+            line-height: 1.4;
+        }
+
+        .node-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .node-tag {
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Connections */
+        svg.connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .connection-line {
+            stroke-width: 2;
+            fill: none;
+            opacity: 0.4;
+        }
+
+        .connection-line.core { stroke: var(--color-accent-purple); }
+        .connection-line.ai { stroke: var(--color-accent-cyan); }
+        .connection-line.parsing { stroke: var(--color-accent-green); }
+        .connection-line.devops { stroke: var(--color-accent-orange); }
+        .connection-line.ui { stroke: var(--color-accent-red); }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: rgba(50, 184, 198, 0.2);
+            border-color: var(--color-accent-cyan);
+        }
+
+        /* Info Panel */
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 320px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 20px;
+            display: none;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-panel.visible {
+            display: block;
+        }
+
+        .info-panel h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .info-panel .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--color-text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .info-section {
+            margin-bottom: 16px;
+        }
+
+        .info-section h4 {
+            font-size: 12px;
+            color: var(--color-accent-cyan);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .info-section p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        .info-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .info-link {
+            padding: 8px 12px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .info-link:hover {
+            background: rgba(50, 184, 198, 0.2);
+            border-color: var(--color-accent-cyan);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h1>🚀 HyperCode</h1>
+            <div class="subtitle">Interactive Architecture Map</div>
+
+            <div class="filter-section">
+                <h3>Filter Layers</h3>
+                <button class="filter-btn active" data-layer="all">
+                    <span class="color-dot" style="background: linear-gradient(135deg, #b794f6, #32b8c6);"></span>
+                    Show All Systems
+                </button>
+                <button class="filter-btn active" data-layer="core">
+                    <span class="color-dot" style="background: var(--color-accent-purple);"></span>
+                    Core VM & Runtime
+                </button>
+                <button class="filter-btn active" data-layer="ai">
+                    <span class="color-dot" style="background: var(--color-accent-cyan);"></span>
+                    AI Integration Layer
+                </button>
+                <button class="filter-btn active" data-layer="parsing">
+                    <span class="color-dot" style="background: var(--color-accent-green);"></span>
+                    Parser & Compiler
+                </button>
+                <button class="filter-btn active" data-layer="devops">
+                    <span class="color-dot" style="background: var(--color-accent-orange);"></span>
+                    DevOps & CI/CD
+                </button>
+                <button class="filter-btn active" data-layer="ui">
+                    <span class="color-dot" style="background: var(--color-accent-red);"></span>
+                    UI & Accessibility
+                </button>
+            </div>
+
+            <div class="legend">
+                <h3>Legend</h3>
+                <div class="legend-item">
+                    <div class="color-box" style="background: var(--color-accent-purple);"></div>
+                    Core Logic & VM
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: var(--color-accent-cyan);"></div>
+                    AI/ML Adapters
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: var(--color-accent-green);"></div>
+                    Language Tools
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: var(--color-accent-orange);"></div>
+                    Automation
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background: var(--color-accent-red);"></div>
+                    User Interface
+                </div>
+            </div>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-area">
+            <div class="canvas" id="canvas">
+                <svg class="connections" id="connections"></svg>
+                <div class="canvas-content" id="canvasContent"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="control-btn" id="zoomIn" title="Zoom In">+</button>
+                <button class="control-btn" id="zoomOut" title="Zoom Out">−</button>
+                <button class="control-btn" id="resetView" title="Reset View">⟲</button>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="info-panel" id="infoPanel">
+                <button class="close-btn" id="closeInfo">×</button>
+                <h2 id="infoTitle">Node Title</h2>
+                <div class="info-section">
+                    <h4>Description</h4>
+                    <p id="infoDesc">Details about this component...</p>
+                </div>
+                <div class="info-section">
+                    <h4>Technologies</h4>
+                    <p id="infoTech">Tech stack info...</p>
+                </div>
+                <div class="info-section">
+                    <h4>Quick Links</h4>
+                    <div class="info-links">
+                        <a href="#" class="info-link" id="linkDocs">📚 Docs</a>
+                        <a href="#" class="info-link" id="linkCode">💻 Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Node definitions
+        const nodes = [
+            // Core VM & Runtime
+            { id: 'vm-core', type: 'core', title: 'HyperVM Core', desc: 'Main execution engine with spatial memory model', x: 800, y: 400, icon: '⚡', tech: 'Rust/C++, Custom bytecode', tags: ['Critical', 'Neurodivergent-Optimized'] },
+            { id: 'memory', type: 'core', title: 'Spatial Memory', desc: '2D/3D addressable memory system', x: 1000, y: 300, icon: '🧠', tech: 'Custom allocation, Visual debugger', tags: ['Visual', 'Core'] },
+            { id: 'executor', type: 'core', title: 'Instruction Executor', desc: 'Multi-paradigm instruction processor', x: 1000, y: 500, icon: '⚙️', tech: 'JIT compilation, Interpreter fallback', tags: ['Performance'] },
+
+            // AI Integration
+            { id: 'ai-router', type: 'ai', title: 'AI Router', desc: 'Universal adapter for GPT/Claude/Local models', x: 600, y: 200, icon: '🤖', tech: 'REST/gRPC, Async queue', tags: ['Universal', 'Plugin'] },
+            { id: 'ai-codegen', type: 'ai', title: 'Code Generator', desc: 'AI-powered HyperCode generation', x: 400, y: 300, icon: '✨', tech: 'LLM prompting, AST validation', tags: ['AI-First'] },
+            { id: 'ai-optimize', type: 'ai', title: 'Optimizer', desc: 'AI-driven performance optimization', x: 400, y: 450, icon: '🎯', tech: 'ML models, Profiling integration', tags: ['Smart'] },
+
+            // Parser & Compiler
+            { id: 'lexer', type: 'parsing', title: 'Lexer', desc: 'Tokenizes HyperCode source', x: 1200, y: 200, icon: '📖', tech: 'Hand-written, Error-tolerant', tags: ['Frontend'] },
+            { id: 'parser', type: 'parsing', title: 'Parser', desc: 'Builds AST from tokens', x: 1400, y: 200, icon: '🌳', tech: 'LL(k), PEG hybrid', tags: ['Frontend'] },
+            { id: 'analyzer', type: 'parsing', title: 'Semantic Analyzer', desc: 'Type checking & validation', x: 1400, y: 350, icon: '🔍', tech: 'Inference engine, Error recovery', tags: ['Safety'] },
+            { id: 'codegen', type: 'parsing', title: 'Bytecode Gen', desc: 'Emits VM instructions', x: 1200, y: 450, icon: '📦', tech: 'Optimizing backend', tags: ['Backend'] },
+
+            // DevOps & CI/CD
+            { id: 'ci-pipeline', type: 'devops', title: 'CI/CD Pipeline', desc: 'Automated testing & deployment', x: 800, y: 700, icon: '🔄', tech: 'GitHub Actions, Custom runners', tags: ['Automation'] },
+            { id: 'docs-gen', type: 'devops', title: 'Docs Generator', desc: 'Living documentation system', x: 600, y: 800, icon: '📝', tech: 'AI-assisted, Auto-update', tags: ['Knowledge'] },
+            { id: 'quality', type: 'devops', title: 'Quality Gate', desc: 'Automated code review & metrics', x: 1000, y: 800, icon: '✅', tech: 'Static analysis, Benchmarks', tags: ['Quality'] },
+
+            // UI & Accessibility
+            { id: 'visual-editor', type: 'ui', title: 'Visual Editor', desc: 'Spatial code editor for neurodivergent minds', x: 1400, y: 600, icon: '🎨', tech: 'Web/Desktop, Canvas-based', tags: ['Accessible', 'Visual'] },
+            { id: 'debugger', type: 'ui', title: 'Visual Debugger', desc: 'Interactive spatial debugging UI', x: 1200, y: 700, icon: '🐛', tech: 'Real-time visualization', tags: ['UX'] },
+            { id: 'repl', type: 'ui', title: 'Interactive REPL', desc: 'Instant feedback environment', x: 1400, y: 800, icon: '💬', tech: 'Web-based, Multi-output', tags: ['Learning'] }
+        ];
+
+        // Connections
+        const connections = [
+            // AI to Core
+            { from: 'ai-router', to: 'vm-core', type: 'ai' },
+            { from: 'ai-codegen', to: 'parser', type: 'ai' },
+            { from: 'ai-optimize', to: 'executor', type: 'ai' },
+
+            // Parsing pipeline
+            { from: 'lexer', to: 'parser', type: 'parsing' },
+            { from: 'parser', to: 'analyzer', type: 'parsing' },
+            { from: 'analyzer', to: 'codegen', type: 'parsing' },
+            { from: 'codegen', to: 'vm-core', type: 'parsing' },
+
+            // Core VM internals
+            { from: 'vm-core', to: 'memory', type: 'core' },
+            { from: 'vm-core', to: 'executor', type: 'core' },
+
+            // UI connections
+            { from: 'visual-editor', to: 'lexer', type: 'ui' },
+            { from: 'debugger', to: 'vm-core', type: 'ui' },
+            { from: 'repl', to: 'vm-core', type: 'ui' },
+
+            // DevOps connections
+            { from: 'ci-pipeline', to: 'quality', type: 'devops' },
+            { from: 'ci-pipeline', to: 'docs-gen', type: 'devops' },
+            { from: 'quality', to: 'vm-core', type: 'devops' }
+        ];
+
+        // State
+        let scale = 1;
+        let offsetX = -600;
+        let offsetY = -100;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let activeFilters = new Set(['all', 'core', 'ai', 'parsing', 'devops', 'ui']);
+
+        // Elements
+        const canvas = document.getElementById('canvas');
+        const canvasContent = document.getElementById('canvasContent');
+        const connectionsSVG = document.getElementById('connections');
+        const infoPanel = document.getElementById('infoPanel');
+
+        // Initialize
+        function init() {
+            renderNodes();
+            renderConnections();
+            setupEventListeners();
+            updateTransform();
+        }
+
+        // Render nodes
+        function renderNodes() {
+            canvasContent.innerHTML = '';
+            nodes.forEach(node => {
+                const nodeEl = document.createElement('div');
+                nodeEl.className = `node ${node.type}`;
+                nodeEl.style.left = node.x + 'px';
+                nodeEl.style.top = node.y + 'px';
+                nodeEl.dataset.id = node.id;
+                nodeEl.dataset.type = node.type;
+
+                const iconBg = {
+                    core: 'var(--color-accent-purple)',
+                    ai: 'var(--color-accent-cyan)',
+                    parsing: 'var(--color-accent-green)',
+                    devops: 'var(--color-accent-orange)',
+                    ui: 'var(--color-accent-red)'
+                }[node.type];
+
+                nodeEl.innerHTML = `
+                    <div class="node-header">
+                        <div class="node-icon" style="background: ${iconBg}">${node.icon}</div>
+                        <div class="node-title">${node.title}</div>
+                    </div>
+                    <div class="node-desc">${node.desc}</div>
+                    <div class="node-tags">
+                        ${node.tags.map(tag => `<span class="node-tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+
+                nodeEl.addEventListener('click', () => showInfo(node));
+                canvasContent.appendChild(nodeEl);
+            });
+        }
+
+        // Render connections
+        function renderConnections() {
+            connectionsE.innerHTML = '';
+            connections.forEach(conn => {
+                const fromNode = nodes.find(n => n.id === conn.from);
+                const toNode = nodes.find(n => n.id === conn.to);
+                if (!fromNode || !toNode) return;
+
+                const fromX = fromNode.x + 90;
+                const fromY = fromNode.y + 60;
+                const toX = toNode.x + 90;
+                const toY = toNode.y + 60;
+
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const midY = (fromY + toY) / 2;
+                const d = `M ${fromX} ${fromY} C ${fromX} ${midY}, ${toX} ${midY}, ${toX} ${toY}`;
+                
+                path.setAttribute('d', d);
+                path.classList.add('connection-line', conn.type);
+                path.dataset.from = conn.from;
+                path.dataset.to = conn.to;
+                
+                connectionsVG.appendChild(path);
+            });
+        }
+
+        // Show info panel
+        function showInfo(node) {
+            document.getElementById('infoTitle').textContent = node.icon + ' ' + node.title;
+            document.getElementById('infoDesc').textContent = node.desc;
+            document.getElementById('infoTech').textContent = node.tech;
+            infoPanel.classList.add('visible');
+        }
+
+        // Filter handling
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const layer = btn.dataset.layer;
+                
+                if (layer === 'all') {
+                    if (activeFilters.has('all')) {
+                        activeFilters.clear();
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    } else {
+                        activeFilters = new Set(['all', 'core', 'ai', 'parsing', 'devops', 'ui']);
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('active'));
+                    }
+                } else {
+                    btn.classList.toggle('active');
+                    if (activeFilters.has(layer)) {
+                        activeFilters.delete(layer);
+                        if (activeFilters.size === 0) {
+                            document.querySelector('[data-layer="all"]').classList.remove('active');
+                        }
+                    } else {
+                        activeFilters.add(layer);
+                        if (activeFilters.size === 5) {
+                            activeFilters.add('all');
+                            document.querySelector('[data-layer="all"]').classList.add('active');
+                        }
+                    }
+                }
+
+                applyFilters();
+            });
+        });
+
+        function applyFilters() {
+            document.querySelectorAll('.node').forEach(node => {
+                const type = node.dataset.type;
+                node.style.display = activeFilters.has(type) || activeFilters.has('all') ? 'block' : 'none';
+            });
+
+            document.querySelectorAll('.connection-line').forEach(line => {
+                const fromNode = nodes.find(n => n.id === line.dataset.from);
+                const toNode = nodes.find(n => n.id === line.dataset.to);
+                const visible = (activeFilters.has(fromNode.type) || activeFilters.has('all')) &&
+                               (activeFilters.has(toNode.type) || activeFilters.has('all'));
+                line.style.display = visible ? 'block' : 'none';
+            });
+        }
+
+        // Pan and zoom
+        function updateTransform() {
+            canvasContent.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            if (e.target === canvas || e.target === canvasContent || e.target === connectionsVG) {
+                isDragging = true;
+                startX = e.clientX - offsetX;
+                startY = e.clientY - offsetY;
+                canvas.classList.add('grabbing');
+            }
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                offsetX = e.clientX - startX;
+                offsetY = e.clientY - startY;
+                updateTransform();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+            canvas.classList.remove('grabbing');
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isDragging = false;
+            canvas.classList.remove('grabbing');
+        });
+
+        // Zoom controls
+        document.getElementById('zoomIn').addEventListener('click', () => {
+            scale = Math.min(scale * 1.2, 3);
+            updateTransform();
+        });
+
+        document.getElementById('zoomOut').addEventListener('click', () => {
+            scale = Math.max(scale / 1.2, 0.3);
+            updateTransform();
+        });
+
+        document.getElementById('resetView').addEventListener('click', () => {
+            scale = 1;
+            offsetX = -600;
+            offsetY = -100;
+            updateTransform();
+        });
+
+        // Close info panel
+        document.getElementById('closeInfo').addEventListener('click', () => {
+            infoPanel.classList.remove('visible');
+        });
+
+        function setupEventListeners() {
+            // Already set up above
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>

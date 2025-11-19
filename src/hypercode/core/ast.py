@@ -55,6 +55,19 @@ class Grouping(Expr):
     expression: Expr
 
 
+@dataclass
+class Call(Expr):
+    callee: Expr
+    paren: "Token"
+    arguments: List[Expr]
+
+
+@dataclass
+class Get(Expr):
+    object: Expr
+    name: "Token"
+
+
 # Statements
 @dataclass
 class Stmt(Node):
@@ -79,6 +92,12 @@ class Var(Stmt):
 
 @dataclass
 class Block(Stmt):
+    statements: List[Stmt]
+
+
+@dataclass
+class Intent(Stmt):
+    description: str
     statements: List[Stmt]
 
 

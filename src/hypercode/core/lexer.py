@@ -62,6 +62,7 @@ class Lexer:
         "false": TokenType.FALSE,
         "null": TokenType.NIL,  # Changed from NULL to NIL to match tokens.py
         "print": TokenType.PRINT,
+        "intent": TokenType.INTENT,
     }
 
     # Token specifications - ordered by priority (longer patterns first)

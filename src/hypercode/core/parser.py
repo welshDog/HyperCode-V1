@@ -26,44 +26,33 @@ class Parser:
     def declaration(self) -> Stmt:
         try:
             if self.match(TokenType.VAR):
-                print("Found VAR token, calling var_declaration")
-                stmt = self.var_declaration()
-                print(f"Returning from var_declaration: {stmt}")
-                return stmt
+                return self.var_declaration()
             return self.statement()
         except ParseError as e:
-            print(f"Caught ParseError in declaration: {e}")
             self.synchronize()
             return None
 
     def var_declaration(self) -> Stmt:
-        print("Starting var_declaration")
-
         # The 'var' keyword has already been consumed by the match() call in declaration()
         # So we can directly consume the identifier
-        print(f"Current token before IDENTIFIER: {self.peek()}")
         name = self.consume(TokenType.IDENTIFIER, "Expected variable name.")
-        print(f"Got identifier: {name.lexeme}")
 
         # Parse the initializer if present
         initializer = None
         if self.match(TokenType.EQUAL):
-            print("Found =, parsing expression")
             initializer = self.expression()
 
         # Require semicolon at the end
-        print(f"Current token before semicolon: {self.peek()}")
         self.consume(TokenType.SEMICOLON, "Expected ';' after variable declaration.")
-        print("Successfully parsed variable declaration")
 
         # Create and return the Var statement
-        stmt = Var(name=name, initializer=initializer)
-        print(f"Created Var statement: {stmt}")
-        return stmt
+        return Var(name=name, initializer=initializer)
 
     def statement(self) -> Stmt:
         if self.match(TokenType.PRINT):
             return self.print_statement()
+        if self.match(TokenType.INTENT):
+            return self.intent_statement()
         if self.match(TokenType.LBRACE):
             return Block(self.block())
         return self.expression_statement()
@@ -72,6 +61,19 @@ class Parser:
         value = self.expression()
         self.consume(TokenType.SEMICOLON, "Expected ';' after value.")
         return Print(value)
+
+    def intent_statement(self) -> Stmt:
+        # Parse the intent description (string literal)
+        description = self.consume(TokenType.STRING, "Expected intent description string.")
+        
+        # Parse the intent block
+        self.consume(TokenType.LBRACE, "Expected '{' after intent description.")
+        statements = []
+        while not self.check(TokenType.RBRACE) and not self.is_at_end():
+            statements.append(self.declaration())
+        self.consume(TokenType.RBRACE, "Expected '}' after intent block.")
+        
+        return Intent(description.literal, statements)
 
     def expression_statement(self) -> Stmt:
         expr = self.expression()
@@ -150,6 +152,21 @@ class Parser:
         return self.primary()
 
     def primary(self) -> Expr:
+        expr = self._primary()
+        
+        # Handle function calls and property access
+        while True:
+            if self.match(TokenType.LPAREN):
+                expr = self.finish_call(expr)
+            elif self.match(TokenType.DOT):
+                name = self.consume(TokenType.IDENTIFIER, "Expected property name after '.'.")
+                expr = Get(expr, name)
+            else:
+                break
+            
+        return expr
+    
+    def _primary(self) -> Expr:
         if self.match(TokenType.FALSE):
             return Literal(False)
         if self.match(TokenType.TRUE):
@@ -173,12 +190,24 @@ class Parser:
         if self.match(TokenType.IDENTIFIER):
             return Variable(self.previous())
 
-        if self.match(TokenType.LEFT_PAREN):
+        if self.match(TokenType.LPAREN):
             expr = self.expression()
-            self.consume(TokenType.RIGHT_PAREN, "Expected ')' after expression.")
+            self.consume(TokenType.RPAREN, "Expected ')' after expression.")    
             return Grouping(expr)
 
         raise self.error(self.peek(), "Expected expression.")
+    
+    def finish_call(self, callee: Expr) -> Call:
+        paren = self.previous()
+        arguments = []
+        
+        if not self.check(TokenType.RPAREN):
+            arguments.append(self.expression())
+            while self.match(TokenType.COMMA):
+                arguments.append(self.expression())
+        
+        self.consume(TokenType.RPAREN, "Expected ')' after arguments.")
+        return Call(callee, paren, arguments)
 
     # Helper methods
     def match(self, *types: TokenType) -> bool:
@@ -189,13 +218,10 @@ class Parser:
         return False
 
     def consume(self, type_: TokenType, message: str) -> Token:
-        print(f"Consuming token. Expected: {type_}, Current: {self.peek()}")
         if self.check(type_):
             token = self.advance()
-            print(f"Consumed token: {token}")
             return token
         error = self.error(self.peek(), message)
-        print(f"Consume error: {error}")
         raise error
 
     def error(self, token: Token, message: str) -> ParseError:
@@ -218,7 +244,7 @@ class Parser:
                 TokenType.WHILE,
                 TokenType.PRINT,
                 TokenType.RETURN,
-                TokenType.FUNCTION,
+                TokenType.FUN,
             ):
                 return
 

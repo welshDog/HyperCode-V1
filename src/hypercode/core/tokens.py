@@ -19,6 +19,7 @@ class TokenType(Enum):
     FALSE = auto()
     NIL = auto()
     CLASS = auto()
+    INTENT = auto()
 
     # Literals
     IDENTIFIER = auto()

@@ -81,5 +81,20 @@
     "@vscode/vsce": "^3.7.0",
     "typescript": "^5.0.0",
     "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/welshDog/hypercode.git",
+    "directory": "vscode-extension"
+  },
+  "homepage": "https://github.com/welshDog/hypercode/tree/main/vscode-extension",
+  "bugs": {
+    "url": "https://github.com/welshDog/hypercode/issues"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
   }
 }
