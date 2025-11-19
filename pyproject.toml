@@ -7,7 +7,7 @@ name = "hypercode"
 version = "1.0.0"
 description = "Neurodivergent-first programming language with universal AI compatibility"
 authors = [
-    {name = "Lyndon Williams (welshDog)", email = "lyndzwills@gmail.com"}
+    {name = "Lyndz Williams (welshDog)", email = "lyndzwills@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.9"

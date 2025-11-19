@@ -47,7 +47,7 @@ class TestHyperCodeKnowledgeBase:
             },
             {
                 "title": "Space Metadata",
-                "content": "HyperCode version 1.0.0 created by Mr Lyndon Williams (welshDog) from S.wales.",
+                "content": "HyperCode version 1.0.0 created by Mr Lyndz Williams (welshDog) from S.wales.",
                 "tags": ["space", "metadata", "version"],
                 "url": None,
             },

@@ -1,4 +1,4 @@
-# 🚀 HyperCode v1.0 - Revolutionary Neurodivergent-First Programming Language
+# 🚀 HyperCode v1.0.0 - Revolutionary Neurodivergent-First Programming Language
 
 [![Production Ready](https://img.shields.io/badge/🚀-PRODUCTION%20READY-4CAF50?style=for-the-badge&logo=rocket)](https://github.com/welshDog/hypercode/releases/tag/v1.0.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)

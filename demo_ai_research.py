@@ -96,7 +96,7 @@ def test_document_specific_queries():
 
     # Test specific sections of the AI Research document
     document_queries = [
-        "What should be included in the HyperCode Language Specification v0.1?",
+        "What should be included in the HyperCode Language Specification v1.0.0?",
         "How can we implement multi-backend compilation for HyperCode?",
         "What are the key phases for implementing neurodivergent-first design?",
         "How can HyperCode support both quantum and DNA computing backends?",

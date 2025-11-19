@@ -52,7 +52,7 @@ entries:
 {
   "documents": [
     {
-      "title": "HyperCode Language Specification v0.1",
+      "title": "HyperCode Language Specification v1.0.0",
       "content": "Core syntax features including spatial blocks, natural language parsing, neurodivergent-friendly operators...",
       "url": "https://www.perplexity.ai/spaces/hypercode-...",
       "tags": ["specification", "core-language", "syntax"]

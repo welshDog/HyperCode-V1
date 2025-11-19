@@ -199,7 +199,7 @@ if __name__ == "__main__":
 1. Open `perplexity_space_import_template.json` in your text editor
 2. Replace the example documents with your actual Perplexity Space data
 3. For each document, fill:
-   - **title**: Clear, descriptive name (e.g., "HyperCode Language Specification v0.1")
+   - **title**: Clear, descriptive name (e.g., "HyperCode Language Specification v1.0.0")
    - **content**: The actual research/findings (copy-paste from your Space)
    - **tags**: 1-5 relevant tags (lowercase, hyphen-separated)
    - **url**: Link to the Perplexity Space (or null if not available)

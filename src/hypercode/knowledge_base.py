@@ -388,7 +388,7 @@ def initialize_sample_data():
     # Sample documents based on what would likely be in your Perplexity Space
     sample_docs = [
         {
-            "title": "HyperCode Language Specification v0.1",
+            "title": "HyperCode Language Specification v1.0.0",
             "content": """
             HyperCode is a neurodivergent-first programming language that supports:
             - Multiple syntax modes (visual, text, spatial)

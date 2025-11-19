@@ -192,7 +192,7 @@ def test_real_perplexity_data_simulation():
         {
             "title": "HyperCode Language Specification - Complete Reference",
             "content": """
-            # HyperCode Language Specification v0.1
+            # HyperCode Language Specification v1.0.0
 
             ## Overview
             HyperCode is a neurodivergent-first programming language designed for the future of computing.
