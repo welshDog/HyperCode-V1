@@ -2,7 +2,7 @@
   "name": "hypercode-syntax",
   "displayName": "HyperCode Visual Syntax",
   "description": "Visual semantic syntax highlighting for neurodivergent developers with emoji-based annotations",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "publisher": "HyperCode",
   "engines": {
     "vscode": "^1.85.0"

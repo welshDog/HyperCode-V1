@@ -576,9 +576,7 @@
       "issue_severity": "MEDIUM",
       "issue_text": "Chmod setting a permissive mask 0o755 on file (launch.sh).",
       "line_number": 714,
-      "line_range": [
-        714
-      ],
+      "line_range": [714],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b103_set_bad_file_permissions.html",
       "test_id": "B103",
       "test_name": "set_bad_file_permissions"
@@ -596,11 +594,7 @@
       "issue_severity": "LOW",
       "issue_text": "Try, Except, Pass detected.",
       "line_number": 238,
-      "line_range": [
-        238,
-        239,
-        240
-      ],
+      "line_range": [238, 239, 240],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
       "test_id": "B110",
       "test_name": "try_except_pass"
@@ -618,11 +612,7 @@
       "issue_severity": "LOW",
       "issue_text": "Try, Except, Pass detected.",
       "line_number": 248,
-      "line_range": [
-        248,
-        249,
-        250
-      ],
+      "line_range": [248, 249, 250],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
       "test_id": "B110",
       "test_name": "try_except_pass"
@@ -640,9 +630,7 @@
       "issue_severity": "HIGH",
       "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
       "line_number": 38,
-      "line_range": [
-        38
-      ],
+      "line_range": [38],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
       "test_id": "B324",
       "test_name": "hashlib"
@@ -660,9 +648,7 @@
       "issue_severity": "HIGH",
       "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
       "line_number": 369,
-      "line_range": [
-        369
-      ],
+      "line_range": [369],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
       "test_id": "B324",
       "test_name": "hashlib"
@@ -680,9 +666,7 @@
       "issue_severity": "LOW",
       "issue_text": "Possible hardcoded password: 'IDENTIFIER'",
       "line_number": 162,
-      "line_range": [
-        162
-      ],
+      "line_range": [162],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html",
       "test_id": "B105",
       "test_name": "hardcoded_password_string"
@@ -700,9 +684,7 @@
       "issue_severity": "MEDIUM",
       "issue_text": "Chmod setting a permissive mask 0o755 on file (healthcheck_path).",
       "line_number": 229,
-      "line_range": [
-        229
-      ],
+      "line_range": [229],
       "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b103_set_bad_file_permissions.html",
       "test_id": "B103",
       "test_name": "set_bad_file_permissions"
