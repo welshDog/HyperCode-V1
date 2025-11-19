@@ -1,5 +1,9 @@
 # 🚀 HyperCode v1.0 - Revolutionary Neurodivergent-First Programming Language
 
+[![Production Ready](https://img.shields.io/badge/🚀-PRODUCTION%20READY-4CAF50?style=for-the-badge&logo=rocket)](https://github.com/welshDog/hypercode/releases/tag/v1.0.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge)](https://www.python.org/downloads/)
+
 **Status**: ✅ PRODUCTION READY | **License**: MIT | **Community**:
 [Join Discussions](https://github.com/welshDog/hypercode/discussions) | **Try Now**:
 [Web Playground](https://welshdog.github.io/hypercode/web-playground/)
