@@ -1,14 +1,17 @@
 # src/core/tokens.py
 """
-HyperCode Token Types and Definitions
+Token types and definitions for the HyperCode language.
 
-Defines all token types used in the HyperCode language.
+This module defines all token types and the Token class used in the HyperCode language.
 """
+
 from enum import Enum
-from typing import Any
+from typing import Any, Dict, Optional
 
 
 class TokenType(Enum):
+    """Enumeration of all token types in the HyperCode language."""
+    
     # Single-character tokens
     LEFT_PAREN = "("
     RIGHT_PAREN = ")"
@@ -28,9 +31,7 @@ class TokenType(Enum):
     GREATER = ">"
     COLON = ":"
     QUESTION = "?"
-    FUNC = "func"
-    VAR = "var"
-    
+
     # One or two character tokens
     BANG_EQUAL = "!="
     EQUAL_EQUAL = "=="
@@ -53,6 +54,7 @@ class TokenType(Enum):
     FALSE = "false"
     FOR = "for"
     FUN = "fun"
+    FUNC = "func"
     IF = "if"
     NIL = "nil"
     OR = "or"
@@ -63,10 +65,11 @@ class TokenType(Enum):
     TRUE = "true"
     VAR = "var"
     WHILE = "while"
-    
+
     # Special tokens
     EOF = "EOF"
     ERROR = "ERROR"
+
 
 class Token:
     """
@@ -79,6 +82,7 @@ class Token:
         line: The line number where the token appears (1-based)
         column: The column number where the token starts (1-based)
     """
+
     def __init__(
         self,
         type: TokenType,
@@ -86,7 +90,8 @@ class Token:
         literal: Any,
         line: int,
         column: int
-    ):
+    ) -> None:
+        """Initialize a new token with the given properties."""
         self.type = type
         self.lexeme = lexeme
         self.literal = literal
@@ -94,14 +99,16 @@ class Token:
         self.column = column
     
     def __str__(self) -> str:
+        """Return a string representation of the token."""
         return f"{self.type} {self.lexeme} {self.literal}"
     
     def __repr__(self) -> str:
+        """Return a detailed string representation of the token for debugging."""
         return f"<Token {self.type} '{self.lexeme}' at {self.line}:{self.column}>"
 
 
 # Keywords mapping for quick lookup
-KEYWORDS = {
+KEYWORDS: Dict[str, TokenType] = {
     'and': TokenType.AND,
     'break': TokenType.BREAK,
     'class': TokenType.CLASS,
@@ -110,8 +117,8 @@ KEYWORDS = {
     'false': TokenType.FALSE,
     'for': TokenType.FOR,
     'fun': TokenType.FUN,
-    'if': TokenType.IF,
     'func': TokenType.FUNC,
+    'if': TokenType.IF,
     'nil': TokenType.NIL,
     'or': TokenType.OR,
     'print': TokenType.PRINT,
