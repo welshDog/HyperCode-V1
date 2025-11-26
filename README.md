@@ -198,3 +198,45 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 💡 **Pro Tip**: Check out our [Quick Start Guide](examples/QUICK_START.md) for a guided tour of HyperCode's features!
 
 [![Try HyperCode Now](https://img.shields.io/badge/TRY_HYPERCODE_NOW-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/welshDog/hypercode#-quick-start)
+
+---
+
+## ♿ Accessibility
+
+HyperCode is committed to being accessible to everyone:
+
+- 👀 **Screen reader compatible** documentation
+- ⌨️ **Keyboard-first** navigation in tools
+- 🎨 **High contrast** syntax themes available
+- 🧠 **Neurodivergent-friendly** error messages and documentation
+- 📝 **Clear, plain language** - no jargon overload
+
+**Need accommodations?** [Open an accessibility issue](https://github.com/welshDog/hypercode/issues/new?labels=accessibility&template=accessibility.md)
+
+---
+
+## 💬 We Want Your Feedback!
+
+This is a **living project** built for and with the neurodivergent community.
+
+### Quick Feedback Options:
+
+- 🐛 [Report a Bug](https://github.com/welshDog/hypercode/issues/new?labels=bug)
+- 💡 [Suggest a Feature](https://github.com/welshDog/hypercode/issues/new?labels=enhancement)
+- 🤔 [Ask a Question](https://github.com/welshDog/hypercode/discussions/new?category=q-a)
+- 🎓 [Share Your Experience](https://github.com/welshDog/hypercode/discussions/new?category=show-and-tell)
+- ❤️ [Join Discussions](https://github.com/welshDog/hypercode/discussions)
+
+**Your input shapes HyperCode.** Every perspective matters. Every brain works differently. Let's build something that works for everyone.
+
+---
+
+<div align="center">
+
+**Made with 💜 by neurodivergent developers, for neurodivergent developers**
+
+[MIT License](LICENSE) | [Code of Conduct](CODE_OF_CONDUCT.md) | [Contributing Guide](CONTRIBUTING.md)
+
+*HyperCode: Where different minds write brilliant code*
+
+</div>
