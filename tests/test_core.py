@@ -24,25 +24,32 @@ sys.path.append(str(Path(__file__).parent.parent))
 
 from hypercode.core.lexer import Lexer
 from hypercode.core.parser import Parser
+from hypercode.core.interpreter import Interpreter
 
 
 def run_test(source_code: str):
-    """Test the lexer and parser with the given source code."""
+    """Test the lexer, parser, and interpreter with the given source code."""
     print(f"Testing source:\n---\n{source_code}\n---")
 
     try:
         # Test Lexer
         lexer = Lexer(source_code)
-        tokens = lexer.tokenize()
+        tokens = lexer.scan_tokens()
         print("\nTokens:")
         for token in tokens:
             print(f"  {token}")
 
         # Test Parser
         parser = Parser(tokens)
-        ast = parser.parse()
+        statements = parser.parse()
         print("\nAST:")
-        print(ast)
+        print(statements)
+
+        # Test Interpreter
+        print("\nInterpreter Output:")
+        interpreter = Interpreter()
+        interpreter.interpret(statements)
+
         print("\n✅ Core components test passed!")
 
     except Exception as e:
@@ -52,7 +59,15 @@ def run_test(source_code: str):
 if __name__ == "__main__":
     # Use a simple test case that the current parser can handle
     test_code = """
-    let x = 42;
-    const y = \"hello\";
+    fun fib(n) {
+        if (n < 2) {
+            return n;
+        }
+        return fib(n - 2) + fib(n - 1);
+    }
+
+    var result = fib(10);
+    print(result);
     """
     run_test(test_code)
+

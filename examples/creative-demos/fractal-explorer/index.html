@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperCode Fractal Explorer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e2e;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #7aa2f7;
+            margin-bottom: 10px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+            border: 2px solid #414868;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        #fractalCanvas {
+            display: block;
+            width: 100%;
+            height: 600px;
+            background-color: #000;
+            cursor: crosshair;
+        }
+        
+        .controls {
+            background-color: #24283b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #9ece6a;
+        }
+        
+        select, button {
+            background-color: #414868;
+            color: #e0e0e0;
+            border: 1px solid #565f89;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #565f89;
+        }
+        
+        .keyboard-shortcuts {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #1a1b26;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        
+        .keyboard-shortcuts h3 {
+            color: #7aa2f7;
+            margin-top: 0;
+        }
+        
+        .shortcut {
+            display: flex;
+            margin-bottom: 5px;
+        }
+        
+        .key {
+            background-color: #414868;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 10px;
+            min-width: 100px;
+            text-align: center;
+            font-family: monospace;
+        }
+        
+        .description {
+            color: #a9b1d6;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #565f89;
+            font-size: 0.9em;
+        }
+        
+        a {
+            color: #7aa2f7;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HyperCode Fractal Explorer</h1>
+        <p>Explore infinite complexity with this interactive fractal visualization. Click to zoom in, use arrow keys to pan, and +/- to zoom in/out.</p>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="fractalType">Fractal Type:</label>
+                <select id="fractalType">
+                    <option value="mandelbrot">Mandelbrot Set</option>
+                    <option value="julia">Julia Set</option>
+                    <option value="burning_ship">Burning Ship</option>
+                </select>
+                
+                <button id="resetView">Reset View</button>
+                <button id="saveImage">Save Image</button>
+            </div>
+            
+            <div class="control-group">
+                <label for="iterations">Max Iterations: <span id="iterationsValue">100</span></label>
+                <input type="range" id="iterations" min="20" max="500" value="100" step="10">
+            </div>
+            
+            <div class="control-group">
+                <label for="colorScheme">Color Scheme:</label>
+                <select id="colorScheme">
+                    <option value="rainbow">Rainbow</option>
+                    <option value="fire">Fire</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="grayscale">Grayscale</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="fractalCanvas" width="1000" height="600"></canvas>
+        </div>
+        
+        <div class="keyboard-shortcuts">
+            <h3>Keyboard Shortcuts</h3>
+            <div class="shortcut">
+                <div class="key">Click</div>
+                <div class="description">Zoom in at clicked point</div>
+            </div>
+            <div class="shortcut">
+                <div class="key">Arrow Keys</div>
+                <div class="description">Pan the view</div>
+            </div>
+            <div class="shortcut">
+                <div class="key">+ / -</div>
+                <div class="description">Zoom in / out</div>
+            </div>
+            <div class="shortcut">
+                <div class="key">R</div>
+                <div class="description">Reset view</div>
+            </div>
+        </div>
+        
+        <div class="about">
+            <h3>About</h3>
+            <p>This fractal explorer is built with HyperCode, demonstrating its capabilities for mathematical computing and interactive visualizations. The Mandelbrot set is a famous fractal that reveals infinite complexity as you zoom in.</p>
+            <p>HyperCode's performance optimizations make it possible to render these complex mathematical constructs efficiently in the browser.</p>
+        </div>
+        
+        <footer>
+            <p>Created with <a href="https://github.com/welshDog/hypercode" target="_blank" rel="noopener">HyperCode</a> | 
+            <a href="https://github.com/welshDog/hypercode/tree/main/showcase/creative-demos/fractal-explorer" target="_blank" rel="noopener">View Source</a></p>
+        </footer>
+    </div>
+    
+    <script type="module" src="fractal.hc"></script>
+</body>
+</html>

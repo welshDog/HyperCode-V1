@@ -1,38 +1,72 @@
 import sys
+import os
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from .core.lexer import Lexer
-from .core.parser import Parser
+from core.lexer import Lexer
+from core.parser import Parser
+from core.interpreter import Interpreter
 
 
 def run_repl():
-    print("HyperCode REPL (type 'exit' to quit)")
+    print("🚀 HyperCode REPL v1.0")
+    print("Type 'exit' to quit, 'help' for examples")
+    print("-" * 40)
     while True:
         try:
             source = input("> ")
             if source.lower() in ("exit", "quit"):
+                print("👋 Goodbye!")
                 break
+            if source.lower() == "help":
+                show_help()
+                continue
             run(source)
         except KeyboardInterrupt:
-            print("\nExiting...")
+            print("\n👋 Goodbye!")
             break
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"❌ Error: {e}")
 
 
 def run(source: str):
+    # Lexical analysis
     lexer = Lexer(source)
-    tokens = lexer.tokenize()
-
-    # For now, just print the tokens
-    for token in tokens:
-        print(token)
-
+    tokens = lexer.scan_tokens()
+    
+    if lexer.errors:
+        for error in lexer.errors:
+            print(f"❌ Lexer Error at line {error.line}:{error.column}: {error.message}")
+        return
+    
+    # Parsing
     parser = Parser(tokens)
     statements = parser.parse()
+    
+    # Execution
+    interpreter = Interpreter()
+    interpreter.interpret(statements)
 
-    # In the future, we'll execute these statements
-    for stmt in statements:
-        print(stmt)
+
+def show_help():
+    print("""
+📚 HyperCode Quick Examples:
+
+1. Print a message:
+   print("Hello, HyperCode!");
+
+2. Variables:
+   var x = 42;
+   print(x);
+
+3. Math:
+   var result = (10 + 2) * 3;
+   print(result);
+
+4. Strings:
+   var name = "BROski";
+   print("Hello, " + name);
+""")
 
 
 if __name__ == "__main__":

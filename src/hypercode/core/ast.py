@@ -96,6 +96,26 @@ class Block(Stmt):
 
 
 @dataclass
+class If(Stmt):
+    condition: Expr
+    then_branch: Stmt
+    else_branch: Optional[Stmt]
+
+
+@dataclass
+class Fun(Stmt):
+    name: "Token"
+    params: List["Token"]
+    body: List[Stmt]
+
+
+@dataclass
+class Return(Stmt):
+    keyword: "Token"
+    value: Optional[Expr]
+
+
+@dataclass
 class Intent(Stmt):
     description: str
     statements: List[Stmt]

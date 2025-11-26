@@ -25,6 +25,8 @@ class Parser:
 
     def declaration(self) -> Stmt:
         try:
+            if self.match(TokenType.FUN):
+                return self.function("function")
             if self.match(TokenType.VAR):
                 return self.var_declaration()
             return self.statement()
@@ -49,8 +51,12 @@ class Parser:
         return Var(name=name, initializer=initializer)
 
     def statement(self) -> Stmt:
+        if self.match(TokenType.IF):
+            return self.if_statement()
         if self.match(TokenType.PRINT):
             return self.print_statement()
+        if self.match(TokenType.RETURN):
+            return self.return_statement()
         if self.match(TokenType.INTENT):
             return self.intent_statement()
         if self.match(TokenType.LBRACE):
@@ -61,6 +67,14 @@ class Parser:
         value = self.expression()
         self.consume(TokenType.SEMICOLON, "Expected ';' after value.")
         return Print(value)
+
+    def return_statement(self) -> Stmt:
+        keyword = self.previous()
+        value = None
+        if not self.check(TokenType.SEMICOLON):
+            value = self.expression()
+        self.consume(TokenType.SEMICOLON, "Expected ';' after return value.")
+        return Return(keyword, value)
 
     def intent_statement(self) -> Stmt:
         # Parse the intent description (string literal)
@@ -79,6 +93,37 @@ class Parser:
         expr = self.expression()
         self.consume(TokenType.SEMICOLON, "Expected ';' after expression.")
         return Expression(expr)
+
+    def if_statement(self) -> Stmt:
+        self.consume(TokenType.LPAREN, "Expected '(' after 'if'.")
+        condition = self.expression()
+        self.consume(TokenType.RPAREN, "Expected ')' after if condition.")
+
+        then_branch = self.statement()
+        else_branch = None
+        if self.match(TokenType.ELSE):
+            else_branch = self.statement()
+
+        return If(condition, then_branch, else_branch)
+
+    def function(self, kind: str) -> Fun:
+        name = self.consume(TokenType.IDENTIFIER, f"Expected {kind} name.")
+        self.consume(TokenType.LPAREN, f"Expected '(' after {kind} name.")
+        parameters = []
+        if not self.check(TokenType.RPAREN):
+            while True:
+                if len(parameters) >= 255:
+                    self.error(self.peek(), "Can't have more than 255 parameters.")
+                parameters.append(
+                    self.consume(TokenType.IDENTIFIER, "Expected parameter name.")
+                )
+                if not self.match(TokenType.COMMA):
+                    break
+        self.consume(TokenType.RPAREN, "Expected ')' after parameters.")
+
+        self.consume(TokenType.LBRACE, f"Expected '{{' before {kind} body.")
+        body = self.block()
+        return Fun(name, parameters, body)
 
     def block(self) -> List[Stmt]:
         statements = []

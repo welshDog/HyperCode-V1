@@ -1,8 +1,7 @@
 from typing import List
 
 from .ast import *
-from .lexer import Token
-from .token_types import TokenType
+from .tokens import Token, TokenType
 
 
 class ParseError(Exception):
@@ -26,13 +25,11 @@ class Parser:
     def declaration(self) -> Stmt:
         try:
             if self.match(TokenType.VAR):
-                print("Found VAR token, calling var_declaration")
-                stmt = self.var_declaration()
-                print(f"Returning from var_declaration: {stmt}")
-                return stmt
+                return self.var_declaration()
+            if self.match(TokenType.FUNC):
+                return self.function("function")
             return self.statement()
         except ParseError as e:
-            print(f"Caught ParseError in declaration: {e}")
             self.synchronize()
             return None
 
@@ -64,8 +61,12 @@ class Parser:
     def statement(self) -> Stmt:
         if self.match(TokenType.PRINT):
             return self.print_statement()
-        if self.match(TokenType.LBRACE):
+        if self.match(TokenType.LEFT_BRACE):
             return Block(self.block())
+        if self.match(TokenType.IF):
+            return self.if_statement()
+        if self.match(TokenType.RETURN):
+            return self.return_statement()
         return self.expression_statement()
 
     def print_statement(self) -> Stmt:
@@ -81,7 +82,9 @@ class Parser:
     def block(self) -> List[Stmt]:
         statements = []
         while not self.check(TokenType.RIGHT_BRACE) and not self.is_at_end():
-            statements.append(self.declaration())
+            stmt = self.declaration()
+            if stmt is not None:
+                statements.append(stmt)
         self.consume(TokenType.RIGHT_BRACE, "Expected '}' after block.")
         return statements
 
@@ -154,21 +157,12 @@ class Parser:
             return Literal(False)
         if self.match(TokenType.TRUE):
             return Literal(True)
-        if self.match(TokenType.NULL):
+        if self.match(TokenType.NIL):
             return Literal(None)
 
         if self.match(TokenType.NUMBER, TokenType.STRING):
-            # Convert the string value to the appropriate Python type
             token = self.previous()
-            if token.type == TokenType.NUMBER:
-                # Try to convert to int first, then float if needed
-                try:
-                    value = int(token.value)
-                except ValueError:
-                    value = float(token.value)
-            else:  # STRING
-                value = token.value
-            return Literal(value)
+            return Literal(token.literal)
 
         if self.match(TokenType.IDENTIFIER):
             return Variable(self.previous())
@@ -179,6 +173,48 @@ class Parser:
             return Grouping(expr)
 
         raise self.error(self.peek(), "Expected expression.")
+
+    def function(self, kind: str) -> Function:
+        name = self.consume(TokenType.IDENTIFIER, f"Expected {kind} name.")
+        self.consume(TokenType.LEFT_PAREN, f"Expected '(' after {kind} name.")
+
+        parameters = []
+        if not self.check(TokenType.RIGHT_PAREN):
+            while True:
+                if len(parameters) >= 255:
+                    self.error(self.peek(), "Cannot have more than 255 parameters.")
+
+                parameters.append(self.consume(TokenType.IDENTIFIER, "Expected parameter name."))
+
+                if not self.match(TokenType.COMMA):
+                    break
+
+        self.consume(TokenType.RIGHT_PAREN, "Expected ')' after parameters.")
+        self.consume(TokenType.LEFT_BRACE, "Expected '{' before " + kind + " body.")
+
+        body = self.block()
+        return Function(name, parameters, body)
+
+    def if_statement(self) -> Stmt:
+        self.consume(TokenType.LEFT_PAREN, "Expected '(' after 'if'.")
+        condition = self.expression()
+        self.consume(TokenType.RIGHT_PAREN, "Expected ')' after if condition.")
+
+        then_branch = self.statement()
+        else_branch = None
+        if self.match(TokenType.ELSE):
+            else_branch = self.statement()
+
+        return If(condition, then_branch, else_branch)
+
+    def return_statement(self) -> Stmt:
+        keyword = self.previous()
+        value = None
+        if not self.check(TokenType.SEMICOLON):
+            value = self.expression()
+
+        self.consume(TokenType.SEMICOLON, "Expected ';' after return value.")
+        return Return(keyword, value)
 
     # Helper methods
     def match(self, *types: TokenType) -> bool:

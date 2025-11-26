@@ -1,3 +1,4 @@
+# src/core/lexer.py
 """
 HyperCode Lexer Module
 
@@ -5,8 +6,9 @@ Tokenizes HyperCode source code into a stream of tokens for parsing.
 Handles keywords, identifiers, literals, operators, and special syntax.
 """
 
+import re
 from dataclasses import dataclass
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .tokens import Token, TokenType
 
@@ -34,24 +36,10 @@ class Lexer:
 
     Converts source code into a sequence of tokens that can be parsed.
     Handles syntax highlighting, error reporting, and source mapping.
-
-    Attributes:
-        source: The source code to tokenize
-        tokens: List of tokens generated from the source
-        errors: List of lexing errors encountered
-        start: Starting position of the current lexeme
-        current: Current position in the source
-        line: Current line number (1-based)
-        column: Current column number (1-based)
     """
 
     def __init__(self, source: str):
-        """
-        Initialize the lexer with source code.
-
-        Args:
-            source: The source code string to tokenize
-        """
+        """Initialize the lexer with source code."""
         self.source = source
         self.tokens: List[Token] = []
         self.errors: List[LexerError] = []
@@ -59,230 +47,268 @@ class Lexer:
         self.current = 0
         self.line = 1
         self.column = 1
-
-        # Keywords map to their corresponding token types
-        self.KEYWORDS: Dict[str, TokenType] = {
-            # Control flow
-            "if": TokenType.IF,
-            "else": TokenType.ELSE,
-            "for": TokenType.FOR,
-            "while": TokenType.WHILE,
-            "match": TokenType.MATCH,
-            "case": TokenType.CASE,
-            "default": TokenType.DEFAULT,
-            # Functions
-            "fun": TokenType.FUN,
-            "return": TokenType.RETURN,
-            "yield": TokenType.YIELD,
-            "await": TokenType.AWAIT,
-            # Variables
-            "let": TokenType.LET,
-            "const": TokenType.CONST,
-            "var": TokenType.VAR,
-            # I/O
-            "print": TokenType.PRINT,
-            "input": TokenType.INPUT,
-            # Literals
-            "true": TokenType.TRUE,
-            "false": TokenType.FALSE,
-            "nil": TokenType.NIL,
-            # OOP
-            "class": TokenType.CLASS,
-            "interface": TokenType.INTERFACE,
-            "extends": TokenType.EXTENDS,
-            "implements": TokenType.IMPLEMENTS,
-            "this": TokenType.THIS,
-            "super": TokenType.SUPER,
-            "new": TokenType.NEW,
-            # Modules
-            "import": TokenType.IMPORT,
-            "export": TokenType.EXPORT,
-            "from": TokenType.FROM,
-            "as": TokenType.AS,
-            # Error handling
-            "try": TokenType.TRY,
-            "catch": TokenType.CATCH,
-            "finally": TokenType.FINALLY,
-            "throw": TokenType.THROW,
+        
+        # Pre-compile regex patterns for better performance
+        self.identifier_regex = re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*')
+        self.number_regex = re.compile(r'\d+')
+        
+        # Cache for keywords
+        self.KEYWORDS = {
+            'and': TokenType.AND,
+            'break': TokenType.BREAK,
+            'class': TokenType.CLASS,
+            'continue': TokenType.CONTINUE,
+            'else': TokenType.ELSE,
+            'false': TokenType.FALSE,
+            'for': TokenType.FOR,
+            'fun': TokenType.FUN,
+            'if': TokenType.IF,
+            'nil': TokenType.NIL,
+            'or': TokenType.OR,
+            'print': TokenType.PRINT,
+            'return': TokenType.RETURN,
+            'super': TokenType.SUPER,
+            'this': TokenType.THIS,
+            'true': TokenType.TRUE,
+            'var': TokenType.VAR,
+            'while': TokenType.WHILE,
+        }
+        
+        # Use a lookup table for single-character tokens
+        self.single_char_tokens = {
+            '(': TokenType.LEFT_PAREN,
+            ')': TokenType.RIGHT_PAREN,
+            '{': TokenType.LEFT_BRACE,
+            '}': TokenType.RIGHT_BRACE,
+            ',': TokenType.COMMA,
+            '.': TokenType.DOT,
+            '-': TokenType.MINUS,
+            '+': TokenType.PLUS,
+            ';': TokenType.SEMICOLON,
+            '*': TokenType.STAR,
+            '%': TokenType.PERCENT,
+            '!': TokenType.BANG,
+            '=': TokenType.EQUAL,
+            '<': TokenType.LESS,
+            '>': TokenType.GREATER,
+            ':': TokenType.COLON,
+            '?': TokenType.QUESTION,
         }
 
-    def tokenize(self) -> List[Token]:
-        """
-        Convert the source code into a list of tokens.
-
-        Returns:
-            List of tokens representing the source code.
-
-        Example:
-            >>> lexer = Lexer("let x = 42")
-            >>> tokens = lexer.tokenize()
-            >>> [t.type for t in tokens]
-            [TokenType.LET, TokenType.IDENTIFIER, TokenType.EQUAL, TokenType.NUMBER, TokenType.EOF]
-        """
+    def scan_tokens(self) -> List[Token]:
+        """Scan the source code and return a list of tokens."""
         while not self.is_at_end():
             self.start = self.current
-            try:
-                self.scan_token()
-            except Exception as e:
-                self.error(f"Unexpected character: {e}")
-                self.synchronize()
-
-        self.tokens.append(Token(TokenType.EOF, "", None, self.line, self.column))
+            self.scan_token()
+        
+        # Add EOF token
+        self.add_token(TokenType.EOF)
         return self.tokens
 
-    def is_at_end(self) -> bool:
-        return self.current >= len(self.source)
-
-    def scan_token(self) -> None:
-        """
-        Scan the next token from the source code.
-
-        This method processes a single token and adds it to the tokens list.
-        It handles all token types including keywords, identifiers, literals,
-        and operators.
-
-        Raises:
-            ValueError: If an unexpected character is encountered
-        """
-        char = self.advance()
-
-        # Skip whitespace
-        if char in " \r\t":
-            return
-
-        # Handle newlines
-        if char == "\n":
-            self.line += 1
-            self.column = 1
-            return
-
-        # Handle line continuation
-        if char == "\\" and self.peek() == "\n":
-            self.advance()  # Consume the newline
-            self.line += 1
-            self.column = 1
-            return
-
-        # Single-character tokens
-        if char == "(":
-            self.add_token(TokenType.LPAREN)
-        elif char == ")":
-            self.add_token(TokenType.RPAREN)
-        elif char == "{":
-            self.add_token(TokenType.LBRACE)
-        elif char == "}":
-            self.add_token(TokenType.RBRACE)
-        elif char == "[":
-            self.add_token(TokenType.LBRACKET)
-        elif char == "]":
-            self.add_token(TokenType.RBRACKET)
-        elif char == ",":
-            self.add_token(TokenType.COMMA)
-        elif char == ".":
-            self.add_token(TokenType.DOT)
-        elif char == "-":
-            self.add_token(TokenType.MINUS)
-        elif char == "+":
-            self.add_token(TokenType.PLUS)
-        elif char == ";":
-            self.add_token(TokenType.SEMICOLON)
-        elif char == ":":
-            self.add_token(TokenType.COLON)
-        elif char == "*":
-            self.add_token(TokenType.STAR)
-
-        # Two-character tokens
-        elif char == "!":
-            self.add_token(TokenType.BANG_EQUAL if self.match("=") else TokenType.BANG)
-        elif char == "=":
-            self.add_token(
-                TokenType.EQUAL_EQUAL if self.match("=") else TokenType.EQUAL
-            )
-        elif char == "<":
-            self.add_token(TokenType.LESS_EQUAL if self.match("=") else TokenType.LESS)
-        elif char == ">":
-            self.add_token(
-                TokenType.GREATER_EQUAL if self.match("=") else TokenType.GREATER
-            )
-
-        # Comments
-        elif char == "/":
-            if self.match("/"):
-                while self.peek() != "\n" and not self.is_at_end():
-                    self.advance()
+    def scan_token(self):
+        """Scan a single token."""
+        c = self.advance()
+        
+        # Handle single-character tokens
+        if c in self.single_char_tokens:
+            # Check for multi-character tokens
+            if c == '=' and self.match('='):
+                self.add_token(TokenType.EQUAL_EQUAL)
+            elif c == '!' and self.match('='):
+                self.add_token(TokenType.BANG_EQUAL)
+            elif c == '<' and self.match('='):
+                self.add_token(TokenType.LESS_EQUAL)
+            elif c == '>' and self.match('='):
+                self.add_token(TokenType.GREATER_EQUAL)
+            elif c == '-' and self.match('>'):
+                self.add_token(TokenType.ARROW)
             else:
-                self.add_token(TokenType.SLASH)
-
-        # Literals
-        elif char == '"':
-            self.string()
-        elif self.is_digit(char):
+                self.add_token(self.single_char_tokens[c])
+        
+        # Handle numbers
+        elif c.isdigit():
             self.number()
-        elif self.is_alpha(char):
-            self.identifier()
-
-        else:
-            self.add_token(TokenType.UNKNOWN)
-
-    def advance(self) -> str:
-        self.current += 1
-        self.column += 1
-        return self.source[self.current - 1]
-
-    def add_token(self, type: TokenType, literal: Any = None) -> None:
-        """
-        Add a new token to the tokens list.
-
-        Args:
-            type: The token type
-            literal: The literal value (for numbers, strings, etc.)
-        """
-        text = self.source[self.start : self.current]
-        self.tokens.append(
-            Token(type, text, literal, self.line, self.column - len(text))
-        )
-
-    def error(self, message: str) -> None:
-        """
-        Record a lexing error.
-
-        Args:
-            message: Error message
-        """
-        self.errors.append(
-            LexerError(
-                message=message,
-                line=self.line,
-                column=self.column - (self.current - self.start),
-                length=self.current - self.start,
-            )
-        )
-
-    def synchronize(self) -> None:
-        """
-        Synchronize after an error by skipping tokens until we find a statement boundary.
-        """
-        while not self.is_at_end():
-            if self.previous() in ";\n}":
-                return
-            if self.peek() in ";\n}":
+            
+        # Handle strings
+        elif c == '"':
+            self.string()
+            
+        # Handle string interpolation (f-strings)
+        elif c == 'f' and self.peek() == '"':
+            self.advance()  # Consume the 'f'
+            self.string(interpolated=True)
+            
+        # Handle docstrings
+        elif c == '/' and self.peek() == '*' and self.peek_next() == '*':
+            self.docstring()
+            
+        # Handle comments
+        elif c == '/' and self.peek() == '/':
+            while self.peek() != '\n' and not self.is_at_end():
                 self.advance()
-                return
+                
+        # Handle whitespace
+        elif c in ' \r\t':
+            pass
+            
+        # Handle newlines
+        elif c == '\n':
+            self.line += 1
+            self.column = 1
+            
+        # Handle identifiers and keywords
+        elif c.isalpha() or c == '_':
+            self.identifier()
+            
+        # Handle errors
+        else:
+            self.error(f"Unexpected character: {c}")
+
+    def number(self):
+        """Lex a number literal."""
+        while self.peek().isdigit() or self.peek() == '_':
             self.advance()
 
-    def previous(self) -> str:
-        """Return the previous character."""
-        if self.current == 0:
-            return "\0"
-        return self.source[self.current - 1]
+        # Look for decimal part
+        if self.peek() == '.' and (self.peek_next().isdigit() or self.peek_next() == '_'):
+            self.advance()  # Consume the '.'
 
-    def peek_next(self) -> str:
-        """Look ahead two characters."""
-        if self.current + 1 >= len(self.source):
-            return "\0"
-        return self.source[self.current + 1]
+            while self.peek().isdigit() or self.peek() == '_':
+                self.advance()
+
+        # Look for scientific notation
+        if self.peek().lower() == 'e':
+            self.advance()  # Consume 'e' or 'E'
+            if self.peek() in '+-':
+                self.advance()  # Consume sign
+            while self.peek().isdigit() or self.peek() == '_':
+                self.advance()
+
+        # Parse the number
+        value = self.source[self.start:self.current]
+        # Handle underscores in numbers (e.g., 1_000_000)
+        value = value.replace('_', '')
+        try:
+            if '.' in value or 'e' in value.lower():
+                self.add_token(TokenType.NUMBER, float(value))
+            else:
+                # Try to parse as int first, fall back to float if too large
+                self.add_token(TokenType.NUMBER, int(value))
+        except ValueError:
+            self.error(f"Invalid number: {value}")
+
+    def string(self, interpolated=False):
+        """Lex a string literal."""
+        start_line = self.line
+        start_col = self.column
+        
+        while (not self.is_at_end()) and (self.peek() != '"' or (interpolated and self.peek() == '{')):
+            if self.peek() == '\n':
+                self.line += 1
+                self.column = 0
+            elif self.peek() == '\\':
+                # Handle escape sequences
+                self.advance()
+                if self.is_at_end():
+                    break
+                # Handle common escape sequences
+                if self.peek() in '\\"nrt':
+                    self.advance()
+            self.advance()
+            
+            # Handle string interpolation
+            if interpolated and self.peek() == '{':
+                # Add the string part before the interpolation
+                value = self.source[self.start + 1:self.current]  # +1 to exclude the opening quote
+                self.add_token(TokenType.STRING, value)
+                
+                # Add the interpolation start token
+                self.advance()  # Consume the {
+                self.add_token(TokenType.LEFT_BRACE)
+                
+                # Reset to start a new token after the {
+                self.start = self.current
+                return
+                
+        # Unterminated string
+        if self.is_at_end():
+            self.error("Unterminated string", start_line, start_col)
+            return
+            
+        # The closing "
+        self.advance()
+        
+        # Get the string value (without quotes)
+        value = self.source[self.start + 1:self.current - 1]
+        self.add_token(TokenType.STRING, value)
+
+    def docstring(self):
+        """Lex a docstring."""
+        start_line = self.line
+        start_col = self.column
+        
+        # Skip the opening /**
+        self.advance()  # Skip *
+        self.advance()  # Skip /
+        
+        while not (self.peek() == '*' and self.peek_next() == '/'):
+            if self.is_at_end():
+                self.error("Unterminated docstring", start_line, start_col)
+                return
+            if self.peek() == '\n':
+                self.line += 1
+                self.column = 0
+            self.advance()
+            
+        # Skip the closing */
+        self.advance()  # Skip *
+        self.advance()  # Skip /
+        
+        # Get the docstring content (without /** and */)
+        content = self.source[self.start + 3:self.current - 2].strip()
+        self.add_token(TokenType.DOCSTRING, content)
+
+    def identifier(self):
+        """Lex an identifier or keyword."""
+        while self.peek().isalnum() or self.peek() == '_':
+            self.advance()
+            
+        # Check if the identifier is a keyword
+        text = self.source[self.start:self.current]
+        token_type = self.KEYWORDS.get(text, TokenType.IDENTIFIER)
+        self.add_token(token_type)
+
+    def error(self, message: str, line: Optional[int] = None, column: Optional[int] = None):
+        """Report a lexing error."""
+        line = line or self.line
+        column = column or self.column
+        length = self.current - self.start
+        self.errors.append(LexerError(
+            message=message,
+            line=line,
+            column=column,
+            length=max(1, length)  # At least length 1
+        ))
+        
+        # Try to recover by skipping to the next whitespace or known delimiter
+        while not self.is_at_end() and not self.peek().isspace() and self.peek() not in ';{}()[]':
+            self.advance()
+
+    def is_at_end(self) -> bool:
+        """Check if we've reached the end of the source."""
+        return self.current >= len(self.source)
+
+    def advance(self) -> str:
+        """Consume and return the next character."""
+        if self.is_at_end():
+            return '\0'
+        char = self.source[self.current]
+        self.current += 1
+        self.column += 1
+        return char
 
     def match(self, expected: str) -> bool:
+        """Conditionally consume a character if it matches the expected value."""
         if self.is_at_end():
             return False
         if self.source[self.current] != expected:
@@ -292,176 +318,18 @@ class Lexer:
         return True
 
     def peek(self) -> str:
+        """Look at the next character without consuming it."""
         if self.is_at_end():
-            return "\0"
+            return '\0'
         return self.source[self.current]
 
     def peek_next(self) -> str:
+        """Look at the character after the next one without consuming it."""
         if self.current + 1 >= len(self.source):
-            return "\0"
+            return '\0'
         return self.source[self.current + 1]
 
-    def string(self) -> None:
-        """Parse a string literal."""
-        delimiter = self.previous()  # Should be '"'
-        value = []
-
-        while True:
-            if self.is_at_end():
-                self.error("Unterminated string")
-                return
-
-            char = self.advance()
-
-            if char == "\\":
-                # Handle escape sequences
-                if self.is_at_end():
-                    self.error("Unterminated escape sequence")
-                    return
-
-                # Process escape sequence
-                esc = self.advance()
-                if esc == "n":
-                    value.append("\n")
-                elif esc == "t":
-                    value.append("\t")
-                elif esc == "r":
-                    value.append("\r")
-                elif esc == "b":
-                    value.append("\b")
-                elif esc == "f":
-                    value.append("\f")
-                elif esc in "\"'\\":
-                    value.append(esc)
-                elif esc == "x":
-                    # Hex escape: \xHH
-                    if not (
-                        self.is_hex_digit(self.peek())
-                        and self.is_hex_digit(self.peek_next())
-                    ):
-                        self.error("Invalid hex escape sequence")
-                        return
-                    hex_str = self.advance() + self.advance()
-                    value.append(chr(int(hex_str, 16)))
-                else:
-                    self.error(f"Invalid escape sequence: \\{esc}")
-                    value.append(esc)
-
-            elif char == delimiter:
-                break
-
-            elif char == "\n":
-                if delimiter == '"':
-                    self.error("Unterminated string")
-                    return
-                self.line += 1
-                self.column = 1
-                value.append("\n")
-
-            else:
-                value.append(char)
-
-        self.add_token(TokenType.STRING, "".join(value))
-
-    def is_digit(self, char: str) -> bool:
-        """Check if a character is a digit (0-9)."""
-        return char.isdigit()
-
-    def number(self) -> None:
-        """Parse a number literal (integer or float)."""
-        # Handle hexadecimal numbers (0x...)
-        if self.peek() == "0" and self.peek_next().lower() == "x":
-            self.advance()  # Consume 'x'
-            self.advance()  # Consume first digit after 'x'
-            while self.is_hex_digit(self.peek()):
-                self.advance()
-            hex_str = self.source[self.start + 2 : self.current]
-            self.add_token(TokenType.NUMBER, int(hex_str, 16))
-            return
-
-        # Handle binary numbers (0b...)
-        if self.peek() == "0" and self.peek_next().lower() == "b":
-            self.advance()  # Consume 'b'
-            self.advance()  # Consume first digit after 'b'
-            while self.peek() in "01_":
-                if self.peek() != "_":
-                    self.advance()
-            bin_str = self.source[self.start + 2 : self.current].replace("_", "")
-            self.add_token(TokenType.NUMBER, int(bin_str, 2))
-            return
-
-        # Handle decimal numbers
-        while self.peek().isdigit() or self.peek() == "_":
-            self.advance()
-
-        # Look for a fractional part
-        if self.peek() == "." and self.is_digit(self.peek_next()):
-            # Consume the "."
-            self.advance()
-
-            while self.peek().isdigit() or self.peek() == "_":
-                if self.peek() != "_":
-                    self.advance()
-
-        # Handle scientific notation
-        if self.peek().lower() == "e":
-            self.advance()
-            if self.peek() in "+-":
-                self.advance()
-            while self.peek().isdigit():
-                self.advance()
-
-        # Parse the number, ignoring underscores
-        num_str = self.source[self.start : self.current].replace("_", "")
-        self.add_token(
-            TokenType.NUMBER,
-            (
-                float(num_str)
-                if "." in num_str or "e" in num_str.lower()
-                else int(num_str)
-            ),
-        )
-
-    def is_alpha(self, char: str) -> bool:
-        """Check if a character is alphabetic or underscore."""
-        return char.isalpha() or char == "_" or char == "$"
-
-    def is_alphanumeric(self, char: str) -> bool:
-        """Check if a character is alphanumeric or underscore."""
-        return self.is_alpha(char) or self.is_digit(char)
-
-    def is_hex_digit(self, char: str) -> bool:
-        """Check if a character is a valid hexadecimal digit."""
-        return char.isdigit() or char.lower() in "abcdef"
-
-    def identifier(self) -> None:
-        """Parse an identifier or keyword."""
-        while self.is_alphanumeric(self.peek()):
-            self.advance()
-
-        text = self.source[self.start : self.current]
-
-        # Check for contextual keywords (not reserved in all contexts)
-        if text in self.KEYWORDS:
-            token_type = self.KEYWORDS[text]
-        else:
-            token_type = TokenType.IDENTIFIER
-
-        self.add_token(token_type)
-
-        # Handle special cases like 'not in', 'is not'
-        if (
-            text == "is"
-            and self.peek() == " "
-            and self.source.startswith("not", self.current + 1)
-        ):
-            # Handle 'is not' operator
-            lookahead = self.current + 1
-            while lookahead < len(self.source) and self.source[lookahead].isspace():
-                lookahead += 1
-
-            if self.source.startswith("not", lookahead):
-                # Replace 'is' with 'is not' token
-                self.tokens.pop()  # Remove the 'is' token
-                self.current = lookahead + 3  # Skip 'not'
-                self.add_token(TokenType.IS_NOT)
+    def add_token(self, token_type: TokenType, literal: Any = None):
+        """Add a new token to the token list."""
+        text = self.source[self.start:self.current]
+        self.tokens.append(Token(token_type, text, literal, self.line, self.column))

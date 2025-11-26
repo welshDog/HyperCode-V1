@@ -11,7 +11,7 @@ import requests
 # Add the project root to the Python path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from hypercode.clients import PerplexityClient
+from hypercode.perplexity_client import PerplexityClient
 
 
 def main():
