@@ -40,11 +40,6 @@
   "engines": {
     "vscode": "^1.85.0"
   },
-  "activationEvents": [
-    "onLanguage:python",
-    "onLanguage:javascript",
-    "onCommand:spatialVisualizer.open"
-  ],
   "contributes": {
     "commands": [
       {
