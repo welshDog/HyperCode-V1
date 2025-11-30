@@ -82,10 +82,6 @@
       }
     }
   },
-  "activationEvents": [
-    "onCommand:spatialVisualizer.open",
-    "onCommand:spatialVisualizer.toggleMode"
-  ],
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
