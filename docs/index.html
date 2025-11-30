@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperCode System Architecture</title>
+    <style>
+        :root {
+            --color-teal-500: #21808D;
+            --color-teal-600: #1D7480;
+            --color-slate-900: #133434;
+            --color-gray-200: #F5F5F5;
+            --color-cream-50: #FCFCF9;
+            --color-charcoal-700: #1F2121;
+            --color-charcoal-800: #262828;
+            --color-teal-300: #32B8C6;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --color-bg-4: rgba(239, 68, 68, 0.08);
+            --color-bg-5: rgba(147, 51, 234, 0.08);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-cream-50);
+            color: var(--color-slate-900);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: var(--color-charcoal-700);
+                color: var(--color-gray-200);
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--color-teal-500), var(--color-teal-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(33, 128, 141, 0.2);
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-slate-900);
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .tab { color: var(--color-gray-200); }
+        }
+
+        .tab:hover {
+            background: var(--color-bg-1);
+        }
+
+        .tab.active {
+            border-bottom-color: var(--color-teal-500);
+            color: var(--color-teal-500);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .layer-card {
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .layer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .layer-card.layer-1 {
+            background: var(--color-bg-1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .layer-card.layer-1::before {
+            background: linear-gradient(90deg, #3B82F6, #2563EB);
+        }
+
+        .layer-card.layer-2 {
+            background: var(--color-bg-3);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        .layer-card.layer-2::before {
+            background: linear-gradient(90deg, #22C55E, #16A34A);
+        }
+
+        .layer-card.layer-3 {
+            background: var(--color-bg-5);
+            border-color: rgba(147, 51, 234, 0.3);
+        }
+
+        .layer-card.layer-3::before {
+            background: linear-gradient(90deg, #9333EA, #7E22CE);
+        }
+
+        .layer-card.layer-4 {
+            background: var(--color-bg-2);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .layer-card.layer-4::before {
+            background: linear-gradient(90deg, #F59E0B, #D97706);
+        }
+
+        .layer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .layer-desc {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-teal-500);
+            font-weight: bold;
+        }
+
+        .flow-diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .flow-diagram {
+                background: var(--color-charcoal-800);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            }
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+
+        .flow-box {
+            flex: 1;
+            padding: 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            border: 2px solid;
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--color-teal-500);
+        }
+
+        .syntax-example {
+            background: var(--color-charcoal-800);
+            color: var(--color-gray-200);
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .syntax-example {
+                background: rgba(255,255,255,0.05);
+            }
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(33, 128, 141, 0.2);
+        }
+
+        .comparison-table th {
+            background: var(--color-bg-1);
+            font-weight: 600;
+        }
+
+        .research-card {
+            background: var(--color-bg-3);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-teal-500);
+            margin: 1rem 0;
+        }
+
+        .research-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--color-teal-600);
+        }
+
+        .cite {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+            padding: 24px;
+            border-radius: 12px;
+            border: 2px solid var(--color-teal-500);
+            margin: 2rem 0;
+        }
+
+        .highlight-box h2 {
+            color: var(--color-teal-600);
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-neurodiv {
+            background: rgba(147, 51, 234, 0.2);
+            color: #9333EA;
+            border: 1px solid rgba(147, 51, 234, 0.4);
+        }
+
+        .badge-quantum {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3B82F6;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+        }
+
+        .badge-ai {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22C55E;
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .badge-historical {
+            background: rgba(245, 158, 11, 0.2);
+            color: #F59E0B;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .tabs { flex-wrap: wrap; }
+            .flow-step { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 HyperCode System Architecture</h1>
+        <p class="subtitle">A Neurodivergent-First Programming Language for the AI Era</p>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">Overview</button>
+            <button class="tab" data-tab="architecture">System Architecture</button>
+            <button class="tab" data-tab="syntax">Syntax Design</button>
+            <button class="tab" data-tab="research">Research Foundations</button>
+            <button class="tab" data-tab="roadmap">Phase 2 Roadmap</button>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div class="tab-content active" id="overview">
+            <div class="highlight-box">
+                <h2>The Big Idea</h2>
+                <p>HyperCode resurrects forgotten genius from computing history (Plankalkül, Brainfuck, Befunge) and fuses it with cutting-edge AI, quantum, and DNA computing paradigms—all built from the ground up for neurodivergent minds.</p>
+            </div>
+
+            <div class="architecture-grid">
+                <div class="layer-card layer-1">
+                    <div class="layer-title">🧠 Neurodivergent-First Design</div>
+                    <div class="layer-desc">Built for dyslexic, ADHD, and autistic brains</div>
+                    <ul class="feature-list">
+                        <li>Visual-spatial programming model</li>
+                        <li>Minimal syntax noise</li>
+                        <li>Accessible error messages</li>
+                        <li>Customizable sensory experience</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-neurodiv">ADHD-Friendly</span>
+                        <span class="badge badge-neurodiv">Dyslexia-Optimized</span>
+                    </div>
+                </div>
+
+                <div class="layer-card layer-2">
+                    <div class="layer-title">🤖 Universal AI Integration</div>
+                    <div class="layer-desc">Works with ANY AI system</div>
+                    <ul class="feature-list">
+                        <li>GPT, Claude, Mistral compatible</li>
+                        <li>Intent-to-Syntax Translator</li>
+                        <li>Natural language programming</li>
+                        <li>Ollama local models supported</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-ai">AI-Native</span>
+                        <span class="badge badge-ai">LLM-Ready</span>
+                    </div>
+                </div>
+
+                <div class="layer-card layer-3">
+                    <div class="layer-title">📜 Historical Resurrection</div>
+                    <div class="layer-desc">Learning from forgotten pioneers</div>
+                    <ul class="feature-list">
+                        <li>Plankalkül's formal systems (1945)</li>
+                        <li>Brainfuck's minimalism (1993)</li>
+                        <li>Befunge's 2D execution (1993)</li>
+                        <li>Experimental paradigms revived</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-historical">Plankalkül</span>
+                        <span class="badge badge-historical">Esoteric</span>
+                    </div>
+                </div>
+
+                <div class="layer-card layer-4">
+                    <div class="layer-title">🔬 Future-Ready Computing</div>
+                    <div class="layer-desc">Quantum, DNA, and beyond</div>
+                    <ul class="feature-list">
+                        <li>Quantum circuit abstraction</li>
+                        <li>DNA strand displacement</li>
+                        <li>Hybrid classical-quantum</li>
+                        <li>Bio-computing primitives</li>
+                    </ul>
+                    <div style="margin-top: 1rem;">
+                        <span class="badge badge-quantum">Quantum-Ready</span>
+                        <span class="badge badge-quantum">DNA-Compatible</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="research-card">
+                <h3>📊 Research-Backed Insights</h3>
+                <p><strong>Visual programming increases productivity by 33.4% for dyslexic programmers</strong> (Fuertes Castro et al., 2018). HyperCode's spatial design and minimal syntax directly address the three critical challenges:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Visual stress</strong> from dense text interfaces</li>
+                    <li><strong>Cognitive overload</strong> from complex syntax</li>
+                    <li><strong>Working memory demands</strong> from verbose code</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ARCHITECTURE TAB -->
+        <div class="tab-content" id="architecture">
+            <h2 style="margin-bottom: 1rem;">System Architecture Stack</h2>
+
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-box" style="background: var(--color-bg-1); border-color: #3B82F6;">
+                        <strong>Layer 4: Natural Language</strong><br>
+                        Human intent in plain English
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box" style="background: var(--color-bg-3); border-color: #22C55E;">
+                        <strong>Layer 3: Intent Translator (AI)</strong><br>
+                        GPT/Claude/Mistral/Ollama
+                    </div>
+                </div>
+
+                <div class="flow-step">
+                    <div class="flow-box" style="background: var(--color-bg-5); border-color: #9333EA;">
+                        <strong>Layer 2: HyperCode Syntax</strong><br>
+                        Spatial, minimal, accessible
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box" style="background: var(--color-bg-2); border-color: #F59E0B;">
+                        <strong>Layer 1: Execution Targets</strong><br>
+                        Classical / Quantum / DNA / Hybrid
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Intent-to-Syntax Translator Architecture</h3>
+            <div class="syntax-example">
+<strong>// Natural Language Input</strong>
+"Create a function that calculates mortgage payments with 
+principal, interest rate, and term as parameters"
+
+<strong>// AI Translator Processing</strong>
+1. Parse intent: function definition
+2. Extract parameters: principal, rate, term
+3. Infer return type: monetary value
+4. Generate HyperCode syntax with accessibility optimizations
+
+<strong>// HyperCode Output (v0.1 spec)</strong>
+@function mortgage_payment
+  @params
+    principal: Money
+    rate: Percent
+    term: Years
+  @returns Money
+  
+  @calculate
+    monthly_rate = rate / 12
+    num_payments = term * 12
+    payment = principal * (monthly_rate * (1 + monthly_rate)^num_payments) 
+              / ((1 + monthly_rate)^num_payments - 1)
+  @return payment
+@end
+            </div>
+
+            <div class="research-card">
+                <h3>🔬 Research Foundation</h3>
+                <p><strong>LLMs for Personalized Programming Education</strong> — Recent work shows AI can adapt to learner knowledge levels and provide scaffolded support (ACM UKICER 2025). HyperCode's Intent Translator uses these principles for real-time code generation.</p>
+                <p class="cite">Source: "Large Language Models for Personalized and Scalable Computer Education" (2025)</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Multi-Target Compilation</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Target Platform</th>
+                        <th>HyperCode Support</th>
+                        <th>Use Cases</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Classical (Python/JS)</strong></td>
+                        <td>✅ Native</td>
+                        <td>Web apps, data processing, automation</td>
+                        <td><span class="badge badge-ai">Phase 2.1</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quantum (Qiskit/Cirq)</strong></td>
+                        <td>🔄 Experimental</td>
+                        <td>Optimization, cryptography, simulation</td>
+                        <td><span class="badge badge-quantum">Phase 2.3</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>DNA Computing</strong></td>
+                        <td>🔬 Research</td>
+                        <td>Biochemical circuits, molecular detection</td>
+                        <td><span class="badge badge-quantum">Phase 2.4</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hybrid Classical-Quantum</strong></td>
+                        <td>🚀 Planned</td>
+                        <td>Quantum machine learning, NISQ algorithms</td>
+                        <td><span class="badge badge-quantum">Phase 2.4</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SYNTAX TAB -->
+        <div class="tab-content" id="syntax">
+            <h2 style="margin-bottom: 1rem;">HyperCode Syntax Specification v0.1</h2>
+
+            <div class="highlight-box">
+                <h2>Design Principles from Research</h2>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Minimal Visual Noise:</strong> Research shows dyslexic programmers struggle with dense syntax and special characters (Fuertes Castro, 2018)</li>
+                    <li><strong>Spatial Organization:</strong> 2D structure inspired by Befunge reduces linear reading burden</li>
+                    <li><strong>Clear Boundaries:</strong> Explicit @tags eliminate ambiguous punctuation</li>
+                    <li><strong>Plain Language Keywords:</strong> No cryptic symbols or abbreviations</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Core Language Constructs</h3>
+
+            <div class="syntax-example">
+<strong>// 1. VARIABLE DECLARATION (Clear, Typed)</strong>
+@variable age: Number = 25
+@variable name: Text = "Alex"
+@variable is_active: Boolean = true
+
+<strong>// 2. FUNCTION DEFINITION (Explicit Sections)</strong>
+@function calculate_area
+  @params
+    width: Number
+    height: Number
+  @returns Number
+  
+  @calculate
+    area = width * height
+  @return area
+@end
+
+<strong>// 3. CONDITIONAL LOGIC (No Ambiguous Symbols)</strong>
+@if age >= 18
+  @then
+    print "Adult"
+  @else
+    print "Minor"
+@endif
+
+<strong>// 4. LOOPS (Plain English)</strong>
+@repeat 10 times
+  print "Hello"
+@endrepeat
+
+@loop item in collection
+  process item
+@endloop
+
+<strong>// 5. SPATIAL PROGRAMMING (2D Inspired by Befunge)</strong>
+@grid
+  START → process1 → process2 → END
+    ↓                      ↑
+  error_handler ──────────┘
+@endgrid
+            </div>
+
+            <div class="research-card">
+                <h3>💡 Why This Syntax Works for Neurodivergent Minds</h3>
+                <p><strong>From Research:</strong> "Programmers with dyslexia are 33.4% more productive with visual programming languages" and benefit from:</p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Low representation viscosity:</strong> Easy to change code structure</li>
+                    <li><strong>Syntax management:</strong> Clear boundaries and explicit markers</li>
+                    <li><strong>Adequate documentation:</strong> Self-documenting keywords</li>
+                    <li><strong>High abstraction level:</strong> Focus on intent, not implementation</li>
+                </ul>
+                <p class="cite">Source: "Visual Programming Languages for Programmers with Dyslexia" (Fuertes Castro et al., 2018)</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Comparison with Traditional Languages</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Traditional (Python/JS)</th>
+                        <th>HyperCode</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Function syntax</td>
+                        <td><code>def func(x, y): return x + y</code></td>
+                        <td><code>@function func @params x y @returns @calculate x + y</code></td>
+                    </tr>
+                    <tr>
+                        <td>Visual clarity</td>
+                        <td>Dense punctuation: {}, (), :</td>
+                        <td>Explicit markers: @function, @end</td>
+                    </tr>
+                    <tr>
+                        <td>Learning curve</td>
+                        <td>Steep for neurodivergent learners</td>
+                        <td>Optimized for ADHD/dyslexia patterns</td>
+                    </tr>
+                    <tr>
+                        <td>Error messages</td>
+                        <td>"SyntaxError: unexpected token"</td>
+                        <td>"Missing @end marker for @function on line 5"</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RESEARCH TAB -->
+        <div class="tab-content" id="research">
+            <h2 style="margin-bottom: 1rem;">Research Foundations</h2>
+
+            <div class="research-card">
+                <h3>🧠 Neurodivergent Programming (2018-2025)</h3>
+                <p><strong>Key Finding:</strong> Visual programming increases productivity by 33.4% for dyslexic programmers compared to text-based languages.</p>
+                <p><strong>Critical Barriers Identified:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Visual stress from dense text and poor color/font choices</li>
+                    <li>Cognitive overload from complex syntax</li>
+                    <li>Working memory limitations with verbose languages</li>
+                </ul>
+                <p class="cite">Fuertes Castro et al., "Visual Programming Languages for Programmers with Dyslexia" (2018)</p>
+            </div>
+
+            <div class="research-card">
+                <h3>🤖 LLMs in Programming Education (2024-2025)</h3>
+                <p><strong>Emerging Trend:</strong> LLMs shifted from model validation (2022) to teaching applications (2023) to deep integration into education systems (2024-2025).</p>
+                <p><strong>HyperCode Application:</strong> Intent-to-Syntax Translator uses these advances to provide:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Personalized code generation based on skill level</li>
+                    <li>Real-time scaffolding and feedback</li>
+                    <li>Natural language to code translation</li>
+                </ul>
+                <p class="cite">IEEE/ACM Research 2025: "Large Language Models in Programming Learning"</p>
+            </div>
+
+            <div class="research-card">
+                <h3>📜 Plankalkül: The First High-Level Language (1942-1945)</h3>
+                <p><strong>Historical Context:</strong> Konrad Zuse designed Plankalkül during WWII in isolation—the first high-level programming language, predating Fortran by over a decade.</p>
+                <p><strong>Key Innovations:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li>Formal type system with bits, integers, reals, arrays, records</li>
+                    <li>No GOTO statement (structured programming before it existed)</li>
+                    <li>Based on Hilbert's propositional and predicate calculus</li>
+                    <li>First compiler implemented in 1998 (53 years after design!)</li>
+                </ul>
+                <p><strong>HyperCode Connection:</strong> We resurrect Zuse's formalist approach—making computation accessible through clear abstraction, not cryptic machine codes.</p>
+                <p class="cite">John Backus: "Perhaps the most sophisticated programming language up to the mid 1960s... A very powerful language with data types and all kinds of things."</p>
+            </div>
+
+            <div class="research-card">
+                <h3>🔀 Esoteric Languages: Brainfuck & Befunge (1993)</h3>
+                <p><strong>Brainfuck Philosophy:</strong> Extreme minimalism (8 commands: <code>+-&lt;&gt;[].,</code>) proves Turing completeness doesn't require complexity.</p>
+                <p><strong>Befunge Innovation:</strong> 2D instruction pointer—programs execute spatially, not just linearly. This spatial model reduces cognitive load for visual thinkers.</p>
+                <p><strong>HyperCode Adoption:</strong> We take Befunge's spatial concept and make it accessible—retaining the visual-spatial benefits while eliminating the obfuscation.</p>
+                <p class="cite">Urban Müller (Brainfuck creator) & Chris Pressey (Befunge creator), 1993</p>
+            </div>
+
+            <div class="research-card">
+                <h3>⚛️ Quantum Computing Languages (2025)</h3>
+                <p><strong>Current State:</strong> Quantum programming is Python-first with frameworks like Qiskit (IBM), Cirq (Google), Q# (Microsoft), and PennyLane (Xanadu).</p>
+                <p><strong>Key Challenge:</strong> Existing tools require deep physics knowledge and complex syntax—barriers for neurodivergent developers.</p>
+                <p><strong>HyperCode Solution:</strong> Abstract quantum operations into visual, spatial constructs. Example:</p>
+                <div class="syntax-example">
+@quantum_circuit
+  @qubits q1, q2
+  @gates
+    hadamard q1
+    cnot q1 → q2
+    measure q1, q2
+@end
+                </div>
+                <p class="cite">IBM Qiskit, Google Cirq, Microsoft Q#—state of quantum programming 2025</p>
+            </div>
+
+            <div class="research-card">
+                <h3>🧬 DNA Computing & Molecular Programming (2009-2025)</h3>
+                <p><strong>Breakthrough:</strong> DNA strand displacement enables arbitrary chemical reactions to be implemented in DNA (Winfree Lab, 2010).</p>
+                <p><strong>Programming Paradigm:</strong> Chemical Reaction Networks (CRNs) compile to domain-level DNA designs, then to physical DNA strands.</p>
+                <p><strong>HyperCode Vision:</strong> Make DNA computing accessible through the same Intent-to-Syntax approach used for classical/quantum code.</p>
+                <div class="syntax-example">
+@dna_reaction
+  @inputs strand_A, strand_B
+  @mechanism displacement
+  @outputs product_C
+  @visualize
+    A + B → displacement → C
+@end
+                </div>
+                <p class="cite">Phillips et al., "A programming language for composable DNA circuits" (2009); Winfree Lab DNA CRN work (2010)</p>
+            </div>
+
+            <div class="research-card">
+                <h3>🎨 Neuroinclusive Design Principles (2024-2025)</h3>
+                <p><strong>Industry Shift:</strong> Major companies now implementing sensory customization, plain language, and adaptive interfaces.</p>
+                <p><strong>Future Technologies:</strong></p>
+                <ul style="margin-left: 20px;">
+                    <li><strong>Sensory "cookies" (3-5 years):</strong> Users control motion, contrast, typography by default</li>
+                    <li><strong>AI-powered sensory control (5-8 years):</strong> Dynamic adjustment based on user state</li>
+                    <li><strong>Emotionally adaptive interfaces (8+ years):</strong> AI recognizes facial expressions and adjusts UI</li>
+                </ul>
+                <p><strong>HyperCode Integration:</strong> Built-in sensory profiles, customizable error verbosity, visual theme system.</p>
+                <p class="cite">Conran Design Group, "Designing for the 15%: Why Neurodivergent UX Is the Future" (2025)</p>
+            </div>
+        </div>
+
+        <!-- ROADMAP TAB -->
+        <div class="tab-content" id="roadmap">
+            <h2 style="margin-bottom: 1rem;">Phase 2 Development Roadmap</h2>
+
+            <div class="highlight-box">
+                <h2>🎯 Mission: From Research to Reality</h2>
+                <p>Transform HyperCode from living digital paper to working programming language with neurodivergent-first design, AI integration, and multi-paradigm support.</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Milestone 2.1: Core Language Implementation</h3>
+            <div class="layer-card layer-1">
+                <div class="layer-title">📝 Deliverables</div>
+                <ul class="feature-list">
+                    <li><strong>Syntax Specification v1.0:</strong> Complete language grammar (variables, functions, control flow, spatial constructs)</li>
+                    <li><strong>Lexer & Parser:</strong> Python-based (using Lark or PLY)</li>
+                    <li><strong>Basic Interpreter:</strong> Execute HyperCode → Python bytecode</li>
+                    <li><strong>Error System:</strong> Neurodivergent-friendly error messages with suggestions</li>
+                    <li><strong>Standard Library:</strong> Core data structures, I/O, math functions</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Duration:</strong> 6-8 weeks | <strong>Priority:</strong> Critical</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Milestone 2.2: Intent-to-Syntax AI Translator</h3>
+            <div class="layer-card layer-2">
+                <div class="layer-title">🤖 Deliverables</div>
+                <ul class="feature-list">
+                    <li><strong>LLM Integration Layer:</strong> Support GPT-4, Claude, Mistral, Ollama</li>
+                    <li><strong>Prompt Engineering:</strong> Optimized prompts for HyperCode generation</li>
+                    <li><strong>Natural Language Parser:</strong> Extract intent, parameters, types from English</li>
+                    <li><strong>Code Generation Pipeline:</strong> Intent → HyperCode → Validation → Output</li>
+                    <li><strong>Interactive REPL:</strong> Chat-based coding interface</li>
+                    <li><strong>Fine-tuning Dataset:</strong> 1,000+ examples (English → HyperCode pairs)</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Duration:</strong> 8-10 weeks | <strong>Priority:</strong> High</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Milestone 2.3: Historical Language Analysis</h3>
+            <div class="layer-card layer-4">
+                <div class="layer-title">📜 Deliverables</div>
+                <ul class="feature-list">
+                    <li><strong>Plankalkül Deep Dive:</strong> Type system analysis, formal methods extraction</li>
+                    <li><strong>Brainfuck Study:</strong> Minimalism principles, Turing tarpit analysis</li>
+                    <li><strong>Befunge Exploration:</strong> 2D execution model, spatial programming benefits</li>
+                    <li><strong>Comparative Analysis:</strong> What worked, what failed, lessons for HyperCode</li>
+                    <li><strong>Living Paper Update:</strong> Integrate findings into research documentation</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Duration:</strong> 4-6 weeks (parallel with M2.1/2.2) | <strong>Priority:</strong> Medium</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Milestone 2.4: Quantum & DNA Extensions</h3>
+            <div class="layer-card layer-3">
+                <div class="layer-title">🔬 Deliverables</div>
+                <ul class="feature-list">
+                    <li><strong>Quantum Module:</strong> HyperCode → Qiskit/Cirq compiler</li>
+                    <li><strong>DNA Module:</strong> HyperCode → CRN → DNA strand design</li>
+                    <li><strong>Hybrid Runtime:</strong> Classical-quantum integration (PennyLane)</li>
+                    <li><strong>Visual Circuit Designer:</strong> Drag-and-drop quantum/DNA circuit builder</li>
+                    <li><strong>Example Programs:</strong> Grover's algorithm, DNA logic gates, hybrid ML</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Duration:</strong> 10-12 weeks | <strong>Priority:</strong> Experimental</p>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Community & Infrastructure</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Purpose</th>
+                        <th>Timeline</th>
+                        <th>Owner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GitHub Issues Setup</strong></td>
+                        <td>Organize M2.1-M2.4 tasks, enable contributions</td>
+                        <td>Week 1</td>
+                        <td>Core Team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contributor Guide</strong></td>
+                        <td>Onboarding doc for open-source contributors</td>
+                        <td>Week 2</td>
+                        <td>Core Team</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discord Server</strong></td>
+                        <td>Community hub for neurodivergent developers</td>
+                        <td>Week 3</td>
+                        <td>Community Lead</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CI/CD Pipeline</strong></td>
+                        <td>Automated testing, linting, deployment</td>
+                        <td>Week 4</td>
+                        <td>DevOps</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Living Paper Website</strong></td>
+                        <td>Auto-updating research portal with knowledge graph</td>
+                        <td>Ongoing</td>
+                        <td>Research Team</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="research-card" style="margin-top: 2rem;">
+                <h3>🚀 Next Immediate Steps (Week 1)</h3>
+                <ol style="margin-left: 20px;">
+                    <li><strong>Create GitHub Issues:</strong> Break down M2.1-M2.4 into granular tasks with labels (neurodiversity, ai-integration, quantum, historical-research)</li>
+                    <li><strong>Draft Syntax Spec v1.0:</strong> Finalize core language constructs based on research findings</li>
+                    <li><strong>Setup Development Environment:</strong> Python project structure, testing framework, documentation generator</li>
+                    <li><strong>Begin Plankalkül Analysis:</strong> Deep dive into Zuse's original 1945 work (translated to English)</li>
+                    <li><strong>Prototype Intent Translator:</strong> Simple GPT-4 integration for "English → HyperCode" proof-of-concept</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching functionality
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const targetId = tab.getAttribute('data-tab');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

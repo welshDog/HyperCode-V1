@@ -66,10 +66,6 @@
       }
     }
   },
-  "activationEvents": [
-    "onLanguage:hypercode",
-    "onLanguage:python"
-  ],
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",

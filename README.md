@@ -1,242 +1,408 @@
-# 🚀 HyperCode - The Neurodivergent-First Programming Language
+# HyperCode 🧠⚡
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg?style=for-the-badge)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen?style=for-the-badge)](tests/)
-[![Documentation](https://img.shields.io/badge/docs-comprehensive-blue?style=for-the-badge)](docs/)
-[![Discussions](https://img.shields.io/badge/Join-Discussions-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://github.com/welshDog/hypercode/discussions)
+> **A programming language built for how neurodivergent minds actually think**
 
-## 🌟 What is HyperCode?
-
-**HyperCode** is a revolutionary programming language designed with neurodivergent developers in mind. It combines the power of modern programming paradigms with an intuitive syntax that aligns with diverse cognitive patterns.
-
-### 🎯 Core Mission
-- **🧠 Neurodivergent-First**: Designed for dyslexic, ADHD, and autistic developers
-- **🤖 AI-Augmented**: Built-in support for AI pair programming
-- **⚡ High Performance**: Efficient execution with a focus on developer productivity
-- **🌍 Open Source**: Community-driven development under MIT License
+![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue?style=flat-square)
+![License MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Status Active](https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=flat-square)
+![Neurodivergent-First](https://img.shields.io/badge/Neurodivergent--First-YES-purple?style=flat-square)
+![AI Compatible](https://img.shields.io/badge/AI%20Compatible-Universal-orange?style=flat-square)
 
 ---
-## 🤔 Why HyperCode?
 
-Many languages promise accessibility, but **HyperCode was built from the ground up for neurodivergent minds.**
+## 🎯 The Core Mission
 
-**Python?** Friendly and readable, but ambiguous syntax can trip up ADHD brains.  
-**Blockly?** Great for visual logic, but restricts advanced customization.  
-**Rust?** High performance, but the borrow checker melts your brain in hyperfocus mode.
+**Forgotten genius resurrected. AI made accessible. Neurodivergent minds honored. Programming redefined.**
 
-**HyperCode?** Built for neurodivergent flow:
-- 🧠 **ADHD-friendly**: Chunked syntax, visual flow indicators
-- 📚 **Dyslexia-optimized**: Consistent patterns, minimal cognitive load
-- 🎯 **Autism-preferred**: Predictable structures, explicit rules
-- 🤖 **AI-augmented**: Real-time feedback and assistance
-- 💚 **Emotion-first errors**: Helpful, not scary
+HyperCode isn't just another language. It's a **fundamental rethinking** of how we express logic and problem-solving for minds that don't think in straight lines.
 
-**You don't just code—you create with flow.**
+### Why HyperCode Exists
 
-### 🏗️ Architecture
+Traditional programming languages were designed for **linear, sequential thinkers**. What about the rest of us?
 
-![HyperCode Architecture](hypercode_architecture.png)
+- **40+ million neurodivergent developers worldwide** lack tools that match their brain patterns
+- **Esoteric languages** (Plankalkül, Befunge, Brainfuck) hold experimental truths that mainstream programming forgot
+- **AI integration** requires a language designed for machines, not just humans
+- **The future** (quantum, DNA computing, neural interfaces) needs spatial logic, not sequential syntax
 
-*Visual map perfect for spatial thinkers!*
+HyperCode is the answer.
 
+---
 
-## 🚀 Quick Start
+## ✨ What Makes HyperCode Different
 
+### 🧠 Spatial Logic Over Sequential
+Think in connections and relationships, not step-by-step procedures.
 
+```hypercode
+# Traditional Language (Linear)
+result = 0
+for i in range(5):
+    result = result + i
+print(result)
 
-## ⚡ 60-Second Quickstart
-
-**Get HyperCode running NOW:**
-
-**macOS/Linux:**
-```bash
-curl -sSL https://raw.githubusercontent.com/welshDog/hypercode/main/install.sh | bash
+# HyperCode (Spatial)
+[0..4] | sum → output
 ```
 
-**Windows (PowerShell):**
-```powershell
+**Why it matters**: Neurodivergent brains work spatially. HyperCode matches that.
+
+### 🎨 Minimal Noise, Maximum Clarity
+No syntax clutter. No semicolons screaming at you. Just code that breathes.
+
+```hypercode
+# What you write:
+name | greet → say
+
+# What happens:
+Hello, [name]!
+```
+
+### 🤖 AI-Native From Day One
+Built to work seamlessly with GPT, Claude, Mistral, Ollama, and future models.
+
+```hypercode
+# HyperCode + AI agents understand this instantly
+process [data] | analyze | recommend → action
+```
+
+### 🌈 Neurodivergent-First Design
+- **ADHD-friendly**: Examples in 5-minute chunks
+- **Dyslexia-accessible**: Clear visual separation, readable fonts
+- **Autism spectrum**: Logical consistency, minimal ambiguity
+- **All minds**: No shame, no gatekeeping, pure inclusion
+
+### 🔬 Standing on the Shoulders of Giants
+Learns from forgotten languages:
+- **Plankalkül** (first ever language, 1943) - deep inspiration
+- **Befunge** (spatial 2D programming) - spatial logic pioneer
+- **INTERCAL** (esoteric brilliance) - creative expression
+- **Lisp** (homoiconicity) - code as data philosophy
+
+---
+
+## 🚀 Get Started in 3 Minutes
+
+### **Option 1: Quick Install (Recommended for ADHD brains)**
+
+```bash
+# One command to rule them all
 iwr https://raw.githubusercontent.com/welshDog/hypercode/main/install.ps1 | iex
 ```
 
-**Manual Install:**
+**✅ Done!** You're ready to code.
+
+### **Option 2: Manual Install**
+
 ```bash
-git clone https://github.com/welshDog/hypercode.git && cd hypercode
-pip install -r requirements.lock
-python -m src.hypercode examples/demo_hello.hc
-```
-
-🎉 **That's it!** You just ran HyperCode.
-
-> 🟢 **ADHD Tip**: Examples are designed in 5-minute chunks  
-> 🔵 **Visual Learners**: Check the architecture diagram below  
-> 🟡 **Quick Win**: Try modifying `examples/demo_hello.hc` right now!
-
----
-
-
-### Prerequisites
-- Python 3.10 or higher
-- pip (Python package manager)
-
-- 
-
-### Installation
-```bash
-# Clone the repository
+# Clone the repo
 git clone https://github.com/welshDog/hypercode.git
 cd hypercode
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements.lock
 
-# Verify installation
+# Verify it worked
 python -m src.hypercode --version
 ```
 
-### Run Your First Program
+**Expected output:**
+```
+HyperCode v0.1.0 🧠⚡
+Ready to think differently.
+```
+
+### **Prerequisites**
+- Python 3.10 or higher
+- pip (comes with Python)
+- 5 minutes of focus time ⏱️
+
+---
+
+## 💡 Your First HyperCode Program
+
+### Step 1: Create a file
 ```bash
-# Run the Hello World example
-python -m src.hypercode examples/demo_hello.hc
+touch hello.hc
+```
+
+### Step 2: Write your first program
+```hypercode
+# hello.hc - Your first HyperCode program
+
+"Hello, Neurodivergent World!" → output
+5 | multiply by 2 → result
+[1, 2, 3] | sum → total
+
+print: output
+print: result  
+print: total
+```
+
+### Step 3: Run it
+```bash
+python -m src.hypercode hello.hc
+```
+
+### Step 4: See the magic ✨
+```
+Hello, Neurodivergent World!
+Result: 10
+Total: 6
+```
+
+**🎉 Congratulations!** You just wrote HyperCode. Your brain already gets it.
+
+---
+
+## 📚 Core Concepts (No Theory Walls)
+
+### Pipes: The Flow of Logic
+Everything flows left-to-right like your thoughts.
+
+```hypercode
+# Read this like: "take input, validate, transform, output"
+input | validate | transform | output
+```
+
+### Spatial Grouping: Think in Blocks
+Group related concepts together spatially.
+
+```hypercode
+[
+  user_name | clean,
+  user_age | validate,
+  user_email | format
+] → save_user
+```
+
+### Pattern Matching: Describe What You Want
+Tell HyperCode what you're looking for, not how to find it.
+
+```hypercode
+data | find { type = "admin" } → admins
+```
+
+### AI-Ready Syntax
+Write in a way that AI understands instantly.
+
+```hypercode
+# Claude/GPT can generate and explain this without confusion
+process [files] | filter | compress | upload → result
 ```
 
 ---
 
-## 🎯 Key Features
+## 🎓 Examples & Tutorials
 
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **Dyslexia-Friendly Syntax** | Clean, consistent patterns | Easier reading and writing |
-| **ADHD-Optimized Flow** | Focused, distraction-free environment | Better concentration |
-| **AI-Augmented** | Built-in AI pair programming | Smarter coding experience |
-| **Multi-Paradigm** | Supports multiple programming styles | Flexible development |
-| **Comprehensive Tooling** | Everything you need in one place | Faster development |
-
----
-
-## 📖 Documentation
-
-### Core Documentation
-- [Language Specification](docs/LANGUAGE_SPEC.md)
-- [Architecture Overview](docs/ARCHITECTURE.md)
-- [API Reference](docs/API_REFERENCE.md)
-- [Tutorials](docs/TUTORIAL.md)
-
-### Development
-- [Contribution Guide](CONTRIBUTING.md)
-- [Development Setup](docs/DEVELOPMENT.md)
-- [Testing](tests/README.md)
-- [Code Style Guide](docs/STYLE_GUIDE_DRAFT.md)
-
-### Research & Design
-- [Research Roadmap](docs/research/RESEARCH_ROADMAP.md)
-- [Design Principles](docs/DESIGN_PRINCIPLES.md)
-- [Accessibility Guidelines](docs/ACCESSIBILITY.md)
-
----
-
-## 🛠️ Project Structure
-
-```
-hypercode/
-├── src/                    # Source code
-│   ├── core/              # Core language implementation
-│   ├── hypercode/         # Main package
-│   └── utils/             # Utility functions
-├── tests/                 # Test suite
-├── examples/              # Example programs
-├── docs/                  # Documentation
-└── scripts/               # Build and utility scripts
+### Example 1: Data Processing
+```hypercode
+# Read CSV, filter, calculate stats
+load "data.csv" → raw
+raw | filter { score > 80 } → passing
+passing | average "score" → mean
+mean → print
 ```
 
----
+### Example 2: API Integration
+```hypercode
+fetch "https://api.example.com/users" → users
+users | filter { active = true } → active_users
+active_users | count → total
+total → print
+```
 
-## 🤝 Contributing
+### Example 3: Game Logic (Spatial!)
+```hypercode
+# Spatial nature of HyperCode makes games natural
+[
+  player_x, player_y,
+  enemy_x, enemy_y
+] | distance → collision_check
 
-We welcome contributions from everyone! Here's how you can help:
+collision_check > 0 ? "Hit!" : "Safe"
+```
 
-1. **Report bugs**: [Open an issue](https://github.com/welshDog/hypercode/issues)
-2. **Fix issues**: Check out our [good first issues](https://github.com/welshDog/hypercode/contribute)
-3. **Add features**: Follow our [development guide](docs/DEVELOPMENT.md)
-4. **Improve docs**: Help us make our documentation better
-
-Please read our [Contribution Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
----
-
-## 🚀 Roadmap
-
-### Phase 1: Core Language (✓ Complete)
-- [x] Lexer and Pser
-- [x] Basic Interpreter
-- [x] Core Language Features
-
-### Phase 2: Developer Experience (In Progress)
-- [ ] Enhanced IDE Support
-- [ ] Debugging Tools
-- [ ] Performance Optimization
-
-### Phase 3: Ecosystem (Planned)
-- [ ] Package Manager
-- [ ] Standard Library
-- [ ] Community Packages
+### 📖 Full Documentation
+- [Syntax Reference](./docs/SYNTAX.md)
+- [Design Philosophy](./docs/PHILOSOPHY.md)
+- [API Guide](./docs/API.md)
+- [AI Integration](./docs/AI_INTEGRATION.md)
+- [Examples](./examples/)
 
 ---
 
-## 📄 License
+## 🤝 Join the Movement
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+HyperCode is **neurodivergent-first**, which means **we want YOU**.
 
-## 🙏 Acknowledgments
+### Ways to Contribute
 
-- All contributors who have helped shape HyperCode
-- The neurodivergent community for their invaluable feedback
-- Open source projects that made this possible
+#### 🐛 Found a bug?
+[Report it](https://github.com/welshDog/hypercode/issues) — no experience needed.
 
----
+#### 💡 Have an idea?
+[Discuss it](https://github.com/welshDog/hypercode/discussions) — let's talk first.
 
-💡 **Pro Tip**: Check out our [Quick Start Guide](examples/QUICK_START.md) for a guided tour of HyperCode's features!
+#### 🎨 Want to code?
+[Easy contributions](./CONTRIBUTING.md):
+- Add a new example (30 min)
+- Fix a typo (5 min)
+- Improve docs (1 hour)
+- Build a feature (let's pair program)
 
-[![Try HyperCode Now](https://img.shields.io/badge/TRY_HYPERCODE_NOW-FF6B6B?style=for-the-badge&logo=github&logoColor=white)](https://github.com/welshDog/hypercode#-quick-start)
+#### 🗣️ Just want to chat?
+- [Discord Community](https://discord.gg/hypercode) (coming soon)
+- [GitHub Discussions](https://github.com/welshDog/hypercode/discussions)
+- [Twitter: @HyperCodeLang](https://twitter.com/hypercodelang)
 
----
+### 🎁 First-Timer Bounties
+We pay neurodivergent developers to contribute:
+- **$25**: Add a working example
+- **$50**: Fix a bug or improve docs
+- **$100+**: Build a feature
 
-## ♿ Accessibility
-
-HyperCode is committed to being accessible to everyone:
-
-- 👀 **Screen reader compatible** documentation
-- ⌨️ **Keyboard-first** navigation in tools
-- 🎨 **High contrast** syntax themes available
-- 🧠 **Neurodivergent-friendly** error messages and documentation
-- 📝 **Clear, plain language** - no jargon overload
-
-**Need accommodations?** [Open an accessibility issue](https://github.com/welshDog/hypercode/issues/new?labels=accessibility&template=accessibility.md)
-
----
-
-## 💬 We Want Your Feedback!
-
-This is a **living project** built for and with the neurodivergent community.
-
-### Quick Feedback Options:
-
-- 🐛 [Report a Bug](https://github.com/welshDog/hypercode/issues/new?labels=bug)
-- 💡 [Suggest a Feature](https://github.com/welshDog/hypercode/issues/new?labels=enhancement)
-- 🤔 [Ask a Question](https://github.com/welshDog/hypercode/discussions/new?category=q-a)
-- 🎓 [Share Your Experience](https://github.com/welshDog/hypercode/discussions/new?category=show-and-tell)
-- ❤️ [Join Discussions](https://github.com/welshDog/hypercode/discussions)
-
-**Your input shapes HyperCode.** Every perspective matters. Every brain works differently. Let's build something that works for everyone.
+[View Bounties](./BOUNTIES.md)
 
 ---
 
-<div align="center">
+## 🗺️ Roadmap: What's Coming
 
-**Made with 💜 by neurodivergent developers, for neurodivergent developers**
+### Phase 1: Foundation ✅
+- [x] Core syntax & execution
+- [x] Basic examples
+- [x] Documentation kickoff
+- [ ] **Next: v0.2 - Community Edition** (Nov 2025)
 
-[MIT License](LICENSE) | [Code of Conduct](CODE_OF_CONDUCT.md) | [Contributing Guide](CONTRIBUTING.md)
+### Phase 2: AI Integration (Dec 2025 - Jan 2026)
+- [ ] GPT-4 code generation showcase
+- [ ] Claude integration examples
+- [ ] Mistral local model support
+- [ ] Ollama compatibility
 
-*HyperCode: Where different minds write brilliant code*
+### Phase 3: Expansion (Q1 2026)
+- [ ] Visual IDE plugin
+- [ ] Neurodivergent learning paths
+- [ ] Educational partnerships
+- [ ] Interactive playground
 
-</div>
+### Phase 4: The Future (Q2+ 2026)
+- [ ] 🔬 Quantum programming support
+- [ ] 🧬 DNA sequence language mode
+- [ ] 🤖 AI agent framework
+- [ ] 🌍 Multi-language support
+
+---
+
+## 🧠 Why Neurodivergent Brains Need This
+
+### For ADHD Minds
+✅ Short, focused examples (5-min chunks)  
+✅ Visual spatial layout matches working memory  
+✅ No hidden complexity or surprise syntax  
+✅ Momentum builds fast (see results immediately)
+
+### For Autistic Developers
+✅ Consistent, predictable syntax  
+✅ Pattern clarity (no ambiguous semantics)  
+✅ Logical flow matches thinking patterns  
+✅ No social coding gatekeeping
+
+### For Dyslexic Programmers
+✅ Clean, readable code (no dense syntax)  
+✅ Visual spatial grouping (not text-heavy)  
+✅ Dyslexia-friendly fonts in IDE  
+✅ High contrast modes built-in
+
+### For Everyone
+✅ Code that **feels** right, not just works  
+✅ Community that gets it  
+✅ No shame, no gatekeeping  
+✅ A language that honors how you think
+
+---
+
+## 📊 HyperCode vs The World
+
+| Feature | HyperCode | Python | JavaScript | Rust |
+|---------|-----------|--------|-----------|------|
+| **Spatial Logic** | ✅ Native | ❌ | ❌ | ❌ |
+| **Neurodivergent-First** | ✅ Yes | ❌ | ❌ | ❌ |
+| **AI-Ready Syntax** | ✅ Yes | ❌ | ❌ | ❌ |
+| **Minimal Noise** | ✅ Yes | ✅ Partial | ❌ | ❌ |
+| **Easy to Learn** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ |
+| **Production-Ready** | 🔄 Soon | ✅ Yes | ✅ Yes | ✅ Yes |
+
+**The Point**: HyperCode isn't trying to replace Python. It's trying to give neurodivergent minds a language that was *built for them*, not retrofitted.
+
+---
+
+## 🔗 Connect & Follow
+
+- 📖 [Documentation](./docs/)
+- 🐙 [GitHub](https://github.com/welshDog/hypercode)
+- 💬 [Discussions](https://github.com/welshDog/hypercode/discussions)
+- 🎮 [Discord](https://discord.gg/hypercode) *(coming soon)*
+- 🐦 [Twitter](https://twitter.com/hypercodelang)
+- 📬 [Newsletter](https://hypercode.substack.com) *(coming soon)*
+
+---
+
+## 📜 License
+
+MIT License — [Read it](./LICENSE)
+
+You're free to use, modify, and share HyperCode. No corporate nonsense.
+
+---
+
+## 🙏 Special Thanks
+
+**To the forgotten languages** that came before us (Plankalkül, Befunge, INTERCAL, Lisp) — you showed us what was possible.
+
+**To neurodivergent developers everywhere** — your brilliance deserves better tools. We're building them.
+
+**To our community** — you're not just using HyperCode, you're *shaping* it.
+
+---
+
+## ⚡ One Last Thing
+
+> **"Programming languages are more than syntax. They are an expression of how minds think."**
+
+For too long, programming languages were built by neurotypical brains, for neurotypical brains. They work, sure. But they never *feel right* for minds that think spatially.
+
+HyperCode changes that.
+
+**This is your language. This is your movement. This is your future.**
+
+Welcome to HyperCode. ✨
+
+---
+
+## 🚀 Ready to Start?
+
+```bash
+# Install
+git clone https://github.com/welshDog/hypercode.git && cd hypercode && pip install -r requirements.lock
+
+# Code
+echo '"Hello, HyperCode!" → output' > first.hc
+
+# Run
+python -m src.hypercode first.hc
+
+# 🎉 Welcome aboard!
+```
+
+**Questions?** [Ask in Discussions](https://github.com/welshDog/hypercode/discussions)
+
+**Ready to contribute?** [Start here](./CONTRIBUTING.md)
+
+**Want to code with us?** [Join Discord](https://discord.gg/hypercode) (launching soon)
+
+---
+
+*Built with ❤️ by neurodivergent developers, for neurodivergent developers.*
+
+*The future of programming thinks differently. So do we.* 🧠⚡
