@@ -82,7 +82,7 @@ isort==5.13.2
 
 # Jupyter notebooks
 jupyter==1.0.0
-jupyterlab==4.0.9
+jupyterlab==4.5.0
 
 # Line profiler
 line-profiler==4.1.1
