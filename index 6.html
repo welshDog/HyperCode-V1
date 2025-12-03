@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperCode Project Scanner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --color-primary: #2180a0;
+        --color-primary-hover: #1d7481;
+        --color-bg: #fcfcf9;
+        --color-surface: #ffffff;
+        --color-text: #134252;
+        --color-text-secondary: #627075;
+        --color-border: rgba(94, 82, 64, 0.2);
+        --color-success: #2180a0;
+        --color-warning: #a84b2f;
+        --space-8: 8px;
+        --space-16: 16px;
+        --space-20: 20px;
+        --space-24: 24px;
+        --radius-base: 8px;
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: var(--space-20);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: var(--space-24);
+        border-bottom: 2px solid var(--color-border);
+        padding-bottom: var(--space-16);
+      }
+
+      h1 {
+        margin: 0 0 var(--space-8) 0;
+        font-size: 28px;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      .subtitle {
+        color: var(--color-text-secondary);
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .input-section {
+        background: var(--color-surface);
+        padding: var(--space-20);
+        border-radius: var(--radius-base);
+        border: 1px solid var(--color-border);
+        margin-bottom: var(--space-24);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .input-group {
+        display: flex;
+        gap: var(--space-8);
+        margin-bottom: var(--space-16);
+        flex-wrap: wrap;
+      }
+
+      textarea {
+        flex: 1;
+        min-height: 120px;
+        padding: var(--space-12);
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-base);
+        background: var(--color-bg);
+        color: var(--color-text);
+        resize: vertical;
+        line-height: 1.4;
+      }
+
+      textarea:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: -1px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-8) var(--space-16);
+        border: none;
+        border-radius: var(--radius-base);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 150ms ease;
+        white-space: nowrap;
+      }
+
+      .btn-primary {
+        background: var(--color-primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: var(--color-primary-hover);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 1px solid var(--color-border);
+        color: var(--color-text);
+      }
+
+      .btn-secondary:hover {
+        background: var(--color-bg);
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-20);
+        margin-bottom: var(--space-20);
+      }
+
+      @media (max-width: 1024px) {
+        .main-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .panel {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-base);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+      }
+
+      .panel-header {
+        background: linear-gradient(
+          135deg,
+          rgba(33, 128, 160, 0.08) 0%,
+          rgba(33, 128, 160, 0.04) 100%
+        );
+        padding: var(--space-16);
+        border-bottom: 1px solid var(--color-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .panel-header h2 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+
+      .panel-body {
+        padding: var(--space-16);
+        max-height: 600px;
+        overflow-y: auto;
+      }
+
+      .tree {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      .tree-node {
+        padding: 2px 0;
+        cursor: pointer;
+        -webkit-user-select: none;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 0;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .tree-node:hover {
+        background-color: rgba(33, 128, 160, 0.05);
+      }
+
+      .tree-node.directory {
+        font-weight: 500;
+      }
+
+      .tree-node.file {
+        font-weight: 400;
+      }
+
+      .tree-badge {
+        font-size: 10px;
+        background: var(--color-primary);
+        color: white;
+        border-radius: 4px;
+        padding: 1px 4px;
+        margin-left: 4px;
+        font-weight: 500;
+      }
+
+      .file-stats {
+        margin-left: auto;
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        display: flex;
+        gap: 8px;
+      }
+
+      .file-type-badge {
+        font-size: 10px;
+        background: #e0e0e0;
+        color: #555;
+        border-radius: 3px;
+        padding: 1px 4px;
+        text-transform: uppercase;
+      }
+
+      .tree-toggle {
+        display: inline-block;
+        width: 16px;
+        text-align: center;
+        color: var(--color-text-secondary);
+        margin-right: 4px;
+      }
+
+      .tree-icon {
+        display: inline-block;
+        width: 18px;
+        margin-right: 6px;
+        text-align: center;
+        color: var(--color-primary);
+      }
+
+      .tree-label {
+        color: var(--color-text);
+        transition: color 150ms;
+      }
+
+      .tree-node:hover .tree-label {
+        color: var(--color-primary);
+      }
+
+      .tree-children {
+        padding-left: 20px;
+      }
+
+      .tree-children.collapsed {
+        display: none;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: var(--space-12);
+        margin-bottom: var(--space-20);
+      }
+
+      .stat-card {
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-base);
+        padding: var(--space-12);
+        text-align: center;
+      }
+
+      .stat-label {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        margin-bottom: 6px;
+        font-weight: 500;
+      }
+
+      .stat-value {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--color-primary);
+      }
+
+      .language-bar {
+        margin-bottom: var(--space-12);
+      }
+
+      .language-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-bottom: 4px;
+        color: var(--color-text);
+      }
+
+      .language-bar-fill {
+        height: 8px;
+        background: var(--color-border);
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .language-segment {
+        height: 100%;
+        display: inline-block;
+        transition: all 150ms;
+      }
+
+      .lang-js {
+        background: #f1e05a;
+      }
+      .lang-json {
+        background: #2180a0;
+      }
+      .lang-css {
+        background: #563d7c;
+      }
+      .lang-html {
+        background: #e34c26;
+      }
+      .lang-ts {
+        background: #3178c6;
+      }
+      .lang-py {
+        background: #3776ab;
+      }
+      .lang-jsx {
+        background: #61dafb;
+      }
+      .lang-other {
+        background: #888;
+      }
+
+      .json-export {
+        background: var(--color-bg);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-base);
+        padding: var(--space-16);
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        max-height: 400px;
+        overflow-y: auto;
+        color: var(--color-text);
+        line-height: 1.4;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .json-key {
+        color: var(--color-primary);
+      }
+      .json-string {
+        color: var(--color-success);
+      }
+      .json-number {
+        color: var(--color-warning);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: var(--space-24);
+        color: var(--color-text-secondary);
+      }
+
+      .empty-state-icon {
+        font-size: 48px;
+        margin-bottom: var(--space-12);
+      }
+
+      .button-row {
+        display: flex;
+        gap: var(--space-8);
+        margin-top: var(--space-16);
+        justify-content: center;
+      }
+
+      .copy-feedback {
+        font-size: 12px;
+        color: var(--color-success);
+        margin-top: var(--space-8);
+        text-align: center;
+      }
+
+      .project-type-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          rgba(33, 128, 160, 0.15) 0%,
+          rgba(33, 128, 160, 0.08) 100%
+        );
+        color: var(--color-primary);
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        margin-top: var(--space-8);
+      }
+
+      .help-text {
+        background: rgba(33, 128, 160, 0.05);
+        border-left: 3px solid var(--color-primary);
+        padding: var(--space-12);
+        border-radius: 4px;
+        font-size: 13px;
+        color: var(--color-text);
+        margin-top: var(--space-16);
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>
+          <i class="fas fa-project-diagram" style="margin-right: 10px"></i
+          >HyperCode Project Scanner
+        </h1>
+        <p class="subtitle">
+          Visualize, analyze, and generate AI-ready context for your projects
+        </p>
+        <p class="subtitle">
+          Visualize project structure + Generate AI-ready context for
+          neurodivergent-first development
+        </p>
+      </header>
+
+      <div class="input-section">
+        <label
+          for="projectInput"
+          style="
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: 500;
+          "
+          >Paste Your Project Structure (or use example):</label
+        >
+        <div class="input-group">
+          <textarea
+            id="projectInput"
+            placeholder="Paste your project folder structure here...&#10;Example:&#10;src/&#10;  components/&#10;    Button.js&#10;  utils/&#10;    parser.js&#10;tests/&#10;package.json"
+          ></textarea>
+        </div>
+        <div class="input-group">
+          <button class="btn btn-primary" onclick="scanProject()">
+            📊 Scan Project
+          </button>
+          <button class="btn btn-secondary" onclick="loadExample()">
+            Load Example
+          </button>
+          <button class="btn btn-secondary" onclick="clearAll()">Clear</button>
+        </div>
+        <div class="help-text">
+          💡 <strong>Tip:</strong> Paste folder structures from your file
+          system, or let it auto-detect relationships from file contents. Works
+          with any format!
+        </div>
+      </div>
+
+      <div class="stats" id="statsContainer" style="display: none"></div>
+
+      <div class="main-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <h2>📁 Project Tree</h2>
+            <span
+              style="font-size: 12px; color: var(--color-text-secondary)"
+              id="fileCount"
+            ></span>
+          </div>
+          <div class="panel-body" id="treeContainer">
+            <div class="empty-state">
+              <div class="empty-state-icon">📂</div>
+              <p>Paste project structure to visualize</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>📈 Metadata & Insights</h2>
+          </div>
+          <div class="panel-body" id="metadataContainer">
+            <div class="empty-state">
+              <p>Scan a project to see stats</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom: var(--space-20)">
+        <div class="panel-header">
+          <h2>⚙️ AI-Ready JSON Context</h2>
+          <button
+            class="btn btn-secondary btn-sm"
+            style="padding: 4px 12px; font-size: 12px"
+            onclick="copyJSON()"
+          >
+            📋 Copy JSON
+          </button>
+        </div>
+        <div class="panel-body">
+          <div id="jsonExport" class="json-export">
+            <div class="empty-state">
+              <p>Scan to generate AI context</p>
+            </div>
+          </div>
+          <div class="copy-feedback" id="copyFeedback" style="display: none">
+            ✓ Copied to clipboard!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+      let projectData = null;
+
+      // File type icons mapping
+      const FILE_ICONS = {
+        // Directories
+        directory: "folder",
+        "directory-open": "folder-open",
+
+        // Code files
+        js: "file-code",
+        jsx: "file-code",
+        ts: "file-code",
+        tsx: "file-code",
+        py: "file-code",
+        java: "file-code",
+        c: "file-code",
+        cpp: "file-code",
+        h: "file-code",
+        hpp: "file-code",
+        cs: "file-code",
+        go: "file-code",
+        rs: "file-code",
+        swift: "file-code",
+        kt: "file-code",
+        dart: "file-code",
+
+        // Web files
+        html: "file-code",
+        css: "file-code",
+        scss: "file-code",
+        sass: "file-code",
+        less: "file-code",
+
+        // Config files
+        json: "file-alt",
+        yaml: "file-alt",
+        yml: "file-alt",
+        toml: "file-alt",
+        ini: "file-alt",
+        env: "file-alt",
+
+        // Document files
+        md: "file-alt",
+        txt: "file-alt",
+        pdf: "file-pdf",
+        doc: "file-word",
+        docx: "file-word",
+        xls: "file-excel",
+        xlsx: "file-excel",
+        ppt: "file-powerpoint",
+        pptx: "file-powerpoint",
+
+        // Media files
+        jpg: "file-image",
+        jpeg: "file-image",
+        png: "file-image",
+        gif: "file-image",
+        svg: "file-image",
+        mp4: "file-video",
+        mov: "file-video",
+        avi: "file-video",
+        mp3: "file-audio",
+        wav: "file-audio",
+
+        // Archives
+        zip: "file-archive",
+        rar: "file-archive",
+        tar: "file-archive",
+        gz: "file-archive",
+        "7z": "file-archive",
+
+        // Default
+        default: "file",
+      };
+
+      // Project type detection patterns
+      const PROJECT_PATTERNS = [
+        {
+          type: "Next.js",
+          patterns: ["next.config.js", "pages/"],
+          priority: 2,
+        },
+        {
+          type: "React",
+          patterns: ["package.json"],
+          check: (pkg) =>
+            pkg.dependencies &&
+            (pkg.dependencies.react || pkg.devDependencies?.react),
+          priority: 1,
+        },
+        { type: "Node.js", patterns: ["package.json"], priority: 1 },
+        {
+          type: "Python",
+          patterns: [
+            "requirements.txt",
+            "setup.py",
+            "Pipfile",
+            "pyproject.toml",
+          ],
+          priority: 1,
+        },
+        { type: "Django", patterns: ["manage.py"], priority: 2 },
+        {
+          type: "Flask",
+          patterns: ["app.py", "application.py"],
+          check: (content) => content.includes("from flask import"),
+          priority: 2,
+        },
+        {
+          type: "Ruby on Rails",
+          patterns: ["Gemfile", "config.ru", "app/controllers/"],
+          priority: 2,
+        },
+        {
+          type: "Vue.js",
+          patterns: ["vue.config.js", "vite.config.js"],
+          priority: 2,
+        },
+      ];
+
+      // Language complexity scores (tokens per file type)
+      const LANGUAGE_COMPLEXITY = {
+        py: 1.0,
+        js: 1.2,
+        jsx: 1.3,
+        ts: 1.3,
+        tsx: 1.4,
+        java: 1.5,
+        c: 1.4,
+        cpp: 1.5,
+        h: 1.3,
+        hpp: 1.4,
+        cs: 1.4,
+        go: 1.2,
+        rs: 1.3,
+        swift: 1.3,
+        kt: 1.3,
+        rb: 1.1,
+        php: 1.2,
+        scala: 1.5,
+        dart: 1.3,
+      };
+
+      function loadExample() {
+        const example = `src/
+  components/
+    Button.js
+    Form.js
+    Modal.js
+  utils/
+    parser.js
+    compiler.js
+    validator.js
+  hooks/
+    useForm.js
+    useTheme.js
+  index.js
+tests/
+  Button.test.js
+  parser.test.js
+  integration.test.js
+config/
+  webpack.config.js
+  babel.config.js
+docs/
+  API.md
+  CONTRIBUTING.md
+.gitignore
+package.json
+README.md
+tsconfig.json`;
+        document.getElementById("projectInput").value = example;
+      }
+
+      function clearAll() {
+        document.getElementById("projectInput").value = "";
+        document.getElementById("statsContainer").style.display = "none";
+        document.getElementById("treeContainer").innerHTML =
+          '<div class="empty-state"><div class="empty-state-icon">📂</div><p>Paste project structure to visualize</p></div>';
+        document.getElementById("metadataContainer").innerHTML =
+          '<div class="empty-state"><p>Scan a project to see stats</p></div>';
+        document.getElementById("jsonExport").innerHTML =
+          '<div class="empty-state"><p>Scan to generate AI context</p></div>';
+        projectData = null;
+      }
+
+      // Default ignore patterns (similar to .gitignore)
+      const DEFAULT_IGNORE_PATTERNS = [
+        "node_modules",
+        ".git",
+        ".DS_Store",
+        "dist",
+        "build",
+        "coverage",
+        "__pycache__",
+        "*.pyc",
+        ".next",
+        ".nuxt",
+        ".svelte-kit",
+        ".vercel",
+        ".netlify",
+      ];
+
+      function shouldIgnore(name, isDirectory) {
+        return DEFAULT_IGNORE_PATTERNS.some((pattern) => {
+          if (pattern.startsWith("*")) {
+            // File extension match (e.g., '*.pyc')
+            return name.endsWith(pattern.substring(1));
+          }
+          // Exact match
+          return name === pattern;
+        });
+      }
+
+      function calculateDirectoryStats(node) {
+        if (!node.isDirectory) {
+          node.fileType = getFileExtension(node.name);
+          node.size = 1024; // Default size for files (1KB)
+          return {
+            files: 1,
+            size: node.size,
+            fileTypes: { [node.fileType]: 1 },
+          };
+        }
+
+        let totalFiles = 0;
+        let totalSize = 0;
+        const fileTypes = {};
+
+        node.children.forEach((child) => {
+          if (child.isDirectory) {
+            const stats = calculateDirectoryStats(child);
+            totalFiles += stats.files;
+            totalSize += stats.size;
+            Object.entries(stats.fileTypes).forEach(([type, count]) => {
+              fileTypes[type] = (fileTypes[type] || 0) + count;
+            });
+          } else {
+            totalFiles++;
+            const type = getFileExtension(child.name);
+            fileTypes[type] = (fileTypes[type] || 0) + 1;
+            child.fileType = type;
+            child.size = 1024; // Default size
+            totalSize += child.size;
+          }
+        });
+
+        node.stats = {
+          files: totalFiles,
+          size: totalSize,
+          fileTypes,
+          lastModified: new Date().toISOString(),
+        };
+
+        return { files: totalFiles, size: totalSize, fileTypes };
+      }
+
+      function parseProjectStructure(input) {
+        const lines = input.trim().split("\n").filter(Boolean);
+        const root = {
+          name: "root",
+          children: [],
+          isDirectory: true,
+          depth: -1,
+          expanded: true,
+        };
+        const stack = [root];
+
+        // First pass: build the tree structure
+        lines.forEach((line) => {
+          if (!line.trim()) return;
+
+          const match = line.match(/^(\s*)([^\s\/]+)(\/)?$/);
+          if (!match) return;
+
+          const [, spaces, name, isDir] = match;
+          const depth = spaces.length / 2;
+          const isDirectory = !!isDir;
+
+          // Skip ignored files/directories
+          if (shouldIgnore(name, isDirectory)) return;
+
+          // Find parent node at the correct depth
+          while (stack.length > 0 && stack[stack.length - 1].depth >= depth) {
+            stack.pop();
+          }
+
+          const parent = stack[stack.length - 1];
+          if (!parent) return;
+
+          const node = {
+            name,
+            isDirectory,
+            children: [],
+            depth,
+            expanded: depth < 2, // Auto-expand first two levels
+          };
+
+          parent.children.push(node);
+
+          if (isDirectory) {
+            stack.push(node);
+          }
+        });
+
+        // Second pass: calculate statistics
+        calculateDirectoryStats(root);
+
+        return root.children;
+      }
+
+      function countFiles(node) {
+        if (!node.isDirectory) return 1;
+        return node.children.reduce((sum, child) => sum + countFiles(child), 0);
+      }
+
+      function getFileExtension(name) {
+        const ext = name.split(".").pop().toLowerCase();
+        const langMap = {
+          js: "js",
+          jsx: "jsx",
+          ts: "ts",
+          tsx: "jsx",
+          json: "json",
+          css: "css",
+          html: "html",
+          py: "py",
+          md: "other",
+          txt: "other",
+        };
+        return langMap[ext] || "other";
+      }
+
+      function analyzeLanguages(tree) {
+        const langs = {};
+        function traverse(nodes) {
+          nodes.forEach((node) => {
+            if (node.isDirectory) {
+              traverse(node.children);
+            } else {
+              const lang = getFileExtension(node.name);
+              langs[lang] = (langs[lang] || 0) + 1;
+            }
+          });
+        }
+        traverse(tree);
+        return langs;
+      }
+
+      function detectProjectType(tree, langStats) {
+        if (tree.some((n) => n.name === "package.json")) {
+          if (tree.some((n) => n.name === "next.config.js")) return "Next.js";
+          if (tree.some((n) => n.name === "nuxt.config.js")) return "Nuxt.js";
+          return "Node.js";
+        }
+        if (
+          tree.some(
+            (n) => n.name === "pyproject.toml" || n.name === "requirements.txt"
+          )
+        )
+          return "Python";
+        if (langStats.js > 0) return "JavaScript";
+        if (langStats.ts > 0) return "TypeScript";
+        return "Mixed";
+      }
+
+      function formatFileSize(bytes) {
+        if (bytes === 0) return "0 B";
+        const k = 1024;
+        const sizes = ["B", "KB", "MB", "GB"];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+      }
+
+      function getFileIconClass(name, isDirectory = false) {
+        if (isDirectory) return "fas fa-folder";
+
+        const ext = name.split(".").pop().toLowerCase();
+        const iconMap = {
+          // Code files
+          js: "fa-js",
+          jsx: "fa-react",
+          ts: "fa-ts",
+          tsx: "fa-react",
+          py: "fa-python",
+          java: "fa-java",
+          c: "fa-file-code",
+          cpp: "fa-file-code",
+          h: "fa-file-code",
+          cs: "fa-windows",
+          go: "fa-code",
+          rs: "fa-rust",
+          swift: "fa-apple",
+          kt: "fa-android",
+          dart: "fa-mobile",
+          rb: "fa-gem",
+          php: "fa-php",
+          scala: "fa-code",
+
+          // Web files
+          html: "fa-html5",
+          css: "fa-css3-alt",
+          scss: "fa-sass",
+          sass: "fa-sass",
+          less: "fa-less",
+
+          // Config files
+          json: "fa-file-code",
+          yaml: "fa-file-alt",
+          yml: "fa-file-alt",
+          toml: "fa-file-alt",
+          ini: "fa-file-alt",
+          env: "fa-cog",
+
+          // Document files
+          md: "fa-markdown",
+          txt: "fa-file-alt",
+          pdf: "fa-file-pdf",
+          doc: "fa-file-word",
+          docx: "fa-file-word",
+          xls: "fa-file-excel",
+          xlsx: "fa-file-excel",
+          ppt: "fa-file-powerpoint",
+          pptx: "fa-file-powerpoint",
+
+          // Default
+          default: "fa-file",
+        };
+
+        return iconMap[ext] || iconMap["default"];
+      }
+
+      function renderTree(nodes, container, depth = 0) {
+        if (!nodes || !nodes.length) return;
+
+        nodes.forEach((node, idx) => {
+          const nodeEl = document.createElement("div");
+          nodeEl.className = `tree-node ${
+            node.isDirectory ? "directory" : "file"
+          }`;
+          nodeEl.style.paddingLeft = `${depth * 16}px`;
+
+          // Toggle button for directories
+          if (node.isDirectory) {
+            const toggle = document.createElement("span");
+            toggle.className = "tree-toggle";
+            toggle.innerHTML = node.expanded ? "▼" : "▶";
+            toggle.style.cursor = "pointer";
+            toggle.onclick = (e) => {
+              e.stopPropagation();
+              node.expanded = !node.expanded;
+              const children = nodeEl.querySelector(".tree-children");
+              if (children) {
+                children.style.display = node.expanded ? "block" : "none";
+                toggle.textContent = node.expanded ? "▼" : "▶";
+              }
+            };
+            nodeEl.appendChild(toggle);
+          } else {
+            // Add spacer for files to align with directories
+            const spacer = document.createElement("span");
+            spacer.className = "tree-toggle";
+            spacer.style.visibility = "hidden";
+            nodeEl.appendChild(spacer);
+          }
+
+          // File/folder icon
+          const icon = document.createElement("i");
+          icon.className = `tree-icon ${getFileIconClass(
+            node.name,
+            node.isDirectory
+          )}`;
+          icon.style.color = node.isDirectory ? "#f0b429" : "#6c757d";
+          nodeEl.appendChild(icon);
+
+          // Node name
+          const label = document.createElement("span");
+          label.className = "tree-label";
+          label.textContent = node.name;
+          nodeEl.appendChild(label);
+
+          // File type badge for files
+          if (!node.isDirectory && node.fileType) {
+            const typeBadge = document.createElement("span");
+            typeBadge.className = "file-type-badge";
+            typeBadge.textContent = node.fileType.toUpperCase();
+            nodeEl.appendChild(typeBadge);
+          }
+
+          // Stats for directories
+          if (node.isDirectory && node.stats) {
+            const stats = document.createElement("div");
+            stats.className = "file-stats";
+
+            // File count
+            if (node.stats.files > 0) {
+              const fileCount = document.createElement("span");
+              fileCount.textContent = `${node.stats.files} file${
+                node.stats.files !== 1 ? "s" : ""
+              }`;
+              stats.appendChild(fileCount);
+            }
+
+            // Size
+            if (node.stats.size) {
+              const size = document.createElement("span");
+              size.textContent = formatFileSize(node.stats.size);
+              stats.appendChild(size);
+            }
+
+            // File type badges
+            if (node.stats.fileTypes) {
+              const types = Object.entries(node.stats.fileTypes)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+
+              types.forEach(([type, count]) => {
+                const badge = document.createElement("span");
+                badge.className = "tree-badge";
+                badge.textContent = `${type} ${count}`;
+                stats.appendChild(badge);
+              });
+
+              if (Object.keys(node.stats.fileTypes).length > 3) {
+                const moreBadge = document.createElement("span");
+                moreBadge.className = "tree-badge";
+                moreBadge.textContent = `+${
+                  Object.keys(node.stats.fileTypes).length - 3
+                } more`;
+                stats.appendChild(moreBadge);
+              }
+            }
+
+            nodeEl.appendChild(stats);
+          }
+
+          container.appendChild(nodeEl);
+
+          // Render children if directory is expanded
+          if (node.isDirectory && node.children && node.children.length > 0) {
+            const childContainer = document.createElement("div");
+            childContainer.className = "tree-children";
+            childContainer.style.display = node.expanded ? "block" : "none";
+            container.appendChild(childContainer);
+            renderTree(node.children, childContainer, depth + 1);
+          }
+        });
+      }
+
+      function generateJSONContext(tree, langStats, projectType) {
+        // Calculate project complexity
+        let totalFiles = 0;
+        let totalComplexity = 0;
+
+        const calculateComplexity = (node) => {
+          if (node.type === "file") {
+            const ext = getFileExtension(node.name).toLowerCase();
+            const complexity = LANGUAGE_COMPLEXITY[ext] || 0.8;
+            totalComplexity += complexity;
+            totalFiles++;
+            return complexity;
+          }
+
+          if (node.children) {
+            return node.children.reduce(
+              (sum, child) => sum + calculateComplexity(child),
+              0
+            );
+          }
+          return 0;
+        };
+
+        calculateComplexity(tree);
+        const avgComplexity =
+          totalFiles > 0 ? (totalComplexity / totalFiles).toFixed(2) : 0;
+
+        // Generate file relationships
+        const fileRelationships = [];
+        const extractRelationships = (node, path = "") => {
+          const currentPath = path ? `${path}/${node.name}` : node.name;
+
+          if (node.type === "file") {
+            // Simple example: Look for import/require statements
+            if (node.content) {
+              const content = node.content.toLowerCase();
+              const imports = [];
+
+              // Simple regex to find imports (this is a simplified example)
+              const importMatches =
+                content.match(/(import|require|from)\s+['"]([^'"]+)['"]/g) ||
+                [];
+              importMatches.forEach((imp) => {
+                const match = imp.match(/['"]([^'"]+)['"]/);
+                if (match && match[1]) {
+                  imports.push(match[1]);
+                }
+              });
+
+              if (imports.length > 0) {
+                fileRelationships.push({
+                  file: currentPath,
+                  imports: imports,
+                  lineCount: node.content.split("\n").length,
+                });
+              }
+            }
+          }
+
+          if (node.children) {
+            node.children.forEach((child) =>
+              extractRelationships(child, currentPath)
+            );
+          }
+        };
+
+        extractRelationships(tree);
+
+        // Generate the enhanced context
+        return {
+          project: {
+            name: tree.name || "project",
+            type: projectType,
+            stats: {
+              totalFiles,
+              totalLines: Object.values(langStats).reduce(
+                (sum, lang) => sum + (lang.lines || 0),
+                0
+              ),
+              totalSize: 0, // This would require actual file size data
+              complexity: {
+                score: parseFloat(avgComplexity),
+                level:
+                  avgComplexity < 0.8
+                    ? "Low"
+                    : avgComplexity < 1.2
+                    ? "Medium"
+                    : "High",
+              },
+            },
+            languages: Object.entries(langStats)
+              .map(([lang, data]) => ({
+                name: lang,
+                files: data.count,
+                lines: data.lines || 0,
+                percentage: Math.round((data.count / totalFiles) * 100) || 0,
+              }))
+              .sort((a, b) => b.percentage - a.percentage),
+            structure: tree,
+            relationships: fileRelationships,
+            timestamp: new Date().toISOString(),
+            metadata: {
+              generatedBy: "HyperCode Project Scanner",
+              version: "1.0.0",
+              capabilities: [
+                "project-structure",
+                "language-detection",
+                "complexity-analysis",
+                "dependency-mapping",
+              ],
+            },
+          },
+        };
+        const buildStructure = (nodes) => {
+          const obj = {};
+          nodes.forEach((node) => {
+            if (node.isDirectory) {
+              obj[node.name] = buildStructure(node.children);
+            } else {
+              obj[node.name] = {
+                type: "file",
+                ext: getFileExtension(node.name),
+                size: "N/A",
+              };
+            }
+          });
+          return obj;
+        };
+
+        return {
+          projectName: "HyperCode Project",
+          projectType: projectType,
+          generatedAt: new Date().toISOString(),
+          structure: buildStructure(tree),
+          metadata: {
+            totalFiles: Object.keys(langStats).reduce(
+              (a, b) => a + langStats[b],
+              0
+            ),
+            languages: langStats,
+            projectType: projectType,
+          },
+        };
+      }
+
+      // Function to render language distribution chart
+      function renderLanguageChart(langStats) {
+        const ctx = document.getElementById("languageChart");
+        if (!ctx) return;
+
+        const labels = Object.keys(langStats);
+        const data = Object.values(langStats).map((lang) => lang.count);
+        const backgroundColors = [
+          "#2180a0",
+          "#1d7481",
+          "#1a6872",
+          "#175c63",
+          "#145054",
+          "#114445",
+          "#0e3836",
+          "#0b2c27",
+          "#082018",
+          "#051409",
+        ];
+
+        // Destroy previous chart instance if it exists
+        if (window.languageChart) {
+          window.languageChart.destroy();
+        }
+
+        window.languageChart = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                data: data,
+                backgroundColor: backgroundColors.slice(0, labels.length),
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: "right",
+                labels: {
+                  boxWidth: 12,
+                  padding: 10,
+                  font: {
+                    size: 11,
+                  },
+                },
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    const label = context.label || "";
+                    const value = context.raw || 0;
+                    const total = context.dataset.data.reduce(
+                      (a, b) => a + b,
+                      0
+                    );
+                    const percentage = Math.round((value / total) * 100);
+                    return `${label}: ${value} files (${percentage}%)`;
+                  },
+                },
+              },
+            },
+            cutout: "60%",
+          },
+        });
+      }
+
+      // Function to render project metadata
+      function renderProjectMetadata(metadata) {
+        const container = document.getElementById("projectMetadata");
+        if (!container) return;
+
+        container.innerHTML = `
+                <div class="metadata-grid">
+                    <div class="metadata-item">
+                        <div class="metadata-label">Project Type</div>
+                        <div class="metadata-value">${
+                          metadata.projectType || "Unknown"
+                        }</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">Total Files</div>
+                        <div class="metadata-value">${
+                          metadata.totalFiles || 0
+                        }</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">Languages</div>
+                        <div class="metadata-value">${
+                          Object.keys(metadata.languages || {}).length
+                        }</div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-label">Complexity</div>
+                        <div class="metadata-value">${
+                          metadata.complexity || "N/A"
+                        }</div>
+                    </div>
+                </div>
+                <div id="languageChartContainer" style="height: 200px; margin-top: 20px;">
+                    <canvas id="languageChart"></canvas>
+                </div>
+            `;
+      }
+
+      // Function to get file icon
+      function getFileIcon(name, isDirectory = false, isExpanded = false) {
+        if (isDirectory) {
+          return `<i class="far fa-${
+            isExpanded ? "folder-open" : "folder"
+          }" style="color: #f0b429;"></i>`;
+        }
+
+        const ext = name.split(".").pop().toLowerCase();
+        const icon = FILE_ICONS[ext] || FILE_ICONS["default"];
+        return `<i class="far fa-${icon}"></i>`;
+      }
+
+      async function scanProject() {
+        const input = document.getElementById("projectInput").value.trim();
+        if (!input) {
+          alert("Please paste a project structure");
+          return;
+        }
+
+        const tree = parseProjectStructure(input);
+        projectData = tree;
+
+        const langStats = analyzeLanguages(tree);
+        const projectType = detectProjectType(tree, langStats);
+
+        // Update stats
+        const statsContainer = document.getElementById("statsContainer");
+        statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-label">Total Files</div>
+                    <div class="stat-value">${Object.values(langStats).reduce(
+                      (a, b) => a + b,
+                      0
+                    )}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Languages</div>
+                    <div class="stat-value">${
+                      Object.keys(langStats).length
+                    }</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Project Type</div>
+                    <div class="stat-value" style="font-size: 14px;">${projectType}</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Complexity</div>
+                    <div class="stat-value" style="font-size: 14px;">${
+                      Object.keys(langStats).length > 3 ? "High" : "Medium"
+                    }</div>
+                </div>
+            `;
+        statsContainer.style.display = "grid";
+
+        document.getElementById("fileCount").textContent = `${Object.values(
+          langStats
+        ).reduce((a, b) => a + b, 0)} files`;
+
+        // Render tree
+        const treeContainer = document.getElementById("treeContainer");
+        treeContainer.innerHTML = "";
+        renderTree(tree, treeContainer);
+
+        // Render metadata
+        const metadataContainer = document.getElementById("metadataContainer");
+        let langBars = "";
+        const totalFiles = Object.values(langStats).reduce((a, b) => a + b, 0);
+        Object.entries(langStats).forEach(([lang, count]) => {
+          const percent = ((count / totalFiles) * 100).toFixed(1);
+          const colorClass = `lang-${lang}`;
+          langBars += `
+                    <div class="language-bar">
+                        <div class="language-label">
+                            <span>${lang.toUpperCase()}</span>
+                            <span>${count} (${percent}%)</span>
+                        </div>
+                        <div class="language-bar-fill">
+                            <div class="language-segment ${colorClass}" style="width: ${percent}%"></div>
+                        </div>
+                    </div>
+                `;
+        });
+
+        metadataContainer.innerHTML = `
+                <div>
+                    <strong>Language Distribution:</strong>
+                    ${langBars}
+                    <div class="project-type-badge">🏷️ ${projectType}</div>
+                </div>
+            `;
+
+        // Generate JSON
+        const jsonContext = generateJSONContext(tree, langStats, projectType);
+        const jsonExport = document.getElementById("jsonExport");
+        jsonExport.textContent = JSON.stringify(jsonContext, null, 2);
+
+        projectData = jsonContext;
+      }
+
+      function copyJSON() {
+        if (!projectData) {
+          alert("Scan a project first");
+          return;
+        }
+        const jsonText = JSON.stringify(projectData, null, 2);
+        navigator.clipboard.writeText(jsonText).then(() => {
+          const feedback = document.getElementById("copyFeedback");
+          feedback.style.display = "block";
+          setTimeout(() => {
+            feedback.style.display = "none";
+          }, 2000);
+        });
+      }
+    </script>
+  </body>
+</html>

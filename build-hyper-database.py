@@ -206,8 +206,11 @@ class HyperDatabaseBuilder:
 
         for file_path in sorted(by_file.keys()):
             report += f"### {file_path}\n\n"
-            for func in sorted(by_file[file_path], key=lambda f: f['lineno']):
-                report += f"#### `{func['name']}()` (line {func['lineno']})\n"
+            for func in sorted(by_file[file_path],
+                               key=lambda f: f.get('lineno', 0)): # closing bracket does not match visual indentation
+                func_name = func.get('name', 'unnamed_function')
+                line_no = func.get('lineno', 'N/A')
+                report += f"#### `{func_name}()` (line {line_no})\n"
                 if func.get('docstring'):
                     report += f"_{func['docstring']}_\n\n"
                 if func.get('args'):

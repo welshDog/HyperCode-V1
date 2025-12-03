@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "HyperCode: Sync Space → Main (Dry-Run)",
+      "type": "shell",
+      "command": "python",
+      "args": ["scripts/sync-space-to-main.py", "--dry-run"],
+      "group": { "kind": "test", "isDefault": false },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "HyperCode: Sync Space → Main (LIVE)",
+      "type": "shell",
+      "command": "python",
+      "args": ["scripts/sync-space-to-main.py"],
+      "group": { "kind": "build", "isDefault": false },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "HyperCode: Build Hyper Database",
+      "type": "shell",
+      "command": "python",
+      "args": ["scripts/build-hyper-database-fixed.py"],
+      "group": { "kind": "build", "isDefault": false },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "HyperCode: Full Pipeline (Sync + Database)",
+      "type": "shell",
+      "command": "python",
+      "args": ["scripts/sync-space-to-main.py"],
+      "dependsOn": [],
+      "group": { "kind": "build", "isDefault": true },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "runOptions": { "runOn": "folderOpen" }
+    }
+  ]
+}

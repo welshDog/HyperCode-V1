@@ -1,13 +1,12 @@
-
 from .ast import *
-from .tokens import TokenType
+from .tokens import TokenType, Token
+from .visitor import Visitor  # Add this import
 
-from .ast import *
-from .tokens import TokenType
 
 class Return(Exception):
     def __init__(self, value):
         self.value = value
+
 
 class HyperCodeFunction:
     def __init__(self, declaration: Fun, closure: "Environment"):
@@ -31,6 +30,7 @@ class HyperCodeFunction:
             return return_value.value
 
         return None
+
 
 class Environment:
     def __init__(self, enclosing=None):
@@ -131,7 +131,7 @@ class Interpreter(Visitor):
                     raise RuntimeError("Division by zero.")
                 return left / right
             raise RuntimeError("Operands must be numbers.")
-        
+
         if op_type == TokenType.GREATER:
             return left > right
         if op_type == TokenType.GREATER_EQUAL:
@@ -146,7 +146,7 @@ class Interpreter(Visitor):
         if op_type == TokenType.EQUAL_EQUAL:
             return left == right
 
-        return None # Should not happen
+        return None  # Should not happen
 
     def visit_Grouping(self, expr: Grouping):
         return self.evaluate(expr.expression)
@@ -165,7 +165,7 @@ class Interpreter(Visitor):
         if op_type == TokenType.BANG:
             return not self.is_truthy(right)
 
-        return None # Should not happen
+        return None  # Should not happen
 
     def visit_Variable(self, expr: Variable):
         return self.environment.get(expr.name)
@@ -205,41 +205,56 @@ class Interpreter(Visitor):
 
         function = callee
         if len(arguments) != function.arity():
-            raise RuntimeError(f"Expected {function.arity()} arguments but got {len(arguments)}.")
+            raise RuntimeError(
+                f"Expected {function.arity()} arguments but got {len(arguments)}."
+            )
 
         return function.call(self, arguments)
 
     def is_callable(self, obj):
         return isinstance(obj, HyperCodeFunction)
 
+
 # The Visitor pattern boilerplate
 class Visitor:
     def visit_Expression(self, stmt: "Expression"):
         raise NotImplementedError
+
     def visit_Print(self, stmt: "Print"):
         raise NotImplementedError
+
     def visit_Var(self, stmt: "Var"):
         raise NotImplementedError
+
     def visit_Block(self, stmt: "Block"):
         raise NotImplementedError
+
     def visit_If(self, stmt: "If"):
         raise NotImplementedError
+
     def visit_Fun(self, stmt: "Fun"):
         raise NotImplementedError
+
     def visit_Return(self, stmt: "Return"):
         raise NotImplementedError
+
     def visit_Assign(self, expr: "Assign"):
         raise NotImplementedError
+
     def visit_Binary(self, expr: "Binary"):
         raise NotImplementedError
+
     def visit_Grouping(self, expr: "Grouping"):
         raise NotImplementedError
+
     def visit_Literal(self, expr: "Literal"):
         raise NotImplementedError
+
     def visit_Unary(self, expr: "Unary"):
         raise NotImplementedError
+
     def visit_Variable(self, expr: "Variable"):
         raise NotImplementedError
+
     def visit_Call(self, expr: "Call"):
         raise NotImplementedError
-

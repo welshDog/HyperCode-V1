@@ -1,0 +1,106 @@
+# HyperCode Space-to-Main Sync Configuration
+# This file controls how Space exports are mirrored into your main repo folders.
+# Last Updated: 2025-11-30
+
+[sync]
+# Root directory where Space exports are dumped
+source_root = "space_sync"
+
+# Root directory where synced files are placed (usually repo root)
+target_root = "."
+
+# Mapping: source_folder_name → target_folder_name
+# These must exist (or be created) in source_root
+# Files inside will be recursively copied to target folders
+[sync.mappings]
+raw_docs   = "docs"      # Space research docs → /docs/
+raw_data   = "data"      # Space JSON/data exports → /data/
+raw_assets = "assets"    # Space diagrams/PDFs → /assets/
+
+# Strict mirror: if true, target folders MUST exactly match source
+# (be careful: can delete files you added manually)
+strict_mirror = false
+
+# Delete orphans: if true, remove target files that no longer exist in source
+# Recommended: false (keeps your manual edits safe)
+delete_orphans = false
+
+# Patterns to always preserve (never delete or overwrite)
+preserve_patterns = [
+    ".git",
+    ".gitignore",
+    "*.md",
+    "README*",
+    ".hypercode"
+]
+
+# Path to write sync logs
+log_file = "logs/sync-space-to-main.log"
+
+[filters]
+# File extensions to always skip
+exclude_extensions = [
+    ".tmp",
+    ".bak",
+    ".swp",
+    ".lock"
+]
+
+# Directory names to skip (recursive)
+exclude_dirs = [
+    "__pycache__",
+    ".pytest_cache",
+    ".git",
+    "node_modules",
+    ".DS_Store",
+    ".venv",
+    "venv"
+]
+
+# Exact filenames to skip
+exclude_names = [
+    ".DS_Store",
+    "Thumbs.db",
+    ".env",
+    ".env.local"
+]
+
+# ============================================================================
+# SETUP INSTRUCTIONS
+# ============================================================================
+#
+# 1. Create source folder structure:
+#    mkdir -p space_sync/raw_docs
+#    mkdir -p space_sync/raw_data
+#    mkdir -p space_sync/raw_assets
+#
+# 2. Export or copy your Space data into those folders:
+#    - Research docs/markdown → space_sync/raw_docs/
+#    - JSON graphs, embeddings, timelines → space_sync/raw_data/
+#    - Diagrams, PDFs, images → space_sync/raw_assets/
+#
+# 3. Run the sync script:
+#    python scripts/sync-space-to-main.py                # Full sync
+#    python scripts/sync-space-to-main.py --dry-run      # Preview first
+#
+# 4. For GitHub Actions automation, add to .github/workflows/auto-sync.yml:
+#    - name: Sync Space Data
+#      run: python scripts/sync-space-to-main.py
+#
+# ============================================================================
+# CUSTOMIZATION
+# ============================================================================
+#
+# Change mapping:
+#   [sync.mappings]
+#   my_research = "research"      # sync space_sync/my_research → research/
+#   my_graphs   = "knowledge_db"  # sync space_sync/my_graphs → knowledge_db/
+#
+# Enable orphan deletion (CAREFUL!):
+#   delete_orphans = true         # removes target files not in source
+#
+# Add more exclude patterns:
+#   exclude_extensions = [".tmp", ".bak", ".new"]
+#   exclude_dirs = ["cache", "tmp"]
+#
+# ============================================================================

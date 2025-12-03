@@ -66,7 +66,7 @@ class Lexer:
     }
 
     # Token specifications - ordered by priority (longer patterns first)
-    TOKENS = [
+    TOKENS: List[Tuple[Optional[TokenType], str]] = [
         # Skip whitespace and comments (they won't be included in the token stream)
         (None, r"\s+"),  # Whitespace
         (None, r"#[^\r\n]*|//[^\r\n]*|/\*[\s\S]*?\*/"),  # Comments
@@ -86,11 +86,19 @@ class Lexer:
         (TokenType.GREATER, r">"),
         # String literals (handle both single and double quoted strings with escaped quotes)
         (TokenType.STRING, r'"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\''),
-        # Numbers (handle integers, decimals, and scientific notation)
+        # Numbers - more specific patterns first
+        (TokenType.NUMBER, r"0[xX][0-9a-fA-F_]+"),  # Hex
+        (TokenType.NUMBER, r"0[bB][01_]+"),  # Binary
+        (TokenType.NUMBER, r"0[oO]?[0-7_]+"),  # Octal
+        (TokenType.NUMBER, r"\d+(?:_?\d+)*\.\d+([eE][+-]?\d+)?"),  # Float with exponent
+        (TokenType.NUMBER, r"\d+(?:_?\d+)*[eE][+-]?\d+"),  # Int with exponent
+        (TokenType.NUMBER, r"\.\d+([eE][+-]?\d+)?"),  # Decimal starting with .
         (
             TokenType.NUMBER,
-            r"\d+(?:_?\d+)*\.\d+([eE][+-]?\d+)?|\d+(?:_?\d+)*[eE][+-]?\d+|\.\d+([eE][+-]?\d+)?|0[xX][0-9a-fA-F_]+|0[bB][01_]+|0[oO]?[0-7_]+|\d+(?:_?\d+)*",
-        ),
+            r"\d+(?:_?\d+)*\b",
+        ),  # Regular integers (must end at word boundary)
+        # Identifiers - must come after numbers to prevent matching numbers as identifiers
+        (TokenType.IDENTIFIER, r"[a-zA-Z_]\w*"),
         # Punctuation
         (TokenType.LPAREN, r"\("),
         (TokenType.RPAREN, r"\)"),
@@ -113,6 +121,7 @@ class Lexer:
             source: The source code to tokenize
         """
         self.tokens: List[Token] = []
+        self.errors: List[LexerError] = []
         self.pos = 0
         self.line = 1
         self.column = 1
@@ -129,19 +138,21 @@ class Lexer:
 
         Args:
             source: Optional source code to tokenize. If not provided, uses the source
-                   passed to the constructor.
+                   passed to the constructor. Empty strings are allowed and will return
+                   a single EOF token.
 
         Returns:
-            List of Token objects
-
-        Raises:
-            ValueError: If no source code is provided
+            List of Token objects, always ending with an EOF token
         """
+        # Reset errors at the start of tokenization
+        self.errors = []
         if source is not None:
             self.source = source
 
+        # Handle empty source by returning just an EOF token
         if not self.source:
-            raise ValueError("No source code provided to tokenize")
+            self._add_token(TokenType.EOF, "")
+            return self.tokens
 
         # Reset state
         self.pos = 0
@@ -158,8 +169,20 @@ class Lexer:
         self._add_token(TokenType.EOF, "")
         return self.tokens
 
+    def has_errors(self) -> bool:
+        """Check if any errors were encountered during tokenization.
+
+        Returns:
+            bool: True if there are any errors, False otherwise
+        """
+        return len(self.errors) > 0
+
     def _match_patterns(self) -> bool:
-        """Try to match the current position against all token patterns."""
+        """Try to match the current position against all token patterns.
+
+        Returns:
+            bool: True if a pattern was matched, False otherwise
+        """
         for token_type, pattern in self.token_patterns:
             match = pattern.match(self.source, self.pos)
             if match:
@@ -203,11 +226,11 @@ class Lexer:
         # Add any additional newlines from the text
         self.line += text.count("\n")
 
-    def _add_token(self, token_type: TokenType, lexeme: str):
+    def _add_token(self, token_type: Optional[TokenType], lexeme: str) -> None:
         """Add a token to the token list.
 
         Args:
-            token_type: The type of the token.
+            token_type: The type of the token. If None, no token will be added.
             lexeme: The lexeme of the token (the actual text from the source).
         """
         if token_type is not None:
@@ -215,30 +238,49 @@ class Lexer:
             literal = None
             if token_type == TokenType.NUMBER:
                 try:
+                    clean_lexeme = lexeme.replace("_", "")
+
                     if lexeme.lower().startswith("0x"):
                         # Parse as hexadecimal
-                        literal = int(lexeme, 16)
+                        literal = int(clean_lexeme, 16)
                     elif lexeme.lower().startswith("0b"):
                         # Parse as binary
-                        literal = int(lexeme[2:], 2)
-                    elif lexeme.lower().startswith("0o"):
-                        # Parse as octal
-                        literal = int(lexeme[2:], 8)
+                        literal = int(clean_lexeme[2:], 2)
+                    elif lexeme.lower().startswith("0o") or (
+                        len(lexeme) > 1 and lexeme[0] == "0" and lexeme[1] in "01234567"
+                    ):
+                        # Parse as octal (either 0o prefix or just 0 followed by digits)
+                        if lexeme[1].lower() == "o":
+                            literal = int(clean_lexeme[2:], 8)
+                        else:
+                            literal = int(clean_lexeme, 8)
                     else:
-                        # Try to parse as int first, then as float
+                        # Try to parse as float first (handles scientific notation)
                         try:
-                            # Handle underscores in numbers (e.g., 1_000_000)
-                            clean_lexeme = lexeme.replace("_", "")
-                            literal = int(clean_lexeme)
+                            # Check if the number is followed by letters (invalid)
+                            if any(
+                                c.isalpha()
+                                for c in clean_lexeme.lower()
+                                .replace("e", "")
+                                .replace("e+", "")
+                                .replace("e-", "")
+                            ):
+                                raise ValueError(f"Invalid number format: {lexeme}")
+
+                            literal = float(clean_lexeme)
+                            # If it's actually an integer, convert to int
+                            if literal.is_integer():
+                                literal = int(literal)
                         except ValueError:
-                            try:
-                                literal = float(clean_lexeme)
-                            except ValueError:
-                                # If we can't parse it as a number, keep literal as None
-                                pass
-                except Exception:
-                    # If there's any error in parsing, keep literal as None
-                    pass
+                            # If we can't parse it as a number, raise an error
+                            raise ValueError(f"Invalid number format: {lexeme}")
+                except ValueError as e:
+                    # If there's an error parsing the number, add it as an error token
+                    self.errors.append(
+                        LexerError(str(e), self.line, self.column - len(lexeme))
+                    )
+                    token_type = TokenType.UNKNOWN
+                    literal = None
             elif token_type == TokenType.STRING:
                 # Remove the quotes from the string literal
                 literal = lexeme[1:-1]
@@ -270,10 +312,17 @@ class Lexer:
     def _handle_unknown(self):
         """Handle unknown characters in the source."""
         char = self.source[self.pos]
-        if char.strip():  # Only raise for non-whitespace characters
-            raise SyntaxError(
-                f"Invalid character '{char}' at line {self.line}, column {self.column}"
+        if char.strip():  # Only report non-whitespace characters as errors
+            error = LexerError(
+                message=f"Invalid character '{char}'",
+                line=self.line,
+                column=self.column,
             )
+            self.errors.append(error)
+
+            # Still add the invalid token to the token stream with type UNKNOWN
+            self._add_token(TokenType.UNKNOWN, char)
+
         # Skip the unknown character
         self.pos += 1
         self.column += 1

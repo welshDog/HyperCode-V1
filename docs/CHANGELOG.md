@@ -1,87 +1,114 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to HyperCode will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+---
+
 ## [Unreleased]
 
 ### Added
-- Initial project setup and repository structure
-- Lexer implementation for HyperCode syntax tokenization
-- Parser foundation for AST generation
-- Core interpreter for executing HyperCode programs
-- Example programs (hello, fibonacci, todo)
-- CI/CD pipeline with GitHub Actions
-- Comprehensive CONTRIBUTING.md with neurodivergent-friendly guidelines
-- Security policy for vulnerability reporting
-- This changelog
+- 💜 Comprehensive README with neurodivergent-friendly sections
+- 🚀 60-second quick start installation scripts (macOS/Linux/Windows)
+- 🧩 Language overview documentation with ADHD-friendly syntax guide
+- ❓ FAQ with answers to common questions
+- ♿ Accessibility section with commitment to inclusive design
+- 💬 Feedback section encouraging community input
+- 🎨 Architecture diagram showing visual code flow
+- 📝 Contributing guidelines
+- 📜 Code of conduct
 
 ### Changed
-- (None yet)
+- ✨ Enhanced README structure for better scannability
+- 🔄 Improved documentation organization
 
-### Deprecated
-- (None yet)
-
-### Removed
-- (None yet)
-
-### Fixed
-- (None yet)
-
-### Security
-- (None yet)
+### In Progress
+- 🔧 Phase 1: Core language implementation
+- 💻 Compiler and runtime development
+- 🧪 Parser and lexer optimization
 
 ---
 
-## [0.1.0] - 2025-11-26
+## [0.1.0] - 2025-01-XX (Planned Alpha Release)
+
+### Planned Features
+
+#### Core Language
+- [ ] Basic syntax parser
+- [ ] Variable declarations and assignments
+- [ ] Functions and closures
+- [ ] Control flow (if/else, loops)
+- [ ] Data types (primitives, arrays, objects)
+- [ ] Error handling with friendly messages
+
+#### Neurodivergent Features
+- [ ] Visual flow indicators (`↓`, `→`)
+- [ ] State markers (`@loading`, `@error`, `@success`)
+- [ ] Chunked code blocks
+- [ ] Syntax highlighting themes (high-contrast)
+- [ ] Screen reader compatibility
+
+#### Tooling
+- [ ] Command-line interface (CLI)
+- [ ] REPL (Read-Eval-Print Loop)
+- [ ] Basic error reporting
+- [ ] File execution
+
+---
+
+## [0.0.1] - Initial Setup
 
 ### Added
-- ✨ Initial release of HyperCode
-- 📝 Lexer for basic tokenization
-- 🔧 Parser for syntax analysis
-- 🚀 Interpreter for program execution
-- 🧪 Test suite with pytest
-- 📚 Documentation and README
-- 🤝 Community guidelines
-
-### Known Issues
-- Limited error handling (improvement planned)
-- Parser doesn't handle all edge cases yet
-- Performance optimization pending
+- 🎉 Initial project structure
+- 📚 Core documentation framework
+- 🛠️ Development environment setup
+- 📑 Research and design documents
+- 👥 Community contribution guidelines
 
 ---
 
-## How to Update This File
+## Upcoming Releases
 
-**After Each PR Merge:**
+### [0.2.0] - Beta (Planned)
+- Advanced language features
+- IDE integrations (VS Code, JetBrains)
+- Package manager prototype
+- Enhanced error messages
+- Performance optimizations
 
-1. Move items from [Unreleased] to a new version section
-2. Add the date in YYYY-MM-DD format
-3. Use these categories:
-   - **Added**: New features
-   - **Changed**: Modifications to existing features
-   - **Deprecated**: Features to be removed soon
-   - **Removed**: Deleted features
-   - **Fixed**: Bug fixes
-   - **Security**: Security fixes
-
-**Example:**
-```markdown
-## [0.2.0] - 2025-12-15
-
-### Added
-- New syntax for function definitions
-- Better error messages
-
-### Fixed
-- Lexer crash on unicode characters (#42)
-
-### Security
-- Sanitize user input in REPL
-```
+### [0.3.0] - Stable (Planned)
+- Full language specification
+- Standard library
+- Documentation site
+- Tutorial series
+- Production-ready tooling
 
 ---
 
-**Questions?** See [CONTRIBUTING.md](./CONTRIBUTING.md)
+## Release Philosophy
+
+HyperCode follows a **human-first release cycle**:
+
+1. **Alpha** - Core features, community testing
+2. **Beta** - Feature-complete, real-world usage
+3. **Stable** - Production-ready, fully documented
+
+Each release prioritizes:
+- 🧠 Neurodivergent-friendly design
+- 📝 Clear documentation
+- 🐛 Bug fixes over new features
+- 👥 Community feedback
+
+---
+
+## How to Stay Updated
+
+- 🔔 [Watch this repo](https://github.com/welshDog/hypercode/subscription) for release notifications
+- 💬 [Join Discussions](https://github.com/welshDog/hypercode/discussions) to participate
+- ⭐ [Star the repo](https://github.com/welshDog/hypercode) to show support
+
+---
+
+*Built with 💜 for neurodivergent minds*

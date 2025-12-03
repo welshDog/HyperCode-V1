@@ -18,6 +18,8 @@ __all__ = [
     "Token",
     "TokenType",
     "Parser",
+    "Interpreter",
+    "Environment",
     "ParseError",
     "report_parse_error",
     "report",

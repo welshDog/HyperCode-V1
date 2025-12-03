@@ -56,15 +56,15 @@ def show_help():
    print("Hello, HyperCode!");
 
 2. Variables:
-   var x = 42;
+   let x = 42;
    print(x);
 
 3. Math:
-   var result = (10 + 2) * 3;
+   let result = (10 + 2) * 3;
    print(result);
 
 4. Strings:
-   var name = "BROski";
+   let name = "BROski";
    print("Hello, " + name);
 """)
 

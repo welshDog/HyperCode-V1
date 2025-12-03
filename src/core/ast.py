@@ -68,6 +68,19 @@ class Get(Expr):
     name: "Token"
 
 
+@dataclass
+class Pipe(Expr):
+    head: Expr
+    steps: List[Expr]
+    target: Optional["Token"]
+
+
+@dataclass
+class State(Expr):
+    name: "Token"
+    payload: Optional[Expr]
+
+
 # Statements
 @dataclass
 class Stmt(Node):
@@ -85,7 +98,7 @@ class Print(Stmt):
 
 
 @dataclass
-class Var(Stmt):
+class Let(Stmt):
     name: "Token"
     initializer: Optional[Expr]
 
@@ -93,6 +106,12 @@ class Var(Stmt):
 @dataclass
 class Block(Stmt):
     statements: List[Stmt]
+
+
+@dataclass
+class BlockDecl(Stmt):
+    name: "Token"
+    body: List[Stmt]
 
 
 @dataclass

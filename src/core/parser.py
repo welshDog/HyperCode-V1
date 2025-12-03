@@ -24,8 +24,10 @@ class Parser:
 
     def declaration(self) -> Stmt:
         try:
-            if self.match(TokenType.VAR):
-                return self.var_declaration()
+            if self.match(TokenType.LET):
+                return self.let_declaration()
+            if self.match(TokenType.BLOCK):
+                return self.block_declaration()
             if self.match(TokenType.FUNC):
                 return self.function("function")
             return self.statement()
@@ -33,30 +35,21 @@ class Parser:
             self.synchronize()
             return None
 
-    def var_declaration(self) -> Stmt:
-        print("Starting var_declaration")
-
-        # The 'var' keyword has already been consumed by the match() call in declaration()
-        # So we can directly consume the identifier
-        print(f"Current token before IDENTIFIER: {self.peek()}")
+    def let_declaration(self) -> Stmt:
         name = self.consume(TokenType.IDENTIFIER, "Expected variable name.")
-        print(f"Got identifier: {name.value}")
 
-        # Parse the initializer if present
         initializer = None
         if self.match(TokenType.EQUAL):
-            print("Found =, parsing expression")
             initializer = self.expression()
 
-        # Require semicolon at the end
-        print(f"Current token before semicolon: {self.peek()}")
         self.consume(TokenType.SEMICOLON, "Expected ';' after variable declaration.")
-        print("Successfully parsed variable declaration")
+        return Let(name=name, initializer=initializer)
 
-        # Create and return the Var statement
-        stmt = Var(name=name, initializer=initializer)
-        print(f"Created Var statement: {stmt}")
-        return stmt
+    def block_declaration(self) -> Stmt:
+        name = self.consume(TokenType.STRING, "Expected block name as a string.")
+        self.consume(TokenType.LEFT_BRACE, "Expected '{' after block name.")
+        body = self.block()
+        return BlockDecl(name=name, body=body)
 
     def statement(self) -> Stmt:
         if self.match(TokenType.PRINT):
@@ -89,7 +82,23 @@ class Parser:
         return statements
 
     def expression(self) -> Expr:
-        return self.assignment()
+        return self.pipe()
+
+    def pipe(self) -> Expr:
+        expr = self.assignment()
+
+        steps = []
+        while self.match(TokenType.PIPE):
+            steps.append(self.assignment())
+
+        if not steps:
+            return expr
+
+        target = None
+        if self.match(TokenType.ARROW):
+            target = self.consume(TokenType.IDENTIFIER, "Expected identifier after '->'.")
+
+        return Pipe(head=expr, steps=steps, target=target)
 
     def assignment(self) -> Expr:
         expr = self.equality()
@@ -159,6 +168,14 @@ class Parser:
             return Literal(True)
         if self.match(TokenType.NIL):
             return Literal(None)
+        
+        if self.match(TokenType.AT):
+            name = self.consume(TokenType.IDENTIFIER, "Expected state name after '@'.")
+            payload = None
+            if self.match(TokenType.LEFT_PAREN):
+                payload = self.expression()
+                self.consume(TokenType.RIGHT_PAREN, "Expected ')' after state payload.")
+            return State(name, payload)
 
         if self.match(TokenType.NUMBER, TokenType.STRING):
             token = self.previous()
@@ -225,14 +242,9 @@ class Parser:
         return False
 
     def consume(self, type_: TokenType, message: str) -> Token:
-        print(f"Consuming token. Expected: {type_}, Current: {self.peek()}")
         if self.check(type_):
-            token = self.advance()
-            print(f"Consumed token: {token}")
-            return token
-        error = self.error(self.peek(), message)
-        print(f"Consume error: {error}")
-        raise error
+            return self.advance()
+        raise self.error(self.peek(), message)
 
     def error(self, token: Token, message: str) -> ParseError:
         from .error_handler import report_parse_error
@@ -248,13 +260,14 @@ class Parser:
 
             # Only check for tokens that are statement starters
             if self.peek().type in (
-                TokenType.VAR,
+                TokenType.LET,
+                TokenType.BLOCK,
+                TokenType.FUNC,
                 TokenType.IF,
                 TokenType.FOR,
                 TokenType.WHILE,
                 TokenType.PRINT,
                 TokenType.RETURN,
-                TokenType.FUNCTION,
             ):
                 return
 

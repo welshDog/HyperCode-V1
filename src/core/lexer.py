@@ -10,7 +10,7 @@ import re
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional
 
-from .tokens import Token, TokenType
+from .tokens import Token, TokenType, KEYWORDS
 
 
 @dataclass
@@ -52,28 +52,6 @@ class Lexer:
         self.identifier_regex = re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*')
         self.number_regex = re.compile(r'\d+')
         
-        # Cache for keywords
-        self.KEYWORDS = {
-            'and': TokenType.AND,
-            'break': TokenType.BREAK,
-            'class': TokenType.CLASS,
-            'continue': TokenType.CONTINUE,
-            'else': TokenType.ELSE,
-            'false': TokenType.FALSE,
-            'for': TokenType.FOR,
-            'fun': TokenType.FUN,
-            'if': TokenType.IF,
-            'nil': TokenType.NIL,
-            'or': TokenType.OR,
-            'print': TokenType.PRINT,
-            'return': TokenType.RETURN,
-            'super': TokenType.SUPER,
-            'this': TokenType.THIS,
-            'true': TokenType.TRUE,
-            'var': TokenType.VAR,
-            'while': TokenType.WHILE,
-        }
-        
         # Use a lookup table for single-character tokens
         self.single_char_tokens = {
             '(': TokenType.LEFT_PAREN,
@@ -82,7 +60,6 @@ class Lexer:
             '}': TokenType.RIGHT_BRACE,
             ',': TokenType.COMMA,
             '.': TokenType.DOT,
-            '-': TokenType.MINUS,
             '+': TokenType.PLUS,
             ';': TokenType.SEMICOLON,
             '*': TokenType.STAR,
@@ -93,6 +70,8 @@ class Lexer:
             '>': TokenType.GREATER,
             ':': TokenType.COLON,
             '?': TokenType.QUESTION,
+            '|': TokenType.PIPE,
+            '@': TokenType.AT,
         }
 
     def scan_tokens(self) -> List[Token]:
@@ -109,22 +88,49 @@ class Lexer:
         """Scan a single token."""
         c = self.advance()
         
-        # Handle single-character tokens
+        # Handle single-character tokens first
         if c in self.single_char_tokens:
-            # Check for multi-character tokens
-            if c == '=' and self.match('='):
-                self.add_token(TokenType.EQUAL_EQUAL)
-            elif c == '!' and self.match('='):
-                self.add_token(TokenType.BANG_EQUAL)
-            elif c == '<' and self.match('='):
-                self.add_token(TokenType.LESS_EQUAL)
-            elif c == '>' and self.match('='):
-                self.add_token(TokenType.GREATER_EQUAL)
-            elif c == '-' and self.match('>'):
+            self.add_token(self.single_char_tokens[c])
+            return
+
+        # Handle multi-character tokens
+        if c == '-':
+            if self.match('>'):
                 self.add_token(TokenType.ARROW)
             else:
-                self.add_token(self.single_char_tokens[c])
+                self.add_token(TokenType.MINUS)
+        elif c == '=':
+            if self.match('='):
+                self.add_token(TokenType.EQUAL_EQUAL)
+            else:
+                self.add_token(TokenType.EQUAL)
+        elif c == '!':
+            if self.match('='):
+                self.add_token(TokenType.BANG_EQUAL)
+            else:
+                self.add_token(TokenType.BANG)
+        elif c == '<':
+            if self.match('='):
+                self.add_token(TokenType.LESS_EQUAL)
+            else:
+                self.add_token(TokenType.LESS)
+        elif c == '>':
+            if self.match('='):
+                self.add_token(TokenType.GREATER_EQUAL)
+            else:
+                self.add_token(TokenType.GREATER)
         
+        # Handle comments and division
+        elif c == '/':
+            if self.peek() == '/':
+                # A comment goes until the end of the line.
+                while self.peek() != '\n' and not self.is_at_end():
+                    self.advance()
+            elif self.peek() == '*' and self.peek_next() == '*':
+                self.docstring()
+            else:
+                self.add_token(TokenType.SLASH)
+
         # Handle numbers
         elif c.isdigit():
             self.number()
@@ -138,15 +144,6 @@ class Lexer:
             self.advance()  # Consume the 'f'
             self.string(interpolated=True)
             
-        # Handle docstrings
-        elif c == '/' and self.peek() == '*' and self.peek_next() == '*':
-            self.docstring()
-            
-        # Handle comments
-        elif c == '/' and self.peek() == '/':
-            while self.peek() != '\n' and not self.is_at_end():
-                self.advance()
-                
         # Handle whitespace
         elif c in ' \r\t':
             pass
@@ -249,7 +246,7 @@ class Lexer:
         
         # Skip the opening /**
         self.advance()  # Skip *
-        self.advance()  # Skip /
+        self.advance()  # Skip *
         
         while not (self.peek() == '*' and self.peek_next() == '/'):
             if self.is_at_end():
@@ -275,7 +272,7 @@ class Lexer:
             
         # Check if the identifier is a keyword
         text = self.source[self.start:self.current]
-        token_type = self.KEYWORDS.get(text, TokenType.IDENTIFIER)
+        token_type = KEYWORDS.get(text, TokenType.IDENTIFIER)
         self.add_token(token_type)
 
     def error(self, message: str, line: Optional[int] = None, column: Optional[int] = None):

@@ -10,9 +10,9 @@ import sys
 import os
 
 # Add the src directory to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.core.lexer import Lexer, LexerError
+from src.core.lexer import Lexer
 from src.core.tokens import TokenType
 
 # Test cases for basic token recognition
@@ -26,20 +26,20 @@ BASIC_TOKENS = [
     ("{", TokenType.LEFT_BRACE),
     ("}", TokenType.RIGHT_BRACE),
     (",", TokenType.COMMA),
- (".", TokenType.DOT),
- (";", TokenType.SEMICOLON),
- ("%", TokenType.PERCENT),
- ("!", TokenType.BANG),
- ("=", TokenType.EQUAL),
- (">", TokenType.GREATER),
- ("<", TokenType.LESS),
- (":", TokenType.COLON),
- ("?", TokenType.QUESTION),
- ("==", TokenType.EQUAL_EQUAL),
- ("!=", TokenType.BANG_EQUAL),
- (">=", TokenType.GREATER_EQUAL),
- ("<=", TokenType.LESS_EQUAL),
- ("=>", TokenType.ARROW),
+    (".", TokenType.DOT),
+    (";", TokenType.SEMICOLON),
+    ("%", TokenType.PERCENT),
+    ("!", TokenType.BANG),
+    ("=", TokenType.EQUAL),
+    (">", TokenType.GREATER),
+    ("<", TokenType.LESS),
+    (":", TokenType.COLON),
+    ("?", TokenType.QUESTION),
+    ("==", TokenType.EQUAL_EQUAL),
+    ("!=", TokenType.BANG_EQUAL),
+    (">=", TokenType.GREATER_EQUAL),
+    ("<=", TokenType.LESS_EQUAL),
+    ("=>", TokenType.ARROW),
 ]
 
 # Test cases for keywords
@@ -51,7 +51,7 @@ KEYWORD_TOKENS = [
     ("else", TokenType.ELSE),
     ("false", TokenType.FALSE),
     ("for", TokenType.FOR),
-    ("fun", TokenType.FUN),
+    ("fun", TokenType.FUNC),
     ("if", TokenType.IF),
     ("nil", TokenType.NIL),
     ("or", TokenType.OR),
@@ -77,22 +77,22 @@ NUMBER_TOKENS = [
 
 # Test cases for strings and escape sequences
 STRING_TOKENS = [
-    ('"hello"', 'hello'),
-    ('""', ''),
+    ('"hello"', "hello"),
+    ('""', ""),
     ('"\\""', '"'),
-    ('"\\n"', '\n'),
-    ('"\\t"', '\t'),
+    ('"\\n"', "\n"),
+    ('"\\t"', "\t"),
     ('"\\""', '"'),
-    ('"\\\\"', '\\'),
+    ('"\\\\"', "\\"),
 ]
 
 # Unicode test cases
 UNICODE_TOKENS = [
-    ('"ã“ã‚“ã«ã¡ã¯"', 'ã“ã‚“ã«ã¡ã¯'),  # Japanese
-    ('"ì•ˆë…•í•˜ì„¸ìš”"', 'ì•ˆë…•í•˜ì„¸ìš”'),  # Korean
-    ('"ÐŸÑ€Ð¸Ð²ÐµÑ‚"', 'ÐŸÑ€Ð¸Ð²ÐµÑ‚'),      # Russian
-    ('"Ù…Ø±Ø­Ø¨Ø§"', 'Ù…Ø±Ø­Ø¨Ø§'),        # Arabic
-    ('"ðŸ˜Š"', 'ðŸ˜Š'),              # Emoji
+    ('"ã“ã‚“ã«ã¡ã¯"', "ã“ã‚“ã«ã¡ã¯"),  # Japanese
+    ('"ì•ˆë…•í•˜ì„¸ìš”"', "ì•ˆë…•í•˜ì„¸ìš”"),  # Korean
+    ('"ÐŸÑ€Ð¸Ð²ÐµÑ‚"', "ÐŸÑ€Ð¸Ð²ÐµÑ‚"),  # Russian
+    ('"Ù…Ø±Ø­Ø¨Ø§"', "Ù…Ø±Ø­Ø¨Ø§"),  # Arabic
+    ('"ðŸ˜Š"', "ðŸ˜Š"),  # Emoji
 ]
 
 # Edge cases for identifiers
@@ -108,11 +108,12 @@ IDENTIFIER_TOKENS = [
 
 # Test cases for error handling
 ERROR_CASES = [
-    ('"unterminated string', 'Unterminated string'),
-    ('"invalid escape \\x"', 'Invalid escape sequence'),
-    ('123abc', 'Unexpected character'),
-    ('@', 'Unexpected character'),
+    ('"unterminated string', "Unterminated string"),
+    ('"invalid escape \\x"', "Invalid escape sequence"),
+    ("123abc", "Unexpected character"),
+    ("@", "Unexpected character"),
 ]
+
 
 @pytest.mark.parametrize("source,expected_type", BASIC_TOKENS)
 def test_basic_tokens(source, expected_type):
@@ -122,6 +123,7 @@ def test_basic_tokens(source, expected_type):
     assert len(tokens) == 2  # Token + EOF
     assert tokens[0].type == expected_type
     assert tokens[1].type == TokenType.EOF
+
 
 @pytest.mark.parametrize("source,expected_type", KEYWORD_TOKENS)
 def test_keywords(source, expected_type):
@@ -133,6 +135,7 @@ def test_keywords(source, expected_type):
     assert tokens[0].lexeme == source
     assert tokens[1].type == TokenType.EOF
 
+
 @pytest.mark.parametrize("source,expected_value", NUMBER_TOKENS)
 def test_numbers(source, expected_value):
     """Test that number literals are correctly parsed."""
@@ -142,6 +145,7 @@ def test_numbers(source, expected_value):
     assert tokens[0].type == TokenType.NUMBER
     assert tokens[0].literal == expected_value
     assert tokens[1].type == TokenType.EOF
+
 
 @pytest.mark.parametrize("source,expected_value", STRING_TOKENS)
 def test_strings(source, expected_value):
@@ -153,6 +157,7 @@ def test_strings(source, expected_value):
     assert tokens[0].literal == expected_value
     assert tokens[1].type == TokenType.EOF
 
+
 @pytest.mark.parametrize("source,expected_value", UNICODE_TOKENS)
 def test_unicode_strings(source, expected_value):
     """Test that Unicode strings are correctly handled."""
@@ -162,6 +167,7 @@ def test_unicode_strings(source, expected_value):
     assert tokens[0].type == TokenType.STRING
     assert tokens[0].literal == expected_value
     assert tokens[1].type == TokenType.EOF
+
 
 @pytest.mark.parametrize("source,expected_lexeme", IDENTIFIER_TOKENS)
 def test_identifiers(source, expected_lexeme):
@@ -173,6 +179,7 @@ def test_identifiers(source, expected_lexeme):
     assert tokens[0].lexeme == expected_lexeme
     assert tokens[1].type == TokenType.EOF
 
+
 @pytest.mark.parametrize("source,expected_error", ERROR_CASES)
 def test_lexer_errors(source, expected_error):
     """Test that lexer reports appropriate errors."""
@@ -180,6 +187,7 @@ def test_lexer_errors(source, expected_error):
     tokens = lexer.scan_tokens()
     assert len(lexer.errors) > 0
     assert any(expected_error in str(e) for e in lexer.errors)
+
 
 def test_comments():
     """Test that comments are properly ignored."""
@@ -196,6 +204,7 @@ def test_comments():
     assert tokens[2].type == TokenType.NUMBER
     assert tokens[3].type == TokenType.EOF
 
+
 def test_whitespace():
     """Test that whitespace is properly handled."""
     source = "  \t\n  x  \t =  \t 42  \n  "
@@ -208,12 +217,14 @@ def test_whitespace():
     assert tokens[2].type == TokenType.NUMBER
     assert tokens[3].type == TokenType.EOF
 
+
 def test_empty_file():
     """Test that an empty file produces only an EOF token."""
     lexer = Lexer("")
     tokens = lexer.scan_tokens()
     assert len(tokens) == 1
     assert tokens[0].type == TokenType.EOF
+
 
 def test_line_numbers():
     """Test that line numbers are correctly tracked."""
@@ -225,7 +236,7 @@ def test_line_numbers():
     """
     lexer = Lexer(source)
     tokens = lexer.scan_tokens()
-    
+
     # Check line numbers for tokens
     assert tokens[0].line == 2  # x
     assert tokens[3].line == 2  # 1
@@ -235,6 +246,6 @@ def test_line_numbers():
     assert tokens[12].line == 4  # :
     assert tokens[13].line == 5  # print
 
+
 if __name__ == "__main__":
     pytest.main([__file__])
-

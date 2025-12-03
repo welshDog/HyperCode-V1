@@ -28,15 +28,15 @@ class TokenType(Enum):
     GREATER = ">"
     COLON = ":"
     QUESTION = "?"
-    FUNC = "func"
-    VAR = "var"
-    
+    PIPE = "|"
+    AT = "@"
+
     # One or two character tokens
     BANG_EQUAL = "!="
     EQUAL_EQUAL = "=="
     LESS_EQUAL = "<="
     GREATER_EQUAL = ">="
-    ARROW = "=>"
+    ARROW = "->"
 
     # Literals
     IDENTIFIER = "IDENTIFIER"
@@ -46,13 +46,14 @@ class TokenType(Enum):
     
     # Keywords
     AND = "and"
+    BLOCK = "block"
     BREAK = "break"
     CLASS = "class"
     CONTINUE = "continue"
     ELSE = "else"
     FALSE = "false"
     FOR = "for"
-    FUN = "fun"
+    FUNC = "func"
     IF = "if"
     NIL = "nil"
     OR = "or"
@@ -61,7 +62,7 @@ class TokenType(Enum):
     SUPER = "super"
     THIS = "this"
     TRUE = "true"
-    VAR = "var"
+    LET = "let"
     WHILE = "while"
     
     # Special tokens
@@ -103,15 +104,15 @@ class Token:
 # Keywords mapping for quick lookup
 KEYWORDS = {
     'and': TokenType.AND,
+    'block': TokenType.BLOCK,
     'break': TokenType.BREAK,
     'class': TokenType.CLASS,
     'continue': TokenType.CONTINUE,
     'else': TokenType.ELSE,
     'false': TokenType.FALSE,
     'for': TokenType.FOR,
-    'fun': TokenType.FUN,
-    'if': TokenType.IF,
     'func': TokenType.FUNC,
+    'if': TokenType.IF,
     'nil': TokenType.NIL,
     'or': TokenType.OR,
     'print': TokenType.PRINT,
@@ -119,6 +120,6 @@ KEYWORDS = {
     'super': TokenType.SUPER,
     'this': TokenType.THIS,
     'true': TokenType.TRUE,
-    'var': TokenType.VAR,
+    'let': TokenType.LET,
     'while': TokenType.WHILE,
 }
