@@ -1,0 +1,36 @@
+hypercode_backup_*/
+
+hypercode_backup_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.python-version
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Backups
+hypercode_backup_*/
+backup_*/
+
+# IDE
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+
+# Local development
+data/
+database/
+research.db
+research_*.db
