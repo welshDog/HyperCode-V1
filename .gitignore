@@ -221,3 +221,4 @@ hypercode_metrics.db
 *.pyc
 __pycache__/
 scan_results.txt
+hypercode_backup_20251205_183301/
