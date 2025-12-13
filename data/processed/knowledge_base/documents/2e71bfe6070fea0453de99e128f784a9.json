@@ -1,0 +1,14 @@
+{
+  "file_name": "eslint.config.mjs",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\vscode-extension\\eslint.config.mjs",
+  "file_size": 364,
+  "created": "2025-11-30T20:22:52.814884",
+  "modified": "2025-11-30T20:22:52.814884",
+  "file_type": "other",
+  "content_hash": "b949018ea293ed08dda5af62eb567d68",
+  "content_type": "text/unknown",
+  "content": "import js from \"@eslint/js\";\nimport globals from \"globals\";\nimport tseslint from \"typescript-eslint\";\nimport { defineConfig } from \"eslint/config\";\n\nexport default defineConfig([\n  { files: [\"**/*.{js,mjs,cjs,ts,mts,cts}\"], plugins: { js }, extends: [\"js/recommended\"], languageOptions: { globals: globals.browser } },\n  tseslint.configs.recommended,\n]);\n",
+  "metadata": {},
+  "relative_path": "hypercode\\vscode-extension\\eslint.config.mjs",
+  "id": "2e71bfe6070fea0453de99e128f784a9"
+}

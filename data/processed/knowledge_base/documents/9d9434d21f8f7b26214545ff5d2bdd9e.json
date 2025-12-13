@@ -1,0 +1,14 @@
+{
+  "file_name": "__main__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\__main__.py",
+  "file_size": 353,
+  "created": "2025-12-01T01:58:32.557070",
+  "modified": "2025-12-01T01:58:32.558611",
+  "file_type": "code",
+  "content_hash": "68617ba5486f07a5a17e2df244285ac7",
+  "content_type": "text",
+  "content": "\"\"\"\n    pygments.__main__\n    ~~~~~~~~~~~~~~~~~\n\n    Main entry point for ``python -m pygments``.\n\n    :copyright: Copyright 2006-2024 by the Pygments team, see AUTHORS.\n    :license: BSD, see LICENSE for details.\n\"\"\"\n\nimport sys\nfrom pip._vendor.pygments.cmdline import main\n\ntry:\n    sys.exit(main(sys.argv))\nexcept KeyboardInterrupt:\n    sys.exit(1)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\__main__.py",
+  "id": "9d9434d21f8f7b26214545ff5d2bdd9e"
+}

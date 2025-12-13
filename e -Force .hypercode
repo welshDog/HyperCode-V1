@@ -1,0 +1,72 @@
+[33mcommit f434db36dfdfc72349c1ab685ee6aef128e7bf97[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature/core-integration[m[33m, [m[1;31morigin/feature/core-integration[m[33m)[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Mon Dec 8 17:33:58 2025 +0000
+
+    update
+
+[33mcommit 10bea060e5c05a3d0db54347c662860fbd889ca1[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Mon Dec 8 08:27:47 2025 +0000
+
+    Your commit message
+
+[33mcommit 8cd7a7cc6571ab48bb272d6b56f3182df0207c91[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Wed Dec 3 02:43:56 2025 +0000
+
+    Your commit message
+
+[33mcommit 99fec3d75383a6e04fcea2cca4bee51adab4fcf9[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Wed Dec 3 02:36:22 2025 +0000
+
+    Your commit message
+
+[33mcommit 9c7766abf64644e52b215307d438791913844a7b[m
+Merge: 1e2a8ff6 3304256f
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Sun Nov 30 20:22:50 2025 +0000
+
+    Merge branch 'main' of https://github.com/welshDog/hypercode
+
+[33mcommit 3304256ffb836dde232f0f11dd9d90645f372792[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Sun Nov 30 10:23:33 2025 +0000
+
+    Update project files and add new documentation
+
+[33mcommit 3db8155f370a53daa80efd0fc8bc8106845f2750[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Fri Nov 28 08:41:24 2025 +0000
+
+    Initial core component integration
+
+[33mcommit f0176a63c2d6b235a23c8932553e671d1736f469[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Fri Nov 14 12:54:19 2025 +0000
+
+    VISION UPgrade
+
+[33mcommit dfcb0ac84e1e2227854e9478e26afb5a4935df1f[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Fri Nov 14 01:23:41 2025 +0000
+
+    BIG UPDATE
+
+[33mcommit c2437b1b36e08c250a9e1e1df44b070c13b081a8[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Wed Nov 12 23:20:07 2025 +0000
+
+    all test passed parser
+
+[33mcommit 54ce3e0d0bf9c34df5c2a2b4159679e7eb2805e2[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Wed Nov 12 20:02:56 2025 +0000
+
+    bug fix
+
+[33mcommit 14841e7e6744ac4d0bf52f1405f0bc22dc25180b[m
+Author: Hyperfocus Zone <hyperfocus@zone.com>
+Date:   Wed Nov 12 17:51:55 2025 +0000
+
+    new fix at core

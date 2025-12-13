@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\distro\\__init__.py",
+  "file_size": 981,
+  "created": "2025-12-01T01:58:32.056546",
+  "modified": "2025-12-01T01:58:32.059439",
+  "file_type": "code",
+  "content_hash": "5b9b7efb166424292d033eb05b9de265",
+  "content_type": "text",
+  "content": "from .distro import (\n    NORMALIZED_DISTRO_ID,\n    NORMALIZED_LSB_ID,\n    NORMALIZED_OS_ID,\n    LinuxDistribution,\n    __version__,\n    build_number,\n    codename,\n    distro_release_attr,\n    distro_release_info,\n    id,\n    info,\n    like,\n    linux_distribution,\n    lsb_release_attr,\n    lsb_release_info,\n    major_version,\n    minor_version,\n    name,\n    os_release_attr,\n    os_release_info,\n    uname_attr,\n    uname_info,\n    version,\n    version_parts,\n)\n\n__all__ = [\n    \"NORMALIZED_DISTRO_ID\",\n    \"NORMALIZED_LSB_ID\",\n    \"NORMALIZED_OS_ID\",\n    \"LinuxDistribution\",\n    \"build_number\",\n    \"codename\",\n    \"distro_release_attr\",\n    \"distro_release_info\",\n    \"id\",\n    \"info\",\n    \"like\",\n    \"linux_distribution\",\n    \"lsb_release_attr\",\n    \"lsb_release_info\",\n    \"major_version\",\n    \"minor_version\",\n    \"name\",\n    \"os_release_attr\",\n    \"os_release_info\",\n    \"uname_attr\",\n    \"uname_info\",\n    \"version\",\n    \"version_parts\",\n]\n\n__version__ = __version__\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\distro\\__init__.py",
+  "id": "07b3c5c43d92b67da3ec452e1b1d55da"
+}

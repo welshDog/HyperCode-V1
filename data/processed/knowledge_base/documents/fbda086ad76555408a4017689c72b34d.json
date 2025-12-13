@@ -1,0 +1,14 @@
+{
+  "file_name": "path_service.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\path_service.py",
+  "file_size": 146,
+  "created": "2025-11-11T16:50:25.696452",
+  "modified": "2025-11-19T16:10:36.080827",
+  "file_type": "code",
+  "content_hash": "64b813eac3ca8696df794b5a8cb568a1",
+  "content_type": "text",
+  "content": "# mcp/servers/path_service.py\n\n\ndef main() -> None:\n    print(\"Path Service MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\path_service.py",
+  "id": "fbda086ad76555408a4017689c72b34d"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "pytest.ini",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\pytest.ini",
+  "file_size": 193,
+  "created": "2025-11-15T15:54:41.024328",
+  "modified": "2025-11-15T15:54:41.024328",
+  "file_type": "code",
+  "content_hash": "113141c0a6b5b7247b4b9a4099eac39c",
+  "content_type": "text/unknown",
+  "content": "[pytest]\ntestpaths = tests\npython_files = test_*.py\nnorecursedirs = .git scripts docs\nmarkers =\n    integration: marks tests that require external services\n    slow: marks tests as slow\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\pytest.ini",
+  "id": "8e71609b8cc49a6b59545a622c0407a2"
+}

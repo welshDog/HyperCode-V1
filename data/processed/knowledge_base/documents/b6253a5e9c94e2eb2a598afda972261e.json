@@ -1,0 +1,14 @@
+{
+  "file_name": "run.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\live_research\\web\\run.py",
+  "file_size": 313,
+  "created": "2025-12-04T12:50:27.872640",
+  "modified": "2025-12-04T12:50:36.417389",
+  "file_type": "code",
+  "content_hash": "cfa4b251e125af0be9d81663f576a652",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nRun the research web application.\n\"\"\"\n\nimport os\nfrom app import app\n\nif __name__ == \"__main__\":\n    # Create necessary directories\n    os.makedirs(\"static\", exist_ok=True)\n    os.makedirs(\"templates\", exist_ok=True)\n\n    # Run the app\n    app.run(debug=True, port=5000)\n",
+  "metadata": {},
+  "relative_path": "live_research\\web\\run.py",
+  "id": "b6253a5e9c94e2eb2a598afda972261e"
+}

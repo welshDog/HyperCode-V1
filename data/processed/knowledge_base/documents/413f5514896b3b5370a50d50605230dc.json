@@ -1,0 +1,34 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\mcp\\README.md",
+  "file_size": 3192,
+  "created": "2025-11-26T23:37:35.527966",
+  "modified": "2025-11-26T23:37:35.527966",
+  "file_type": "code",
+  "content_hash": "6e0d36363ce77dffaa46a19212d9188c",
+  "content_type": "markdown",
+  "content": "# HyperCode MCP Servers\n\nThis directory contains Model Context Protocol (MCP) servers for the HyperCode framework.\n\n## Available Servers\n\n1. **valkey_service** - Redis/Valkey database service with FastAPI endpoints\n2. **dataset_downloader** - Dataset downloading and management\n3. **user_profile_manager** - User profile management\n4. **aws_resource_manager** - AWS resource management\n5. **path_service** - File path utilities\n6. **file_system** - File system operations\n7. **code_analysis** - Code analysis tools\n8. **web_search** - Web search capabilities\n9. **human_input** - Human input interfaces\n10. **aws_cli** - AWS CLI integration\n11. **hypercode_syntax** - HyperCode syntax processing\n\n## Installation\n\n1. Install required dependencies:\n```bash\npip install -r requirements.txt\n```\n\n2. Ensure the HyperCode src directory is in your Python path (this should be automatic if you're working from the main hypercode directory).\n\n## Usage\n\n### Start All Servers\n```bash\npython start_servers.py\n```\n\n### Start a Specific Server\n```bash\npython start_servers.py path_service\n```\n\n### List Available Servers\n```bash\npython start_servers.py --list\n```\n\n### Start Servers Individually\nYou can also start servers directly using Python's module system:\n```bash\ncd ..  # Go to the hypercode root directory\npython -m mcp.servers.valkey_service\npython -m mcp.servers.path_service\n```\n\n## Configuration\n\nThe MCP servers are configured via the `config/mcp.json` file in the main hypercode directory. This file defines which servers are available and how they should be started.\n\n## Server Details\n\n### Valkey Service\n- **Port**: 8001\n- **Dependencies**: Redis/Valkey server running on localhost:6379\n- **Endpoints**: \n  - `GET /` - Health check\n  - `POST /set/{key}` - Set key-value pair\n  - `GET /get/{key}` - Get value by key\n  - `POST /hset/{name}/{key}` - Set field in hash\n  - `GET /hget/{name}/{key}` - Get field from hash\n  - `GET /hgetall/{name}` - Get all hash fields\n\n### Other Servers\nMost other servers are currently stub implementations that print a startup message. They can be extended with full functionality as needed.\n\n## Development\n\nTo add a new server:\n\n1. Create a new Python file in `mcp/servers/`\n2. Implement a `main()` function that starts your server\n3. Add the server name to the `SERVERS` list in `start_servers.py`\n4. Add the import to `mcp/servers/__init__.py`\n5. Update the configuration in `config/mcp.json` if needed\n\n## Troubleshooting\n\n### Module Import Errors\nIf you get \"No module named 'mcp.servers'\" errors:\n1. Make sure you're running from the correct directory\n2. Ensure the hypercode src directory is in your Python path\n3. Try running from the main hypercode directory instead of the mcp subdirectory\n\n### Redis Connection Errors\nThe valkey_service requires Redis/Valkey to be running. You can:\n1. Install and start Redis locally\n2. Use Docker: `docker run -d -p 6379:6379 redis`\n3. Modify the REDIS_HOST and REDIS_PORT environment variables\n\n### Port Conflicts\nIf you get port conflict errors, modify the SERVER_PORT variable in the respective server file.",
+  "metadata": {
+    "headers": [
+      "HyperCode MCP Servers",
+      "Available Servers",
+      "Installation",
+      "Usage",
+      "Start All Servers",
+      "Start a Specific Server",
+      "List Available Servers",
+      "Start Servers Individually",
+      "Configuration",
+      "Server Details",
+      "Valkey Service",
+      "Other Servers",
+      "Development",
+      "Troubleshooting",
+      "Module Import Errors",
+      "Redis Connection Errors",
+      "Port Conflicts"
+    ]
+  },
+  "relative_path": "hypercode\\mcp\\README.md",
+  "id": "413f5514896b3b5370a50d50605230dc"
+}

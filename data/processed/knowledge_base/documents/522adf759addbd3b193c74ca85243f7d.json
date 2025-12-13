@@ -1,0 +1,14 @@
+{
+  "file_name": "pyproject.toml",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\pyproject.toml",
+  "file_size": 1206,
+  "created": "2025-11-24T20:58:28.435723",
+  "modified": "2025-12-02T22:56:15.598934",
+  "file_type": "code",
+  "content_hash": "2157e4e18922705866962f19396df87f",
+  "content_type": "text/unknown",
+  "content": "[build-system]\nrequires = [\"setuptools>=42\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"hypercode\"\nversion = \"0.1.0\"\ndescription = \"HyperCode language implementation\"\nreadme = \"README.md\"\nrequires-python = \">=3.8\"\nlicense = {text = \"MIT\"}\nauthors = [\n    {name = \"welshDog (Lyndz Williams)\", email = \"your.email@example.com\"}\n]\nclassifiers = [\n    \"Development Status :: 3 - Alpha\",\n    \"Intended Audience :: Developers\",\n    \"License :: OSI Approved :: MIT License\",\n    \"Programming Language :: Python :: 3\",\n    \"Programming Language :: Python :: 3.8\",\n    \"Programming Language :: Python :: 3.9\",\n    \"Programming Language :: Python :: 3.10\",\n]\n\n[project.optional-dependencies]\ndev = [\n    \"black>=21.12b0\",\n    \"flake8>=4.0.1\",\n    \"isort>=5.10.1\",\n    \"mypy>=0.910\",\n    \"pytest>=6.2.5\",\n    \"pytest-cov>=2.12.1\",\n]\n\n[project.scripts]\nhypercode = \"hypercode.cli:main\"\n\n[tool.black]\nline-length = 88\ntarget-version = ['py38']\ninclude = '\\.pyi?$'\n\n[tool.isort]\nprofile = \"black\"\nmulti_line_output = 3\ninclude_trailing_comma = true\nforce_grid_wrap = 0\nuse_parentheses = true\nensure_newline_before_comments = true\nline_length = 88",
+  "metadata": {},
+  "relative_path": "pyproject.toml",
+  "id": "522adf759addbd3b193c74ca85243f7d"
+}

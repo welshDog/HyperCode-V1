@@ -1,0 +1,14 @@
+{
+  "file_name": "clean.bat",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\scripts\\windows\\maintenance\\clean.bat",
+  "file_size": 330,
+  "created": "2025-11-26T23:37:35.552033",
+  "modified": "2025-11-26T23:37:35.552033",
+  "file_type": "code",
+  "content_hash": "0cb52130e46195fdb2a44c9db04770fc",
+  "content_type": "text/unknown",
+  "content": "@echo off\necho Cleaning HyperCode project...\n\n:: Remove Python cache\ndel /s /q *.pyc\ndel /s /q *.pyo\ndel /s /q *.pyd\nrmdir /s /q __pycache__\n\n:: Remove build artifacts\nrmdir /s /q build\nrmdir /s /q dist\nrmdir /s /q *.egg-info\n\n:: Remove virtual environment\nif exist .venv rmdir /s /q .venv\n\necho Clean complete!\n",
+  "metadata": {},
+  "relative_path": "hypercode\\scripts\\windows\\maintenance\\clean.bat",
+  "id": "4107e2dc50ec15439cdb36ff8c6181d5"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "web_search.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\mcp\\servers\\web_search.py",
+  "file_size": 134,
+  "created": "2025-11-26T23:37:35.542064",
+  "modified": "2025-11-26T23:37:35.542585",
+  "file_type": "code",
+  "content_hash": "ef0568005fda83ad4ac1b251623c3709",
+  "content_type": "text",
+  "content": "# mcp/servers/web_search.py\n\n\ndef main():\n    print(\"Web Search MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\mcp\\servers\\web_search.py",
+  "id": "6aec262b484491a2cc5a0a4e881b61ea"
+}

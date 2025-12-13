@@ -1,0 +1,21 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\community\\README.md",
+  "file_size": 602,
+  "created": "2025-12-04T00:09:22.949613",
+  "modified": "2025-12-04T00:22:56.199234",
+  "file_type": "code",
+  "content_hash": "984b298fcb19a26b720b319e408d407a",
+  "content_type": "markdown",
+  "content": "# Community & Contribution\n\nResources for HyperCode contributors and community members.\n\n## Getting Involved\n\n- [Contributing Guidelines](community/CONTRIBUTING.md) - How to contribute\n- [Bounties](BOUNTIES.md) - Earn rewards for contributions\n- [FAQ](community/FAQ.md) - Common questions\n\n## Project Information\n\n- [Changelog](community/CHANGELOG.md)\n- [Security Policy](SECURITY.md)\n- [Code of Conduct](../../CODE_OF_CONDUCT.md)\n\n## Connect\n\n- [GitHub Discussions](https://github.com/welshDog/hypercode/discussions)\n- [Report Issues](https://github.com/welshDog/hypercode/issues)",
+  "metadata": {
+    "headers": [
+      "Community & Contribution",
+      "Getting Involved",
+      "Project Information",
+      "Connect"
+    ]
+  },
+  "relative_path": "docs\\community\\README.md",
+  "id": "bdb8fc8dd65c6c44c097d54b7bc83bac"
+}

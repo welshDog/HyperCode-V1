@@ -1,0 +1,30 @@
+{
+  "file_name": "TEMPLATE-REFERENCE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\duelcode\\TEMPLATE-REFERENCE.md",
+  "file_size": 1229,
+  "created": "2025-11-26T23:37:35.604597",
+  "modified": "2025-11-26T23:37:35.604597",
+  "file_type": "code",
+  "content_hash": "eff1c3613297f0fb78968604a9f8b325",
+  "content_type": "markdown",
+  "content": "# Reference Title 📚\n\n## Overview\n\n**[Topic]** is [brief description].\n\n## Syntax\n\n```hypercode\n[Syntax pattern]\n```\n\n## Parameters\n\n| Parameter | Type   | Description   | Example   |\n| --------- | ------ | ------------- | --------- |\n| [param1]  | [type] | [description] | [example] |\n| [param2]  | [type] | [description] | [example] |\n\n## Examples\n\n### Basic Usage\n\n```hypercode\n; Basic example\n[Code]\n```\n\n**Output:**\n\n```text\n[Result]\n```\n\n### Advanced Usage\n\n```hypercode\n; Advanced example\n[Code]\n```\n\n**Output:**\n\n```text\n[Result]\n```\n\n## Common Patterns\n\n### Pattern 1: [Pattern Name]\n\n```hypercode\n[Pattern code]\n```\n\n**Use case:** [When to use]\n\n### Pattern 2: [Pattern Name]\n\n```hypercode\n[Pattern code]\n```\n\n**Use case:** [When to use]\n\n## Performance Notes\n\n- [Performance tip 1]\n- [Performance tip 2]\n- [Performance tip 3]\n\n## Troubleshooting\n\n| Issue     | Cause   | Solution |\n| --------- | ------- | -------- |\n| [Problem] | [Cause] | [Fix]    |\n| [Problem] | [Cause] | [Fix]    |\n\n## See Also\n\n- [Related topic 1](link)\n- [Related topic 2](link)\n- [Related topic 3](link)\n\n---\n\n_Quick reference for efficient coding_ 🚀",
+  "metadata": {
+    "headers": [
+      "Reference Title 📚",
+      "Overview",
+      "Syntax",
+      "Parameters",
+      "Examples",
+      "Basic Usage",
+      "Advanced Usage",
+      "Common Patterns",
+      "Pattern 1: [Pattern Name]",
+      "Pattern 2: [Pattern Name]",
+      "Performance Notes",
+      "Troubleshooting",
+      "See Also"
+    ]
+  },
+  "relative_path": "hypercode\\src\\duelcode\\TEMPLATE-REFERENCE.md",
+  "id": "8d9dad6026e0ae4996347d9636d7c6e4"
+}

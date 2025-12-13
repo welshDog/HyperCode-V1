@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\mcp\\__init__.py",
+  "file_size": 274,
+  "created": "2025-11-23T12:01:48.504201",
+  "modified": "2025-11-23T12:01:48.504201",
+  "file_type": "code",
+  "content_hash": "f11a86eaca3b83bd2f4bb07a0e7703d1",
+  "content_type": "text",
+  "content": "\"\"\"\nHyperCode MCP (Model Context Protocol) Server Package\n\nThis package contains various MCP servers for different functionalities\nincluding Valkey/Redis service, dataset management, user profiles, and more.\n\"\"\"\n\n__version__ = \"1.0.0\"\n__author__ = \"HyperCode Team\"\n",
+  "metadata": {},
+  "relative_path": "mcp\\__init__.py",
+  "id": "28a1546005ba55dda2772c449edf99f0"
+}

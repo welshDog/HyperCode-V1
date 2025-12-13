@@ -195,6 +195,17 @@ process [files] | filter | compress | upload → result
 
 ## 🎓 Examples & Tutorials
 
+### DuelCode Counter Tutorial
+
+We've created a comprehensive tutorial that demonstrates HyperCode's dual representation approach with a simple counter application. This tutorial has been validated against our DuelCode standards and showcases:
+
+- 🎯 **Dual Representation**: See the same concept expressed in both visual and code formats
+- 🧩 **Interactive Elements**: Learn how to create responsive UI components
+- 🏗️ **Progressive Learning**: Start simple and gradually add more complex features
+- ✅ **Validation**: Fully compliant with DuelCode documentation standards
+
+Check out the tutorial in the `examples/duelcode/` directory to see how HyperCode makes programming more accessible to neurodivergent thinkers.
+
 ### Example 1: Data Processing
 ```hypercode
 # Read CSV, filter, calculate stats
@@ -324,14 +335,14 @@ We pay neurodivergent developers to contribute:
 
 ## 📊 HyperCode vs The World
 
-| Feature | HyperCode | Python | JavaScript | Rust |
-|---------|-----------|--------|-----------|------|
-| **Spatial Logic** | ✅ Native | ❌ | ❌ | ❌ |
-| **Neurodivergent-First** | ✅ Yes | ❌ | ❌ | ❌ |
-| **AI-Ready Syntax** | ✅ Yes | ❌ | ❌ | ❌ |
-| **Minimal Noise** | ✅ Yes | ✅ Partial | ❌ | ❌ |
-| **Easy to Learn** | ✅ Yes | ✅ Yes | ✅ Yes | ❌ |
-| **Production-Ready** | 🔄 Soon | ✅ Yes | ✅ Yes | ✅ Yes |
+| Feature                  | HyperCode | Python    | JavaScript | Rust  |
+| ------------------------ | --------- | --------- | ---------- | ----- |
+| **Spatial Logic**        | ✅ Native  | ❌         | ❌          | ❌     |
+| **Neurodivergent-First** | ✅ Yes     | ❌         | ❌          | ❌     |
+| **AI-Ready Syntax**      | ✅ Yes     | ❌         | ❌          | ❌     |
+| **Minimal Noise**        | ✅ Yes     | ✅ Partial | ❌          | ❌     |
+| **Easy to Learn**        | ✅ Yes     | ✅ Yes     | ✅ Yes      | ❌     |
+| **Production-Ready**     | 🔄 Soon    | ✅ Yes     | ✅ Yes      | ✅ Yes |
 
 **The Point**: HyperCode isn't trying to replace Python. It's trying to give neurodivergent minds a language that was *built for them*, not retrofitted.
 

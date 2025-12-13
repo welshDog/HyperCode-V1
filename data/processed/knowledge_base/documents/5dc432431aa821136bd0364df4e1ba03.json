@@ -1,0 +1,14 @@
+{
+  "file_name": "aws_cli.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\aws_cli.py",
+  "file_size": 136,
+  "created": "2025-11-11T16:41:58.921763",
+  "modified": "2025-11-19T16:10:33.107852",
+  "file_type": "code",
+  "content_hash": "710886a4503d0bfd12e1e60067d7e188",
+  "content_type": "text",
+  "content": "# mcp/servers/aws_cli.py\n\n\ndef main() -> None:\n    print(\"AWS CLI MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\aws_cli.py",
+  "id": "5dc432431aa821136bd0364df4e1ba03"
+}

@@ -1,0 +1,67 @@
+# hyperfocus/core/__init__.py
+"""
+HyperFocus Core - Production-Grade Neurodivergent Productivity Engine
+"""
+
+import statistics
+import time
+from collections import deque
+from datetime import datetime
+from enum import Enum
+
+
+class FocusMode(str, Enum):
+    DEEP_WORK = "deep_work"
+    QUANTUM_EDGE = "quantum_edge"
+    DOCUMENTATION = "documentation_sprint"
+    BUG_HUNT = "bug_hunt"
+    CREATIVE_FLOW = "creative_flow"
+
+
+class CognitiveState:
+    """Tracks real-time cognitive metrics with neurodivergent optimizations."""
+
+    def __init__(self):
+        self.metrics = {
+            "keystroke_intervals": deque(maxlen=100),
+            "error_rate": deque(maxlen=20),
+            "context_switches": deque(maxlen=10),
+            "task_switches": deque(maxlen=10),
+            "heart_rate": None,  # Future: Integrate with wearables
+            "last_break": datetime.now(),
+        }
+        self._load_personal_baseline()
+
+    def update_keystroke(self, interval: float) -> None:
+        self.metrics["keystroke_intervals"].append(interval)
+
+    def log_error(self) -> None:
+        self.metrics["error_rate"].append(time.time())
+
+    def log_context_switch(self) -> None:
+        self.metrics["context_switches"].append(time.time())
+
+    def calculate_cognitive_load(self) -> float:
+        """Calculate cognitive load using multiple behavioral proxies."""
+        if not self.metrics["keystroke_intervals"]:
+            return 5.0  # Neutral baseline
+
+        # 1. Typing dynamics analysis
+        intervals = list(self.metrics["keystroke_intervals"])
+        avg_interval = statistics.mean(intervals)
+        interval_std = statistics.stdev(intervals) if len(intervals) > 1 else 0
+
+        # 2. Error pattern analysis
+        error_rate = self._calculate_error_rate()
+
+        # 3. Context switching impact
+        switch_impact = self._calculate_switch_impact()
+
+        # Combine factors with weights
+        load = (
+            0.4 * min(10, avg_interval * 100)  # Typing speed
+            + 0.3 * min(10, error_rate * 20)  # Error rate
+            + 0.3 * min(10, switch_impact * 5)  # Context switching
+        )
+
+        return min(10, max(1, load))  # Clamp to 1-10 range

@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements-sync.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\requirements-sync.txt",
+  "file_size": 17,
+  "created": "2025-12-01T00:13:49.364561",
+  "modified": "2025-12-01T00:13:49.385025",
+  "file_type": "code",
+  "content_hash": "343f367ee118094d0af1fac57501c909",
+  "content_type": "text",
+  "content": "﻿toml>=0.10.0\n",
+  "metadata": {},
+  "relative_path": "requirements-sync.txt",
+  "id": "a715201a5b8f891a1f1b0e7a0d956189"
+}

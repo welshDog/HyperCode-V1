@@ -1,0 +1,14 @@
+{
+  "file_name": "package-lock.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\config\\package-lock.json",
+  "file_size": 88,
+  "created": "2025-11-28T01:32:11.376351",
+  "modified": "2025-11-28T01:32:11.376351",
+  "file_type": "code",
+  "content_hash": "9412f5fd47b3012d5aea15e4afd1ff03",
+  "content_type": "text",
+  "content": "{\n  \"name\": \"hypercode\",\n  \"lockfileVersion\": 3,\n  \"requires\": true,\n  \"packages\": {}\n}\n",
+  "metadata": {},
+  "relative_path": "config\\package-lock.json",
+  "id": "65a29a4c418c56999e740530e98a6fc8"
+}

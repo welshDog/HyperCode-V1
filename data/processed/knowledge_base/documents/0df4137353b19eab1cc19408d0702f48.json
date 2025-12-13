@@ -1,0 +1,14 @@
+{
+  "file_name": "functools.lru_cache",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\functools.lru_cache",
+  "file_size": 1317,
+  "created": "2025-12-04T20:22:54.950204",
+  "modified": "2025-12-04T20:23:12.975210",
+  "file_type": "other",
+  "content_hash": "136953e4eebe2ef7e9b7ea724d98a06b",
+  "content_type": "text/unknown",
+  "content": "from functools import lru_cache\nfrom typing import Tuple\n\nclass HypercodeDB:\n    # ... existing code ...\n    \n    @lru_cache(maxsize=128)\n    def find_entity(self, name: str, entity_type: str = None) -> List[CodeEntity]:\n        \"\"\"Find entities by name and optionally type.\n        \n        Args:\n            name: Name of the entity to find\n            entity_type: Optional type filter\n            \n        Returns:\n            List of matching CodeEntity objects\n        \"\"\"\n        return [\n            e for e in self.entities \n            if e.name == name and (entity_type is None or e.type == entity_type)\n        ]\n    \n    @lru_cache(maxsize=32)\n    def get_file_metrics(self, file_path: str) -> Dict[str, int]:\n        \"\"\"Get metrics for a specific file.\n        \n        Args:\n            file_path: Path to the file\n            \n        Returns:\n            Dictionary containing various metrics about the file\n        \"\"\"\n        entities = self.by_file.get(file_path, [])\n        return {\n            \"total_entities\": len(entities),\n            \"functions\": sum(1 for e in entities if e.type == \"function\"),\n            \"classes\": sum(1 for e in entities if e.type == \"class\"),\n            \"documented\": sum(1 for e in entities if e.docstring.strip()),\n        }",
+  "metadata": {},
+  "relative_path": "functools.lru_cache",
+  "id": "0df4137353b19eab1cc19408d0702f48"
+}

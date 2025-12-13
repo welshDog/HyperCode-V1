@@ -1,0 +1,28 @@
+{
+  "file_name": "EXAMPLES_README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\EXAMPLES_README.md",
+  "file_size": 1979,
+  "created": "2025-11-30T20:22:52.687746",
+  "modified": "2025-11-30T20:22:52.687746",
+  "file_type": "code",
+  "content_hash": "a0f48c4fa8b7cf93d63695b9fd348f13",
+  "content_type": "markdown",
+  "content": "# HyperCode Examples\n\nThis directory contains various examples demonstrating HyperCode's features and capabilities.\n\n## Getting Started\n\n### Basic Examples\n- `hello_world.hc` - The classic \"Hello, World!\" program\n- `demo_hello.hc` - Simple demonstration of basic I/O\n- `fibonacci.hc` - Fibonacci sequence implementation\n- `demo_fibonacci.hc` - Interactive Fibonacci number generator\n\n### Language Features\n- `oop.hc` - Object-oriented programming concepts\n- `first_click_moment.hyper` - Interactive example showing HyperCode's unique features\n- `task_manager.hc` - Task management system demonstrating data structures\n\n### Advanced Topics\n- `quantum_computing.hc` - Quantum computing concepts\n- `dna_computing.hc` - DNA computing simulation\n- `spatial_computing.hc` - Spatial computing examples\n\n### Web Development\n- `web_server.hc` - Basic web server implementation\n- `todo_web_app.hc` - Full-stack todo application\n- `web_development.hc` - Web development patterns\n\n### Data Processing\n- `data_analysis.hc` - Data analysis examples\n- `data_visualization.hc` - Data visualization techniques\n- `database_integration.hc` - Database connectivity examples\n\n### Creative Demos\n- `creative-demos/fractal-explorer/` - Interactive fractal visualization\n  - `fractal.hc` - Fractal generation code\n  - `index.html` - Web interface\n  - `README.md` - Setup instructions\n\n## Running Examples\n\nTo run any example:\n```bash\npython -m hypercode examples/path/to/example.hc\n```\n\nFor web examples, additional setup may be required. Refer to individual example documentation for details.\n\n## Contributing\n\nWe welcome contributions! To add a new example:\n1. Create a new `.hc` file in the appropriate directory\n2. Add clear comments and documentation\n3. Update this README with a brief description\n4. Submit a pull request\n\n## Need Help?\n\nIf you have questions or need help with any examples, please open an issue in our GitHub repository.",
+  "metadata": {
+    "headers": [
+      "HyperCode Examples",
+      "Getting Started",
+      "Basic Examples",
+      "Language Features",
+      "Advanced Topics",
+      "Web Development",
+      "Data Processing",
+      "Creative Demos",
+      "Running Examples",
+      "Contributing",
+      "Need Help?"
+    ]
+  },
+  "relative_path": "hypercode\\examples\\EXAMPLES_README.md",
+  "id": "9bb389b0f930f7e1d380603ce5c0ae50"
+}

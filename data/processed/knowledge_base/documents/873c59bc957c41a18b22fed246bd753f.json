@@ -1,0 +1,41 @@
+{
+  "file_name": "LANGUAGE_REFERENCE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\reference\\LANGUAGE_REFERENCE.md",
+  "file_size": 4198,
+  "created": "2025-11-23T12:01:48.433871",
+  "modified": "2025-11-23T12:01:48.440006",
+  "file_type": "code",
+  "content_hash": "2f40d16d73053c6943d3d0bbbf46feaa",
+  "content_type": "markdown",
+  "content": "# HyperCode Language Reference\n\n## Table of Contents\n\n1. [Introduction](#introduction)\n2. [Getting Started](#getting-started)\n3. [Language Syntax](#language-syntax)\n   - [Variables](#variables)\n   - [Data Types](#data-types)\n   - [Operators](#operators)\n   - [Control Flow](#control-flow)\n   - [Functions](#functions)\n4. [Examples](#examples)\n   - [Hello World](#hello-world)\n   - [FizzBuzz](#fizzbuzz)\n   - [Fibonacci Sequence](#fibonacci-sequence)\n5. [Best Practices](#best-practices)\n6. [FAQ](#faq)\n\n## Introduction\n\nHyperCode is a modern, dynamically-typed programming language designed for simplicity\nand readability. It combines the best features of traditional scripting languages with a\nclean, minimal syntax.\n\n## Getting Started\n\n### Installation\n\n```bash\n# Coming soon: package manager installation\n# For now, clone the repository and run the interpreter directly\n```\n\n### Running Code\n\n```bash\n# Run a HyperCode file\nhypercode program.hc\n\n# Start REPL\nhypercode\n```\n\n## Language Syntax\n\n### Variables\n\n```javascript\n// Variable declaration with type inference\nvar name = \"HyperCode\";\nvar version = 1.0;\nvar isAwesome = true;\n\n// Constants\nconst PI = 3.14159;\n```\n\n### Data Types\n\n- **Numbers**: `42`, `3.14`, `1e3`\n- **Strings**: `\"Hello\"`, `'World'`\n- **Booleans**: `true`, `false`\n- **Null**: `null`\n- **Lists**: `[1, 2, 3]`\n- **Maps**: `{\"key\": \"value\"}`\n\n### Operators\n\n```javascript\n// Arithmetic\n1 +\n  2 *\n    3(\n      // 7\n      1 + 2,\n    ) *\n    3; // 9\n10 % 3; // 1\n2 ** 3; // 8\n\n// Comparison\n1 == 1; // true\n1 != 2; // true\n1 < 2; // true\n\n// Logical\ntrue && false; // false\ntrue || false; // true\n!true; // false\n```\n\n### Control Flow\n\n#### If/Else\n\n```javascript\nvar temp = 25\n\nif temp > 30 {\n    print(\"It's hot!\")\n} else if temp > 20 {\n    print(\"It's warm.\")\n} else {\n    print(\"It's cool.\")\n}\n```\n\n#### Loops\n\n```javascript\n// While loop\nvar i = 0\nwhile i < 5 {\n    print(\"Count: \" + i)\n    i = i + 1\n}\n\n// For loop\nfor var j = 0; j < 5; j = j + 1 {\n    print(\"For count: \" + j)\n}\n```\n\n### Functions\n\n```javascript\n// Function definition\nfunction greet(name) {\n    return \"Hello, \" + name + \"!\"\n}\n\n// Function call\nvar message = greet(\"Developer\")\nprint(message)  // \"Hello, Developer!\"\n\n// Lambda functions\nconst square = fn(x) { return x * x }\nprint(square(5))  // 25\n```\n\n## Examples\n\n### Hello World\n\n```javascript\n// Simple Hello World\nprint(\"Hello, HyperCode!\");\n\n// With string interpolation\nconst name = \"World\";\nprint(`Hello, ${name}!`); // \"Hello, World!\"\n```\n\n### FizzBuzz\n\n```javascript\nfor var i = 1; i <= 100; i = i + 1 {\n    if i % 15 == 0 {\n        print(\"FizzBuzz\")\n    } else if i % 3 == 0 {\n        print(\"Fizz\")\n    } else if i % 5 == 0 {\n        print(\"Buzz\")\n    } else {\n        print(i)\n    }\n}\n```\n\n### Fibonacci Sequence\n\n```javascript\nfunction fibonacci(n) {\n    if n <= 1 {\n        return n\n    }\n    return fibonacci(n - 1) + fibonacci(n - 2)\n}\n\n// Print first 10 Fibonacci numbers\nfor var i = 0; i < 10; i = i + 1 {\n    print(fibonacci(i))\n}\n```\n\n## Best Practices\n\n1. **Naming Conventions**\n\n   - Use `camelCase` for variables and functions\n   - Use `UPPER_SNAKE_CASE` for constants\n   - Be descriptive with names\n\n2. **Code Organization**\n\n   - Group related functionality together\n   - Use comments to explain complex logic\n   - Keep functions small and focused\n\n3. **Error Handling**\n   - Always validate input\n   - Provide meaningful error messages\n\n## FAQ\n\n**Q: Is HyperCode compiled or interpreted?** A: HyperCode is an interpreted language,\nthough we're exploring JIT compilation for performance improvements.\n\n**Q: Can I contribute to HyperCode?** A: Absolutely! Check out our\n[GitHub repository](https://github.com/yourusername/hypercode) for contribution\nguidelines.\n\n**Q: What's the performance like?** A: While not as fast as compiled languages,\nHyperCode is designed for developer productivity. We're continuously working on\nperformance improvements.\n\n---\n\n_Documentation last updated: November 12, 2025_",
+  "metadata": {
+    "headers": [
+      "HyperCode Language Reference",
+      "Table of Contents",
+      "Introduction",
+      "Getting Started",
+      "Installation",
+      "Coming soon: package manager installation",
+      "For now, clone the repository and run the interpreter directly",
+      "Running Code",
+      "Run a HyperCode file",
+      "Start REPL",
+      "Language Syntax",
+      "Variables",
+      "Data Types",
+      "Operators",
+      "Control Flow",
+      "If/Else",
+      "Loops",
+      "Functions",
+      "Examples",
+      "Hello World",
+      "FizzBuzz",
+      "Fibonacci Sequence",
+      "Best Practices",
+      "FAQ"
+    ]
+  },
+  "relative_path": "docs\\reference\\LANGUAGE_REFERENCE.md",
+  "id": "873c59bc957c41a18b22fed246bd753f"
+}

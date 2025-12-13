@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\msgpack\\__init__.py",
+  "file_size": 1109,
+  "created": "2025-12-01T01:58:32.135820",
+  "modified": "2025-12-01T01:58:32.136524",
+  "file_type": "code",
+  "content_hash": "3b925fad3eff80b05a379e2e03b43a6b",
+  "content_type": "text",
+  "content": "# ruff: noqa: F401\nimport os\n\nfrom .exceptions import *  # noqa: F403\nfrom .ext import ExtType, Timestamp\n\nversion = (1, 1, 0)\n__version__ = \"1.1.0\"\n\n\nif os.environ.get(\"MSGPACK_PUREPYTHON\"):\n    from .fallback import Packer, Unpacker, unpackb\nelse:\n    try:\n        from ._cmsgpack import Packer, Unpacker, unpackb\n    except ImportError:\n        from .fallback import Packer, Unpacker, unpackb\n\n\ndef pack(o, stream, **kwargs):\n    \"\"\"\n    Pack object `o` and write it to `stream`\n\n    See :class:`Packer` for options.\n    \"\"\"\n    packer = Packer(**kwargs)\n    stream.write(packer.pack(o))\n\n\ndef packb(o, **kwargs):\n    \"\"\"\n    Pack object `o` and return packed bytes\n\n    See :class:`Packer` for options.\n    \"\"\"\n    return Packer(**kwargs).pack(o)\n\n\ndef unpack(stream, **kwargs):\n    \"\"\"\n    Unpack an object from `stream`.\n\n    Raises `ExtraData` when `stream` contains extra bytes.\n    See :class:`Unpacker` for options.\n    \"\"\"\n    data = stream.read()\n    return unpackb(data, **kwargs)\n\n\n# alias for compatibility to simplejson/marshal/pickle.\nload = unpack\nloads = unpackb\n\ndump = pack\ndumps = packb\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\msgpack\\__init__.py",
+  "id": "04d6b97b09c500f6a14f05f92fb1982c"
+}

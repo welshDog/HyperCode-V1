@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\cli\\__init__.py",
+  "file_size": 2008,
+  "created": "2025-12-02T22:46:40.847170",
+  "modified": "2025-12-02T23:34:44.834243",
+  "file_type": "code",
+  "content_hash": "6390047671b9b3cf3b375ff4bbcbd9b3",
+  "content_type": "text",
+  "content": "\"\"\"\nHyperCode Command Line Interface\n\nThis module provides the command-line interface for the HyperCode language.\n\"\"\"\n\nimport argparse\nimport sys\nfrom pathlib import Path\nfrom typing import Optional, Sequence\nfrom hypercode.core.lexer import Lexer\n\n\ndef main(args: Optional[Sequence[str]] = None) -> int:\n    \"\"\"Run the HyperCode lexer from the command line.\n\n    Args:\n        args: Command line arguments (defaults to sys.argv[1:])\n\n    Returns:\n        int: Exit code (0 for success, non-zero for errors)\n    \"\"\"\n    parser = argparse.ArgumentParser(description=\"HyperCode language lexer\")\n    parser.add_argument(\n        \"source_file\",\n        type=str,\n        help=\"Path to the source file to tokenize\",\n    )\n    parser.add_argument(\n        \"-v\", \"--verbose\", action=\"store_true\", help=\"Enable verbose output\"\n    )\n\n    parsed_args = parser.parse_args(args)\n\n    try:\n        # Read the source file\n        source_path = Path(parsed_args.source_file)\n        if not source_path.exists():\n            print(f\"Error: File '{source_path}' not found.\", file=sys.stderr)\n            return 1\n\n        source = source_path.read_text(encoding=\"utf-8\")\n\n        # Tokenize the source\n        lexer = Lexer()\n        tokens = lexer.tokenize(source)\n\n        # Print tokens\n        if parsed_args.verbose:\n            print(f\"Tokens from {source_path}:\")\n            print(\"-\" * 80)\n\n        for token in tokens:\n            print(\n                f\"{token.line:4d}:{token.column:<3d} {token.type.name:<15} {token.lexeme!r}\"\n            )\n\n        print(f\"\\nSuccessfully tokenized {source_path}\")\n        if parsed_args.verbose:\n            print(f\"Total tokens: {len(tokens)}\")\n\n        return 0\n\n    except Exception as e:\n        print(f\"Error: {e}\", file=sys.stderr)\n        if parsed_args.verbose:\n            import traceback\n\n            traceback.print_exc()\n        return 1\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\cli\\__init__.py",
+  "id": "1a2e501e56b416d7f60e126e24355c40"
+}

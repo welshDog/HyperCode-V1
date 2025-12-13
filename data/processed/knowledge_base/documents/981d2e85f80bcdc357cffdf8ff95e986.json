@@ -1,0 +1,14 @@
+{
+  "file_name": "code_analysis.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\code_analysis.py",
+  "file_size": 148,
+  "created": "2025-11-11T16:41:56.455674",
+  "modified": "2025-11-19T16:10:33.353319",
+  "file_type": "code",
+  "content_hash": "814a693a18de80974eac4aa3ad3469ce",
+  "content_type": "text",
+  "content": "# mcp/servers/code_analysis.py\n\n\ndef main() -> None:\n    print(\"Code Analysis MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\code_analysis.py",
+  "id": "981d2e85f80bcdc357cffdf8ff95e986"
+}

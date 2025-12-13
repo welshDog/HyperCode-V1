@@ -1,26 +1,26 @@
-# 🧠 HYPER DATABASE
+# HYPER DATABASE
 ## Living Inventory of HyperCode Codebase
 
-**Generated**: 2025-12-01T19:32:46.551893
-**Scan Time**: 28.4s
-**Files Scanned**: 945
-**Total Entities**: 9523
+**Generated**: 2025-12-05T01:43:01.772235
+**Scan Time**: 16.5s
+**Files Scanned**: 967
+**Total Entities**: 9657
 
 ---
 
-## 📊 HEALTH SNAPSHOT
+## HEALTH SNAPSHOT
 
 | Metric | Value |
 |--------|-------|
-| **Functions** | 8158 |
-| **Classes** | 1365 |
-| **Files** | 945 |
-| **Documentation** | 4670/9523 (49.0%) |
-| **Status** | ✅ HEALTHY |
+| **Functions** | 8290 |
+| **Classes** | 1367 |
+| **Files** | 967 |
+| **Documentation** | 4794/9657 (49.6%) |
+| **Status** | OK |
 
 ---
 
-## 📋 ALL FUNCTIONS
+## ALL FUNCTIONS
 
 ### 5 Core TypeScript Modules\code-analyzer.ts
 
@@ -146,53 +146,107 @@ _Print benchmark results in a readable format._
 **Args**: results
 
 
-### build-hyper-database.py
+### code_insights.py
 
-#### `__init__()` (line 24)
-_Initialize builder with repo root path._
+#### `analyze_code_patterns()` (line 8)
+_Analyze function and class naming patterns._
 
-**Args**: self, repo_root
-
-
-#### `scan_python_file()` (line 32)
-_Extract functions, classes from Python file._
-
-**Args**: self, file_path
+**Args**: db
 
 
-#### `scan_javascript_file()` (line 77)
-_Extract functions from JavaScript (regex-based)._
+#### `find_undocumented_code()` (line 29)
+_Find complex but undocumented code._
 
-**Args**: self, file_path
-
-
-#### `should_skip_directory()` (line 106)
-_Check if directory should be skipped._
-
-**Args**: dirname
+**Args**: db
 
 
-#### `build()` (line 115)
-_Scan entire repo and build database._
+#### `analyze_test_coverage()` (line 45)
+_Analyze test coverage patterns.
 
-**Args**: self
+Returns:
+    Dictionary containing test coverage statistics_
 
-
-#### `generate_markdown_report()` (line 158)
-_Generate HYPER_DATABASE.md report._
-
-**Args**: self
+**Args**: db
 
 
-#### `generate_json_report()` (line 259)
-_Generate machine-readable HYPER_DATABASE.json._
+### code_quality_report.py
 
-**Args**: self
+#### `get_undocumented_classes_priority()` (line 15)
+_Get undocumented classes sorted by importance (more methods = higher priority)._
+
+**Args**: db
 
 
-#### `main()` (line 280)
-_Main entry point._
+#### `get_least_tested_files()` (line 33)
+_Get files with most code but least test coverage.
 
+Returns:
+    List of dictionaries containing file test metrics, sorted by test ratio_
+
+**Args**: db
+
+
+#### `find_getter_methods()` (line 69)
+_Find get_ methods that could be converted to properties.
+
+Returns:
+    List of dictionaries containing information about potential getter methods
+    that could be converted to properties._
+
+**Args**: db
+
+
+#### `generate_code_quality_report()` (line 103)
+_Generate a comprehensive code quality report._
+
+**Args**: db_path
+
+
+### htmlcov\coverage_html_cb_437fc316.js
+
+#### `unnamed_function()` (line 11)
+
+#### `unnamed_function()` (line 15)
+
+#### `unnamed_function()` (line 21)
+
+#### `unnamed_function()` (line 28)
+
+#### `unnamed_function()` (line 36)
+
+#### `unnamed_function()` (line 50)
+
+#### `unnamed_function()` (line 59)
+
+#### `unnamed_function()` (line 63)
+
+#### `unnamed_function()` (line 80)
+
+#### `unnamed_function()` (line 81)
+
+#### `unnamed_function()` (line 114)
+
+#### `unnamed_function()` (line 115)
+
+#### `unnamed_function()` (line 144)
+
+#### `unnamed_function()` (line 159)
+
+#### `unnamed_function()` (line 263)
+
+#### `unnamed_function()` (line 365)
+
+#### `unnamed_function()` (line 389)
+
+#### `unnamed_function()` (line 393)
+
+#### `unnamed_function()` (line 619)
+
+#### `unnamed_function()` (line 664)
+
+#### `unnamed_function()` (line 697)
+
+#### `unnamed_function()` (line 726)
 
 ### hypercode-proto\app.js
 
@@ -452,13 +506,13 @@ _Main entry point._
 
 ### hypercode\benchmarks\__init__.py
 
-#### `benchmark_lexer()` (line 12)
+#### `benchmark_lexer()` (line 13)
 _Benchmark the lexer with the given source code._
 
 **Args**: source, iterations
 
 
-#### `print_benchmark_results()` (line 36)
+#### `print_benchmark_results()` (line 38)
 _Print benchmark results in a readable format._
 
 **Args**: results
@@ -466,13 +520,13 @@ _Print benchmark results in a readable format._
 
 ### hypercode\benchmarks\benchmarks_lexer.py
 
-#### `benchmark_lexer()` (line 6)
+#### `benchmark_lexer()` (line 7)
 _Benchmark the lexer with the given source code._
 
 **Args**: source, iterations
 
 
-#### `print_benchmark_results()` (line 30)
+#### `print_benchmark_results()` (line 32)
 _Print benchmark results in a readable format._
 
 **Args**: results
@@ -492,37 +546,37 @@ _Extract functions, classes from Python file._
 **Args**: self, file_path
 
 
-#### `scan_javascript_file()` (line 77)
+#### `scan_javascript_file()` (line 78)
 _Extract functions from JavaScript (regex-based)._
 
 **Args**: self, file_path
 
 
-#### `should_skip_directory()` (line 106)
+#### `should_skip_directory()` (line 107)
 _Check if directory should be skipped._
 
 **Args**: dirname
 
 
-#### `build()` (line 115)
+#### `build()` (line 127)
 _Scan entire repo and build database._
 
 **Args**: self
 
 
-#### `generate_markdown_report()` (line 158)
+#### `generate_markdown_report()` (line 161)
 _Generate HYPER_DATABASE.md report._
 
 **Args**: self
 
 
-#### `generate_json_report()` (line 256)
+#### `generate_json_report()` (line 248)
 _Generate machine-readable HYPER_DATABASE.json._
 
 **Args**: self
 
 
-#### `main()` (line 277)
+#### `main()` (line 263)
 _Main entry point._
 
 
@@ -744,7 +798,7 @@ _Generate hover information for semantic annotations_
 
 ### hypercode\mcp\servers\valkey_service.py
 
-#### `main()` (line 124)
+#### `main()` (line 144)
 _Main function to run the Valkey Service MCP Server.
 This function is called when the script is executed directly.
 It starts the Uvicorn server, which in turn runs the FastAPI application._
@@ -756,41 +810,41 @@ It starts the Uvicorn server, which in turn runs the FastAPI application._
 
 ### hypercode\mcp\setup.py
 
-#### `install_dependencies()` (line 15)
+#### `install_dependencies()` (line 16)
 _Install required dependencies_
 
 
-#### `verify_setup()` (line 27)
+#### `verify_setup()` (line 31)
 _Verify that MCP is properly set up_
 
 
-#### `show_next_steps()` (line 45)
+#### `show_next_steps()` (line 54)
 _Show next steps for using MCP_
 
 
-#### `main()` (line 62)
+#### `main()` (line 72)
 
 ### hypercode\mcp\start_servers.py
 
-#### `start_server()` (line 33)
+#### `start_server()` (line 34)
 _Start a specific MCP server_
 
 **Args**: server_name
 
 
-#### `list_servers()` (line 55)
+#### `list_servers()` (line 59)
 _List all available servers_
 
 
-#### `main()` (line 61)
+#### `main()` (line 66)
 
 ### hypercode\mcp\test_mcp.py
 
-#### `test_server_imports()` (line 14)
+#### `test_server_imports()` (line 15)
 _Test that all servers can be imported_
 
 
-#### `main()` (line 48)
+#### `main()` (line 47)
 
 ### hypercode\new files to check\backend\research\db.py
 
@@ -832,7 +886,7 @@ development and testing can proceed without a PostgreSQL server._
 **Args**: self
 
 
-#### `__repr__()` (line 219)
+#### `__repr__()` (line 221)
 **Args**: self
 
 
@@ -852,7 +906,7 @@ development and testing can proceed without a PostgreSQL server._
 
 ### hypercode\run_lexer.py
 
-#### `run_lexer()` (line 12)
+#### `run_lexer()` (line 13)
 _Run the lexer on a source file and print the tokens._
 
 **Args**: source_file
@@ -860,35 +914,35 @@ _Run the lexer on a source file and print the tokens._
 
 ### hypercode\scripts\style_guide_collector.py
 
-#### `__init__()` (line 20)
+#### `__init__()` (line 21)
 **Args**: self, repo_path
 
 
-#### `_load_feedback()` (line 31)
+#### `_load_feedback()` (line 32)
 _📂 Load existing feedback data_
 
 **Args**: self
 
 
-#### `_save_feedback()` (line 50)
+#### `_save_feedback()` (line 51)
 _💾 Save feedback data_
 
 **Args**: self
 
 
-#### `add_feedback()` (line 59)
+#### `add_feedback()` (line 60)
 _📝 Add new feedback entry
 
 Args:
     feedback: Dictionary containing feedback data
-    
+
 Returns:
     bool: True if feedback was added successfully_
 
 **Args**: self, feedback
 
 
-#### `_update_analysis()` (line 101)
+#### `_update_analysis()` (line 102)
 _📊 Update analysis based on new feedback
 
 Args:
@@ -897,7 +951,7 @@ Args:
 **Args**: self, entry
 
 
-#### `analyze_feedback()` (line 150)
+#### `analyze_feedback()` (line 151)
 _📊 Generate comprehensive analysis of all feedback
 
 Returns:
@@ -906,32 +960,32 @@ Returns:
 **Args**: self
 
 
-#### `_get_top_items()` (line 176)
+#### `_get_top_items()` (line 189)
 _📊 Get top items from a frequency dictionary
 
 Args:
     items: Dictionary of item frequencies
     limit: Maximum number of items to return
-    
+
 Returns:
     List of top items with counts and percentages_
 
 **Args**: self, items, limit
 
 
-#### `_calculate_consensus()` (line 201)
+#### `_calculate_consensus()` (line 212)
 _📊 Calculate consensus for preference categories
 
 Args:
     preference_data: Nested dictionary of preferences
-    
+
 Returns:
     Dictionary with consensus analysis_
 
 **Args**: self, preference_data
 
 
-#### `_generate_recommendations()` (line 230)
+#### `_generate_recommendations()` (line 247)
 _💡 Generate style guide recommendations based on feedback
 
 Returns:
@@ -940,37 +994,37 @@ Returns:
 **Args**: self
 
 
-#### `import_github_issues()` (line 288)
+#### `import_github_issues()` (line 331)
 _📥 Import feedback from GitHub issues
 
 Args:
     github_token: GitHub API token (optional)
-    
+
 Returns:
     Number of issues imported_
 
 **Args**: self, github_token
 
 
-#### `generate_report()` (line 309)
+#### `generate_report()` (line 354)
 _📊 Generate comprehensive feedback report
 
 Args:
     output_file: Optional file to save report
-    
+
 Returns:
     Report content as string_
 
 **Args**: self, output_file
 
 
-#### `interactive_feedback()` (line 370)
+#### `interactive_feedback()` (line 419)
 _🎯 Interactive feedback collection from command line_
 
 **Args**: self
 
 
-#### `main()` (line 469)
+#### `main()` (line 527)
 _🚀 Main entry point_
 
 
@@ -1366,85 +1420,85 @@ Args:
 
 ### hypercode\src\core\lexer.py
 
-#### `__init__()` (line 41)
+#### `__init__()` (line 42)
 _Initialize the lexer with source code._
 
 **Args**: self, source
 
 
-#### `scan_tokens()` (line 98)
+#### `scan_tokens()` (line 99)
 _Scan the source code and return a list of tokens._
 
 **Args**: self
 
 
-#### `scan_token()` (line 108)
+#### `scan_token()` (line 109)
 _Scan a single token._
 
 **Args**: self
 
 
-#### `number()` (line 167)
+#### `number()` (line 168)
 _Lex a number literal._
 
 **Args**: self
 
 
-#### `string()` (line 200)
+#### `string()` (line 203)
 _Lex a string literal._
 
 **Args**: self, interpolated
 
 
-#### `docstring()` (line 245)
+#### `docstring()` (line 252)
 _Lex a docstring._
 
 **Args**: self
 
 
-#### `identifier()` (line 271)
+#### `identifier()` (line 278)
 _Lex an identifier or keyword._
 
 **Args**: self
 
 
-#### `error()` (line 281)
+#### `error()` (line 288)
 _Report a lexing error._
 
 **Args**: self, message, line, column
 
 
-#### `is_at_end()` (line 297)
+#### `is_at_end()` (line 312)
 _Check if we've reached the end of the source._
 
 **Args**: self
 
 
-#### `advance()` (line 301)
+#### `advance()` (line 316)
 _Consume and return the next character._
 
 **Args**: self
 
 
-#### `match()` (line 310)
+#### `match()` (line 325)
 _Conditionally consume a character if it matches the expected value._
 
 **Args**: self, expected
 
 
-#### `peek()` (line 320)
+#### `peek()` (line 335)
 _Look at the next character without consuming it._
 
 **Args**: self
 
 
-#### `peek_next()` (line 326)
+#### `peek_next()` (line 341)
 _Look at the character after the next one without consuming it._
 
 **Args**: self
 
 
-#### `add_token()` (line 332)
+#### `add_token()` (line 347)
 _Add a new token to the token list._
 
 **Args**: self, token_type, literal
@@ -1522,61 +1576,61 @@ _Parse the entire program._
 **Args**: self, kind
 
 
-#### `if_statement()` (line 198)
+#### `if_statement()` (line 200)
 **Args**: self
 
 
-#### `return_statement()` (line 210)
+#### `return_statement()` (line 212)
 **Args**: self
 
 
-#### `match()` (line 220)
+#### `match()` (line 222)
 **Args**: self
 
 
-#### `consume()` (line 227)
+#### `consume()` (line 229)
 **Args**: self, type_, message
 
 
-#### `error()` (line 237)
+#### `error()` (line 239)
 **Args**: self, token, message
 
 
-#### `synchronize()` (line 243)
+#### `synchronize()` (line 245)
 **Args**: self
 
 
-#### `check()` (line 263)
+#### `check()` (line 265)
 **Args**: self, type_
 
 
-#### `advance()` (line 268)
+#### `advance()` (line 270)
 **Args**: self
 
 
-#### `is_at_end()` (line 273)
+#### `is_at_end()` (line 275)
 **Args**: self
 
 
-#### `peek()` (line 276)
+#### `peek()` (line 278)
 **Args**: self
 
 
-#### `previous()` (line 279)
+#### `previous()` (line 281)
 **Args**: self
 
 
 ### hypercode\src\core\tokens.py
 
-#### `__init__()` (line 82)
+#### `__init__()` (line 84)
 **Args**: self, type, lexeme, literal, line, column
 
 
-#### `__str__()` (line 96)
+#### `__str__()` (line 93)
 **Args**: self
 
 
-#### `__repr__()` (line 99)
+#### `__repr__()` (line 96)
 **Args**: self
 
 
@@ -2506,175 +2560,175 @@ _Get headers for API requests_
 **Args**: self, value
 
 
-#### `__init__()` (line 13)
+#### `__init__()` (line 14)
 **Args**: self, declaration, closure
 
 
-#### `__str__()` (line 17)
+#### `__str__()` (line 18)
 **Args**: self
 
 
-#### `arity()` (line 20)
+#### `arity()` (line 21)
 **Args**: self
 
 
-#### `call()` (line 23)
+#### `call()` (line 24)
 **Args**: self, interpreter, arguments
 
 
-#### `__init__()` (line 36)
+#### `__init__()` (line 38)
 **Args**: self, enclosing
 
 
-#### `define()` (line 40)
+#### `define()` (line 42)
 **Args**: self, name, value
 
 
-#### `get()` (line 43)
+#### `get()` (line 45)
 **Args**: self, name
 
 
-#### `assign()` (line 50)
+#### `assign()` (line 52)
 **Args**: self, name, value
 
 
-#### `__init__()` (line 61)
+#### `__init__()` (line 63)
 **Args**: self
 
 
-#### `interpret()` (line 65)
+#### `interpret()` (line 67)
 **Args**: self, statements
 
 
-#### `execute()` (line 72)
+#### `execute()` (line 74)
 **Args**: self, stmt
 
 
-#### `execute_block()` (line 75)
+#### `execute_block()` (line 77)
 **Args**: self, statements, environment
 
 
-#### `evaluate()` (line 84)
+#### `evaluate()` (line 86)
 **Args**: self, expr
 
 
-#### `visit_Expression()` (line 87)
+#### `visit_Expression()` (line 89)
 **Args**: self, stmt
 
 
-#### `visit_Print()` (line 90)
+#### `visit_Print()` (line 92)
 **Args**: self, stmt
 
 
-#### `visit_Var()` (line 94)
+#### `visit_Var()` (line 96)
 **Args**: self, stmt
 
 
-#### `visit_Block()` (line 100)
+#### `visit_Block()` (line 102)
 **Args**: self, stmt
 
 
-#### `visit_Assign()` (line 103)
+#### `visit_Assign()` (line 105)
 **Args**: self, expr
 
 
-#### `visit_Binary()` (line 108)
+#### `visit_Binary()` (line 110)
 **Args**: self, expr
 
 
-#### `visit_Grouping()` (line 151)
+#### `visit_Grouping()` (line 153)
 **Args**: self, expr
 
 
-#### `visit_Literal()` (line 154)
+#### `visit_Literal()` (line 156)
 **Args**: self, expr
 
 
-#### `visit_Unary()` (line 157)
+#### `visit_Unary()` (line 159)
 **Args**: self, expr
 
 
-#### `visit_Variable()` (line 170)
+#### `visit_Variable()` (line 172)
 **Args**: self, expr
 
 
-#### `visit_If()` (line 173)
+#### `visit_If()` (line 175)
 **Args**: self, stmt
 
 
-#### `is_truthy()` (line 179)
+#### `is_truthy()` (line 181)
 **Args**: self, obj
 
 
-#### `visit_Fun()` (line 186)
+#### `visit_Fun()` (line 188)
 **Args**: self, stmt
 
 
-#### `visit_Return()` (line 190)
+#### `visit_Return()` (line 192)
 **Args**: self, stmt
 
 
-#### `visit_Call()` (line 196)
+#### `visit_Call()` (line 198)
 **Args**: self, expr
 
 
-#### `is_callable()` (line 212)
+#### `is_callable()` (line 216)
 **Args**: self, obj
 
 
-#### `visit_Expression()` (line 217)
+#### `visit_Expression()` (line 222)
 **Args**: self, stmt
 
 
-#### `visit_Print()` (line 219)
+#### `visit_Print()` (line 225)
 **Args**: self, stmt
 
 
-#### `visit_Var()` (line 221)
+#### `visit_Var()` (line 228)
 **Args**: self, stmt
 
 
-#### `visit_Block()` (line 223)
+#### `visit_Block()` (line 231)
 **Args**: self, stmt
 
 
-#### `visit_If()` (line 225)
+#### `visit_If()` (line 234)
 **Args**: self, stmt
 
 
-#### `visit_Fun()` (line 227)
+#### `visit_Fun()` (line 237)
 **Args**: self, stmt
 
 
-#### `visit_Return()` (line 229)
+#### `visit_Return()` (line 240)
 **Args**: self, stmt
 
 
-#### `visit_Assign()` (line 231)
+#### `visit_Assign()` (line 243)
 **Args**: self, expr
 
 
-#### `visit_Binary()` (line 233)
+#### `visit_Binary()` (line 246)
 **Args**: self, expr
 
 
-#### `visit_Grouping()` (line 235)
+#### `visit_Grouping()` (line 249)
 **Args**: self, expr
 
 
-#### `visit_Literal()` (line 237)
+#### `visit_Literal()` (line 252)
 **Args**: self, expr
 
 
-#### `visit_Unary()` (line 239)
+#### `visit_Unary()` (line 255)
 **Args**: self, expr
 
 
-#### `visit_Variable()` (line 241)
+#### `visit_Variable()` (line 258)
 **Args**: self, expr
 
 
-#### `visit_Call()` (line 243)
+#### `visit_Call()` (line 261)
 **Args**: self, expr
 
 
@@ -2773,185 +2827,185 @@ _Parse the entire program._
 **Args**: self
 
 
-#### `expression_statement()` (line 92)
+#### `expression_statement()` (line 94)
 **Args**: self
 
 
-#### `if_statement()` (line 97)
+#### `if_statement()` (line 99)
 **Args**: self
 
 
-#### `function()` (line 109)
+#### `function()` (line 111)
 **Args**: self, kind
 
 
-#### `block()` (line 128)
+#### `block()` (line 130)
 **Args**: self
 
 
-#### `expression()` (line 135)
+#### `expression()` (line 137)
 **Args**: self
 
 
-#### `assignment()` (line 138)
+#### `assignment()` (line 140)
 **Args**: self
 
 
-#### `equality()` (line 153)
+#### `equality()` (line 155)
 **Args**: self
 
 
-#### `comparison()` (line 163)
+#### `comparison()` (line 165)
 **Args**: self
 
 
-#### `term()` (line 176)
+#### `term()` (line 178)
 **Args**: self
 
 
-#### `factor()` (line 184)
+#### `factor()` (line 186)
 **Args**: self
 
 
-#### `unary()` (line 192)
+#### `unary()` (line 194)
 **Args**: self
 
 
-#### `primary()` (line 199)
+#### `primary()` (line 201)
 **Args**: self
 
 
-#### `_primary()` (line 214)
+#### `_primary()` (line 218)
 **Args**: self
 
 
-#### `finish_call()` (line 245)
+#### `finish_call()` (line 249)
 **Args**: self, callee
 
 
-#### `match()` (line 258)
+#### `match()` (line 262)
 **Args**: self
 
 
-#### `consume()` (line 265)
+#### `consume()` (line 269)
 **Args**: self, type_, message
 
 
-#### `error()` (line 272)
+#### `error()` (line 276)
 **Args**: self, token, message
 
 
-#### `synchronize()` (line 278)
+#### `synchronize()` (line 282)
 **Args**: self
 
 
-#### `check()` (line 298)
+#### `check()` (line 302)
 **Args**: self, type_
 
 
-#### `advance()` (line 303)
+#### `advance()` (line 307)
 **Args**: self
 
 
-#### `is_at_end()` (line 308)
+#### `is_at_end()` (line 312)
 **Args**: self
 
 
-#### `peek()` (line 311)
+#### `peek()` (line 315)
 **Args**: self
 
 
-#### `previous()` (line 314)
+#### `previous()` (line 318)
 **Args**: self
 
 
 ### hypercode\src\hypercode\core\sensory_profile.py
 
-#### `to_dict()` (line 65)
+#### `to_dict()` (line 77)
 _Convert the profile to a dictionary._
 
 **Args**: self
 
 
-#### `from_dict()` (line 73)
+#### `from_dict()` (line 85)
 _Create a profile from a dictionary._
 
 **Args**: cls, data
 
 
-#### `save()` (line 95)
+#### `save()` (line 107)
 _Save the profile to a file._
 
 **Args**: self, path
 
 
-#### `load()` (line 101)
+#### `load()` (line 113)
 _Load a profile from a file._
 
 **Args**: cls, path
 
 
-#### `__init__()` (line 110)
+#### `__init__()` (line 123)
 _Initialize with optional custom profiles directory._
 
 **Args**: self, profiles_dir
 
 
-#### `_ensure_default_profiles()` (line 120)
+#### `_ensure_default_profiles()` (line 133)
 _Ensure default profiles exist._
 
 **Args**: self
 
 
-#### `_create_minimal_profile()` (line 133)
+#### `_create_minimal_profile()` (line 146)
 _Create a minimal distraction-free profile._
 
 **Args**: self
 
 
-#### `_create_enhanced_profile()` (line 156)
+#### `_create_enhanced_profile()` (line 163)
 _Create an enhanced profile with helpful visual cues._
 
 **Args**: self
 
 
-#### `_create_high_contrast_profile()` (line 185)
+#### `_create_high_contrast_profile()` (line 190)
 _Create a high-contrast profile for better readability._
 
 **Args**: self
 
 
-#### `list_profiles()` (line 213)
+#### `list_profiles()` (line 216)
 _List all available profile names._
 
 **Args**: self
 
 
-#### `get_profile()` (line 217)
+#### `get_profile()` (line 220)
 _Get a profile by name._
 
 **Args**: self, name
 
 
-#### `save_profile()` (line 224)
+#### `save_profile()` (line 227)
 _Save a profile._
 
 **Args**: self, profile
 
 
-#### `delete_profile()` (line 229)
+#### `delete_profile()` (line 232)
 _Delete a profile by name._
 
 **Args**: self, name
 
 
-#### `get_profile()` (line 238)
+#### `get_profile()` (line 243)
 _Helper function to get a profile by name._
 
 **Args**: name
 
 
-#### `list_profiles()` (line 242)
+#### `list_profiles()` (line 248)
 _Helper function to list all available profiles._
 
 
@@ -3165,13 +3219,13 @@ _Test the connection to the Perplexity API_
 
 ### hypercode\src\hypercode\repl.py
 
-#### `run_repl()` (line 11)
+#### `run_repl()` (line 12)
 
-#### `run()` (line 32)
+#### `run()` (line 33)
 **Args**: source
 
 
-#### `show_help()` (line 51)
+#### `show_help()` (line 54)
 
 ### hypercode\src\hypercode_idea_generator.py
 
@@ -3802,49 +3856,49 @@ _Analyze a Python file with AI assistance_
 **Args**: self, file_path
 
 
-#### `_analyze_complexity()` (line 61)
+#### `_analyze_complexity()` (line 72)
 _Analyze code complexity indicators_
 
 **Args**: self, tree
 
 
-#### `_check_docstrings()` (line 98)
+#### `_check_docstrings()` (line 113)
 _Check for docstring coverage_
 
 **Args**: self, tree
 
 
-#### `_get_ai_code_analysis()` (line 134)
+#### `_get_ai_code_analysis()` (line 155)
 _Get AI analysis of code from Perplexity_
 
 **Args**: self, code, file_path
 
 
-#### `analyze_project()` (line 162)
+#### `analyze_project()` (line 183)
 _Analyze entire project_
 
 **Args**: self, project_path
 
 
-#### `_get_project_ai_insights()` (line 206)
+#### `_get_project_ai_insights()` (line 230)
 _Get AI insights for the entire project_
 
 **Args**: self, analyses, stats
 
 
-#### `save_analysis()` (line 238)
+#### `save_analysis()` (line 262)
 _Save analysis to file_
 
 **Args**: self, analysis, filename
 
 
-#### `print_summary()` (line 244)
+#### `print_summary()` (line 270)
 _Print analysis summary_
 
 **Args**: self, analysis
 
 
-#### `main()` (line 262)
+#### `main()` (line 288)
 _Main function_
 
 
@@ -3892,43 +3946,43 @@ _Analyze project structure and identify health issues_
 **Args**: self
 
 
-#### `analyze_dependencies()` (line 64)
+#### `analyze_dependencies()` (line 68)
 _Analyze dependency management_
 
 **Args**: self
 
 
-#### `analyze_security()` (line 100)
+#### `analyze_security()` (line 110)
 _Analyze security configuration_
 
 **Args**: self
 
 
-#### `get_ai_recommendations()` (line 137)
+#### `get_ai_recommendations()` (line 143)
 _Get AI-powered recommendations based on health scan_
 
 **Args**: self, health_data
 
 
-#### `run_full_scan()` (line 164)
+#### `run_full_scan()` (line 170)
 _Run complete health scan with AI analysis_
 
 **Args**: self
 
 
-#### `save_report()` (line 215)
+#### `save_report()` (line 221)
 _Save health scan report to file_
 
 **Args**: self, report, filename
 
 
-#### `print_summary()` (line 221)
+#### `print_summary()` (line 227)
 _Print a summary of the health scan_
 
 **Args**: self, report
 
 
-#### `main()` (line 241)
+#### `main()` (line 247)
 _Main function to run the health scanner_
 
 
@@ -4021,59 +4075,59 @@ _Show the import menu_
 
 ### hypercode\src\utils\local_health_scanner.py
 
-#### `__init__()` (line 22)
+#### `__init__()` (line 23)
 **Args**: self
 
 
-#### `scan_project()` (line 34)
+#### `scan_project()` (line 35)
 _Scan the entire project and return health metrics_
 
 **Args**: self
 
 
-#### `_scan_directory()` (line 42)
+#### `_scan_directory()` (line 43)
 _Recursively scan a directory for Python files_
 
 **Args**: self, directory
 
 
-#### `_analyze_file()` (line 51)
+#### `_analyze_file()` (line 52)
 _Analyze a single Python file_
 
 **Args**: self, file_path
 
 
-#### `_analyze_ast()` (line 74)
+#### `_analyze_ast()` (line 77)
 _Analyze Python AST for code quality metrics_
 
 **Args**: self, node
 
 
-#### `_check_documentation()` (line 94)
+#### `_check_documentation()` (line 97)
 _Check documentation coverage_
 
 **Args**: self
 
 
-#### `_check_tests()` (line 106)
+#### `_check_tests()` (line 109)
 _Check test coverage_
 
 **Args**: self
 
 
-#### `_calculate_metrics()` (line 117)
+#### `_calculate_metrics()` (line 120)
 _Calculate final metrics_
 
 **Args**: self
 
 
-#### `print_health_report()` (line 128)
+#### `print_health_report()` (line 132)
 _Print a formatted health report_
 
 **Args**: metrics
 
 
-#### `main()` (line 158)
+#### `main()` (line 163)
 _Main function to run the health scanner_
 
 
@@ -4101,7 +4155,7 @@ _Main menu for the collector_
 
 ### hypercode\src\utils\run_lexer.py
 
-#### `run_lexer()` (line 12)
+#### `run_lexer()` (line 13)
 _Run the lexer on a source file and print the tokens._
 
 **Args**: source_file
@@ -4141,29 +4195,29 @@ _Run all validations and return results._
 
 ### hypercode\test_mcp_connection.py
 
-#### `check_port()` (line 25)
+#### `check_port()` (line 26)
 _Check if a port is open on the given host._
 
 **Args**: host, port, timeout
 
 
-#### `find_running_servers()` (line 34)
+#### `find_running_servers()` (line 36)
 _Scan common ports to find running servers._
 
 **Args**: host
 
 
-#### `test_server_connection()` (line 46)
+#### `test_server_connection()` (line 49)
 _Test connection to a single MCP server._
 
 **Args**: server_name, base_url, port
 
 
-#### `test_all_servers()` (line 82)
+#### `test_all_servers()` (line 90)
 _Test connection to all MCP servers and print results._
 
 
-#### `check_dependencies()` (line 124)
+#### `check_dependencies()` (line 139)
 _Check if required dependencies are installed._
 
 
@@ -4255,7 +4309,7 @@ _Test context-aware queries_
 
 ### hypercode\tests\test_intent_blocks.py
 
-#### `test_intent_block()` (line 11)
+#### `test_intent_block()` (line 13)
 _Test parsing of intent blocks_
 
 
@@ -4267,31 +4321,31 @@ _A helper function to run code and capture stdout._
 **Args**: source
 
 
-#### `test_if_statement_then()` (line 29)
+#### `test_if_statement_then()` (line 30)
 **Args**: self
 
 
-#### `test_if_statement_else()` (line 41)
+#### `test_if_statement_else()` (line 42)
 **Args**: self
 
 
-#### `test_function_call()` (line 53)
+#### `test_function_call()` (line 54)
 **Args**: self
 
 
-#### `test_function_with_parameters()` (line 63)
+#### `test_function_with_parameters()` (line 64)
 **Args**: self
 
 
-#### `test_function_with_return()` (line 73)
+#### `test_function_with_return()` (line 74)
 **Args**: self
 
 
-#### `test_recursive_function_call()` (line 84)
+#### `test_recursive_function_call()` (line 85)
 **Args**: self
 
 
-#### `test_scoping()` (line 98)
+#### `test_scoping()` (line 99)
 **Args**: self
 
 
@@ -4345,135 +4399,135 @@ _Test that search results are ranked by relevance._
 **Args**: self, knowledge_base, sample_documents
 
 
-#### `test_query_normalization()` (line 88)
+#### `test_query_normalization()` (line 90)
 _Test query normalization (typos, spacing, punctuation)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_multi_word_query()` (line 96)
+#### `test_multi_word_query()` (line 98)
 _Test search with multiple keywords._
 
 **Args**: self, knowledge_base
 
 
-#### `test_tag_based_search()` (line 101)
+#### `test_tag_based_search()` (line 103)
 _Test search that includes tag matching._
 
 **Args**: self, knowledge_base, sample_documents
 
 
-#### `knowledge_base()` (line 114)
+#### `knowledge_base()` (line 116)
 **Args**: self
 
 
-#### `test_very_short_query()` (line 119)
+#### `test_very_short_query()` (line 121)
 _Test search with very short query (1-2 chars)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_very_long_query()` (line 124)
+#### `test_very_long_query()` (line 126)
 _Test search with very long query (paragraph length)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_special_characters_in_query()` (line 134)
+#### `test_special_characters_in_query()` (line 136)
 _Test search with special characters._
 
 **Args**: self, knowledge_base
 
 
-#### `test_unicode_in_query()` (line 139)
+#### `test_unicode_in_query()` (line 141)
 _Test search with unicode characters._
 
 **Args**: self, knowledge_base
 
 
-#### `test_sql_injection_attempt()` (line 144)
+#### `test_sql_injection_attempt()` (line 146)
 _Test that search is safe from SQL injection-style attacks._
 
 **Args**: self, knowledge_base
 
 
-#### `test_repeated_queries()` (line 149)
+#### `test_repeated_queries()` (line 151)
 _Test that repeated queries return consistent results._
 
 **Args**: self, knowledge_base
 
 
-#### `large_knowledge_base()` (line 161)
+#### `large_knowledge_base()` (line 163)
 _Create a knowledge base with many documents._
 
 **Args**: self
 
 
-#### `test_search_response_time()` (line 177)
+#### `test_search_response_time()` (line 179)
 _Test that search completes within acceptable time._
 
 **Args**: self, large_knowledge_base
 
 
-#### `test_concurrent_searches()` (line 187)
+#### `test_concurrent_searches()` (line 189)
 _Test multiple concurrent search operations._
 
 **Args**: self, large_knowledge_base
 
 
-#### `test_memory_usage()` (line 205)
+#### `test_memory_usage()` (line 207)
 _Test memory usage during search operations._
 
 **Args**: self, large_knowledge_base
 
 
-#### `mock_perplexity_client()` (line 215)
+#### `mock_perplexity_client()` (line 217)
 _Create a mock Perplexity client._
 
 **Args**: self
 
 
-#### `mock_knowledge_base()` (line 227)
+#### `mock_knowledge_base()` (line 229)
 _Create a mock knowledge base._
 
 **Args**: self
 
 
-#### `test_enhanced_query_with_context()` (line 241)
+#### `test_enhanced_query_with_context()` (line 243)
 _Test that queries are enhanced with knowledge base context._
 
 **Args**: self, mock_perplexity_client, mock_knowledge_base
 
 
-#### `test_fallback_to_perplexity_api()` (line 255)
+#### `test_fallback_to_perplexity_api()` (line 259)
 _Test fallback to Perplexity API when no local context found._
 
 **Args**: self, mock_perplexity_client, mock_knowledge_base
 
 
-#### `test_context_ranking_and_selection()` (line 267)
+#### `test_context_ranking_and_selection()` (line 273)
 _Test that best context is selected for query enhancement._
 
 **Args**: self, mock_knowledge_base
 
 
-#### `knowledge_base()` (line 286)
+#### `knowledge_base()` (line 292)
 **Args**: self
 
 
-#### `test_add_document()` (line 294)
+#### `test_add_document()` (line 300)
 _Test adding a new document to knowledge base._
 
 **Args**: self, knowledge_base
 
 
-#### `test_update_document()` (line 304)
+#### `test_update_document()` (line 310)
 _Test updating an existing document._
 
 **Args**: self, knowledge_base
 
 
-#### `test_remove_document()` (line 309)
+#### `test_remove_document()` (line 315)
 _Test removing a document._
 
 **Args**: self, knowledge_base
@@ -4789,7 +4843,7 @@ _Test integration with AI Research document content_
 _Test enhanced KnowledgeBase functionality_
 
 
-#### `test_real_perplexity_data_simulation()` (line 183)
+#### `test_real_perplexity_data_simulation()` (line 185)
 _Simulate testing with real Perplexity Space data_
 
 
@@ -4801,39 +4855,39 @@ _Test queries that use your actual Perplexity Space data_
 
 ### hypercode\tests\test_sensory_profiles.py
 
-#### `test_visual_settings_creation()` (line 20)
+#### `test_visual_settings_creation()` (line 21)
 _Test creating visual settings._
 
 
-#### `test_audio_settings_creation()` (line 33)
+#### `test_audio_settings_creation()` (line 35)
 _Test creating audio settings._
 
 
-#### `test_animation_settings_creation()` (line 45)
+#### `test_animation_settings_creation()` (line 44)
 _Test creating animation settings._
 
 
-#### `test_sensory_profile_creation()` (line 57)
+#### `test_sensory_profile_creation()` (line 55)
 _Test creating a complete sensory profile._
 
 
-#### `test_profile_serialization()` (line 72)
+#### `test_profile_serialization()` (line 71)
 _Test serializing AND deserializing a profile._
 
 
-#### `test_profile_file_io()` (line 95)
+#### `test_profile_file_io()` (line 92)
 _Test saving and loading a profile to/from a file._
 
 **Args**: tmp_path
 
 
-#### `test_profile_manager_initialization()` (line 117)
+#### `test_profile_manager_initialization()` (line 115)
 _Test initializing the profile manager and checking default profiles._
 
 **Args**: tmp_path
 
 
-#### `test_profile_manager_get_profile()` (line 130)
+#### `test_profile_manager_get_profile()` (line 129)
 _Test getting a profile by name._
 
 **Args**: tmp_path
@@ -4845,7 +4899,7 @@ _Test saving a custom profile._
 **Args**: tmp_path
 
 
-#### `test_profile_manager_delete_profile()` (line 168)
+#### `test_profile_manager_delete_profile()` (line 169)
 _Test deleting a profile._
 
 **Args**: tmp_path
@@ -4853,15 +4907,15 @@ _Test deleting a profile._
 
 ### hypercode\tests\tests\test_lexer_enhanced.py
 
-#### `test_lexer_edge_cases()` (line 6)
+#### `test_lexer_edge_cases()` (line 7)
 
-#### `test_lexer_error_handling()` (line 26)
+#### `test_lexer_error_handling()` (line 28)
 
-#### `test_lexer_number_literals()` (line 40)
+#### `test_lexer_number_literals()` (line 43)
 
-#### `test_lexer_string_interpolation()` (line 61)
+#### `test_lexer_string_interpolation()` (line 65)
 
-#### `test_lexer_docstrings()` (line 74)
+#### `test_lexer_docstrings()` (line 79)
 
 ### hypercode\tests\unit\test_direct_access.py
 
@@ -4885,7 +4939,7 @@ _Test context-aware queries_
 
 ### hypercode\tests\unit\test_intent_blocks.py
 
-#### `test_intent_block()` (line 11)
+#### `test_intent_block()` (line 13)
 _Test parsing of intent blocks_
 
 
@@ -5001,7 +5055,7 @@ _Test document with optional fields_
 
 ### hypercode\tests\unit\test_lexer.py
 
-#### `test_lexer()` (line 11)
+#### `test_lexer()` (line 12)
 _Test the lexer with the given source code and print the results.
 
 Args:
@@ -5011,35 +5065,35 @@ Args:
 **Args**: source, description
 
 
-#### `run_tests()` (line 38)
+#### `run_tests()` (line 42)
 _Run a series of test cases for the lexer._
 
 
 ### hypercode\tests\unit\test_mcp_connection.py
 
-#### `check_port()` (line 25)
+#### `check_port()` (line 26)
 _Check if a port is open on the given host._
 
 **Args**: host, port, timeout
 
 
-#### `find_running_servers()` (line 34)
+#### `find_running_servers()` (line 36)
 _Scan common ports to find running servers._
 
 **Args**: host
 
 
-#### `test_server_connection()` (line 46)
+#### `test_server_connection()` (line 49)
 _Test connection to a single MCP server._
 
 **Args**: server_name, base_url, port
 
 
-#### `test_all_servers()` (line 82)
+#### `test_all_servers()` (line 90)
 _Test connection to all MCP servers and print results._
 
 
-#### `check_dependencies()` (line 124)
+#### `check_dependencies()` (line 139)
 _Check if required dependencies are installed._
 
 
@@ -5059,7 +5113,7 @@ _Test integration with AI Research document content_
 _Test enhanced KnowledgeBase functionality_
 
 
-#### `test_real_perplexity_data_simulation()` (line 183)
+#### `test_real_perplexity_data_simulation()` (line 185)
 _Simulate testing with real Perplexity Space data_
 
 
@@ -5212,6 +5266,207 @@ _Test that content frequency affects scoring_
 #### `unnamed_function()` (line 5)
 
 #### `unnamed_function()` (line 6)
+
+### hypercode_db.py
+
+#### `__post_init__()` (line 23)
+_Validate the entity after initialization._
+
+**Args**: self
+
+
+#### `__init__()` (line 35)
+_Initialize the database with the given JSON file.
+
+Args:
+    db_path: Path to the JSON database file_
+
+**Args**: self, db_path
+
+
+#### `_load_database()` (line 46)
+_Load the database from a JSON file.
+
+Args:
+    db_path: Path to the JSON database file_
+
+**Args**: self, db_path
+
+
+#### `get_entities_by_type()` (line 93)
+_Get all entities of a specific type.
+
+Args:
+    entity_type: The type of entities to retrieve (e.g., 'function', 'class')
+
+Returns:
+    List of matching CodeEntity objects_
+
+**Args**: self, entity_type
+
+
+#### `get_entities_in_file()` (line 104)
+_Get all entities in a specific file.
+
+Args:
+    file_path: Path to the file
+
+Returns:
+    List of CodeEntity objects in the file_
+
+**Args**: self, file_path
+
+
+#### `print_analysis()` (line 116)
+_Print a detailed analysis of the codebase.
+
+Args:
+    db: Initialized HypercodeDB instance_
+
+**Args**: db
+
+
+### live_research\cli.py
+
+#### `print_entry()` (line 10)
+_Print a research entry in a readable format._
+
+**Args**: entry, detailed
+
+
+#### `search_entries()` (line 38)
+_Search for research entries._
+
+**Args**: args
+
+
+#### `view_entry()` (line 59)
+_View a specific research entry by ID._
+
+**Args**: args
+
+
+#### `add_entry()` (line 71)
+_Add a new research entry._
+
+**Args**: args
+
+
+#### `import_entries()` (line 94)
+_Import entries from a JSON file._
+
+**Args**: args
+
+
+#### `export_entries()` (line 126)
+_Export all entries to a JSON file._
+
+**Args**: args
+
+
+#### `main()` (line 150)
+_Main CLI entry point._
+
+
+### live_research\database.py
+
+#### `__init__()` (line 8)
+_Initialize the database connection and create tables if they don't exist._
+
+**Args**: self, db_path
+
+
+#### `_get_connection()` (line 13)
+_Create and return a database connection._
+
+**Args**: self
+
+
+#### `_create_tables()` (line 17)
+_Create the necessary tables if they don't exist._
+
+**Args**: self
+
+
+#### `add_research_entry()` (line 68)
+_Add a new research entry to the database._
+
+**Args**: self, entry_data
+
+
+#### `get_research_entry()` (line 128)
+_Retrieve a research entry by its ID._
+
+**Args**: self, entry_id
+
+
+#### `search_entries()` (line 159)
+_Search research entries by content or tags._
+
+**Args**: self, query, tag, limit
+
+
+#### `import_from_json()` (line 220)
+_Import research entries from a JSON file._
+
+**Args**: self, json_path
+
+
+#### `setup_database()` (line 241)
+_Initialize and return a configured ResearchDatabase instance._
+
+
+### live_research\import_research.py
+
+#### `import_research_data()` (line 18)
+_Import all JSON research files into the database._
+
+
+### live_research\web\app.py
+
+#### `get_db_connection()` (line 35)
+_Create and return a database connection._
+
+
+#### `index()` (line 43)
+_Home page showing recent research entries._
+
+
+#### `view_entry()` (line 79)
+_View a specific research entry._
+
+**Args**: entry_id
+
+
+#### `search()` (line 121)
+_Search for research entries._
+
+
+#### `list_tags()` (line 194)
+_List all tags with counts._
+
+
+#### `api_entries()` (line 219)
+_API endpoint to get all entries in JSON format._
+
+
+#### `page_not_found()` (line 246)
+_Handle 404 errors._
+
+**Args**: e
+
+
+#### `server_error()` (line 252)
+_Handle 500 errors._
+
+**Args**: e
+
+
+#### `format_date_filter()` (line 258)
+_Format a date string._
+
+**Args**: date_str, format
+
 
 ### mcp\servers\aws_cli.py
 
@@ -5377,12 +5632,255 @@ development and testing can proceed without a PostgreSQL server._
 
 #### `main()` (line 25)
 
-### run_lexer.py
+### scripts\build-hyper-database.py
 
-#### `run_lexer()` (line 12)
-_Run the lexer on a source file and print the tokens._
+#### `__init__()` (line 24)
+_Initialize builder with repo root path._
 
-**Args**: source_file
+**Args**: self, repo_root
+
+
+#### `scan_python_file()` (line 32)
+_Extract functions, classes from Python file._
+
+**Args**: self, file_path
+
+
+#### `scan_javascript_file()` (line 78)
+_Extract functions from JavaScript (regex-based)._
+
+**Args**: self, file_path
+
+
+#### `should_skip_directory()` (line 107)
+_Check if directory should be skipped._
+
+**Args**: dirname
+
+
+#### `build()` (line 127)
+_Scan entire repo and build database._
+
+**Args**: self
+
+
+#### `generate_markdown_report()` (line 161)
+_Generate HYPER_DATABASE.md report._
+
+**Args**: self
+
+
+#### `generate_json_report()` (line 250)
+_Generate machine-readable HYPER_DATABASE.json._
+
+**Args**: self
+
+
+#### `main()` (line 265)
+_Main entry point with proper encoding handling._
+
+
+### scripts\build_knowledge_base.py
+
+#### `__init__()` (line 38)
+_Initialize the knowledge base builder.
+
+Args:
+    repo_root: Root directory of the HyperCode repository
+    output_dir: Directory to store the generated knowledge base_
+
+**Args**: self, repo_root, output_dir
+
+
+#### `should_skip()` (line 79)
+_Check if a path should be skipped during processing._
+
+**Args**: self, path
+
+
+#### `get_file_type()` (line 162)
+_Get the file type category._
+
+**Args**: self, path
+
+
+#### `process_file()` (line 244)
+_Process a single file and return its metadata._
+
+**Args**: self, file_path
+
+
+#### `build_index()` (line 287)
+_Build the knowledge base index._
+
+**Args**: self
+
+
+#### `main()` (line 376)
+_Main entry point for the script._
+
+
+### scripts\document_processor.py
+
+#### `get_file_hash()` (line 19)
+_Generate a hash for file content._
+
+**Args**: file_path
+
+
+#### `extract_metadata()` (line 29)
+_Extract basic metadata from any file._
+
+**Args**: file_path
+
+
+#### `extract_pdf_content()` (line 43)
+_Extract text content from PDF files._
+
+**Args**: file_path
+
+
+#### `extract_markdown_content()` (line 74)
+_Extract content from Markdown files with frontmatter support._
+
+**Args**: file_path
+
+
+#### `extract_docx_content()` (line 99)
+_Extract text content from DOCX files._
+
+**Args**: file_path
+
+
+#### `extract_csv_content()` (line 133)
+_Extract content from CSV files._
+
+**Args**: file_path
+
+
+#### `extract_text_content()` (line 154)
+_Extract content from plain text files._
+
+**Args**: file_path
+
+
+#### `process_document()` (line 167)
+_Process a document based on its file type._
+
+**Args**: cls, file_path
+
+
+### scripts\generate_directory_readmes.py
+
+#### `create_readme()` (line 9)
+_Create or update a README.md file with the given content._
+
+**Args**: directory, content
+
+
+#### `main()` (line 20)
+
+### scripts\organize_docs.py
+
+#### `setup_directories()` (line 131)
+_Create the new documentation directory structure._
+
+
+#### `move_files()` (line 138)
+_Move files to their new locations based on the mapping._
+
+
+#### `generate_report()` (line 172)
+_Generate a migration report._
+
+**Args**: moved_files, skipped_files
+
+
+#### `main()` (line 204)
+
+### scripts\run_lexer.py
+
+#### `setUp()` (line 21)
+_Create a fresh lexer instance for each test._
+
+**Args**: self
+
+
+#### `test_empty_source()` (line 25)
+_Test that an empty source returns only an EOF token._
+
+**Args**: self
+
+
+#### `test_basic_tokens()` (line 31)
+_Test basic token types are correctly identified._
+
+**Args**: self
+
+
+#### `test_string_literals()` (line 44)
+_Test string literals with various contents._
+
+**Args**: self
+
+
+#### `test_numbers()` (line 58)
+_Test different number formats._
+
+**Args**: self
+
+
+#### `test_arithmetic_expressions()` (line 83)
+_Test complex arithmetic expressions._
+
+**Args**: self
+
+
+#### `test_comments()` (line 107)
+_Test different types of comments are properly ignored._
+
+**Args**: self
+
+
+#### `test_error_handling()` (line 121)
+_Test that the lexer properly handles and reports errors._
+
+**Args**: self
+
+
+#### `test_error_recovery()` (line 153)
+_Test that the lexer can recover from invalid tokens and continue parsing._
+
+**Args**: self
+
+
+#### `_assert_token_types()` (line 179)
+_Helper to assert token types match expected types.
+
+Args:
+    tokens: List of tokens to check
+    expected_types: List of expected token types
+    msg: Optional message to include in assertion errors_
+
+**Args**: self, tokens, expected_types, msg
+
+
+#### `test_lexer_error_class()` (line 201)
+_Test that LexerError is properly defined and can be instantiated._
+
+**Args**: self
+
+
+### scripts\run_tests.py
+
+#### `run_tests()` (line 16)
+_Run pytest with the given arguments and coverage reporting._
+
+**Args**: args
+
+
+#### `main()` (line 49)
+_Parse command line arguments and run tests._
 
 
 ### scripts\style_guide_collector.py
@@ -5501,10 +5999,172 @@ _🎯 Interactive feedback collection from command line_
 _🚀 Main entry point_
 
 
+### scripts\sync-space-to-main.py
+
+#### `log_error()` (line 25)
+_Error-level log with traceback._
+
+**Args**: msg
+
+
+#### `log_info()` (line 46)
+_Info-level log._
+
+**Args**: msg
+
+
+#### `log_success()` (line 51)
+_Success-level log._
+
+**Args**: msg
+
+
+#### `log_warning()` (line 56)
+_Warning-level log._
+
+**Args**: msg
+
+
+#### `deep_merge()` (line 61)
+_Recursively merge source dict into destination dict._
+
+**Args**: source, destination
+
+
+#### `load_config()` (line 72)
+_Load sync configuration from TOML file.
+Fallback to defaults if file doesn't exist._
+
+**Args**: config_path
+
+
+#### `should_skip_file()` (line 112)
+_Check if file should be skipped based on filters._
+
+**Args**: filepath, config
+
+
+#### `get_all_files()` (line 135)
+_Recursively get all files in directory._
+
+**Args**: directory
+
+
+#### `copy_file()` (line 145)
+_Copy file with directory creation. Returns True if copied/would copy._
+
+**Args**: src, dst, dry_run
+
+
+#### `remove_file()` (line 157)
+_Remove file. Returns True if removed/would remove._
+
+**Args**: filepath, dry_run
+
+
+#### `sync_folder()` (line 168)
+_Sync source folder to target folder (one-way).
+Returns (copied, updated, errors) counts._
+
+**Args**: source, target, config, dry_run
+
+
+#### `delete_orphans()` (line 212)
+_Remove files from target that no longer exist in source._
+
+**Args**: target, source, dry_run
+
+
+#### `sync_all_mappings()` (line 229)
+_Execute all mappings from config._
+
+**Args**: config, dry_run
+
+
+#### `write_log()` (line 281)
+_Write sync results to log file._
+
+**Args**: log_file, stats, dry_run
+
+
+#### `print_summary()` (line 303)
+_Print sync summary to console._
+
+**Args**: stats, dry_run
+
+
+#### `main()` (line 327)
+
+### scripts\test_mcp_connection.py
+
+#### `check_port()` (line 25)
+_Check if a port is open on the given host._
+
+**Args**: host, port, timeout
+
+
+#### `find_running_servers()` (line 34)
+_Scan common ports to find running servers._
+
+**Args**: host
+
+
+#### `test_server_connection()` (line 46)
+_Test connection to a single MCP server._
+
+**Args**: server_name, base_url, port
+
+
+#### `test_all_servers()` (line 82)
+_Test connection to all MCP servers and print results._
+
+
+#### `check_dependencies()` (line 124)
+_Check if required dependencies are installed._
+
+
 ### scripts\test_perplexity_api.py
 
 #### `main()` (line 17)
 _Test the Perplexity API connection and make a sample query._
+
+
+### scripts\update_doc_links.py
+
+#### `update_links_in_file()` (line 27)
+_Update links in a single file._
+
+**Args**: file_path
+
+
+#### `replace_link()` (line 39)
+**Args**: match
+
+
+#### `main()` (line 63)
+
+### scripts\web_interface.py
+
+#### `load_index()` (line 18)
+
+#### `search_documents()` (line 24)
+**Args**: query, limit
+
+
+#### `index()` (line 58)
+
+#### `search()` (line 63)
+
+#### `get_document()` (line 71)
+**Args**: doc_id
+
+
+#### `serve_static()` (line 80)
+**Args**: filename
+
+
+#### `create_template_if_not_exists()` (line 84)
+_Create the template directory and index.html if they don't exist_
 
 
 ### server.js
@@ -5569,12 +6229,6 @@ Args:
 
 #### `__init__()` (line 25)
 **Args**: self, api_key
-
-
-### src\core\ast.py
-
-#### `accept()` (line 10)
-**Args**: self, visitor
 
 
 ### src\core\hypercode-\5 Core TypeScript Modules\code-analyzer.ts
@@ -10426,18 +11080,26 @@ _CLI interface for the parser_
 
 #### `main()` (line 6)
 
+### src\hypercode\cli\__init__.py
+
+#### `main()` (line 14)
+_Run the HyperCode lexer from the command line.
+
+Args:
+    args: Command line arguments (defaults to sys.argv[1:])
+
+Returns:
+    int: Exit code (0 for success, non-zero for errors)_
+
+**Args**: args
+
+
 ### src\hypercode\config.py
 
 #### `get_headers()` (line 27)
 _Get headers for API requests_
 
 **Args**: cls
-
-
-### src\hypercode\core\ast.py
-
-#### `accept()` (line 10)
-**Args**: self, visitor
 
 
 ### src\hypercode\core\error_handler.py
@@ -10450,25 +11112,31 @@ _Get headers for API requests_
 **Args**: line, where, message
 
 
+### src\hypercode\core\hypercode_ast.py
+
+#### `accept()` (line 10)
+**Args**: self, visitor
+
+
 ### src\hypercode\core\interpreter.py
 
-#### `__init__()` (line 9)
+#### `__init__()` (line 7)
 **Args**: self, value
 
 
-#### `__init__()` (line 13)
+#### `__init__()` (line 12)
 **Args**: self, declaration, closure
 
 
-#### `__str__()` (line 17)
+#### `__str__()` (line 16)
 **Args**: self
 
 
-#### `arity()` (line 20)
+#### `arity()` (line 19)
 **Args**: self
 
 
-#### `call()` (line 23)
+#### `call()` (line 22)
 **Args**: self, interpreter, arguments
 
 
@@ -10568,63 +11236,63 @@ _Get headers for API requests_
 **Args**: self, expr
 
 
-#### `is_callable()` (line 212)
+#### `is_callable()` (line 214)
 **Args**: self, obj
 
 
-#### `visit_Expression()` (line 217)
+#### `visit_Expression()` (line 220)
 **Args**: self, stmt
 
 
-#### `visit_Print()` (line 219)
+#### `visit_Print()` (line 223)
 **Args**: self, stmt
 
 
-#### `visit_Var()` (line 221)
+#### `visit_Var()` (line 226)
 **Args**: self, stmt
 
 
-#### `visit_Block()` (line 223)
+#### `visit_Block()` (line 229)
 **Args**: self, stmt
 
 
-#### `visit_If()` (line 225)
+#### `visit_If()` (line 232)
 **Args**: self, stmt
 
 
-#### `visit_Fun()` (line 227)
+#### `visit_Fun()` (line 235)
 **Args**: self, stmt
 
 
-#### `visit_Return()` (line 229)
+#### `visit_Return()` (line 238)
 **Args**: self, stmt
 
 
-#### `visit_Assign()` (line 231)
+#### `visit_Assign()` (line 241)
 **Args**: self, expr
 
 
-#### `visit_Binary()` (line 233)
+#### `visit_Binary()` (line 244)
 **Args**: self, expr
 
 
-#### `visit_Grouping()` (line 235)
+#### `visit_Grouping()` (line 247)
 **Args**: self, expr
 
 
-#### `visit_Literal()` (line 237)
+#### `visit_Literal()` (line 250)
 **Args**: self, expr
 
 
-#### `visit_Unary()` (line 239)
+#### `visit_Unary()` (line 253)
 **Args**: self, expr
 
 
-#### `visit_Variable()` (line 241)
+#### `visit_Variable()` (line 256)
 **Args**: self, expr
 
 
-#### `visit_Call()` (line 243)
+#### `visit_Call()` (line 259)
 **Args**: self, expr
 
 
@@ -10634,7 +11302,7 @@ _Get headers for API requests_
 **Args**: self, message, line, column
 
 
-#### `__init__()` (line 109)
+#### `__init__()` (line 45)
 _Initialize the lexer with source code.
 
 Args:
@@ -10643,46 +11311,118 @@ Args:
 **Args**: self, source
 
 
-#### `tokenize()` (line 126)
+#### `tokenize()` (line 59)
 _Convert source code into a list of tokens.
 
 Args:
-    source: Optional source code to tokenize. If not provided, uses the source
-           passed to the constructor.
+    source: Optional source code to tokenize. If not provided,
+           uses the source passed to the constructor.
 
 Returns:
-    List of Token objects
-
-Raises:
-    ValueError: If no source code is provided_
+    List of Token objects, always ending with an EOF token_
 
 **Args**: self, source
 
 
-#### `_match_patterns()` (line 161)
-_Try to match the current position against all token patterns._
+#### `is_at_end()` (line 89)
+_Check if we've consumed all characters._
 
 **Args**: self
 
 
-#### `_update_position()` (line 187)
-_Update line and column numbers based on the given text._
-
-**Args**: self, text
+#### `__init__()` (line 105)
+**Args**: self, message, line, column
 
 
-#### `_add_token()` (line 206)
-_Add a token to the token list.
+#### `__init__()` (line 122)
+_Initialize the lexer with source code.
 
 Args:
-    token_type: The type of the token.
-    lexeme: The lexeme of the token (the actual text from the source)._
+    source: The source code to tokenize_
 
-**Args**: self, token_type, lexeme
+**Args**: self, source
 
 
-#### `_handle_unknown()` (line 270)
-_Handle unknown characters in the source._
+#### `tokenize()` (line 136)
+_Convert source code into a list of tokens.
+
+Args:
+    source: Optional source code to tokenize. If not provided,
+           uses the source passed to the constructor.
+
+Returns:
+    List of Token objects, always ending with an EOF token_
+
+**Args**: self, source
+
+
+#### `scan_token()` (line 164)
+_Scan the next token from the source._
+
+**Args**: self
+
+
+#### `string()` (line 251)
+_Scan a string literal._
+
+**Args**: self, quote
+
+
+#### `number()` (line 273)
+_Scan a number literal._
+
+**Args**: self
+
+
+#### `identifier()` (line 306)
+_Scan an identifier or keyword._
+
+**Args**: self
+
+
+#### `match()` (line 316)
+_Match the next character if it matches the expected character._
+
+**Args**: self, expected
+
+
+#### `peek()` (line 327)
+_Look at the next character without consuming it._
+
+**Args**: self
+
+
+#### `peek_next()` (line 333)
+_Look at the character after the next one without consuming it._
+
+**Args**: self
+
+
+#### `advance()` (line 339)
+_Consume and return the next character._
+
+**Args**: self
+
+
+#### `add_token()` (line 349)
+_Add a new token to the tokens list._
+
+**Args**: self, token_type, literal
+
+
+#### `error()` (line 357)
+_Record a lexer error.
+
+Args:
+    message: The error message
+    line: The line number where the error occurred (defaults to current line)
+    column: The column number where the error occurred (defaults to current column)_
+
+**Args**: self, message, line, column
+
+
+#### `is_at_end()` (line 371)
+_Check if we've consumed all characters._
 
 **Args**: self
 
@@ -10817,97 +11557,109 @@ _Parse the entire program._
 
 ### src\hypercode\core\sensory_profile.py
 
-#### `to_dict()` (line 65)
-_Convert the profile to a dictionary._
+#### `to_dict()` (line 77)
+_Convert the profile to a dictionary.
+
+Returns:
+    Dict containing the profile data_
 
 **Args**: self
 
 
-#### `from_dict()` (line 73)
+#### `from_dict()` (line 93)
 _Create a profile from a dictionary._
 
 **Args**: cls, data
 
 
-#### `save()` (line 95)
+#### `save()` (line 115)
 _Save the profile to a file._
 
 **Args**: self, path
 
 
-#### `load()` (line 101)
+#### `load()` (line 121)
 _Load a profile from a file._
 
 **Args**: cls, path
 
 
-#### `__init__()` (line 110)
+#### `__init__()` (line 131)
 _Initialize with optional custom profiles directory._
 
 **Args**: self, profiles_dir
 
 
-#### `_ensure_default_profiles()` (line 120)
+#### `_ensure_default_profiles()` (line 141)
 _Ensure default profiles exist._
 
 **Args**: self
 
 
-#### `_create_minimal_profile()` (line 133)
+#### `_create_minimal_profile()` (line 154)
 _Create a minimal distraction-free profile._
 
 **Args**: self
 
 
-#### `_create_enhanced_profile()` (line 156)
+#### `_create_enhanced_profile()` (line 171)
 _Create an enhanced profile with helpful visual cues._
 
 **Args**: self
 
 
-#### `_create_high_contrast_profile()` (line 185)
+#### `_create_high_contrast_profile()` (line 198)
 _Create a high-contrast profile for better readability._
 
 **Args**: self
 
 
-#### `list_profiles()` (line 213)
+#### `list_profiles()` (line 224)
 _List all available profile names._
 
 **Args**: self
 
 
-#### `get_profile()` (line 217)
+#### `get_profile()` (line 228)
 _Get a profile by name._
 
 **Args**: self, name
 
 
-#### `save_profile()` (line 224)
+#### `save_profile()` (line 235)
 _Save a profile._
 
 **Args**: self, profile
 
 
-#### `delete_profile()` (line 229)
+#### `delete_profile()` (line 240)
 _Delete a profile by name._
 
 **Args**: self, name
 
 
-#### `get_profile()` (line 238)
-_Helper function to get a profile by name._
+#### `get_profile()` (line 251)
+_Helper function to get a profile by name.
+
+Args:
+    name: Name of the profile to retrieve
+
+Returns:
+    The requested SensoryProfile or None if not found_
 
 **Args**: name
 
 
-#### `list_profiles()` (line 242)
-_Helper function to list all available profiles._
+#### `list_profiles()` (line 263)
+_Helper function to list all available profiles.
+
+Returns:
+    List of available profile names_
 
 
 ### src\hypercode\core\tokens.py
 
-#### `__str__()` (line 68)
+#### `__str__()` (line 103)
 **Args**: self
 
 
@@ -12089,138 +12841,6 @@ _Run all validations and return results._
 
 #### `main()` (line 68)
 
-### src\visualization\components\code-visualizer.ts
-
-#### `unnamed_function()` (line 41)
-
-### src\visualization\index.ts
-
-#### `unnamed_function()` (line 8)
-
-### sync-space-to-main.py
-
-#### `log_error()` (line 25)
-_Error-level log with traceback._
-
-**Args**: msg
-
-
-#### `log_info()` (line 46)
-_Info-level log._
-
-**Args**: msg
-
-
-#### `log_success()` (line 51)
-_Success-level log._
-
-**Args**: msg
-
-
-#### `log_warning()` (line 56)
-_Warning-level log._
-
-**Args**: msg
-
-
-#### `deep_merge()` (line 64)
-_Recursively merge source dict into destination dict._
-
-**Args**: source, destination
-
-
-#### `load_config()` (line 75)
-_Load sync configuration from TOML file.
-Fallback to defaults if file doesn't exist._
-
-**Args**: config_path
-
-
-#### `should_skip_file()` (line 115)
-_Check if file should be skipped based on filters._
-
-**Args**: filepath, config
-
-
-#### `get_all_files()` (line 138)
-_Recursively get all files in directory._
-
-**Args**: directory
-
-
-#### `copy_file()` (line 148)
-_Copy file with directory creation. Returns True if copied/would copy._
-
-**Args**: src, dst, dry_run
-
-
-#### `remove_file()` (line 160)
-_Remove file. Returns True if removed/would remove._
-
-**Args**: filepath, dry_run
-
-
-#### `sync_folder()` (line 171)
-_Sync source folder to target folder (one-way).
-Returns (copied, updated, errors) counts._
-
-**Args**: source, target, config, dry_run
-
-
-#### `delete_orphans()` (line 215)
-_Remove files from target that no longer exist in source._
-
-**Args**: target, source, dry_run
-
-
-#### `sync_all_mappings()` (line 232)
-_Execute all mappings from config._
-
-**Args**: config, dry_run
-
-
-#### `write_log()` (line 276)
-_Write sync results to log file._
-
-**Args**: log_file, stats, dry_run
-
-
-#### `print_summary()` (line 298)
-_Print sync summary to console._
-
-**Args**: stats, dry_run
-
-
-#### `main()` (line 323)
-
-### test_mcp_connection.py
-
-#### `check_port()` (line 25)
-_Check if a port is open on the given host._
-
-**Args**: host, port, timeout
-
-
-#### `find_running_servers()` (line 34)
-_Scan common ports to find running servers._
-
-**Args**: host
-
-
-#### `test_server_connection()` (line 46)
-_Test connection to a single MCP server._
-
-**Args**: server_name, base_url, port
-
-
-#### `test_all_servers()` (line 82)
-_Test connection to all MCP servers and print results._
-
-
-#### `check_dependencies()` (line 124)
-_Check if required dependencies are installed._
-
-
 ### tests\benchmark_knowledge_base.py
 
 #### `__init__()` (line 27)
@@ -12279,6 +12899,12 @@ _Save results as JSON_
 _Main benchmark runner_
 
 
+### tests\conftest.py
+
+#### `sample_hypercode()` (line 16)
+
+#### `sample_lexer_tokens()` (line 27)
+
 ### tests\test_core.py
 
 #### `run_test()` (line 30)
@@ -12309,7 +12935,7 @@ _Test context-aware queries_
 
 ### tests\test_intent_blocks.py
 
-#### `test_intent_block()` (line 11)
+#### `test_intent_block()` (line 13)
 _Test parsing of intent blocks_
 
 
@@ -12321,31 +12947,31 @@ _A helper function to run code and capture stdout._
 **Args**: source
 
 
-#### `test_if_statement_then()` (line 29)
+#### `test_if_statement_then()` (line 30)
 **Args**: self
 
 
-#### `test_if_statement_else()` (line 41)
+#### `test_if_statement_else()` (line 42)
 **Args**: self
 
 
-#### `test_function_call()` (line 53)
+#### `test_function_call()` (line 54)
 **Args**: self
 
 
-#### `test_function_with_parameters()` (line 63)
+#### `test_function_with_parameters()` (line 64)
 **Args**: self
 
 
-#### `test_function_with_return()` (line 73)
+#### `test_function_with_return()` (line 74)
 **Args**: self
 
 
-#### `test_recursive_function_call()` (line 84)
+#### `test_recursive_function_call()` (line 85)
 **Args**: self
 
 
-#### `test_scoping()` (line 98)
+#### `test_scoping()` (line 99)
 **Args**: self
 
 
@@ -12399,135 +13025,135 @@ _Test that search results are ranked by relevance._
 **Args**: self, knowledge_base, sample_documents
 
 
-#### `test_query_normalization()` (line 88)
+#### `test_query_normalization()` (line 90)
 _Test query normalization (typos, spacing, punctuation)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_multi_word_query()` (line 96)
+#### `test_multi_word_query()` (line 98)
 _Test search with multiple keywords._
 
 **Args**: self, knowledge_base
 
 
-#### `test_tag_based_search()` (line 101)
+#### `test_tag_based_search()` (line 103)
 _Test search that includes tag matching._
 
 **Args**: self, knowledge_base, sample_documents
 
 
-#### `knowledge_base()` (line 114)
+#### `knowledge_base()` (line 116)
 **Args**: self
 
 
-#### `test_very_short_query()` (line 119)
+#### `test_very_short_query()` (line 121)
 _Test search with very short query (1-2 chars)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_very_long_query()` (line 124)
+#### `test_very_long_query()` (line 126)
 _Test search with very long query (paragraph length)._
 
 **Args**: self, knowledge_base
 
 
-#### `test_special_characters_in_query()` (line 134)
+#### `test_special_characters_in_query()` (line 136)
 _Test search with special characters._
 
 **Args**: self, knowledge_base
 
 
-#### `test_unicode_in_query()` (line 139)
+#### `test_unicode_in_query()` (line 141)
 _Test search with unicode characters._
 
 **Args**: self, knowledge_base
 
 
-#### `test_sql_injection_attempt()` (line 144)
+#### `test_sql_injection_attempt()` (line 146)
 _Test that search is safe from SQL injection-style attacks._
 
 **Args**: self, knowledge_base
 
 
-#### `test_repeated_queries()` (line 149)
+#### `test_repeated_queries()` (line 151)
 _Test that repeated queries return consistent results._
 
 **Args**: self, knowledge_base
 
 
-#### `large_knowledge_base()` (line 161)
+#### `large_knowledge_base()` (line 163)
 _Create a knowledge base with many documents._
 
 **Args**: self
 
 
-#### `test_search_response_time()` (line 177)
+#### `test_search_response_time()` (line 179)
 _Test that search completes within acceptable time._
 
 **Args**: self, large_knowledge_base
 
 
-#### `test_concurrent_searches()` (line 187)
+#### `test_concurrent_searches()` (line 189)
 _Test multiple concurrent search operations._
 
 **Args**: self, large_knowledge_base
 
 
-#### `test_memory_usage()` (line 205)
+#### `test_memory_usage()` (line 207)
 _Test memory usage during search operations._
 
 **Args**: self, large_knowledge_base
 
 
-#### `mock_perplexity_client()` (line 215)
+#### `mock_perplexity_client()` (line 217)
 _Create a mock Perplexity client._
 
 **Args**: self
 
 
-#### `mock_knowledge_base()` (line 227)
+#### `mock_knowledge_base()` (line 229)
 _Create a mock knowledge base._
 
 **Args**: self
 
 
-#### `test_enhanced_query_with_context()` (line 241)
+#### `test_enhanced_query_with_context()` (line 243)
 _Test that queries are enhanced with knowledge base context._
 
 **Args**: self, mock_perplexity_client, mock_knowledge_base
 
 
-#### `test_fallback_to_perplexity_api()` (line 255)
+#### `test_fallback_to_perplexity_api()` (line 259)
 _Test fallback to Perplexity API when no local context found._
 
 **Args**: self, mock_perplexity_client, mock_knowledge_base
 
 
-#### `test_context_ranking_and_selection()` (line 267)
+#### `test_context_ranking_and_selection()` (line 273)
 _Test that best context is selected for query enhancement._
 
 **Args**: self, mock_knowledge_base
 
 
-#### `knowledge_base()` (line 286)
+#### `knowledge_base()` (line 292)
 **Args**: self
 
 
-#### `test_add_document()` (line 294)
+#### `test_add_document()` (line 300)
 _Test adding a new document to knowledge base._
 
 **Args**: self, knowledge_base
 
 
-#### `test_update_document()` (line 304)
+#### `test_update_document()` (line 310)
 _Test updating an existing document._
 
 **Args**: self, knowledge_base
 
 
-#### `test_remove_document()` (line 309)
+#### `test_remove_document()` (line 315)
 _Test removing a document._
 
 **Args**: self, knowledge_base
@@ -12843,7 +13469,7 @@ _Test integration with AI Research document content_
 _Test enhanced KnowledgeBase functionality_
 
 
-#### `test_real_perplexity_data_simulation()` (line 183)
+#### `test_real_perplexity_data_simulation()` (line 185)
 _Simulate testing with real Perplexity Space data_
 
 
@@ -12855,39 +13481,39 @@ _Test queries that use your actual Perplexity Space data_
 
 ### tests\test_sensory_profiles.py
 
-#### `test_visual_settings_creation()` (line 20)
+#### `test_visual_settings_creation()` (line 21)
 _Test creating visual settings._
 
 
-#### `test_audio_settings_creation()` (line 33)
+#### `test_audio_settings_creation()` (line 35)
 _Test creating audio settings._
 
 
-#### `test_animation_settings_creation()` (line 45)
+#### `test_animation_settings_creation()` (line 44)
 _Test creating animation settings._
 
 
-#### `test_sensory_profile_creation()` (line 57)
+#### `test_sensory_profile_creation()` (line 55)
 _Test creating a complete sensory profile._
 
 
-#### `test_profile_serialization()` (line 72)
+#### `test_profile_serialization()` (line 71)
 _Test serializing AND deserializing a profile._
 
 
-#### `test_profile_file_io()` (line 95)
+#### `test_profile_file_io()` (line 92)
 _Test saving and loading a profile to/from a file._
 
 **Args**: tmp_path
 
 
-#### `test_profile_manager_initialization()` (line 117)
+#### `test_profile_manager_initialization()` (line 115)
 _Test initializing the profile manager and checking default profiles._
 
 **Args**: tmp_path
 
 
-#### `test_profile_manager_get_profile()` (line 130)
+#### `test_profile_manager_get_profile()` (line 129)
 _Test getting a profile by name._
 
 **Args**: tmp_path
@@ -12899,23 +13525,107 @@ _Test saving a custom profile._
 **Args**: tmp_path
 
 
-#### `test_profile_manager_delete_profile()` (line 168)
+#### `test_profile_manager_delete_profile()` (line 169)
 _Test deleting a profile._
 
 **Args**: tmp_path
 
 
+### tests\test_syntax.py
+
+#### `test_program_structure()` (line 8)
+_Test basic program structure and entry point._
+
+
+#### `test_function_definition()` (line 26)
+_Test function definition syntax._
+
+
+#### `test_io_operations()` (line 49)
+_Test input/output operations._
+
+
+#### `test_variables()` (line 73)
+_Test variable declarations and assignments._
+
+
+#### `test_loops()` (line 96)
+_Test loop constructs._
+
+
+#### `test_conditionals()` (line 117)
+_Test if/else conditionals._
+
+
+#### `test_goto()` (line 142)
+_Test goto and labels._
+
+
+#### `test_comments()` (line 167)
+_Test that comments are properly ignored._
+
+
 ### tests\tests\test_lexer_enhanced.py
 
-#### `test_lexer_edge_cases()` (line 6)
+#### `test_lexer_edge_cases()` (line 7)
 
-#### `test_lexer_error_handling()` (line 26)
+#### `test_lexer_error_handling()` (line 28)
 
-#### `test_lexer_number_literals()` (line 40)
+#### `test_lexer_number_literals()` (line 43)
 
-#### `test_lexer_string_interpolation()` (line 61)
+#### `test_lexer_string_interpolation()` (line 65)
 
-#### `test_lexer_docstrings()` (line 74)
+#### `test_lexer_docstrings()` (line 79)
+
+### tests\unit\lexer\test_lexer_basic.py
+
+#### `test_empty_source()` (line 12)
+_Test that an empty source returns only EOF token._
+
+**Args**: self
+
+
+#### `test_whitespace_handling()` (line 19)
+_Test that whitespace is properly handled and ignored._
+
+**Args**: self
+
+
+#### `test_single_character_tokens()` (line 27)
+_Test recognition of single-character tokens._
+
+**Args**: self
+
+
+#### `test_comments_are_ignored()` (line 52)
+_Test that comments are properly ignored._
+
+**Args**: self
+
+
+#### `test_string_literals()` (line 72)
+_Test string literal tokenization._
+
+**Args**: self
+
+
+#### `test_number_literals()` (line 87)
+_Test number literal tokenization._
+
+**Args**: self
+
+
+#### `test_identifiers_and_keywords()` (line 103)
+_Test identifier and keyword recognition._
+
+**Args**: self
+
+
+#### `test_error_handling()` (line 139)
+_Test error handling for invalid tokens._
+
+**Args**: self
+
 
 ### tests\unit\test_direct_access.py
 
@@ -12939,7 +13649,7 @@ _Test context-aware queries_
 
 ### tests\unit\test_intent_blocks.py
 
-#### `test_intent_block()` (line 11)
+#### `test_intent_block()` (line 13)
 _Test parsing of intent blocks_
 
 
@@ -13055,7 +13765,7 @@ _Test document with optional fields_
 
 ### tests\unit\test_lexer.py
 
-#### `test_lexer()` (line 11)
+#### `test_lexer()` (line 12)
 _Test the lexer with the given source code and print the results.
 
 Args:
@@ -13065,35 +13775,49 @@ Args:
 **Args**: source, description
 
 
-#### `run_tests()` (line 38)
+#### `run_tests()` (line 42)
 _Run a series of test cases for the lexer._
+
+
+### tests\unit\test_lexer_pytest.py
+
+#### `test_basic_arithmetic()` (line 9)
+_Test basic arithmetic expressions._
+
+
+#### `test_variable_declaration()` (line 25)
+_Test variable declarations._
+
+
+#### `test_string_literals()` (line 40)
+_Test string literals._
 
 
 ### tests\unit\test_mcp_connection.py
 
-#### `check_port()` (line 25)
+#### `check_port()` (line 26)
 _Check if a port is open on the given host._
 
 **Args**: host, port, timeout
 
 
-#### `find_running_servers()` (line 34)
+#### `find_running_servers()` (line 36)
 _Scan common ports to find running servers._
 
 **Args**: host
 
 
-#### `test_server_connection()` (line 46)
+#### `test_server_connection()` (line 49)
 _Test connection to a single MCP server._
 
 **Args**: server_name, base_url, port
 
 
-#### `test_all_servers()` (line 82)
+#### `test_all_servers()` (line 90)
 _Test connection to all MCP servers and print results._
 
 
-#### `check_dependencies()` (line 124)
+#### `check_dependencies()` (line 139)
 _Check if required dependencies are installed._
 
 
@@ -13113,7 +13837,7 @@ _Test integration with AI Research document content_
 _Test enhanced KnowledgeBase functionality_
 
 
-#### `test_real_perplexity_data_simulation()` (line 183)
+#### `test_real_perplexity_data_simulation()` (line 185)
 _Simulate testing with real Perplexity Space data_
 
 
@@ -48008,15 +48732,7 @@ Returns True if the socket is readable, or False if the timeout expired._
 
 ---
 
-## 📦 ALL CLASSES
-
-### build-hyper-database.py
-
-#### `HyperDatabaseBuilder`
-_Scans codebase and builds semantic knowledge graph._
-
-**Methods**: __init__, scan_python_file, scan_javascript_file, should_skip_directory, build, generate_markdown_report, generate_json_report
-
+## ALL CLASSES
 
 ### hypercode\build-hyper-database.py
 
@@ -48915,6 +49631,29 @@ _Test detailed scoring algorithm behavior_
 **Methods**: scoring_kb, test_title_match_beats_content_match, test_space_data_boosting_works, test_frequency_scoring
 
 
+### hypercode_db.py
+
+#### `CodeEntity`
+_Represents a code entity (class, function, etc.) in the database._
+
+**Methods**: __post_init__
+
+
+#### `HypercodeDB`
+_In-memory database for Hypercode project analysis.
+
+This class provides efficient querying and analysis of code entities
+loaded from a JSON database file._
+
+**Methods**: __init__, _load_database, get_entities_by_type, get_entities_in_file
+
+
+### live_research\database.py
+
+#### `ResearchDatabase`
+**Methods**: __init__, _get_connection, _create_tables, add_research_entry, get_research_entry, search_entries, import_from_json
+
+
 ### mcp\servers\hypercode_syntax.py
 
 #### `HyperCodeSyntaxServer`
@@ -49009,6 +49748,38 @@ later for semantic searches._
 **Methods**: __repr__
 
 
+### scripts\build-hyper-database.py
+
+#### `HyperDatabaseBuilder`
+_Scans codebase and builds semantic knowledge graph._
+
+**Methods**: __init__, scan_python_file, scan_javascript_file, should_skip_directory, build, generate_markdown_report, generate_json_report
+
+
+### scripts\build_knowledge_base.py
+
+#### `KnowledgeBaseBuilder`
+_Build a knowledge base from the HyperCode repository._
+
+**Methods**: __init__, should_skip, get_file_type, process_file, build_index
+
+
+### scripts\document_processor.py
+
+#### `DocumentProcessor`
+_Process various document types and extract content._
+
+**Methods**: get_file_hash, extract_metadata, extract_pdf_content, extract_markdown_content, extract_docx_content, extract_csv_content, extract_text_content, process_document
+
+
+### scripts\run_lexer.py
+
+#### `TestLexer`
+_Test suite for the HyperCode lexer._
+
+**Methods**: setUp, test_empty_source, test_basic_tokens, test_string_literals, test_numbers, test_arithmetic_expressions, test_comments, test_error_handling, test_error_recovery, _assert_token_types, test_lexer_error_class
+
+
 ### scripts\style_guide_collector.py
 
 #### `StyleGuideCollector`
@@ -49016,6 +49787,10 @@ _🎨 Collects and analyzes style guide feedback from the community_
 
 **Methods**: __init__, _load_feedback, _save_feedback, add_feedback, _update_analysis, analyze_feedback, _get_top_items, _calculate_consensus, _generate_recommendations, import_github_issues, generate_report, interactive_feedback
 
+
+### scripts\sync-space-to-main.py
+
+#### `Colors`
 
 ### src\ai_gateway\claude_adapter.py
 
@@ -49060,52 +49835,68 @@ _Adapter for Claude Adapter AI model._
 ### src\core\ast.py
 
 #### `Node`
-**Methods**: accept
+_Base class for all AST nodes._
 
-
-#### `Expr`
-
-#### `Literal`
-
-#### `Variable`
-
-#### `Assign`
-
-#### `Binary`
-
-#### `Unary`
-
-#### `Grouping`
-
-#### `Call`
-
-#### `Get`
-
-#### `Pipe`
-
-#### `State`
-
-#### `Stmt`
-
-#### `Expression`
-
-#### `Print`
-
-#### `Let`
-
-#### `Block`
-
-#### `BlockDecl`
-
-#### `Intent`
-
-#### `Function`
-
-#### `If`
-
-#### `Return`
 
 #### `Program`
+_Represents a complete HyperCode program._
+
+
+#### `Function`
+_Represents a function definition._
+
+
+#### `VariableDeclaration`
+_Represents a variable declaration._
+
+
+#### `Literal`
+_Represents a literal value (number, string, boolean, etc.)._
+
+
+#### `BinaryOp`
+_Represents a binary operation (e.g., 1 + 2)._
+
+
+#### `UnaryOp`
+_Represents a unary operation (e.g., -1 or !true)._
+
+
+#### `Variable`
+_Represents a variable reference._
+
+
+#### `Call`
+_Represents a function call._
+
+
+#### `Return`
+_Represents a return statement._
+
+
+#### `Block`
+_Represents a block of statements._
+
+
+#### `If`
+_Represents an if statement._
+
+
+#### `While`
+_Represents a while loop._
+
+
+#### `For`
+_Represents a for loop._
+
+
+#### `Assign`
+_Represents a variable assignment._
+
+
+#### `Logical`
+_Represents a logical operation (and/or)._
+
 
 ### src\core\ast_nodes.py
 
@@ -49995,7 +50786,7 @@ _Configuration class for HyperCode_
 **Methods**: get_headers
 
 
-### src\hypercode\core\ast.py
+### src\hypercode\core\hypercode_ast.py
 
 #### `Node`
 **Methods**: accept
@@ -50070,12 +50861,24 @@ _Exception raised for errors in the lexer._
 
 
 #### `Lexer`
+_Lexical analyzer for the HyperCode language._
+
+**Methods**: __init__, tokenize, is_at_end
+
+
+#### `LexerError`
+_Exception raised for errors in the lexer._
+
+**Methods**: __init__
+
+
+#### `Lexer`
 _Lexical analyzer for the HyperCode language.
 
 Converts source code into a sequence of tokens that can be processed
 by the parser._
 
-**Methods**: __init__, tokenize, _match_patterns, _update_position, _add_token, _handle_unknown
+**Methods**: __init__, tokenize, scan_token, string, number, identifier, match, peek, peek_next, advance, add_token, error, is_at_end
 
 
 ### src\hypercode\core\parser.py
@@ -50315,10 +51118,6 @@ _Scans the project for health metrics without external dependencies_
 **Methods**: __init__, validate_sections, check_formatting, check_visual_aids, validate
 
 
-### sync-space-to-main.py
-
-#### `Colors`
-
 ### tests\benchmark_knowledge_base.py
 
 #### `BenchmarkSuite`
@@ -50389,6 +51188,14 @@ _Performance tests for Knowledge Base_
 _Edge case tests for Knowledge Base_
 
 **Methods**: edge_case_kb, test_empty_title_handling, test_special_characters_handling, test_very_long_titles, test_empty_content_handling, test_none_tags_handling, test_malformed_json_handling, test_file_permission_handling
+
+
+### tests\unit\lexer\test_lexer_basic.py
+
+#### `TestLexerBasic`
+_Test basic lexer functionality._
+
+**Methods**: test_empty_source, test_whitespace_handling, test_single_character_tokens, test_comments_are_ignored, test_string_literals, test_number_literals, test_identifiers_and_keywords, test_error_handling
 
 
 ### tests\unit\test_knowledge_base.py
@@ -58603,7 +59410,7 @@ both case-insensitive according to RFC 3986._
 
 ---
 
-## 🎯 NEXT STEPS
+## NEXT STEPS
 
 1. Load HYPER_DATABASE.md into Windsurf Cascade
 2. Tell Cascade: "Consulting HYPER_DATABASE before every task"

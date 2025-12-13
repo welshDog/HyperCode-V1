@@ -1,0 +1,14 @@
+{
+  "file_name": "test_mcp.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\test_mcp.py",
+  "file_size": 2242,
+  "created": "2025-11-19T12:00:33.939973",
+  "modified": "2025-11-19T16:11:00.670096",
+  "file_type": "code",
+  "content_hash": "c58cb954409fb41fc7e73b083f64379d",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nMCP Servers Test Script\n\nThis script tests that all MCP servers can be imported and have the expected structure.\n\"\"\"\n\nimport sys\nfrom pathlib import Path\n\n# Add parent directory to Python path\nsys.path.insert(0, str(Path(__file__).parent.parent))\n\n\ndef test_server_imports():\n    \"\"\"Test that all servers can be imported\"\"\"\n    servers = [\n        \"valkey_service\",\n        \"dataset_downloader\",\n        \"user_profile_manager\",\n        \"aws_resource_manager\",\n        \"path_service\",\n        \"file_system\",\n        \"code_analysis\",\n        \"web_search\",\n        \"human_input\",\n        \"aws_cli\",\n        \"hypercode_syntax\",\n    ]\n\n    results = {}\n\n    for server_name in servers:\n        try:\n            module = __import__(f\"mcp.servers.{server_name}\", fromlist=[server_name])\n            results[server_name] = {\n                \"imported\": True,\n                \"has_main\": hasattr(module, \"main\"),\n                \"module\": module,\n            }\n        except Exception as e:\n            results[server_name] = {\"imported\": False, \"error\": str(e)}\n\n    return results\n\n\ndef main():\n    print(\"Testing MCP Servers...\")\n    print(\"=\" * 50)\n\n    results = test_server_imports()\n\n    imported_count = 0\n    main_count = 0\n\n    for server_name, result in results.items():\n        status = \"OK\" if result[\"imported\"] else \"FAIL\"\n        print(f\"{status} {server_name}\")\n\n        if result[\"imported\"]:\n            imported_count += 1\n            if result.get(\"has_main\"):\n                main_count += 1\n                print(\"    - Has main() function\")\n            else:\n                print(\"    - No main() function\")\n        else:\n            print(f\"    - Error: {result.get('error', 'Unknown error')}\")\n\n    print(\"=\" * 50)\n    print(f\"Results: {imported_count}/{len(results)} servers imported successfully\")\n    print(f\"         {main_count}/{len(results)} servers have main() function\")\n\n    if imported_count == len(results):\n        print(\"All servers imported successfully!\")\n        return 0\n    else:\n        print(\"Some servers failed to import\")\n        return 1\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\test_mcp.py",
+  "id": "07bf799215658eac2dd199f6cec46817"
+}

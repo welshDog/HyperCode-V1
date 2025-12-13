@@ -1,0 +1,14 @@
+{
+  "file_name": "package.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\package.json",
+  "file_size": 794,
+  "created": "2025-12-02T19:52:33.298684",
+  "modified": "2025-12-02T19:52:33.298684",
+  "file_type": "code",
+  "content_hash": "538b48b9d38cb6b52a9e2f27e7834b42",
+  "content_type": "text",
+  "content": "{\n  \"name\": \"hypercode-visual\",\n  \"private\": true,\n  \"version\": \"0.0.0\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"tsc -b && vite build\",\n    \"lint\": \"eslint .\",\n    \"preview\": \"vite preview\"\n  },\n  \"dependencies\": {\n    \"react\": \"^19.2.0\",\n    \"react-dom\": \"^19.2.0\"\n  },\n  \"devDependencies\": {\n    \"@eslint/js\": \"^9.39.1\",\n    \"@types/node\": \"^24.10.1\",\n    \"@types/react\": \"^19.2.5\",\n    \"@types/react-dom\": \"^19.2.3\",\n    \"@vitejs/plugin-react\": \"^5.1.1\",\n    \"eslint\": \"^9.39.1\",\n    \"eslint-plugin-react-hooks\": \"^7.0.1\",\n    \"eslint-plugin-react-refresh\": \"^0.4.24\",\n    \"globals\": \"^16.5.0\",\n    \"typescript\": \"~5.9.3\",\n    \"typescript-eslint\": \"^8.46.4\",\n    \"vite\": \"npm:rolldown-vite@7.2.5\"\n  },\n  \"overrides\": {\n    \"vite\": \"npm:rolldown-vite@7.2.5\"\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\package.json",
+  "id": "12f89cf43203153f45fdc78912f65e9d"
+}

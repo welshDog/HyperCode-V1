@@ -1,0 +1,14 @@
+{
+  "file_name": "sync-space-to-main.log",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\logs\\sync-space-to-main.log",
+  "file_size": 1912,
+  "created": "2025-11-30T23:43:36.320645",
+  "modified": "2025-12-03T00:46:38.067140",
+  "file_type": "other",
+  "content_hash": "8bf98f1d84e8667770ba819f0556d770",
+  "content_type": "text/unknown",
+  "content": "\n------------------------------------------------------------\n2025-11-30T23:43:36.320645 [DRY RUN]\nCopied: 0 | Updated: 0 | Deleted: 0 | Errors: 0\n{\n  \"raw_docs\": {\n    \"target\": \"docs\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_data\": {\n    \"target\": \"data\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_assets\": {\n    \"target\": \"assets\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  }\n}\n\n------------------------------------------------------------\n2025-12-03T00:45:22.769985 [DRY RUN]\nCopied: 0 | Updated: 0 | Deleted: 0 | Errors: 0\n{\n  \"raw_docs\": {\n    \"target\": \"docs\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_data\": {\n    \"target\": \"data\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_assets\": {\n    \"target\": \"assets\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"strict_mirror\": {\n    \"target\": false,\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"delete_orphans\": {\n    \"target\": false,\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"preserve_patterns\": {\n    \"target\": [\n      \".git\",\n      \".gitignore\",\n      \"*.md\",\n      \"README*\",\n      \".hypercode\"\n    ],\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"log_file\": {\n    \"target\": \"logs/sync-space-to-main.log\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  }\n}\n\n------------------------------------------------------------\n2025-12-03T00:46:38.064476 [DRY RUN]\nCopied: 0 | Updated: 0 | Deleted: 0 | Errors: 0\n{\n  \"raw_docs\": {\n    \"target\": \"docs\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_data\": {\n    \"target\": \"data\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  },\n  \"raw_assets\": {\n    \"target\": \"assets\",\n    \"copied\": 0,\n    \"updated\": 0,\n    \"errors\": 0\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "logs\\sync-space-to-main.log",
+  "id": "85b73e725322ff62603ba606ada8a73a"
+}

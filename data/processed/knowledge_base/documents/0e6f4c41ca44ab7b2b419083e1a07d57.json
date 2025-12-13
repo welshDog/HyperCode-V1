@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\distributions\\__init__.py",
+  "file_size": 858,
+  "created": "2025-12-01T01:58:30.703059",
+  "modified": "2025-12-01T01:58:30.706767",
+  "file_type": "code",
+  "content_hash": "8fbfe6a40e1f2ad53e483516eb995753",
+  "content_type": "text",
+  "content": "from pip._internal.distributions.base import AbstractDistribution\nfrom pip._internal.distributions.sdist import SourceDistribution\nfrom pip._internal.distributions.wheel import WheelDistribution\nfrom pip._internal.req.req_install import InstallRequirement\n\n\ndef make_distribution_for_install_requirement(\n    install_req: InstallRequirement,\n) -> AbstractDistribution:\n    \"\"\"Returns a Distribution for the given InstallRequirement\"\"\"\n    # Editable requirements will always be source distributions. They use the\n    # legacy logic until we create a modern standard for them.\n    if install_req.editable:\n        return SourceDistribution(install_req)\n\n    # If it's a wheel, it's a WheelDistribution\n    if install_req.is_wheel:\n        return WheelDistribution(install_req)\n\n    # Otherwise, a SourceDistribution\n    return SourceDistribution(install_req)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\distributions\\__init__.py",
+  "id": "0e6f4c41ca44ab7b2b419083e1a07d57"
+}

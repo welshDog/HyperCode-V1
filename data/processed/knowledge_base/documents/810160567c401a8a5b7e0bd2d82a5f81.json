@@ -1,0 +1,14 @@
+{
+  "file_name": "first_click_moment.hyper",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\first_click_moment.hyper",
+  "file_size": 1218,
+  "created": "2025-11-23T12:01:48.470581",
+  "modified": "2025-11-23T12:01:48.470581",
+  "file_type": "other",
+  "content_hash": "5ca98ce2d2f8d522d1d78eb144a3146a",
+  "content_type": "text/unknown",
+  "content": "# 🎨 Your First HyperCode \"Click Moment\"\n# When neurodivergent developers think \"Finally, a language that gets me!\"\n\n🔍 @verifiable(\"formal_proof\")\n📐 @ensures(\"output.shape == (batch, classes)\")\n📋 @requires(\"input.shape[1] == features\")\n🧠 @intent(\"Classify input features into categories\")\n🎯 @accessibility(\"high_contrast\", \"dyslexia_font\", \"reduced_cognitive_load\")\nfunction simple_classifier(input: Tensor[batch, features]) -> Tensor[batch, classes] {\n    # 🎨 Every operation is visually clear\n    🎨 weights = initialize(features, classes)\n\n    # ⚡ Fast operations are marked\n    ⚡ logits = matmul(input, weights)\n\n    # 🔄 Return values are obvious\n    🔄 return softmax(logits)\n}\n\n# 🧠 Compare this to traditional code:\n# def simple_classifier(input):\n#     weights = torch.nn.Linear(features, classes)\n#     logits = weights(input)\n#     return torch.softmax(logits, dim=-1)\n\n# 🎯 The difference:\n# - No more guessing what functions do (@🧠 intent)\n# - No more anxiety about correctness (@🔍 verifiable)\n# - No more squinting at symbols (emoji markers)\n# - No more cognitive overload (clear visual structure)\n\n# 🌟 THIS is the click moment!\n",
+  "metadata": {},
+  "relative_path": "examples\\first_click_moment.hyper",
+  "id": "810160567c401a8a5b7e0bd2d82a5f81"
+}

@@ -1,0 +1,31 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\scripts\\README.md",
+  "file_size": 2473,
+  "created": "2025-12-03T22:54:58.119264",
+  "modified": "2025-12-03T22:55:03.735377",
+  "file_type": "code",
+  "content_hash": "b3d7211aa6efedeba6bda942bc0cd457",
+  "content_type": "markdown",
+  "content": "# HyperCode Knowledge Base Builder\n\nThis directory contains scripts for building and maintaining the HyperCode knowledge base.\n\n## Overview\n\nThe knowledge base builder scans the HyperCode repository and processes various file types to create a searchable, structured knowledge base. It extracts metadata and content from different file formats and builds a unified index.\n\n## File Structure\n\n```\nscripts/\n├── build_knowledge_base.py  # Main script for building the knowledge base\n├── document_processor.py    # Document processing utilities\n├── requirements.txt         # Python dependencies\n└── README.md               # This file\n```\n\n## Setup\n\n1. Install the required Python packages:\n\n    ```bash\n    pip install -r requirements.txt\n    ```\n\n2. Make the scripts executable (Linux/macOS):\n    ```bash\n    chmod +x build_knowledge_base.py\n    ```\n\n## Usage\n\n### Building the Knowledge Base\n\nTo build the knowledge base:\n\n```bash\npython build_knowledge_base.py\n```\n\n### Rebuilding the Knowledge Base\n\nTo force a complete rebuild of the knowledge base:\n\n```bash\npython build_knowledge_base.py --rebuild\n```\n\n### Specifying an Output Directory\n\nTo specify a custom output directory:\n\n```bash\npython build_knowledge_base.py --output-dir ../custom_output\n```\n\n## Output\n\nThe knowledge base will be generated in the `data/processed/knowledge_base` directory by default, containing:\n\n-   `documents/`: Processed document files (one JSON file per document)\n-   `index.json`: Index of all documents\n-   `metadata.json`: Metadata about the knowledge base\n\n## Supported File Types\n\n-   **Code Files**: `.py`, `.js`, `.ts`, `.java`, `.c`, `.cpp`, etc.\n-   **Markdown**: `.md`, `.markdown`\n-   **Documents**: `.pdf`, `.docx`, `.doc`, `.xlsx`, `.xls`, `.pptx`, `.ppt`\n-   **Data Files**: `.csv`, `.json`, `.yaml`, `.yml`, `.toml`\n-   **Text Files**: `.txt`, `.log`, `.ini`, `.cfg`, `.conf`\n\n## Customization\n\n### Adding New File Types\n\nTo add support for a new file type, modify the `DocumentProcessor` class in `document_processor.py` to include a new method for processing that file type.\n\n### Updating the Index\n\nThe index is automatically updated when you run the build script. To customize the index format, modify the `build_index` method in `build_knowledge_base.py`.\n\n## License\n\nThis project is part of the HyperCode repository and is licensed under the same terms.",
+  "metadata": {
+    "headers": [
+      "HyperCode Knowledge Base Builder",
+      "Overview",
+      "File Structure",
+      "Setup",
+      "Usage",
+      "Building the Knowledge Base",
+      "Rebuilding the Knowledge Base",
+      "Specifying an Output Directory",
+      "Output",
+      "Supported File Types",
+      "Customization",
+      "Adding New File Types",
+      "Updating the Index",
+      "License"
+    ]
+  },
+  "relative_path": "README.md",
+  "id": "04c6e90faac2675aa89e2176d2eec7d8"
+}

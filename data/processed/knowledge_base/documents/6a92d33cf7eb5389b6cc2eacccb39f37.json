@@ -1,0 +1,14 @@
+{
+  "file_name": "user_profile_manager.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\user_profile_manager.py",
+  "file_size": 162,
+  "created": "2025-11-11T16:50:17.404666",
+  "modified": "2025-11-19T16:10:33.135926",
+  "file_type": "code",
+  "content_hash": "11568ac4a11a56cee3ab8c652a209794",
+  "content_type": "text",
+  "content": "# mcp/servers/user_profile_manager.py\n\n\ndef main() -> None:\n    print(\"User Profile Manager MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\user_profile_manager.py",
+  "id": "6a92d33cf7eb5389b6cc2eacccb39f37"
+}

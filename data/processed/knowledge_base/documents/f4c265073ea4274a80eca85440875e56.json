@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements-dev.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\requirements-dev.txt",
+  "file_size": 170,
+  "created": "2025-12-01T21:37:41.352693",
+  "modified": "2025-12-01T21:37:49.921475",
+  "file_type": "code",
+  "content_hash": "9e3afd9ad70fa2d8994899e2239f413f",
+  "content_type": "text",
+  "content": "pytest>=7.0.0\npytest-cov>=4.0.0\npytest-mock>=3.10.0\npytest-asyncio>=0.21.0\ncoverage>=6.0.0\nblack>=22.0.0\nisort>=5.10.0\nmypy>=0.910\nflake8>=4.0.0\npylint>=2.12.0\n",
+  "metadata": {},
+  "relative_path": "requirements-dev.txt",
+  "id": "f4c265073ea4274a80eca85440875e56"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements-web.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\live_research\\requirements-web.txt",
+  "file_size": 147,
+  "created": "2025-12-04T12:44:43.565433",
+  "modified": "2025-12-04T12:44:43.774451",
+  "file_type": "code",
+  "content_hash": "0495bb992d991d10ba974a5fc07c7f04",
+  "content_type": "text",
+  "content": "Flask==2.3.3\nFlask-SQLAlchemy==3.1.1\npython-dotenv==1.0.0\nWerkzeug==2.3.7\nJinja2==3.1.2\nitsdangerous==2.1.2\nclick==8.1.7\nMarkupSafe==2.1.3\n",
+  "metadata": {},
+  "relative_path": "live_research\\requirements-web.txt",
+  "id": "031024590695bc07d12cc8d0c8ed58a9"
+}

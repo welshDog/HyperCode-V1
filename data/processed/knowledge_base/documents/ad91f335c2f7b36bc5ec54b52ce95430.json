@@ -1,0 +1,14 @@
+{
+  "file_name": "demo_todo.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\demo_todo.hc",
+  "file_size": 829,
+  "created": "2025-11-26T23:37:35.483134",
+  "modified": "2025-11-26T23:37:35.483134",
+  "file_type": "other",
+  "content_hash": "320f74a8838f1d7b40fb2a0832b69fb1",
+  "content_type": "text/unknown",
+  "content": "// Demo 3: Simple Todo - Variables and Logic\n// This demonstrates variables, conditionals, and basic data handling\n\nvar taskCount = 0;\nvar completedCount = 0;\n\n// Add tasks\ntaskCount = taskCount + 1;\nprint(\"✅ Added task 1: Write HyperCode\");\n\ntaskCount = taskCount + 1;\nprint(\"✅ Added task 2: Test the compiler\");\n\ntaskCount = taskCount + 1;\nprint(\"✅ Added task 3: Share with community\");\n\n// Complete a task\ncompletedCount = completedCount + 1;\nprint(\"🎯 Completed a task!\");\n\n// Check progress\nprint(\"\");\nprint(\"📊 Todo Summary:\");\nprint(\"Total tasks:\", taskCount);\nprint(\"Completed:\", completedCount);\nprint(\"Remaining:\", taskCount - completedCount);\n\nif completedCount == taskCount {\n    print(\"🎉 All done! You're amazing!\");\n} else {\n    print(\"💪 Keep going! You got this!\");\n}",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\demo_todo.hc",
+  "id": "ad91f335c2f7b36bc5ec54b52ce95430"
+}

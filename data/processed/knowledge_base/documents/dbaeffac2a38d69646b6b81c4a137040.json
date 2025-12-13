@@ -1,0 +1,14 @@
+{
+  "file_name": "hypercode.test.ts",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\HyperCode showcase\\src\\__tests__\\hypercode.test.ts",
+  "file_size": 1132,
+  "created": "2025-11-23T12:01:48.320532",
+  "modified": "2025-11-23T12:01:48.320532",
+  "file_type": "code",
+  "content_hash": "b8cd19fddc54a8dd7c0814b300a1a654",
+  "content_type": "text",
+  "content": "import { describe, it, expect } from '@jest/globals';\nimport { HyperCode } from '../index';\n\ndescribe('HyperCode', () => {\n  let hypercode: HyperCode;\n\n  beforeEach(() => {\n    hypercode = new HyperCode();\n  });\n\n  it('should execute THINK command', () => {\n    const consoleSpy = jest.spyOn(console, 'log');\n    hypercode.execute('THINK \"Hello, World!\"');\n    expect(consoleSpy).toHaveBeenCalledWith('Hello, World!');\n  });\n\n  it('should execute ECHO command', () => {\n    const consoleSpy = jest.spyOn(console, 'log');\n    hypercode.execute('ECHO \"Testing\"');\n    expect(consoleSpy).toHaveBeenCalledWith('Testing');\n  });\n\n  it('should handle SET and variables', () => {\n    hypercode.execute('SET x TO 42');\n    // In a real test, we'd need a way to inspect internal state or use it in commands\n    expect(hypercode).toBeDefined();\n  });\n\n  it('should execute LOOP command', () => {\n    const consoleSpy = jest.spyOn(console, 'log');\n    hypercode.execute('LOOP 3 => ECHO \"Loop\"');\n    expect(consoleSpy).toHaveBeenCalledTimes(3);\n    expect(consoleSpy).toHaveBeenCalledWith('Loop');\n  });\n});\n",
+  "metadata": {},
+  "relative_path": "HyperCode showcase\\src\\__tests__\\hypercode.test.ts",
+  "id": "dbaeffac2a38d69646b6b81c4a137040"
+}

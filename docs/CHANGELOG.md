@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 💬 Feedback section encouraging community input
 - 🎨 Architecture diagram showing visual code flow
 - 📝 Contributing guidelines
+- ✅ Validated DuelCode tutorial with dual representation examples
+- 📚 Example counter application demonstrating DuelCode principles
 - 📜 Code of conduct
 
 ### Changed

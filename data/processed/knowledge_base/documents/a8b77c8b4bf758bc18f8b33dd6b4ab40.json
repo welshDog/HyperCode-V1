@@ -1,0 +1,14 @@
+{
+  "file_name": "deploy.sh",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\web-playground\\deploy.sh",
+  "file_size": 1174,
+  "created": "2025-11-26T23:37:40.680338",
+  "modified": "2025-11-26T23:37:40.680338",
+  "file_type": "code",
+  "content_hash": "1deca2f7efbe156d4f1a0545e99e361c",
+  "content_type": "text/unknown",
+  "content": "#!/bin/bash\n\n# Deploy HyperCode Playground to GitHub Pages\n# Usage: ./deploy.sh\n\necho \"🚀 Deploying HyperCode Playground to GitHub Pages...\"\n\n# Check if we're in the right directory\nif [ ! -f \"index.html\" ]; then\n    echo \"❌ Error: index.html not found. Run this from the web-playground directory.\"\n    exit 1\nfi\n\n# Create a temporary gh-pages branch if it doesn't exist\ngit checkout --orphan gh-pages 2>/dev/null || git checkout gh-pages\n\n# Remove all files except our playground files\ngit rm -rf . 2>/dev/null || true\n\n# Copy only the necessary files\ncp index.html README.md ./\n\n# Create .nojekyll file\ntouch .nojekyll\n\n# Add and commit\ngit add .\ngit commit -m \"Deploy HyperCode Playground to GitHub Pages\"\n\n# Push to GitHub\ngit push origin gh-pages --force\n\necho \"✅ Playground deployed!\"\necho \"🌐 Visit: https://welshdog.github.io/hypercode/web-playground/\"\necho \"\"\necho \"To enable GitHub Pages:\"\necho \"1. Go to https://github.com/welshDog/hypercode/settings/pages\"\necho \"2. Select 'Deploy from a branch'\"\necho \"3. Choose 'gh-pages' branch and '/' folder\"\necho \"4. Click Save\"\n\n# Return to main branch\ngit checkout main\n",
+  "metadata": {},
+  "relative_path": "hypercode\\web-playground\\deploy.sh",
+  "id": "a8b77c8b4bf758bc18f8b33dd6b4ab40"
+}

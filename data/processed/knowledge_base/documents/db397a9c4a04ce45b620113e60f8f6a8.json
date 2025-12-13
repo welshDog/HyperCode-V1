@@ -1,0 +1,14 @@
+{
+  "file_name": "game_loop.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\examples\\game_loop.hc",
+  "file_size": 650,
+  "created": "2025-11-12T10:36:56.956744",
+  "modified": "2025-11-17T17:48:31.501501",
+  "file_type": "other",
+  "content_hash": "a2fa98c503b02bc205f631804fa7a845",
+  "content_type": "text/unknown",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\"\"\"\nExample HyperCode programs\n\nFile: examples\\game_loop.hc\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\examples\\game_loop.hc",
+  "id": "db397a9c4a04ce45b620113e60f8f6a8"
+}

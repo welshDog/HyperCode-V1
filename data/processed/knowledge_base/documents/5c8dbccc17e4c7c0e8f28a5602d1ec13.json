@@ -1,0 +1,14 @@
+{
+  "file_name": "Dockerfile",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\Dockerfile",
+  "file_size": 935,
+  "created": "2025-11-26T23:37:35.305382",
+  "modified": "2025-11-26T23:37:35.305382",
+  "file_type": "other",
+  "content_hash": "ae3bea81fa11520425777a84dd1bc81e",
+  "content_type": "text/unknown",
+  "content": "# Build stage\nFROM python:3.11-slim as builder\n\nWORKDIR /app\n\n# Install build dependencies\nRUN apt-get update && apt-get install -y --no-install-recommends \\\n    build-essential \\\n    && rm -rf /var/lib/apt/lists/*\n\n# Copy requirements first to leverage Docker cache\nCOPY pyproject.toml setup.py README.md ./\nCOPY src/ ./src\n\n# Install package in development mode with all dependencies\nRUN pip install --user -e \".[dev]\"\n\n# Final stage\nFROM python:3.11-slim\n\nWORKDIR /app\n\n# Copy only the installed Python packages from the builder\nCOPY --from=builder /root/.local /root/.local\n# Copy the application code\nCOPY --from=builder /app /app\n\n# Make sure scripts in .local are usable\nENV PATH=/root/.local/bin:$PATH\n\n# Create a non-root user\nRUN useradd -m appuser && chown -R appuser /app\nUSER appuser\n\n# Expose the port the app runs on\nEXPOSE 8000\n\n# Command to run the application\nCMD [\"hypercode\"]\n",
+  "metadata": {},
+  "relative_path": "hypercode\\Dockerfile",
+  "id": "5c8dbccc17e4c7c0e8f28a5602d1ec13"
+}

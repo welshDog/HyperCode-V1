@@ -1,0 +1,14 @@
+{
+  "file_name": "entry_points.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode.egg-info\\entry_points.txt",
+  "file_size": 49,
+  "created": "2025-12-02T23:00:55.871033",
+  "modified": "2025-12-04T12:30:52.476450",
+  "file_type": "code",
+  "content_hash": "6ea2ea6031f72999506bf206a396bb64",
+  "content_type": "text",
+  "content": "[console_scripts]\nhypercode = hypercode.cli:main\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode.egg-info\\entry_points.txt",
+  "id": "9df0e33acbcd8928ca876fb47913fb87"
+}

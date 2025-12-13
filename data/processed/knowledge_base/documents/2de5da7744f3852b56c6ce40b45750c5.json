@@ -1,0 +1,34 @@
+{
+  "file_name": "CHANGELOG.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\CHANGELOG.md",
+  "file_size": 3272,
+  "created": "2025-11-26T15:01:36.561323",
+  "modified": "2025-12-05T00:05:19.428322",
+  "file_type": "code",
+  "content_hash": "9e8168f713e100ec196f59f3fc0c7e6e",
+  "content_type": "markdown",
+  "content": "# Changelog\n\nAll notable changes to HyperCode will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n---\n\n## [Unreleased]\n\n### Added\n- 💜 Comprehensive README with neurodivergent-friendly sections\n- 🚀 60-second quick start installation scripts (macOS/Linux/Windows)\n- 🧩 Language overview documentation with ADHD-friendly syntax guide\n- ❓ FAQ with answers to common questions\n- ♿ Accessibility section with commitment to inclusive design\n- 💬 Feedback section encouraging community input\n- 🎨 Architecture diagram showing visual code flow\n- 📝 Contributing guidelines\n- ✅ Validated DuelCode tutorial with dual representation examples\n- 📚 Example counter application demonstrating DuelCode principles\n- 📜 Code of conduct\n\n### Changed\n- ✨ Enhanced README structure for better scannability\n- 🔄 Improved documentation organization\n\n### In Progress\n- 🔧 Phase 1: Core language implementation\n- 💻 Compiler and runtime development\n- 🧪 Parser and lexer optimization\n\n---\n\n## [0.1.0] - 2025-01-XX (Planned Alpha Release)\n\n### Planned Features\n\n#### Core Language\n- [ ] Basic syntax parser\n- [ ] Variable declarations and assignments\n- [ ] Functions and closures\n- [ ] Control flow (if/else, loops)\n- [ ] Data types (primitives, arrays, objects)\n- [ ] Error handling with friendly messages\n\n#### Neurodivergent Features\n- [ ] Visual flow indicators (`↓`, `→`)\n- [ ] State markers (`@loading`, `@error`, `@success`)\n- [ ] Chunked code blocks\n- [ ] Syntax highlighting themes (high-contrast)\n- [ ] Screen reader compatibility\n\n#### Tooling\n- [ ] Command-line interface (CLI)\n- [ ] REPL (Read-Eval-Print Loop)\n- [ ] Basic error reporting\n- [ ] File execution\n\n---\n\n## [0.0.1] - Initial Setup\n\n### Added\n- 🎉 Initial project structure\n- 📚 Core documentation framework\n- 🛠️ Development environment setup\n- 📑 Research and design documents\n- 👥 Community contribution guidelines\n\n---\n\n## Upcoming Releases\n\n### [0.2.0] - Beta (Planned)\n- Advanced language features\n- IDE integrations (VS Code, JetBrains)\n- Package manager prototype\n- Enhanced error messages\n- Performance optimizations\n\n### [0.3.0] - Stable (Planned)\n- Full language specification\n- Standard library\n- Documentation site\n- Tutorial series\n- Production-ready tooling\n\n---\n\n## Release Philosophy\n\nHyperCode follows a **human-first release cycle**:\n\n1. **Alpha** - Core features, community testing\n2. **Beta** - Feature-complete, real-world usage\n3. **Stable** - Production-ready, fully documented\n\nEach release prioritizes:\n- 🧠 Neurodivergent-friendly design\n- 📝 Clear documentation\n- 🐛 Bug fixes over new features\n- 👥 Community feedback\n\n---\n\n## How to Stay Updated\n\n- 🔔 [Watch this repo](https://github.com/welshDog/hypercode/subscription) for release notifications\n- 💬 [Join Discussions](https://github.com/welshDog/hypercode/discussions) to participate\n- ⭐ [Star the repo](https://github.com/welshDog/hypercode) to show support\n\n---\n\n*Built with 💜 for neurodivergent minds*",
+  "metadata": {
+    "headers": [
+      "Changelog",
+      "[Unreleased]",
+      "Added",
+      "Changed",
+      "In Progress",
+      "[0.1.0] - 2025-01-XX (Planned Alpha Release)",
+      "Planned Features",
+      "Core Language",
+      "Neurodivergent Features",
+      "Tooling",
+      "[0.0.1] - Initial Setup",
+      "Added",
+      "Upcoming Releases",
+      "[0.2.0] - Beta (Planned)",
+      "[0.3.0] - Stable (Planned)",
+      "Release Philosophy",
+      "How to Stay Updated"
+    ]
+  },
+  "relative_path": "docs\\CHANGELOG.md",
+  "id": "2de5da7744f3852b56c6ce40b45750c5"
+}

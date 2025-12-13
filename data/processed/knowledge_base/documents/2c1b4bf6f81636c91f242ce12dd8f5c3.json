@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\mcp\\requirements.txt",
+  "file_size": 361,
+  "created": "2025-11-23T12:01:48.504201",
+  "modified": "2025-11-23T12:01:48.504201",
+  "file_type": "code",
+  "content_hash": "76219e758736ffef6f9d1c9b0fbd8e68",
+  "content_type": "text",
+  "content": "# MCP Server Requirements\n# Install with: pip install -r requirements.txt\n\n# Core MCP functionality\nfastapi>=0.68.0\nuvicorn[standard]>=0.15.0\n\n# Database/Cache support\nredis>=4.0.0\n\n# Async support\nasyncio-mqtt>=0.13.0\n\n# Data handling\npydantic>=1.10.0\npython-dotenv>=0.19.0\n\n# HTTP client (for some services)\nhttpx>=0.24.0\nrequests>=2.28.0\n",
+  "metadata": {},
+  "relative_path": "mcp\\requirements.txt",
+  "id": "2c1b4bf6f81636c91f242ce12dd8f5c3"
+}

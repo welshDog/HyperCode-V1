@@ -1,0 +1,14 @@
+{
+  "file_name": "entry_points.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\entry_points.txt",
+  "file_size": 87,
+  "created": "2025-12-01T01:58:33.846584",
+  "modified": "2025-12-01T01:58:33.851483",
+  "file_type": "code",
+  "content_hash": "b466ddb597da043c0740b1c7538bdde8",
+  "content_type": "text",
+  "content": "[console_scripts]\npip = pip._internal.cli.main:main\npip3 = pip._internal.cli.main:main\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\entry_points.txt",
+  "id": "3de1d6da5a51a85ef3e0b95e4d749ea1"
+}

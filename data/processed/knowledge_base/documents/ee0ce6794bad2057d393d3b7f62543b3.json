@@ -1,0 +1,14 @@
+{
+  "file_name": "region.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\region.py",
+  "file_size": 166,
+  "created": "2025-12-01T01:58:33.404124",
+  "modified": "2025-12-01T01:58:33.412200",
+  "file_type": "code",
+  "content_hash": "2b7a3fc13dcde9deca6d3a7217b45de8",
+  "content_type": "text",
+  "content": "from typing import NamedTuple\n\n\nclass Region(NamedTuple):\n    \"\"\"Defines a rectangular region of the screen.\"\"\"\n\n    x: int\n    y: int\n    width: int\n    height: int\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\region.py",
+  "id": "ee0ce6794bad2057d393d3b7f62543b3"
+}

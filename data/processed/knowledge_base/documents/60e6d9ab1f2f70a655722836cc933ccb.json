@@ -1,0 +1,14 @@
+{
+  "file_name": "test_parser.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\parser\\test_parser.py",
+  "file_size": 1887,
+  "created": "2025-11-26T23:37:35.657609",
+  "modified": "2025-11-26T23:37:35.659180",
+  "file_type": "code",
+  "content_hash": "7cef103cf9da161a5b6e34ae240ab508",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nTest the Visual Syntax Parser - First Click Moment Demo\n\"\"\"\n\nimport os\nimport sys\n\nsys.path.append(os.path.dirname(__file__))\n\nfrom visual_syntax_parser import VisualSyntaxParser\n\n\ndef test_first_click_moment():\n    \"\"\"Test the parser with the first click moment example\"\"\"\n\n    # Example HyperCode code\n    example_code = \"\"\"🔍 @verifiable(\"formal_proof\")\n📐 @ensures(\"output.shape == (batch, classes)\")\n📋 @requires(\"input.shape[1] == features\")\n🧠 @intent(\"Classify input features\")\n🎯 @accessibility(\"high_contrast\", \"dyslexia_font\")\nfunction classifier(input: Tensor[batch, features]) -> Tensor[batch, classes] {\n    🎨 weights = initialize(features, classes)\n    ⚡ logits = matmul(input, weights)\n    🔄 return softmax(logits)\n}\"\"\"\n\n    parser = VisualSyntaxParser()\n    functions = parser.parse_content(example_code)\n\n    print(\"Visual Syntax Parser Results:\")\n    print(f\"Found {len(functions)} functions\")\n\n    for func in functions:\n        print(f\"\\nFunction: {func.name}\")\n        print(f\"Annotations: {len(func.annotations)}\")\n        for annotation in func.annotations:\n            print(f\"  {annotation}\")\n\n    # Generate summary\n    summary = parser.extract_semantic_summary(functions)\n    print(\"\\nSemantic Summary:\")\n    print(f\"Total functions: {summary['total_functions']}\")\n    print(f\"Cognitive load score: {summary['cognitive_load_score']:.2f}\")\n\n    # Validate neurodiversity compliance\n    compliance = parser.validate_neurodiversity_compliance(functions)\n    print(f\"\\nNeurodiversity Compliance: {compliance['score']:.1f}%\")\n    if compliance[\"issues\"]:\n        print(\"Issues:\")\n        for issue in compliance[\"issues\"]:\n            print(f\"  - {issue}\")\n\n    print(\"\\nFirst 'click moment' ready!\")\n\n\nif __name__ == \"__main__\":\n    test_first_click_moment()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\parser\\test_parser.py",
+  "id": "60e6d9ab1f2f70a655722836cc933ccb"
+}

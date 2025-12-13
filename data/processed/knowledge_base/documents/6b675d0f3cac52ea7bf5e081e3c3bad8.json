@@ -1,0 +1,14 @@
+{
+  "file_name": "test_env.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\test_env.py",
+  "file_size": 195,
+  "created": "2025-11-23T12:01:48.571088",
+  "modified": "2025-11-23T12:01:48.572148",
+  "file_type": "code",
+  "content_hash": "6c7b2f0a4a6a5cbe32be3f0d5e1179fe",
+  "content_type": "text",
+  "content": "import os\n\nfrom dotenv import load_dotenv\n\nload_dotenv()\napi_key = os.getenv(\"PERPLEXITY_API_KEY\")\nprint(f\"API Key: {'*' * (len(api_key) - 4) + api_key[-4:] if api_key else 'Not found'}\")\n",
+  "metadata": {},
+  "relative_path": "src\\test_env.py",
+  "id": "6b675d0f3cac52ea7bf5e081e3c3bad8"
+}

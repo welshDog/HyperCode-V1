@@ -1,0 +1,14 @@
+{
+  "file_name": "installed.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\distributions\\installed.py",
+  "file_size": 842,
+  "created": "2025-12-01T01:58:30.713710",
+  "modified": "2025-12-01T01:58:30.721758",
+  "file_type": "code",
+  "content_hash": "38f5423ba5ba35d0628bf5abd595a207",
+  "content_type": "text",
+  "content": "from typing import Optional\n\nfrom pip._internal.distributions.base import AbstractDistribution\nfrom pip._internal.index.package_finder import PackageFinder\nfrom pip._internal.metadata import BaseDistribution\n\n\nclass InstalledDistribution(AbstractDistribution):\n    \"\"\"Represents an installed package.\n\n    This does not need any preparation as the required information has already\n    been computed.\n    \"\"\"\n\n    @property\n    def build_tracker_id(self) -> Optional[str]:\n        return None\n\n    def get_metadata_distribution(self) -> BaseDistribution:\n        assert self.req.satisfied_by is not None, \"not actually installed\"\n        return self.req.satisfied_by\n\n    def prepare_distribution_metadata(\n        self,\n        finder: PackageFinder,\n        build_isolation: bool,\n        check_build_deps: bool,\n    ) -> None:\n        pass\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\distributions\\installed.py",
+  "id": "8742b7203d1e81a2d41fc0c6bf4e55bc"
+}

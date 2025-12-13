@@ -1,0 +1,14 @@
+{
+  "file_name": "_stack.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_stack.py",
+  "file_size": 351,
+  "created": "2025-12-01T01:58:33.193475",
+  "modified": "2025-12-01T01:58:33.194121",
+  "file_type": "code",
+  "content_hash": "dc38e75c7f9b0aace5f9cbe9fa826460",
+  "content_type": "text",
+  "content": "from typing import List, TypeVar\n\nT = TypeVar(\"T\")\n\n\nclass Stack(List[T]):\n    \"\"\"A small shim over builtin list.\"\"\"\n\n    @property\n    def top(self) -> T:\n        \"\"\"Get top of stack.\"\"\"\n        return self[-1]\n\n    def push(self, item: T) -> None:\n        \"\"\"Push an item on to the stack (append in stack nomenclature).\"\"\"\n        self.append(item)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_stack.py",
+  "id": "ff807138d7a1fdd3472f9c9a471bd84d"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "gitignore",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\HyperCode showcase\\gitignore",
+  "file_size": 947,
+  "created": "2025-11-23T12:01:48.318231",
+  "modified": "2025-11-23T12:01:48.318231",
+  "file_type": "other",
+  "content_hash": "da9e1cf5f53ec278049720ded8b8682f",
+  "content_type": "text/unknown",
+  "content": "# Dependencies\nnode_modules/\npackage-lock.json\nyarn.lock\npnpm-lock.yaml\n\n# Build outputs\ndist/\nbuild/\n*.tsbuildinfo\n.tsc-out/\n\n# IDE and Editor\n.vscode/\n.idea/\n*.swp\n*.swo\n*~\n.DS_Store\n.env.local\n.env.*.local\n*.sublime-project\n*.sublime-workspace\n\n# Testing\ncoverage/\n.nyc_output/\n*.lcov\ntest-results/\n.jest-cache/\n\n# Logs\nlogs/\n*.log\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\nlerna-debug.log*\npnpm-debug.log*\n\n# Temp files\ntmp/\ntemp/\n*.tmp\n\n# Environment variables\n.env\n.env.local\n.env.*.local\n\n# OS\nThumbs.db\n.DS_Store\n.AppleDouble\n.LSOverride\n\n# Documentation build\ndocs/_build/\nsite/\n\n# Debugging\n.debugger\n.vscode-debug\n\n# Platform-specific\n.idea/\n.project\n.pydevproject\n.settings/\n\n# Build artifacts\n*.o\n*.obj\n*.so\n*.dylib\n*.dll\n\n# Cache\n.cache/\n*.cache\n\n# Package manager\n.pnpm-store/\n\n# Misc\n*.bak\n*.backup\n.vscode-extensions\nhypercode_modules/\n",
+  "metadata": {},
+  "relative_path": "HyperCode showcase\\gitignore",
+  "id": "84ba90a172ea817fc3c2d3247f23c909"
+}

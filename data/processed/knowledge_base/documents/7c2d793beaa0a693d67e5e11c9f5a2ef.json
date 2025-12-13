@@ -1,0 +1,14 @@
+{
+  "file_name": "pager.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\pager.py",
+  "file_size": 828,
+  "created": "2025-12-01T01:58:33.362312",
+  "modified": "2025-12-01T01:58:33.370099",
+  "file_type": "code",
+  "content_hash": "d2f3f5a559bcf79942ce62b742fb2ce2",
+  "content_type": "text",
+  "content": "from abc import ABC, abstractmethod\nfrom typing import Any\n\n\nclass Pager(ABC):\n    \"\"\"Base class for a pager.\"\"\"\n\n    @abstractmethod\n    def show(self, content: str) -> None:\n        \"\"\"Show content in pager.\n\n        Args:\n            content (str): Content to be displayed.\n        \"\"\"\n\n\nclass SystemPager(Pager):\n    \"\"\"Uses the pager installed on the system.\"\"\"\n\n    def _pager(self, content: str) -> Any:  #  pragma: no cover\n        return __import__(\"pydoc\").pager(content)\n\n    def show(self, content: str) -> None:\n        \"\"\"Use the same pager used by pydoc.\"\"\"\n        self._pager(content)\n\n\nif __name__ == \"__main__\":  # pragma: no cover\n    from .__main__ import make_test_card\n    from .console import Console\n\n    console = Console()\n    with console.pager(styles=True):\n        console.print(make_test_card())\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\pager.py",
+  "id": "7c2d793beaa0a693d67e5e11c9f5a2ef"
+}

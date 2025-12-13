@@ -1,0 +1,15 @@
+{
+  "id": "2025-12-04-fd3c870a",
+  "date": "2025-12-04",
+  "topic": "AI Integration - GPT, Claude, Mistral, Ollama",
+  "tags": [
+    "AI",
+    "GPT",
+    "Claude",
+    "Mistral",
+    "Model-Context-Protocol"
+  ],
+  "source": "AllianceTek, DataSlayer.ai, Anthropic",
+  "summary": "GPT-4 (OpenAI), Claude (Anthropic), Mistral (open), Llama (Meta) support Model Context Protocol for tool integration.",
+  "details": "GPT-4: closed-source, multimodal, advanced reasoning. Claude: advanced technical reasoning, artifacts, developer-oriented, MCP native. Mistral: efficient, open, strong code generation. Llama: open-source, accessible for smaller orgs. Model Context Protocol (MCP): open standard by Anthropic for connecting LLMs to tools/services. ChatGPT adds MCP alongside proprietary Actions. HyperCode can integrate via MCP for universal AI compatibility without costly rewrites."
+}

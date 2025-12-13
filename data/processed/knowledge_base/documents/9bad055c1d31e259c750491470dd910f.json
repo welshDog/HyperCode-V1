@@ -1,0 +1,14 @@
+{
+  "file_name": "top_level.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\hypercode.egg-info\\top_level.txt",
+  "file_size": 75,
+  "created": "2025-11-14T13:33:03.215442",
+  "modified": "2025-11-17T15:46:26.392815",
+  "file_type": "code",
+  "content_hash": "1fc7ebbc2322a8f29784aa1a64dad358",
+  "content_type": "text",
+  "content": "__init__\nbuild\ncore\nhypercode\nhypercode_poc\nparser\nscaffold\nsetup\ntest_env\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\hypercode.egg-info\\top_level.txt",
+  "id": "9bad055c1d31e259c750491470dd910f"
+}

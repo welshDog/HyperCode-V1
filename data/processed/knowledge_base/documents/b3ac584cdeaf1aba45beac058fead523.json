@@ -1,0 +1,14 @@
+{
+  "file_name": "py.typed",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\tomli\\py.typed",
+  "file_size": 26,
+  "created": "2025-12-01T01:58:33.588627",
+  "modified": "2025-12-01T01:58:33.588627",
+  "file_type": "other",
+  "content_hash": "bd2fa011a5e69d2b68df68fbc59f8be6",
+  "content_type": "text/unknown",
+  "content": "# Marker file for PEP 561\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\tomli\\py.typed",
+  "id": "b3ac584cdeaf1aba45beac058fead523"
+}

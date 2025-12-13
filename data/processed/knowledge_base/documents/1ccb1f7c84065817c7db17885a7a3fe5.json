@@ -1,0 +1,14 @@
+{
+  "file_name": "constrain.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\constrain.py",
+  "file_size": 1288,
+  "created": "2025-12-01T01:58:33.282882",
+  "modified": "2025-12-01T01:58:33.283469",
+  "file_type": "code",
+  "content_hash": "cef54cefaa299620f5784fd7767f42e5",
+  "content_type": "text",
+  "content": "from typing import Optional, TYPE_CHECKING\n\nfrom .jupyter import JupyterMixin\nfrom .measure import Measurement\n\nif TYPE_CHECKING:\n    from .console import Console, ConsoleOptions, RenderableType, RenderResult\n\n\nclass Constrain(JupyterMixin):\n    \"\"\"Constrain the width of a renderable to a given number of characters.\n\n    Args:\n        renderable (RenderableType): A renderable object.\n        width (int, optional): The maximum width (in characters) to render. Defaults to 80.\n    \"\"\"\n\n    def __init__(self, renderable: \"RenderableType\", width: Optional[int] = 80) -> None:\n        self.renderable = renderable\n        self.width = width\n\n    def __rich_console__(\n        self, console: \"Console\", options: \"ConsoleOptions\"\n    ) -> \"RenderResult\":\n        if self.width is None:\n            yield self.renderable\n        else:\n            child_options = options.update_width(min(self.width, options.max_width))\n            yield from console.render(self.renderable, child_options)\n\n    def __rich_measure__(\n        self, console: \"Console\", options: \"ConsoleOptions\"\n    ) -> \"Measurement\":\n        if self.width is not None:\n            options = options.update_width(self.width)\n        measurement = Measurement.get(console, options, self.renderable)\n        return measurement\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\constrain.py",
+  "id": "1ccb1f7c84065817c7db17885a7a3fe5"
+}

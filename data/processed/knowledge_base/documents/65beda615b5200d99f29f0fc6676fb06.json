@@ -1,0 +1,14 @@
+{
+  "file_name": "hello.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\examples\\hello.hc",
+  "file_size": 754,
+  "created": "2025-11-26T23:37:35.621823",
+  "modified": "2025-11-26T23:37:35.621823",
+  "file_type": "other",
+  "content_hash": "e40b786c4618a96faea3efe8463a3d6e",
+  "content_type": "text/unknown",
+  "content": "// examples/hello.hc\n/**\n * This is a sample HyperCode program\n * that demonstrates various language features.\n */\n\n// Function to calculate factorial\nfun factorial(n) {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\n// Main program\nfun main() {\n    // Calculate factorial of 5\n    var result = factorial(5);\n    \n    // Print the result with string interpolation\n    f\"The factorial of 5 is: {result}\"\n    \n    // Demonstrate number literals\n    var hex_num = 0xFF;\n    var binary_num = 0b1010;\n    var large_num = 1_000_000;\n    \n    // Arrays and loops\n    var numbers = [1, 2, 3, 4, 5];\n    for (var i = 0; i < numbers.length; i = i + 1) {\n        print(numbers[i]);\n    }\n}\n\n// Run the program\nmain();",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\examples\\hello.hc",
+  "id": "65beda615b5200d99f29f0fc6676fb06"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\5 Core TypeScript Modules\\tsconfig.json",
+  "file_size": 473,
+  "created": "2025-11-26T23:37:35.301852",
+  "modified": "2025-11-26T23:37:35.301852",
+  "file_type": "code",
+  "content_hash": "7b8e137f0b8a34708030b333106b6551",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"module\": \"commonjs\",\n    \"lib\": [\"ES2020\"],\n    \"outDir\": \"./dist\",\n    \"rootDir\": \"./src\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"declaration\": true,\n    \"declarationMap\": true,\n    \"sourceMap\": true,\n    \"moduleResolution\": \"node\"\n  },\n  \"include\": [\"src/**/*\"],\n  \"exclude\": [\"node_modules\", \"**/*.test.ts\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\5 Core TypeScript Modules\\tsconfig.json",
+  "id": "8cd26fc21a9fcdc2178488ddec741aa6"
+}

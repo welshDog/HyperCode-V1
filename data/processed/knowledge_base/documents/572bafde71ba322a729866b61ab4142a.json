@@ -1,0 +1,14 @@
+{
+  "file_name": "releaserc.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\config\\releaserc.json",
+  "file_size": 904,
+  "created": "2025-11-26T23:37:35.370546",
+  "modified": "2025-11-26T23:37:35.370546",
+  "file_type": "code",
+  "content_hash": "89772c8a5616fca7c6e6ededa689f164",
+  "content_type": "text",
+  "content": "{\n  \"branches\": [\n    \"main\",\n    {\n      \"name\": \"develop\",\n      \"prerelease\": \"alpha\"\n    }\n  ],\n  \"plugins\": [\n    \"@semantic-release/commit-analyzer\",\n    \"@semantic-release/release-notes-generator\",\n    [\n      \"@semantic-release/changelog\",\n      {\n        \"changelogFile\": \"CHANGELOG.md\"\n      }\n    ],\n    [\n      \"@semantic-release/exec\",\n      {\n        \"prepareCmd\": \"python -c \\\"import re; content = open('setup.py').read(); new_content = re.sub(r'version=\\\\\\\"[0-9.]*\\\\\\\"', f'version=\\\\\\\"${nextRelease.version}\\\\\\\"', content); open('setup.py', 'w').write(new_content)\\\"\"\n      }\n    ],\n    [\n      \"@semantic-release/git\",\n      {\n        \"assets\": [\n          \"CHANGELOG.md\",\n          \"setup.py\"\n        ],\n        \"message\": \"chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}\"\n      }\n    ],\n    \"@semantic-release/github\"\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\config\\releaserc.json",
+  "id": "572bafde71ba322a729866b61ab4142a"
+}

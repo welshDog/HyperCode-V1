@@ -1,50 +1,10 @@
-# Development dependencies for HyperCode Knowledge Base
-# Install with: pip install -r requirements-dev.txt
-
-
-# Async support
-aiohttp>=3.8.0
-asyncio-mqtt>=0.13.0
-
-# Security scanning
-bandit>=1.7.0
-
-# Code quality
-black>=22.0.0
-flake8>=5.0.0
-httpx>=0.24.0
-
-# Development utilities
-ipython>=8.0.0
-isort>=5.10.0
-jupyter>=1.0.0
-marshmallow>=3.19.0
-memory-profiler>=0.60.0
-mkdocs>=1.4.0
-mkdocs-material>=8.5.0
-mypy>=1.0.0
-
-# Pre-commit hooks
-pre-commit>=2.20.0
-
-# Performance monitoring
-psutil>=5.9.0
-
-# Data validation
-pydantic>=1.10.0
-# Core testing framework
 pytest>=7.0.0
 pytest-cov>=4.0.0
 pytest-mock>=3.10.0
-pytest-xdist>=3.0.0  # For parallel testing
-
-# Environment management
-python-dotenv>=0.19.0
-
-# API clients (for testing)
-requests>=2.28.0
-safety>=2.3.0
-
-# Documentation
-sphinx>=5.0.0
-sphinx-rtd-theme>=1.2.0
+pytest-asyncio>=0.21.0
+coverage>=6.0.0
+black>=22.0.0
+isort>=5.10.0
+mypy>=0.910
+flake8>=4.0.0
+pylint>=2.12.0

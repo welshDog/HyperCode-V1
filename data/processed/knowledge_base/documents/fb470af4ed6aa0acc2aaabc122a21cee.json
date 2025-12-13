@@ -1,0 +1,42 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\README.md",
+  "file_size": 5172,
+  "created": "2025-11-26T11:54:54.296785",
+  "modified": "2025-11-26T11:54:54.296785",
+  "file_type": "code",
+  "content_hash": "a37c57e8ebd762c5b47fe9f4bc8ffba7",
+  "content_type": "markdown",
+  "content": "# 💻 HyperCode Source Code Structure\n\n> Guide to navigating the HyperCode codebase\n\n---\n\n## 📚 Directory Overview\n\nThis directory contains the core source code for the HyperCode programming language.\n\n```\nsrc/\n├── compiler/           # Compiler implementation\n│   ├── lexer/          # Tokenization and lexical analysis\n│   ├── parser/         # Syntax parsing and AST generation\n│   ├── semantic/       # Semantic analysis and type checking\n│   └── codegen/        # Code generation and optimization\n│\n├── runtime/            # Runtime environment\n│   ├── vm/             # Virtual machine implementation\n│   ├── gc/             # Garbage collector\n│   └── stdlib/         # Standard library primitives\n│\n├── cli/                # Command-line interface\n│   ├── repl/           # Interactive REPL\n│   └── commands/       # CLI commands and utilities\n│\n├── lsp/                # Language Server Protocol\n│   ├── diagnostics/    # Error and warning reporting\n│   ├── completion/     # Code completion\n│   └── formatting/     # Code formatting\n│\n├── utils/              # Shared utilities\n│   ├── error-handling/ # Error message formatting\n│   ├── source-map/     # Source map generation\n│   └── logger/         # Logging utilities\n│\n└── tests/              # Unit and integration tests\n    ├── unit/           # Unit tests\n    ├── integration/    # Integration tests\n    └── fixtures/       # Test fixtures and samples\n```\n\n---\n\n## 🔧 Key Components\n\n### Compiler\n\nThe compiler transforms HyperCode source code into executable bytecode.\n\n**Lexer** (`compiler/lexer/`)\n- Converts source text into tokens\n- Handles neurodivergent-friendly symbols (`↓`, `@`, `💚`)\n- Preserves whitespace for formatting\n\n**Parser** (`compiler/parser/`)\n- Builds Abstract Syntax Tree (AST) from tokens\n- Enforces chunked syntax rules\n- Generates helpful error messages\n\n**Semantic Analyzer** (`compiler/semantic/`)\n- Type checking and inference\n- Scope analysis\n- Error detection with actionable suggestions\n\n**Code Generator** (`compiler/codegen/`)\n- Converts AST to optimized bytecode\n- Inline optimizations\n- Debug information generation\n\n### Runtime\n\nThe runtime executes compiled HyperCode programs.\n\n**Virtual Machine** (`runtime/vm/`)\n- Bytecode interpreter\n- JIT compilation for hot paths\n- Performance monitoring\n\n**Garbage Collector** (`runtime/gc/`)\n- Automatic memory management\n- Generational collection\n- Low-pause optimization\n\n**Standard Library** (`runtime/stdlib/`)\n- Core data structures\n- I/O operations\n- String manipulation\n- Math utilities\n\n### CLI\n\n**REPL** (`cli/repl/`)\n- Interactive coding environment\n- Syntax highlighting\n- History and completion\n\n**Commands** (`cli/commands/`)\n- `hypercode run` - Execute files\n- `hypercode build` - Compile projects\n- `hypercode test` - Run tests\n- `hypercode fmt` - Format code\n\n### Language Server Protocol\n\n**LSP Server** (`lsp/`)\n- Powers IDE integrations\n- Real-time diagnostics\n- Code completion\n- Go-to-definition\n- Hover documentation\n\n---\n\n## 🛠️ Development Workflow\n\n### Building from Source\n\n```bash\n# Install dependencies\nnpm install\n\n# Build the project\nnpm run build\n\n# Run tests\nnpm test\n\n# Start development mode\nnpm run dev\n```\n\n### Testing\n\n```bash\n# Run all tests\nnpm test\n\n# Run unit tests only\nnpm run test:unit\n\n# Run integration tests\nnpm run test:integration\n\n# Run with coverage\nnpm run test:coverage\n```\n\n### Code Style\n\n- **TypeScript** - All source code\n- **ESLint** - Linting and style enforcement\n- **Prettier** - Code formatting\n- **Conventional Commits** - Commit message format\n\n---\n\n## 🧠 Neurodivergent-Friendly Design Principles\n\n### Code Organization\n\n1. **Chunked Modules**: Small, focused files (<200 lines)\n2. **Clear Names**: Descriptive function/variable names\n3. **Inline Comments**: Explain *why*, not *what*\n4. **Consistent Patterns**: Predictable structure across modules\n\n### Error Handling\n\n- **Friendly Messages**: Plain language, no jargon\n- **Actionable Suggestions**: Tell how to fix, not just what's wrong\n- **Visual Cues**: Use emojis and colors for quick scanning\n- **Context**: Show surrounding code with error location\n\n### Testing\n\n- **Descriptive Test Names**: Read like sentences\n- **AAA Pattern**: Arrange, Act, Assert\n- **Focused Tests**: One concept per test\n- **Visual Diffs**: Clear expected vs actual output\n\n---\n\n## 📚 Further Reading\n\n- [Contributing Guide](../CONTRIBUTING.md)\n- [Architecture Documentation](../docs/ARCHITECTURE.md)\n- [Language Specification](../docs/SPEC.md)\n- [API Reference](../docs/API.md)\n\n---\n\n## 👥 Contributing\n\nWant to contribute? See our [Contributing Guide](../CONTRIBUTING.md) for:\n\n- Code style guidelines\n- Pull request process\n- Development setup\n- Testing requirements\n\n---\n\n*Built with 💜 for neurodivergent minds*",
+  "metadata": {
+    "headers": [
+      "💻 HyperCode Source Code Structure",
+      "📚 Directory Overview",
+      "🔧 Key Components",
+      "Compiler",
+      "Runtime",
+      "CLI",
+      "Language Server Protocol",
+      "🛠️ Development Workflow",
+      "Building from Source",
+      "Install dependencies",
+      "Build the project",
+      "Run tests",
+      "Start development mode",
+      "Testing",
+      "Run all tests",
+      "Run unit tests only",
+      "Run integration tests",
+      "Run with coverage",
+      "Code Style",
+      "🧠 Neurodivergent-Friendly Design Principles",
+      "Code Organization",
+      "Error Handling",
+      "Testing",
+      "📚 Further Reading",
+      "👥 Contributing"
+    ]
+  },
+  "relative_path": "src\\README.md",
+  "id": "fb470af4ed6aa0acc2aaabc122a21cee"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "ollama_adapter.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\ai_gateway\\ollama_adapter.py",
+  "file_size": 814,
+  "created": "2025-11-23T11:56:45.727162",
+  "modified": "2025-11-23T11:56:45.727162",
+  "file_type": "code",
+  "content_hash": "8d20253aa67827823f20c0a560f02dd8",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nAI model compatibility layer\n\nFile: ai_gateway\\ollama_adapter.py\n\"\"\"\n\n\nclass OllamaAdapterAdapter:\n    \"\"\"Adapter for Ollama Adapter AI model.\"\"\"\n\n    def __init__(self, api_key=None):\n        self.api_key = api_key\n",
+  "metadata": {},
+  "relative_path": "src\\ai_gateway\\ollama_adapter.py",
+  "id": "59f3255da7f78d9d76252cf3ab6d9c5a"
+}

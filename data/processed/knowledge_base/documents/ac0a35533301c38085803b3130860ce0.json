@@ -1,0 +1,14 @@
+{
+  "file_name": "claude_adapter.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\ai_gateway\\claude_adapter.py",
+  "file_size": 814,
+  "created": "2025-11-12T10:36:56.885886",
+  "modified": "2025-11-15T15:54:40.930010",
+  "file_type": "code",
+  "content_hash": "43c5b59cff42ad35b12af8bfb136f129",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nAI model compatibility layer\n\nFile: ai_gateway\\claude_adapter.py\n\"\"\"\n\n\nclass ClaudeAdapterAdapter:\n    \"\"\"Adapter for Claude Adapter AI model.\"\"\"\n\n    def __init__(self, api_key=None):\n        self.api_key = api_key\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\ai_gateway\\claude_adapter.py",
+  "id": "ac0a35533301c38085803b3130860ce0"
+}

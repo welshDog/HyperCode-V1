@@ -1,0 +1,28 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\creative-demos\\fractal-explorer\\README.md",
+  "file_size": 1998,
+  "created": "2025-11-23T21:04:27.620658",
+  "modified": "2025-11-23T21:04:28.345880",
+  "file_type": "code",
+  "content_hash": "108cea1a8fb4aed958791b690c028d7c",
+  "content_type": "markdown",
+  "content": "# 🌀 HyperCode Fractal Explorer\n\nAn interactive fractal visualization tool built with HyperCode, showcasing the language's capabilities for mathematical computing and visual programming.\n\n![Fractal Explorer Screenshot](screenshot.png)\n\n## ✨ Features\n\n- **Multiple Fractal Types**: Mandelbrot, Julia, and more\n- **Interactive Zoom**: Click and drag to explore infinite detail\n- **Color Palettes**: Multiple color schemes to choose from\n- **Performance Optimized**: Fast rendering with WebAssembly\n- **Keyboard Controls**: Intuitive navigation and adjustments\n\n## 🚀 Getting Started\n\n### Prerequisites\n- HyperCode Runtime (v1.0.0 or later)\n- Modern web browser with WebAssembly support\n\n### Running the Demo\n\n1. Clone the repository:\n   ```bash\n   git clone https://github.com/welshDog/hypercode.git\n   cd hypercode/showcase/creative-demos/fractal-explorer\n   ```\n\n2. Start the development server:\n   ```bash\n   npm install\n   npm run dev\n   ```\n\n3. Open your browser to `http://localhost:3000`\n\n## 🛠️ Development\n\n### Project Structure\n```\nfractal-explorer/\n├── src/\n│   ├── fractals/     # Fractal algorithms\n│   ├── renderer/     # WebGL/Canvas rendering\n│   ├── ui/           # User interface components\n│   └── main.hc       # Main application\n├── assets/          # Images, shaders, etc.\n└── tests/           # Unit tests\n```\n\n### Available Scripts\n- `npm run dev` - Start development server\n- `npm run build` - Build for production\n- `npm test` - Run tests\n- `npm run lint` - Lint code\n\n## 📚 Learn More\n\n- [HyperCode Documentation](https://welshdog.github.io/hypercode)\n- [Fractal Mathematics](https://en.wikipedia.org/wiki/Fractal)\n- [WebGL Guide](https://webglfundamentals.org/)\n\n## 🤝 Contributing\n\nContributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.\n\n## 📄 License\n\nThis project is [MIT licensed](LICENSE).",
+  "metadata": {
+    "headers": [
+      "🌀 HyperCode Fractal Explorer",
+      "✨ Features",
+      "🚀 Getting Started",
+      "Prerequisites",
+      "Running the Demo",
+      "🛠️ Development",
+      "Project Structure",
+      "Available Scripts",
+      "📚 Learn More",
+      "🤝 Contributing",
+      "📄 License"
+    ]
+  },
+  "relative_path": "examples\\creative-demos\\fractal-explorer\\README.md",
+  "id": "61dd4f245de53d2ea158d52e6e3533c0"
+}

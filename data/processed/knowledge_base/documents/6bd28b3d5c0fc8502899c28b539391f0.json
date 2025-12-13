@@ -1,0 +1,26 @@
+{
+  "file_name": "tutorial-02-variables.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\duelcode\\tutorial-02-variables.md",
+  "file_size": 2407,
+  "created": "2025-11-26T23:37:35.612160",
+  "modified": "2025-11-26T23:37:35.612160",
+  "file_type": "code",
+  "content_hash": "1886046d10c5f13d7f3ded229135feac",
+  "content_type": "markdown",
+  "content": "# Tutorial 02: Variables & Memory 🧠\n\n## 🎯 Learning Objectives\n\nBy the end of this tutorial, you will:\n\n- ✅ Understand what variables are in HyperCode\n- ✅ Learn how to store and retrieve values\n- ✅ Use the H (output) command to display values\n- ✅ Practice with memory cell operations\n\n---\n\n## 📋 Prerequisites\n\n- [ ] Completed Tutorial 01: Hello World\n- [ ] Understand basic HyperCode syntax\n- [ ] Have HyperCode environment ready\n\n---\n\n## 🧠 Core Concept\n\n**Variable** = A named storage location for data\n\nIn HyperCode, we use memory cells (like A, B, C) to store values.\n\n### 📊 Visual\n\n```ascii\n┌─────────────────────────────────────┐\n│  HyperCode Memory Cells             │\n│  ┌───┐ ┌───┐ ┌───┐ ┌───┐ ┌───┐    │\n│  │ A │ │ B │ │ C │ │ D │ │ E │    │\n│  └───┘ └───┘ └───┘ └───┘ └───┘    │\n│                                     │\n│  Store → Retrieve → Output          │\n└─────────────────────────────────────┘\n```\n\n---\n\n## 💻 Code Example\n\n```hypercode\n; Store a value in cell A\nA = 42\n\n; Store text in cell B\nB = \"Hello\"\n\n; Output the values\nH A\nH B\n```\n\n**What it does:**\n\n- Stores the number 42 in cell A\n- Stores \"Hello\" in cell B\n- Displays both values\n\n**Run it:**\n\n```bash\nhypercode run variables.hc\n```\n\n**Output:**\n\n```text\n42\nHello\n```\n\n---\n\n## 🎯 Try It!\n\n**Exercise:** Create a program that stores your name and age, then outputs both.\n\n<details>\n<summary>Hint</summary>\n\nRemember to put text values in quotes!\n\n</details>\n\n<details>\n<summary>Solution</summary>\n\n```hypercode\n; Store your information\nname = \"Your Name\"\nage = 25\n\n; Display them\nH name\nH age\n```\n\n</details>\n\n---\n\n## 🎉 Conclusion\n\nYou learned:\n\n- Variables store data in memory cells\n- Use = to assign values\n- Use H to output values\n- Text needs quotes, numbers don't\n\n**Next:** [Tutorial 03: Math Operations](tutorial-03-math.md)\n\n---\n\n## 📚 Resources\n\n- [HyperCode Memory Guide](memory-guide.md)\n- [Variable Reference](variables-ref.md)\n\n---\n\n_Ready for more?_ 🚀",
+  "metadata": {
+    "headers": [
+      "Tutorial 02: Variables & Memory 🧠",
+      "🎯 Learning Objectives",
+      "📋 Prerequisites",
+      "🧠 Core Concept",
+      "📊 Visual",
+      "💻 Code Example",
+      "🎯 Try It!",
+      "🎉 Conclusion",
+      "📚 Resources"
+    ]
+  },
+  "relative_path": "hypercode\\src\\duelcode\\tutorial-02-variables.md",
+  "id": "6bd28b3d5c0fc8502899c28b539391f0"
+}

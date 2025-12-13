@@ -1,0 +1,14 @@
+{
+  "id": "2025-12-04-6e1872ee",
+  "date": "2025-12-04",
+  "topic": "Befunge 2D Esoteric Language",
+  "tags": [
+    "Befunge",
+    "2D",
+    "stack-based",
+    "esoteric"
+  ],
+  "source": "Esolangs.org & Wikipedia",
+  "summary": "Befunge is 2D stack-based esoteric language created 1993 by Chris Pressey, designed to be maximally hard to compile.",
+  "details": "Befunge code executes on 80x25 grid with directional instructions (>, <, ^, v). Stack-based operations with 25+ commands including arithmetic, I/O, self-modifying code. Befunge-98 extended to arbitrary dimensions (Trefunge for 3D) and achieved Turing-completeness. Influenced by Forth & Lemmings. Powers IRC bot fungot. Concepts: playfield, instruction pointer with inertia, stack operations."
+}

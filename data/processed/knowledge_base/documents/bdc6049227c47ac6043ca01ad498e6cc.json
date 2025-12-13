@@ -1,0 +1,14 @@
+{
+  "file_name": "certs.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\certs.py",
+  "file_size": 441,
+  "created": "2025-12-01T01:58:32.914589",
+  "modified": "2025-12-01T01:58:32.916920",
+  "file_type": "code",
+  "content_hash": "415898d84799c23652e5763f9a27c0b4",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python\n\n\"\"\"\nrequests.certs\n~~~~~~~~~~~~~~\n\nThis module returns the preferred default CA certificate bundle. There is\nonly one — the one from the certifi package.\n\nIf you are packaging Requests, e.g., for a Linux distribution or a managed\nenvironment, you can change the definition of where() to return a separately\npackaged CA bundle.\n\"\"\"\nfrom pip._vendor.certifi import where\n\nif __name__ == \"__main__\":\n    print(where())\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\certs.py",
+  "id": "bdc6049227c47ac6043ca01ad498e6cc"
+}

@@ -1,0 +1,35 @@
+import json
+from typing import Dict
+
+# Load the database
+with open(
+    "c:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\HYPER_DATABASE.json",
+    "r",
+    encoding="utf-8",
+) as f:
+    db = json.load(f)
+
+# Print basic info
+print(f"Database generated on: {db['generated']}")
+print(f"Files scanned: {db['files_scanned']}")
+print(f"Number of entities: {len(db['entities'])}")
+
+# Count entity types
+entity_types: Dict[str, int] = {}  # type: ignore
+for entity in db["entities"]:
+    entity_type = entity.get("type", "unknown")
+    entity_types[entity_type] = entity_types.get(entity_type, 0) + 1
+
+print("\nEntity types:")
+for etype, count in entity_types.items():
+    print(f"  - {etype}: {count}")
+
+# Show some examples
+print("\nExample entities:")
+for i, entity in enumerate(db["entities"][:5], 1):
+    print(f"\n{i}. {entity.get('type').title()}: {entity.get('name')}")
+    print(f"   File: {entity.get('file')}")
+    print(f"   Line: {entity.get('lineno')}")
+    if "docstring" in entity:
+        docstring = entity["docstring"].strip().replace("\n", " ")
+        print(f"   Doc: {docstring[:100]}...")

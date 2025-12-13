@@ -1,0 +1,14 @@
+{
+  "file_name": "_pick.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_pick.py",
+  "file_size": 423,
+  "created": "2025-12-01T01:58:33.166891",
+  "modified": "2025-12-01T01:58:33.168070",
+  "file_type": "code",
+  "content_hash": "285ad4f0fba46377d8de4ded53a60ec1",
+  "content_type": "text",
+  "content": "from typing import Optional\n\n\ndef pick_bool(*values: Optional[bool]) -> bool:\n    \"\"\"Pick the first non-none bool or return the last value.\n\n    Args:\n        *values (bool): Any number of boolean or None values.\n\n    Returns:\n        bool: First non-none boolean.\n    \"\"\"\n    assert values, \"1 or more values required\"\n    for value in values:\n        if value is not None:\n            return value\n    return bool(value)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_pick.py",
+  "id": "60fc5bb4af48ef40ff9bca6d1919d060"
+}

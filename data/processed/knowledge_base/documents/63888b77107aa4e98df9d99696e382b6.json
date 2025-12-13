@@ -1,0 +1,36 @@
+{
+  "file_name": "Developer-Quickstart.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\getting-started\\Developer-Quickstart.md",
+  "file_size": 4864,
+  "created": "2025-12-02T19:43:03.902280",
+  "modified": "2025-12-02T19:43:05.237242",
+  "file_type": "code",
+  "content_hash": "bbeacc9618c2770d2f12dee6dda11a57",
+  "content_type": "markdown",
+  "content": "# 🚀 Developer Quickstart - START HERE\n\n## Your Mission\nBuild the **React visual programming canvas** for HyperCode's HC-001.\n\n**You have 3 minutes. Read this.**\n\n---\n\n## What You're Building\n\nA node-based visual editor where neurodivergent coders can:\n1. Drag nodes onto canvas\n2. Connect nodes together\n3. See HyperCode text generate in real-time\n4. Save/load programs\n\n**Example workflow:**\n```\n[INPUT file] → [PARSE JSON] → [FILTER items] → [OUTPUT results]\n```\n\n---\n\n## Your Weekly Tasks (Dec 2-8)\n\n| Day | Task | Time |\n|-----|------|------|\n| **Mon 12/2** | Project setup, Git init | 2h |\n| **Tue 12/3** | TypeScript types + node schema | 3h |\n| **Wed 12/4** | Zustand state management | 3h |\n| **Thu 12/5** | Basic Canvas component | 2h |\n| **Fri 12/6** | Custom Node styling | 3h |\n| **Sat 12/7** | Code generator + save/load | 3h |\n| **Sun 12/8** | Tests, docs, push to GitHub | 2-3h |\n\n**Total: ~19 hours this week**\n\n---\n\n## Right Now (Next 30 Minutes)\n\n### Step 1: Create Project\n```bash\nnpm create vite@latest hypercode-visual -- --template react-ts\ncd hypercode-visual\nnpm install\n```\n\n### Step 2: Install Dependencies\n```bash\nnpm install reactflow zustand react-icons axios\nnpm install -D tailwindcss postcss autoprefixer vitest @testing-library/react\nnpx tailwindcss init -p\n```\n\n### Step 3: Create Folder Structure\n```\nsrc/\n├── components/\n│   ├── Canvas/\n│   ├── Node/\n│   ├── Palette/\n│   └── PropertiesPanel/\n├── hooks/\n├── utils/\n├── types/\n└── styles/\n```\n\n### Step 4: Start Dev Server\n```bash\nnpm run dev\n```\n\n**You're ready when**: App opens in browser at `localhost:5173`\n\n---\n\n## Your Tech Stack\n\n- **reactflow** - Node/edge library (battle-tested)\n- **zustand** - State management (lightweight)\n- **TypeScript** - Type safety\n- **Tailwind** - Styling\n- **Vitest** - Testing\n\n---\n\n## Key Files You'll Create\n\n**This Week (Week 1):**\n\n1. `src/types/nodes.ts` - TypeScript types\n2. `src/utils/nodeSchema.ts` - 12 node definitions\n3. `src/components/Canvas/useNodeGraph.ts` - Zustand store\n4. `src/components/Canvas/Canvas.tsx` - Main canvas\n5. `src/components/Node/Node.tsx` - Custom node component\n6. `src/utils/codeGenerator.ts` - Visual → HyperCode text\n7. `tests/` - Unit tests\n\n---\n\n## Success = This Works\n\nBy Dec 8, you should be able to:\n\n```\n1. Drag node from palette to canvas ✅\n2. Connect two nodes ✅\n3. See live code output update ✅\n4. Press Ctrl+Z to undo ✅\n5. Save program to localStorage ✅\n6. All tests passing ✅\n```\n\n---\n\n## Your Daily Playbook\n\n**Every day:**\n\n1. **Morning** (5 min): Read the daily task in Week-1-Daily-Checklist.md\n2. **Work** (2-3h): Build the day's task\n3. **Test** (30 min): Run tests, check TypeScript\n4. **Commit** (10 min): `git add . && git commit -m \"Day X: [task]\"`\n5. **Review** (10 min): Code looks clean? Add comments? Ready for feedback?\n\n---\n\n## If You Get Stuck (< 30 min)\n\n**Problem: React won't start**\n- Check Node version: `node --version` (need 18+)\n- Delete `node_modules` and reinstall: `rm -rf node_modules && npm install`\n\n**Problem: TypeScript errors**\n- Check `tsconfig.json` exists\n- Run `npx tsc --noEmit` to see all errors\n\n**Problem: Don't know how to implement something**\n- Check Dev-Setup-Guide.md (has code examples)\n- Check reactflow docs: https://reactflow.dev\n- Post in Discord #hc-001-dev\n\n**> 30 min stuck? Reach out immediately. That's what the team is for.**\n\n---\n\n## Resources Right Here\n\nYou have:\n- ✅ Dev-Setup-Guide.md (detailed code)\n- ✅ Week-1-Daily-Checklist.md (day-by-day tasks)\n- ✅ HyperCode-Windsurf.md (why this matters)\n- ✅ HC-001-task-breakdown.md (full context)\n\n---\n\n## Keyboard Shortcut: Ask Windsurf\n\nWhen you have questions, paste into Windsurf:\n\n```\n\"I'm building HC-001 Visual Editor with React + reactflow.\n[Problem description]\n\nBased on the Dev-Setup-Guide.md, how would you solve this?\"\n```\n\nWindsurf will instantly understand the architecture and suggest code.\n\n---\n\n## Go Time\n\n**Right now:**\n\n1. Run: `npm create vite@latest hypercode-visual -- --template react-ts`\n2. Run: `npm install` (the dependency list)\n3. Run: `npm run dev`\n4. Open `localhost:5173` in browser\n5. See React logo? ✅ You're ready\n6. Jump to Week-1-Daily-Checklist.md Monday tasks\n7. Start building\n\n**You have this. 30 minutes to get set up. Then we build.** 💪\n\n---\n\n## Questions?\n\n- Discord: #hc-001-dev\n- GitHub: Post issues in HC-001 project\n- Slack/Email: Direct message (we'll get back fast)\n\n---\n\n## Remember\n\nYou're not just building UI. You're building the gateway that lets neurodivergent coders express spatial logic visually. Every node you render is someone's breakthrough moment.\n\nShip it. Ship it right. Make it accessible.\n\n**Let's go.** 🚀\n\n---\n\n**Created**: Dec 2, 2025 6:06 PM GMT  \n**Status**: Ready  \n**Next**: npm create vite...  \n**Go.** ✨",
+  "metadata": {
+    "headers": [
+      "🚀 Developer Quickstart - START HERE",
+      "Your Mission",
+      "What You're Building",
+      "Your Weekly Tasks (Dec 2-8)",
+      "Right Now (Next 30 Minutes)",
+      "Step 1: Create Project",
+      "Step 2: Install Dependencies",
+      "Step 3: Create Folder Structure",
+      "Step 4: Start Dev Server",
+      "Your Tech Stack",
+      "Key Files You'll Create",
+      "Success = This Works",
+      "Your Daily Playbook",
+      "If You Get Stuck (< 30 min)",
+      "Resources Right Here",
+      "Keyboard Shortcut: Ask Windsurf",
+      "Go Time",
+      "Questions?",
+      "Remember"
+    ]
+  },
+  "relative_path": "docs\\getting-started\\Developer-Quickstart.md",
+  "id": "63888b77107aa4e98df9d99696e382b6"
+}

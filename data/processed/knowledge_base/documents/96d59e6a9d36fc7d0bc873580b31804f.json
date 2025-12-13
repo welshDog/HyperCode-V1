@@ -1,0 +1,28 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\web-playground\\README.md",
+  "file_size": 2135,
+  "created": "2025-11-17T22:10:00.597039",
+  "modified": "2025-11-17T22:10:43.469895",
+  "file_type": "code",
+  "content_hash": "1306cf3b226b1581b21467d61e7f04f9",
+  "content_type": "markdown",
+  "content": "# HyperCode Web Playground 🚀\n\nA browser-based playground for trying HyperCode without any installation!\n\n## Features\n\n- **✨ Try HyperCode instantly** - No setup required\n- **🎨 Beautiful interface** - Designed for neurodivergent developers\n- **📝 Live code editor** - Write HyperCode with syntax highlighting\n- **🔄 Real-time execution** - See your code run immediately\n- **📚 Built-in examples** - Learn by exploring\n- **🔗 Shareable links** - Share your code with others\n- **⌨️ Keyboard shortcuts** - Ctrl+Enter to run code\n\n## Quick Start\n\n1. Open `index.html` in your browser\n2. Write or edit HyperCode\n3. Click \"Run Code\" or press Ctrl+Enter\n4. See the output instantly!\n\n## Deployment\n\n### GitHub Pages (Recommended)\n\n1. Push this directory to your repository\n2. Go to repository Settings → Pages\n3. Select \"Deploy from a branch\"\n4. Choose `main` branch and `/web-playground` folder\n5. Your playground will be live at\n   `https://username.github.io/repository/web-playground/`\n\n### Other Options\n\n- **Vercel**: Connect your GitHub repo for automatic deployment\n- **Netlify**: Drag and drop the folder\n- **GitHub Codespaces**: Pre-configured for development\n\n## Examples\n\nThe playground includes several built-in examples:\n\n- **Hello World**: Basic greeting\n- **Math Operations**: Using visual symbols (×, ÷, ²)\n- **Loops & Arrays**: Iteration and collections\n- **Functions & Annotations**: Advanced features\n\n## Sharing Code\n\nClick the \"Share\" button to generate a unique URL for your code. Anyone with the link\ncan see and run your HyperCode!\n\n## Development\n\nTo extend the playground:\n\n1. Edit `index.html` for UI changes\n2. Modify the JavaScript interpreter in the `<script>` section\n3. Add new examples to the `examples` object\n4. Customize the theme and styling\n\n## Accessibility\n\n- High contrast mode support\n- Screen reader friendly\n- Clear visual hierarchy\n- Keyboard navigation\n- No flashing animations\n\n## Contributing\n\nFound a bug or want to add features?\n\n1. Open an issue on GitHub\n2. Submit a pull request\n3. Join our discussions\n\n---\n\n**Built with ❤️ for the neurodivergent community**",
+  "metadata": {
+    "headers": [
+      "HyperCode Web Playground 🚀",
+      "Features",
+      "Quick Start",
+      "Deployment",
+      "GitHub Pages (Recommended)",
+      "Other Options",
+      "Examples",
+      "Sharing Code",
+      "Development",
+      "Accessibility",
+      "Contributing"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\web-playground\\README.md",
+  "id": "96d59e6a9d36fc7d0bc873580b31804f"
+}

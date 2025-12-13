@@ -36,7 +36,7 @@ Check out our [documentation](docs/README.md) for detailed usage instructions.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for
+We welcome contributions! Please see our [Contributing Guide](community/CONTRIBUTING.md) for
 details.
 
 ## 📄 License

@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\tsconfig.json",
+  "file_size": 119,
+  "created": "2025-12-02T19:52:33.287046",
+  "modified": "2025-12-02T19:52:05.757902",
+  "file_type": "code",
+  "content_hash": "a3d39fa780ebff65444de257f291ce6c",
+  "content_type": "text",
+  "content": "{\n  \"files\": [],\n  \"references\": [\n    { \"path\": \"./tsconfig.app.json\" },\n    { \"path\": \"./tsconfig.node.json\" }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\tsconfig.json",
+  "id": "f442e37386ea325dd4c1aaee8076911f"
+}

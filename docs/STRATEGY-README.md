@@ -26,7 +26,7 @@ HyperCode is a **neurodivergent-first programming language** backed by rigorous 
    - Understand how research informs code decisions
    - Learn the contribution workflow
 
-2. Next: [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](./RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md)
+2. Next: [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](roadmaps/ROADMAP.md)
    - See the 4-phase execution plan
    - Find your contribution area
 
@@ -67,7 +67,7 @@ HyperCode is a **neurodivergent-first programming language** backed by rigorous 
 |----------|---------|-----------|----------|
 | **[RESEARCH-INTEGRATION.md](./RESEARCH-INTEGRATION.md)** | How research feeds development | 8 min | Everyone |
 | **[LAUNCH-EXECUTION-PLAN.md](./LAUNCH-EXECUTION-PLAN.md)** | 4-hour weekend launch campaign | 10 min | Advocates & developers |
-| **[RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](./RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md)** | Phase 1-4 strategic planning | 12 min | Developers & strategists |
+| **[RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](roadmaps/ROADMAP.md)** | Phase 1-4 strategic planning | 12 min | Developers & strategists |
 | **[STRATEGY-README.md](./STRATEGY-README.md)** | This document—master navigation | 5 min | Everyone starting out |
 
 ### Research Database
@@ -97,7 +97,7 @@ HyperCode is a **neurodivergent-first programming language** backed by rigorous 
 - Advanced features, enterprise tooling
 - Position HyperCode for market leadership
 
-👉 **Full details**: [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](./RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md)
+👉 **Full details**: [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](roadmaps/ROADMAP.md)
 
 ---
 
@@ -203,7 +203,7 @@ A: Continuously via automated workflows (coming soon via GitHub Actions).
 
 ## 📞 Need Help?
 
-- **Strategy Questions**: Check [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](./RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md)
+- **Strategy Questions**: Check [RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md](roadmaps/ROADMAP.md)
 - **Research Details**: Visit [hypercode-research](https://github.com/welshDog/hypercode-research)
 - **Launch Help**: See [LAUNCH-EXECUTION-PLAN.md](./LAUNCH-EXECUTION-PLAN.md)
 - **Integration Help**: Read [RESEARCH-INTEGRATION.md](./RESEARCH-INTEGRATION.md)

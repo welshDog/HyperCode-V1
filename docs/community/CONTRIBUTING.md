@@ -1,0 +1,331 @@
+# Contributing to HyperCode <span role="img" aria-label="brain and lightning">🧠⚡</span>
+
+**Welcome, neurodivergent developer!** We built this project WITH you in mind. No gatekeeping. No BS. Just code.
+
+---
+
+## Why Contribute? <span role="img" aria-label="target">🎯</span>
+
+- **Your brain works differently.** Help build a tool for minds like yours.
+- **Get paid.** Bounties for contributions (seriously).
+- **Build community.** Join developers who GET IT.
+- **Shape the future.** Your code and documentation shape programming for millions.
+
+## Documentation First <span role="img" aria-label="books">📚</span>
+
+We prioritize clear, accessible documentation. Before diving into code, please help us maintain high-quality documentation.
+
+---
+
+## Ways to Contribute (Pick Your Style) <span role="img" aria-label="rocket">🚀</span>
+
+### Super Easy (5-30 minutes) <span role="img" aria-label="green circle">🟢</span>
+
+**No coding experience? No problem.**
+
+- [ ] **Fix a typo** in docs or code comments
+- [ ] **Add your HyperCode story** (1-2 paragraphs about why it matters to you)
+- [ ] **Report a bug** (screenshot + description of what broke)
+- [ ] **Suggest an example** (what would help you learn?)
+- [ ] **Improve wording** in README or docs
+
+**Documentation Focus**:
+
+- Update outdated information in any `.md` file
+- Add missing documentation for public APIs
+- Improve code examples in docstrings
+- Add cross-references between related documents
+
+**Where to start**: [GitHub Issues - Good First Issue](https://github.com/welshDog/hypercode/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+
+**Bounty**: $25
+
+---
+
+### Medium (30 min - 2 hours) <span role="img" aria-label="yellow circle">🟡</span>
+
+**You know basic coding.**
+
+- [ ] **Write a new example** (3-5 HyperCode programs showing different use cases)
+- [ ] **Create a tutorial** (step-by-step guide for beginners)
+- [ ] **Add test cases** (help us catch bugs!)
+- [ ] **Improve error messages** (make them helpful and friendly)
+- [ ] **Add type hints** (help with code clarity)
+
+**Documentation Focus**:
+
+- Write API documentation for new features
+- Create architecture decision records (ADRs)
+- Document performance considerations
+- Add accessibility guidelines for UI components
+
+**Where to start**: [GitHub Issues - Help Wanted](https://github.com/welshDog/hypercode/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22)
+
+**Bounty**: $50
+
+---
+
+### Advanced (2+ hours) <span role="img" aria-label="red circle">🔴</span>
+
+**You're comfortable with the codebase.**
+
+- [ ] **Fix a bug** (check the issue tracker)
+- [ ] **Add a new feature** (propose it first!)
+- [ ] **Optimize performance** (profile first)
+- [ ] **Improve test coverage** (aim for 90%+)
+- [ ] **Refactor complex code** (make it more maintainable)
+
+**Documentation Focus**:
+
+- Design and document new architecture components
+- Create comprehensive testing strategies
+- Document security best practices
+- Write deployment and operations guides
+
+**Where to start**: [GitHub Issues - Good for Contributors](https://github.com/welshDog/hypercode/contribute)
+
+**Bounty**: $100+
+
+## Development Setup <span role="img" aria-label="tools">🛠️</span>
+
+1. **Fork** the repository
+2. **Clone** your fork:
+
+```bash
+git clone https://github.com/your-username/hypercode.git
+cd hypercode
+```
+
+3. **Install dependencies**:
+
+```bash
+pip install -r requirements.lock
+pip install -r requirements-dev.lock  # Testing, linting, etc
+```
+
+### Step 3: Create a Branch
+
+```bash
+git checkout -b feature/your-feature-name
+# or
+git checkout -b fix/the-bug-you-found
+```
+
+### Step 4: Code & Test
+
+```bash
+# Make your changes
+python -m pytest tests/  # Run tests
+python -m black src/     # Format code
+```
+
+### Step 5: Commit & Push
+
+```bash
+git add .
+git commit -m "Clear description of what you did"
+git push origin feature/your-feature-name
+```
+
+### Step 6: Open a Pull Request
+
+Go to GitHub, click "New Pull Request", and describe your changes.
+
+---
+
+## ✨ Coding Standards
+
+### 1. Clarity Over Cleverness
+
+Write code that's easy to understand, not impressive.
+
+```python
+# ✅ Good
+user_count = len(active_users)
+
+# ❌ Bad (too clever)
+user_count = sum(1 for u in active_users if u.active)
+```
+
+### 2. Add Comments (Especially for ADHD Brains)
+
+Explain the WHY, not the what.
+
+```python
+# ✅ Good
+# We filter for active users first to avoid processing inactive accounts
+active = [u for u in users if u.active]
+
+# ❌ Bad (comment just repeats code)
+# Filter for active users
+active = [u for u in users if u.active]
+```
+
+### 3. Test Your Code
+
+```bash
+# Add tests for new features
+python -m pytest tests/test_your_feature.py -v
+```
+
+### 4. Use Type Hints
+
+```python
+# ✅ Good
+def process_data(data: list[str]) -> dict[str, int]:
+    return {"count": len(data)}
+
+# ❌ Bad (no types)
+def process_data(data):
+    return {"count": len(data)}
+```
+
+---
+
+## 📝 Commit Messages (ADHD-Friendly Format)
+
+```text
+[type] Brief description
+
+More detailed description if needed. Wrap it to about 72 characters or so.
+
+- List of changes
+- Another change
+
+Closes #123 (if applicable)
+```
+
+**Types**:
+
+-   `[feat]` - New feature
+-   `[fix]` - Bug fix
+-   `[docs]` - Documentation
+-   `[test]` - Tests
+-   `[refactor]` - Code cleanup
+
+**Examples**:
+
+```
+[feat] Add pipe operator to syntax
+[fix] Handle empty lists in sum function
+[docs] Improve README clarity
+```
+
+---
+
+## 🐛 Bug Reports: Help Us Help You
+
+When reporting a bug, include:
+
+1. **What you did** (exact steps)
+2. **What you expected** (what should happen)
+3. **What actually happened** (error message, screenshot)
+4. **Your environment** (Python version, OS)
+
+**Example**:
+
+```
+### What I did
+1. Created file test.hc with: [1, 2, 3] | sum → output
+2. Ran: python -m src.hypercode test.hc
+
+### Expected
+Output: 6
+
+### Actually got
+Error: NameError: 'sum' is not defined
+
+### Environment
+- Python 3.11
+- macOS 13.2
+```
+
+---
+
+## 🤝 Community Guidelines
+
+### We Celebrate
+
+✅ Neurodivergent developers  
+✅ Diverse thinking styles  
+✅ Mistakes & learning  
+✅ Slow progress  
+✅ Questions (no question is dumb)  
+✅ Passion & authenticity
+
+### We Don't Tolerate
+
+❌ Gatekeeping  
+❌ Shame for mistakes  
+❌ Discrimination (any form)  
+❌ Pressure to be "productive"  
+❌ "Broken brain" language  
+❌ Ableism
+
+---
+
+## 💰 Bounty System
+
+### How Bounties Work
+
+1. **Issue posted** with bounty amount (usually $25-$500)
+2. **You claim it** by commenting "I'll take this"
+3. **You build it** (with help if needed)
+4. **You submit PR** (when ready)
+5. **We merge it** ✅
+6. **You get paid** (via PayPal/Stripe/Crypto)
+
+### Current Bounties
+
+Check [BOUNTIES.md](./BOUNTIES.md) for active opportunities.
+
+### Create Your Own Bounty
+
+Found an issue? Offer a bounty and we'll build it faster.
+
+---
+
+## 🎓 Learning Resources
+
+### If You're New to HyperCode
+
+-   [HyperCode Syntax](./docs/SYNTAX.md)
+-   [Examples](./examples/)
+-   [Design Philosophy](./docs/PHILOSOPHY.md)
+
+### If You're New to Open Source
+
+-   [How to Make a GitHub Pull Request](https://opensource.guide/how-to-contribute/#opening-a-pull-request)
+-   [GitHub Discussions Guide](https://docs.github.com/en/discussions)
+
+### Getting Help
+
+-   **Confused?** [Ask in Discussions](https://github.com/welshDog/hypercode/discussions)
+-   **Stuck?** [Create an Issue](https://github.com/welshDog/hypercode/issues)
+-   **Want to chat?** [Join Discord](https://discord.gg/hypercode) (coming soon)
+
+---
+
+## 🎯 Your First Contribution Checklist
+
+-   [ ] Fork & clone the repo
+-   [ ] Create a branch with a clear name
+-   [ ] Make a small, focused change
+-   [ ] Test your change (if applicable)
+-   [ ] Write a clear commit message
+-   [ ] Push & open a Pull Request
+-   [ ] Describe what you did & why
+-   [ ] We'll review & merge (or give feedback)
+-   [ ] 🎉 **You're a HyperCode contributor!**
+
+---
+
+## 🙌 Thank You
+
+You're not just contributing code. You're building a movement.
+
+**Thank you for believing in HyperCode.** 💙
+
+---
+
+_Built with ❤️ by neurodivergent developers, for neurodivergent developers._

@@ -1,0 +1,14 @@
+{
+  "file_name": "pyproject.toml",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\pyproject.toml",
+  "file_size": 604,
+  "created": "2025-11-26T23:37:35.546882",
+  "modified": "2025-11-26T23:37:35.546882",
+  "file_type": "code",
+  "content_hash": "1c848885bbc1de860f11b881b642c067",
+  "content_type": "text/unknown",
+  "content": "[build-system]\nrequires = [\"setuptools>=42\", \"wheel\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"hypercode\"\nversion = \"0.1.0\"\ndescription = \"HyperCode programming language implementation\"\nreadme = \"README.md\"\nrequires-python = \">=3.8\"\nlicense = {text = \"MIT\"}\nauthors = [\n    {name = \"Your Name\", email = \"your.email@example.com\"},\n]\n\n[project.optional-dependencies]\ndev = [\n    \"pytest>=7.0.0\",\n    \"black>=22.1.0\",\n    \"flake8>=4.0.0\",\n    \"mypy>=0.930\",\n    \"pytest-cov>=3.0.0\",\n]\n\n[tool.black]\nline-length = 100\ntarget-version = ['py38']\ninclude = '\\.pyi?$'",
+  "metadata": {},
+  "relative_path": "hypercode\\pyproject.toml",
+  "id": "d02a52dd8a87ea7817dfff6190cafaeb"
+}

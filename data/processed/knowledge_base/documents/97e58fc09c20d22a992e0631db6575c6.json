@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\metadata\\importlib\\__init__.py",
+  "file_size": 135,
+  "created": "2025-12-01T01:58:30.962371",
+  "modified": "2025-12-01T01:58:30.964580",
+  "file_type": "code",
+  "content_hash": "994b6ede7339c2d81df1ec2fcf571a53",
+  "content_type": "text",
+  "content": "from ._dists import Distribution\nfrom ._envs import Environment\n\n__all__ = [\"NAME\", \"Distribution\", \"Environment\"]\n\nNAME = \"importlib\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\metadata\\importlib\\__init__.py",
+  "id": "97e58fc09c20d22a992e0631db6575c6"
+}

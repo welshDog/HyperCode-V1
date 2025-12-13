@@ -1,0 +1,14 @@
+{
+  "file_name": "dataset_downloader.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\mcp\\servers\\dataset_downloader.py",
+  "file_size": 150,
+  "created": "2025-11-26T23:37:35.535278",
+  "modified": "2025-11-26T23:37:35.535278",
+  "file_type": "code",
+  "content_hash": "d52e5eab8c7918b380b4aad2b519c8fc",
+  "content_type": "text",
+  "content": "# mcp/servers/dataset_downloader.py\n\n\ndef main():\n    print(\"Dataset Downloader MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\mcp\\servers\\dataset_downloader.py",
+  "id": "0299c3cb8f625e75c70f8bc0df66b7c1"
+}

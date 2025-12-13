@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\truststore\\__init__.py",
+  "file_size": 1264,
+  "created": "2025-12-01T01:58:33.596620",
+  "modified": "2025-12-01T01:58:33.603702",
+  "file_type": "code",
+  "content_hash": "c7d64b9039bb4d1a3aa3ed9ac264464e",
+  "content_type": "text",
+  "content": "\"\"\"Verify certificates using native system trust stores\"\"\"\n\nimport sys as _sys\n\nif _sys.version_info < (3, 10):\n    raise ImportError(\"truststore requires Python 3.10 or later\")\n\n# Detect Python runtimes which don't implement SSLObject.get_unverified_chain() API\n# This API only became public in Python 3.13 but was available in CPython and PyPy since 3.10.\nif _sys.version_info < (3, 13):\n    try:\n        import ssl as _ssl\n    except ImportError:\n        raise ImportError(\"truststore requires the 'ssl' module\")\n    else:\n        _sslmem = _ssl.MemoryBIO()\n        _sslobj = _ssl.create_default_context().wrap_bio(\n            _sslmem,\n            _sslmem,\n        )\n        try:\n            while not hasattr(_sslobj, \"get_unverified_chain\"):\n                _sslobj = _sslobj._sslobj  # type: ignore[attr-defined]\n        except AttributeError:\n            raise ImportError(\n                \"truststore requires peer certificate chain APIs to be available\"\n            ) from None\n\n        del _ssl, _sslobj, _sslmem  # noqa: F821\n\nfrom ._api import SSLContext, extract_from_ssl, inject_into_ssl  # noqa: E402\n\ndel _api, _sys  # type: ignore[name-defined] # noqa: F821\n\n__all__ = [\"SSLContext\", \"inject_into_ssl\", \"extract_from_ssl\"]\n__version__ = \"0.10.0\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\truststore\\__init__.py",
+  "id": "9b37fcf8fc3f00c53a3b08597ae3739a"
+}

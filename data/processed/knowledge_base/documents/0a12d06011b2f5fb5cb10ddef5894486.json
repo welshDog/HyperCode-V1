@@ -1,0 +1,14 @@
+{
+  "file_name": "pyvenv.cfg",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\pyvenv.cfg",
+  "file_size": 347,
+  "created": "2025-12-01T01:57:51.654466",
+  "modified": "2025-12-01T01:57:51.657466",
+  "file_type": "code",
+  "content_hash": "d30c0c16de5d01c6f6188b100f48202b",
+  "content_type": "text/unknown",
+  "content": "home = C:\\Users\\lyndz\\AppData\\Local\\Programs\\Python\\Python312\ninclude-system-site-packages = false\nversion = 3.12.10\nexecutable = C:\\Users\\lyndz\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\ncommand = C:\\Users\\lyndz\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m venv C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\n",
+  "metadata": {},
+  "relative_path": "venv_new\\pyvenv.cfg",
+  "id": "0a12d06011b2f5fb5cb10ddef5894486"
+}

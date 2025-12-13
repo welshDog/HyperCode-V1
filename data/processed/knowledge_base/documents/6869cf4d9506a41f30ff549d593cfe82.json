@@ -1,0 +1,14 @@
+{
+  "file_name": "benchmarks_lexer.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\benchmarks\\benchmarks_lexer.py",
+  "file_size": 1995,
+  "created": "2025-11-25T01:39:26.515541",
+  "modified": "2025-11-25T01:39:36.362200",
+  "file_type": "code",
+  "content_hash": "c7737086b0bd91bb96b48805810d4073",
+  "content_type": "text",
+  "content": "# benchmarks/benchmark_lexer.py\nimport time\nfrom pathlib import Path\nfrom src.core.lexer import Lexer\n\ndef benchmark_lexer(source: str, iterations: int = 1000) -> dict:\n    \"\"\"Benchmark the lexer with the given source code.\"\"\"\n    total_time = 0\n    tokens_count = 0\n    errors = []\n    \n    for _ in range(iterations):\n        start_time = time.perf_counter()\n        lexer = Lexer(source)\n        tokens = lexer.scan_tokens()\n        end_time = time.perf_counter()\n        \n        total_time += (end_time - start_time)\n        tokens_count = len(tokens)\n        errors = lexer.errors\n    \n    avg_time = (total_time / iterations) * 1000  # Convert to milliseconds\n    return {\n        'avg_time_ms': avg_time,\n        'tokens_count': tokens_count,\n        'errors': errors,\n        'iterations': iterations\n    }\n\ndef print_benchmark_results(results: dict):\n    \"\"\"Print benchmark results in a readable format.\"\"\"\n    print(\"\\n\" + \"=\" * 50)\n    print(\"Lexer Benchmark Results\")\n    print(\"=\" * 50)\n    print(f\"Average time per lex: {results['avg_time_ms']:.4f}ms\")\n    print(f\"Total tokens: {results['tokens_count']}\")\n    print(f\"Iterations: {results['iterations']}\")\n    \n    if results['errors']:\n        print(\"\\nErrors encountered:\")\n        for error in results['errors']:\n            print(f\"  - {error.message} at line {error.line}, column {error.column}\")\n    else:\n        print(\"\\nNo errors found.\")\n    print(\"=\" * 50 + \"\\n\")\n\nif __name__ == \"__main__\":\n    # Test with a sample source file\n    sample_code = \"\"\"\n    // Sample HyperCode program\n    fun factorial(n) {\n        if (n <= 1) return 1;\n        return n * factorial(n - 1);\n    }\n    \n    // Calculate factorial of 5\n    var result = factorial(5);\n    print(\"Factorial of 5 is: \" + result);\n    \"\"\"\n    \n    print(\"Running lexer benchmark with sample code...\")\n    results = benchmark_lexer(sample_code, iterations=1000)\n    print_benchmark_results(results)",
+  "metadata": {},
+  "relative_path": "benchmarks\\benchmarks_lexer.py",
+  "id": "6869cf4d9506a41f30ff549d593cfe82"
+}

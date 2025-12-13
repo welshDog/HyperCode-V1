@@ -1,0 +1,39 @@
+from functools import lru_cache
+from typing import Tuple
+
+class HypercodeDB:
+    # ... existing code ...
+    
+    @lru_cache(maxsize=128)
+    def find_entity(self, name: str, entity_type: str = None) -> List[CodeEntity]:
+        """Find entities by name and optionally type.
+        
+        Args:
+            name: Name of the entity to find
+            entity_type: Optional type filter
+            
+        Returns:
+            List of matching CodeEntity objects
+        """
+        return [
+            e for e in self.entities 
+            if e.name == name and (entity_type is None or e.type == entity_type)
+        ]
+    
+    @lru_cache(maxsize=32)
+    def get_file_metrics(self, file_path: str) -> Dict[str, int]:
+        """Get metrics for a specific file.
+        
+        Args:
+            file_path: Path to the file
+            
+        Returns:
+            Dictionary containing various metrics about the file
+        """
+        entities = self.by_file.get(file_path, [])
+        return {
+            "total_entities": len(entities),
+            "functions": sum(1 for e in entities if e.type == "function"),
+            "classes": sum(1 for e in entities if e.type == "class"),
+            "documented": sum(1 for e in entities if e.docstring.strip()),
+        }

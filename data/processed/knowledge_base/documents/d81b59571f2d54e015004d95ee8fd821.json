@@ -1,0 +1,14 @@
+{
+  "file_name": "quantum_demo.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\examples\\quantum_demo.hc",
+  "file_size": 653,
+  "created": "2025-11-12T10:36:56.960661",
+  "modified": "2025-11-17T17:48:31.510170",
+  "file_type": "other",
+  "content_hash": "dd9800b5d3674d1d0e9ef56e1004b138",
+  "content_type": "text/unknown",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\"\"\"\nExample HyperCode programs\n\nFile: examples\\quantum_demo.hc\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\examples\\quantum_demo.hc",
+  "id": "d81b59571f2d54e015004d95ee8fd821"
+}

@@ -1,0 +1,34 @@
+{
+  "file_name": "LANGUAGE_OVERVIEW.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\LANGUAGE_OVERVIEW.md",
+  "file_size": 3098,
+  "created": "2025-11-26T11:54:54.290482",
+  "modified": "2025-12-04T00:22:54.768169",
+  "file_type": "code",
+  "content_hash": "a5ab5a867317a9d63ee4cc4f081d326a",
+  "content_type": "markdown",
+  "content": "# 🧩 HyperCode Language Overview\n\n> **ADHD-friendly syntax guide** — Quick scan, visual patterns, zero jargon.\n\n---\n\n## 🎯 Core Philosophy\n\nHyperCode uses **chunked syntax** and **visual flow indicators** so your brain can:\n- ✅ **See the structure** at a glance\n- ✅ **Skip back easily** without losing context\n- ✅ **Predict what comes next** (no hidden surprises)\n\n---\n\n## 🚀 Basic Syntax\n\n### Variables\n```hypercode\nlet name = \"Alex\"\nlet age = 25\nlet isActive = true\n```\n\n### Functions\n```hypercode\nfunc greet(name) {\n  return \"Hello, \" + name\n}\n```\n\n### Conditional Flow\n```hypercode\nif age > 18 {\n  print(\"Adult\")\n} else {\n  print(\"Minor\")\n}\n```\n\n### Loops\n```hypercode\nfor item in list {\n  print(item)\n}\n\nwhile count < 10 {\n  count = count + 1\n}\n```\n\n---\n\n## 🧠 Neurodivergent-Friendly Features\n\n### 1. Visual Flow Indicators\n```hypercode\nfunc process() {\n  ↓ step 1\n  loadData()\n  \n  ↓ step 2\n  validateData()\n  \n  ↓ step 3\n  saveData()\n}\n```\n\n### 2. Explicit State Markers\n```hypercode\nlet status = @loading    // @ indicates state\nlet error = @error(\"Failed to load\")\nlet data = @success(result)\n```\n\n### 3. Chunked Blocks\n```hypercode\n// Clear visual boundaries\nblock authentication {\n  checkCredentials()\n  verifyToken()\n  grantAccess()\n}\n\nblock dataProcessing {\n  fetchData()\n  transformData()\n  storeData()\n}\n```\n\n### 4. Predictable Error Handling\n```hypercode\ntry {\n  riskyOperation()\n} catch error {\n  💚 \"Something went wrong: \" + error.message\n  // Friendly, not scary\n}\n```\n\n---\n\n## 🎨 Style Conventions\n\n| Pattern | Meaning | Example |\n|---------|---------|----------|\n| `let` | Variable | `let count = 0` |\n| `func` | Function | `func add(a, b)` |\n| `@` | State marker | `@loading`, `@error` |\n| `↓` | Flow direction | `↓ next step` |\n| `💚` | Friendly error | `💚 \"Oops!\"` |\n| `//` | Comment | `// This explains why` |\n\n---\n\n## 📦 Data Types\n\n```hypercode\n// Primitives\nlet text = \"string\"\nlet number = 42\nlet decimal = 3.14\nlet boolean = true\nlet nothing = null\n\n// Collections\nlet list = [1, 2, 3, 4]\nlet map = {name: \"Alex\", age: 25}\n\n// Special\nlet state = @pending\nlet result = @success(data)\n```\n\n---\n\n## 🔗 Importing Modules\n\n```hypercode\nimport \"utils\" as utils\nimport \"api\" as api\n\nutils.formatDate(today)\napi.fetchUser(123)\n```\n\n---\n\n## ✨ Quick Tips\n\n1. **Use visual markers** (`↓`, `@`, `💚`) to guide your eyes\n2. **Chunk related code** into named blocks\n3. **Write comments for *why*, not *what*** — the code shows *what*\n4. **Keep functions short** — aim for 5-10 lines max\n5. **Use consistent spacing** — your future self will thank you\n\n---\n\n## 🆘 Need Help?\n\n- 📖 [Full Documentation](../README.md)\n- ❓ [FAQ](community/FAQ.md)\n- 💬 [Community Discussions](https://github.com/welshDog/hypercode/discussions)\n- 🐛 [Report Issues](https://github.com/welshDog/hypercode/issues)\n\n---\n\n**Built for brains that think differently** 🧠✨",
+  "metadata": {
+    "headers": [
+      "🧩 HyperCode Language Overview",
+      "🎯 Core Philosophy",
+      "🚀 Basic Syntax",
+      "Variables",
+      "Functions",
+      "Conditional Flow",
+      "Loops",
+      "🧠 Neurodivergent-Friendly Features",
+      "1. Visual Flow Indicators",
+      "2. Explicit State Markers",
+      "3. Chunked Blocks",
+      "4. Predictable Error Handling",
+      "🎨 Style Conventions",
+      "📦 Data Types",
+      "🔗 Importing Modules",
+      "✨ Quick Tips",
+      "🆘 Need Help?"
+    ]
+  },
+  "relative_path": "docs\\LANGUAGE_OVERVIEW.md",
+  "id": "aba5e92d6924916b4d041182cab2e9ea"
+}

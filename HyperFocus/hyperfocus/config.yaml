@@ -1,0 +1,19 @@
+# .hyperfocus/config.yaml
+focus:
+  modes:
+    deep_work:
+      duration: 50
+      break_duration: 10
+      allowed_notifications: ["critical"]
+    creative_flow:
+      duration: 90
+      break_duration: 15
+      allowed_notifications: []
+
+cognitive:
+  load_threshold: 7.5
+  recovery_time: 5  # minutes
+
+ai:
+  provider: "anthropic"  # or "openai", "ollama"
+  model: "claude-3-opus"

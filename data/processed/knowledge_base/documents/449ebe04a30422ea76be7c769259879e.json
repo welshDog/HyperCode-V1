@@ -1,0 +1,14 @@
+{
+  "file_name": "py.typed",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\py.typed",
+  "file_size": 286,
+  "created": "2025-12-01T01:58:29.837772",
+  "modified": "2025-12-01T01:58:29.839789",
+  "file_type": "other",
+  "content_hash": "c1d1d04b2a337d563ce02adcac204386",
+  "content_type": "text/unknown",
+  "content": "pip is a command line program. While it is implemented in Python, and so is\navailable for import, you must not use pip's internal APIs in this way. Typing\ninformation is provided as a convenience only and is not a guarantee. Expect\nunannounced changes to the API and types in releases.\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\py.typed",
+  "id": "449ebe04a30422ea76be7c769259879e"
+}

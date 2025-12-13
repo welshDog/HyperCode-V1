@@ -1,0 +1,37 @@
+{
+  "file_name": "DUELCODE_TUTORIAL_TEMPLATE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\templates\\DUELCODE_TUTORIAL_TEMPLATE.md",
+  "file_size": 2381,
+  "created": "2025-12-04T21:32:11.571191",
+  "modified": "2025-12-04T21:32:17.142239",
+  "file_type": "code",
+  "content_hash": "ed503526ddfcf6e130e20675cef9cea4",
+  "content_type": "markdown",
+  "content": "# 🧠 [Tutorial Title]: [Brief Description]\n\n## 🎯 Learning Objective\n- [ ] Understand [core concept 1]\n- [ ] Learn how to [specific skill 1]\n- [ ] Apply [concept] to [real-world scenario]\n\n## 🧩 Prerequisite Knowledge\n- [ ] Basic understanding of [related concept]\n- [ ] Familiarity with [language/tool]\n- [ ] [Optional] Previous experience with [related topic]\n\n## 📋 Before You Start\n- [ ] Install [required software]\n- [ ] Clone the example repository\n- [ ] Set up your development environment\n- [ ] Complete the [prerequisite tutorial]\n\n## 🎨 Visual Overview\n\n```mermaid\ngraph TD\n    A[Start] --> B[Step 1]\n    B --> C[Step 2]\n    C --> D[Step 3]\n    D --> E[End]\n    \n    style A fill:#9f9,stroke:#333\n    style E fill:#f99,stroke:#333\n```\n\n## 🛠️ Tutorial Steps\n\n### Part 1: [Part Title]\n\n#### Visual Representation\n```mermaid\nflowchart LR\n    A[Input] -->|Process| B[Output]\n    B --> C[Next Step]\n```\n\n#### Code Implementation\n```python\ndef example_function():\n    \"\"\"Docstring explaining the function\"\"\"\n    return \"Hello, DuelCode!\"\n```\n\n#### Key Concepts\n- **Concept 1**: Explanation\n- **Concept 2**: Explanation with `inline code`\n- **Concept 3**: [Link to reference](#)\n\n---\n\n### Part 2: [Next Part Title]\n\n#### Visual Workflow\n```mermaid\nsequenceDiagram\n    participant U as User\n    participant S as System\n    U->>S: Request\n    S->>U: Response\n```\n\n#### Implementation Example\n```javascript\n// JavaScript example\nconst greeting = () => {\n  console.log(\"Dual representation is powerful!\");\n};\n```\n\n## 🧪 Try It Yourself\n1. [ ] Task 1: [Specific task]\n   - Hint: [Helpful hint]\n   - Solution: [Spoiler alert!](#)\n\n2. [ ] Task 2: [Another task]\n   - Hint: [Helpful hint]\n   - Solution: [Spoiler alert!](#)\n\n## 🔍 Review & Recap\n- [ ] Key takeaway 1\n- [ ] Key takeaway 2\n- [ ] Key takeaway 3\n\n## 🚀 Next Steps\n- [ ] Explore [related topic]\n- [ ] Try the [next tutorial]\n- [ ] Build your own [project idea]\n\n## 📚 Additional Resources\n- [Documentation Link](#)\n- [Related Tutorial](#)\n- [Community Forum](#)\n\n## ❓ Frequently Asked Questions\n\n### Q: [Common question]?\nA: [Clear, concise answer]\n\n### Q: [Another question]?\nA: [Helpful response with examples]\n\n---\n\n*Created with ❤️ by the HyperCode Team*  \n*Last updated: [Date]*",
+  "metadata": {
+    "headers": [
+      "🧠 [Tutorial Title]: [Brief Description]",
+      "🎯 Learning Objective",
+      "🧩 Prerequisite Knowledge",
+      "📋 Before You Start",
+      "🎨 Visual Overview",
+      "🛠️ Tutorial Steps",
+      "Part 1: [Part Title]",
+      "Visual Representation",
+      "Code Implementation",
+      "Key Concepts",
+      "Part 2: [Next Part Title]",
+      "Visual Workflow",
+      "Implementation Example",
+      "🧪 Try It Yourself",
+      "🔍 Review & Recap",
+      "🚀 Next Steps",
+      "📚 Additional Resources",
+      "❓ Frequently Asked Questions",
+      "Q: [Common question]?",
+      "Q: [Another question]?"
+    ]
+  },
+  "relative_path": "docs\\templates\\DUELCODE_TUTORIAL_TEMPLATE.md",
+  "id": "ff45cb060e814802a49eaf4c33df23f9"
+}

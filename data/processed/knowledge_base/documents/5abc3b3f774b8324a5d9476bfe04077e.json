@@ -1,0 +1,14 @@
+{
+  "file_name": "simple_test.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\parser\\simple_test.py",
+  "file_size": 322,
+  "created": "2025-11-16T20:31:11.292153",
+  "modified": "2025-11-17T00:02:47.531065",
+  "file_type": "code",
+  "content_hash": "631c04a94d5559b5b8a05a4e608785f1",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\nimport re\n\n# Test the pattern directly\npattern = re.compile(r\"🔍\\s*@verifiable\\s*\\((.*?)\\)\")\n\ntest_line = '🔍 @verifiable(\"formal_proof\")'\nmatches = pattern.findall(test_line)\n\nprint(f\"Test line: {test_line}\")\nprint(f\"Matches: {matches}\")\nprint(f\"Pattern works: {len(matches) > 0}\")\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\parser\\simple_test.py",
+  "id": "5abc3b3f774b8324a5d9476bfe04077e"
+}

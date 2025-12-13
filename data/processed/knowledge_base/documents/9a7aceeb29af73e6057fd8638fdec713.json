@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\hypercode\\core\\__init__.py",
+  "file_size": 618,
+  "created": "2025-11-26T23:37:35.633447",
+  "modified": "2025-11-26T23:37:35.633447",
+  "file_type": "code",
+  "content_hash": "bb1df2801a019bc3d4d94c635ac1662b",
+  "content_type": "text",
+  "content": "\"\"\"\nCore package for the HyperCode language implementation.\n\nThis package contains the core components of the HyperCode language,\nincluding the lexer, parser, and semantic analyzer.\n\"\"\"\n\nfrom .ast import *\nfrom .error_handler import report, report_parse_error\nfrom .lexer import Lexer\nfrom .parser import ParseError, Parser\nfrom .tokens import Token, TokenType\n\n# Optimizer and SemanticAnalyzer are not implemented yet\n\n__all__ = [\n    \"Lexer\",\n    \"Token\",\n    \"TokenType\",\n    \"Parser\",\n    \"ParseError\",\n    \"report_parse_error\",\n    \"report\",\n    # AST nodes are imported via * from ast\n]\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\hypercode\\core\\__init__.py",
+  "id": "9a7aceeb29af73e6057fd8638fdec713"
+}

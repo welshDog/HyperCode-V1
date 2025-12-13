@@ -1,0 +1,14 @@
+{
+  "file_name": "eslint.config.js",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\vscode-extension\\eslint.config.js",
+  "file_size": 300,
+  "created": "2025-11-28T02:03:22.606354",
+  "modified": "2025-11-28T02:06:31.190952",
+  "file_type": "code",
+  "content_hash": "43b89dadb181347445cf582e34df98b7",
+  "content_type": "text",
+  "content": "﻿import tseslint from 'typescript-eslint';\nimport js from '@eslint/js';\n\nexport default tseslint.config(\n  js.configs.recommended,\n  ...tseslint.configs.recommended,\n  {\n    rules: {\n      '@typescript-eslint/no-explicit-any': 'off',\n      '@typescript-eslint/no-unused-vars': 'warn'\n    }\n  }\n);\n",
+  "metadata": {},
+  "relative_path": "vscode-extension\\eslint.config.js",
+  "id": "2a2643c3f35bf0d216bef08496e3b770"
+}

@@ -1,0 +1,43 @@
+{
+  "file_name": "API_REFERENCE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\API_REFERENCE.md",
+  "file_size": 4759,
+  "created": "2025-11-26T23:37:35.382592",
+  "modified": "2025-11-26T23:37:35.382592",
+  "file_type": "code",
+  "content_hash": "752cd123a27369086a4bac40e150f9c4",
+  "content_type": "markdown",
+  "content": "# HyperCode API Reference\n\n## Table of Contents\n\n1. [Built-in Functions](#built-in-functions)\n   - [Input/Output](#inputoutput)\n   - [Type Conversion](#type-conversion)\n   - [Math Operations](#math-operations)\n   - [String Operations](#string-operations)\n   - [Collection Methods](#collection-methods)\n2. [Standard Library](#standard-library)\n   - [File System](#file-system)\n   - [Date and Time](#date-and-time)\n   - [JSON Handling](#json-handling)\n3. [Error Handling](#error-handling)\n4. [Modules](#modules)\n   - [HTTP Module](#http-module)\n   - [Random Module](#random-module)\n\n## Built-in Functions\n\n### Input/Output\n\n#### `print(value1, value2, ..., valueN)`\n\nPrints values to the standard output.\n\n```javascript\nprint(\"Hello\", \"World\"); // Hello World\nprint(42, \"is the answer\"); // 42 is the answer\n```\n\n#### `input([prompt])`\n\nReads a line from standard input.\n\n```javascript\nconst name = input(\"Enter your name: \");\nprint(`Hello, ${name}!`);\n```\n\n### Type Conversion\n\n#### `Number(value)`\n\nConverts a value to a number.\n\n```javascript\nNumber(\"42\"); // 42\nNumber(\"3.14\"); // 3.14\nNumber(\"abc\"); // null\n```\n\n#### `String(value)`\n\nConverts a value to a string.\n\n```javascript\nString(42); // \"42\"\nString(true); // \"true\"\nString([1, 2, 3]); // \"1,2,3\"\n```\n\n#### `Boolean(value)`\n\nConverts a value to a boolean.\n\n```javascript\nBoolean(1); // true\nBoolean(0); // false\nBoolean(\"text\"); // true\nBoolean(\"\"); // false\n```\n\n### Math Operations\n\n#### `Math` Object\n\n```javascript\nMath.PI; // 3.141592653589793\nMath.E; // 2.718281828459045\nMath.abs(-5); // 5\nMath.ceil(4.2); // 5\nMath.floor(4.9); // 4\nMath.round(4.5); // 5\nMath.max(1, 2, 3); // 3\nMath.min(1, 2, 3); // 1\nMath.random(); // Random number between 0 and 1\nMath.sqrt(16); // 4\nMath.pow(2, 3); // 8\n```\n\n### String Operations\n\n#### String Methods\n\n```javascript\nconst str = \"Hello, World!\";\n\nstr.length(); // 13\nstr.upper(); // \"HELLO, WORLD!\"\nstr.lower(); // \"hello, world!\"\nstr.trim(); // Removes whitespace\nstr.indexOf(\"World\"); // 7\nstr.substring(0, 5); // \"Hello\"\nstr.split(\",\"); // [\"Hello\", \" World!\"]\nstr.replace(\"World\", \"HyperCode\"); // \"Hello, HyperCode!\"\n```\n\n### Collection Methods\n\n#### Array Methods\n\n```javascript\nconst arr = [1, 2, 3]\n\narr.length()           // 3\narr.push(4)           // [1, 2, 3, 4]\narr.pop()             // 4, arr is now [1, 2, 3]\narr.unshift(0)        // [0, 1, 2, 3]\narr.shift()           // 0, arr is now [1, 2, 3]\narr.includes(2)       // true\narr.indexOf(2)        // 1\narr.join(\", \")         // \"1, 2, 3\"\narr.map(fn(x) { return x * 2 }) // [2, 4, 6]\narr.filter(fn(x) { return x > 1 }) // [2, 3]\narr.reduce(fn(acc, x) { return acc + x }, 0) // 6\n```\n\n#### Map Methods\n\n```javascript\nconst map = { a: 1, b: 2 };\n\nmap.keys(); // [\"a\", \"b\"]\nmap.values(); // [1, 2]\nmap.entries(); // [[\"a\", 1], [\"b\", 2]]\nmap.has(\"a\"); // true\nmap.get(\"a\"); // 1\nmap.set(\"c\", 3);\nmap.delete(\"a\");\nmap.clear();\n```\n\n## Standard Library\n\n### File System\n\n```javascript\nconst fs = import(\"fs\");\n\n// Read file\nconst content = fs.readFile(\"file.txt\");\n\n// Write file\nfs.writeFile(\"output.txt\", \"Hello, World!\");\n\n// Check if file exists\nif (fs.exists(\"file.txt\")) {\n  print(\"File exists\");\n}\n```\n\n### Date and Time\n\n```javascript\nconst now = new Date();\nnow.toString(); // \"Wed Nov 12 2025 19:23:45 GMT-0500\"\nnow.getFullYear(); // 2025\nnow.getMonth(); // 10 (0-based)\nnow.getDate(); // 12\nnow.getHours(); // 19\nnow.getMinutes(); // 23\nnow.getSeconds(); // 45\nnow.getTime(); // Timestamp in milliseconds\n```\n\n### JSON Handling\n\n```javascript\nconst obj = { name: \"Alice\", age: 30 };\nconst json = JSON.stringify(obj); // '{\"name\":\"Alice\",\"age\":30}'\nconst parsed = JSON.parse(json); // {name: \"Alice\", age: 30}\n```\n\n## Error Handling\n\n### Try/Catch\n\n```javascript\ntry {\n  const result = 10 / 0;\n  if (!isFinite(result)) {\n    throw \"Division by zero\";\n  }\n} catch (error) {\n  print(`Error: ${error}`);\n} finally {\n  print(\"Cleanup code here\");\n}\n```\n\n## Modules\n\n### HTTP Module\n\n```javascript\nconst http = import(\"http\")\n\n// Create server\nconst server = http.createServer(fn(req, res) {\n    res.status(200).send(\"Hello, World!\")\n})\n\nserver.listen(3000, fn() {\n    print(\"Server running at http://localhost:3000/\")\n})\n```\n\n### Random Module\n\n```javascript\nconst random = import(\"random\");\n\nrandom.int(1, 10); // Random integer between 1 and 10\nrandom.float(0, 1); // Random float between 0 and 1\nrandom.choice([1, 2, 3]); // Random element from array\nrandom.shuffle([1, 2, 3]); // Shuffled array\n```\n\n---\n\n_API Reference last updated: November 12, 2025_",
+  "metadata": {
+    "headers": [
+      "HyperCode API Reference",
+      "Table of Contents",
+      "Built-in Functions",
+      "Input/Output",
+      "print(value1, value2, ..., valueN)",
+      "input([prompt])",
+      "Type Conversion",
+      "Number(value)",
+      "String(value)",
+      "Boolean(value)",
+      "Math Operations",
+      "Math Object",
+      "String Operations",
+      "String Methods",
+      "Collection Methods",
+      "Array Methods",
+      "Map Methods",
+      "Standard Library",
+      "File System",
+      "Date and Time",
+      "JSON Handling",
+      "Error Handling",
+      "Try/Catch",
+      "Modules",
+      "HTTP Module",
+      "Random Module"
+    ]
+  },
+  "relative_path": "hypercode\\docs\\API_REFERENCE.md",
+  "id": "a8ef5413cf1abe1576cca89fc143c56a"
+}

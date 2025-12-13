@@ -1,0 +1,14 @@
+{
+  "file_name": "_log.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\_log.py",
+  "file_size": 1015,
+  "created": "2025-12-01T01:58:31.400405",
+  "modified": "2025-12-01T01:58:31.403111",
+  "file_type": "code",
+  "content_hash": "d525aebd855b84182950ca3e13b6fd7a",
+  "content_type": "text",
+  "content": "\"\"\"Customize logging\n\nDefines custom logger class for the `logger.verbose(...)` method.\n\ninit_logging() must be called before any other modules that call logging.getLogger.\n\"\"\"\n\nimport logging\nfrom typing import Any, cast\n\n# custom log level for `--verbose` output\n# between DEBUG and INFO\nVERBOSE = 15\n\n\nclass VerboseLogger(logging.Logger):\n    \"\"\"Custom Logger, defining a verbose log-level\n\n    VERBOSE is between INFO and DEBUG.\n    \"\"\"\n\n    def verbose(self, msg: str, *args: Any, **kwargs: Any) -> None:\n        return self.log(VERBOSE, msg, *args, **kwargs)\n\n\ndef getLogger(name: str) -> VerboseLogger:\n    \"\"\"logging.getLogger, but ensures our VerboseLogger class is returned\"\"\"\n    return cast(VerboseLogger, logging.getLogger(name))\n\n\ndef init_logging() -> None:\n    \"\"\"Register our VerboseLogger and VERBOSE log level.\n\n    Should be called before any calls to getLogger(),\n    i.e. in pip._internal.__init__\n    \"\"\"\n    logging.setLoggerClass(VerboseLogger)\n    logging.addLevelName(VERBOSE, \"VERBOSE\")\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\_log.py",
+  "id": "c749c465d29982ca1585d2be7e8b03e6"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "package.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\server\\package.json",
+  "file_size": 367,
+  "created": "2025-11-29T15:18:34.881623",
+  "modified": "2025-11-29T15:19:28.765318",
+  "file_type": "code",
+  "content_hash": "df84f81cc74e23b248778ba6108151f3",
+  "content_type": "text",
+  "content": "{\n  \"name\": \"server\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"type\": \"commonjs\",\n  \"dependencies\": {\n    \"body-parser\": \"^2.2.1\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^5.1.0\",\n    \"sqlite3\": \"^5.1.7\"\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "server\\package.json",
+  "id": "9e31d1b23df34d5ffc1c3aaa58148304"
+}

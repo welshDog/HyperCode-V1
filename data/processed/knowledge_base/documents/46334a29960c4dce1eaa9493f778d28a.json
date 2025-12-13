@@ -1,0 +1,14 @@
+{
+  "file_name": "_version.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\_version.py",
+  "file_size": 64,
+  "created": "2025-12-01T01:58:33.654143",
+  "modified": "2025-12-01T01:58:33.654143",
+  "file_type": "code",
+  "content_hash": "a0bea5dbc98330dd1ddf8e05001eee45",
+  "content_type": "text",
+  "content": "# This file is protected via CODEOWNERS\n__version__ = \"1.26.20\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\_version.py",
+  "id": "46334a29960c4dce1eaa9493f778d28a"
+}

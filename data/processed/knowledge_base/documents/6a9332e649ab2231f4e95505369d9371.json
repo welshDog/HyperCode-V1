@@ -1,0 +1,14 @@
+{
+  "file_name": "data analyze",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\data analyze",
+  "file_size": 1150,
+  "created": "2025-12-04T16:22:34.918779",
+  "modified": "2025-12-04T16:31:40.672192",
+  "file_type": "other",
+  "content_hash": "d2be7ad0e4dff3d2288e3bedbc16bc11",
+  "content_type": "text/unknown",
+  "content": "import json\nfrom typing import Dict\n\n# Load the database\nwith open(\n    \"c:\\\\Users\\\\lyndz\\\\Downloads\\\\hypercode PROJECT\\\\hypercode\\\\HYPER_DATABASE.json\",\n    \"r\",\n    encoding=\"utf-8\",\n) as f:\n    db = json.load(f)\n\n# Print basic info\nprint(f\"Database generated on: {db['generated']}\")\nprint(f\"Files scanned: {db['files_scanned']}\")\nprint(f\"Number of entities: {len(db['entities'])}\")\n\n# Count entity types\nentity_types: Dict[str, int] = {}  # type: ignore\nfor entity in db[\"entities\"]:\n    entity_type = entity.get(\"type\", \"unknown\")\n    entity_types[entity_type] = entity_types.get(entity_type, 0) + 1\n\nprint(\"\\nEntity types:\")\nfor etype, count in entity_types.items():\n    print(f\"  - {etype}: {count}\")\n\n# Show some examples\nprint(\"\\nExample entities:\")\nfor i, entity in enumerate(db[\"entities\"][:5], 1):\n    print(f\"\\n{i}. {entity.get('type').title()}: {entity.get('name')}\")\n    print(f\"   File: {entity.get('file')}\")\n    print(f\"   Line: {entity.get('lineno')}\")\n    if \"docstring\" in entity:\n        docstring = entity[\"docstring\"].strip().replace(\"\\n\", \" \")\n        print(f\"   Doc: {docstring[:100]}...\")\n",
+  "metadata": {},
+  "relative_path": "data analyze",
+  "id": "6a9332e649ab2231f4e95505369d9371"
+}

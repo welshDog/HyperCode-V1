@@ -1,0 +1,14 @@
+{
+  "file_name": "test_asset.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\assets\\test_asset.txt",
+  "file_size": 23,
+  "created": "2025-11-30T23:53:17.518204",
+  "modified": "2025-11-30T23:52:28.634641",
+  "file_type": "code",
+  "content_hash": "3ed3a57fd43a5ed981ee04b1718cb2d0",
+  "content_type": "text",
+  "content": "﻿Test image content\n",
+  "metadata": {},
+  "relative_path": "assets\\test_asset.txt",
+  "id": "b17e5baac09015b84ddb8eaa0363761c"
+}

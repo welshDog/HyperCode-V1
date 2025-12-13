@@ -1,0 +1,166 @@
+# Documentation Migration Report
+
+Generated on: 2025-12-05T01:00:35.294170
+
+## Moved Files
+
+| New Location | Original Location |
+|--------------|-------------------|
+| `C:\Users\lyndz\Downloads\hypercode PROJECT\hypercode\docs\community\CONTRIBUTING.md` | `C:\Users\lyndz\Downloads\hypercode PROJECT\hypercode\CONTRIBUTING.md` |
+
+## Skipped Files
+
+The following files were not moved and may need manual organization:
+
+- `0-vision.md`
+- `1-roadmap.md`
+- `2-backlog.md`
+- `ACCESSIBILITY.md`
+- `AI_COMPAT.md`
+- `AI_DUELCORE_DEEP_DIVE.md`
+- `AI_INTEGRATION_GUIDE.md`
+- `AI_OPTIMIZATION_ROADMAP.md`
+- `AI_UPGRADE_TASKS.md`
+- `ANNOUNCEMENT-v1.0.md`
+- `API_REFERENCE.md`
+- `ARCHITECTURE.md`
+- `Ai project manger file.pdf`
+- `BEST_PRACTICES.md`
+- `BETA_TESTER_GUIDE.md`
+- `BOUNTIES.md`
+- `BROski_UPGRADE_FILES.md`
+- `BUILD_COMPLETE_SUMMARY.txt`
+- `CHANGELOG.md`
+- `CONFIG-SUMMARY.md`
+- `DESIGN_PRINCIPLES.md`
+- `DEVELOPMENT.md`
+- `DEV_INTERVIEW_FORMS.md`
+- `DEV_INTERVIEW_OUTREACH.md`
+- `DEV_INTERVIEW_TEMPLATE.md`
+- `Daily-Checklist.md`
+- `Design_Patterns_Examples.md`
+- `Dev-Setup-Guide.md`
+- `Developer-Quickstart.md`
+- `ENABLE_DISCUSSIONS.md`
+- `FAQ.md`
+- `GRANTS-AND-FUNDING.md`
+- `GitHub-Setup-Guide.md`
+- `HEALTH_SCAN_REPORT.md`
+- `HYPERCODE-POWERHOUSE-COMPLETE.md`
+- `HYPERCODE-SYNC-GUIDE.md`
+- `HYPERCODE-ULTIMATE-DEPLOYMENT.md`
+- `HYPER_DATABASE.md`
+- `HyperCode Proof-of-Concept System`
+- `HyperCode-90day.md`
+- `HyperCode-AI-Compat-Benchmark.md`
+- `HyperCode-AI-Research.md`
+- `HyperCode-Build-Guide.md`
+- `HyperCode-Esolang-Deep-Research.md`
+- `HyperCode-Executive-Summary.md`
+- `HyperCode-Glossary-Reference.md`
+- `HyperCode-Investor-Pitch.md`
+- `HyperCode-Manifesto.md`
+- `HyperCode-Plugin-Deep-Dive.md`
+- `HyperCode-Quick-Start.md`
+- `HyperCode-Research-Foundation.md`
+- `HyperCode-Social-Impact-Strategy.md`
+- `HyperCode-Visual-Manifesto.md`
+- `HyperCode-Windsurf.md`
+- `HyperCode_Design_Specs.md`
+- `HyperCode_Esoteric_Study.md`
+- `HyperCode_Implementation_Guide.md`
+- `HyperCode_NeuroFirst_Design.md`
+- `HyperCode_V3_Build_Blueprint.md`
+- `HyperCode_V3_Unified_Specification.md`
+- `INFRASTRUCTURE_REPORT.md`
+- `INSTALL.md`
+- `LANGUAGE_OVERVIEW.md`
+- `LANGUAGE_REFERENCE.md`
+- `LANGUAGE_SPEC.md`
+- `LAUNCH-EXECUTION-PLAN.md`
+- `LAUNCH_ANNOUNCEMENT.md`
+- `LAUNCH_GUIDE.md`
+- `LAUNCH_STRATEGY_V1.md`
+- `LAUNCH_TWEETS.md`
+- `LINTER_FIX_GUIDE.md`
+- `NeuroAccessibilityUX.md`
+- `One_Page_Reference.md`
+- `PERPLEXITY_SPACE_DEV_REPORT.md`
+- `PERPLEXITY_SPACE_QUICKSTART.md`
+- `PHASE1_LAUNCH_CHECKLIST.md`
+- `PROFESSIONAL-SETUP.md`
+- `PROJECT_MANIFEST.md`
+- `QUICK-FIX.md`
+- `QUICK_START.md`
+- `RECIPES.md`
+- `RELEASE-NOTES-v1.0.md`
+- `RELEASE_NOTES.md`
+- `RELEASE_NOTES_V1.0.md`
+- `RESEARCH-DRIVEN-IMPROVEMENT-ROADMAP.md`
+- `RESEARCH-INTEGRATION.md`
+- `ROADMAP.md`
+- `ROADMAP_QUICKSTART.md`
+- `Research_Summary.md`
+- `SECURITY.md`
+- `SOCIAL.md`
+- `SPRINT_1_STATUS.md`
+- `START-HERE.md`
+- `STATUS.md`
+- `STRATEGY-README.md`
+- `STRUCTURE.md`
+- `STYLE_GUIDE_DRAFT.md`
+- `TECHNICAL_STATUS_REPORT.md`
+- `TROUBLESHOOTING.md`
+- `TUTORIAL.md`
+- `Ultra_HyperCode_V3.md`
+- `VIDEO_SCRIPTS.md`
+- `VISION.md`
+- `Week-1-Daily-Checklist.md`
+- `Week1-Sprint-Guide.md`
+- `__init__.py`
+- `add more Ai likes`
+- `add more Ai likes.md`
+- `cascade-init-prompt.md`
+- `dev repot parser`
+- `dev-playtest-report.md`
+- `docs_migration_report_2025-12-03_23-56-34.md`
+- `docs_migration_report_2025-12-05_00-43-58.md`
+- `health-scan-results.md`
+- `health-scan.md`
+- `how-to-make-hypercode-attractive-to-ai-models.md`
+- `hyper-builder-benchmark.md`
+- `hyper-database-integration.md`
+- `hyper-database-setup.md`
+- `hypercode to-do mision list`
+- `hypercode-blurbs.md`
+- `hypercode-complete-system.md`
+- `hypercode-implementation-guide.md`
+- `hypercode-import-guide.md`
+- `hypercode-infrastructure.md`
+- `hypercode-master-index.md`
+- `hypercode-progress-assessment.md`
+- `hypercode-quickstart.md`
+- `hypercode-windsurf-codemap.md`
+- `hypercode-windsurf-setup.md`
+- `hypercode_ai_research.md`
+- `hypercode_architecture.md`
+- `hypercode_impl.md`
+- `hypercode_research.md`
+- `hypercode_syntax.md`
+- `hypercode_tactical.md`
+- `hypercode_visual_syntax.md`
+- `implementation-roadmap.md`
+- `index.html`
+- `index.md`
+- `interpreter_content.txt`
+- `knowledge-base-architecture.md`
+- `knowledge-base.md`
+- `launch-checklist.md`
+- `parser_content.txt`
+- `quantum_dna_research.md`
+- `quickstart-checklist.md`
+- `requirements-dev.txt`
+- `technical-status-report.md`
+- `test_document.md`
+- `windsurf-cascade-prompts.md`
+- `windsurf-pro-hacks.md`

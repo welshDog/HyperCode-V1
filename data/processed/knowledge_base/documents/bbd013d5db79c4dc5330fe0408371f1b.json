@@ -1,0 +1,20 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\reference\\README.md",
+  "file_size": 544,
+  "created": "2025-12-04T00:09:22.888520",
+  "modified": "2025-12-04T00:22:58.766586",
+  "file_type": "code",
+  "content_hash": "c14f21977e80e6b33cd693b44a504933",
+  "content_type": "markdown",
+  "content": "# Reference Documentation\n\nTechnical reference for HyperCode's language features and APIs.\n\n## Contents\n\n- [Language Reference](reference/LANGUAGE_REFERENCE.md) - Complete language specification\n- [API Reference](reference/API_REFERENCE.md) - Core library documentation\n- [Design Patterns](Design_Patterns_Examples.md) - Common patterns and examples\n- [Style Guide](STYLE_GUIDE_DRAFT.md) - Code style and conventions\n\n## Quick Links\n\n- [Syntax Cheatsheet](hypercode_syntax.md)\n- [Visual Syntax Guide](hypercode_visual_syntax.md)",
+  "metadata": {
+    "headers": [
+      "Reference Documentation",
+      "Contents",
+      "Quick Links"
+    ]
+  },
+  "relative_path": "docs\\reference\\README.md",
+  "id": "bbd013d5db79c4dc5330fe0408371f1b"
+}

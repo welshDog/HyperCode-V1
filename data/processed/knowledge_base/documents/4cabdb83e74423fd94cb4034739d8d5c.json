@@ -1,0 +1,14 @@
+{
+  "file_name": "mcp servers on",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\mcp\\mcp servers on",
+  "file_size": 759,
+  "created": "2025-11-24T23:46:43.249179",
+  "modified": "2025-11-24T23:46:54.730254",
+  "file_type": "other",
+  "content_hash": "b829ebd841bd77e10dbabd6ec718e9e0",
+  "content_type": "text/unknown",
+  "content": "from mcp import list_servers, test_connection\n\ndef test_all_mcp_servers():\n    print(\"Testing all MCP servers...\\n\")\n    servers = list_servers()\n    \n    for server in servers:\n        print(f\"Testing connection to {server['name']}...\")\n        try:\n            result = test_connection(server['url'])\n            if result['success']:\n                print(f\"✅ {server['name']} is working (Version: {result.get('version', 'unknown')})\")\n            else:\n                print(f\"❌ {server['name']} connection failed: {result.get('error', 'Unknown error')}\")\n        except Exception as e:\n            print(f\"❌ Error testing {server['name']}: {str(e)}\")\n        print(\"-\" * 50)\n\nif __name__ == \"__main__\":\n    test_all_mcp_servers()",
+  "metadata": {},
+  "relative_path": "mcp\\mcp servers on",
+  "id": "4cabdb83e74423fd94cb4034739d8d5c"
+}

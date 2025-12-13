@@ -1,0 +1,14 @@
+{
+  "file_name": "debug_search.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\debug_search.py",
+  "file_size": 1559,
+  "created": "2025-11-18T14:16:58.808447",
+  "modified": "2025-11-18T19:47:10.927454",
+  "file_type": "code",
+  "content_hash": "890715099c76754080a5c50ef130de11",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nDebug search results\n\"\"\"\n\nimport sys\nfrom pathlib import Path\n\n# Add src to path\nsys.path.insert(0, str(Path(__file__).parent / \"src\"))\n\nfrom hypercode.enhanced_perplexity_client import EnhancedPerplexityClient\n\n\ndef debug_search():\n    \"\"\"Debug why space data isn't being found\"\"\"\n    client = EnhancedPerplexityClient()\n\n    print(\"🔍 DEBUGGING SEARCH RESULTS\")\n    print(\"=\" * 40)\n\n    # Test a specific query\n    query = \"What is HyperCode and who created it?\"\n    print(f\"Query: {query}\")\n\n    # Get search results\n    results = client.knowledge_base.search_documents(query, limit=10)\n\n    print(f\"\\n📊 Search Results ({len(results)} found):\")\n    for i, doc in enumerate(results, 1):\n        print(f\"\\n{i}. {doc.title}\")\n        print(f\"   Tags: {doc.tags}\")\n        print(f\"   Content preview: {doc.content[:100]}...\")\n\n    # Check space data specifically\n    print(\"\\n🚀 SPACE DATA DOCUMENTS:\")\n    space_docs = [\n        doc\n        for doc in client.knowledge_base.list_documents()\n        if \"space-data\" in doc.tags\n    ]\n    for doc in space_docs:\n        print(f\"\\n📄 {doc.title}\")\n        print(f\"   Tags: {doc.tags}\")\n        print(f\"   Content preview: {doc.content[:100]}...\")\n\n    # Test context extraction\n    context = client.knowledge_base.get_context_for_query(query)\n    print(f\"\\n📝 Extracted Context ({len(context)} chars):\")\n    print(context[:500] + \"...\" if len(context) > 500 else context)\n\n\nif __name__ == \"__main__\":\n    debug_search()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\debug_search.py",
+  "id": "c3db4019a6bd30ae325b731131d3ffcc"
+}

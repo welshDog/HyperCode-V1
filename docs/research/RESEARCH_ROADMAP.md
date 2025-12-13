@@ -93,7 +93,7 @@ This document outlines the research directions, priorities, and ongoing investig
 
 ## How to Contribute
 
-1. Review the [Contribution Guidelines](../CONTRIBUTING.md)
+1. Review the [Contribution Guidelines](community/CONTRIBUTING.md)
 2. Check the [open research issues](https://github.com/welshDog/hypercode-research/issues)
 3. Join the #research channel on our community Discord
 4. Attend our bi-weekly research sync meetings (Thursdays 2 PM UTC)

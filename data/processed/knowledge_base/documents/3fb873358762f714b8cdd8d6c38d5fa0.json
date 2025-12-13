@@ -1,0 +1,14 @@
+{
+  "file_name": "_structures.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\packaging\\_structures.py",
+  "file_size": 1431,
+  "created": "2025-12-01T01:58:32.179220",
+  "modified": "2025-12-01T01:58:32.179800",
+  "file_type": "code",
+  "content_hash": "de664fedc083927d3d084f416190d876",
+  "content_type": "text",
+  "content": "# This file is dual licensed under the terms of the Apache License, Version\n# 2.0, and the BSD License. See the LICENSE file in the root of this repository\n# for complete details.\n\n\nclass InfinityType:\n    def __repr__(self) -> str:\n        return \"Infinity\"\n\n    def __hash__(self) -> int:\n        return hash(repr(self))\n\n    def __lt__(self, other: object) -> bool:\n        return False\n\n    def __le__(self, other: object) -> bool:\n        return False\n\n    def __eq__(self, other: object) -> bool:\n        return isinstance(other, self.__class__)\n\n    def __gt__(self, other: object) -> bool:\n        return True\n\n    def __ge__(self, other: object) -> bool:\n        return True\n\n    def __neg__(self: object) -> \"NegativeInfinityType\":\n        return NegativeInfinity\n\n\nInfinity = InfinityType()\n\n\nclass NegativeInfinityType:\n    def __repr__(self) -> str:\n        return \"-Infinity\"\n\n    def __hash__(self) -> int:\n        return hash(repr(self))\n\n    def __lt__(self, other: object) -> bool:\n        return True\n\n    def __le__(self, other: object) -> bool:\n        return True\n\n    def __eq__(self, other: object) -> bool:\n        return isinstance(other, self.__class__)\n\n    def __gt__(self, other: object) -> bool:\n        return False\n\n    def __ge__(self, other: object) -> bool:\n        return False\n\n    def __neg__(self: object) -> InfinityType:\n        return Infinity\n\n\nNegativeInfinity = NegativeInfinityType()\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\packaging\\_structures.py",
+  "id": "3fb873358762f714b8cdd8d6c38d5fa0"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\operations\\install\\__init__.py",
+  "file_size": 51,
+  "created": "2025-12-01T01:58:31.228560",
+  "modified": "2025-12-01T01:58:31.233462",
+  "file_type": "code",
+  "content_hash": "c6f771f71fe2e186fb048050f4d2e467",
+  "content_type": "text",
+  "content": "\"\"\"For modules related to installing packages.\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\operations\\install\\__init__.py",
+  "id": "d4270b8474ff3ff81c2e2d6011529eaa"
+}

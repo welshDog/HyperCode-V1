@@ -1,0 +1,14 @@
+{
+  "file_name": "__main__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\certifi\\__main__.py",
+  "file_size": 255,
+  "created": "2025-12-01T01:58:31.830202",
+  "modified": "2025-12-01T01:58:31.837723",
+  "file_type": "code",
+  "content_hash": "49689cf432641c277156f1b5e119bb03",
+  "content_type": "text",
+  "content": "import argparse\n\nfrom pip._vendor.certifi import contents, where\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-c\", \"--contents\", action=\"store_true\")\nargs = parser.parse_args()\n\nif args.contents:\n    print(contents())\nelse:\n    print(where())\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\certifi\\__main__.py",
+  "id": "70d455de9982c0ac012fa75d7ff6f1c4"
+}

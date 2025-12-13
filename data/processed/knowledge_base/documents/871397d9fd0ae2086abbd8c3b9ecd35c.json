@@ -1,0 +1,14 @@
+{
+  "file_name": "base_gateway.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\ai_gateway\\base_gateway.py",
+  "file_size": 657,
+  "created": "2025-11-23T11:56:45.723250",
+  "modified": "2025-11-23T11:56:45.725463",
+  "file_type": "code",
+  "content_hash": "402b9fbde76baa0b7114a1f72a72d7cc",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\"\"\"\nAI model compatibility layer\n\nFile: ai_gateway\\base_gateway.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\ai_gateway\\base_gateway.py",
+  "id": "871397d9fd0ae2086abbd8c3b9ecd35c"
+}

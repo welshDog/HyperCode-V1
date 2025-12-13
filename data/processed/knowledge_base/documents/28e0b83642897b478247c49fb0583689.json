@@ -1,0 +1,14 @@
+{
+  "file_name": "test_perplexity_api.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\scripts\\test_perplexity_api.py",
+  "file_size": 1644,
+  "created": "2025-11-15T15:54:41.024328",
+  "modified": "2025-11-15T15:54:41.024328",
+  "file_type": "code",
+  "content_hash": "bbce21abe75bb51a9d312a7bc62ad22f",
+  "content_type": "text",
+  "content": "\"\"\"\nTest script for Perplexity API integration.\n\"\"\"\n\nimport json\nimport sys\nfrom pathlib import Path\n\nimport requests\n\n# Add the project root to the Python path\nsys.path.append(str(Path(__file__).parent.parent))\n\nfrom hypercode.clients import PerplexityClient\n\n\ndef main():\n    \"\"\"\n    Test the Perplexity API connection and make a sample query.\n    \"\"\"\n    print(\"Testing connection to Perplexity API...\")\n\n    try:\n        # Initialize client\n        client = PerplexityClient()\n\n        # Make a test query\n        print(\"\\nSending test query to Perplexity API...\")\n        response = client.query(\"What are the key features of Python 3.11?\")\n\n        print(\"\\nResponse from Perplexity API:\")\n\n        if isinstance(response, dict):\n            if \"error\" in response:\n                print(f\"Error: {response['error']}\")\n            elif \"choices\" in response and len(response[\"choices\"]) > 0:\n                print(response[\"choices\"][0][\"message\"][\"content\"])\n            else:\n                print(\"Unexpected response format:\")\n                print(json.dumps(response, indent=2))\n        else:\n            print(response)\n\n    except requests.exceptions.RequestException as e:\n        print(f\"\\nRequest failed: {str(e)}\")\n        if hasattr(e, \"response\") and e.response is not None:\n            print(f\"Status code: {e.response.status_code}\")\n            print(f\"Response: {e.response.text}\")\n    except Exception as e:\n        print(f\"\\nAn unexpected error occurred: {str(e)}\")\n        import traceback\n\n        traceback.print_exc()\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\scripts\\test_perplexity_api.py",
+  "id": "28e0b83642897b478247c49fb0583689"
+}

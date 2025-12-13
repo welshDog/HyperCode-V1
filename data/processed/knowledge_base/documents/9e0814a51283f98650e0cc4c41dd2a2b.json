@@ -1,0 +1,14 @@
+{
+  "file_name": "perplexity_space_export_20251118_013736.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\perplexity_space_export_20251118_013736.json",
+  "file_size": 1310,
+  "created": "2025-11-18T01:37:36.714606",
+  "modified": "2025-11-18T19:47:55.842282",
+  "file_type": "code",
+  "content_hash": "c3f1d0c7c65b0c6c56af2bb016eace6c",
+  "content_type": "text",
+  "content": "{\n  \"import_info\": {\n    \"source\": \"Perplexity Space - HyperCode Research\",\n    \"export_date\": \"2025-11-18T01:37:36.675624\",\n    \"instructions\": \"Fill in the documents array with your research data\"\n  },\n  \"documents\": [\n    {\n      \"title\": \"Example: HyperCode Core Concepts\",\n      \"content\": \"Paste your research content here about HyperCode's core concepts...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"hypercode\", \"concepts\", \"overview\"],\n      \"category\": \"core-concepts\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Neurodivergent Design Research\",\n      \"content\": \"Paste findings about neurodivergent-first design principles...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"neurodivergent\", \"design\", \"accessibility\", \"adhd\", \"autism\"],\n      \"category\": \"accessibility\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Multi-Backend Architecture\",\n      \"content\": \"Paste research about compilation backends and architecture...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"architecture\", \"backend\", \"compilation\", \"quantum\"],\n      \"category\": \"technical\",\n      \"date\": \"2025-11-18\"\n    }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\perplexity_space_export_20251118_013736.json",
+  "id": "9e0814a51283f98650e0cc4c41dd2a2b"
+}

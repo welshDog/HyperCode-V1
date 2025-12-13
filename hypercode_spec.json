@@ -1,0 +1,319 @@
+{
+  "meta": {
+    "name": "HyperCode",
+    "version": "0.1.0-research",
+    "description": "Neurodivergent-first, AI-native, multimodal, quantum/molecular-ready programming language specification.",
+    "updated_at": "2025-12-12T09:01:00Z"
+  },
+  "pillars": {
+    "neurodivergent_first": {
+      "goals": [
+        "Center autistic, ADHD, dyslexic and other neurodivergent thinkers in language design.",
+        "Minimize cognitive load and sensory overload while maximizing creative flow.",
+        "Provide multiple parallel ways to think and express logic."
+      ],
+      "evidence_sources": [
+        "web:1",
+        "web:2",
+        "web:4",
+        "web:7",
+        "web:11",
+        "web:12",
+        "web:13",
+        "web:16",
+        "web:18",
+        "web:22",
+        "web:25",
+        "web:48",
+        "web:51",
+        "web:54",
+        "web:95",
+        "web:98",
+        "web:104",
+        "web:113",
+        "web:120",
+        "web:123",
+        "web:126"
+      ],
+      "design_principles": {
+        "strengths_based": [
+          "Exploit pattern recognition, systemizing and detail-focus strengths.",
+          "Support hyperfocus by reducing friction and context switching.",
+          "Allow unconventional solution paths instead of enforcing one idiomatic style."
+        ],
+        "multimodal_cognition": [
+          "Text, visual, audio and kinesthetic representations are all first-class.",
+          "The same program can be navigated as linear text or 2D/graph structures.",
+          "Natural language is treated as a manipulable, reviewable artifact, not a throwaway prompt."
+        ],
+        "sensory_accessibility": [
+          "Minimal default visual clutter.",
+          "Configurable color, contrast, font, spacing and animation.",
+          "Non-visual feedback channels (audio, haptics) for key events.",
+          "Never gate core language concepts behind purely visual features."
+        ],
+        "participatory_design": [
+          "Neurodivergent contributors sit in governance and design roles.",
+          "Continuous co-design cycles with paid neurodivergent participants.",
+          "Accessibility and inclusion are considered acceptance criteria, not add-ons."
+        ]
+      }
+    },
+    "ai_native": {
+      "goals": [
+        "Treat AI systems as built-in collaborators, not external tools.",
+        "Collapse the gap between human intent and executable semantics.",
+        "Make test-driven, verifiable synthesis the default workflow."
+      ],
+      "evidence_sources": [
+        "web:61",
+        "web:63",
+        "web:65",
+        "web:66",
+        "web:70",
+        "web:73",
+        "web:75",
+        "web:77",
+        "web:78",
+        "web:80",
+        "web:81",
+        "web:128",
+        "web:129",
+        "web:130",
+        "web:131",
+        "web:132",
+        "web:133",
+        "web:134",
+        "web:136",
+        "web:137",
+        "web:138",
+        "web:141",
+        "web:143",
+        "web:148",
+        "web:151",
+        "web:152",
+        "web:155"
+      ],
+      "patterns": {
+        "assistant_pair_programmer": {
+          "description": "LLM sits in the editor providing inline suggestions, explanations and refactors.",
+          "human_role": "Decide, edit, reject, name abstractions, own architecture.",
+          "ai_role": "Generate candidate code, tests, docs, and migration plans."
+        },
+        "test_time_synthesis": {
+          "description": "Programs are synthesized and refined against curated tests at generation time.",
+          "mechanics": [
+            "Users describe behavior and provide examples/constraints.",
+            "AI proposes implementations and selects or constructs tests.",
+            "Inconsistent hypotheses are eliminated until tests pass or ambiguity is exposed."
+          ]
+        },
+        "semantic_chain_of_thought": {
+          "description": "AI exposes its reasoning about program behavior, constraints and invariants.",
+          "benefits": [
+            "Debugging becomes a dialogue about semantics, not just syntax.",
+            "Users can challenge and update the model’s understanding of domain rules.",
+            "Generated explanations double as documentation and learning material."
+          ]
+        },
+        "structure_aware_generation": {
+          "description": "Code is generated and edited against AST and type constraints instead of raw tokens.",
+          "implications": [
+            "Greatly reduces syntax errors.",
+            "Enables safe refactors and view transformations (text ↔ visual).",
+            "Supports cross-language backends from a single semantic core."
+          ]
+        }
+      }
+    },
+    "quantum_molecular_ready": {
+      "goals": [
+        "Provide one conceptual layer that can target classical, quantum and molecular backends.",
+        "Hide low-level hardware quirks behind declarative intent and constraints.",
+        "Allow experimentation with frontier hardware without new languages each time."
+      ],
+      "evidence_sources": [
+        "web:21",
+        "web:24",
+        "web:27",
+        "web:49",
+        "web:52",
+        "web:55"
+      ],
+      "backends": {
+        "classical": {
+          "targets": ["python", "cpp", "go", "julia"],
+          "use_cases": [
+            "general apps",
+            "APIs",
+            "data processing",
+            "ML glue code"
+          ]
+        },
+        "quantum": {
+          "targets": ["qiskit", "openqasm3", "qutes"],
+          "use_cases": [
+            "variational circuits",
+            "hybrid quantum-classical workflows"
+          ],
+          "abstractions": [
+            "High-level quantum operations are expressed as domain concepts.",
+            "Compiler chooses representation for each target platform."
+          ]
+        },
+        "molecular": {
+          "targets": ["dna_strand_displacement_ir"],
+          "use_cases": [
+            "biocomputing",
+            "biosensing",
+            "molecular pattern recognition"
+          ],
+          "semantics": [
+            "Programs express constraints and transformations rather than deterministic steps.",
+            "Probabilistic and parallel behaviors are explicit in the type/effect system."
+          ]
+        }
+      }
+    },
+    "esoteric_inspired": {
+      "goals": [
+        "Legitimize esoteric innovation as an R&D engine, not a joke.",
+        "Offer alternative notations that better fit diverse cognitive styles.",
+        "Keep the language playful, exploratory and community-driven."
+      ],
+      "evidence_sources": [
+        "web:38",
+        "web:47",
+        "web:50",
+        "web:93",
+        "web:94",
+        "web:96",
+        "web:97",
+        "web:99",
+        "web:100"
+      ],
+      "inspirations": {
+        "plankalkuel": {
+          "lessons": [
+            "Notation can prioritize human understanding over hardware constraints.",
+            "A conceptually clean design can be decades ahead of its time.",
+            "Losing early visionary work is costly – archive and surface experiments."
+          ]
+        },
+        "befunge_style_2d": {
+          "lessons": [
+            "Spatial layouts can encode control flow and data flow.",
+            "2D grids leverage visual-spatial reasoning strengths.",
+            "Non-linear code layouts are still Turing-complete."
+          ]
+        },
+        "piet_visual": {
+          "lessons": [
+            "Color, shape and adjacency can all carry semantics.",
+            "Aesthetic and computational dimensions can be unified.",
+            "Code can be literally seen as art without losing rigor."
+          ]
+        }
+      },
+      "mechanisms": {
+        "notation_plugins": {
+          "description": "Users can create and share alternative syntaxes mapped onto the same semantic core.",
+          "examples": [
+            "2D-grid editing mode.",
+            "Music/sequence based representation.",
+            "Block-based teaching notation for beginners that is screen-reader compatible."
+          ]
+        },
+        "sandbox_languages": {
+          "description": "Safe spaces to prototype radical mini-languages on top of HyperCode semantics.",
+          "constraints": [
+            "Clear capability boundaries.",
+            "Opt-in, versioned, and fully inspectable.",
+            "Designed to feed successful ideas back into the main language."
+          ]
+        }
+      }
+    }
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "multimodal_input",
+        "responsibilities": [
+          "Accept text, visual, audio, gesture and natural language inputs.",
+          "Normalize navigation and editing operations across modalities.",
+          "Expose one interaction contract for editors, agents and tools."
+        ]
+      },
+      {
+        "name": "semantic_normalization",
+        "responsibilities": [
+          "Convert all input forms into a unified semantic graph.",
+          "Resolve names, roles and relationships independent of surface syntax.",
+          "Attach provenance, intent notes and user rationales as first-class metadata."
+        ]
+      },
+      {
+        "name": "ast_core",
+        "responsibilities": [
+          "Maintain a strongly-typed, language-agnostic AST.",
+          "Enforce structural and basic semantic constraints.",
+          "Support multiple view projections (text, 2D, graph)."
+        ]
+      },
+      {
+        "name": "ai_synthesis",
+        "responsibilities": [
+          "Drive code, tests and documentation generation.",
+          "Run test-time transduction loops to improve correctness.",
+          "Explain and expose reasoning steps to the user."
+        ]
+      },
+      {
+        "name": "multi_backend_compiler",
+        "responsibilities": [
+          "Target classical, quantum and molecular execution environments.",
+          "Perform domain-aware optimizations.",
+          "Guarantee traceability from original intent to emitted artifacts."
+        ]
+      },
+      {
+        "name": "accessible_feedback",
+        "responsibilities": [
+          "Return errors, warnings and performance insights in multiple modalities.",
+          "Support neurodivergent-friendly pacing and notification strategies.",
+          "Log outcomes for research and continuous language evolution (privacy-respecting)."
+        ]
+      }
+    ]
+  },
+  "roadmap": {
+    "2025_q4": {
+      "focus": "Foundations and community",
+      "milestones": [
+        "Form neurodivergent-led design council.",
+        "Define v1 semantic graph and AST schema.",
+        "Ship text-first prototype with AI-assisted editing.",
+        "Publish accessibility guidelines and contribution standards."
+      ]
+    },
+    "2026_q1_q2": {
+      "focus": "Multimodal + AI-native core",
+      "milestones": [
+        "Add visual/graph editing mode backed by the same AST.",
+        "Integrate natural language specification → code workflows.",
+        "Release test-driven synthesis pipeline.",
+        "Launch notation plugin SDK for experimental syntaxes."
+      ]
+    },
+    "2026_q3_q4": {
+      "focus": "Quantum/molecular backends and scaling",
+      "milestones": [
+        "Quantum backend (Qiskit/OpenQASM) beta.",
+        "Experimental DNA IR backend for molecular computing research teams.",
+        "Enterprise-ready tooling, CI and policy hooks.",
+        "Formal verification hooks for safety-critical domains."
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "2025-12-04-70e2497f",
+  "date": "2025-12-04",
+  "topic": "Quantum Programming Languages 2025",
+  "tags": [
+    "quantum",
+    "Qiskit",
+    "Q#",
+    "Cirq",
+    "Guppy"
+  ],
+  "source": "Quantum Insider, Quantinuum Blog",
+  "summary": "Quantum languages: Qiskit (IBM), Q# (Microsoft), Cirq (Google), Guppy (Quantinuum) for quantum circuit design.",
+  "details": "Quantum languages divided into Imperative (QCL, Q#, Silq, Guppy) & Functional (QPL, Quipper, funQ). Qiskit built on Python with circuits/algorithms. Q# supports classical flow control & measurement-dependent quantum ops. Cirq handles NISQ computers with wave-function & density-matrix simulators. Guppy is quantum-first, Python-embedded, designed for error correction & dynamic programs. Most rely on Python base for accessibility."
+}

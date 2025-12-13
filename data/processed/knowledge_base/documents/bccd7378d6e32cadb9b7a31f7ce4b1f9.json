@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements-dev.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\requirements-dev.txt",
+  "file_size": 866,
+  "created": "2025-11-26T23:37:35.460919",
+  "modified": "2025-11-26T23:37:35.461977",
+  "file_type": "code",
+  "content_hash": "b8741e74ed202f63ac56bdfc29003526",
+  "content_type": "text",
+  "content": "# Development dependencies for HyperCode Knowledge Base\n# Install with: pip install -r requirements-dev.txt\n\n\n# Async support\naiohttp>=3.8.0\nasyncio-mqtt>=0.13.0\n\n# Security scanning\nbandit>=1.7.0\n\n# Code quality\nblack>=22.0.0\nflake8>=5.0.0\nhttpx>=0.24.0\n\n# Development utilities\nipython>=8.0.0\nisort>=5.10.0\njupyter>=1.0.0\nmarshmallow>=3.19.0\nmemory-profiler>=0.60.0\nmkdocs>=1.4.0\nmkdocs-material>=8.5.0\nmypy>=1.0.0\n\n# Pre-commit hooks\npre-commit>=2.20.0\n\n# Performance monitoring\npsutil>=5.9.0\n\n# Data validation\npydantic>=1.10.0\n# Core testing framework\npytest>=7.0.0\npytest-cov>=4.0.0\npytest-mock>=3.10.0\npytest-xdist>=3.0.0  # For parallel testing\n\n# Environment management\npython-dotenv>=0.19.0\n\n# API clients (for testing)\nrequests>=2.28.0\nsafety>=2.3.0\n\n# Documentation\nsphinx>=5.0.0\nsphinx-rtd-theme>=1.2.0\n",
+  "metadata": {},
+  "relative_path": "hypercode\\docs\\requirements-dev.txt",
+  "id": "bccd7378d6e32cadb9b7a31f7ce4b1f9"
+}

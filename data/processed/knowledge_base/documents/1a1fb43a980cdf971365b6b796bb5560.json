@@ -1,0 +1,14 @@
+{
+  "file_name": "perplexity_space_export_20251118_131513.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\perplexity_space_export_20251118_131513.json",
+  "file_size": 1310,
+  "created": "2025-11-18T13:15:13.441333",
+  "modified": "2025-11-18T19:47:54.228274",
+  "file_type": "code",
+  "content_hash": "0a71e829496b36329f972a3029b42517",
+  "content_type": "text",
+  "content": "{\n  \"import_info\": {\n    \"source\": \"Perplexity Space - HyperCode Research\",\n    \"export_date\": \"2025-11-18T13:15:13.411028\",\n    \"instructions\": \"Fill in the documents array with your research data\"\n  },\n  \"documents\": [\n    {\n      \"title\": \"Example: HyperCode Core Concepts\",\n      \"content\": \"Paste your research content here about HyperCode's core concepts...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"hypercode\", \"concepts\", \"overview\"],\n      \"category\": \"core-concepts\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Neurodivergent Design Research\",\n      \"content\": \"Paste findings about neurodivergent-first design principles...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"neurodivergent\", \"design\", \"accessibility\", \"adhd\", \"autism\"],\n      \"category\": \"accessibility\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Multi-Backend Architecture\",\n      \"content\": \"Paste research about compilation backends and architecture...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"architecture\", \"backend\", \"compilation\", \"quantum\"],\n      \"category\": \"technical\",\n      \"date\": \"2025-11-18\"\n    }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\perplexity_space_export_20251118_131513.json",
+  "id": "1a1fb43a980cdf971365b6b796bb5560"
+}

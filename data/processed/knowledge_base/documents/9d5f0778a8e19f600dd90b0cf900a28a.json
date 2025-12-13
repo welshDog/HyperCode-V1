@@ -1,0 +1,14 @@
+{
+  "file_name": "language-configuration.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\vscode-extension\\language-configuration.json",
+  "file_size": 369,
+  "created": "2025-11-16T20:58:41.769438",
+  "modified": "2025-11-17T03:55:19.118508",
+  "file_type": "code",
+  "content_hash": "c3af0bcd6cfe9945514c214b6c3ed579",
+  "content_type": "text",
+  "content": "{\n  \"comments\": {\n    \"lineComment\": \"#\",\n    \"blockComment\": [\"/*\", \"*/\"]\n  },\n  \"brackets\": [\n    [\"{\", \"}\"],\n    [\"[\", \"]\"],\n    [\"(\", \")\"]\n  ],\n  \"autoClosingPairs\": [\n    [\"{\", \"}\"],\n    [\"[\", \"]\"],\n    [\"(\", \")\"],\n    [\"\\\"\", \"\\\"\"],\n    [\"'\", \"'\"]\n  ],\n  \"surroundingPairs\": [\n    [\"{\", \"}\"],\n    [\"[\", \"]\"],\n    [\"(\", \")\"],\n    [\"\\\"\", \"\\\"\"],\n    [\"'\", \"'\"]\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\vscode-extension\\language-configuration.json",
+  "id": "9d5f0778a8e19f600dd90b0cf900a28a"
+}

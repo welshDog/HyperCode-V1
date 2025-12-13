@@ -1,0 +1,26 @@
+{
+  "file_name": "PERPLEXITY_SPACE_QUICKSTART.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\guides\\PERPLEXITY_SPACE_QUICKSTART.md",
+  "file_size": 1459,
+  "created": "2025-11-23T12:01:48.329266",
+  "modified": "2025-11-23T11:56:45.705961",
+  "file_type": "code",
+  "content_hash": "90f2c3ab89d465c146460694bd842648",
+  "content_type": "markdown",
+  "content": "# 🚀 Perplexity Space Integration Quick Start\n\n## 🤙 BROski's 3-Step Workflow\n\n### Step 1: Collect Your Data\n\n```bash\npython perplexity_space_collector.py\n```\n\n- Choose option 1 for quick copy-paste\n- Go to your space: https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\n- Copy research threads and paste them in\n\n### Step 2: Test the Integration\n\n```bash\npython demo_enhanced_client.py\n```\n\nSee your API now remember your research!\n\n### Step 3: Use in Your Projects\n\n```python\nfrom hypercode.enhanced_perplexity_client import EnhancedPerplexityClient\n\nclient = EnhancedPerplexityClient()\nresponse = client.query_with_context(\"Your question about HyperCode\")\n# Response includes your research context!\n```\n\n## 📁 Files Created\n\n- `perplexity_space_collector.py` - Easy data collection\n- `src/hypercode/knowledge_base.py` - Storage system\n- `src/hypercode/enhanced_perplexity_client.py` - Enhanced API\n- `data/hypercode_knowledge_base.json` - Your research database\n\n## ✅ What's Working\n\n- ✅ API remembers your research data\n- ✅ Context-aware responses\n- ✅ Persistent memory between sessions\n- ✅ Smart search functionality\n- ✅ Dynamic data updates\n\n## 🎯 Next Steps\n\n1. Run the collector and import your space data\n2. Test with your specific research topics\n3. Use in your AI Research document workflow\n\n🤙 Your Perplexity API now has a brain that remembers everything!",
+  "metadata": {
+    "headers": [
+      "🚀 Perplexity Space Integration Quick Start",
+      "🤙 BROski's 3-Step Workflow",
+      "Step 1: Collect Your Data",
+      "Step 2: Test the Integration",
+      "Step 3: Use in Your Projects",
+      "Response includes your research context!",
+      "📁 Files Created",
+      "✅ What's Working",
+      "🎯 Next Steps"
+    ]
+  },
+  "relative_path": "docs\\guides\\PERPLEXITY_SPACE_QUICKSTART.md",
+  "id": "3442eb533cf9b808fe74402806c8eba3"
+}

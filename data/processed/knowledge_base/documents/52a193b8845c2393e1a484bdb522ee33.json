@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\__init__.py",
+  "file_size": 765,
+  "created": "2025-11-23T12:01:48.542065",
+  "modified": "2025-12-04T12:32:54.463910",
+  "file_type": "code",
+  "content_hash": "d150d72a60b4ffb79137eea9a8167bcf",
+  "content_type": "text",
+  "content": "# src/hypercode/core/__init__.py\n\"\"\"\nHyperCode Core Module\n\nThis package contains the core components of the HyperCode language:\n- Lexer: Converts source code into tokens\n- Parser: Converts tokens into an Abstract Syntax Tree (AST)\n- Interpreter: Executes the AST\n- AST: Abstract Syntax Tree node definitions\n- Tokens: Token definitions and types\n\"\"\"\n\n# Core components\nfrom .lexer import Lexer\nfrom .parser import Parser, ParseError\nfrom .interpreter import Interpreter\nfrom .ast import *\nfrom .tokens import TokenType, Token\n\n# Re-export commonly used components\n__all__ = [\n    \"Lexer\",\n    \"Parser\",\n    \"ParseError\",\n    \"Interpreter\",\n    \"TokenType\",\n    \"Token\",\n    # AST nodes will be available directly from hypercode.core\n]\n",
+  "metadata": {},
+  "relative_path": "src\\core\\__init__.py",
+  "id": "52a193b8845c2393e1a484bdb522ee33"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\__init__.py",
+  "file_size": 868,
+  "created": "2025-12-01T01:58:32.077463",
+  "modified": "2025-12-01T01:58:32.078762",
+  "file_type": "code",
+  "content_hash": "813a3685e48b6dc4359acf6ede226d5f",
+  "content_type": "text",
+  "content": "from .core import (\n    IDNABidiError,\n    IDNAError,\n    InvalidCodepoint,\n    InvalidCodepointContext,\n    alabel,\n    check_bidi,\n    check_hyphen_ok,\n    check_initial_combiner,\n    check_label,\n    check_nfc,\n    decode,\n    encode,\n    ulabel,\n    uts46_remap,\n    valid_contextj,\n    valid_contexto,\n    valid_label_length,\n    valid_string_length,\n)\nfrom .intranges import intranges_contain\nfrom .package_data import __version__\n\n__all__ = [\n    \"__version__\",\n    \"IDNABidiError\",\n    \"IDNAError\",\n    \"InvalidCodepoint\",\n    \"InvalidCodepointContext\",\n    \"alabel\",\n    \"check_bidi\",\n    \"check_hyphen_ok\",\n    \"check_initial_combiner\",\n    \"check_label\",\n    \"check_nfc\",\n    \"decode\",\n    \"encode\",\n    \"intranges_contain\",\n    \"ulabel\",\n    \"uts46_remap\",\n    \"valid_contextj\",\n    \"valid_contexto\",\n    \"valid_label_length\",\n    \"valid_string_length\",\n]\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\__init__.py",
+  "id": "51357286a9b60367405d64b95d368622"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\__init__.py",
+  "file_size": 357,
+  "created": "2025-12-01T01:58:29.753078",
+  "modified": "2025-12-01T01:58:29.755094",
+  "file_type": "code",
+  "content_hash": "9252529ef6e6f322e9b09a8f3e8678df",
+  "content_type": "text",
+  "content": "from typing import List, Optional\n\n__version__ = \"25.0.1\"\n\n\ndef main(args: Optional[List[str]] = None) -> int:\n    \"\"\"This is an internal API only meant for use by pip's own console scripts.\n\n    For additional details, see https://github.com/pypa/pip/issues/7498.\n    \"\"\"\n    from pip._internal.utils.entrypoints import _wrapper\n\n    return _wrapper(args)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\__init__.py",
+  "id": "6df2814b14e5a77a9d444ed037ed65b2"
+}

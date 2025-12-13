@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\network\\__init__.py",
+  "file_size": 50,
+  "created": "2025-12-01T01:58:31.059494",
+  "modified": "2025-12-01T01:58:31.075751",
+  "file_type": "code",
+  "content_hash": "3893f116d94097c4ae72769a5f7c21f7",
+  "content_type": "text",
+  "content": "\"\"\"Contains purely network-related utilities.\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\network\\__init__.py",
+  "id": "c711dfcb7f47c69e9d2c62e605a24a03"
+}

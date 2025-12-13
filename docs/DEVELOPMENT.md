@@ -372,10 +372,10 @@ logger.error("Error occurred")
 
 ## 📚 Additional Resources
 
-- [Architecture Overview](ARCHITECTURE.md)
+- [Architecture Overview](architecture/ARCHITECTURE.md)
 - [Code Style Guide](STYLE_GUIDE_DRAFT.md)
-- [Testing Best Practices](BEST_PRACTICES.md)
-- [Contributing Guidelines](../CONTRIBUTING.md)
+- [Testing Best Practices](reference/BEST_PRACTICES.md)
+- [Contributing Guidelines](community/CONTRIBUTING.md)
 
 ---
 
@@ -389,4 +389,4 @@ logger.error("Error occurred")
 
 **Made with 💜 by neurodivergent developers, for neurodivergent developers**
 
-[Back to Main Docs](README.md) | [Contributing Guide](../CONTRIBUTING.md)
+[Back to Main Docs](README.md) | [Contributing Guide](community/CONTRIBUTING.md)

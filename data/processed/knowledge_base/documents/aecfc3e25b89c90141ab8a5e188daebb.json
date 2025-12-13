@@ -1,0 +1,14 @@
+{
+  "file_name": "task_manager.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\task_manager.hc",
+  "file_size": 2150,
+  "created": "2025-11-26T23:37:35.497132",
+  "modified": "2025-11-26T23:37:35.497132",
+  "file_type": "other",
+  "content_hash": "af65792bbf8b2fafa8f73ebbf993ed45",
+  "content_type": "text/unknown",
+  "content": "// task_manager.hc - A simple CLI task manager in HyperCode\n\n// Define a Task type\ntype Task {\n    id: number\n    title: string\n    completed: boolean\n    priority: 'low' | 'medium' | 'high'\n}\n\nclass TaskManager {\n    tasks: Task[] = []\n    nextId: number = 1\n\n    // Add a new task\n    function addTask(title: string, priority: 'low' | 'medium' | 'high' = 'medium'): Task {\n        const task: Task = {\n            id: this.nextId++,\n            title,\n            completed: false,\n            priority\n        }\n        this.tasks.push(task)\n        return task\n    }\n\n    // Mark a task as complete\n    function completeTask(id: number): void {\n        const task = this.tasks.find(t => t.id === id)\n        if (task) {\n            task.completed = true\n        }\n    }\n\n    // List all tasks\n    function listTasks(filter?: 'all' | 'active' | 'completed'): void {\n        console.log(\"\\n📋 Your Tasks\")\n        console.log(\"-\".repeat(30))\n        \n        const filteredTasks = this.tasks.filter(task => {\n            if (filter === 'active') return !task.completed\n            if (filter === 'completed') return task.completed\n            return true\n        })\n\n        if (filteredTasks.length === 0) {\n            console.log(\"No tasks found!\")\n            return\n        }\n\n        for (const task of filteredTasks) {\n            const status = task.completed ? '✅' : '⬜'\n            console.log(`${status} [${task.priority[0].toUpperCase()}] #${task.id}: ${task.title}`)\n        }\n    }\n}\n\n// Example usage\nfunction main() {\n    console.log(\"🌟 Welcome to HyperCode Task Manager!\")\n    \n    const taskManager = new TaskManager()\n    \n    // Add some sample tasks\n    taskManager.addTask(\"Learn HyperCode basics\", \"high\")\n    taskManager.addTask(\"Create a sample project\", \"medium\")\n    taskManager.addTask(\"Read HyperCode documentation\", \"low\")\n    \n    // Mark one as complete\n    taskManager.completeTask(1)\n    \n    // Display all tasks\n    taskManager.listTasks()\n    \n    console.log(\"\\n✅ Task manager is working!\")\n}\n\n// Run the example\nmain()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\task_manager.hc",
+  "id": "aecfc3e25b89c90141ab8a5e188daebb"
+}

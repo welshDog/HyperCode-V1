@@ -1,0 +1,14 @@
+{
+  "file_name": "vendor.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\vendor.txt",
+  "file_size": 333,
+  "created": "2025-12-01T01:58:31.697543",
+  "modified": "2025-12-01T01:58:31.700309",
+  "file_type": "code",
+  "content_hash": "4a895f8d02103e6b5aa7aeffc0a68511",
+  "content_type": "text",
+  "content": "CacheControl==0.14.1\ndistlib==0.3.9\ndistro==1.9.0\nmsgpack==1.1.0\npackaging==24.2\nplatformdirs==4.3.6\npyproject-hooks==1.2.0\nrequests==2.32.3\n    certifi==2024.8.30\n    idna==3.10\n    urllib3==1.26.20\nrich==13.9.4\n    pygments==2.18.0\n    typing_extensions==4.12.2\nresolvelib==1.0.1\nsetuptools==70.3.0\ntomli==2.2.1\ntruststore==0.10.0\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\vendor.txt",
+  "id": "d99eb37531d02b32f2c3b9381fc6b000"
+}

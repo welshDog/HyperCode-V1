@@ -1,0 +1,14 @@
+{
+  "file_name": "eslint.config.js",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\eslint.config.js",
+  "file_size": 616,
+  "created": "2025-12-02T19:52:33.262208",
+  "modified": "2025-12-02T19:52:05.508689",
+  "file_type": "code",
+  "content_hash": "b8893da386a89dfd3672dad848f4ec7e",
+  "content_type": "text",
+  "content": "import js from '@eslint/js'\nimport globals from 'globals'\nimport reactHooks from 'eslint-plugin-react-hooks'\nimport reactRefresh from 'eslint-plugin-react-refresh'\nimport tseslint from 'typescript-eslint'\nimport { defineConfig, globalIgnores } from 'eslint/config'\n\nexport default defineConfig([\n  globalIgnores(['dist']),\n  {\n    files: ['**/*.{ts,tsx}'],\n    extends: [\n      js.configs.recommended,\n      tseslint.configs.recommended,\n      reactHooks.configs.flat.recommended,\n      reactRefresh.configs.vite,\n    ],\n    languageOptions: {\n      ecmaVersion: 2020,\n      globals: globals.browser,\n    },\n  },\n])\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\eslint.config.js",
+  "id": "f97b4df8303675fa6531d22363885542"
+}

@@ -1,0 +1,21 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\ai\\README.md",
+  "file_size": 498,
+  "created": "2025-12-04T00:09:22.929230",
+  "modified": "2025-12-04T00:22:56.010902",
+  "file_type": "code",
+  "content_hash": "438efbcfe4565799c3f0a81a94ac6cd2",
+  "content_type": "markdown",
+  "content": "# AI Integration\n\nDocumentation for HyperCode's AI capabilities and integrations.\n\n## Features\n\n- AI-assisted code completion\n- Natural language to code\n- Code explanation and documentation\n- Bug detection and fixes\n\n## Guides\n\n- [AI Integration Guide](guides/AI_INTEGRATION_GUIDE.md)\n- [AI Compatibility](AI_COMPAT.md)\n- [DuelCore Deep Dive](AI_DUELCORE_DEEP_DIVE.md)\n\n## Development\n\n- [AI Optimization Roadmap](roadmaps/ROADMAP.md)\n- [AI Upgrade Tasks](AI_UPGRADE_TASKS.md)",
+  "metadata": {
+    "headers": [
+      "AI Integration",
+      "Features",
+      "Guides",
+      "Development"
+    ]
+  },
+  "relative_path": "docs\\ai\\README.md",
+  "id": "9bb847ba94158a0a7180ece64997a801"
+}

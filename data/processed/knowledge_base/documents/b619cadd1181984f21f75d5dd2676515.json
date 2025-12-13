@@ -1,0 +1,14 @@
+{
+  "file_name": "ast.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\ast.py",
+  "file_size": 2215,
+  "created": "2025-11-25T18:00:04.898168",
+  "modified": "2025-12-04T12:00:43.563144",
+  "file_type": "code",
+  "content_hash": "23d582b5b4d109e1540758ffd27bf593",
+  "content_type": "text",
+  "content": "# src/hypercode/core/ast.py\n\"\"\"\nAbstract Syntax Tree (AST) for HyperCode.\nThis module defines the node classes for the HyperCode AST.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom typing import List, Optional, Any, Union\n\n\nclass Node:\n    \"\"\"Base class for all AST nodes.\"\"\"\n\n    pass\n\n\n@dataclass\nclass Program(Node):\n    \"\"\"Represents a complete HyperCode program.\"\"\"\n\n    statements: List[Node]\n\n\n@dataclass\nclass Function(Node):\n    \"\"\"Represents a function definition.\"\"\"\n\n    name: str\n    params: List[str]\n    body: List[Node]\n\n\n@dataclass\nclass VariableDeclaration(Node):\n    \"\"\"Represents a variable declaration.\"\"\"\n\n    name: str\n    initializer: Optional[Node] = None\n\n\n@dataclass\nclass Literal(Node):\n    \"\"\"Represents a literal value (number, string, boolean, etc.).\"\"\"\n\n    value: Any\n    type: str  # 'number', 'string', 'boolean', 'null', etc.\n\n\n@dataclass\nclass BinaryOp(Node):\n    \"\"\"Represents a binary operation (e.g., 1 + 2).\"\"\"\n\n    left: Node\n    operator: str\n    right: Node\n\n\n@dataclass\nclass UnaryOp(Node):\n    \"\"\"Represents a unary operation (e.g., -1 or !true).\"\"\"\n\n    operator: str\n    right: Node\n\n\n@dataclass\nclass Variable(Node):\n    \"\"\"Represents a variable reference.\"\"\"\n\n    name: str\n\n\n@dataclass\nclass Call(Node):\n    \"\"\"Represents a function call.\"\"\"\n\n    callee: Node\n    arguments: List[Node]\n\n\n@dataclass\nclass Return(Node):\n    \"\"\"Represents a return statement.\"\"\"\n\n    value: Optional[Node] = None\n\n\n@dataclass\nclass Block(Node):\n    \"\"\"Represents a block of statements.\"\"\"\n\n    statements: List[Node]\n\n\n@dataclass\nclass If(Node):\n    \"\"\"Represents an if statement.\"\"\"\n\n    condition: Node\n    then_branch: Node\n    else_branch: Optional[Node] = None\n\n\n@dataclass\nclass While(Node):\n    \"\"\"Represents a while loop.\"\"\"\n\n    condition: Node\n    body: Node\n\n\n@dataclass\nclass For(Node):\n    \"\"\"Represents a for loop.\"\"\"\n\n    initializer: Optional[Node]\n    condition: Optional[Node]\n    increment: Optional[Node]\n    body: Node\n\n\n@dataclass\nclass Assign(Node):\n    \"\"\"Represents a variable assignment.\"\"\"\n\n    target: Node\n    value: Node\n\n\n@dataclass\nclass Logical(Node):\n    \"\"\"Represents a logical operation (and/or).\"\"\"\n\n    left: Node\n    operator: str\n    right: Node\n",
+  "metadata": {},
+  "relative_path": "src\\core\\ast.py",
+  "id": "b619cadd1181984f21f75d5dd2676515"
+}

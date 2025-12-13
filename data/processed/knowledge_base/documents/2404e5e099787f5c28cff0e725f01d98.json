@@ -1,0 +1,14 @@
+{
+  "file_name": "extension.test.ts",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\vscode-extension\\src\\test\\suite\\extension.test.ts",
+  "file_size": 335,
+  "created": "2025-11-30T20:22:52.814884",
+  "modified": "2025-11-30T20:22:52.814884",
+  "file_type": "code",
+  "content_hash": "bf4e1d1f0e4112f7ee5929e4d5bf517d",
+  "content_type": "text",
+  "content": "﻿import * as assert from 'assert';\n// Remove unused vscode import since we're not using it yet\n// import * as vscode from 'vscode';\n\nsuite('Extension Test Suite', () => {\n    test('Sample test', () => {\n        assert.strictEqual(-1, [1, 2, 3].indexOf(5));\n        assert.strictEqual(-1, [1, 2, 3].indexOf(0));\n    });\n});\n",
+  "metadata": {},
+  "relative_path": "hypercode\\vscode-extension\\src\\test\\suite\\extension.test.ts",
+  "id": "2404e5e099787f5c28cff0e725f01d98"
+}

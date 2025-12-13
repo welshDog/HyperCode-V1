@@ -1,0 +1,14 @@
+{
+  "file_name": "__version__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\__version__.py",
+  "file_size": 435,
+  "created": "2025-12-01T01:58:32.901365",
+  "modified": "2025-12-01T01:58:32.902043",
+  "file_type": "code",
+  "content_hash": "cf7b49d0b713b70f100f710cfd501ef4",
+  "content_type": "text",
+  "content": "# .-. .-. .-. . . .-. .-. .-. .-.\n# |(  |-  |.| | | |-  `-.  |  `-.\n# ' ' `-' `-`.`-' `-' `-'  '  `-'\n\n__title__ = \"requests\"\n__description__ = \"Python HTTP for Humans.\"\n__url__ = \"https://requests.readthedocs.io\"\n__version__ = \"2.32.3\"\n__build__ = 0x023203\n__author__ = \"Kenneth Reitz\"\n__author_email__ = \"me@kennethreitz.org\"\n__license__ = \"Apache-2.0\"\n__copyright__ = \"Copyright Kenneth Reitz\"\n__cake__ = \"\\u2728 \\U0001f370 \\u2728\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\__version__.py",
+  "id": "6ae7fd1b110efc3156f10cd6c1a75487"
+}

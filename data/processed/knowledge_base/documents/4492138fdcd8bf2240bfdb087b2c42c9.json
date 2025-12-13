@@ -1,0 +1,14 @@
+{
+  "file_name": "hypercode_ast.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\core\\hypercode_ast.py",
+  "file_size": 1959,
+  "created": "2025-11-23T12:01:48.551775",
+  "modified": "2025-11-25T18:35:25.835681",
+  "file_type": "code",
+  "content_hash": "804ad703e12e1d2bc2fe6721eec22a5d",
+  "content_type": "text",
+  "content": "from dataclasses import dataclass\nfrom typing import TYPE_CHECKING, List, Optional, Union\n\nif TYPE_CHECKING:\n    from .tokens import Token\n\n\n# Base Node class\nclass Node:\n    def accept(self, visitor):\n        method_name = f\"visit_{self.__class__.__name__}\"\n        visitor_method = getattr(visitor, method_name, None)\n        if visitor_method is None:\n            raise NotImplementedError(f\"No visit_{self.__class__.__name__} method\")\n        return visitor_method(self)\n\n\n# Expressions\n@dataclass\nclass Expr(Node):\n    pass\n\n\n@dataclass\nclass Literal(Expr):\n    value: Union[str, int, float, bool, None]\n\n\n@dataclass\nclass Variable(Expr):\n    name: \"Token\"\n\n\n@dataclass\nclass Assign(Expr):\n    name: \"Token\"\n    value: Expr\n\n\n@dataclass\nclass Binary(Expr):\n    left: Expr\n    operator: \"Token\"\n    right: Expr\n\n\n@dataclass\nclass Unary(Expr):\n    operator: \"Token\"\n    right: Expr\n\n\n@dataclass\nclass Grouping(Expr):\n    expression: Expr\n\n\n@dataclass\nclass Call(Expr):\n    callee: Expr\n    paren: \"Token\"\n    arguments: List[Expr]\n\n\n@dataclass\nclass Get(Expr):\n    object: Expr\n    name: \"Token\"\n\n\n# Statements\n@dataclass\nclass Stmt(Node):\n    pass\n\n\n@dataclass\nclass Expression(Stmt):\n    expression: Expr\n\n\n@dataclass\nclass Print(Stmt):\n    expression: Expr\n\n\n@dataclass\nclass Var(Stmt):\n    name: \"Token\"\n    initializer: Optional[Expr]\n\n\n@dataclass\nclass Block(Stmt):\n    statements: List[Stmt]\n\n\n@dataclass\nclass If(Stmt):\n    condition: Expr\n    then_branch: Stmt\n    else_branch: Optional[Stmt]\n\n\n@dataclass\nclass Fun(Stmt):\n    name: \"Token\"\n    params: List[\"Token\"]\n    body: List[Stmt]\n\n\n@dataclass\nclass Return(Stmt):\n    keyword: \"Token\"\n    value: Optional[Expr]\n\n\n@dataclass\nclass Intent(Stmt):\n    description: str\n    statements: List[Stmt]\n\n\n# Program\n@dataclass\nclass Program(Node):\n    statements: List[Stmt]\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\core\\hypercode_ast.py",
+  "id": "4492138fdcd8bf2240bfdb087b2c42c9"
+}

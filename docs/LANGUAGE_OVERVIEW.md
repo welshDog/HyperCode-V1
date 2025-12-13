@@ -161,7 +161,7 @@ api.fetchUser(123)
 ## 🆘 Need Help?
 
 - 📖 [Full Documentation](../README.md)
-- ❓ [FAQ](FAQ.md)
+- ❓ [FAQ](community/FAQ.md)
 - 💬 [Community Discussions](https://github.com/welshDog/hypercode/discussions)
 - 🐛 [Report Issues](https://github.com/welshDog/hypercode/issues)
 

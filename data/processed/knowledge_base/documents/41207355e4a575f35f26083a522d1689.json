@@ -1,0 +1,14 @@
+{
+  "file_name": "ast_nodes.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\core\\ast_nodes.py",
+  "file_size": 1782,
+  "created": "2025-11-26T23:37:35.572696",
+  "modified": "2025-11-26T23:37:35.578786",
+  "file_type": "code",
+  "content_hash": "16cdc9785892e326967e1b54be2995b6",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\"\"\"\nAbstract Syntax Tree (AST) nodes for the HyperCode language.\n\"\"\"\n\nfrom dataclasses import dataclass\nfrom typing import List, Optional\n\n\n# Base class for all AST nodes\nclass Node:\n    \"\"\"Base class for all AST nodes.\"\"\"\n\n    pass\n\n\n@dataclass\nclass Expression(Node):\n    \"\"\"Base class for all expression nodes.\"\"\"\n\n    pass\n\n\n@dataclass\nclass Statement(Node):\n    \"\"\"Base class for all statement nodes.\"\"\"\n\n    pass\n\n\n@dataclass\nclass Program(Node):\n    \"\"\"Represents the entire program as a list of statements.\"\"\"\n\n    statements: List[Statement]\n\n\n@dataclass\nclass Identifier(Expression):\n    \"\"\"Represents an identifier (e.g., a variable name).\"\"\"\n\n    name: str\n\n\n@dataclass\nclass Literal(Expression):\n    \"\"\"Represents a literal value (e.g., number, string).\"\"\"\n\n    value: any\n\n\n@dataclass\nclass VariableDeclaration(Statement):\n    \"\"\"Represents a variable declaration (let or const).\"\"\"\n\n    name: Identifier\n    value: Optional[Expression]\n    is_const: bool\n\n\n@dataclass\nclass BinaryOperation(Expression):\n    \"\"\"Represents a binary operation (e.g., a + b).\"\"\"\n\n    left: Expression\n    operator: str\n    right: Expression\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\core\\ast_nodes.py",
+  "id": "41207355e4a575f35f26083a522d1689"
+}

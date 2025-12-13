@@ -1,0 +1,14 @@
+{
+  "file_name": "_timer.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_timer.py",
+  "file_size": 417,
+  "created": "2025-12-01T01:58:33.196132",
+  "modified": "2025-12-01T01:58:33.197678",
+  "file_type": "code",
+  "content_hash": "ae43057547af31fdad66b2df35d85a23",
+  "content_type": "text",
+  "content": "\"\"\"\nTimer context manager, only used in debug.\n\n\"\"\"\n\nfrom time import time\n\nimport contextlib\nfrom typing import Generator\n\n\n@contextlib.contextmanager\ndef timer(subject: str = \"time\") -> Generator[None, None, None]:\n    \"\"\"print the elapsed time. (only used in debugging)\"\"\"\n    start = time()\n    yield\n    elapsed = time() - start\n    elapsed_ms = elapsed * 1000\n    print(f\"{subject} elapsed {elapsed_ms:.1f}ms\")\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_timer.py",
+  "id": "9d897282df4e55c1fc74d3ca6202767c"
+}

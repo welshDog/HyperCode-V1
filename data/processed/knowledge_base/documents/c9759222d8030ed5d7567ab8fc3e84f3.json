@@ -1,0 +1,14 @@
+{
+  "file_name": "vite.config.ts",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\vite.config.ts",
+  "file_size": 161,
+  "created": "2025-12-02T19:52:33.294106",
+  "modified": "2025-12-02T19:52:06.597391",
+  "file_type": "code",
+  "content_hash": "88439104b3c207f17d33ef3160e3b080",
+  "content_type": "text",
+  "content": "import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\n// https://vite.dev/config/\nexport default defineConfig({\n  plugins: [react()],\n})\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\vite.config.ts",
+  "id": "c9759222d8030ed5d7567ab8fc3e84f3"
+}

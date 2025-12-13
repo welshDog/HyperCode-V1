@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.app.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\tsconfig.app.json",
+  "file_size": 732,
+  "created": "2025-12-02T19:52:33.284178",
+  "modified": "2025-12-02T19:52:05.725933",
+  "file_type": "code",
+  "content_hash": "06fed9d2d293837c0571529eaae7204a",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"tsBuildInfoFile\": \"./node_modules/.tmp/tsconfig.app.tsbuildinfo\",\n    \"target\": \"ES2022\",\n    \"useDefineForClassFields\": true,\n    \"lib\": [\"ES2022\", \"DOM\", \"DOM.Iterable\"],\n    \"module\": \"ESNext\",\n    \"types\": [\"vite/client\"],\n    \"skipLibCheck\": true,\n\n    /* Bundler mode */\n    \"moduleResolution\": \"bundler\",\n    \"allowImportingTsExtensions\": true,\n    \"verbatimModuleSyntax\": true,\n    \"moduleDetection\": \"force\",\n    \"noEmit\": true,\n    \"jsx\": \"react-jsx\",\n\n    /* Linting */\n    \"strict\": true,\n    \"noUnusedLocals\": true,\n    \"noUnusedParameters\": true,\n    \"erasableSyntaxOnly\": true,\n    \"noFallthroughCasesInSwitch\": true,\n    \"noUncheckedSideEffectImports\": true\n  },\n  \"include\": [\"src\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\tsconfig.app.json",
+  "id": "9544576c8985cfd83f986dd923cf6590"
+}

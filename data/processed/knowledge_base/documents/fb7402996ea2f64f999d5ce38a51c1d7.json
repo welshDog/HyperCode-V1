@@ -1,0 +1,22 @@
+{
+  "file_name": "T-001-visual-interface.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\tasks\\T-001-visual-interface.md",
+  "file_size": 1039,
+  "created": "2025-12-02T17:29:21.833806",
+  "modified": "2025-12-02T17:29:26.422012",
+  "file_type": "code",
+  "content_hash": "2dfbf605667d40012d5d87f28cd90109",
+  "content_type": "markdown",
+  "content": "# Task: T-001 Visual Programming Interface\n\n**Status:** InProgress  \n**Owner:** @user + @system  \n**Effort:** Deep (1-2 hrs)  \n**Created:** 2025-12-02  \n**Due:** 2025-12-09  \n**Roadmap:** 1-roadmap.md#NOW  \n**Related:** HC-001 in 2-backlog.md\n\n## Description\n\nCreate a node-based visual programming interface that complements the text-based language, focusing on neurodivergent-friendly design principles.\n\n## Acceptance Criteria\n\n-   [ ] Research existing node-based editors (Node-RED, Blockly, etc.)\n-   [ ] Define core visual programming concepts for HyperCode\n-   [ ] Create wireframes for the interface\n-   [ ] Set up basic project structure for the visual editor\n-   [ ] Implement a simple proof-of-concept\n\n## Technical Notes\n\n-   Consider using React Flow or similar for the node-based interface\n-   Ensure accessibility features are prioritized\n-   Plan for future AI integration\n\n## History\n\n-   2025-12-02 17:30: Created task and initial requirements\n-   2025-12-02 17:31: Started research phase",
+  "metadata": {
+    "headers": [
+      "Task: T-001 Visual Programming Interface",
+      "Description",
+      "Acceptance Criteria",
+      "Technical Notes",
+      "History"
+    ]
+  },
+  "relative_path": "tasks\\T-001-visual-interface.md",
+  "id": "fb7402996ea2f64f999d5ce38a51c1d7"
+}

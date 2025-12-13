@@ -1,0 +1,14 @@
+{
+  "file_name": "packages.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\packages.py",
+  "file_size": 1057,
+  "created": "2025-12-01T01:58:33.001845",
+  "modified": "2025-12-01T01:58:33.002565",
+  "file_type": "code",
+  "content_hash": "464f37f17e9bace594fa21cc4c474253",
+  "content_type": "text",
+  "content": "import sys\n\nfrom .compat import chardet\n\n# This code exists for backwards compatibility reasons.\n# I don't like it either. Just look the other way. :)\n\nfor package in (\"urllib3\", \"idna\"):\n    vendored_package = \"pip._vendor.\" + package\n    locals()[package] = __import__(vendored_package)\n    # This traversal is apparently necessary such that the identities are\n    # preserved (requests.packages.urllib3.* is urllib3.*)\n    for mod in list(sys.modules):\n        if mod == vendored_package or mod.startswith(vendored_package + '.'):\n            unprefixed_mod = mod[len(\"pip._vendor.\"):]\n            sys.modules['pip._vendor.requests.packages.' + unprefixed_mod] = sys.modules[mod]\n\nif chardet is not None:\n    target = chardet.__name__\n    for mod in list(sys.modules):\n        if mod == target or mod.startswith(f\"{target}.\"):\n            imported_mod = sys.modules[mod]\n            sys.modules[f\"requests.packages.{mod}\"] = imported_mod\n            mod = mod.replace(target, \"chardet\")\n            sys.modules[f\"requests.packages.{mod}\"] = imported_mod\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\packages.py",
+  "id": "0db9a8521dab6536790ba25bb530ccad"
+}

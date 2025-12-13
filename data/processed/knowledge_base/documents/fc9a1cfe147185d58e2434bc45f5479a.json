@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\__init__.py",
+  "file_size": 139,
+  "created": "2025-11-23T12:01:48.540490",
+  "modified": "2025-12-04T12:03:18.818826",
+  "file_type": "code",
+  "content_hash": "de9f4fffb3a531e3723e38301596977c",
+  "content_type": "text",
+  "content": "# This file makes the src directory a Python package\n# It can be empty but must exist for Python to recognize the directory as a package\n",
+  "metadata": {},
+  "relative_path": "src\\__init__.py",
+  "id": "fc9a1cfe147185d58e2434bc45f5479a"
+}

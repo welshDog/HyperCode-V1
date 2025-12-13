@@ -1,0 +1,14 @@
+{
+  "file_name": "debug_simple.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\parser\\debug_simple.py",
+  "file_size": 1313,
+  "created": "2025-11-26T23:37:35.656088",
+  "modified": "2025-11-26T23:37:35.657609",
+  "file_type": "code",
+  "content_hash": "873083a048915a21e985f62b4492d0d8",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nSimple debug without emoji characters\n\"\"\"\n\nimport os\nimport sys\n\nsys.path.append(os.path.dirname(__file__))\n\nfrom visual_syntax_parser import VisualSyntaxParser\n\n\ndef debug_simple():\n    \"\"\"Debug without emoji characters\"\"\"\n\n    # Test simple annotation\n    test_line = '@verifiable(\"formal_proof\")'\n\n    parser = VisualSyntaxParser()\n\n    print(\"Debug: Testing annotation detection\")\n    print(f\"Test line: {test_line}\")\n\n    # Test each pattern\n    for emoji, pattern_data in parser.semantic_patterns.items():\n        pattern = pattern_data[\"regex\"]\n        matches = pattern.findall(test_line)\n        print(f\"Pattern {emoji}: {matches}\")\n\n    # Test the full line parsing\n    annotations = parser._parse_line_annotations(test_line, 1)\n    print(f\"\\nParsed annotations: {len(annotations)}\")\n    for ann in annotations:\n        print(f\"  {ann}\")\n\n    # Test with emoji line\n    print(\"\\n\" + \"=\" * 50)\n    test_emoji_line = '🔍 @verifiable(\"formal_proof\")'\n    print(f\"Testing emoji line: {test_emoji_line}\")\n\n    annotations = parser._parse_line_annotations(test_emoji_line, 1)\n    print(f\"Parsed annotations: {len(annotations)}\")\n    for ann in annotations:\n        print(f\"  {ann}\")\n\n\nif __name__ == \"__main__\":\n    debug_simple()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\parser\\debug_simple.py",
+  "id": "cf7656a85ea6804e8db438324f824ff1"
+}

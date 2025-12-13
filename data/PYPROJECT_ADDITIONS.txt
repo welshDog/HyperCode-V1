@@ -1,0 +1,36 @@
+
+# Add these entries to your pyproject.toml file:
+
+[project.scripts]
+# Existing HyperCode CLI
+hypercode = "hypercode.cli:main"
+
+# New Database & Research CLI entries
+hypercode-db = "database_utils.db:db_cli"
+hypercode-research = "cli_main:cli"  # The main integrated CLI
+hypercode-knowledge = "cli_main:knowledge"
+
+# Recommended: merge into single CLI (see cli_main.py for full integration)
+
+
+# Also add these dependencies to [project.dependencies]:
+
+dependencies = [
+    # Existing...
+
+    # Database & ORM
+    "sqlalchemy>=2.0.0",           # ORM and SQL toolkit
+    "alembic>=1.12.0",             # Database migrations
+    "psycopg2-binary>=2.9.0",       # PostgreSQL driver (optional)
+    "pymysql>=1.1.0",               # MySQL driver (optional)
+
+    # CLI
+    "click>=8.1.0",                 # Command-line interface
+
+    # Async support
+    "asyncio>=3.4.3",               # Already in stdlib, but explicit
+
+    # Data & Processing
+    "pydantic>=2.0.0",              # Data validation
+    "python-dotenv>=1.0.0",         # Environment configuration
+]

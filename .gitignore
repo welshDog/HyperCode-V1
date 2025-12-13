@@ -215,3 +215,9 @@ __pycache__/
 *.tmp
 *.temp
 *~
+# New structure paths
+/archive/
+hypercode_metrics.db
+*.pyc
+__pycache__/
+scan_results.txt

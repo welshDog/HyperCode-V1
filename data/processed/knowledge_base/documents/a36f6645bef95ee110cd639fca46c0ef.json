@@ -1,0 +1,14 @@
+{
+  "file_name": "openai_adapter.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\openai_adapter.py",
+  "file_size": 814,
+  "created": "2025-11-23T12:01:48.351580",
+  "modified": "2025-11-23T12:01:48.354123",
+  "file_type": "code",
+  "content_hash": "3e0a3b49e063625bcb5125663af2af7a",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nAI model compatibility layer\n\nFile: ai_gateway\\openai_adapter.py\n\"\"\"\n\n\nclass OpenaiAdapterAdapter:\n    \"\"\"Adapter for Openai Adapter AI model.\"\"\"\n\n    def __init__(self, api_key=None):\n        self.api_key = api_key\n",
+  "metadata": {},
+  "relative_path": "src\\openai_adapter.py",
+  "id": "a36f6645bef95ee110cd639fca46c0ef"
+}

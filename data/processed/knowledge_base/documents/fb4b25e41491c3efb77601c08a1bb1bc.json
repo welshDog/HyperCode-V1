@@ -1,0 +1,14 @@
+{
+  "file_name": "doc_generator.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\live_research\\doc_generator.py",
+  "file_size": 683,
+  "created": "2025-11-12T10:36:56.942163",
+  "modified": "2025-11-15T15:54:41.017038",
+  "file_type": "code",
+  "content_hash": "a32fa7023c4affbe8a7b3eda148942ea",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nAutomated research paper collection and synthesis\n\nFile: live_research\\doc_generator.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\live_research\\doc_generator.py",
+  "id": "fb4b25e41491c3efb77601c08a1bb1bc"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "HyperCode Code of Conduct",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\HyperCode Code of Conduct",
+  "file_size": 1517,
+  "created": "2025-11-19T22:57:46.835194",
+  "modified": "2025-11-19T22:58:00.557548",
+  "file_type": "other",
+  "content_hash": "8a1ea1beba0a685d42f62ec60999a7b3",
+  "content_type": "text/unknown",
+  "content": "```text\nHyperCode Code of Conduct\n\nWe are committed to providing a welcoming and respectful community for all contributors, especially those with lived experience of neurodivergence or disability.\n\nOur standards\n- Be respectful in language, tone, and engagement.\n- Assume good intent and give people space to learn and improve.\n- Use inclusive language and avoid ableist or demeaning terminology.\n- Respect boundaries around communication styles and response time.\n\nUnacceptable behavior\n- Harassment, abuse, hateful or demeaning comments.\n- Deliberate misgendering, outting, or exposing private information.\n- Dismissing or belittling accessibility, neurodiversity, or accommodation requests.\n\nReporting & enforcement\n- If you experience or witness policy violations, please contact: [repo-maintainers-email-or-GitHub-issue-link]\n- Reports will be handled confidentially and promptly by the maintainers.\n- Consequences may include warnings, removal from the community, or reporting to GitHub for severe violations.\n\nCommitment\nWe aim to maintain a community where diverse thinking is valued and where people can contribute without masking or fear. If you need reasonable accommodations for contributing (longer review windows, alternate feedback formats, etc.), please indicate that in your PR or contact a maintainer.\n\nThis Code of Conduct is adapted from the Contributor Covenant (v2.x) and tailored to emphasize inclusion for neurodivergent contributors.\n\nEffective date: 2025-11-19\n```",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\HyperCode Code of Conduct",
+  "id": "81ebad98ad9438ea5d3cf1cdc5bfb6d1"
+}

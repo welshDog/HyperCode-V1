@@ -1,0 +1,14 @@
+{
+  "file_name": "test.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\test.hc",
+  "file_size": 94,
+  "created": "2025-11-23T12:01:48.476398",
+  "modified": "2025-11-23T12:01:48.476398",
+  "file_type": "other",
+  "content_hash": "4da2b585f1393b02b11b6842ce6255cd",
+  "content_type": "text/unknown",
+  "content": "// examples/test.hc\n\nlet message = \"Hello, HyperCode!\";\nconst PI = 3.14;\nlet value = 42;\n",
+  "metadata": {},
+  "relative_path": "examples\\test.hc",
+  "id": "ac4cef425a596306b9d978673155d786"
+}

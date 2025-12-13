@@ -71,11 +71,11 @@ For too long, neurodivergent devs have been forced to conform. HyperCode says: *
 
 ### Explore More
 - 📖 [Full Manifesto](./docs/MANIFESTO.md)
-- 🏗️ [Architecture Deep-Dive](./docs/ARCHITECTURE.md)
+- 🏗️ [Architecture Deep-Dive](architecture/ARCHITECTURE.md)
 - ♿ [Accessibility Design](./docs/ACCESSIBILITY.md)
 - 🤖 [AI Integration](./docs/AI_INTEGRATION.md)
-- 🛣️ [Roadmap](./docs/ROADMAP.md)
-- 👥 [Contributing](./CONTRIBUTING.md)
+- 🛣️ [Roadmap](roadmaps/ROADMAP.md)
+- 👥 [Contributing](community/CONTRIBUTING.md)
 
 ---
 

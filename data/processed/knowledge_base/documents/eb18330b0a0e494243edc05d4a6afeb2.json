@@ -1,0 +1,14 @@
+{
+  "file_name": "test.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\test.hc",
+  "file_size": 78,
+  "created": "2025-11-25T18:32:14.492889",
+  "modified": "2025-11-25T18:32:14.495429",
+  "file_type": "other",
+  "content_hash": "758fe1c51e9a8c8d09d109c693a17425",
+  "content_type": "text/unknown",
+  "content": "\nvar x = 10;\nvar y = \"hello\";\n\nprint(x);\nprint(y);\n\nvar z = x + 20;\nprint(z);\n",
+  "metadata": {},
+  "relative_path": "test.hc",
+  "id": "eb18330b0a0e494243edc05d4a6afeb2"
+}
