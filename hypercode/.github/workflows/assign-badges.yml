@@ -1,0 +1,172 @@
+name: Auto-Assign Badges
+on:
+  pull_request_target:
+    types: [closed]
+  push:
+    branches: [main]
+
+jobs:
+  assign-badges:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests python-github
+
+      - name: Calculate contributor stats
+        id: stats
+        run: |
+          python3 << 'EOF'
+          import subprocess
+          import json
+
+          # Get merged PRs for user
+          user = "${{ github.event.pull_request.user.login }}"
+          if not user:
+              user = "${{ github.actor }}"
+
+          # Count merged PRs
+          pr_count = subprocess.check_output(
+              f'gh pr list --author {user} --state merged --json id | jq length',
+              shell=True
+          ).decode().strip()
+
+          # Count commits
+          commit_count = subprocess.check_output(
+              f'git log --author="{user}" --oneline | wc -l',
+              shell=True
+          ).decode().strip()
+
+          # Count accessibility PRs
+          a11y_count = subprocess.check_output(
+              f'gh pr list --author {user} --search "accessibility a11y dyslexia neurodivergent" --state merged --json id | jq length',
+              shell=True
+          ).decode().strip()
+
+          # Count doc PRs
+          doc_count = subprocess.check_output(
+              f'gh pr list --author {user} --search "docs documentation readme tutorial" --state merged --json id | jq length',
+              shell=True
+          ).decode().strip()
+
+          # Output stats
+          stats = {
+              'user': user,
+              'prs': int(pr_count) if pr_count.isdigit() else 0,
+              'commits': int(commit_count) if commit_count.isdigit() else 0,
+              'a11y': int(a11y_count) if a11y_count.isdigit() else 0,
+              'docs': int(doc_count) if doc_count.isdigit() else 0
+          }
+
+          print(f"::set-output name=stats::{json.dumps(stats)}")
+          print(f"Contributor stats: {stats}")
+          EOF
+
+      - name: Determine badges
+        id: badges
+        run: |
+          python3 << 'EOF'
+          import json
+
+          stats = json.loads('${{ steps.stats.outputs.stats }}')
+          badges = []
+
+          # First Commit badge
+          if stats['prs'] >= 1:
+              badges.append('🚀')
+
+          # Code Contributor badge
+          if stats['prs'] >= 5:
+              badges.append('🔥')
+
+          # Accessibility Pioneer badge
+          if stats['a11y'] >= 3:
+              badges.append('♿')
+
+          # Doc Hero badge
+          if stats['docs'] >= 5:
+              badges.append('📚')
+
+          # Hyperfocus Legend badge
+          if stats['commits'] >= 50 or stats['prs'] >= 10:
+              badges.append('⭐')
+
+          # AI Architect badge (check for AI-related files)
+          # This would need more sophisticated logic
+
+          # Design Wizard badge (check for UI-related files)
+          # This would need more sophisticated logic
+
+          badge_string = ''.join(badges)
+          print(f"::set-output name=badges::{badge_string}")
+          print(f"Earned badges: {badge_string}")
+          EOF
+
+      - name: Update README with badges
+        if: steps.badges.outputs.badges != ''
+        run: |
+          # Update contributor section in README
+          python3 << 'EOF'
+          import re
+
+          user = "${{ github.event.pull_request.user.login }}"
+          badges = "${{ steps.badges.outputs.badges }}"
+
+          # Read README
+          with open('README.md', 'r') as f:
+              content = f.read()
+
+          # Find contributor section and update/add user
+          contributor_pattern = r'## 👑 Core Contributors\n\n\| Name \| Badges \| Role \|\n\|------\|--------\|------\|'
+
+          new_contributor = f"| @{user} | {badges} | Contributor |"
+
+          if contributor_pattern in content:
+              # Add contributor if not already present
+              if f"@{user}" not in content:
+                  content = content.replace(contributor_pattern, contributor_pattern + "\n" + new_contributor)
+          else:
+              # Create contributor section
+              section = "## 👑 Core Contributors\n\n| Name | Badges | Role |\n|------|--------|------|\n| @" + user + " | " + badges + " | Contributor |\n"
+              content += section
+
+          # Write back
+          with open('README.md', 'w') as f:
+              f.write(content)
+
+          print(f"Added @{user} with badges: {badges}")
+          EOF
+
+      - name: Commit badge updates
+        if: steps.badges.outputs.badges != ''
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m "🏆 Award badges to @${{ github.event.pull_request.user.login }} ${{ steps.badges.outputs.badges }}" || exit 0
+          git push || exit 0
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request' && steps.badges.outputs.badges != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const badges = '${{ steps.badges.outputs.badges }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🎉 **Congratulations!** You've earned new badges: ${badges}\n\nCheck the README to see your contributor recognition! 🏆`
+            });

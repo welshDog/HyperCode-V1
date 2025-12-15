@@ -1,0 +1,40 @@
+site_name: HyperCode
+site_url: https://welshdog.github.io/hypercode/
+repo_url: https://github.com/welshDog/hypercode
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - toc.integrate
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.arithmatex
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - First Program: getting-started/first-program.md
+  - Language Reference:
+      - Syntax: reference/syntax.md
+      - Types: reference/types.md
+      - Standard Library: reference/stdlib.md
+  - Examples:
+      - Hello World: examples/hello.md
+      - Fibonacci: examples/fibonacci.md
+      - OOP: examples/oop.md
+  - Contributing:
+      - Code Style: contributing/code-style.md
+      - Development Setup: contributing/dev-setup.md
+
+extra_css:
+  - css/extra.css

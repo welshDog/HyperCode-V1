@@ -1,0 +1,110 @@
+{
+  "name": "spatial-code-visualizer",
+  "displayName": "Spatial Code Visualizer",
+  "description": "Interactive mind-map code visualization with ADHD-friendly annotations",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "code visualization",
+    "mind map",
+    "spatial",
+    "adhd",
+    "accessibility"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "spatialVisualizer.open",
+        "title": "Visualize Current File",
+        "category": "Spatial Visualizer"
+      },
+      {
+        "command": "spatialVisualizer.toggleMode",
+        "title": "Toggle Visualization Mode",
+        "category": "Spatial Visualizer"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "spatialVisualizer.open",
+        "key": "ctrl+shift+v",
+        "mac": "cmd+shift+v"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "spatialVisualizer",
+          "name": "Spatial Visualizer",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "spatialVisualizer",
+          "title": "Spatial Visualizer",
+          "icon": "$(graph)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Spatial Code Visualizer",
+      "properties": {
+        "spatialVisualizer.adhdMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable ADHD-friendly annotations and cognitive load indicators"
+        },
+        "spatialVisualizer.complexityThreshold": {
+          "type": "number",
+          "default": 10,
+          "description": "Complexity threshold for highlighting complex functions"
+        },
+        "spatialVisualizer.colorScheme": {
+          "type": "string",
+          "enum": [
+            "calm",
+            "vibrant",
+            "monochrome"
+          ],
+          "default": "calm",
+          "description": "Color scheme for visualization"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "18.x",
+    "@types/d3": "^7.4.3",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0",
+    "@vscode/test-electron": "^2.3.8",
+    "vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "d3": "^7.8.5",
+    "acorn": "^8.11.2",
+    "acorn-walk": "^8.3.0"
+  }
+}

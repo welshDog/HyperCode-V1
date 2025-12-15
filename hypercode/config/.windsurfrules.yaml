@@ -1,0 +1,123 @@
+# .windsurfrules
+# HyperCode Windsurf Agent Configuration
+
+# ============================================================================
+# IDENTITY & CONTEXT
+# ============================================================================
+project_name: "HyperCode"
+purpose: "Neurodivergent-first, AI-compatible programming language"
+philosophy: |
+  - Accessibility first: spatial logic, minimal noise, inclusive design
+  - Neurodivergent brain patterns matter: ADHD, dyslexia, autism considered
+  - AI-native: works with GPT, Claude, Mistral, Ollama without rewrites
+  - Experimental but reliable: test coverage is non-negotiable
+  - Open source, professional DevOps from day one
+
+# ============================================================================
+# SAFETY BOUNDARIES
+# ============================================================================
+forbidden_actions:
+  - "Never commit to main without explicit user approval"
+  - "Never delete directories without asking first"
+  - "Never change secrets, env vars, or .env files"
+  - "Never pull new dependencies without listing them in the plan"
+  - "Never modify CI/CD or GitHub Actions without review"
+  - "Never run rm -rf or destructive commands without confirmation"
+
+protected_directories:
+  - ".git/"
+  - ".github/"
+  - "venv/"
+  - "__pycache__/"
+  - ".windsurf/"
+
+# ============================================================================
+# SAFE ACTIONS
+# ============================================================================
+safe_commands:
+  - "pytest"
+  - "python -m pytest"
+  - "pylint"
+  - "mypy"
+  - "black"
+  - "isort"
+  - "python setup.py test"
+  - "git status"
+  - "git diff"
+
+# ============================================================================
+# CODE STYLE & ARCHITECTURE
+# ============================================================================
+code_standards:
+  - "Use descriptive variable names; avoid abbreviations except well-known ones"
+  - "Every function should have a docstring with type hints"
+  - "Follow PEP 8 style guide for Python code"
+  - "Use type hints for all function parameters and return values"
+  - "Keep functions small and focused on a single responsibility"
+  - "Use pytest for testing with descriptive test names"
+  - "Write tests before or alongside implementation (TDD)"
+
+naming_conventions:
+  - "Classes: PascalCase (e.g., Token, Lexer, Parser)"
+  - "Functions/methods: snake_case (e.g., parse_expression, build_ast)"
+  - "Variables: snake_case"
+  - "Constants: UPPER_SNAKE_CASE"
+  - "Private members: _leading_underscore"
+
+# ============================================================================
+# TESTING REQUIREMENTS
+# ============================================================================
+testing_rules:
+  - "All code changes must have corresponding tests"
+  - "Aim for 80%+ test coverage on core logic"
+  - "Test names should be descriptive: test_parse_expression_with_valid_input"
+  - "Include edge cases: empty input, None, boundary conditions"
+  - "Run full test suite after any refactor: `pytest tests/`"
+
+# ============================================================================
+# DOCUMENTATION RULES
+# ============================================================================
+docs_updates:
+  - "Update README.md when adding new features"
+  - "Add docstrings to all public functions and classes"
+  - "Update type hints when changing function signatures"
+  - "Document complex algorithms with comments"
+
+# ============================================================================
+# GIT WORKFLOW
+# ============================================================================
+git_workflow:
+  - "Work on feature branches, never directly on main"
+  - "Branch naming: feature/*, bugfix/*, docs/*, refactor/*"
+  - "Write clear, descriptive commit messages"
+  - "Keep commits small and focused"
+  - "Never force-push to shared branches"
+
+# ============================================================================
+# SELF-FIX PROTOCOL
+# ============================================================================
+self_fix_protocol: |
+  1. Run tests: `pytest tests/`
+  2. Capture the failure output and line numbers
+  3. Read the relevant source file(s)
+  4. Propose a minimal fix (usually <20 lines changed)
+  5. Apply the diff
+  6. Re-run tests
+  7. If tests pass, update CHANGELOG.md with the fix
+  8. If tests still fail, iterate (don't give up after one try)
+  9. Never make unrequested changes to unrelated code
+
+# ============================================================================
+# CASCADE AGENT MODE INSTRUCTIONS
+# ============================================================================
+cascade_mode: |
+  When running in Cascade Write/Agent mode:
+  
+  - Always start by reading the error/failing test completely
+  - Show your plan before making changes
+  - Make one surgical change at a time, then re-test
+  - If you're unsure, ask the user before acting
+  - Use git diff to review your own changes
+  - Stop when all tests pass; don't over-engineer
+  - Respect the protected_directories and forbidden_actions lists
+  - If a fix requires new dependencies, list them and wait for approval

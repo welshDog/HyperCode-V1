@@ -1,0 +1,296 @@
+name: 🧪 Knowledge Base Tests
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "src/hypercode/knowledge_base.py"
+      - "tests/**"
+      - ".github/workflows/knowledge-base-tests.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/hypercode/knowledge_base.py"
+      - "tests/**"
+      - ".github/workflows/knowledge-base-tests.yml"
+
+jobs:
+  test:
+    name: Test on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9, 3.10, 3.11, 3.12]
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-mock psutil
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: 🧪 Run unit tests
+        run: |
+          pytest tests/unit/test_knowledge_base.py tests/unit/test_search_algorithm.py -v --cov=src/hypercode --cov-report=xml --cov-report=html
+
+      - name: 🚀 Run comprehensive tests
+        run: |
+          pytest tests/test_knowledge_base_comprehensive.py -v --tb=short
+
+      - name: 📊 Run performance benchmarks
+        run: |
+          python tests/benchmark_knowledge_base.py --size 100 --runs 1 --output benchmark_${{ matrix.python-version }}.md
+
+      - name: 📤 Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+      - name: 📤 Upload benchmark results
+        uses: actions/upload-artifact@v3
+        with:
+          name: benchmark-results-python-${{ matrix.python-version }}
+          path: |
+            benchmark_*.md
+            benchmark_results.json
+
+  integration-test:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-mock psutil
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: 🔧 Test with real Perplexity Space data
+        run: |
+          # Test with sample data
+          python -c "
+          import sys
+          sys.path.insert(0, 'src')
+          from hypercode.knowledge_base import HyperCodeKnowledgeBase
+
+          # Create test knowledge base
+          kb = HyperCodeKnowledgeBase('test_integration_kb.json')
+
+          # Add sample documents
+          kb.add_document(
+              'HyperCode Integration Test',
+              'Testing integration with Perplexity Space data',
+              tags=['test', 'integration', 'perplexity']
+          )
+
+          # Test search
+          results = kb.search_documents('integration')
+          assert len(results) > 0, 'Search should find integration test document'
+
+          # Test context extraction
+          context = kb.get_context_for_query('integration')
+          assert 'integration' in context.lower(), 'Context should contain integration'
+
+          print('✅ Integration tests passed!')
+          "
+
+      - name: 🎯 Test edge cases
+        run: |
+          python -c "
+          import sys
+          sys.path.insert(0, 'src')
+          from hypercode.knowledge_base import HyperCodeKnowledgeBase
+
+          kb = HyperCodeKnowledgeBase('test_edge_cases_kb.json')
+
+          # Test empty queries
+          results = kb.search_documents('')
+          assert len(results) == 0, 'Empty query should return no results'
+
+          # Test special characters
+          kb.add_document('Special Chars Test', 'Content with ñáéíóú 🚀 🧠', tags=['unicode', 'special'])
+          results = kb.search_documents('ñáéíóú')
+          assert len(results) > 0, 'Should find unicode characters'
+
+          # Test very long titles
+          long_title = 'Very Long Title ' * 50
+          kb.add_document(long_title, 'Normal content', tags=['long'])
+          results = kb.search_documents('Long Title')
+          assert len(results) > 0, 'Should handle long titles'
+
+          print('✅ Edge case tests passed!')
+          "
+
+  performance-test:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov pytest-mock psutil
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: 📊 Run performance benchmarks
+        run: |
+          python tests/benchmark_knowledge_base.py --sizes 100 500 1000 --output performance_report.md
+
+      - name: 📤 Upload performance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-report
+          path: |
+            performance_report.md
+            benchmark_results.json
+
+      - name: 💬 Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+
+            // Read performance report
+            const report = fs.readFileSync('performance_report.md', 'utf8');
+
+            // Extract key metrics
+            const lines = report.split('\n');
+            const metrics = [];
+
+            lines.forEach(line => {
+              if (line.includes('Throughput') || line.includes('Avg Duration') || line.includes('Peak Memory')) {
+                metrics.push(line.trim());
+              }
+            });
+
+            // Create comment
+            const comment = `## 📊 Performance Test Results
+
+            ${metrics.join('\n')}
+
+            [View full report](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`;
+
+            // Post comment
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔍 Run Bandit Security Scan
+        run: |
+          pip install bandit
+          bandit -r src/ -f json -o bandit-report.json || true
+          bandit -r src/ || true
+
+      - name: 📤 Upload security scan results
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-scan
+          path: bandit-report.json
+
+  docs-test:
+    name: Documentation Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📚 Check documentation exists
+        run: |
+          if [ ! -f "docs/knowledge-base.md" ]; then
+            echo "❌ Documentation missing: docs/knowledge-base.md"
+            exit 1
+          fi
+
+          if [ ! -f "README.md" ]; then
+            echo "❌ README.md missing"
+            exit 1
+          fi
+
+          echo "✅ Documentation files exist"
+
+      - name: 🔍 Check documentation quality
+        run: |
+          # Check for required sections in documentation
+          if ! grep -q "## Installation" docs/knowledge-base.md; then
+            echo "❌ Installation section missing in docs/knowledge-base.md"
+            exit 1
+          fi
+
+          if ! grep -q "## API Reference" docs/knowledge-base.md; then
+            echo "❌ API Reference section missing in docs/knowledge-base.md"
+            exit 1
+          fi
+
+          echo "✅ Documentation quality checks passed"
+
+  notify:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [test, integration-test, performance-test, security-scan, docs-test]
+    if: always()
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📊 Collect results
+        run: |
+          echo "## 🚀 Test Results Summary" > summary.md
+          echo "" >> summary.md
+          echo "| Job | Status |" >> summary.md
+          echo "|-----|--------|" >> summary.md
+          echo "| Unit Tests | ${{ needs.test.result }} |" >> summary.md
+          echo "| Integration Tests | ${{ needs.integration-test.result }} |" >> summary.md
+          echo "| Performance Tests | ${{ needs.performance-test.result }} |" >> summary.md
+          echo "| Security Scan | ${{ needs.security-scan.result }} |" >> summary.md
+          echo "| Documentation Tests | ${{ needs.docs-test.result }} |" >> summary.md
+          echo "" >> summary.md
+          echo "All jobs completed!" >> summary.md
+
+      - name: 📤 Upload summary
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-summary
+          path: summary.md

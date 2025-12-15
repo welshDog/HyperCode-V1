@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperCode Research Hyperbase</title>
+    <style>
+        :root {
+          --color-background: #fcfcf9;
+          --color-surface: #fffefd;
+          --color-text: #13343b;
+          --color-primary: #21808d;
+          --color-primary-hover: #1a6873;
+          --color-primary-active: #1a6873;
+          --color-card-border: rgba(94, 82, 64, 0.12);
+          --color-border: rgba(94, 82, 64, 0.2);
+          --radius-base: 8px;
+          --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.04), 0 2px 4px -1px rgba(0,0,0,0.02);
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--color-background);
+            color: var(--color-text);
+            min-height: 100vh;
+        }
+        header {
+            background: var(--color-primary);
+            color: #fff;
+            padding: 24px 0 18px 0;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-bottom-left-radius: var(--radius-base);
+            border-bottom-right-radius: var(--radius-base);
+        }
+        h1 {
+            letter-spacing: -0.02em;
+            margin: 0;
+            font-size: 2.3rem;
+            font-weight: 700;
+        }
+        .tagline {
+            font-size: 1.1rem;
+            color: #e7f5f9;
+            margin-top: 8px;
+        }
+        main {
+            max-width: 1140px;
+            margin: 32px auto;
+            padding: 0 24px;
+        }
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-base);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 28px;
+            padding: 32px 24px 22px 24px;
+        }
+        .btn {
+            background: var(--color-primary);
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-base);
+            padding: 12px 22px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 6px;
+            margin-right: 8px;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: var(--color-primary-hover);
+        }
+        .pill {
+            display: inline-block;
+            border-radius: 10px;
+            padding: 3px 11px;
+            background: #ddeef0;
+            color: #21808d;
+            font-size: 0.95em;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+        .status-live {
+            background: #27c7db;
+            color: #13343b;
+            font-size: 0.9em;
+            padding: 3px 13px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-left: 12px;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #1a6873;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+        .label {
+            display: inline-block;
+            min-width: 96px;
+            color: #555;
+            font-size: 0.98rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .input {
+            min-width: 220px;
+            padding: 8px 14px;
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-border);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .hypergraph-space {
+            background: #ffffff;
+            border: 1px solid #d2e5e8;
+            border-radius: var(--radius-base);
+            min-height: 340px;
+            margin-top: 12px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-x: auto;
+        }
+        #viz {
+            width: 100%;
+            height: 410px;
+        }
+        .node-circle {
+            stroke: #bfe4e9;
+            stroke-width: 2;
+        }
+        .node-concept { fill: #21808d; }
+        .node-paper { fill: #3dd8ed; }
+        .node-contradiction { fill: #ee5e78;}
+        .link-cites { stroke: #21808d; stroke-dasharray: 0;}
+        .link-implements { stroke: #1b9898; stroke-dasharray: 4,3;}
+        .link-contradicts { stroke: #ee5e78; stroke-width: 3;}
+        .link-inspired_by { stroke: #ffaa37; stroke-dasharray: 2,2;}
+        .step-number {
+            background: #21808d;
+            color: #fff;
+            border-radius: 16px;
+            padding: 2px 11px;
+            font-size: 0.96em;
+            margin-right: 9px;
+        }
+        .roadmap-list {
+            padding-left: 0;
+            margin-left: 0;
+        }
+        .roadmap-list li {
+            margin-bottom: 7px;
+            font-size: 1em;
+        }
+        @media (max-width: 870px) {
+            .hypergraph-space { min-height: 300px;}
+        }
+        @media (max-width: 600px) {
+            header { font-size: 1.2em;}
+            .card { padding: 17px 8px;}
+            main, .card { padding-left: 6px; padding-right: 6px;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HyperCode Research Hyperbase</h1>
+        <div class="tagline">Living, auto-updating research for neurodivergent+AI coders</div>
+        <div class="status-live">LIVE: Nov 2025 Blueprint</div>
+    </header>
+    <main>
+        <section class="card">
+            <div class="section-title">🚀 Vision</div>
+            <p>
+                HyperCode's research hyperbase is a <b>living, spatial research engine</b> – open, edge-distributed, and neurodivergent-accessible.<br>
+                <span class="pill">Auto-updating</span>
+                <span class="pill">Hypergraph</span>
+                <span class="pill">Agent-driven</span>
+                <span class="pill">Spatial-first</span>
+                <span class="pill">Open Source</span>
+            </p>
+            <p>
+                <b>Every coder should have research that evolves. Build, adapt, and contribute – together.</b>
+            </p>
+            <button class="btn" onclick="startDemo()">Demo: Run Agent Loop</button>
+            <button class="btn" onclick="showRoadmap()">Show Roadmap</button>
+            <a class="btn" href="#blueprint" style="background:#27c7db; color:#13343b;">View Blueprint</a>
+        </section>
+
+        <section class="card" id="dashboard">
+            <div class="section-title">🧠 Hypergraph Knowledge Demo</div>
+            <div style="margin-bottom:7px;">
+                <span class="label">Add Concept</span> 
+                <input id="conceptInput" class="input" placeholder="Concept name...">
+                <button class="btn" onclick="addConcept()">Add</button>
+            </div>
+            <div style="margin-bottom:7px;">
+                <span class="label">Add Paper</span>
+                <input id="paperInput" class="input" placeholder="Paper title...">
+                <button class="btn" onclick="addPaper()">Add</button>
+            </div>
+            <div style="margin-bottom:7px;">
+                <span class="label">Relate:</span>
+                <select id="relType" class="input">
+                    <option value="cites">cites</option>
+                    <option value="implements">implements</option>
+                    <option value="contradicts">contradicts</option>
+                    <option value="inspired_by">inspired_by</option>
+                </select>
+                <input id="relSrc" class="input" placeholder="Source...">
+                <input id="relTgt" class="input" placeholder="Target (comma)...">
+                <button class="btn" onclick="addRelation()">Add</button>
+            </div>
+
+            <div class="hypergraph-space">
+                <svg id="viz"></svg>
+            </div>
+        </section>
+
+        <section class="card" id="blueprint">
+            <div class="section-title">🔥 Architecture Blueprint</div>
+            <ul>
+                <li><b>HO-GDB Hypergraph Layer:</b> True many-to-many relationships between concepts, papers, and contradictions</li>
+                <li><b>Agentic Update Loop:</b> 9 coordinated agents run daily: crawl, extract, relate, conflict detect, deep synth</li>
+                <li><b>Edge Sync (DGRAG):</b> Every researcher has a local hyperbase; only update summaries sync up</li>
+                <li><b>Spatial Visualization:</b> Force-directed, hierarchical, and concept-map modes (all accessible)</li>
+                <li><b>MCP Servers:</b> Plug in new LLMs, tools, sources instantly</li>
+                <li><b>Privacy by Design:</b> Raw data never leaves your device</li>
+            </ul>
+        </section>
+
+        <section class="card" id="roadmapSection" style="display:none;">
+            <div class="section-title">🛤️ Implementation Roadmap (First 4 Weeks)</div>
+            <ul class="roadmap-list">
+                <li><span class="step-number">1</span> SQLite storage + schema (Days 1-2)</li>
+                <li><span class="step-number">2</span> Paper crawler agent (Days 3-4)</li>
+                <li><span class="step-number">3</span> Entity & relation extraction (Days 5-6)</li>
+                <li><span class="step-number">4</span> LangGraph agent orchestration + cron (Days 7-10)</li>
+                <li><span class="step-number">5</span> D3.js force-directed visualizer + Obsidian export (Days 11-16)</li>
+                <li><span class="step-number">6</span> Multi-mode neurodivergent layouts (Days 17-20)</li>
+                <li><span class="step-number">7</span> Privacy, syncing, open source launch (Week 4+)</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+    // === Minimal Hypergraph Model (in-memory) ===
+    let nodes = [
+        { id: 'concept1', label: 'Brainfuck', type: 'concept'},
+        { id: 'paper1', label: 'On Brainfuck Algorithms', type: 'paper'},
+        { id: 'concept2', label: 'DNA Computing', type: 'concept'},
+        { id: 'contradict1', label: 'Contradiction: Complexity', type: 'contradiction'},
+    ];
+    let links = [
+        { source: 'paper1', target: 'concept1', type: 'implements' },
+        { source: 'paper1', target: 'concept2', type: 'contradicts' },
+        { source: 'concept2', target: 'contradict1', type: 'contradicts' },
+    ];
+
+    function drawGraph() {
+        const width = Math.min(740, window.innerWidth-26);
+        const height = 340;
+        const svg = d3.select("#viz")
+            .attr("width", width)
+            .attr("height", height);
+        svg.selectAll("*").remove();
+
+        const colorMap = {
+            concept: "#21808d",
+            paper: "#3dd8ed",
+            contradiction: "#ee5e78"
+        };
+
+        const linkColor = d => {
+            if (d.type === 'cites') return "#21808d";
+            if (d.type === 'implements') return "#1b9898";
+            if (d.type === 'contradicts') return "#ee5e78";
+            if (d.type === 'inspired_by') return "#ffaa37";
+            return "#21808d";
+        };
+
+        const linkDash = d => {
+            if (d.type === 'implements') return "4,3";
+            if (d.type === 'contradicts') return "0";
+            if (d.type === 'inspired_by') return "2,2";
+            return "";
+        };
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+            .force("charge", d3.forceManyBody().strength(-320))
+            .force("center", d3.forceCenter(width/2, height/2));
+
+        const g = svg.append("g");
+
+        const linkpath = g.selectAll(".link")
+            .data(links)
+            .enter()
+            .append("line")
+            .attr("class", "link")
+            .attr("stroke", linkColor)
+            .attr("stroke-width", d => d.type === 'contradicts' ? 3 : 2 )
+            .attr("stroke-dasharray", linkDash );
+
+        const nodegroups = g.selectAll("g.node")
+            .data(nodes)
+            .enter()
+            .append("g")
+            .attr("class", "node");
+
+        nodegroups.append("circle")
+            .attr("r", 19)
+            .attr("class", d => "node-circle node-" + d.type)
+            .call(drag(simulation));
+
+        nodegroups.append("text")
+            .attr("dy", 6)
+            .attr("dx", -25)
+            .style("font-size", "1.03em")
+            .text(d => d.label);
+
+        simulation.on("tick", () => {
+            linkpath
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+            nodegroups.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+    }
+
+    function drag(simulation) {
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+        }
+        function dragged(event, d) {
+            d.fx = event.x; d.fy = event.y;
+        }
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+        }
+        return d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+    }
+
+    function addConcept() {
+        const input = document.getElementById('conceptInput');
+        const label = input.value.trim();
+        if (!label) return;
+        const id = 'concept' + (nodes.length + Math.floor(Math.random()*100));
+        nodes.push({ id, label, type: 'concept' });
+        input.value = '';
+        drawGraph();
+    }
+
+    function addPaper() {
+        const input = document.getElementById('paperInput');
+        const label = input.value.trim();
+        if (!label) return;
+        const id = 'paper' + (nodes.length + Math.floor(Math.random()*100));
+        nodes.push({ id, label, type: 'paper' });
+        input.value = '';
+        drawGraph();
+    }
+
+    function addRelation() {
+        const type = document.getElementById('relType').value;
+        const srcInp = document.getElementById('relSrc').value.trim();
+        const tgtInp = document.getElementById('relTgt').value.trim();
+        if (!srcInp || !tgtInp) return;
+        // Handle search for label
+        const src = nodes.find(n => n.label.toLowerCase() === srcInp.toLowerCase());
+        const targets = tgtInp.split(',').map(s => s.trim()).map(t => nodes.find(n => n.label.toLowerCase() === t.toLowerCase())).filter(Boolean);
+        if (!src || !targets.length) return;
+        targets.forEach(target => {
+            links.push({ source: src.id, target: target.id, type });
+        });
+        document.getElementById('relSrc').value = '';
+        document.getElementById('relTgt').value = '';
+        drawGraph();
+    }
+
+    function startDemo() {
+        alert("This demo runs a manual agent loop: adds new 'Quantum Programming' concept, relates both existing papers, and spots contradiction.\n\nIn a real system, daily agents would do:\n1) Fetch new papers\n2) Extract concepts\n3) Detect relationships and contradictions\n— all automatically.");
+        nodes.push({ id: 'conceptQ', label: 'Quantum Programming', type: 'concept' });
+        links.push({ source: 'paper1', target: 'conceptQ', type: 'implements' });
+        links.push({ source: 'conceptQ', target: 'contradict1', type: 'contradicts' });
+        drawGraph();
+    }
+
+    function showRoadmap() {
+        const roadmap = document.getElementById('roadmapSection');
+        roadmap.style.display = roadmap.style.display === 'none' ? 'block' : 'none';
+        window.scrollTo({ top: roadmap.offsetTop - 10, behavior: 'smooth' });
+    }
+
+    window.addEventListener('DOMContentLoaded', drawGraph);
+    </script>
+</body>
+</html>

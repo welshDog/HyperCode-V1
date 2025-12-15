@@ -1,0 +1,84 @@
+# 🎯 HyperCode Development Roadmap
+
+## 🏗️ Phase 1: Core Language (Solidify)
+
+### Lexer
+- [x] Complete lexer edge cases (basic tokenization and operators implemented)
+- [x] Unicode handling (for neurodivergent-friendly symbols)
+- [x] Comment syntax finalization (handled in lexer.py)
+- [x] String escape sequences (basic string handling implemented)
+
+### Parser
+- [x] Finalize parser (basic parsing implemented)
+- [x] Error recovery (basic error handling in place)
+- [ ] AST node completeness
+- [ ] Operator precedence rules documented
+
+### Interpreter
+- [ ] Interpreter robustness
+- [ ] Variable scoping (global/local/closure)
+- [ ] Function definitions & calls
+- [ ] Built-in functions library (print, len, type, etc.)
+
+## 🚀 Phase 2: Developer Experience
+
+### Error Handling
+- [x] Error messages (basic implementation in place)
+- [ ] Rewrite all errors to be ADHD/dyslexia-friendly
+- [ ] Add "Did you mean...?" suggestions
+- [x] Include line/column with context (implemented in LexerError)
+- [ ] Color-coded output for terminals
+
+### Documentation
+- [ ] Language specification (complete, clear, with examples)
+- [ ] Tutorial for beginners
+- [ ] API docs for built-in functions
+- [x] Accessibility guide (started in CONTRIBUTING.md, mentions neurodivergence support)
+
+### Testing
+- [x] Unit tests for lexer, parser, interpreter (lexer tests exist)
+- [ ] Integration tests (full program runs)
+- [ ] Edge case tests (empty files, huge inputs, etc.)
+- [x] CI/CD with GitHub Actions (GitHub workflow file exists)
+
+## 🌱 Phase 3: Ecosystem & Contrib Readiness
+
+### Contributor Setup
+- [x] Create CONTRIBUTING.md (exists with detailed instructions)
+- [x] Add Code of Conduct (exists as CODE_OF_CONDUCT.md)
+- [ ] Label "Good First Issue" labels on GitHub
+
+### Repository Hygiene
+- [x] Add .gitignore (exists)
+- [x] Add SECURITY.md (exists)
+- [x] Add CHANGELOG.md (exists)
+- [ ] Run pip audit – check for dependency vulnsecurity)
+
+### Nice-to-Have Extras
+- [ ] Web playground (browser-based runner)
+- [ ] VS Code syntax highlighter extension
+- [ ] Package manager setup
+
+## ⚡ Quick Wins (Low Hanging Fruit)
+- [ ] Finalize error messages (5-10 mins per type)
+- [x] Set up GitHub Actions test runner (workflow file exists)
+- [x] Draft CONTRIBUTING.md (exists and is comprehensive)
+- [ ] Run type checking: `mypy src/`
+- [ ] Add inline code comments to core files (1-2 hours)
+
+## 📊 Priority Ranking
+
+### MUST DO (Blocking)
+- Core interpreter stability
+- Friendly error messages
+- Basic test coverage
+
+### SHOULD DO (Launch Ready)
+- Documentation
+- Contributing guide
+- GitHub Actions CI/CD
+
+### NICE TO HAVE (Polish)
+- Web playground
+- IDE extensions
+- Advanced optimization

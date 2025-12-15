@@ -1,0 +1,89 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+.tsc-out/
+
+# IDE and Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env.local
+.env.*.local
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+.jest-cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Temp files
+tmp/
+temp/
+*.tmp
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Documentation build
+docs/_build/
+site/
+
+# Debugging
+.debugger
+.vscode-debug
+
+# Platform-specific
+.idea/
+.project
+.pydevproject
+.settings/
+
+# Build artifacts
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+
+# Cache
+.cache/
+*.cache
+
+# Package manager
+.pnpm-store/
+
+# Misc
+*.bak
+*.backup
+.vscode-extensions
+hypercode_modules/
