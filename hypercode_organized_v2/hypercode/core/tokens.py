@@ -60,6 +60,7 @@ class TokenType(Enum):
     DIVIDE = auto()
     MODULO = auto()
     EXPONENT = auto()
+    STAR = auto()  # Alias for MULTIPLY for compatibility
     
     # Comparison
     EQUAL = auto()

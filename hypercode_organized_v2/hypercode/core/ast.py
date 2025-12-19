@@ -41,6 +41,14 @@ class Call(Expression):
     callee: Expression
     arguments: List[Expression]
 
+# Intent node
+@dataclass
+class Intent(Statement):
+    """Represents an intent declaration in HyperCode."""
+    name: str
+    parameters: List[Expression]
+    body: List[Statement]
+
 # Statement nodes
 @dataclass
 class ExpressionStmt(Statement):
