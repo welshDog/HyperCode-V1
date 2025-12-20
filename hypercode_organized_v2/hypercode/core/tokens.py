@@ -28,6 +28,7 @@ class TokenType(Enum):
     NIL = auto()
     CLASS = auto()
     INTENT = auto()
+    END = auto()  # Added for 'end' keyword
     
     # HyperCode specific
     THEN = auto()
@@ -40,6 +41,9 @@ class TokenType(Enum):
     TYPE = auto()
     INTERFACE = auto()
 
+    # Operators
+    BANG = auto()  # ! operator
+    
     # Literals
     IDENTIFIER = auto()
     STRING = auto()

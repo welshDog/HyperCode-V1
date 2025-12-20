@@ -1,58 +1,145 @@
 # src/hypercode/core/parser.py
-from typing import List, Optional, Any, Dict, Union
+from typing import List, Optional, Dict, Any, Union
 from .tokens import Token, TokenType
 from .ast import (
-    Expression,
-    Statement,
-    Var,
-    Binary,
-    Unary,
-    Grouping,
-    Literal,
-    Call,
-    ExpressionStmt,
-    VarDecl,
-    Program,
-    Block,
-    If,
-    While,
-    Function,
-    Return,
-    Print,
-    Assign,
+    Program, Statement, Expression, VarDecl, Function, Block,
+    If, While, Print, Return, ExpressionStmt, Assign,
+    Binary, Unary, Literal, Grouping, Call, Var
 )
 
 
 class ParserError(Exception):
-    def __init__(self, message: str, token: Token):
-        self.message = message
+    """Exception raised for errors during parsing.
+    
+    Attributes:
+        token: The token where the error occurred
+        message: Explanation of the error
+    """
+    
+    def __init__(self, token: Token, message: str) -> None:
         self.token = token
-        super().__init__(f"{message} at line {token.line}, column {token.column}")
+        self.message = message
+        super().__init__(self.message)
 
 
 class Parser:
+    """Parser for the HyperCode language.
+    
+    The parser converts a sequence of tokens into an Abstract Syntax Tree (AST).
+    It uses a recursive descent parsing approach with Pratt parsing for expressions.
+    """
     def __init__(self, tokens: List[Token]):
         self.tokens = tokens
         self.current = 0
+        self.had_error = False
 
-    def parse(self) -> Program:
-        """Parse the tokens into an AST."""
-        statements = []
+    def error(self, token: Token, message: str) -> ParserError:
+        """Report a parsing error."""
+        self.had_error = True
+        error_msg = f"[Line {token.line}] Error at '{token.lexeme}': {message}"
+        print(error_msg)  # Print the error to help with debugging
+        return ParserError(token, message)
+    
+    def synchronize(self) -> None:
+        """Discard tokens until we find a statement boundary."""
+        self.advance()
+        
         while not self.is_at_end():
-            stmt = self.declaration()
-            if stmt:
-                statements.append(stmt)
+            if self.previous().type == TokenType.SEMICOLON or self.previous().type == TokenType.NEWLINE:
+                return
+                
+            if self.peek().type in [
+                TokenType.CLASS, TokenType.FUNCTION, TokenType.VAR, TokenType.LET,
+                TokenType.FOR, TokenType.IF, TokenType.WHILE, TokenType.PRINT,
+                TokenType.RETURN
+            ]:
+                return
+                
+            self.advance()
+    
+    def parse(self) -> Program:
+        """Parse the tokens into an AST.
+        
+        Returns:
+            The parsed program as an AST.
+            
+        Raises:
+            ParserError: If there's a syntax error in the source code.
+        """
+        statements = []
+        self.had_error = False
+        
+        while not self.is_at_end():
+            try:
+                stmt = self.declaration()
+                if stmt:
+                    statements.append(stmt)
+            except ParserError as e:
+                print(f"[line {e.token.line}] Error: {e.message}")
+                self.synchronize()
+                
+        if self.had_error:
+            raise ParserError(self.peek(), "Failed to parse due to previous errors")
+            
         return Program(statements)
 
     def declaration(self) -> Optional[Statement]:
         """Parse a declaration."""
         try:
+            # Skip newlines at the start
+            while self.match(TokenType.NEWLINE):
+                pass
+                
+            if self.is_at_end():
+                return None
+                
             if self.match(TokenType.FUNCTION):
                 return self.function("function")
-            if self.match(TokenType.VAR):
+            if self.match(TokenType.VAR, TokenType.LET):
                 return self.var_declaration()
+                
             return self.statement()
+            
         except ParserError as e:
+            print(f"Error in declaration: {e}")
+            self.synchronize()
+            return None
+
+    def statement(self) -> Optional[Statement]:
+        """Parse a statement."""
+        try:
+            # Skip newlines at the start
+            while self.match(TokenType.NEWLINE):
+                pass
+                
+            if self.is_at_end():
+                return None
+                
+            if self.match(TokenType.IF):
+                return self.if_statement()
+            if self.match(TokenType.WHILE):
+                return self.while_statement()
+            if self.match(TokenType.FOR):
+                return self.for_statement()
+            if self.match(TokenType.PRINT):
+                return self.print_statement()
+            if self.match(TokenType.RETURN):
+                return self.return_statement()
+            if self.match(TokenType.LEFT_BRACE):
+                return Block(self.block())
+                
+            # Try to parse an expression statement
+            if self.check_expression_start():
+                return self.expression_statement()
+                
+            # If we get here, we couldn't parse a statement
+            if not self.is_at_end():
+                self.error(self.peek(), f"Unexpected token in statement: {self.peek().type}")
+                
+            return None
+            
+        except ParserError as e:
+            print(f"Error in statement: {e}")
             self.synchronize()
             return None
 
@@ -83,25 +170,55 @@ class Parser:
         if self.match(TokenType.ASSIGN):
             initializer = self.expression()
 
-        self.consume(TokenType.SEMICOLON, "Expect ';' after variable declaration.")
+        self.consume_newline_or_semicolon("Expect newline or ';' after variable declaration.")
         return VarDecl(name.lexeme, initializer)
 
-    def statement(self) -> Statement:
+    def statement(self) -> Optional[Statement]:
         """Parse a statement."""
-        if self.match(TokenType.IF):
-            return self.if_statement()
-        if self.match(TokenType.WHILE):
-            return self.while_statement()
-        if self.match(TokenType.FOR):
-            return self.for_statement()
-        if self.match(TokenType.PRINT):
-            return self.print_statement()
-        if self.match(TokenType.RETURN):
-            return self.return_statement()
-        if self.match(TokenType.LEFT_BRACE):
-            return Block(self.block())
-
-        return self.expression_statement()
+        try:
+            # Skip newlines at the start
+            while self.match(TokenType.NEWLINE):
+                pass
+                
+            if self.is_at_end():
+                return None
+                
+            if self.match(TokenType.IF):
+                return self.if_statement()
+            if self.match(TokenType.WHILE):
+                return self.while_statement()
+            if self.match(TokenType.FOR):
+                return self.for_statement()
+            if self.match(TokenType.PRINT):
+                return self.print_statement()
+            if self.match(TokenType.RETURN):
+                return self.return_statement()
+            if self.match(TokenType.LEFT_BRACE):
+                return Block(self.block())
+                
+            # Try to parse an expression statement
+            if self.check_expression_start():
+                return self.expression_statement()
+                
+            # If we get here, we couldn't parse a statement
+            if not self.is_at_end():
+                self.error(self.peek(), f"Unexpected token in statement: {self.peek().type}")
+                
+            return None
+            
+        except ParserError as e:
+            print(f"Error in statement: {e}")
+            self.synchronize()
+            return None
+            
+    def check_expression_start(self) -> bool:
+        """Check if the current token can start an expression."""
+        token = self.peek()
+        return token.type in [
+            TokenType.IDENTIFIER, TokenType.STRING, TokenType.NUMBER, TokenType.TRUE,
+            TokenType.FALSE, TokenType.NIL, TokenType.LEFT_PAREN, TokenType.MINUS,
+            TokenType.BANG, TokenType.LEFT_BRACKET, TokenType.LEFT_BRACE
+        ]
 
     def if_statement(self) -> Statement:
         self.consume(TokenType.LEFT_PAREN, "Expect '(' after 'if'.")
@@ -121,43 +238,56 @@ class Parser:
         return While(condition, body)
 
     def for_statement(self) -> Statement:
+        # For now, we'll implement a simplified version that just parses the syntax
+        # but doesn't actually implement the full for loop semantics
         self.consume(TokenType.LEFT_PAREN, "Expect '(' after 'for'.")
-
-        initializer = None
+        
+        # Parse the initialization
         if self.match(TokenType.SEMICOLON):
             initializer = None
-        elif self.match(TokenType.VAR):
+        elif self.match(TokenType.VAR, TokenType.LET):
             initializer = self.var_declaration()
         else:
             initializer = self.expression_statement()
-
+        
+        # Parse the condition
         condition = None
         if not self.check(TokenType.SEMICOLON):
             condition = self.expression()
         self.consume(TokenType.SEMICOLON, "Expect ';' after loop condition.")
-
+        
+        # Parse the increment
         increment = None
         if not self.check(TokenType.RIGHT_PAREN):
             increment = self.expression()
         self.consume(TokenType.RIGHT_PAREN, "Expect ')' after for clauses.")
-
+        
+        # Parse the body
         body = self.statement()
-
-        if increment:
-            body = Block([body, ExpressionStmt(increment)])
-
+        
+        # For now, we'll just return a while loop with the same behavior
         if condition is None:
             condition = Literal(True)
-        body = While(condition, body)
-
-        if initializer:
-            body = Block([initializer, body])
-
-        return body
+            
+        # If there's an increment, add it to the end of the body
+        if increment is not None:
+            if isinstance(body, Block):
+                body.statements.append(ExpressionStmt(increment))
+            else:
+                body = Block([body, ExpressionStmt(increment)])
+                
+        # Create the while loop
+        while_loop = While(condition, body)
+        
+        # If there's an initializer, wrap it in a block with the while loop
+        if initializer is not None:
+            return Block([initializer, while_loop])
+            
+        return while_loop
 
     def print_statement(self) -> Statement:
         value = self.expression()
-        self.consume(TokenType.SEMICOLON, "Expect ';' after value.")
+        self.consume_newline_or_semicolon("Expect newline or ';' after value.")
         return Print(value)
 
     def return_statement(self) -> Statement:
@@ -175,10 +305,17 @@ class Parser:
         self.consume(TokenType.RIGHT_BRACE, "Expect '}' after block.")
         return statements
 
+    def consume_newline_or_semicolon(self, message: str) -> None:
+        """Consume either a newline or semicolon."""
+        if not (self.match(TokenType.SEMICOLON) or self.match(TokenType.NEWLINE)):
+            # If we don't have a semicolon or newline, look ahead to see if we're at the end of the line
+            if not (self.is_at_end() or self.check(TokenType.RIGHT_BRACE) or self.check(TokenType.ELSE) or self.check(TokenType.END)):
+                self.error(self.peek(), message)
+
     def expression_statement(self) -> Statement:
         """Parse an expression statement."""
         expr = self.expression()
-        self.consume(TokenType.SEMICOLON, "Expect ';' after expression.")
+        self.consume_newline_or_semicolon("Expect newline or ';' after expression.")
         return ExpressionStmt(expr)
 
     def expression(self) -> Expression:

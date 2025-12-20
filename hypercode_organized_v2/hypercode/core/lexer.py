@@ -11,22 +11,70 @@ from typing import Any, Dict, Iterator, List, Optional, Pattern, Tuple, Union
 from .tokens import Token, TokenType
 
 
-class LexerError(Exception):
-    """Exception raised for errors in the lexer."""
+def _parse_literal_value(token_type: TokenType, text: str) -> Any:
+    """Parse a literal value from the token text.
 
-    def __init__(self, message: str, line: int, column: int):
+    Args:
+        token_type: The type of the token
+        text: The text content of the token
+
+    Returns:
+        The parsed literal value
+    """
+    if token_type == TokenType.STRING:
+        return text[1:-1]  # Remove quotes
+    elif token_type == TokenType.NUMBER:
+        return int(text)
+    elif token_type == TokenType.FLOAT:
+        return float(text)
+    elif token_type == TokenType.TRUE:
+        return True
+    elif token_type == TokenType.FALSE:
+        return False
+    elif token_type == TokenType.NIL:
+        return None
+    return text
+
+
+
+class LexerError(Exception):
+    """Exception raised for errors encountered during lexical analysis.
+    
+    Attributes:
+        message: Explanation of the error
+        line: Line number where the error occurred (1-based)
+        column: Column number where the error occurred (1-based)
+    """
+
+    def __init__(self, message: str, line: int, column: int) -> None:
+        """Initialize the LexerError.
+        
+        Args:
+            message: Error message
+            line: Line number where error occurred (1-based)
+            column: Column number where error occurred (1-based)
+        """
         self.message = message
         self.line = line
         self.column = column
         super().__init__(f"{message} at line {line}, column {column}")
 
 
-class Lexer:
-    """
-    Lexical analyzer for the HyperCode language.
+# Removed extracted_function as it was redundant
 
-    Converts source code into a sequence of tokens that can be processed
-    by the parser.
+class Lexer:
+    """Lexical analyzer for the HyperCode language.
+
+    The lexer converts source code into a sequence of tokens that can be processed
+    by the parser. It handles:
+    - Whitespace and comments
+    - Numbers (integers and floats)
+    - Strings (single and double quoted)
+    - Keywords and identifiers
+    - Operators and delimiters
+    
+    The lexer uses regex patterns to match tokens and maintains position
+    information for error reporting.
     """
 
     # Define keywords mapping
@@ -58,6 +106,8 @@ class Lexer:
         "true": TokenType.TRUE,
         "false": TokenType.FALSE,
         "nil": TokenType.NIL,
+        # Block control
+        "end": TokenType.END,
         # HyperCode specific
         "intent": TokenType.INTENT,
         "print": TokenType.PRINT,
@@ -95,7 +145,7 @@ class Lexer:
         (re.compile(r"\*\*"), TokenType.EXPONENT),
         (re.compile(r"&&"), TokenType.AND),
         (re.compile(r"\|\|"), TokenType.OR),
-        (re.compile(r"!"), TokenType.NOT),
+        (re.compile(r"!"), TokenType.BANG),  # Changed from NOT to BANG
         (re.compile(r"&"), TokenType.BITWISE_AND),
         (re.compile(r"\|"), TokenType.BITWISE_OR),
         (re.compile(r"\^"), TokenType.BITWISE_XOR),
@@ -107,7 +157,7 @@ class Lexer:
         (re.compile(r">"), TokenType.GREATER),
         (re.compile(r"\+"), TokenType.PLUS),
         (re.compile(r"-"), TokenType.MINUS),
-        (re.compile(r"\*"), TokenType.MULTIPLY),
+        (re.compile(r"\*"), TokenType.STAR),
         (re.compile(r"/"), TokenType.DIVIDE),
         (re.compile(r"%"), TokenType.MODULO),
         # Delimiters
@@ -186,21 +236,8 @@ class Lexer:
                     self.handle_identifier(text)
                 # Handle other tokens
                 elif token_type is not None:
-                    literal = None
-                    if token_type == TokenType.STRING:
-                        # Strip quotes
-                        literal = text[1:-1]
-                    elif token_type == TokenType.NUMBER:
-                        literal = int(text)
-                    elif token_type == TokenType.FLOAT:
-                        literal = float(text)
-                    elif token_type == TokenType.TRUE:
-                        literal = True
-                    elif token_type == TokenType.FALSE:
-                        literal = False
-                    elif token_type == TokenType.NIL:
-                        literal = None
-
+                    # Parse literal value based on token type
+                    literal = _parse_literal_value(token_type, text)
                     self.add_token(token_type, text, literal)
 
                 # Update column position
@@ -310,14 +347,22 @@ class Lexer:
 
 
 def tokenize(source: str, filename: str = "<string>") -> List[Token]:
-    """Convenience function to tokenize source code.
-
+    """Tokenize the given source code.
+    
+    This is a convenience function that creates a Lexer instance and returns
+    all tokens from the source.
+    
     Args:
         source: The source code to tokenize
         filename: The name of the source file (for error reporting)
-
+        
     Returns:
-        A list of tokens representing the source code.
+        List of tokens representing the source code.
+        
+    Raises:
+        LexerError: If there's an error during tokenization
     """
+    lexer = Lexer(source, filename)
+    return lexer.scan_tokens()
     lexer = Lexer(source, filename)
     return lexer.scan_tokens()
