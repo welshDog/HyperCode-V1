@@ -4,7 +4,8 @@
 [![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Tests](https://github.com/welshDog/HYPERcode-V1/actions/workflows/tests.yml/badge.svg)](https://github.com/welshDog/HYPERcode-V1/actions)
-[![Code Coverage](https://codecov.io/gh/welshDog/HYPERcode-V1/graph/badge.svg)](https://codecov.io/gh/welshDog/HYPERcode-V1)
+[![codecov](https://codecov.io/gh/welshDog/HYPERcode-V1/branch/main/graph/badge.svg)](https://codecov.io/gh/welshDog/HYPERcode-V1)
+[![Documentation Status](https://readthedocs.org/projects/hypercode/badge/?version=latest)](https://hypercode.readthedocs.io/en/latest/?badge=latest)
 
 > **"The future of programming isn't about making computers understand humans—it's about making programming accessible to ALL human minds."**
 
@@ -26,6 +27,7 @@ HyperCode is a **neurodivergent-first** programming language and development env
 ## 🚀 Quick Start
 
 ### Installation
+
 ```bash
 # Clone the repository
 git clone https://github.com/welshDog/HYPERcode-V1.git
@@ -43,7 +45,9 @@ python -m hypercode
 ```
 
 ### Your First HyperCode Program
+
 Create a file called `hello.hc`:
+
 ```python
 # This is a comment
 say "Hello, World!"
@@ -57,9 +61,65 @@ print(greet("Developer"))
 ```
 
 Run it with:
+
 ```bash
 python -m hypercode run hello.hc
 ```
+
+## 🛠️ Development Setup
+
+### Prerequisites
+
+- Python 3.8+
+- pip (Python package manager)
+- Git
+
+### Development Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/welshDog/HYPERcode-V1.git
+   cd HYPERcode-V1
+   ```
+
+2. **Set up a virtual environment**
+   ```bash
+   # Windows
+   python -m venv .venv
+   .venv\Scripts\activate
+   
+   # macOS/Linux
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   pip install -r requirements-dev.txt
+   ```
+
+4. **Run tests**
+   ```bash
+   # Run all tests
+   pytest
+   
+   # Run tests with coverage
+   pytest --cov=hypercode --cov-report=term-missing
+   
+   # Run a specific test file
+   pytest tests/unit/core/test_lexer.py -v
+   ```
+
+5. **Linting and Formatting**
+   ```bash
+   # Run linter
+   flake8 hypercode tests
+   
+   # Format code
+   black .
+   isort .
+   ```
 
 ## 🧩 Key Features
 
@@ -88,9 +148,9 @@ HyperCode uses a unique combination of:
 3. **Adaptive Interface**: Changes based on your interaction patterns
 4. **AI Co-Pilot**: Real-time suggestions and error correction
 
-## 🛠️ Project Structure
+## 🏗️ Project Structure
 
-```
+```text
 HYPERcode-V1/
 ├── hypercode/           # Core language implementation
 │   ├── core/           # Lexer, parser, and interpreter
@@ -100,29 +160,47 @@ HYPERcode-V1/
 ├── examples/           # Sample HyperCode programs
 ├── docs/               # Documentation
 ├── tests/              # Test suite
+│   ├── unit/           # Unit tests
+│   │   ├── core/       # Core functionality tests
+│   │   ├── ai/         # AI integration tests
+│   │   └── utils/      # Utility function tests
+│   ├── integration/    # Integration tests
+│   └── performance/    # Performance benchmarks
 └── scripts/            # Development and build scripts
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions from developers of all backgrounds and experience levels. Whether you're a seasoned developer or just starting out, there's a place for you in the HyperCode community.
 
 ### How to Contribute
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Read our [Contributing Guide](CONTRIBUTING.md)
+2. Fork the repository
+3. Create a new branch (`git checkout -b feature/amazing-feature`)
+4. Write tests for your changes
+5. Commit your changes (`git commit -m 'Add some amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
-### First Time Contributors
-Check out our [Good First Issues](https://github.com/welshDog/HYPERcode-V1/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to get started!
+### Development Workflow
+
+- Write tests first (TDD is encouraged)
+- Keep commits small and focused
+- Update documentation when adding new features
+- Run linters and tests before pushing
+- Follow the [Code of Conduct](CODE_OF_CONDUCT.md)
+
+### First-Time Contributors
+Check out our [Good First Issues](https://github.com/welshDog/HYPERcode-V1/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) to get started! We're happy to help you with your first contribution.
 
 ## 📚 Documentation
 
-- [Language Reference](docs/language-reference.md)
-- [API Documentation](docs/api.md)
-- [AI Integration Guide](docs/ai-integration.md)
-- [Neurodivergent Features](docs/neurodivergent-features.md)
+- [Language Reference](docs/language-reference.md) - Complete guide to HyperCode syntax
+- [API Documentation](docs/api.md) - Detailed API reference
+- [AI Integration Guide](docs/ai-integration.md) - How to integrate with AI models
+- [Neurodivergent Features](docs/neurodivergent-features.md) - Accessibility features
+- [Contributing Guide](CONTRIBUTING.md) - How to contribute to HyperCode
+- [Security Policy](SECURITY.md) - Security guidelines and reporting
 
 ## 🌐 Join the Community
 
