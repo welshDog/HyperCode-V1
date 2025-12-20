@@ -1,0 +1,462 @@
+# HyperCode Research Database: Implementation Sprint Guide
+
+## 🎯 Sprint Goal
+Ship a production-ready, docs-as-code knowledge graph that traces every HyperCode design decision back to evidence and user feedback.
+
+---
+
+## 📋 Pre-Sprint Checklist
+
+Before you start, ensure you have:
+- [ ] Repository cloned locally
+- [ ] Python 3.11+ installed
+- [ ] Git configured for your repository
+- [ ] Text editor or IDE (VS Code, Obsidian recommended)
+- [ ] PyYAML installed: `pip install pyyaml`
+
+---
+
+## 🚀 Sprint Plan: 3-Day Implementation
+
+### Day 1: Foundation (4 hours)
+
+#### Morning: Structure Setup (2 hours)
+
+**Task 1.1: Create Directory Structure**
+```bash
+cd your-hypercode-repo
+
+# Create core directories
+mkdir -p research/cognitive_science
+mkdir -p research/accessibility
+mkdir -p research/neurodivergent_ux
+mkdir -p research/language_comparisons
+mkdir -p design_decisions
+mkdir -p experiments/usability_tests
+mkdir -p experiments/pilots
+mkdir -p user_studies/interviews
+mkdir -p user_studies/surveys
+mkdir -p references/papers
+mkdir -p references/bibtex
+mkdir -p _templates
+mkdir -p .github/workflows
+```
+
+**Task 1.2: Install Schema and Templates**
+```bash
+# Copy the schema file (from artifacts provided)
+# Save as: _schema.md
+
+# Copy templates (from artifacts provided)
+# Save as: _templates/research_note.md
+# Save as: _templates/decision.md
+# Save as: _templates/experiment.md
+```
+
+**Task 1.3: Add Validation Script**
+```bash
+# Copy the validator Python script (from artifacts provided)
+# Save as: validate_research_db.py
+
+chmod +x validate_research_db.py
+
+# Test it works
+python validate_research_db.py .
+```
+
+**Expected Output:**
+```
+Validating HyperCode Research Database...
+
+Found 0 files to validate
+
+No markdown files found to validate.
+```
+
+#### Afternoon: First Content (2 hours)
+
+**Task 1.4: Convert Existing Notes (if any)**
+
+If you have existing research notes:
+1. Pick your 3 most important notes
+2. Copy `_templates/research_note.md` for each
+3. Fill in metadata and content
+4. Save in appropriate subdirectories
+
+**Task 1.5: Create First Decision (Example)**
+
+Copy and customize the example ADR-001 (from artifacts):
+```bash
+# Save as: design_decisions/adr-001-syntax-minimalism.md
+```
+
+Customize it based on your actual HyperCode design choices.
+
+**Task 1.6: Validate**
+```bash
+python validate_research_db.py .
+```
+
+Fix any errors until validation passes.
+
+---
+
+### Day 2: Content Creation (4-6 hours)
+
+#### Morning: Research Foundation (2-3 hours)
+
+**Task 2.1: Add Core Research Notes**
+
+Create these essential research notes (pick 5-7 most relevant):
+
+1. **Cognitive Science**
+   - `research/cognitive_science/working-memory-adhd.md`
+   - `research/cognitive_science/executive-function-adhd.md`
+   - `research/cognitive_science/pattern-recognition-autism.md`
+
+2. **Accessibility**
+   - `research/accessibility/visual-noise-reduction.md`
+   - `research/accessibility/dyslexia-friendly-fonts.md`
+
+3. **Language Comparisons**
+   - `research/language_comparisons/python-readability-analysis.md`
+   - `research/language_comparisons/rust-error-messages-analysis.md`
+
+**Pro Tip:** Start with abstracts/summaries. You can expand later. The goal is to establish the graph structure.
+
+**Task 2.2: Validate After Each File**
+```bash
+# After adding each file:
+python validate_research_db.py .
+
+# Fix any errors immediately (easier than fixing 10 files at once)
+```
+
+#### Afternoon: Decisions (2-3 hours)
+
+**Task 2.3: Document Key Decisions**
+
+Create 2-3 architecture decision records:
+
+1. **ADR-001**: Core syntax philosophy (word-based vs symbols)
+2. **ADR-002**: Error message framework
+3. **ADR-003**: Type system approach OR nesting limits
+
+For each:
+1. Copy `_templates/decision.md`
+2. Fill out Context, Decision, Rationale
+3. Link to at least 2 research notes in Relations section
+4. Include code examples
+
+**Task 2.4: Link Research ↔ Decisions**
+
+Go back to research notes and add Relations links:
+```markdown
+## Relations
+
+### Supports
+- [[adr-001-syntax-minimalism]] - Provides evidence for this decision
+- [[adr-003-nesting-limits]] - Informs this design choice
+```
+
+**Task 2.5: Validate Complete System**
+```bash
+python validate_research_db.py .
+```
+
+You should now have:
+- ✅ 5-7 research notes
+- ✅ 2-3 design decisions
+- ✅ Bidirectional links between them
+- ✅ Zero validation errors
+
+---
+
+### Day 3: Automation & Polish (3-4 hours)
+
+#### Morning: CI/CD Setup (1-2 hours)
+
+**Task 3.1: GitHub Actions Workflow**
+```bash
+# Copy workflow file (from artifacts provided)
+# Save as: .github/workflows/validate-research-db.yml
+```
+
+**Task 3.2: Markdown Link Check Config**
+```bash
+# Create: .github/markdown-link-check-config.json
+```
+
+```json
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://doi.org"
+    }
+  ],
+  "timeout": "20s",
+  "retryOn429": true,
+  "retryCount": 3,
+  "fallbackRetryDelay": "30s"
+}
+```
+
+**Task 3.3: Test CI Locally**
+```bash
+# Commit everything
+git add .
+git commit -m "feat: Add HyperCode Research Database foundation"
+
+# Push to a test branch
+git checkout -b research-db-foundation
+git push origin research-db-foundation
+
+# Open PR and watch CI run
+```
+
+#### Afternoon: Documentation & Launch (1-2 hours)
+
+**Task 3.4: Update Main README**
+
+Add section to your main `README.md`:
+
+```markdown
+## 📚 Research Database
+
+HyperCode's design is evidence-based. Every language decision is traced back to research, user studies, and community feedback.
+
+**Browse the knowledge graph:**
+- [Research Notes](research/) - Cognitive science, accessibility, UX research
+- [Design Decisions](design_decisions/) - Architecture decision records (ADRs)
+- [Experiments](experiments/) - Usability tests and pilots
+
+**Contributing Research:**
+1. Copy a template from `_templates/`
+2. Fill in metadata and content
+3. Link to related files using `[[wiki-style]]` links
+4. Submit PR with `[research]` prefix
+
+See [_schema.md](_schema.md) for full documentation.
+```
+
+**Task 3.5: Create CONTRIBUTING.md**
+
+```markdown
+# Contributing to HyperCode Research
+
+## Adding Research Notes
+
+1. Choose the appropriate template from `_templates/`
+2. Save in the correct subdirectory:
+   - `research/` for studies, papers, analyses
+   - `design_decisions/` for ADRs
+   - `experiments/` for usability tests, pilots
+3. Fill all required YAML fields
+4. Write the `## Relations` section
+5. Run validation: `python validate_research_db.py .`
+6. Submit PR with `[research]` prefix
+
+## Quality Standards
+
+- Research notes must cite sources
+- Decisions must link to ≥2 research notes
+- All files must have `## Relations` section
+- Use `[[wiki-links]]` for internal references
+
+Validation runs automatically in CI.
+```
+
+**Task 3.6: Announce Launch**
+
+Post in your community channels:
+
+```markdown
+🎉 **HyperCode Research Database is Live!**
+
+Every design decision in HyperCode is now traced back to evidence:
+- 7 research notes covering cognitive science & accessibility
+- 3 architecture decision records (ADRs)
+- Full docs-as-code workflow with CI validation
+
+**Why this matters:**
+- Transparent decision-making
+- Evidence-based design
+- Easy for contributors to understand "why"
+- Git-native knowledge management
+
+Check it out: [link to repo]
+
+Want to contribute research? See CONTRIBUTING.md
+```
+
+---
+
+## 🎨 Optional Enhancements (Post-Sprint)
+
+### Week 2: Visual Knowledge Graph
+
+**Setup Obsidian for Local Viewing:**
+1. Install [Obsidian](https://obsidian.md)
+2. Open your repo as a vault
+3. Enable Graph View
+4. Customize colors for different note types
+
+**Alternative: Generate Static Graph**
+```bash
+# Use markdown-notes-tree or similar
+npm install -g markdown-notes-tree
+markdown-notes-tree . --output graph.html
+```
+
+### Week 3: User Studies
+
+Start collecting real data:
+1. Create experiment protocol template
+2. Recruit 5-10 neurodivergent developers
+3. Run syntax preference test
+4. Document in `experiments/usability_tests/exp-001-syntax-preference.md`
+
+### Week 4: Community Templates
+
+Create specialized templates:
+- `_templates/glossary.md` - For terminology
+- `_templates/interview.md` - For user interviews
+- `_templates/comparative_analysis.md` - For language comparisons
+
+---
+
+## 📊 Success Metrics
+
+After Sprint completion, you should have:
+
+**Structure:**
+- ✅ 4+ directories organized by type
+- ✅ Schema document frozen
+- ✅ 3 templates ready to use
+- ✅ CI validation running
+
+**Content:**
+- ✅ 5-7 research notes
+- ✅ 2-3 design decisions
+- ✅ 10+ internal links between documents
+- ✅ All files pass validation
+
+**Process:**
+- ✅ Validation script works locally
+- ✅ GitHub Actions runs on PRs
+- ✅ CONTRIBUTING.md explains workflow
+- ✅ README links to research
+
+---
+
+## 🐛 Troubleshooting
+
+### "Validation failing with YAML errors"
+**Fix:** Check indentation (use spaces, not tabs). Ensure closing `---` exists.
+
+### "Missing Relations section"
+**Fix:** Every file must have `## Relations` heading, even if empty:
+```markdown
+## Relations
+None yet - foundational document.
+```
+
+### "Broken links [[file-not-found]]"
+**Fix:** Either:
+1. Create the missing file, or
+2. Remove the link temporarily
+
+### "CI not triggering"
+**Fix:** Check `.github/workflows/` path is correct. Push to a branch and open PR.
+
+---
+
+## 🎯 What's Your Current Bottleneck?
+
+**Option A: "I have messy notes to organize"**
+→ Start with Day 1, Task 1.4 (convert existing notes)
+→ Use templates to standardize
+→ Run validation after each conversion
+
+**Option B: "I need the schema/templates first"**
+→ Copy artifacts from this conversation
+→ Customize schema for your specific needs
+→ Freeze schema before adding content
+
+**Option C: "I need contributor workflow"**
+→ Focus on Day 3 (CI setup)
+→ Write clear CONTRIBUTING.md
+→ Set up branch protection requiring CI pass
+
+---
+
+## 💬 Next Actions
+
+**Right Now:**
+1. Choose your bottleneck (A, B, or C above)
+2. Set aside 4 hours for Day 1
+3. Create directory structure
+4. Copy schema and templates
+
+**This Week:**
+1. Complete Day 1 & 2 (foundation + initial content)
+2. Get validation working
+3. Commit and push
+
+**Next Week:**
+1. Complete Day 3 (CI automation)
+2. Announce to community
+3. Accept first contributor PR
+
+---
+
+## 📚 Resources
+
+**Documentation:**
+- [Obsidian Graph View](https://help.obsidian.md/Plugins/Graph+view)
+- [Architecture Decision Records](https://adr.github.io/)
+- [YAML Validator](https://www.yamllint.com/)
+
+**Inspiration:**
+- [Rust RFC Process](https://github.com/rust-lang/rfcs)
+- [Python PEPs](https://peps.python.org/)
+- [ADR Tools](https://github.com/npryce/adr-tools)
+
+**Neurodivergent Research:**
+- [CHADD (ADHD Resources)](https://chadd.org/)
+- [Autistic Self Advocacy Network](https://autisticadvocacy.org/)
+- [Cognitive Load Theory](https://www.instructionaldesign.org/theories/cognitive-load/)
+
+---
+
+## 🤝 Getting Help
+
+**Stuck on something?**
+- Open an issue in your repo
+- Tag it `research-db`
+- Community can help debug
+
+**Want to contribute?**
+- Read CONTRIBUTING.md
+- Start with small research notes
+- Link to existing work
+
+**Building something similar?**
+- Fork the schema and templates
+- Adapt to your domain
+- Share your learnings!
+
+---
+
+## ✨ The Big Picture
+
+This research database is more than documentation—it's the **institutional memory** of HyperCode. As the project grows:
+
+- New contributors can understand **why** decisions were made
+- Design debates can reference **evidence**, not opinions
+- User feedback gets **systematically incorporated**
+- The language evolves based on **data**, not guesses
+
+You're not just building a language. You're building a **methodology** for neurodivergent-first design that others can learn from.
+
+**Let's do this! 🚀**

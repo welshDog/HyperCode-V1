@@ -1,0 +1,379 @@
+# HyperCode Research Database Templates
+
+## Template 1: research_note.md
+
+```markdown
+---
+type: research_note
+title: "[Your Research Title]"
+id: unique-kebab-case-id
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+status: draft
+tags: [tag1, tag2, tag3]
+source: "Citation, DOI, or URL"
+source_quality: peer_reviewed | industry_report | anecdotal | interview
+confidence: high | medium | low
+discipline: cognitive_science | linguistics | HCI | neuroscience | other
+---
+
+## Summary
+Brief 2-3 sentence overview of the research finding or concept.
+
+## Key Findings
+- Main finding 1
+- Main finding 2
+- Main finding 3
+
+## Implications for HyperCode
+How should this research influence HyperCode's design? What specific features, syntax choices, or tooling decisions does this inform?
+
+## Relations
+
+### Supports
+- [[decision-id]] - Brief description of how this supports that decision
+
+### Depends On
+- [[other-research-id]] - Research this builds upon
+
+### Related To
+- [[related-research-id]] - Tangentially related research
+
+### Contradicts
+- [[contradicting-research-id]] - Conflicting evidence (if any)
+
+## Sources
+Full citation with DOI/URL:
+```
+Author(s). (Year). Title. Journal/Conference. DOI: xxx
+URL: https://...
+```
+
+## Notes
+Additional context, methodology notes, quotes, or implementation considerations.
+
+---
+
+## Template 2: decision.md
+
+```markdown
+---
+type: decision
+title: "ADR-XXX: [Decision Title]"
+id: adr-xxx-kebab-case-title
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+status: proposed | reviewed | adopted | deprecated | superseded
+tags: [design_decision, tag1, tag2]
+decision_maker: maintainer_name | core_team
+implementation_status: proposed | in_progress | implemented | rolled_back
+supersedes: [adr-001]  # Optional
+superseded_by: adr-010  # Optional
+---
+
+## Context
+What is the issue we're facing? What problem needs solving?
+
+Include:
+- Current state
+- Pain points
+- Constraints (technical, community, accessibility)
+- Why this decision is needed now
+
+## Decision
+We will [clear, specific statement of what we're doing].
+
+Example: "We will use word-based keywords instead of symbols for control flow structures (e.g., `when` instead of `if`, `iterate` instead of `for`)."
+
+## Rationale
+Why this decision over alternatives?
+
+Link to supporting evidence:
+- Research showing cognitive load benefits
+- User feedback from studies
+- Comparative analysis of other languages
+- Accessibility requirements
+
+## Consequences
+
+### Positive
+- Benefit 1: Explanation
+- Benefit 2: Explanation
+
+### Negative
+- Trade-off 1: What we give up
+- Trade-off 2: Challenges introduced
+
+### Neutral
+- Side effect 1: Things to monitor
+- Side effect 2: Indirect impacts
+
+## Alternatives Considered
+
+### Alternative 1: [Name]
+- **Description:** What it was
+- **Pros:** Benefits
+- **Cons:** Why rejected
+- **Research:** [[link-to-analysis]]
+
+### Alternative 2: [Name]
+- **Description:** What it was
+- **Pros:** Benefits
+- **Cons:** Why rejected
+
+## Relations
+
+### Depends On
+- [[research-note-id]] - Research providing evidence
+- [[other-decision-id]] - Prior decision this builds on
+
+### Supports
+- [[downstream-decision-id]] - Future decisions this enables
+
+### Related To
+- [[related-decision-id]] - Related but independent decision
+
+## Implementation Notes
+
+### Syntax Changes
+```hypercode
+// Example code showing the decision in action
+when condition:
+    do_something()
+```
+
+### Compiler Impact
+- Changes needed in parser
+- Type system implications
+- Performance considerations
+
+### Migration Path
+For existing HyperCode code (if any):
+1. Step 1
+2. Step 2
+
+### Documentation Updates
+- Tutorial changes needed
+- API docs to update
+- Examples to revise
+
+## Review History
+- YYYY-MM-DD: Proposed by @username - rationale
+- YYYY-MM-DD: Community feedback period opened
+- YYYY-MM-DD: Revised based on feedback
+- YYYY-MM-DD: Adopted by core team
+
+## Next Steps
+- [ ] Implement in compiler
+- [ ] Update documentation
+- [ ] Write migration guide
+- [ ] Announce to community
+```
+
+---
+
+## Template 3: experiment.md
+
+```markdown
+---
+type: experiment
+title: "[Experiment Name]"
+id: exp-xxx-kebab-case
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+status: draft | in_progress | completed | reviewed
+tags: [experiment, usability_test, tag1, tag2]
+hypothesis: "Brief clear statement of what you're testing"
+participants: N  # Number of participants
+methodology: usability_test | AB_test | pilot | prototype | survey | interview
+result: success | partial | failed | inconclusive | pending
+---
+
+## Hypothesis
+**Clear statement:** "We believe that [change X] will result in [outcome Y] because [reason Z]."
+
+Example: "We believe that word-based syntax will reduce task completion time by 20% for ADHD developers because it reduces working memory load when reading code."
+
+## Methodology
+
+### Participants
+- **N:** Number of participants
+- **Recruitment:** How were they found?
+- **Demographics:** 
+  - Neurodivergent profiles (ADHD, autism, etc.)
+  - Programming experience levels
+  - Age range (if relevant)
+- **Compensation:** How were participants compensated?
+
+### Protocol
+1. **Setup:** Environment, tools, initial briefing
+2. **Tasks:** 
+   - Task 1: Description, expected time
+   - Task 2: Description, expected time
+   - Task 3: Description, expected time
+3. **Data Collection:**
+   - Metrics tracked (time, errors, success rate)
+   - Observation methods (think-aloud, screen recording)
+   - Post-task surveys or interviews
+4. **Duration:** Total time per participant
+
+### Materials
+- Code samples used
+- Task descriptions
+- Survey questions
+- Interview guide
+
+Link to materials: `experiments/pilots/exp-xxx/materials/`
+
+### Analysis Plan
+How will results be evaluated?
+- Statistical tests (if quantitative)
+- Coding scheme (if qualitative)
+- Success criteria
+
+## Results
+
+### Quantitative
+
+| Metric | Symbol-Based | Word-Based | Difference | p-value |
+|--------|--------------|------------|------------|---------|
+| Avg completion time | 12.3 min | 9.7 min | -21% | p<0.05 |
+| Error rate | 18% | 11% | -39% | p<0.03 |
+| Success rate | 75% | 92% | +23% | p<0.02 |
+
+### Qualitative
+
+**Theme 1: Readability**
+- Quote: "I could scan the code without re-reading lines" (P4, ADHD)
+- Quote: "The words felt more natural than remembering symbols" (P7, autism)
+
+**Theme 2: Cognitive Load**
+- Quote: "I didn't have to keep translating symbols in my head" (P2, ADHD)
+
+**Theme 3: Error Recovery**
+- Quote: "When I made a mistake, the error message made more sense with words" (P9)
+
+**Observations:**
+- Participants with ADHD showed 30% fewer context switches
+- Autistic participants appreciated consistency in word usage
+
+## Analysis
+
+### What We Learned
+Key takeaways from the data:
+1. **Finding 1:** Explanation with evidence
+2. **Finding 2:** Explanation with evidence
+3. **Finding 3:** Explanation with evidence
+
+### Surprises
+Unexpected results that warrant further investigation:
+- Observation 1
+- Observation 2
+
+### Limitations
+- Sample size: Limited to 12 participants
+- Diversity: Need more representation of [group]
+- Methodology: [potential bias or constraint]
+- Generalizability: Results may not apply to [context]
+
+## Implications
+
+### For HyperCode Design
+1. **Recommendation 1:** Based on [finding], we should [action]
+2. **Recommendation 2:** Based on [finding], we should [action]
+
+### Design Decisions to Support or Update
+- [[adr-xxx]]: This experiment validates the decision
+- [[adr-yyy]]: This experiment suggests we should reconsider
+
+### Future Research Needed
+- Follow-up study on [aspect]
+- Larger sample with [demographic]
+- Long-term usage tracking
+
+## Relations
+
+### Supports
+- [[adr-001-syntax-minimalism]] - Provides evidence for decision
+
+### Tests
+- [[research-note-working-memory]] - Validates theoretical prediction
+
+### Related To
+- [[exp-002-error-messages]] - Complementary experiment
+
+## Raw Data
+
+**Location:** `experiments/pilots/exp-xxx/data/`
+
+**Files:**
+- `participant_times.csv` - Task completion data
+- `survey_responses_anonymized.csv` - Post-task survey
+- `transcripts/` - Interview transcripts (anonymized)
+- `analysis_notebook.ipynb` - Statistical analysis
+
+**Privacy Note:** All data anonymized per IRB protocol [if applicable] or community guidelines.
+
+## Follow-Up
+- [ ] Share results with participants
+- [ ] Update related design decisions
+- [ ] Present findings in community meeting
+- [ ] Archive materials for reproducibility
+```
+
+---
+
+## Usage Guide
+
+### When to Use Each Template:
+
+**research_note.md:**
+- Capturing findings from papers, articles, or books
+- Documenting insights from user interviews
+- Recording observations from other language designs
+- Creating glossary entries for domain concepts
+
+**decision.md (ADR):**
+- Making a significant design choice
+- Choosing between competing approaches
+- Establishing standards or conventions
+- Deprecating or superseding previous decisions
+
+**experiment.md:**
+- Running usability tests
+- Conducting A/B tests of features
+- Piloting new syntax or tooling
+- Gathering user feedback systematically
+
+### Naming Conventions:
+
+**Research Notes:**
+`research/{category}/{descriptive-kebab-case-name}.md`
+Example: `research/cognitive_science/working-memory-adhd.md`
+
+**Decisions:**
+`design_decisions/adr-{number}-{title}.md`
+Example: `design_decisions/adr-001-syntax-minimalism.md`
+
+**Experiments:**
+`experiments/{type}/exp-{number}-{title}.md`
+Example: `experiments/usability_tests/exp-001-syntax-preference.md`
+
+---
+
+## Quick Start Checklist
+
+Before submitting a PR with new research content:
+
+- [ ] Used correct template for type
+- [ ] Filled out all required YAML fields
+- [ ] Status set appropriately
+- [ ] At least 3 relevant tags added
+- [ ] Relations section completed with links
+- [ ] Sources cited (for research notes)
+- [ ] Supporting research linked (for decisions)
+- [ ] Content follows structure in template
+- [ ] No placeholder text like "[TODO]" remains
+- [ ] Internal links use `[[link-syntax]]`
+- [ ] File named according to conventions
+- [ ] PR titled: `[research]`, `[decision]`, or `[experiment]` prefix

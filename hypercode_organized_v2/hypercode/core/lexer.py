@@ -32,114 +32,102 @@ class Lexer:
     # Define keywords mapping
     KEYWORDS: Dict[str, TokenType] = {
         # Control flow
-        'if': TokenType.IF,
-        'else': TokenType.ELSE,
-        'for': TokenType.FOR,
-        'while': TokenType.WHILE,
-        'in': TokenType.IN,
-        'match': TokenType.MATCH,
-        'with': TokenType.WITH,
-        'then': TokenType.THEN,
-        
+        "if": TokenType.IF,
+        "else": TokenType.ELSE,
+        "for": TokenType.FOR,
+        "while": TokenType.WHILE,
+        "in": TokenType.IN,
+        "match": TokenType.MATCH,
+        "with": TokenType.WITH,
+        "then": TokenType.THEN,
         # Functions and modules
-        'function': TokenType.FUNCTION,
-        'return': TokenType.RETURN,
-        'import': TokenType.IMPORT,
-        'export': TokenType.EXPORT,
-        'as': TokenType.AS,
-        
+        "function": TokenType.FUNCTION,
+        "return": TokenType.RETURN,
+        "import": TokenType.IMPORT,
+        "export": TokenType.EXPORT,
+        "as": TokenType.AS,
         # Variable declarations
-        'let': TokenType.LET,
-        'const': TokenType.CONST,
-        'var': TokenType.VAR,
-        
+        "let": TokenType.LET,
+        "const": TokenType.CONST,
+        "var": TokenType.VAR,
         # Types and interfaces
-        'type': TokenType.TYPE,
-        'interface': TokenType.INTERFACE,
-        'class': TokenType.CLASS,
-        
+        "type": TokenType.TYPE,
+        "interface": TokenType.INTERFACE,
+        "class": TokenType.CLASS,
         # Literals
-        'true': TokenType.TRUE,
-        'false': TokenType.FALSE,
-        'nil': TokenType.NIL,
-        
+        "true": TokenType.TRUE,
+        "false": TokenType.FALSE,
+        "nil": TokenType.NIL,
         # HyperCode specific
-        'intent': TokenType.INTENT,
-        'print': TokenType.PRINT,
+        "intent": TokenType.INTENT,
+        "print": TokenType.PRINT,
     }
 
     # Define token patterns using regular expressions
     TOKEN_PATTERNS: List[Tuple[Pattern, Optional[TokenType]]] = [
         # Whitespace (ignored)
-        (re.compile(r'\s+'), None),
-        
+        (re.compile(r"\s+"), None),
         # Comments (ignored)
-        (re.compile(r'#.*'), None),
-        
+        (re.compile(r"#.*"), None),
         # Multi-line comments (ignored)
         (re.compile(r'"{3}[\s\S]*?"{3}'), None),
-        
         # Numbers (integers and floats)
-        (re.compile(r'\d+\.\d+'), TokenType.FLOAT),  # Float
-        (re.compile(r'\d+'), TokenType.NUMBER),        # Integer
-        
+        (re.compile(r"\d+\.\d+"), TokenType.FLOAT),  # Float
+        (re.compile(r"\d+"), TokenType.NUMBER),  # Integer
         # Strings (single and double quoted)
         (re.compile(r'"(?:\\.|[^"\\])*"'), TokenType.STRING),
         (re.compile(r"'(?:\\.|[^'\\])*'"), TokenType.STRING),
-        
         # Identifiers and keywords
-        (re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*'), None),  # Handled specially
-        
+        (re.compile(r"[a-zA-Z_][a-zA-Z0-9_]*"), None),  # Handled specially
         # Operators
-        (re.compile(r'\+='), TokenType.PLUS_ASSIGN),
-        (re.compile(r'-='), TokenType.MINUS_ASSIGN),
-        (re.compile(r'\*='), TokenType.MULTIPLY_ASSIGN),
-        (re.compile(r'/='), TokenType.DIVIDE_ASSIGN),
-        (re.compile(r'%='), TokenType.MODULO_ASSIGN),
-        (re.compile(r'\*\*='), TokenType.EXPONENT_ASSIGN),
-        (re.compile(r'=='), TokenType.EQUAL),
-        (re.compile(r'!='), TokenType.NOT_EQUAL),
-        (re.compile(r'<='), TokenType.LESS_EQUAL),
-        (re.compile(r'>='), TokenType.GREATER_EQUAL),
-        (re.compile(r'\+\+'), TokenType.PLUS),
-        (re.compile(r'--'), TokenType.MINUS),
-        (re.compile(r'\*\*'), TokenType.EXPONENT),
-        (re.compile(r'&&'), TokenType.AND),
-        (re.compile(r'\|\|'), TokenType.OR),
-        (re.compile(r'!'), TokenType.NOT),
-        (re.compile(r'&'), TokenType.BITWISE_AND),
-        (re.compile(r'\|'), TokenType.BITWISE_OR),
-        (re.compile(r'\^'), TokenType.BITWISE_XOR),
-        (re.compile(r'~'), TokenType.BITWISE_NOT),
-        (re.compile(r'<<'), TokenType.LEFT_SHIFT),
-        (re.compile(r'>>'), TokenType.RIGHT_SHIFT),
-        (re.compile(r'='), TokenType.ASSIGN),
-        (re.compile(r'<'), TokenType.LESS),
-        (re.compile(r'>'), TokenType.GREATER),
-        (re.compile(r'\+'), TokenType.PLUS),
-        (re.compile(r'-'), TokenType.MINUS),
-        (re.compile(r'\*'), TokenType.MULTIPLY),
-        (re.compile(r'/'), TokenType.DIVIDE),
-        (re.compile(r'%'), TokenType.MODULO),
-        
+        (re.compile(r"\+="), TokenType.PLUS_ASSIGN),
+        (re.compile(r"-="), TokenType.MINUS_ASSIGN),
+        (re.compile(r"\*="), TokenType.MULTIPLY_ASSIGN),
+        (re.compile(r"/="), TokenType.DIVIDE_ASSIGN),
+        (re.compile(r"%="), TokenType.MODULO_ASSIGN),
+        (re.compile(r"\*\*="), TokenType.EXPONENT_ASSIGN),
+        (re.compile(r"=="), TokenType.EQUAL),
+        (re.compile(r"!="), TokenType.NOT_EQUAL),
+        (re.compile(r"<="), TokenType.LESS_EQUAL),
+        (re.compile(r">="), TokenType.GREATER_EQUAL),
+        (re.compile(r"\+\+"), TokenType.PLUS),
+        (re.compile(r"--"), TokenType.MINUS),
+        (re.compile(r"\*\*"), TokenType.EXPONENT),
+        (re.compile(r"&&"), TokenType.AND),
+        (re.compile(r"\|\|"), TokenType.OR),
+        (re.compile(r"!"), TokenType.NOT),
+        (re.compile(r"&"), TokenType.BITWISE_AND),
+        (re.compile(r"\|"), TokenType.BITWISE_OR),
+        (re.compile(r"\^"), TokenType.BITWISE_XOR),
+        (re.compile(r"~"), TokenType.BITWISE_NOT),
+        (re.compile(r"<<"), TokenType.LEFT_SHIFT),
+        (re.compile(r">>"), TokenType.RIGHT_SHIFT),
+        (re.compile(r"="), TokenType.ASSIGN),
+        (re.compile(r"<"), TokenType.LESS),
+        (re.compile(r">"), TokenType.GREATER),
+        (re.compile(r"\+"), TokenType.PLUS),
+        (re.compile(r"-"), TokenType.MINUS),
+        (re.compile(r"\*"), TokenType.MULTIPLY),
+        (re.compile(r"/"), TokenType.DIVIDE),
+        (re.compile(r"%"), TokenType.MODULO),
         # Delimiters
-        (re.compile(r'\('), TokenType.LEFT_PAREN),
-        (re.compile(r'\)'), TokenType.RIGHT_PAREN),
-        (re.compile(r'\['), TokenType.LEFT_BRACKET),
-        (re.compile(r'\]'), TokenType.RIGHT_BRACKET),
-        (re.compile(r'\{'), TokenType.LEFT_BRACE),
-        (re.compile(r'\}'), TokenType.RIGHT_BRACE),
-        (re.compile(r','), TokenType.COMMA),
-        (re.compile(r'\.'), TokenType.DOT),
-        (re.compile(r':'), TokenType.COLON),
-        (re.compile(r';'), TokenType.SEMICOLON),
-        (re.compile(r'->'), TokenType.ARROW),
-        (re.compile(r'\.\.'), TokenType.RANGE),
+        (re.compile(r"\("), TokenType.LEFT_PAREN),
+        (re.compile(r"\)"), TokenType.RIGHT_PAREN),
+        (re.compile(r"\["), TokenType.LEFT_BRACKET),
+        (re.compile(r"\]"), TokenType.RIGHT_BRACKET),
+        (re.compile(r"\{"), TokenType.LEFT_BRACE),
+        (re.compile(r"\}"), TokenType.RIGHT_BRACE),
+        (re.compile(r","), TokenType.COMMA),
+        (re.compile(r"\."), TokenType.DOT),
+        (re.compile(r":"), TokenType.COLON),
+        (re.compile(r";"), TokenType.SEMICOLON),
+        (re.compile(r"->"), TokenType.ARROW),
+        (re.compile(r"\.\."), TokenType.RANGE),
     ]
 
-    def __init__(self, source: str, filename: str = '<string>') -> None:
+    def __init__(self, source: str, filename: str = "<string>") -> None:
         """Initialize the lexer with source code.
-        
+
         Args:
             source: The source code to tokenize
             filename: The name of the source file (for error reporting)
@@ -152,61 +140,76 @@ class Lexer:
         self.line = 1
         self.column = 1
         self.indent_stack = [0]  # Track indentation levels
-        self.paren_level = 0     # Track parentheses nesting level
-        self.brace_level = 0     # Track braces nesting level
-        self.bracket_level = 0   # Track brackets nesting level
+        self.paren_level = 0  # Track parentheses nesting level
+        self.brace_level = 0  # Track braces nesting level
+        self.bracket_level = 0  # Track brackets nesting level
 
     def scan_tokens(self) -> List[Token]:
         """Scan the source code and return a list of tokens.
-        
+
         Returns:
             A list of tokens representing the source code.
         """
         while not self.is_at_end():
             self.start = self.current
             self.scan_token()
-        
+
         # Add EOF token
         self.add_token(TokenType.EOF, "")
         return self.tokens
-    
+
     def scan_token(self) -> None:
         """Scan the next token from the source code."""
         # Get the next character
         char = self.advance()
-        
+
         # Check for newlines and indentation
-        if char == '\n':
+        if char == "\n":
             self.handle_newline()
             return
         elif char.isspace():
             # Skip other whitespace
             return
-        
+
         # Try to match token patterns
         for pattern, token_type in self.TOKEN_PATTERNS:
             match = pattern.match(self.source, self.start)
             if match and match.start() == self.start:
                 # Update current position
                 self.current = match.end()
-                
+
                 # Get the matched text
                 text = match.group(0)
-                
+
                 # Handle identifiers and keywords
-                if token_type is None and pattern.pattern == r'[a-zA-Z_][a-zA-Z0-9_]*':
+                if token_type is None and pattern.pattern == r"[a-zA-Z_][a-zA-Z0-9_]*":
                     self.handle_identifier(text)
                 # Handle other tokens
                 elif token_type is not None:
-                    self.add_token(token_type, text)
-                
+                    literal = None
+                    if token_type == TokenType.STRING:
+                        # Strip quotes
+                        literal = text[1:-1]
+                    elif token_type == TokenType.NUMBER:
+                        literal = int(text)
+                    elif token_type == TokenType.FLOAT:
+                        literal = float(text)
+                    elif token_type == TokenType.TRUE:
+                        literal = True
+                    elif token_type == TokenType.FALSE:
+                        literal = False
+                    elif token_type == TokenType.NIL:
+                        literal = None
+
+                    self.add_token(token_type, text, literal)
+
                 # Update column position
                 self.column += len(text)
                 return
-        
+
         # If we get here, it's an unexpected character
         self.error(f"Unexpected character: {char}")
-    
+
     def handle_identifier(self, text: str) -> None:
         """Handle identifiers and keywords."""
         # Check if it's a keyword
@@ -217,22 +220,22 @@ class Lexer:
         else:
             # It's a keyword
             self.add_token(token_type, text)
-    
+
     def handle_newline(self) -> None:
         """Handle newlines and indentation."""
         # Add a NEWLINE token if we're not in the middle of a block
         if self.paren_level == 0 and self.brace_level == 0 and self.bracket_level == 0:
             self.add_token(TokenType.NEWLINE, "\n")
-            
+
             # Calculate indentation level
             indent = 0
-            while self.peek() == ' ' or self.peek() == '\t':
-                if self.peek() == ' ':
+            while self.peek() == " " or self.peek() == "\t":
+                if self.peek() == " ":
                     indent += 1
                 else:  # tab
                     indent += 4  # Treat tabs as 4 spaces
                 self.advance()
-            
+
             # Handle indentation changes
             current_indent = self.indent_stack[-1]
             if indent > current_indent:
@@ -245,17 +248,19 @@ class Lexer:
                     self.add_token(TokenType.DEDENT, "")
                 if self.indent_stack and self.indent_stack[-1] != indent:
                     self.error("Inconsistent indentation")
-        
+
         # Update line and column counters
         self.line += 1
         self.column = 1
-    
-    def add_token(self, token_type: TokenType, lexeme: str, literal: Any = None) -> None:
+
+    def add_token(
+        self, token_type: TokenType, lexeme: str, literal: Any = None
+    ) -> None:
         """Add a new token to the token list."""
         # Calculate end position
         end_line = self.line
         end_column = self.column + len(lexeme) - 1
-        
+
         # Create and add the token
         token = Token(
             type=token_type,
@@ -264,53 +269,53 @@ class Lexer:
             line=self.line,
             column=self.column,
             end_line=end_line,
-            end_column=end_column
+            end_column=end_column,
         )
         self.tokens.append(token)
-        
+
         # Update column position
         self.column = end_column + 1
-    
+
     def advance(self) -> str:
         """Consume and return the next character in the source."""
         if self.is_at_end():
-            return '\0'
-        
+            return "\0"
+
         char = self.source[self.current]
         self.current += 1
-        
+
         # Update line and column counters
-        if char == '\n':
+        if char == "\n":
             self.line += 1
             self.column = 1
         else:
             self.column += 1
-        
+
         return char
-    
+
     def peek(self, offset: int = 0) -> str:
         """Look ahead at the next character without consuming it."""
         pos = self.current + offset
         if pos >= len(self.source):
-            return '\0'
+            return "\0"
         return self.source[pos]
-    
+
     def is_at_end(self) -> bool:
         """Check if we've reached the end of the source."""
         return self.current >= len(self.source)
-    
+
     def error(self, message: str) -> None:
         """Raise a lexer error."""
         raise LexerError(message, self.line, self.column)
 
 
-def tokenize(source: str, filename: str = '<string>') -> List[Token]:
+def tokenize(source: str, filename: str = "<string>") -> List[Token]:
     """Convenience function to tokenize source code.
-    
+
     Args:
         source: The source code to tokenize
         filename: The name of the source file (for error reporting)
-        
+
     Returns:
         A list of tokens representing the source code.
     """

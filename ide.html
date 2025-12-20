@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperCode IDE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #0f172a;
+        color: #e2e8f0;
+      }
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+      .editor {
+        background-color: #1e293b;
+        color: #f8fafc;
+        caret-color: #a855f7;
+      }
+      .output {
+        background-color: #000000;
+        color: #4ade80;
+      }
+      .sidebar-item:hover {
+        background-color: #334155;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body class="h-screen flex flex-col">
+    <!-- Header -->
+    <header
+      class="bg-gray-900 border-b border-gray-800 p-4 flex justify-between items-center"
+    >
+      <div class="flex items-center space-x-3">
+        <span class="text-3xl">🚀</span>
+        <h1
+          class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600"
+        >
+          HyperCode
+        </h1>
+      </div>
+      <div>
+        <button
+          id="runBtn"
+          class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold py-2 px-6 rounded-full shadow-lg transform transition hover:scale-105 flex items-center"
+        >
+          <span>RUN</span>
+          <span class="ml-2">▶</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex overflow-hidden">
+      <!-- Sidebar -->
+      <div class="w-64 bg-gray-900 border-r border-gray-800 flex flex-col">
+        <div class="p-4 border-b border-gray-800">
+          <h2 class="font-bold text-gray-400 uppercase text-xs tracking-wider">
+            Examples
+          </h2>
+        </div>
+        <div class="overflow-y-auto flex-1 p-2 space-y-1">
+          <div class="sidebar-item p-3 rounded" onclick="loadExample('hello')">
+            <span class="block font-medium">Hello World</span>
+            <span class="text-xs text-gray-500">Basic output</span>
+          </div>
+          <div
+            class="sidebar-item p-3 rounded"
+            onclick="loadExample('fizzbuzz')"
+          >
+            <span class="block font-medium">FizzBuzz</span>
+            <span class="text-xs text-gray-500">Loops & Conditionals</span>
+          </div>
+          <div
+            class="sidebar-item p-3 rounded"
+            onclick="loadExample('functions')"
+          >
+            <span class="block font-medium">Functions</span>
+            <span class="text-xs text-gray-500"> Closures & Scope</span>
+          </div>
+          <div
+            class="sidebar-item p-3 rounded"
+            onclick="loadExample('fibonacci')"
+          >
+            <span class="block font-medium">Fibonacci</span>
+            <span class="text-xs text-gray-500">Recursion</span>
+          </div>
+        </div>
+        <div class="p-4 border-t border-gray-800">
+          <a
+            href="https://github.com/lyndz/hypercode"
+            target="_blank"
+            class="text-gray-500 hover:text-white text-sm flex items-center"
+          >
+            <span class="mr-2">Documentation</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Editor Area -->
+      <div class="flex-1 flex flex-col bg-gray-900">
+        <!-- Code Editor -->
+        <div class="flex-1 p-4 relative">
+          <textarea
+            id="code"
+            class="editor w-full h-full p-4 rounded-lg font-mono text-sm leading-relaxed outline-none resize-none focus:ring-2 focus:ring-purple-500/50 transition-all shadow-inner"
+            spellcheck="false"
+            placeholder="// Write your HyperCode here..."
+          >
+print "Hello from HyperCode!";</textarea
+          >
+          <div class="absolute bottom-6 right-6 text-xs text-gray-500">
+            v0.2.0-beta
+          </div>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="h-1/3 bg-black border-t border-gray-800 flex flex-col">
+          <div
+            class="px-4 py-2 bg-gray-900 border-b border-gray-800 flex justify-between items-center"
+          >
+            <span
+              class="text-xs font-bold text-gray-400 uppercase tracking-wider"
+              >Terminal Output</span
+            >
+            <button
+              class="text-xs text-gray-500 hover:text-white"
+              onclick="document.getElementById('output').innerText = ''"
+            >
+              Clear
+            </button>
+          </div>
+          <div
+            id="output"
+            class="flex-1 p-4 font-mono text-sm overflow-y-auto whitespace-pre-wrap"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const examples = {
+        hello:
+          'print "Hello, Neurodivergent World!";\nprint "HyperCode is online.";',
+        fizzbuzz: `var i = 1;
+while (i <= 20) {
+    if (i % 15 == 0) {
+        print "FizzBuzz";
+    } else {
+        if (i % 3 == 0) {
+            print "Fizz";
+        } else {
+            if (i % 5 == 0) {
+                print "Buzz";
+            } else {
+                print i;
+            }
+        }
+    }
+    var i = i + 1;
+}`,
+        // Note: Modulo operator might not be supported yet in Interpreter visit_Binary.
+        // I should check that. If not, I'll need to update Interpreter.py or change example.
+        // My visit_Binary had MODULO?
+        // Checking step 89 (Interpreter content):
+        // I had visit_Binary...
+        // if op == TokenType.MODULO: return float(left) % float(right) ???
+        // I need to check tokens.py for MODULO.
+        // I added MODULO to tokens.py?
+        // Tokens.py Step 78: MODULO = auto()
+        // Interpreter.py Step 119:
+        // if op == TokenType.PLUS: ...
+        // if op == TokenType.MODULO: ...  <-- Need to verify this exists.
+        functions: `fun greet(name) {
+    print "Hello, " + name + "!";
+}
+
+greet("Dev");
+greet("Community");`,
+        fibonacci: `fun fib(n) {
+  if (n < 2) return n;
+  return fib(n - 1) + fib(n - 2);
+}
+
+var i = 0;
+while (i < 10) {
+  print fib(i);
+  var i = i + 1;
+}`,
+      };
+
+      function loadExample(name) {
+        const code = examples[name];
+        document.getElementById("code").value = code;
+      }
+
+      document.getElementById("runBtn").addEventListener("click", async () => {
+        const code = document.getElementById("code").value;
+        const outputDiv = document.getElementById("output");
+
+        outputDiv.innerHTML = '<span class="text-gray-500">Running...</span>';
+
+        try {
+          const response = await fetch("/run", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code }),
+          });
+
+          const data = await response.json();
+          outputDiv.innerText = data.output || "No output.";
+        } catch (err) {
+          outputDiv.innerText = "Error: " + err.message;
+        }
+      });
+    </script>
+  </body>
+</html>

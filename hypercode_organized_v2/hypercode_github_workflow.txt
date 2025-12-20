@@ -1,0 +1,162 @@
+# .github/workflows/validate-research-db.yml
+name: Validate Research Database
+
+on:
+  pull_request:
+    paths:
+      - 'research/**'
+      - 'design_decisions/**'
+      - 'experiments/**'
+      - 'user_studies/**'
+      - '_templates/**'
+      - '_schema.md'
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'research/**'
+      - 'design_decisions/**'
+      - 'experiments/**'
+      - 'user_studies/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate Research Files
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+      
+      - name: Run validation
+        id: validate
+        run: |
+          python validate_research_db.py .
+        continue-on-error: true
+      
+      - name: Comment on PR (if validation failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ❌ Research Database Validation Failed
+              
+              Your research files contain validation errors. Please review the logs above and:
+              
+              1. Ensure all required YAML front matter fields are present
+              2. Check that file types are valid (research_note, decision, experiment, glossary)
+              3. Verify that all \`[[wiki-links]]\` reference existing files
+              4. Make sure required sections exist (## Relations, ## Context, etc.)
+              
+              See the [schema documentation](_schema.md) for details.
+              
+              **Common fixes:**
+              - Add missing YAML fields (type, id, status, tags)
+              - Create the \`## Relations\` section
+              - Fix broken \`[[links]]\` to use existing IDs
+              - Use correct date format: YYYY-MM-DD
+              
+              Re-run validation locally: \`python validate_research_db.py .\``
+            })
+      
+      - name: Fail if validation errors exist
+        if: steps.validate.outcome == 'failure'
+        run: exit 1
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    name: Lint Markdown Files
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v15
+        with:
+          globs: |
+            research/**/*.md
+            design_decisions/**/*.md
+            experiments/**/*.md
+            user_studies/**/*.md
+        continue-on-error: true
+
+  check-links:
+    runs-on: ubuntu-latest
+    name: Check External Links
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check links in markdown
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          use-quiet-mode: 'yes'
+          use-verbose-mode: 'yes'
+          config-file: '.github/markdown-link-check-config.json'
+          folder-path: 'research,design_decisions,experiments,user_studies'
+        continue-on-error: true
+
+  report-stats:
+    runs-on: ubuntu-latest
+    name: Report Database Statistics
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Count files by type
+        id: stats
+        run: |
+          research_count=$(find research -name "*.md" | wc -l)
+          decision_count=$(find design_decisions -name "*.md" 2>/dev/null | wc -l || echo 0)
+          experiment_count=$(find experiments -name "*.md" 2>/dev/null | wc -l || echo 0)
+          
+          echo "research=$research_count" >> $GITHUB_OUTPUT
+          echo "decisions=$decision_count" >> $GITHUB_OUTPUT
+          echo "experiments=$experiment_count" >> $GITHUB_OUTPUT
+      
+      - name: Comment statistics on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { research, decisions, experiments } = {
+              research: '${{ steps.stats.outputs.research }}',
+              decisions: '${{ steps.stats.outputs.decisions }}',
+              experiments: '${{ steps.stats.outputs.experiments }}'
+            };
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 📊 Research Database Statistics
+              
+              Current state of the HyperCode ResearchDB:
+              
+              | Type | Count |
+              |------|-------|
+              | 📚 Research Notes | ${research} |
+              | 🎯 Design Decisions | ${decisions} |
+              | 🧪 Experiments | ${experiments} |
+              | **Total** | **${parseInt(research) + parseInt(decisions) + parseInt(experiments)}** |
+              
+              Thank you for contributing to the evidence base! 🚀`
+            })

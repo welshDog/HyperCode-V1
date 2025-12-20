@@ -1,0 +1,338 @@
+# HyperCode Research Database Schema
+
+**Version:** 1.0.0  
+**Status:** Canonical  
+**Last Updated:** 2025-01-19
+
+## Overview
+
+This document defines the canonical structure for all research, decisions, and experiments in the HyperCode ResearchDatabase. Every file must conform to this schema to maintain consistency, traceability, and contributor-friendliness.
+
+---
+
+## Directory Structure
+
+```
+hypercode_research_db/
+├── _schema.md                    # This file (canonical schema)
+├── _templates/
+│   ├── research_note.md
+│   ├── decision.md
+│   ├── experiment.md
+│   └── glossary.md
+├── research/
+│   ├── cognitive_science/
+│   ├── accessibility/
+│   ├── neurodivergent_ux/
+│   └── language_comparisons/
+├── design_decisions/
+│   ├── adr-001-syntax-minimalism.md
+│   ├── adr-002-error-message-framework.md
+│   └── ...
+├── user_studies/
+│   ├── interviews/
+│   ├── surveys/
+│   └── usability_tests/
+├── experiments/
+│   ├── pilots/
+│   └── prototypes/
+└── references/
+    ├── papers/
+    ├── bibtex/
+    └── external_links.md
+```
+
+---
+
+## YAML Front Matter Fields
+
+### Required Fields (All Files)
+
+```yaml
+---
+type: research_note | decision | experiment | glossary
+title: "Human-readable title"
+id: unique-kebab-case-identifier
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+status: draft | reviewed | adopted | deprecated | superseded
+tags: [cognitive_load, syntax, adhd, autism, accessibility]
+---
+```
+
+### Optional Fields by Type
+
+#### Research Notes
+```yaml
+source: "DOI, URL, or citation"
+source_quality: peer_reviewed | industry_report | anecdotal | interview
+confidence: high | medium | low
+discipline: cognitive_science | linguistics | HCI | neuroscience
+```
+
+#### Design Decisions (ADR Style)
+```yaml
+supersedes: [adr-001, adr-003]
+superseded_by: adr-010
+decision_maker: maintainer_name
+implementation_status: proposed | in_progress | implemented | rolled_back
+```
+
+#### Experiments
+```yaml
+hypothesis: "Brief statement"
+participants: N (if applicable)
+methodology: usability_test | AB_test | pilot | prototype
+result: success | partial | failed | inconclusive
+```
+
+---
+
+## Relations Section (Required)
+
+Every file must include a `## Relations` section using consistent link syntax:
+
+```markdown
+## Relations
+
+### Supports
+- [[adr-002-error-message-framework]] - Error messages as UX-first
+- [[visual-noise-research]] - Reduces cognitive load
+
+### Depends On
+- [[working-memory-constraints]] - ADHD working memory research
+- [[syntax-consistency-study]] - Predictability reduces errors
+
+### Related To
+- [[rust-error-messages-analysis]] - Comparative study
+- [[adhd-coding-patterns]] - User behavior research
+
+### Contradicts
+- [[verbose-syntax-proposal]] - Opposite design philosophy
+
+### Supersedes
+- [[old-error-approach]] - Previous decision
+```
+
+---
+
+## Content Structure Templates
+
+### Research Note Structure
+
+```markdown
+---
+type: research_note
+title: "Working Memory Constraints in ADHD Developers"
+id: working-memory-adhd
+created: 2025-01-19
+status: reviewed
+tags: [cognitive_science, adhd, working_memory, cognitive_load]
+source: "Klingberg et al. (2005), DOI:10.1038/nrn1633"
+source_quality: peer_reviewed
+confidence: high
+---
+
+## Summary
+Brief 2-3 sentence overview of the finding.
+
+## Key Findings
+- Bullet point findings
+- Specific to HyperCode design
+
+## Implications for HyperCode
+How this research should influence language design.
+
+## Relations
+[See Relations section above]
+
+## Sources
+Full citation, DOI, or URL.
+
+## Notes
+Additional context, quotes, or methodology notes.
+```
+
+### Design Decision (ADR) Structure
+
+```markdown
+---
+type: decision
+title: "ADR-001: Syntax Minimalism for Cognitive Load Reduction"
+id: adr-001-syntax-minimalism
+created: 2025-01-19
+status: adopted
+tags: [syntax, cognitive_load, design_decision]
+decision_maker: core_team
+implementation_status: implemented
+---
+
+## Context
+What problem are we solving? What constraints exist?
+
+## Decision
+What did we decide? Be specific.
+
+## Rationale
+Why this decision? Link to supporting research.
+
+## Consequences
+- **Positive:** What we gain
+- **Negative:** Trade-offs we accept
+- **Neutral:** Side effects to monitor
+
+## Alternatives Considered
+What else did we evaluate and why was it rejected?
+
+## Relations
+### Depends On
+- [[working-memory-adhd]] - Research supporting this decision
+- [[syntax-consistency-study]]
+
+### Supports
+- [[error-message-framework]] - Downstream decision
+
+## Implementation Notes
+Technical details, code examples, migration path.
+
+## Review History
+- 2025-01-19: Proposed by @maintainer
+- 2025-01-22: Adopted after community review
+```
+
+### Experiment Structure
+
+```markdown
+---
+type: experiment
+title: "Usability Test: Symbol-Heavy vs Word-Based Syntax"
+id: exp-001-syntax-preference
+created: 2025-01-15
+status: reviewed
+tags: [usability_test, syntax, adhd, autism]
+hypothesis: "Word-based syntax reduces cognitive load for neurodivergent devs"
+participants: 12
+methodology: usability_test
+result: success
+---
+
+## Hypothesis
+State clearly what you're testing.
+
+## Methodology
+- Participants: Demographics, recruitment
+- Protocol: Step-by-step test procedure
+- Materials: Code samples, tasks
+- Analysis: How results were evaluated
+
+## Results
+### Quantitative
+- Task completion time
+- Error rates
+- Success metrics
+
+### Qualitative
+- User feedback quotes (anonymized)
+- Observations
+- Patterns
+
+## Analysis
+What do the results mean?
+
+## Implications
+How should HyperCode respond to this?
+
+## Relations
+[Link to relevant research and decisions]
+
+## Raw Data
+Link to anonymized datasets, recordings, or analysis files.
+```
+
+---
+
+## Tagging Taxonomy
+
+### Cognitive Categories
+`cognitive_load`, `working_memory`, `pattern_recognition`, `executive_function`, `sensory_processing`
+
+### Neurodivergent Categories
+`adhd`, `autism`, `dyslexia`, `dyscalculia`, `sensory_processing_disorder`
+
+### Language Design
+`syntax`, `semantics`, `error_messages`, `type_system`, `compiler`, `tooling`
+
+### UX/Accessibility
+`accessibility`, `visual_design`, `documentation`, `learning_curve`, `IDE_integration`
+
+### Research Type
+`peer_reviewed`, `user_study`, `comparative_analysis`, `case_study`, `anecdotal`
+
+---
+
+## Quality Standards
+
+### Research Notes Must:
+1. Cite original sources with DOI/URL when available
+2. State confidence level and source quality
+3. Link to at least 1 design decision or experiment
+4. Be reviewed by at least 1 other contributor
+
+### Design Decisions Must:
+1. Link to at least 2 supporting research notes
+2. Document alternatives considered
+3. State consequences (positive and negative)
+4. Include implementation status
+
+### Experiments Must:
+1. State hypothesis clearly
+2. Document methodology reproducibly
+3. Include sample size (if applicable)
+4. Anonymize participant data
+5. Link to implications for language design
+
+---
+
+## Validation Rules (CI Ready)
+
+Files will be validated for:
+- ✅ Required YAML front matter present
+- ✅ Valid `type` field
+- ✅ `status` field present
+- ✅ At least 1 tag
+- ✅ `## Relations` section exists
+- ✅ Design decisions link to ≥2 research notes
+- ✅ Research notes include source information
+- ✅ No broken internal links
+
+---
+
+## Workflow: Adding New Content
+
+### For Contributors:
+1. Copy appropriate template from `_templates/`
+2. Fill out all required fields
+3. Write content following structure
+4. Add Relations section with links
+5. Submit PR with `[research]` or `[decision]` prefix
+6. Address review feedback
+
+### For Maintainers:
+1. Review for schema compliance
+2. Check source quality and citations
+3. Verify Relations section completeness
+4. Ensure links resolve correctly
+5. Update status field as appropriate
+6. Merge when validated
+
+---
+
+## Living Document
+
+This schema will evolve. Proposed changes should:
+1. Be submitted as a decision document
+2. Include migration path for existing files
+3. Be discussed in community review
+4. Increment version number when adopted
+
+**Next Review:** 2025-04-19 (quarterly)
