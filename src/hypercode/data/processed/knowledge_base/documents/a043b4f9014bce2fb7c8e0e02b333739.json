@@ -1,0 +1,14 @@
+{
+  "file_name": "compat.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\compat.py",
+  "file_size": 316,
+  "created": "2025-12-01T01:58:32.103037",
+  "modified": "2025-12-01T01:58:32.104452",
+  "file_type": "code",
+  "content_hash": "481871cd052957124183a01fed88b799",
+  "content_type": "text",
+  "content": "from typing import Any, Union\n\nfrom .core import decode, encode\n\n\ndef ToASCII(label: str) -> bytes:\n    return encode(label)\n\n\ndef ToUnicode(label: Union[bytes, bytearray]) -> str:\n    return decode(label)\n\n\ndef nameprep(s: Any) -> None:\n    raise NotImplementedError(\"IDNA 2008 does not utilise nameprep protocol\")\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\compat.py",
+  "id": "a043b4f9014bce2fb7c8e0e02b333739"
+}

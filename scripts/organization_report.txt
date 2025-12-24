@@ -1,0 +1,15 @@
+================================================================================
+HyperCode Project Organization Report - 2025-12-21 03:22:10
+================================================================================
+
+[SUMMARY]
+
+Files Moved: 1
+Files Skipped: 0
+Documentation Files Moved: 0
+Documentation Files Skipped: 0
+
+[DETAILS]
+
+MOVED FILES:
+  c:\Users\lyndz\Downloads\hypercode PROJECT\hypercode-v2\scripts\organization_report.txt -> c:\Users\lyndz\Downloads\hypercode PROJECT\hypercode-v2\scripts\docs\organization_report.txt

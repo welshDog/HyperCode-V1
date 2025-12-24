@@ -1,0 +1,96 @@
+{
+  "name": "hypercode-syntax",
+  "displayName": "HyperCode Visual Syntax",
+  "description": "Visual semantic syntax highlighting for neurodivergent developers with emoji-based annotations",
+  "version": "1.0.0",
+  "publisher": "HyperCode",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Languages",
+    "Other"
+  ],
+  "keywords": [
+    "hypercode",
+    "semantic syntax",
+    "neurodiversity",
+    "accessibility",
+    "emoji",
+    "visual programming"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "hypercode",
+        "aliases": [
+          "HyperCode",
+          "hypercode"
+        ],
+        "extensions": [
+          ".hyper",
+          ".hypercode"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hypercode",
+        "scopeName": "source.hypercode",
+        "path": "./syntaxes/hypercode.tmLanguage.json",
+        "injectTo": [
+          "source.python"
+        ]
+      }
+    ],
+    "configuration": {
+      "title": "HyperCode",
+      "properties": {
+        "hypercode.semanticHighlighting": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable visual semantic syntax highlighting"
+        },
+        "hypercode.neurodiversityMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable neurodiversity-focused visual enhancements"
+        },
+        "hypercode.realtimeParsing": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable real-time parsing and validation"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.7.0",
+    "typescript": "^5.0.0",
+    "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/welshDog/hypercode.git",
+    "directory": "vscode-extension"
+  },
+  "homepage": "https://github.com/welshDog/hypercode/tree/main/vscode-extension",
+  "bugs": {
+    "url": "https://github.com/welshDog/hypercode/issues"
+  },
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  }
+}

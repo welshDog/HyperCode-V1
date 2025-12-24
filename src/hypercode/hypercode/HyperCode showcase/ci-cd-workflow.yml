@@ -1,0 +1,162 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint Code
+        run: npm run lint
+
+      - name: Format Check
+        run: npx prettier --check "src/**/*.ts"
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Generate Coverage Report
+        run: npm run test:coverage
+
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Archive Build Artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts-${{ matrix.node-version }}
+          path: dist/
+
+      - name: Archive Test Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-${{ matrix.node-version }}
+          path: coverage/
+
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run npm audit
+        run: npm audit --production
+        continue-on-error: true
+
+      - name: Run Snyk scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        continue-on-error: true
+
+  accessibility-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Check Documentation Accessibility
+        run: |
+          echo "Running accessibility checks on documentation..."
+          npx axe-core --directory ./docs --output ./accessibility-report.json
+        continue-on-error: true
+
+      - name: Archive Accessibility Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: accessibility-report
+          path: accessibility-report.json
+
+  quality-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Calculate Code Metrics
+        run: |
+          echo "Code Quality Metrics"
+          npx eslint src --format=json > eslint-report.json || true
+          npm run test:coverage
+        continue-on-error: true
+
+      - name: Archive Metrics
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: quality-metrics
+          path: |
+            eslint-report.json
+            coverage/
+
+  publish:
+    needs: [build, security-audit]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        continue-on-error: true
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          body: 'Automated release from CI/CD pipeline'
+          draft: false
+          prerelease: false

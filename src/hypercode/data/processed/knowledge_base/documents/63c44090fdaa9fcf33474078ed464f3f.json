@@ -1,0 +1,26 @@
+{
+  "file_name": "TEMPLATE-TUTORIAL-QUICK.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\duelcode\\TEMPLATE-TUTORIAL-QUICK.md",
+  "file_size": 1075,
+  "created": "2025-11-23T11:56:45.656227",
+  "modified": "2025-11-23T11:56:45.656227",
+  "file_type": "code",
+  "content_hash": "5fa5a4eabacff7b1bbff13a201996bef",
+  "content_type": "markdown",
+  "content": "# Tutorial Title 🌟\n\n## 🎯 Learning Objectives\n\nBy the end of this tutorial, you will:\n\n- ✅ [Objective 1]\n- ✅ [Objective 2]\n- ✅ [Objective 3]\n\n---\n\n## 📋 Prerequisites\n\n- [ ] [Prerequisite 1]\n- [ ] [Prerequisite 2]\n- [ ] [Prerequisite 3]\n\n---\n\n## Core Concept\n\n**[Concept]** = [Simple explanation]\n\n### Visual\n\n```ascii\n[Simple diagram]\n```\n\n---\n\n## Code Example\n\n```hypercode\n; Main example\n[Code here]\n```\n\n**What it does:**\n\n- [Explanation 1]\n- [Explanation 2]\n\n**Run it:**\n\n```bash\n[Command to run]\n```\n\n**Output:**\n\n```text\n[Expected output]\n```\n\n---\n\n## Try It!\n\n**Exercise:** [What to do]\n\n<details>\n<summary>Hint</summary>\n\n[Helpful hint]\n\n</details>\n\n<details>\n<summary>Solution</summary>\n\n```hypercode\n[Solution code]\n```\n\n</details>\n\n---\n\n## 🎉 Conclusion\n\nYou learned:\n\n- [Key point 1]\n- [Key point 2]\n- [Key point 3]\n\n**Next:** [Link to next tutorial]\n\n---\n\n## 📚 Resources\n\n- [Resource 1](link)\n- [Resource 2](link)\n\n---\n\n_Ready for more?_ 🚀",
+  "metadata": {
+    "headers": [
+      "Tutorial Title 🌟",
+      "🎯 Learning Objectives",
+      "📋 Prerequisites",
+      "Core Concept",
+      "Visual",
+      "Code Example",
+      "Try It!",
+      "🎉 Conclusion",
+      "📚 Resources"
+    ]
+  },
+  "relative_path": "src\\duelcode\\TEMPLATE-TUTORIAL-QUICK.md",
+  "id": "63c44090fdaa9fcf33474078ed464f3f"
+}

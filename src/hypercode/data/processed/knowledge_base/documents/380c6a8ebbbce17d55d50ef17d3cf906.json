@@ -1,0 +1,14 @@
+{
+  "file_name": "setup.cfg",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\setup.cfg",
+  "file_size": 1547,
+  "created": "2025-12-02T22:39:54.521751",
+  "modified": "2025-12-02T22:39:58.053571",
+  "file_type": "code",
+  "content_hash": "af3b0081c8e582fbb374a0ef6ff74195",
+  "content_type": "text/unknown",
+  "content": "[metadata]\nname = hypercode\nversion = 0.1.0\ndescription = HyperCode language implementation\nauthor = welshDog (Lyndz Williams)\nauthor_email = your.email@example.com\nlicense = MIT\nclassifiers =\n    Development Status :: 3 - Alpha\n    Intended Audience :: Developers\n    License :: OSI Approved :: MIT License\n    Programming Language :: Python :: 3\n    Programming Language :: Python :: 3.8\n    Programming Language :: Python :: 3.9\n    Programming Language :: Python :: 3.10\n\n[options]\npackage_dir =\n    = src\npackages = find:\npython_requires = >=3.8\ninstall_requires =\n    # Add your dependencies here\n    # example: requests>=2.25.0\n\ntest_suite = tests\n\n[options.packages.find]\nwhere = src\n\n[options.entry_points]\nconsole_scripts =\n    hypercode = hypercode.cli.main:main\n\n[flake8]\nmax-line-length = 88\nextend-ignore = E203, E266, E501, W503\nper-file-ignores =\n    # Allow print statements in tests\n    tests/*.py: T201\n\n[mypy]\npython_version = 3.8\nwarn_return_any = True\nwarn_unused_configs = True\ndisallow_untyped_defs = True\ndisallow_incomplete_defs = True\ncheck_untyped_defs = True\nwarn_redundant_casts = True\nwarn_unused_ignores = True\nwarn_no_return = True\nwarn_unreachable = True\nstrict_optional = True\n\n[coverage:run]\nsource = src\nbranch = True\nomit =\n    tests/*\n    */__init__.py\n\n[coverage:report]\nshow_missing = True\nskip_covered = True\nfail_under = 80\n\n[build_sphinx]\nsource-dir = docs/source\nbuild-dir = docs/build\nall_files = 1\n\n[bdist_wheel]\nuniversal = 1\n",
+  "metadata": {},
+  "relative_path": "setup.cfg",
+  "id": "380c6a8ebbbce17d55d50ef17d3cf906"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "mcp.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\config\\mcp.json",
+  "file_size": 752,
+  "created": "2025-11-23T12:01:48.366433",
+  "modified": "2025-11-23T12:01:48.367443",
+  "file_type": "code",
+  "content_hash": "0b9fafcde2b5a24bace88ddb83fc8754",
+  "content_type": "text",
+  "content": "{\n  \"mcpServers\": {\n    \"Valkey-Service\": {\n      \"type\": \"command\",\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"mcp.servers.valkey_service\"]\n    },\n    \"Dataset-Downloader\": {\n      \"type\": \"command\",\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"mcp.servers.dataset_downloader\"]\n    },\n    \"User-Profile-Manager\": {\n      \"type\": \"command\",\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"mcp.servers.user_profile_manager\"]\n    },\n    \"AWS-Resource-Manager\": {\n      \"type\": \"command\",\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"mcp.servers.aws_resource_manager\"]\n    },\n    \"Path-Service\": {\n      \"type\": \"command\",\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"mcp.servers.path_service\"]\n    }\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "config\\mcp.json",
+  "id": "a543e5ff96ae6bf76373e070356b3419"
+}

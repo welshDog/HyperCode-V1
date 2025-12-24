@@ -1,0 +1,14 @@
+{
+  "file_name": "import_research.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\live_research\\import_research.py",
+  "file_size": 1956,
+  "created": "2025-12-04T12:44:30.717227",
+  "modified": "2025-12-04T12:44:33.523242",
+  "file_type": "code",
+  "content_hash": "8e129ea549111d2c482ae44d5cfeb3ba",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nScript to import all JSON research files into the database.\n\"\"\"\n\nimport json\nimport logging\nfrom pathlib import Path\nfrom .database import setup_database\n\n# Configure logging\nlogging.basicConfig(\n    level=logging.INFO, format=\"%(asctime)s - %(levelname)s - %(message)s\"\n)\nlogger = logging.getLogger(__name__)\n\n\ndef import_research_data():\n    \"\"\"Import all JSON research files into the database.\"\"\"\n    # Initialize database\n    db = setup_database()\n\n    # Path to the research data JSON directory\n    data_dir = Path(\"c:\\\\Users\\\\lyndz\\\\Downloads\\\\hypercode PROJECT\\\\hypercode\\\\data\")\n    json_dir = data_dir / \"reseach data json\"\n\n    if not json_dir.exists() or not json_dir.is_dir():\n        logger.error(f\"Research data directory not found: {json_dir}\")\n        return\n\n    # Find all JSON files\n    json_files = list(json_dir.glob(\"*.json\"))\n    if not json_files:\n        logger.warning(f\"No JSON files found in {json_dir}\")\n        return\n\n    logger.info(f\"Found {len(json_files)} JSON files to process...\")\n\n    total_imported = 0\n\n    # Process each JSON file\n    for json_file in json_files:\n        try:\n            with open(json_file, \"r\", encoding=\"utf-8\") as f:\n                entry = json.load(f)\n\n            # Add entry to database\n            if db.add_research_entry(entry):\n                total_imported += 1\n                logger.debug(f\"Imported: {json_file.name}\")\n            else:\n                logger.warning(f\"Failed to import: {json_file.name}\")\n\n        except json.JSONDecodeError as e:\n            logger.error(f\"Error parsing {json_file.name}: {e}\")\n        except Exception as e:\n            logger.error(f\"Error processing {json_file.name}: {e}\")\n\n    logger.info(\n        f\"Import complete. Successfully imported {total_imported}/{len(json_files)} entries.\"\n    )\n\n\nif __name__ == \"__main__\":\n    import_research_data()\n",
+  "metadata": {},
+  "relative_path": "live_research\\import_research.py",
+  "id": "8ae730219fecc3712482d7dca071643e"
+}

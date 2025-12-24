@@ -1,0 +1,14 @@
+{
+  "file_name": "collections_abc.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\compat\\collections_abc.py",
+  "file_size": 156,
+  "created": "2025-12-01T01:58:33.078988",
+  "modified": "2025-12-01T01:58:33.079788",
+  "file_type": "code",
+  "content_hash": "8ccca9124787135195d14416ce79902c",
+  "content_type": "text",
+  "content": "__all__ = [\"Mapping\", \"Sequence\"]\n\ntry:\n    from collections.abc import Mapping, Sequence\nexcept ImportError:\n    from collections import Mapping, Sequence\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\compat\\collections_abc.py",
+  "id": "1de2bf251fdf059abb69bd60c54b66a8"
+}

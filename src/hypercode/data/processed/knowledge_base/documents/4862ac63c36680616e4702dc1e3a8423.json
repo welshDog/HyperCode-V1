@@ -1,0 +1,14 @@
+{
+  "file_name": "package.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\5 Core TypeScript Modules\\package.json",
+  "file_size": 1720,
+  "created": "2025-11-15T15:54:33.889921",
+  "modified": "2025-11-17T18:43:54.415743",
+  "file_type": "code",
+  "content_hash": "deb55d741628e07c8b0c64030650de0c",
+  "content_type": "text",
+  "content": "{\n  \"name\": \"windsurf-spatial-visualizer\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Spatial code visualizer for Windsurf IDE - ADHD/neurodivergent friendly mind-map code navigation\",\n  \"main\": \"dist/extension.js\",\n  \"scripts\": {\n    \"build\": \"tsc && webpack --mode production\",\n    \"watch\": \"tsc --watch & webpack --watch --mode development\",\n    \"test\": \"jest\",\n    \"lint\": \"eslint src/**/*.ts\"\n  },\n  \"keywords\": [\n    \"windsurf\",\n    \"spatial\",\n    \"visualization\",\n    \"adhd\",\n    \"accessibility\",\n    \"mind-map\"\n  ],\n  \"author\": \"HyperCode Team\",\n  \"license\": \"MIT\",\n  \"devDependencies\": {\n    \"@types/vscode\": \"^1.85.0\",\n    \"@types/node\": \"^20.0.0\",\n    \"typescript\": \"^5.3.0\",\n    \"webpack\": \"^5.89.0\",\n    \"webpack-cli\": \"^5.1.0\",\n    \"@vscode/vsce\": \"^2.22.0\",\n    \"eslint\": \"^8.54.0\",\n    \"@typescript-eslint/parser\": \"^6.13.0\",\n    \"@typescript-eslint/eslint-plugin\": \"^6.13.0\",\n    \"jest\": \"^29.7.0\",\n    \"ts-jest\": \"^29.1.1\"\n  },\n  \"dependencies\": {\n    \"d3\": \"^7.8.5\",\n    \"typescript-ast-parser\": \"^1.0.0\",\n    \"vscode\": \"^1.0.0\"\n  },\n  \"engines\": {\n    \"vscode\": \"^1.85.0\"\n  },\n  \"activationEvents\": [\n    \"onLanguage:python\",\n    \"onLanguage:javascript\",\n    \"onCommand:spatialVisualizer.open\"\n  ],\n  \"contributes\": {\n    \"commands\": [\n      {\n        \"command\": \"spatialVisualizer.open\",\n        \"title\": \"Open Spatial Code Visualizer\",\n        \"category\": \"Spatial Visualizer\"\n      },\n      {\n        \"command\": \"spatialVisualizer.toggleMode\",\n        \"title\": \"Toggle Visualization Mode\",\n        \"category\": \"Spatial Visualizer\"\n      }\n    ],\n    \"keybindings\": [\n      {\n        \"command\": \"spatialVisualizer.open\",\n        \"key\": \"ctrl+shift+v\",\n        \"mac\": \"cmd+shift+v\"\n      }\n    ]\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\5 Core TypeScript Modules\\package.json",
+  "id": "4862ac63c36680616e4702dc1e3a8423"
+}

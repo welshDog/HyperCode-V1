@@ -1,0 +1,14 @@
+{
+  "file_name": "_loop.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_loop.py",
+  "file_size": 1236,
+  "created": "2025-12-01T01:58:33.157196",
+  "modified": "2025-12-01T01:58:33.158791",
+  "file_type": "code",
+  "content_hash": "cb02e73e65dd0d4e5fb7fa97608275e5",
+  "content_type": "text",
+  "content": "from typing import Iterable, Tuple, TypeVar\n\nT = TypeVar(\"T\")\n\n\ndef loop_first(values: Iterable[T]) -> Iterable[Tuple[bool, T]]:\n    \"\"\"Iterate and generate a tuple with a flag for first value.\"\"\"\n    iter_values = iter(values)\n    try:\n        value = next(iter_values)\n    except StopIteration:\n        return\n    yield True, value\n    for value in iter_values:\n        yield False, value\n\n\ndef loop_last(values: Iterable[T]) -> Iterable[Tuple[bool, T]]:\n    \"\"\"Iterate and generate a tuple with a flag for last value.\"\"\"\n    iter_values = iter(values)\n    try:\n        previous_value = next(iter_values)\n    except StopIteration:\n        return\n    for value in iter_values:\n        yield False, previous_value\n        previous_value = value\n    yield True, previous_value\n\n\ndef loop_first_last(values: Iterable[T]) -> Iterable[Tuple[bool, bool, T]]:\n    \"\"\"Iterate and generate a tuple with a flag for first and last value.\"\"\"\n    iter_values = iter(values)\n    try:\n        previous_value = next(iter_values)\n    except StopIteration:\n        return\n    first = True\n    for value in iter_values:\n        yield first, False, previous_value\n        first = False\n        previous_value = value\n    yield first, True, previous_value\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_loop.py",
+  "id": "d121c56d0433c9f9815d5bb6a5ea9d19"
+}

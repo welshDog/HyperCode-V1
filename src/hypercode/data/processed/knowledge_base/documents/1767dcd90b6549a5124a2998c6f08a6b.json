@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util\\__init__.py",
+  "file_size": 1155,
+  "created": "2025-12-01T01:58:33.775067",
+  "modified": "2025-12-01T01:58:33.775718",
+  "file_type": "code",
+  "content_hash": "f951fb1888473ee32752499ce9b841a5",
+  "content_type": "text",
+  "content": "from __future__ import absolute_import\n\n# For backwards compatibility, provide imports that used to be here.\nfrom .connection import is_connection_dropped\nfrom .request import SKIP_HEADER, SKIPPABLE_HEADERS, make_headers\nfrom .response import is_fp_closed\nfrom .retry import Retry\nfrom .ssl_ import (\n    ALPN_PROTOCOLS,\n    HAS_SNI,\n    IS_PYOPENSSL,\n    IS_SECURETRANSPORT,\n    PROTOCOL_TLS,\n    SSLContext,\n    assert_fingerprint,\n    resolve_cert_reqs,\n    resolve_ssl_version,\n    ssl_wrap_socket,\n)\nfrom .timeout import Timeout, current_time\nfrom .url import Url, get_host, parse_url, split_first\nfrom .wait import wait_for_read, wait_for_write\n\n__all__ = (\n    \"HAS_SNI\",\n    \"IS_PYOPENSSL\",\n    \"IS_SECURETRANSPORT\",\n    \"SSLContext\",\n    \"PROTOCOL_TLS\",\n    \"ALPN_PROTOCOLS\",\n    \"Retry\",\n    \"Timeout\",\n    \"Url\",\n    \"assert_fingerprint\",\n    \"current_time\",\n    \"is_connection_dropped\",\n    \"is_fp_closed\",\n    \"get_host\",\n    \"parse_url\",\n    \"make_headers\",\n    \"resolve_cert_reqs\",\n    \"resolve_ssl_version\",\n    \"split_first\",\n    \"ssl_wrap_socket\",\n    \"wait_for_read\",\n    \"wait_for_write\",\n    \"SKIP_HEADER\",\n    \"SKIPPABLE_HEADERS\",\n)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util\\__init__.py",
+  "id": "1767dcd90b6549a5124a2998c6f08a6b"
+}

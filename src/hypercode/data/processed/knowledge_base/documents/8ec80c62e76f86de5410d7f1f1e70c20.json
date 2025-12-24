@@ -1,0 +1,20 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\database\\README.md",
+  "file_size": 343,
+  "created": "2025-12-04T00:09:22.938481",
+  "modified": "2025-12-04T00:22:57.094954",
+  "file_type": "code",
+  "content_hash": "044c53705db5a3ba69a9421e50b30259",
+  "content_type": "markdown",
+  "content": "# Database Documentation\n\nHyperCode's data storage and persistence layer.\n\n## Contents\n\n- [Database Setup](hyper-database-setup.md)\n- [Integration Guide](hyper-database-integration.md)\n- [Knowledge Base](knowledge-base.md)\n\n## Related\n\n- [API Reference](reference/API_REFERENCE.md)\n- [Architecture](architecture/ARCHITECTURE.md)",
+  "metadata": {
+    "headers": [
+      "Database Documentation",
+      "Contents",
+      "Related"
+    ]
+  },
+  "relative_path": "docs\\database\\README.md",
+  "id": "8ec80c62e76f86de5410d7f1f1e70c20"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\caches\\__init__.py",
+  "file_size": 303,
+  "created": "2025-12-01T01:58:31.806415",
+  "modified": "2025-12-01T01:58:31.806927",
+  "file_type": "code",
+  "content_hash": "a854b9652b8647abb5b30ca3260d2dff",
+  "content_type": "text",
+  "content": "# SPDX-FileCopyrightText: 2015 Eric Larson\n#\n# SPDX-License-Identifier: Apache-2.0\n\nfrom pip._vendor.cachecontrol.caches.file_cache import FileCache, SeparateBodyFileCache\nfrom pip._vendor.cachecontrol.caches.redis_cache import RedisCache\n\n__all__ = [\"FileCache\", \"SeparateBodyFileCache\", \"RedisCache\"]\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\cachecontrol\\caches\\__init__.py",
+  "id": "67e3f136d1c150af7092302dd10ba8f4"
+}

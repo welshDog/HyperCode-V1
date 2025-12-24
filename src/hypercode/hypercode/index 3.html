@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperCode Spec Kit Generator</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-error: var(--color-red-400);
+            --color-success: var(--color-teal-500);
+            --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+
+            --radius-base: 8px;
+            --radius-lg: 12px;
+
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+
+            --duration-normal: 250ms;
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: var(--font-size-base);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: var(--font-size-xl);
+        }
+
+        h2 {
+            font-size: var(--font-size-lg);
+        }
+
+        p {
+            margin: 0 0 var(--space-16) 0;
+        }
+
+        code {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: calc(var(--font-size-base) * 0.95);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-16);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #208498, #1a6873);
+            color: white;
+            padding: var(--space-32) var(--space-16);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-32);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header h1 {
+            color: white;
+            margin-bottom: var(--space-8);
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: var(--font-size-base);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-24);
+            margin-bottom: var(--space-32);
+        }
+
+        .card {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all var(--duration-normal) var(--ease-standard);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .card__header {
+            padding: var(--space-16);
+            border-bottom: 1px solid var(--color-border);
+            background: rgba(var(--color-brown-600-rgb), 0.05);
+        }
+
+        .card__header h2 {
+            margin: 0;
+        }
+
+        .card__body {
+            padding: var(--space-16);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-16);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-8);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-8) var(--space-12);
+            font-size: var(--font-size-base);
+            color: var(--color-text);
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            transition: all var(--duration-normal) var(--ease-standard);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-focus-ring);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 100px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: var(--font-size-sm);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-8) var(--space-16);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--color-focus-ring);
+        }
+
+        .btn--primary {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .btn--primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn--primary:active {
+            background: var(--color-primary-active);
+        }
+
+        .btn--secondary {
+            background: rgba(var(--color-brown-600-rgb), 0.12);
+            color: var(--color-text);
+        }
+
+        .btn--secondary:hover {
+            background: rgba(var(--color-brown-600-rgb), 0.2);
+        }
+
+        .btn--sm {
+            padding: var(--space-8) var(--space-12);
+            font-size: var(--font-size-sm);
+        }
+
+        .btn--full-width {
+            width: 100%;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .output {
+            background: var(--color-gray-200);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            padding: var(--space-16);
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: var(--font-size-sm);
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+            margin-top: var(--space-16);
+        }
+
+        .copy-btn {
+            margin-top: var(--space-12);
+        }
+
+        .section {
+            margin-bottom: var(--space-32);
+        }
+
+        .section__title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .tabs {
+            display: flex;
+            gap: var(--space-8);
+            margin-bottom: var(--space-16);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .tab {
+            padding: var(--space-12) var(--space-16);
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--duration-normal) var(--ease-standard);
+            color: var(--color-text-secondary);
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab:hover:not(.active) {
+            color: var(--color-text);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .status {
+            padding: var(--space-12);
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-sm);
+            margin-top: var(--space-16);
+        }
+
+        .status--success {
+            background: rgba(33, 128, 141, 0.1);
+            color: var(--color-success);
+            border: 1px solid var(--color-success);
+        }
+
+        .status--info {
+            background: rgba(98, 108, 113, 0.1);
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-text-secondary);
+        }
+
+        .download-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-16) 0;
+        }
+
+        .download-list li {
+            padding: var(--space-12);
+            background: rgba(var(--color-teal-500-rgb), 0.05);
+            border: 1px solid rgba(var(--color-teal-500-rgb), 0.2);
+            border-radius: var(--radius-base);
+            margin-bottom: var(--space-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emoji {
+            margin-right: var(--space-8);
+        }
+
+        .flex {
+            display: flex;
+            gap: var(--space-8);
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        /* Focus Mode Styles */
+        .focus-mode-toggle {
+            position: fixed;
+            top: var(--space-16);
+            right: var(--space-16);
+            z-index: 1000;
+        }
+
+        .focus-mode-toggle .btn {
+            border-radius: var(--radius-full);
+            width: 48px;
+            height: 48px;
+            padding: 0;
+        }
+
+        body.focus-active {
+            --focus-display: none;
+        }
+
+        body.focus-active .grid,
+        body.focus-active .section:nth-of-type(3),
+        body.focus-active .section:nth-of-type(4) {
+            display: none;
+        }
+
+        body.focus-active .header {
+            margin-bottom: var(--space-16);
+        }
+
+        body.focus-active .section:nth-of-type(1) {
+            margin-bottom: var(--space-16);
+        }
+
+        /* Progress Stepper Styles */
+        .progress-stepper {
+            display: flex;
+            gap: var(--space-12);
+            margin-bottom: var(--space-24);
+            align-items: center;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background: var(--color-border);
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step.completed::after {
+            background: var(--color-success);
+        }
+
+        .step-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-12);
+            transition: all var(--duration-normal) var(--ease-standard);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step.active .step-dot {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(var(--color-teal-500-rgb), 0.2);
+        }
+
+        .step.completed .step-dot {
+            background: var(--color-success);
+            color: white;
+            border-color: var(--color-success);
+        }
+
+        .step-label {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .step.active .step-label {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .step.completed .step-label {
+            color: var(--color-success);
+        }
+
+        /* Step Content Visibility */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: slideIn var(--duration-normal) var(--ease-standard);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-12);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .progress-stepper {
+                gap: var(--space-8);
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .step-label {
+                font-size: var(--font-size-sm);
+                max-width: 60px;
+            }
+
+            .step-dot {
+                width: 40px;
+                height: 40px;
+                font-size: calc(var(--font-size-sm) * 0.9);
+            }
+
+            .focus-mode-toggle {
+                top: var(--space-12);
+                right: var(--space-12);
+            }
+
+            .focus-mode-toggle .btn {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-sm);
+            }
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        /* Focus Mode Styles */
+        .focus-mode-toggle {
+            position: fixed;
+            top: var(--space-16);
+            right: var(--space-16);
+            z-index: 1000;
+        }
+
+        .focus-mode-toggle .btn {
+            border-radius: var(--radius-full);
+            width: 48px;
+            height: 48px;
+            padding: 0;
+        }
+
+        body.focus-active {
+            --focus-display: none;
+        }
+
+        body.focus-active .grid,
+        body.focus-active .section:nth-of-type(3),
+        body.focus-active .section:nth-of-type(4) {
+            display: none;
+        }
+
+        body.focus-active .header {
+            margin-bottom: var(--space-16);
+        }
+
+        body.focus-active .section:nth-of-type(1) {
+            margin-bottom: var(--space-16);
+        }
+
+        /* Progress Stepper Styles */
+        .progress-stepper {
+            display: flex;
+            gap: var(--space-12);
+            margin-bottom: var(--space-24);
+            align-items: center;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background: var(--color-border);
+        }
+
+        .step:last-child::after {
+            display: none;
+        }
+
+        .step.completed::after {
+            background: var(--color-success);
+        }
+
+        .step-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-12);
+            transition: all var(--duration-normal) var(--ease-standard);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step.active .step-dot {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(var(--color-teal-500-rgb), 0.2);
+        }
+
+        .step.completed .step-dot {
+            background: var(--color-success);
+            color: white;
+            border-color: var(--color-success);
+        }
+
+        .step-label {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .step.active .step-label {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .step.completed .step-label {
+            color: var(--color-success);
+        }
+
+        /* Step Content Visibility */
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: slideIn var(--duration-normal) var(--ease-standard);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-12);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
+            }
+
+            .progress-stepper {
+                gap: var(--space-8);
+            }
+
+            .step::after {
+                display: none;
+            }
+
+            .step-label {
+                font-size: var(--font-size-sm);
+                max-width: 60px;
+            }
+
+            .step-dot {
+                width: 40px;
+                height: 40px;
+                font-size: calc(var(--font-size-sm) * 0.9);
+            }
+
+            .focus-mode-toggle {
+                top: var(--space-12);
+                right: var(--space-12);
+            }
+
+            .focus-mode-toggle .btn {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="focus-mode-toggle">
+        <button class="btn btn--primary btn--sm" id="focusToggle" onclick="toggleFocusMode()" title="Toggle Focus Mode">🎯</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🚀 HyperCode Spec Kit Generator</h1>
+            <p>Generate Spec Kit templates for your HyperCode projects in seconds</p>
+        </div>
+
+        <!-- Progress Stepper -->
+        <div class="progress-stepper">
+            <div class="step active" data-step="1">
+                <div class="step-dot">1</div>
+                <div class="step-label">Project Info</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-dot">2</div>
+                <div class="step-label">Generate</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-dot">3</div>
+                <div class="step-label">Review</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-dot">4</div>
+                <div class="step-label">Deploy</div>
+            </div>
+        </div>
+
+        <!-- Step 1: Project Info -->
+        <div class="step-content active" data-step="1">
+            <div class="grid">
+            <div class="card">
+                <div class="card__header">
+                    <h2>📋 Project Info</h2>
+                </div>
+                <div class="card__body">
+                    <div class="form-group">
+                        <label class="form-label">Project Name</label>
+                        <input type="text" id="projectName" class="form-control" placeholder="e.g., HyperCode CLI Tools" value="My HyperCode Project">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Project Description</label>
+                        <textarea id="projectDesc" class="form-control" placeholder="What does this project do?">A cutting-edge HyperCode project built with spatial logic and neurodivergent-first design.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Primary Use Case</label>
+                        <input type="text" id="useCase" class="form-control" placeholder="e.g., Quantum computing, AI reasoning, DNA sequencing" value="AI-powered code generation">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__header">
+                    <h2>⚙️ Configuration</h2>
+                </div>
+                <div class="card__body">
+                    <div class="form-group">
+                        <label class="form-label">Team/Author</label>
+                        <input type="text" id="author" class="form-control" placeholder="Your name or team" value="HyperCode Dev Team">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">GitHub Repo URL (optional)</label>
+                        <input type="text" id="repoUrl" class="form-control" placeholder="https://github.com/user/hypercode-project">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Target AI Agents</label>
+                        <div style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-top: var(--space-8);">
+                            ✓ Claude Code<br>
+                            ✓ GitHub Copilot<br>
+                            ✓ Cursor<br>
+                            ✓ Custom Agents
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn--primary btn--full-width" onclick="nextStep()" style="margin-top: var(--space-24);">Next: Generate Templates →</button>
+        </div>
+        </div>
+
+        <!-- Step 2: Generate Templates -->
+        <div class="step-content" data-step="2">
+            <div class="section">
+                <div class="section__title">📦 Generate Templates</div>
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(event, 'constitution')">constitution.md</button>
+                <button class="tab" onclick="switchTab(event, 'specify-prompt')">Specify Prompt</button>
+                <button class="tab" onclick="switchTab(event, 'plan-prompt')">Plan Prompt</button>
+                <button class="tab" onclick="switchTab(event, 'tasks-prompt')">Tasks Prompt</button>
+            </div>
+
+            <div id="constitution" class="tab-content active">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>constitution.md</h2>
+                    </div>
+                    <div class="card__body">
+                        <p>This is your project's constitution—core values, design principles, and guidelines for AI agents.</p>
+                        <div id="constitutionOutput" class="output"></div>
+                        <button class="btn btn--primary btn--sm copy-btn" onclick="copyToClipboard('constitutionOutput')">📋 Copy to Clipboard</button>
+                        <button class="btn btn--secondary btn--sm copy-btn" onclick="downloadFile('constitution.md', 'constitutionOutput')">⬇️ Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="specify-prompt" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>/specify Prompt Template</h2>
+                    </div>
+                    <div class="card__body">
+                        <p>Used by AI agents to generate detailed specifications for HyperCode projects.</p>
+                        <div id="specifyOutput" class="output"></div>
+                        <button class="btn btn--primary btn--sm copy-btn" onclick="copyToClipboard('specifyOutput')">📋 Copy to Clipboard</button>
+                        <button class="btn btn--secondary btn--sm copy-btn" onclick="downloadFile('hypercode.specify.md', 'specifyOutput')">⬇️ Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="plan-prompt" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>/plan Prompt Template</h2>
+                    </div>
+                    <div class="card__body">
+                        <p>Guides AI agents to create architecture plans with spatial, minimal-noise HyperCode design.</p>
+                        <div id="planOutput" class="output"></div>
+                        <button class="btn btn--primary btn--sm copy-btn" onclick="copyToClipboard('planOutput')">📋 Copy to Clipboard</button>
+                        <button class="btn btn--secondary btn--sm copy-btn" onclick="downloadFile('hypercode.plan.md', 'planOutput')">⬇️ Download</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tasks-prompt" class="tab-content">
+                <div class="card">
+                    <div class="card__header">
+                        <h2>/tasks Prompt Template</h2>
+                    </div>
+                    <div class="card__body">
+                        <p>Breaks specifications into HyperCode-native task chunks for implementation.</p>
+                        <div id="tasksOutput" class="output"></div>
+                        <button class="btn btn--primary btn--sm copy-btn" onclick="copyToClipboard('tasksOutput')">📋 Copy to Clipboard</button>
+                        <button class="btn btn--secondary btn--sm copy-btn" onclick="downloadFile('hypercode.tasks.md', 'tasksOutput')">⬇️ Download</button>
+                    </div>
+                </div>
+            </div>
+
+                <div class="status status--success" style="margin-top: var(--space-24);">
+                    ✅ All templates generated! Ready to review and deploy.
+                </div>
+                <div style="display: flex; gap: var(--space-12); margin-top: var(--space-24);">
+                    <button class="btn btn--secondary" onclick="previousStep()" style="flex: 1;">← Back</button>
+                    <button class="btn btn--primary" onclick="nextStep()" style="flex: 1;">Review Templates →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Review Output -->
+        <div class="step-content" data-step="3">
+            <div class="section">
+                <div class="section__title">📋 Review Your Templates</div>
+            <div class="card">
+                <div class="card__body">
+                    <h3>Step 1: Create folder structure</h3>
+                    <div class="output">mkdir -p .specify/memory
+mkdir -p .github/prompts</div>
+
+                    <h3 style="margin-top: var(--space-24);">Step 2: Add constitution</h3>
+                    <p>Copy <code>constitution.md</code> to <code>.specify/memory/constitution.md</code></p>
+
+                    <h3 style="margin-top: var(--space-24);">Step 3: Add prompt templates</h3>
+                    <p>Copy the three prompt files to <code>.github/prompts/</code>:</p>
+                    <ul class="download-list">
+                        <li>
+                            <span><span class="emoji">📄</span> hypercode.specify.md</span>
+                        </li>
+                        <li>
+                            <span><span class="emoji">📄</span> hypercode.plan.md</span>
+                        </li>
+                        <li>
+                            <span><span class="emoji">📄</span> hypercode.tasks.md</span>
+                        </li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--space-24);">Step 4: Configure your AI agent</h3>
+                    <p>In your editor (VS Code + Copilot, Cursor, Claude Code), set up custom instructions to reference these templates when working with HyperCode.</p>
+
+                    <div class="status status--success" style="margin-top: var(--space-16);">
+                        🎉 You're ready! All templates are in your repo. Your AI agents will now think in HyperCode terms automatically.
+                    </div>
+                    <button class="btn btn--secondary btn--full-width" onclick="previousStep()" style="margin-top: var(--space-24);">← Review Templates</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Section (visible on all steps) -->
+        <div class="section">
+            <div class="section__title">🎯 What This Enables</div>
+            <div class="card">
+                <div class="card__body">
+                    <p><strong>Before:</strong> Manual prompting. "Hey Claude, write HyperCode that does X..."</p>
+                    <p><strong>After:</strong> Structured workflows. Your constitution + templates guide AI agents automatically.</p>
+                    <p style="margin-top: var(--space-24); color: var(--color-text-secondary);">
+                        This is <strong>Option A</strong> of the HyperCode Spec Kit integration. It's lightweight, framework-agnostic, and works with any AI agent today.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateConstitution() {
+            const projectName = document.getElementById('projectName').value || 'HyperCode Project';
+            const projectDesc = document.getElementById('projectDesc').value || 'A HyperCode project';
+            const author = document.getElementById('author').value || 'HyperCode Team';
+
+            const content = `# HyperCode Project Constitution
+
+**Project:** ${projectName}
+**Author:** ${author}
+**Created:** ${new Date().toISOString().split('T')[0]}
+
+---
+
+## 🧠 Core Principles
+
+This project is built on HyperCode's foundational philosophy: **Programming for neurodivergent minds.**
+
+### 1. **Spatial Logic First**
+- Code is organized spatially, not linearly
+- Visual hierarchy matters as much as syntax
+- Minimize cognitive load through layout and structure
+
+### 2. **Minimal Noise**
+- No unnecessary punctuation or symbols
+- Readable at a glance
+- Accessible to dyslexic readers
+- ADHD-friendly: quick to scan, hyperfocus-enabling
+
+### 3. **Universal AI Compatibility**
+- Works with Claude, GitHub Copilot, Gemini, Ollama, and custom models
+- No vendor lock-in
+- Flexible, future-proof design
+
+### 4. **Experimental & Cutting-Edge**
+- HyperCode explores quantum computing patterns
+- DNA/biological computation inspired syntax
+- AI-native reasoning structures
+
+---
+
+## 🎯 Project Context
+
+**What we're building:**
+${projectDesc}
+
+**Why it matters:**
+- Demonstrates HyperCode's real-world capability
+- Showcases neurodivergent-friendly development workflows
+- Proves spec-driven development with AI agents
+
+---
+
+## 🤖 AI Agent Guidelines
+
+When AI agents work on this project, they should:
+
+1. **Think in HyperCode patterns**
+   - Prefer spatial organization over procedural
+   - Use HyperCode's built-in structures for clarity
+   - Minimize boilerplate and noise
+
+2. **Follow accessibility-first design**
+   - Code should be readable to ADHD minds (scannable)
+   - Avoid nested complexity where possible
+   - Comment "why" not "what"
+
+3. **Respect the specification**
+   - Implement what specs say, not what seems "better"
+   - Ask for clarification if ambiguous
+   - Validate assumptions in tasks
+
+4. **Keep code experiments alive**
+   - Document learnings
+   - Add edge cases to test suite
+   - Iterate from specification feedback
+
+---
+
+## 📋 Development Workflow
+
+This project uses **Spec-Driven Development (SDD)** with HyperCode:
+
+1. **Specify** – Detailed product requirements
+2. **Plan** – Technical architecture and HyperCode structure
+3. **Tasks** – Granular implementation tasks in HyperCode
+4. **Build** – AI agents implement from tasks
+5. **Iterate** – Feedback loops refine specifications
+
+---
+
+## 🔧 Technical Constraints
+
+- **Language:** HyperCode
+- **Target Runtimes:** [Your runtime: browser, Node, quantum simulator, etc.]
+- **Key Dependencies:** [List any HyperCode libraries or AI tools]
+- **Quality Gates:** [Tests, linting, performance targets]
+
+---
+
+## 🌍 For the Community
+
+This project is **open-source** and invites collaboration. We welcome:
+- Issue reports and feature requests
+- Code contributions
+- Documentation improvements
+- Beta testing with AI agents
+
+See CONTRIBUTING.md for guidelines.
+
+---
+
+## 📞 Questions?
+
+If an AI agent or contributor is unsure about direction, refer back to these principles:
+1. Is it spatial and minimal-noise?
+2. Does it work with multiple AI agents?
+3. Is it accessibility-first?
+4. Does it move HyperCode forward?
+
+If yes to all → ship it. ✅`;
+
+            return content;
+        }
+
+        function generateSpecifyPrompt() {
+            const projectName = document.getElementById('projectName').value || 'HyperCode Project';
+            const useCase = document.getElementById('useCase').value || 'general use case';
+
+            const content = `# /specify Prompt for HyperCode Projects
+
+You are a specification expert for HyperCode projects. Your job is to translate vague ideas into detailed, actionable specifications that HyperCode developers and AI agents can build from.
+
+## Your Task
+
+When a user describes a feature, product idea, or problem, generate a comprehensive spec that:
+
+1. **Clarifies the problem** – What are we solving?
+2. **Defines success** – How do we know it works?
+3. **Considers neurodivergent UX** – Is it ADHD-friendly? Dyslexia-accessible?
+4. **Maps to HyperCode** – How does this fit HyperCode's spatial, minimal-noise philosophy?
+5. **Identifies AI implications** – How will AI agents reason about this?
+
+## Output Format
+
+\`\`\`
+## Specification: [Feature/Product Name]
+
+### 1. Problem Statement
+[What are we solving? Why does it matter?]
+
+### 2. User Stories
+- As a [user type], I want to [action] so that [benefit]
+- [Repeat for each user type]
+
+### 3. Success Criteria
+- [ ] [Testable criterion]
+- [ ] [Testable criterion]
+- [ ] [Testable criterion]
+
+### 4. HyperCode Architecture
+[How does this fit into HyperCode's spatial design?]
+
+### 5. Neurodivergent-First Design
+- ADHD: [How is this scannable and hyperfocus-enabling?]
+- Dyslexia: [How is this readable?]
+- Autism: [How does this minimize sensory/cognitive overload?]
+
+### 6. AI Agent Considerations
+[What should AI agents know to build this well?]
+
+### 7. Non-Goals
+[What are we NOT doing? (Important for scope control)]
+\`\`\`
+
+## Context
+
+**Project:** ${projectName}
+**Use Case:** ${useCase}
+**Language:** HyperCode
+
+When responding:
+- Assume the user's idea is valid but incomplete
+- Ask clarifying questions if ambiguous
+- Reference HyperCode principles from the constitution
+- Suggest accessibility patterns for neurodivergent users
+- Identify potential AI-agent gotchas
+
+Example: If user says "faster code generation", ask:
+- Faster than what? (compared to Python? JavaScript? HyperCode today?)
+- Is performance the bottleneck or UX clarity?
+- How does "faster" map to HyperCode's spatial design?
+- Which neurodivergent profile benefits most?`;
+
+            return content;
+        }
+
+        function generatePlanPrompt() {
+            const projectName = document.getElementById('projectName').value || 'HyperCode Project';
+
+            const content = `# /plan Prompt for HyperCode Projects
+
+You are a technical architect for HyperCode projects. Your job is to translate specifications into detailed technical plans that respect HyperCode's design philosophy.
+
+## Your Task
+
+Given a specification, create a plan that:
+
+1. **Breaks down complexity** – Reduce into manageable HyperCode modules
+2. **Prioritizes clarity** – Spatial layout > performance tricks
+3. **Embraces HyperCode's paradigm** – Quantum patterns, spatial logic, minimal syntax
+4. **Plans for AI implementation** – Structure tasks so agents can execute independently
+5. **Validates against accessibility** – Ensure plan doesn't create cognitive friction
+
+## Output Format
+
+\`\`\`
+## Technical Plan: [Feature/Module Name]
+
+### 1. Architecture Overview
+[Diagram or spatial description of how modules connect]
+
+### 2. HyperCode Structure
+\`\`\`hypercode
+[Pseudocode showing the spatial organization]
+\`\`\`
+
+### 3. Module Breakdown
+- **Module A:** [Description]
+  - Inputs: [What it receives]
+  - Outputs: [What it produces]
+  - Spatial Flow: [How it sits in the larger system]
+
+- **Module B:** [Description]
+  - [Same structure]
+
+### 4. Design Decisions
+| Decision | Rationale | HyperCode Fit |
+|----------|-----------|---------------|
+| [Choice] | [Why?] | [Spatial/minimal-noise benefit] |
+
+### 5. Neurodivergent Accessibility Review
+- **Scanability:** [Is the plan visually organized?]
+- **Readability:** [No hidden complexity?]
+- **Hyperfocus-Fit:** [Can a dev lock in?]
+
+### 6. AI Implementation Notes
+[Guidance for AI agents building from this plan]
+
+### 7. Risks & Mitigations
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| [Issue] | [Why it matters] | [How to handle] |
+\`\`\`
+
+## Context
+
+**Project:** ${projectName}
+**Paradigm:** Spatial, minimal-noise, neurodivergent-first
+**Target AI Agents:** Claude, Copilot, Cursor, custom models
+
+When planning:
+- Avoid deep nesting; prefer flat, scannable structures
+- Use HyperCode's spatial primitives (grids, flows, nodes)
+- Call out accessibility trade-offs explicitly
+- Give AI agents clear boundaries and success criteria
+- Reference the constitution if making philosophy calls`;
+
+            return content;
+        }
+
+        function generateTasksPrompt() {
+            const projectName = document.getElementById('projectName').value || 'HyperCode Project';
+
+            const content = `# /tasks Prompt for HyperCode Projects
+
+You are a task breakdown expert for HyperCode projects. Your job is to transform plans into granular, atomic tasks that AI agents (or humans) can independently execute in HyperCode.
+
+## Your Task
+
+Given a technical plan, generate tasks that:
+
+1. **Are atomic** – One task = one focused HyperCode piece
+2. **Have clear acceptance criteria** – AI agents know when they're done
+3. **Respect HyperCode syntax** – Tasks assume HyperCode knowledge
+4. **Enable AI independence** – Tasks include enough context to build without hand-holding
+5. **Preserve accessibility** – No tricks, no hidden assumptions
+
+## Output Format
+
+\`\`\`
+## Task Breakdown: [Feature/Module]
+
+### Task 1: [Clear, action-oriented name]
+**Acceptance Criteria:**
+- [ ] [Testable result]
+- [ ] [Testable result]
+- [ ] [Tests pass]
+
+**Context:**
+[What should AI agent know? Reference specification/plan if needed]
+
+**HyperCode Implementation Notes:**
+[Spatial structure, patterns, gotchas]
+
+**Resources:**
+- [Link to HyperCode docs]
+- [Example code]
+- [Related tasks]
+
+**Estimated Complexity:** [Simple/Medium/Complex]
+
+---
+
+### Task 2: [Next task]
+[Same structure]
+
+---
+
+### Task 3+: [Continue...]
+\`\`\`
+
+## Context
+
+**Project:** ${projectName}
+**Language:** HyperCode
+**Workflow:** Each task feeds into next (or parallel if independent)
+
+When breaking down:
+- No task should take >4 hours for an AI agent (or human) to complete
+- Reference test files AI should write alongside code
+- Call out edge cases explicitly (neurodivergent brains often find them!)
+- Include "Definition of Done" checklist
+- Link to parent tasks for context
+
+### Example Task
+
+\`\`\`
+### Task: Implement HyperCode Parser for Spatial Expressions
+
+**Acceptance Criteria:**
+- [ ] Parser handles grid notation: @(1,2) -> {x:1, y:2}
+- [ ] Parser handles flow notation: A -> B -> C
+- [ ] Parser handles node definitions: ~node(input) -> output
+- [ ] 95%+ test coverage
+- [ ] Error messages are clear and point to line/column
+
+**HyperCode Implementation Notes:**
+Use HyperCode's built-in tokenizer. Spatial expressions follow these rules:
+- Grid: @(row, col) or @row.col
+- Flow: token1 -> token2 -> token3 (left-to-right, not nested)
+- Nodes: ~name(inputs) -> outputs
+
+**Resources:**
+- HyperCode spec: sections 3.2-3.4
+- Example: tests/parser.hypercode
+
+**Estimated Complexity:** Medium
+\`\`\`
+
+---
+
+## AI Agent Guidance
+
+When AI agents see these tasks, they should:
+1. Read the acceptance criteria first (know the goal)
+2. Check the HyperCode notes (understand the paradigm)
+3. Reference resources (learn HyperCode patterns)
+4. Write tests BEFORE code (TDD mindset)
+5. Validate accessibility (no surprise complexity)
+6. Commit with clear messages linking to task
+
+**Red flags for AI agents:**
+- Task mentions "just make it work" (too vague!)
+- Acceptance criteria are subjective ("looks good")
+- No linked tests or examples
+- Task mixes two separate concerns
+
+If you see red flags, ask for clarification before building.`;
+
+            return content;
+        }
+
+        function updateOutputs() {
+            document.getElementById('constitutionOutput').textContent = generateConstitution();
+            document.getElementById('specifyOutput').textContent = generateSpecifyPrompt();
+            document.getElementById('planOutput').textContent = generatePlanPrompt();
+            document.getElementById('tasksOutput').textContent = generateTasksPrompt();
+        }
+
+        function switchTab(event, tabName) {
+            event.preventDefault();
+
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        function downloadFile(filename, elementId) {
+            const text = document.getElementById(elementId).textContent;
+            const blob = new Blob([text], { type: 'text/markdown' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        // Initialize outputs on load
+        window.addEventListener('load', () => {
+            updateOutputs();
+        });
+
+        // Update outputs when inputs change
+        document.getElementById('projectName').addEventListener('input', updateOutputs);
+        document.getElementById('projectDesc').addEventListener('input', updateOutputs);
+        document.getElementById('author').addEventListener('input', updateOutputs);
+        document.getElementById('useCase').addEventListener('input', updateOutputs);
+
+        // Focus Mode Functions
+        function toggleFocusMode() {
+            document.body.classList.toggle('focus-active');
+            const btn = document.getElementById('focusToggle');
+            btn.textContent = document.body.classList.contains('focus-active') ? '✨' : '🎯';
+            localStorage.setItem('focusMode', document.body.classList.contains('focus-active'));
+        }
+
+        // Step Navigation Functions
+        let currentStep = 1;
+
+        function goToStep(step) {
+            // Validate step is between 1-4
+            if (step < 1 || step > 4) return;
+
+            // Hide all step contents
+            document.querySelectorAll('.step-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active/completed from all steps
+            document.querySelectorAll('.step').forEach(s => {
+                s.classList.remove('active', 'completed');
+            });
+
+            // Mark previous steps as completed
+            for (let i = 1; i < step; i++) {
+                document.querySelector(`.step[data-step="${i}"]`).classList.add('completed');
+            }
+
+            // Mark current step as active
+            document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+
+            // Show current step content
+            document.querySelector(`.step-content[data-step="${step}"]`).classList.add('active');
+
+            currentStep = step;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            goToStep(currentStep + 1);
+        }
+
+        function previousStep() {
+            goToStep(currentStep - 1);
+        }
+
+        // Restore focus mode if it was active
+        if (localStorage.getItem('focusMode') === 'true') {
+            toggleFocusMode();
+        }
+    </script>
+</body>
+</html>

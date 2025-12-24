@@ -1,0 +1,14 @@
+{
+  "file_name": "debug_full.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\parser\\debug_full.py",
+  "file_size": 1561,
+  "created": "2025-11-16T20:32:26.881601",
+  "modified": "2025-11-17T00:02:47.519110",
+  "file_type": "code",
+  "content_hash": "27e5b08c0488229a6060394d7b8c4256",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nDebug the full parsing flow\n\"\"\"\n\nimport os\nimport sys\n\nsys.path.append(os.path.dirname(__file__))\n\nfrom visual_syntax_parser import VisualSyntaxParser\n\n\ndef debug_full_parsing():\n    \"\"\"Debug the full parsing flow\"\"\"\n\n    example_code = \"\"\"🔍 @verifiable(\"formal_proof\")\n📐 @ensures(\"output.shape == (batch, classes)\")\n📋 @requires(\"input.shape[1] == features\")\n🧠 @intent(\"Classify input features\")\n🎯 @accessibility(\"high_contrast\", \"dyslexia_font\")\nfunction classifier(input: Tensor[batch, features]) -> Tensor[batch, classes] {\n    🎨 weights = initialize(features, classes)\n    ⚡ logits = matmul(input, weights)\n    🔄 return softmax(logits)\n}\"\"\"\n\n    parser = VisualSyntaxParser()\n\n    print(\"=== DEBUGGING FULL PARSING FLOW ===\")\n\n    # Test line by line\n    lines = example_code.split(\"\\n\")\n    for i, line in enumerate(lines, 1):\n        print(f\"Line {i}: {repr(line)}\")\n        annotations = parser._parse_line_annotations(line, i)\n        print(f\"  Annotations found: {len(annotations)}\")\n        for ann in annotations:\n            print(f\"    {ann}\")\n        print()\n\n    print(\"=== TESTING FULL PARSE ===\")\n    functions = parser.parse_content(example_code)\n    print(f\"Functions found: {len(functions)}\")\n\n    for func in functions:\n        print(f\"Function: {func.name}\")\n        print(f\"Annotations: {len(func.annotations)}\")\n        for ann in func.annotations:\n            print(f\"  {ann}\")\n\n\nif __name__ == \"__main__\":\n    debug_full_parsing()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\parser\\debug_full.py",
+  "id": "d90cb87fa6ec7eba2852665be4dfb091"
+}

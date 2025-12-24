@@ -1,0 +1,249 @@
+{
+  // =============================================
+  // HyperCode Development Workspace Configuration
+  // =============================================
+  // This file configures VS Code settings, extensions, and tasks for HyperCode development.
+  // It's automatically loaded when opening the project in VS Code.
+  // 
+  // Documentation: https://github.com/yourusername/hypercode/docs/development.md
+  // Last Updated: 2025-12-21
+
+  // =============
+  // Extensions
+  // =============
+  "recommendations": [
+    // Core Development
+    "ms-python.python",
+    "ms-vscode.cpptools",
+    "rust-lang.rust-analyzer",
+    
+    // Code Quality & Formatting
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.mypy-type-checker",
+    
+    // AI & Collaboration
+    "github.copilot",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    
+    // Documentation
+    "yzhang.markdown-all-in-one",
+    "tamasfe.even-better-toml",
+    "streetsidesoftware.code-spell-checker",
+    
+    // Testing
+    "hbenl.vscode-test-explorer",
+    "ms-python.pytest-adapter",
+    "ms-vscode.test-adapter-converter",
+    
+    // Version Control
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    
+    // Containers & WSL
+    "ms-vscode-remote.remote-containers",
+    "ms-vscode-remote.remote-wsl",
+    "ms-azuretools.vscode-docker",
+    
+    // Python Extras
+    "ms-python.python-extension-pack",
+    "ms-python.vscode-pylance",
+    "kevinrose.vsc-python-indent",
+    
+    // Debugging
+    "ms-vscode.debug-visualizer",
+    "ms-vscode.js-debug",
+    
+    // Productivity
+    "usernamehw.errorlens",
+    "gruntfuggly.todo-tree",
+    "wayou.vscode-todo-highlight",
+    
+    // Web Development (if applicable)
+    "bradlc.vscode-tailwindcss",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
+  ],
+
+  // =============
+  // Workspace Settings
+  // =============
+  "settings": {
+    // Editor
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+      "source.fixAll": true
+    },
+    
+    // Python
+    "python.linting.enabled": true,
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.testing.pytestEnabled": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    
+    // Git
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "gitlens.codeLens.recentChange.enabled": true,
+    "gitlens.codeLens.authors.enabled": true,
+    
+    // Terminal
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+      "PowerShell": {
+        "source": "PowerShell",
+        "icon": "terminal-powershell",
+        "args": ["-NoExit", "-NoProfile"]
+      }
+    },
+    "terminal.integrated.fontFamily": "'Cascadia Code', 'Droid Sans Mono', 'monospace'",
+    "terminal.integrated.fontSize": 14,
+    
+    // Performance
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/node_modules/**": true,
+      "**/__pycache__/**": true,
+      "**/.pytest_cache/**": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/bower_components": true,
+      "**/*.code-search": true,
+      "**/.venv": true
+    },
+    
+    // Accessibility
+    "editor.accessibilitySupport": "on",
+    "editor.cursorBlinking": "smooth",
+    "workbench.colorCustomizations": {
+      "editorCursor.foreground": "#00ff00"
+    },
+    
+    // Language Specific
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.formatOnSave": true,
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      }
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "typescript": "typescriptreact"
+    }
+  },
+
+  // =============
+  // Debug Configurations
+  // =============
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Current File",
+        "type": "python",
+        "request": "launch",
+        "program": "${file}",
+        "console": "integratedTerminal",
+        "justMyCode": false,
+        "env": {
+          "PYTHONPATH": "${workspaceFolder}"
+        }
+      },
+      {
+        "name": "Python: Module",
+        "type": "python",
+        "request": "launch",
+        "module": "pytest",
+        "args": ["-s", "tests/"],
+        "console": "integratedTerminal",
+        "justMyCode": false
+      },
+      {
+        "name": "Python: Debug Tests",
+        "type": "python",
+        "request": "test",
+        "console": "integratedTerminal",
+        "justMyCode": false
+      }
+    ]
+  },
+
+  // =============
+  // Tasks
+  // =============
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Run Tests",
+        "type": "shell",
+        "command": "python -m pytest",
+        "group": "test",
+        "presentation": {
+          "reveal": "always",
+          "panel": "new"
+        },
+        "problemMatcher": []
+      },
+      {
+        "label": "Lint Code",
+        "type": "shell",
+        "command": "flake8",
+        "group": "build",
+        "problemMatcher": []
+      },
+      {
+        "label": "Format Code",
+        "type": "shell",
+        "command": "black . && isort .",
+        "group": "build",
+        "problemMatcher": []
+      },
+      {
+        "label": "Type Check",
+        "type": "shell",
+        "command": "mypy .",
+        "group": "build",
+        "problemMatcher": []
+      }
+    ]
+  },
+
+  // =============
+  // Documentation
+  // =============
+  "documentation": {
+    "purpose": "Recommended extensions and settings for HyperCode development",
+    "lastUpdated": "2025-12-21",
+    "maintainer": "HyperCode Team",
+    "notes": [
+      "This configuration is optimized for Python development with AI assistance",
+      "Includes tools for testing, debugging, and containerized development",
+      "Formatters and linters are pre-configured for consistent code style",
+      "For contribution guidelines, see: https://github.com/yourusername/hypercode/CONTRIBUTING.md"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "task_manager.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\sample-apps\\taskmaster\\src\\task_manager.hc",
+  "file_size": 2163,
+  "created": "2025-11-26T23:37:35.494464",
+  "modified": "2025-11-26T23:37:35.496082",
+  "file_type": "other",
+  "content_hash": "ff9f24c7be1e2833fc703713e620cc7a",
+  "content_type": "text/unknown",
+  "content": "// TaskManager.hc - A simple task manager in HyperCode\n\n// Define a Task type\ntype Task {\n    id: string\n    title: string\n    completed: boolean\n    priority: 'low' | 'medium' | 'high'\n    dueDate: Date | null\n}\n\n// Task manager class\nclass TaskManager {\n    tasks: Task[] = []\n    \n    // Add a new task\n    function addTask(title: string, priority: 'low' | 'medium' | 'high' = 'medium'): Task {\n        const newTask: Task = {\n            id: generateId(),\n            title,\n            completed: false,\n            priority,\n            dueDate: null\n        }\n        this.tasks.push(newTask)\n        return newTask\n    }\n    \n    // Mark a task as complete\n    function completeTask(taskId: string): void {\n        const task = this.tasks.find(t => t.id === taskId)\n        if (task) {\n            task.completed = true\n        }\n    }\n    \n    // Get tasks by priority\n    function getTasksByPriority(priority: 'low' | 'medium' | 'high'): Task[] {\n        return this.tasks.filter(task => task.priority === priority)\n    }\n    \n    // Helper function to generate a unique ID\n    private function generateId(): string {\n        return Math.random().toString(36).substr(2, 9)\n    }\n}\n\n// Example usage\nfunction main() {\n    // Create a new task manager\n    const taskManager = new TaskManager()\n    \n    // Add some tasks\n    taskManager.addTask('Learn HyperCode', 'high')\n    taskManager.addTask('Build a sample app', 'medium')\n    taskManager.addTask('Write documentation', 'low')\n    \n    // Complete a task\n    if (taskManager.tasks.length > 0) {\n        taskManager.completeTask(taskManager.tasks[0].id)\n    }\n    \n    // Print all tasks\n    console.log('All tasks:')\n    for (const task of taskManager.tasks) {\n        console.log(`- [${task.completed ? 'x' : ' '}] ${task.title} (${task.priority})`)\n    }\n    \n    // Get high priority tasks\n    const highPriorityTasks = taskManager.getTasksByPriority('high')\n    console.log('\\nHigh priority tasks:')\n    for (const task of highPriorityTasks) {\n        console.log(`- ${task.title}`)\n    }\n}\n\n// Run the example\nmain()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\sample-apps\\taskmaster\\src\\task_manager.hc",
+  "id": "572720a04f0c82e4b2221bcd1a2e0a89"
+}

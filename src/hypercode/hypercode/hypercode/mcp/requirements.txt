@@ -1,0 +1,20 @@
+# MCP Server Requirements
+# Install with: pip install -r requirements.txt
+
+# Core MCP functionality
+fastapi>=0.68.0
+uvicorn[standard]>=0.15.0
+
+# Database/Cache support
+redis>=4.0.0
+
+# Async support
+asyncio-mqtt>=0.13.0
+
+# Data handling
+pydantic>=1.10.0
+python-dotenv>=0.19.0
+
+# HTTP client (for some services)
+httpx>=0.24.0
+requests>=2.28.0

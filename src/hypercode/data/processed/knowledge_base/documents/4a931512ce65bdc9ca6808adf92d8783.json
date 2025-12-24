@@ -1,0 +1,14 @@
+{
+  "file_name": "tools",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\tools",
+  "file_size": 1662,
+  "created": "2025-11-26T11:54:54.291686",
+  "modified": "2025-11-26T11:54:54.293697",
+  "file_type": "other",
+  "content_hash": "5b225c301ddcfbe3d9e1c2f16d880619",
+  "content_type": "text/unknown",
+  "content": "#!/bin/bash\n\n# HyperCode Installation Script\n# One-liner installer for macOS and Linux\n\nset -e\n\necho \"🚀 Installing HyperCode...\"\necho \"\"\n\n# Check if Python 3.10+ is installed\nif ! command -v python3 &> /dev/null; then\n    echo \"❌ Python 3 is not installed. Please install Python 3.10 or higher first.\"\n    exit 1\nfi\n\n# Check Python version\nPYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')\nREQUIRED_VERSION=\"3.10\"\n\nif [ \"$(printf '%s\\n' \"$REQUIRED_VERSION\" \"$PYTHON_VERSION\" | sort -V | head -n1)\" != \"$REQUIRED_VERSION\" ]; then\n    echo \"❌ Python $PYTHON_VERSION found, but HyperCode requires Python $REQUIRED_VERSION or higher.\"\n    exit 1\nfi\n\necho \"✅ Python $PYTHON_VERSION detected\"\necho \"\"\n\n# Check if git is installed\nif ! command -v git &> /dev/null; then\n    echo \"❌ Git is not installed. Please install git first.\"\n    exit 1\nfi\n\necho \"📦 Cloning HyperCode repository...\"\n\n# Clone if not already in hypercode directory\nif [ ! -d \"hypercode\" ]; then\n    git clone https://github.com/welshDog/hypercode.git\n    cd hypercode\nelse\n    cd hypercode\n    git pull origin main\nfi\n\necho \"✅ Repository ready\"\necho \"\"\n\necho \"📦 Installing dependencies...\"\npip3 install -r requirements.lock\n\necho \"\"\necho \"✅ HyperCode installed successfully!\"\necho \"\"\necho \"🎯 Quick Start:\"\necho \"   cd hypercode\"\necho \"   python3 -m src.hypercode examples/demo_hello.hc\"\necho \"\"\necho \"📖 Documentation: https://github.com/welshDog/hypercode/blob/main/docs/\"\necho \"💬 Discussions: https://github.com/welshDog/hypercode/discussions\"\necho \"\"\necho \"🚀 Happy coding with HyperCode!\"\n  \n",
+  "metadata": {},
+  "relative_path": "tools",
+  "id": "4a931512ce65bdc9ca6808adf92d8783"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "tasks.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\tasks.json",
+  "file_size": 1561,
+  "created": "2025-11-30T23:56:48.324139",
+  "modified": "2025-11-30T23:57:14.909644",
+  "file_type": "code",
+  "content_hash": "930dac859712edbc2c0a53d79a437517",
+  "content_type": "text",
+  "content": "{\n  \"version\": \"2.0.0\",\n  \"tasks\": [\n    {\n      \"label\": \"HyperCode: Sync Space → Main (Dry-Run)\",\n      \"type\": \"shell\",\n      \"command\": \"python\",\n      \"args\": [\"scripts/sync-space-to-main.py\", \"--dry-run\"],\n      \"group\": { \"kind\": \"test\", \"isDefault\": false },\n      \"presentation\": {\n        \"echo\": true,\n        \"reveal\": \"always\",\n        \"panel\": \"new\"\n      },\n      \"problemMatcher\": []\n    },\n    {\n      \"label\": \"HyperCode: Sync Space → Main (LIVE)\",\n      \"type\": \"shell\",\n      \"command\": \"python\",\n      \"args\": [\"scripts/sync-space-to-main.py\"],\n      \"group\": { \"kind\": \"build\", \"isDefault\": false },\n      \"presentation\": {\n        \"echo\": true,\n        \"reveal\": \"always\",\n        \"panel\": \"new\"\n      },\n      \"problemMatcher\": []\n    },\n    {\n      \"label\": \"HyperCode: Build Hyper Database\",\n      \"type\": \"shell\",\n      \"command\": \"python\",\n      \"args\": [\"scripts/build-hyper-database-fixed.py\"],\n      \"group\": { \"kind\": \"build\", \"isDefault\": false },\n      \"presentation\": {\n        \"echo\": true,\n        \"reveal\": \"always\",\n        \"panel\": \"new\"\n      },\n      \"problemMatcher\": []\n    },\n    {\n      \"label\": \"HyperCode: Full Pipeline (Sync + Database)\",\n      \"type\": \"shell\",\n      \"command\": \"python\",\n      \"args\": [\"scripts/sync-space-to-main.py\"],\n      \"dependsOn\": [],\n      \"group\": { \"kind\": \"build\", \"isDefault\": true },\n      \"presentation\": {\n        \"echo\": true,\n        \"reveal\": \"always\",\n        \"panel\": \"new\"\n      },\n      \"problemMatcher\": [],\n      \"runOptions\": { \"runOn\": \"folderOpen\" }\n    }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "tasks.json",
+  "id": "c243cf659ec9e06c810199bc8f967ed2"
+}

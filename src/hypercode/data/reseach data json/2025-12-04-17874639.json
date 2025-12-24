@@ -1,0 +1,13 @@
+{
+  "id": "2025-12-04-17874639",
+  "date": "2025-12-04",
+  "topic": "Esoteric Languages Brainfuck Plankalkül",
+  "tags": [
+    "Brainfuck",
+    "Plankalkül",
+    "esoteric"
+  ],
+  "source": "Wikipedia and Gists",
+  "summary": "Brainfuck is minimalistic with 8 commands; Plankalkül is the first high-level language from 1940s.",
+  "details": "Brainfuck uses array manipulation with commands > < + - . , [ ] for pointer movement, increment, output, input, loops [web:7][web:10]. Plankalkül by Konrad Zuse featured arrays, conditionals, first high-level concepts [web:18]. HyperCode resurrects such creative power for neurodivergent use."
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\spatial_visualizer\\tsconfig.json",
+  "file_size": 472,
+  "created": "2025-11-26T23:37:35.670517",
+  "modified": "2025-11-26T23:37:35.670517",
+  "file_type": "code",
+  "content_hash": "2d255acdd26835b89414960eae4a545c",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"module\": \"commonjs\",\n    \"lib\": [\"ES2020\"],\n    \"outDir\": \"./out\",\n    \"rootDir\": \"./src\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"declaration\": true,\n    \"declarationMap\": true,\n    \"sourceMap\": true,\n    \"moduleResolution\": \"node\"\n  },\n  \"include\": [\"src/**/*\"],\n  \"exclude\": [\"node_modules\", \"**/*.test.ts\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\spatial_visualizer\\tsconfig.json",
+  "id": "de4a49afcc5371ff3c3821ac31b46284"
+}

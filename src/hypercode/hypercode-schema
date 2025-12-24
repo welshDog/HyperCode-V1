@@ -1,0 +1,386 @@
+# HyperCode JSON Schema & Versioning Strategy
+
+## 🎯 Core Principle
+**Semantic Versioning + Non-Breaking Evolution** — Always add, never remove or rename. This ensures backward compatibility while supporting daily updates [web:13][web:16][web:19].
+
+---
+
+## 1. VERSIONING STRATEGY
+
+### Schema Version Format
+```
+MAJOR.MINOR.PATCH
+Example: 1.0.0
+```
+
+**Versioning Rules:**
+- **MAJOR**: Breaking changes (incompatible structure changes) → `1.0.0` → `2.0.0`
+- **MINOR**: Non-breaking additions (new properties, new arrays) → `1.0.0` → `1.1.0`
+- **PATCH**: Data updates, corrections, refinements → `1.0.0` → `1.0.1`
+
+**Update Frequency:**
+- PATCH: Daily (as research/metrics update)
+- MINOR: Weekly/Monthly (new features/sections discovered)
+- MAJOR: Quarterly (fundamental restructuring)
+
+---
+
+## 2. ROOT-LEVEL METADATA (REQUIRED)
+
+Every HyperCode JSON must include:
+
+```json
+{
+  "schema_version": "1.0.0",
+  "schema_url": "https://hypercode.dev/schema/v1.json",
+  "last_updated": "2025-12-17T19:29:31.804253",
+  "update_frequency": "daily",
+  "maintainer": "HyperCode Community",
+  "deprecated_fields": [],
+  "breaking_changes_since_last_version": []
+}
+```
+
+**Each field:**
+- `schema_version`: Current schema version
+- `schema_url`: Reference to canonical schema definition
+- `last_updated`: ISO 8601 timestamp
+- `update_frequency`: How often data refreshes
+- `deprecated_fields`: Array of removed/renamed fields (for migration)
+- `breaking_changes_since_last_version`: List of incompatible changes
+
+---
+
+## 3. TIMESTAMP STANDARDS
+
+All dates MUST use ISO 8601 format:
+```
+2025-12-17T19:29:31.804253Z  (with timezone)
+or
+2025-12-17T19:29:31.804253   (without timezone, assumes UTC)
+```
+
+Track two timestamps:
+```json
+{
+  "created_at": "2025-12-17T00:00:00Z",
+  "last_updated": "2025-12-17T19:29:31Z",
+  "next_scheduled_update": "2025-12-18T00:00:00Z"
+}
+```
+
+---
+
+## 4. NAMING CONVENTIONS
+
+Use `snake_case` for all keys (not camelCase or kebab-case):
+
+```json
+{
+  "schema_version": "1.0.0",           ✅ Correct
+  "schemaVersion": "1.0.0",            ❌ Wrong (camelCase)
+  "schema-version": "1.0.0",           ❌ Wrong (kebab-case)
+  "language_features": {},             ✅ Correct
+  "languageFeatures": {},              ❌ Wrong
+}
+```
+
+**Rationale:** Consistency across all JSON files, easier programmatic access, aligns with Python/Go conventions for AI agents [web:15].
+
+---
+
+## 5. OPTIONAL FIELDS & NULL HANDLING
+
+**Principle:** Omit optional fields entirely rather than use null values.
+
+```json
+{
+  "name": "HyperCode",
+  "completed_features": ["parser", "lexer"],
+  "planned_features": null              ❌ WRONG - should omit if not applicable
+}
+```
+
+**Correct approach:**
+```json
+{
+  "name": "HyperCode",
+  "completed_features": ["parser", "lexer"]
+  // planned_features omitted if not applicable
+}
+```
+
+**Exception:** Use `null` only for explicitly unknown/missing data that SHOULD exist.
+
+---
+
+## 6. ADDITIVE EVOLUTION PATTERN
+
+When adding new fields, use this pattern:
+
+```json
+{
+  "version": "1.0.0",
+  
+  // Original fields (always present)
+  "legacy_field_1": "value",
+  "legacy_field_2": "value",
+  
+  // v1.1.0 additions (optional, new consumers may not expect)
+  "new_field_v1_1": "value",
+  
+  // v1.2.0 additions
+  "new_field_v1_2": "value",
+  
+  // DO NOT: remove legacy_field_1
+  // DO NOT: rename legacy_field_1 to different_name
+  // DO: add new_field_v2_0 without removing old fields
+}
+```
+
+---
+
+## 7. ARRAY CONVENTIONS
+
+**Consistent array structure** — All items must have matching schema:
+
+```json
+{
+  "resurrected_languages": [
+    {
+      "name": "Plankalkül",
+      "year": 1945,
+      "contribution": "...",
+      "hypercode_adoption": "...",
+      "added_in_version": "1.0.0"      ← Track when added
+    },
+    {
+      "name": "Brainfuck",
+      "year": 1993,
+      "contribution": "...",
+      "hypercode_adoption": "...",
+      "added_in_version": "1.0.0"
+    }
+  ]
+}
+```
+
+**Best practice:** Include `added_in_version` for audit trail.
+
+---
+
+## 8. VALIDATION LAYER
+
+Use JSON Schema (Draft 2020-12) for validation [web:14][web:17]:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hypercode.dev/schema/v1.json",
+  "title": "HyperCode Project Schema",
+  "description": "Complete project metadata for HyperCode",
+  "type": "object",
+  
+  "required": [
+    "schema_version",
+    "last_updated",
+    "project"
+  ],
+  
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH)"
+    },
+    
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    
+    "project": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "tagline": { "type": "string" },
+        "status": { 
+          "type": "string",
+          "enum": ["planning", "active_development", "beta", "stable", "archived"]
+        },
+        "repository": { "type": "string", "format": "uri" }
+      }
+    },
+    
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "lines_of_code": { "type": "integer", "minimum": 0 },
+        "test_coverage": { "type": "number", "minimum": 0, "maximum": 100 },
+        "contributors": { "type": "integer", "minimum": 1 },
+        "community_members": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  
+  "additionalProperties": false
+}
+```
+
+---
+
+## 9. MAINTENANCE CHECKLIST
+
+When updating HyperCode data:
+
+- [ ] Increment PATCH version (or MINOR if adding new section)
+- [ ] Update `last_updated` to current ISO 8601 timestamp
+- [ ] Validate against JSON Schema before committing
+- [ ] Add new fields WITHOUT removing old ones
+- [ ] If field must be removed: bump MAJOR version, document in `breaking_changes_since_last_version`
+- [ ] Run through automated validation (see section 10)
+- [ ] Commit with clear message: `docs(data): update metrics - v1.0.5`
+
+---
+
+## 10. AUTOMATED VALIDATION PIPELINE
+
+### Python Example (ajv-like validation):
+```python
+import json
+from jsonschema import validate, ValidationError
+from datetime import datetime
+
+def validate_hypercode_json(json_file, schema_file):
+    with open(json_file) as f:
+        data = json.load(f)
+    
+    with open(schema_file) as f:
+        schema = json.load(f)
+    
+    try:
+        validate(instance=data, schema=schema)
+        print(f"✅ Valid: {json_file}")
+        print(f"   Version: {data['schema_version']}")
+        print(f"   Last updated: {data['last_updated']}")
+        return True
+    except ValidationError as e:
+        print(f"❌ Invalid: {e.message}")
+        return False
+
+# Usage
+validate_hypercode_json('hypercode_data.json', 'hypercode_schema.json')
+```
+
+### CI/CD Integration (GitHub Actions):
+```yaml
+name: Validate HyperCode JSON
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+      - run: pip install jsonschema
+      - run: python validate.py hypercode_data.json hypercode_schema.json
+```
+
+---
+
+## 11. DEPRECATION & MIGRATION STRATEGY
+
+When removing/renaming a field:
+
+1. **v1.1.0 (MINOR)**: Add `deprecated_fields` warning
+```json
+{
+  "schema_version": "1.1.0",
+  "deprecated_fields": [
+    {
+      "name": "old_field_name",
+      "replacement": "new_field_name",
+      "removal_date": "2026-01-01",
+      "reason": "Consolidated with new_field_name for clarity"
+    }
+  ]
+}
+```
+
+2. **v2.0.0 (MAJOR)**: Actually remove field
+```json
+{
+  "schema_version": "2.0.0",
+  "breaking_changes_since_last_version": [
+    {
+      "change": "Removed old_field_name",
+      "reason": "Replaced by new_field_name",
+      "migration_guide": "Update references from data['old_field_name'] to data['new_field_name']"
+    }
+  ]
+}
+```
+
+---
+
+## 12. COMPLETE EXAMPLE: Updated Schema v1.1.0
+
+```json
+{
+  "schema_version": "1.1.0",
+  "schema_url": "https://hypercode.dev/schema/v1.1.json",
+  "last_updated": "2025-12-17T19:30:00Z",
+  "update_frequency": "daily",
+  "maintainer": "HyperCode Community",
+  "deprecated_fields": [],
+  "breaking_changes_since_last_version": [],
+  
+  "project": {
+    "name": "HyperCode",
+    "version": "0.1.0-alpha",
+    "tagline": "Programming Language for Neurodivergent Minds",
+    "created_at": "2025-12-01T00:00:00Z",
+    "status": "active_development",
+    "license": "open_source"
+  },
+  
+  "core_philosophy": {
+    "mission": "Building a language for neurodivergent brains...",
+    "target_users": ["neurodivergent_developers", "ai_systems", "quantum_computing_researchers"],
+    "design_principles": ["spatial_logic_first", "minimal_cognitive_noise"]
+  },
+  
+  "metrics": {
+    "lines_of_code": 2500,
+    "test_coverage": 75.5,
+    "contributors": 3,
+    "community_members": 42,
+    "github_stars": 18,
+    "last_metric_update": "2025-12-17T19:00:00Z"
+  }
+}
+```
+
+---
+
+## 🎯 Summary
+
+| Aspect | Rule |
+|--------|------|
+| **Versioning** | MAJOR.MINOR.PATCH (semantic) |
+| **Naming** | `snake_case` for all keys |
+| **Timestamps** | ISO 8601 with timezone |
+| **Nulls** | Omit optional fields, use null only for missing required data |
+| **Evolution** | Always add, never remove (until MAJOR version bump) |
+| **Validation** | JSON Schema Draft 2020-12 + CI/CD pipeline |
+| **Updates** | PATCH daily, MINOR weekly, MAJOR quarterly |
+| **Deprecation** | Warn in MINOR, remove in MAJOR, document migration |
+
+---
+
+**This schema evolves with HyperCode—update daily without breaking consumer systems.** 🚀

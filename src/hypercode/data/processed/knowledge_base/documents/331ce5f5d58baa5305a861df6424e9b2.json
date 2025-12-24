@@ -1,0 +1,14 @@
+{
+  "file_name": "health_scan_report.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\config\\health_scan_report.json",
+  "file_size": 941,
+  "created": "2025-11-23T12:01:48.482430",
+  "modified": "2025-11-23T11:56:45.861766",
+  "file_type": "code",
+  "content_hash": "bdebf28d6e281ce0abfb2edadd3c90e0",
+  "content_type": "text",
+  "content": "{\n  \"scan_timestamp\": \"C:\\\\Users\\\\lyndz\\\\Downloads\\\\HyperCode\\\\hypercode\",\n  \"health_data\": {\n    \"project_structure\": {\n      \"structure_score\": 70,\n      \"issues\": [\"Missing essential file: requirements.txt\"],\n      \"recommendations\": [\"Create requirements.txt\"],\n      \"files_analyzed\": 5114\n    },\n    \"dependencies\": {\n      \"dependency_score\": 30,\n      \"issues\": [],\n      \"recommendations\": [],\n      \"dependencies_found\": []\n    },\n    \"security\": {\n      \"security_score\": 35,\n      \"issues\": [\n        \"Missing security configuration: .github/dependabot.yml\",\n        \"Missing security configuration: .env.example\"\n      ],\n      \"recommendations\": [\"Create .github/dependabot.yml\", \"Create .env.example\"]\n    },\n    \"overall_score\": 135\n  },\n  \"ai_recommendations\": \"Failed to get AI recommendations\",\n  \"summary\": {\n    \"overall_score\": 135,\n    \"total_issues\": 3,\n    \"critical_areas\": []\n  }\n}\n",
+  "metadata": {},
+  "relative_path": "config\\health_scan_report.json",
+  "id": "331ce5f5d58baa5305a861df6424e9b2"
+}

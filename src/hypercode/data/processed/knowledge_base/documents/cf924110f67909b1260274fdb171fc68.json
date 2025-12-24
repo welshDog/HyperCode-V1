@@ -1,0 +1,14 @@
+{
+  "file_name": "_types.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\tomli\\_types.py",
+  "file_size": 254,
+  "created": "2025-12-01T01:58:33.588119",
+  "modified": "2025-12-01T01:58:33.588627",
+  "file_type": "code",
+  "content_hash": "19a32b713392e66bac544e73f025b2cb",
+  "content_type": "text",
+  "content": "# SPDX-License-Identifier: MIT\n# SPDX-FileCopyrightText: 2021 Taneli Hukkinen\n# Licensed to PSF under a Contributor Agreement.\n\nfrom typing import Any, Callable, Tuple\n\n# Type annotations\nParseFloat = Callable[[str], Any]\nKey = Tuple[str, ...]\nPos = int\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\tomli\\_types.py",
+  "id": "cf924110f67909b1260274fdb171fc68"
+}

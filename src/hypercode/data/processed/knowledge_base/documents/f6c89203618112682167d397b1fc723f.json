@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\cli\\__init__.py",
+  "file_size": 132,
+  "created": "2025-12-01T01:58:29.942153",
+  "modified": "2025-12-01T01:58:29.943212",
+  "file_type": "code",
+  "content_hash": "f0ac37f23494412689aee309275c45fb",
+  "content_type": "text",
+  "content": "\"\"\"Subpackage containing all of pip's command line interface related code\n\"\"\"\n\n# This file intentionally does not import submodules\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\cli\\__init__.py",
+  "id": "f6c89203618112682167d397b1fc723f"
+}

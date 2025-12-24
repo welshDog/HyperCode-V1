@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\__init__.py",
+  "file_size": 691,
+  "created": "2025-12-01T01:58:32.871962",
+  "modified": "2025-12-01T01:58:32.872736",
+  "file_type": "code",
+  "content_hash": "b37ad098a097311e209fb2afceaeaccd",
+  "content_type": "text",
+  "content": "\"\"\"Wrappers to call pyproject.toml-based build backend hooks.\n\"\"\"\n\nfrom typing import TYPE_CHECKING\n\nfrom ._impl import (\n    BackendUnavailable,\n    BuildBackendHookCaller,\n    HookMissing,\n    UnsupportedOperation,\n    default_subprocess_runner,\n    quiet_subprocess_runner,\n)\n\n__version__ = \"1.2.0\"\n__all__ = [\n    \"BackendUnavailable\",\n    \"BackendInvalid\",\n    \"HookMissing\",\n    \"UnsupportedOperation\",\n    \"default_subprocess_runner\",\n    \"quiet_subprocess_runner\",\n    \"BuildBackendHookCaller\",\n]\n\nBackendInvalid = BackendUnavailable  # Deprecated alias, previously a separate exception\n\nif TYPE_CHECKING:\n    from ._impl import SubprocessRunner\n\n    __all__ += [\"SubprocessRunner\"]\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\__init__.py",
+  "id": "77c297e5e0f73fb6cd819519f6a45cb1"
+}

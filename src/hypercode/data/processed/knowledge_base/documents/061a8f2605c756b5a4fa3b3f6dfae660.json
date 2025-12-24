@@ -1,0 +1,14 @@
+{
+  "file_name": "requires.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\hypercode.egg-info\\requires.txt",
+  "file_size": 97,
+  "created": "2025-11-14T13:33:03.213829",
+  "modified": "2025-11-17T15:46:26.390799",
+  "file_type": "code",
+  "content_hash": "114bd281706e011edf5e9ed57006c10e",
+  "content_type": "text",
+  "content": "\n[dev]\nblack>=23.0.0\nruff>=0.0.270\nmypy>=1.0.0\npytest>=7.0.0\npytest-cov>=4.0.0\npre-commit>=3.0.0\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\hypercode.egg-info\\requires.txt",
+  "id": "061a8f2605c756b5a4fa3b3f6dfae660"
+}

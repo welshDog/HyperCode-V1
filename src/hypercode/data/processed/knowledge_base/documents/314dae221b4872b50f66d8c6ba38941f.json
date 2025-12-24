@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.node.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\tsconfig.node.json",
+  "file_size": 653,
+  "created": "2025-12-02T19:52:33.290576",
+  "modified": "2025-12-02T19:52:05.789187",
+  "file_type": "code",
+  "content_hash": "eec85c9d7c6b599801557f1afd86672c",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"tsBuildInfoFile\": \"./node_modules/.tmp/tsconfig.node.tsbuildinfo\",\n    \"target\": \"ES2023\",\n    \"lib\": [\"ES2023\"],\n    \"module\": \"ESNext\",\n    \"types\": [\"node\"],\n    \"skipLibCheck\": true,\n\n    /* Bundler mode */\n    \"moduleResolution\": \"bundler\",\n    \"allowImportingTsExtensions\": true,\n    \"verbatimModuleSyntax\": true,\n    \"moduleDetection\": \"force\",\n    \"noEmit\": true,\n\n    /* Linting */\n    \"strict\": true,\n    \"noUnusedLocals\": true,\n    \"noUnusedParameters\": true,\n    \"erasableSyntaxOnly\": true,\n    \"noFallthroughCasesInSwitch\": true,\n    \"noUncheckedSideEffectImports\": true\n  },\n  \"include\": [\"vite.config.ts\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\tsconfig.node.json",
+  "id": "314dae221b4872b50f66d8c6ba38941f"
+}

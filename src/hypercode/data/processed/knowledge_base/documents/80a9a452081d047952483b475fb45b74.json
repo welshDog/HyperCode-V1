@@ -1,0 +1,42 @@
+{
+  "file_name": "HYPERCODE flashcards.csv",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\HYPERCODE flashcards.csv",
+  "file_size": 5613,
+  "created": "2025-11-27T23:01:54.372984",
+  "modified": "2025-11-27T23:01:55.281029",
+  "file_type": "other",
+  "content_hash": "e33fe782370d8b441237c09498efed33",
+  "content_type": "table",
+  "content": {
+    "columns": [
+      "What is the primary mission of the HyperCode programming language?",
+      "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic."
+    ],
+    "sample": [
+      {
+        "What is the primary mission of the HyperCode programming language?": "What is the name of the 'living research ecosystem' that guides HyperCode's development?",
+        "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic.": "The HyperCode Research Database, hosted on the `welshDog/hypercode-research` GitHub repository."
+      },
+      {
+        "What is the primary mission of the HyperCode programming language?": "Which historical programming language, considered the world's first high-level language, is being researched for HyperCode?",
+        "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic.": "Plankalkül (1942-1948)."
+      },
+      {
+        "What is the primary mission of the HyperCode programming language?": "What is the key insight gained from researching esoteric languages like Befunge for HyperCode?",
+        "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic.": "That 2D code layout and spatial programming can reduce cognitive load and better fit neurodivergent thinking."
+      },
+      {
+        "What is the primary mission of the HyperCode programming language?": "HyperCode is designed to have universal compatibility with any major AI system, including GPT, Claude, and _____, without requiring costly rewrites.",
+        "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic.": "Ollama."
+      },
+      {
+        "What is the primary mission of the HyperCode programming language?": "What is the core principle behind HyperCode's approach to neurodivergent design?",
+        "To be a revolutionary programming language designed with neurodivergent developers in mind, particularly those who are dyslexic, ADHD, or autistic.": "Programming languages should fit how brains think, rather than forcing brains to adapt to the language."
+      }
+    ],
+    "row_count": 35
+  },
+  "metadata": {},
+  "relative_path": "HYPERCODE flashcards.csv",
+  "id": "80a9a452081d047952483b475fb45b74"
+}

@@ -1,0 +1,121 @@
+name: Sync HyperCode Research Database
+on:
+  push:
+    branches: [main, develop]
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install ajv-cli jsonschema
+
+      - name: Validate JSON Schema
+        run: |
+          ajv validate -s hypercode_schema.json -d hypercode_db.json
+          if [ $? -ne 0 ]; then
+            echo "❌ Schema validation failed"
+            exit 1
+          fi
+          echo "✅ Schema validation passed"
+
+      - name: Check Schema Version
+        run: |
+          SCHEMA_VERSION=$(jq -r '.schema_version' hypercode_db.json)
+          EXPECTED_SCHEMA=$(date +%Y-%m)
+          echo "Current schema version: $SCHEMA_VERSION"
+          echo "Expected schema version: $EXPECTED_SCHEMA"
+
+      - name: Verify Required Fields
+        run: |
+          node scripts/verify-fields.js hypercode_db.json
+
+      - name: Check Data Quality
+        run: |
+          echo "📊 Data Quality Checks..."
+          RECORD_COUNT=$(jq '.research_data | length' hypercode_db.json)
+          NULL_COUNT=$(jq '[.. | objects | to_entries[] | select(.value == null)] | length' hypercode_db.json)
+          echo "Records: $RECORD_COUNT"
+          echo "Nulls: $NULL_COUNT"
+          
+          # Update monitoring metrics
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          jq ".monitoring.last_sync = \"$TIMESTAMP\" | .monitoring.record_count = $RECORD_COUNT | .monitoring.null_percent = 0 | .monitoring.schema_valid = true | .monitoring.freshness_hours = 0" hypercode_db.json > hypercode_db.json.tmp
+          mv hypercode_db.json.tmp hypercode_db.json
+
+      - name: Check for Breaking Changes
+        run: |
+          if [ -f hypercode_db.json.backup ]; then
+            node scripts/detect-breaking-changes.js hypercode_db.json.backup hypercode_db.json
+          fi
+
+      - name: Git diff check
+        run: |
+          git diff --exit-code hypercode_db.json || echo "Changes detected"
+
+      - name: Sync to Firebase (if main branch)
+        if: github.ref == 'refs/heads/main'
+        env:
+          FIREBASE_PROJECT: ${{ secrets.FIREBASE_PROJECT }}
+          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+        run: |
+          echo "🔄 Syncing to Firebase..."
+          node scripts/sync-firebase.js hypercode_db.json
+
+      - name: Update backup
+        if: always()
+        run: cp hypercode_db.json hypercode_db.json.backup
+
+      - name: Notify Success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ HyperCode database sync successful! Schema validated, metrics updated.'
+            })
+
+      - name: Notify Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ HyperCode database sync FAILED. Check schema validation and data quality.'
+            })
+
+      - name: Create Pull Request for Auto-Updates
+        if: always() && github.ref == 'refs/heads/develop'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: auto-update HyperCode research database'
+          title: '[AUTO] HyperCode Research Database Update'
+          body: 'Automated research database sync and validation.'
+          branch: auto/hypercode-update
+          delete-branch: true

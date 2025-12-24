@@ -1,0 +1,14 @@
+{
+  "file_name": "modeline.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\modeline.py",
+  "file_size": 1005,
+  "created": "2025-12-01T01:58:32.590075",
+  "modified": "2025-12-01T01:58:32.641770",
+  "file_type": "code",
+  "content_hash": "d16df308fd88d676b26417e392ba929b",
+  "content_type": "text",
+  "content": "\"\"\"\n    pygments.modeline\n    ~~~~~~~~~~~~~~~~~\n\n    A simple modeline parser (based on pymodeline).\n\n    :copyright: Copyright 2006-2024 by the Pygments team, see AUTHORS.\n    :license: BSD, see LICENSE for details.\n\"\"\"\n\nimport re\n\n__all__ = ['get_filetype_from_buffer']\n\n\nmodeline_re = re.compile(r'''\n    (?: vi | vim | ex ) (?: [<=>]? \\d* )? :\n    .* (?: ft | filetype | syn | syntax ) = ( [^:\\s]+ )\n''', re.VERBOSE)\n\n\ndef get_filetype_from_line(l): # noqa: E741\n    m = modeline_re.search(l)\n    if m:\n        return m.group(1)\n\n\ndef get_filetype_from_buffer(buf, max_lines=5):\n    \"\"\"\n    Scan the buffer for modelines and return filetype if one is found.\n    \"\"\"\n    lines = buf.splitlines()\n    for line in lines[-1:-max_lines-1:-1]:\n        ret = get_filetype_from_line(line)\n        if ret:\n            return ret\n    for i in range(max_lines, -1, -1):\n        if i < len(lines):\n            ret = get_filetype_from_line(lines[i])\n            if ret:\n                return ret\n\n    return None\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\modeline.py",
+  "id": "7bb7df50ea782e7a2d19e2ba6da2e5a2"
+}

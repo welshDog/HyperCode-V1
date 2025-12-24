@@ -1,0 +1,14 @@
+{
+  "file_name": "main.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\main.hc",
+  "file_size": 572,
+  "created": "2025-11-30T19:04:08.441055",
+  "modified": "2025-11-30T20:03:05.328248",
+  "file_type": "other",
+  "content_hash": "8f2ecc7baa65f02575ec18395a1aa7ec",
+  "content_type": "text/unknown",
+  "content": "// Golden Example for HyperCode\n// This file serves as the living specification and testbed for the Golden Syntax.\n\nblock \"Main Execution\" {\n  let start_value = 5;\n\n  // Use the pipe to chain operations with the new native functions\n  // 1. Start with start_value (5)\n  // 2. Pipe it to the native 'double' function (result: 10)\n  // 3. Pipe that result to the native 'square' function (result: 100)\n  // 4. Assign the final result to the 'final_result' variable\n  start_value | double | square -> final_result;\n\n  print(final_result);\n\n  return @success(final_result);\n}\n",
+  "metadata": {},
+  "relative_path": "src\\main.hc",
+  "id": "2f0f132d2c8ec05878130ca29596d7af"
+}

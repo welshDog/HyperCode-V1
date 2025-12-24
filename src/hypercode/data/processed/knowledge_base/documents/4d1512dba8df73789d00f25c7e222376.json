@@ -1,0 +1,14 @@
+{
+  "file_name": "fibonacci.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\examples\\fibonacci.hc",
+  "file_size": 223,
+  "created": "2025-11-12T10:36:56.955741",
+  "modified": "2025-11-17T17:48:31.499483",
+  "file_type": "other",
+  "content_hash": "2ade79c572fa03a5dfb8cc56328d7b8a",
+  "content_type": "text/unknown",
+  "content": "// Fibonacci sequence in HyperCode\nfunc fib(n) {\n    if n <= 1 {\n        return n\n    }\n    return fib(n-1) + fib(n-2)\n}\n\n// Print first 10 Fibonacci numbers\nfor i in 0..10 {\n    print(f\"fib({i}) = {fib(i)}\")\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\examples\\fibonacci.hc",
+  "id": "4d1512dba8df73789d00f25c7e222376"
+}

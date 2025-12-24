@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\benchmarks\\__init__.py",
+  "file_size": 2166,
+  "created": "2025-11-26T23:37:35.357210",
+  "modified": "2025-12-04T00:56:55.988006",
+  "file_type": "code",
+  "content_hash": "d211a1371861921aa00e802252bf0768",
+  "content_type": "text",
+  "content": "# benchmarks/benchmarks_lexer.py\nimport sys\nfrom pathlib import Path\n\n# Add the project root to the Python path\nproject_root = str(Path(__file__).parent.parent)\nif project_root not in sys.path:\n    sys.path.insert(0, project_root)\n\nfrom src.core.lexer import Lexer\n\n\ndef benchmark_lexer(source: str, iterations: int = 1000) -> dict:\n    \"\"\"Benchmark the lexer with the given source code.\"\"\"\n    total_time = 0\n    tokens_count = 0\n    errors = []\n\n    for _ in range(iterations):\n        start_time = time.perf_counter()\n        lexer = Lexer(source)\n        tokens = lexer.scan_tokens()\n        end_time = time.perf_counter()\n\n        total_time += end_time - start_time\n        tokens_count = len(tokens)\n        errors = lexer.errors\n\n    avg_time = (total_time / iterations) * 1000  # Convert to milliseconds\n    return {\n        \"avg_time_ms\": avg_time,\n        \"tokens_count\": tokens_count,\n        \"errors\": errors,\n        \"iterations\": iterations,\n    }\n\n\ndef print_benchmark_results(results: dict):\n    \"\"\"Print benchmark results in a readable format.\"\"\"\n    print(\"\\n\" + \"=\" * 50)\n    print(\"Lexer Benchmark Results\")\n    print(\"=\" * 50)\n    print(f\"Average time per lex: {results['avg_time_ms']:.4f}ms\")\n    print(f\"Total tokens: {results['tokens_count']}\")\n    print(f\"Iterations: {results['iterations']}\")\n\n    if results[\"errors\"]:\n        print(\"\\nErrors encountered:\")\n        for error in results[\"errors\"]:\n            print(f\"  - {error.message} at line {error.line}, column {error.column}\")\n    else:\n        print(\"\\nNo errors found.\")\n    print(\"=\" * 50 + \"\\n\")\n\n\nif __name__ == \"__main__\":\n    import time\n\n    # Test with a sample source file\n    sample_code = \"\"\"\n    // Sample HyperCode program\n    fun factorial(n) {\n        if (n <= 1) return 1;\n        return n * factorial(n - 1);\n    }\n    \n    // Calculate factorial of 5\n    var result = factorial(5);\n    print(\"Factorial of 5 is: \" + result);\n    \"\"\"\n\n    print(\"Running lexer benchmark with sample code...\")\n    results = benchmark_lexer(sample_code, iterations=1000)\n    print_benchmark_results(results)\n",
+  "metadata": {},
+  "relative_path": "hypercode\\benchmarks\\__init__.py",
+  "id": "0bc15f84e66ad6a15076fcfdf336378a"
+}

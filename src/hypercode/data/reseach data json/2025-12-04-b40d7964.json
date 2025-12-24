@@ -1,0 +1,14 @@
+{
+  "id": "2025-12-04-b40d7964",
+  "date": "2025-12-04",
+  "topic": "Neurodivergent Programming Languages",
+  "tags": [
+    "neurodivergent",
+    "coding",
+    "ADHD",
+    "autism"
+  ],
+  "source": "Web Research",
+  "summary": "Existing efforts in neurodivergent-friendly coding include Python's intuitiveness, Sona language, and vibe-based coding.",
+  "details": "Python aids neurodivergent learners with readable syntax, immediate feedback for ADHD, pattern recognition for autistic minds [web:2][web:5]. Sona is an open-source language for neurodivergent creators with OOP support [web:4]. Vibe coding reduces cognitive load via natural language AI prompts [web:1][web:6]."
+}

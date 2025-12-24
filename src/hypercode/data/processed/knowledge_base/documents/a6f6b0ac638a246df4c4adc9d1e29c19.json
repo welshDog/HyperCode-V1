@@ -1,0 +1,21 @@
+{
+  "file_name": "2-backlog.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\roadmaps\\2-backlog.md",
+  "file_size": 860,
+  "created": "2025-12-02T17:26:22.317542",
+  "modified": "2025-12-02T17:26:22.952508",
+  "file_type": "code",
+  "content_hash": "4e28502a6b296c6a9ce0529080ecbb1b",
+  "content_type": "markdown",
+  "content": "# HyperCode Backlog\n\n## High Priority\n\n-   [ ] **HC-001: Visual Programming Interface**\n\n    -   Description: Create a node-based visual programming interface that complements the text-based language.\n    -   Priority: High\n    -   Tags: #neurodivergent #ui #accessibility\n\n-   [ ] **HC-002: Syntax Highlighting**\n    -   Description: Implement syntax highlighting for major code editors.\n    -   Priority: High\n    -   Tags: #developer-experience #tooling\n\n## Medium Priority\n\n-   [ ] **HC-010: AI Code Completion**\n    -   Description: Integrate with AI models for smart code completion.\n    -   Priority: Medium\n    -   Tags: #ai #productivity\n\n## Low Priority\n\n-   [ ] **HC-100: Quantum Computing Module**\n    -   Description: Add support for quantum computing primitives.\n    -   Priority: Low\n    -   Tags: #quantum #research",
+  "metadata": {
+    "headers": [
+      "HyperCode Backlog",
+      "High Priority",
+      "Medium Priority",
+      "Low Priority"
+    ]
+  },
+  "relative_path": "docs\\roadmaps\\2-backlog.md",
+  "id": "a6f6b0ac638a246df4c4adc9d1e29c19"
+}

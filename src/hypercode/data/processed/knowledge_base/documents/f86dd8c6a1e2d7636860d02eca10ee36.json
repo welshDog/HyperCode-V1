@@ -1,0 +1,14 @@
+{
+  "file_name": "candidate.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\models\\candidate.py",
+  "file_size": 753,
+  "created": "2025-12-01T01:58:30.983974",
+  "modified": "2025-12-01T01:58:30.985993",
+  "file_type": "code",
+  "content_hash": "5c6959bb25f9ca06400891d2662be98a",
+  "content_type": "text",
+  "content": "from dataclasses import dataclass\n\nfrom pip._vendor.packaging.version import Version\nfrom pip._vendor.packaging.version import parse as parse_version\n\nfrom pip._internal.models.link import Link\n\n\n@dataclass(frozen=True)\nclass InstallationCandidate:\n    \"\"\"Represents a potential \"candidate\" for installation.\"\"\"\n\n    __slots__ = [\"name\", \"version\", \"link\"]\n\n    name: str\n    version: Version\n    link: Link\n\n    def __init__(self, name: str, version: str, link: Link) -> None:\n        object.__setattr__(self, \"name\", name)\n        object.__setattr__(self, \"version\", parse_version(version))\n        object.__setattr__(self, \"link\", link)\n\n    def __str__(self) -> str:\n        return f\"{self.name!r} candidate (version {self.version} at {self.link})\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\models\\candidate.py",
+  "id": "f86dd8c6a1e2d7636860d02eca10ee36"
+}

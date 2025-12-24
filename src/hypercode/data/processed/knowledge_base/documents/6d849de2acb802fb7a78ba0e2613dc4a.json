@@ -1,0 +1,14 @@
+{
+  "file_name": "organize_repo.ps1",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\scripts\\organize_repo.ps1",
+  "file_size": 2166,
+  "created": "2025-11-26T23:37:35.552033",
+  "modified": "2025-11-26T23:37:35.552033",
+  "file_type": "code",
+  "content_hash": "4a4f6b6ef910c8c362e36fce2daf7e62",
+  "content_type": "text/unknown",
+  "content": "# Script to organize the HyperCode repository\n\n# Define paths\n$root = \"$PSScriptRoot\\..\"\n$src = \"$root\\src\"\n$docs = \"$root\\docs\"\n$tests = \"$root\\tests\"\n$examples = \"$root\\examples\"\n$config = \"$root\\config\"\n$tools = \"$root\\tools\"\n\n# Create directories if they don't exist\n@($src, $docs, $tests, $examples, $config, $tools) | ForEach-Object {\n    if (-not (Test-Path $_)) { New-Item -ItemType Directory -Path $_ | Out-Null }\n}\n\n# Move documentation files\n$docFiles = @(\"*.md\", \"*.txt\", \"*.rst\")\n$docFiles | ForEach-Object {\n    Get-ChildItem -Path $root -Filter $_ -File | \n    Where-Object { $_.Name -notin @('README.md', 'CONTRIBUTING.md', 'CODE_OF_CONDUCT.md', 'LICENSE') } |\n    Move-Item -Destination $docs -Force\n}\n\n# Move test files\nMove-Item -Path \"$root\\test_*.py\" -Destination $tests -ErrorAction SilentlyContinue\n\n# Move example files\nif (Test-Path \"$root\\showcase\") {\n    Move-Item -Path \"$root\\showcase\\*\" -Destination $examples -Force\n    Remove-Item -Path \"$root\\showcase\" -Recurse -Force\n}\n\n# Move config files\n$configFiles = @(\"*.yaml\", \"*.yml\", \"*.json\", \"*.toml\", \"*.ini\")\n$configFiles | ForEach-Object {\n    Get-ChildItem -Path $root -Filter $_ -File | \n    Where-Object { $_.Name -notin @('pyproject.toml', 'pytest.ini') } |\n    Move-Item -Destination $config -Force\n}\n\n# Move tooling files\n$toolFiles = @(\"*.ps1\", \"*.sh\", \"*.bat\")\n$toolFiles | ForEach-Object {\n    Get-ChildItem -Path $root -Filter $_ -File | \n    Move-Item -Destination $tools -Force -ErrorAction SilentlyContinue\n}\n\n# Move source files\n$srcDirs = @(\"hypercode-\", \"DuelCode\", \"ai_gateway\", \"spatial_visualizer\")\n$srcDirs | ForEach-Object {\n    if (Test-Path \"$root\\$_\") {\n        Move-Item -Path \"$root\\$_\\*\" -Destination $src -Force -ErrorAction SilentlyContinue\n        Remove-Item -Path \"$root\\$_\" -Recurse -Force -ErrorAction SilentlyContinue\n    }\n}\n\n# Clean up empty directories\nGet-ChildItem -Path $root -Directory | \n    Where-Object { $_.GetFiles().Count -eq 0 -and $_.GetDirectories().Count -eq 0 } | \n    Remove-Item -Force -Recurse\n\nWrite-Host \"Repository organization complete!\" -ForegroundColor Green\n",
+  "metadata": {},
+  "relative_path": "hypercode\\scripts\\organize_repo.ps1",
+  "id": "6d849de2acb802fb7a78ba0e2613dc4a"
+}

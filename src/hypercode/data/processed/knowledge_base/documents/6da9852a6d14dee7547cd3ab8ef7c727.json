@@ -1,0 +1,31 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\sample-apps\\taskmaster\\README.md",
+  "file_size": 1745,
+  "created": "2025-11-23T21:01:35.190844",
+  "modified": "2025-11-23T21:01:36.993365",
+  "file_type": "code",
+  "content_hash": "c20395077558b2a84b4104e594cacc7a",
+  "content_type": "markdown",
+  "content": "# 🎯 TaskMaster - A Neurodivergent-Friendly Task Manager\n\nTaskMaster is a task management application built with HyperCode, designed with neurodivergent users in mind. It provides a flexible, sensory-friendly interface for managing tasks and maintaining focus.\n\n## ✨ Features\n\n- **Multiple Views**: List, board, and calendar views\n- **Focus Mode**: Distraction-free task focus\n- **Sensory Settings**: Adjustable colors, fonts, and animations\n- **AI Integration**: Smart task suggestions and organization\n- **Reminders & Alerts**: Customizable notifications\n\n## 🚀 Getting Started\n\n### Prerequisites\n- HyperCode Runtime (v1.0.0 or later)\n- Node.js (for development)\n\n### Installation\n```bash\n# Clone the repository\ngit clone https://github.com/welshDog/hypercode.git\ncd hypercode/showcase/sample-apps/taskmaster\n\n# Install dependencies\nnpm install\n\n# Start the development server\nnpm run dev\n```\n\n## 🛠️ Development\n\n### Project Structure\n```\ntaskmaster/\n├── src/           # Source code\n│   ├── components/  # UI components\n│   ├── lib/         # Utility functions\n│   └── styles/      # Styling\n├── docs/          # Documentation\n└── tests/         # Test files\n```\n\n### Available Scripts\n- `npm run dev` - Start development server\n- `npm run build` - Build for production\n- `npm test` - Run tests\n- `npm run lint` - Lint code\n\n## 📚 Documentation\n\n- [API Reference](docs/API.md)\n- [Theming Guide](docs/THEMING.md)\n- [Contributing](CONTRIBUTING.md)\n\n## 🤝 Contributing\n\nWe welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) to get started.\n\n## 📄 License\n\nThis project is [MIT licensed](LICENSE).",
+  "metadata": {
+    "headers": [
+      "🎯 TaskMaster - A Neurodivergent-Friendly Task Manager",
+      "✨ Features",
+      "🚀 Getting Started",
+      "Prerequisites",
+      "Installation",
+      "Clone the repository",
+      "Install dependencies",
+      "Start the development server",
+      "🛠️ Development",
+      "Project Structure",
+      "Available Scripts",
+      "📚 Documentation",
+      "🤝 Contributing",
+      "📄 License"
+    ]
+  },
+  "relative_path": "examples\\sample-apps\\taskmaster\\README.md",
+  "id": "6da9852a6d14dee7547cd3ab8ef7c727"
+}

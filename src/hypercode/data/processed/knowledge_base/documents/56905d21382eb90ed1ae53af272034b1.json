@@ -1,0 +1,21 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\roadmaps\\README.md",
+  "file_size": 552,
+  "created": "2025-12-04T00:09:22.907841",
+  "modified": "2025-12-04T00:22:59.333256",
+  "file_type": "code",
+  "content_hash": "52c4d482acd43544ea905655d2a8c847",
+  "content_type": "markdown",
+  "content": "# Project Roadmaps\n\nPlanning and tracking for HyperCode's development.\n\n## Current Focus\n\n- [Active Roadmap](1-roadlog.md) - Current development priorities\n- [Backlog](2-backlog.md) - Upcoming features and improvements\n- [90-Day Plan](HyperCode-90day.md) - Short-term development goals\n\n## Long-Term Planning\n\n- [V3 Build Blueprint](HyperCode_V3_Build_Blueprint.md)\n- [AI Optimization Roadmap](roadmaps/ROADMAP.md)\n\n## Contributing\n\nSee something you'd like to work on? Check our [contributing guidelines](community/CONTRIBUTING.md).",
+  "metadata": {
+    "headers": [
+      "Project Roadmaps",
+      "Current Focus",
+      "Long-Term Planning",
+      "Contributing"
+    ]
+  },
+  "relative_path": "docs\\roadmaps\\README.md",
+  "id": "56905d21382eb90ed1ae53af272034b1"
+}

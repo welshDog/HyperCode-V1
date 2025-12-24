@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\vscode-extension\\tsconfig.json",
+  "file_size": 248,
+  "created": "2025-11-26T23:37:40.679207",
+  "modified": "2025-11-26T23:37:40.679207",
+  "file_type": "code",
+  "content_hash": "5da01fdb58fa72f70fcf539cc412b360",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"module\": \"commonjs\",\n    \"target\": \"ES2020\",\n    \"outDir\": \"out\",\n    \"lib\": [\"ES2020\"],\n    \"sourceMap\": true,\n    \"rootDir\": \"src\",\n    \"strict\": true\n  },\n  \"exclude\": [\"node_modules\", \".vscode-test\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\vscode-extension\\tsconfig.json",
+  "id": "6cce08b2a4771eddffe20db86fa2b816"
+}

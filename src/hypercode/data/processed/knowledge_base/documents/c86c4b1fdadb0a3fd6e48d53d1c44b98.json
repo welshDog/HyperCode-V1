@@ -1,0 +1,14 @@
+{
+  "file_name": "graph_builder.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\knowledge_graph\\graph_builder.py",
+  "file_size": 671,
+  "created": "2025-11-26T23:37:35.517363",
+  "modified": "2025-11-26T23:37:35.517363",
+  "file_type": "code",
+  "content_hash": "e3a34b9f0a045dae7c1bca0923cb2c94",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nSemantic knowledge graph management\n\nFile: knowledge_graph\\graph_builder.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "hypercode\\knowledge_graph\\graph_builder.py",
+  "id": "c86c4b1fdadb0a3fd6e48d53d1c44b98"
+}

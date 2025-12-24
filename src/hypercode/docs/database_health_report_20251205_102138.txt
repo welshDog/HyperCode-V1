@@ -1,0 +1,36 @@
+================================================================================
+HYPERCODE DATABASE HEALTH REPORT
+================================================================================
+Database: HYPER_DATABASE.json
+Total entities: 9657
+Fixed entities: 0
+Validation errors: 9657
+Docstrings added: 0
+Methods fixed: 0
+
+ISSUES FOUND:
+----------------------------------------
+VALIDATION_ERROR (9657):
+  - analyze_code_patterns in code_insights.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - find_undocumented_code in code_insights.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - analyze_test_coverage in code_insights.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - get_undocumented_classes_priority in code_quality_report.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - get_least_tested_files in code_quality_report.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - find_getter_methods in code_quality_report.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - generate_code_quality_report in code_quality_report.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  - CodeEntity in hypercode_db.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'has_test'
+  - HypercodeDB in hypercode_db.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'has_test'
+  - print_analysis in hypercode_db.py
+    Error: FixedCodeEntity.__init__() got an unexpected keyword argument 'args'
+  ... and 9647 more
+
+SAVE_ERROR (1):

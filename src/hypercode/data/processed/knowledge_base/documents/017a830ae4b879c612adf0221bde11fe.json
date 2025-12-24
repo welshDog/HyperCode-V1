@@ -1,0 +1,40 @@
+{
+  "file_name": "tutorial-03-math.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\duelcode\\tutorial-03-math.md",
+  "file_size": 6247,
+  "created": "2025-11-23T11:56:45.664280",
+  "modified": "2025-11-23T11:56:45.664280",
+  "file_type": "code",
+  "content_hash": "cca4f905e14d7d95300386ca98a39e0e",
+  "content_type": "markdown",
+  "content": "# Tutorial 03: Math Operations 🔢\n\n## 🎯 Learning Objectives\n\nBy the end of this tutorial, you will:\n\n- ✅ Perform basic arithmetic operations\n- ✅ Use math operators (+, -, \\*, /)\n- ✅ Store calculation results\n- ✅ Combine math with variables\n\n---\n\n## 📋 Prerequisites & Checklist\n\n- [ ] Completed Tutorial 01: Hello World\n- [ ] Completed Tutorial 02: Variables & Memory\n- [ ] Understand basic math concepts\n- [ ] Have HyperCode environment ready\n\n**Stuck?** Check [Tutorial 02](tutorial-02-variables.md) for variable basics.\n\n---\n\n## 🧠 Concept Overview\n\n**Math Operations** = Using operators to calculate values\n\n**Key Points:**\n\n- HyperCode supports +, -, \\*, / operators\n- Operations follow order of operations\n- Results can be stored in variables\n\n### 📊 Visual Representation\n\n```ascii\n┌─────────────────────────────────────────┐\n│           Math Operations               │\n│                                         │\n│  5 + 3  ──►  8                          │\n│  10 - 4 ──►  6                          │\n│  7 * 2  ──►  14                         │\n│  15 / 3 ──►  5                          │\n│                                         │\n│  Calculate → Store → Output             │\n└─────────────────────────────────────────┘\n```\n\n---\n\n## Part 1: Basic Math 💻\n\n### Step 1: Addition\n\n**Adding numbers is simple with the + operator.**\n\n```hypercode\n; Basic addition\nresult = 5 + 3\nH result\n```\n\n**What this does:**\n\n- Calculates 5 + 3\n- Stores result (8) in 'result' variable\n- Outputs the value\n\n### Step 2: All Operations\n\n**Try all basic math operations.**\n\n```hypercode\n; Addition\nsum = 10 + 5\nH sum\n\n; Subtraction\ndiff = 20 - 8\nH diff\n\n; Multiplication\nprod = 6 * 7\nH prod\n\n; Division\nquot = 100 / 4\nH quot\n```\n\n**Expected output:**\n\n```text\n15\n12\n42\n25\n```\n\n---\n\n## Part 2: Combining Operations 🚀\n\n### 🔄 Interactive Demo\n\n<details>\n<summary>Click to expand interactive example</summary>\n\n```hypercode\n; Store initial values\nx = 10\ny = 3\n\n; Multiple operations\nresult1 = x + y\nresult2 = x * y\nresult3 = x / y\n\n; Show all results\nH \"Results:\"\nH result1\nH result2\nH result3\n```\n\n**Try it yourself:**\n\n1. Change x and y values\n2. Add more operations\n3. Mix operations in one line\n\n</details>\n\n---\n\n## Part 3: Common Pitfalls & Solutions ⚠️\n\n### ❌ Common Mistake 1\n\n**Problem:** Forgetting order of operations\n\n```hypercode\n; WRONG - might give unexpected result\nresult = 2 + 3 * 4\nH result\n```\n\n**Why it fails:** Multiplication happens before addition (3\\*4=12, then 2+12=14)\n\n### ✅ Fix 1\n\n**Solution:** Use parentheses to control order\n\n```hypercode\n; RIGHT - clear order of operations\nresult = (2 + 3) * 4\nH result\n```\n\n---\n\n## 🎯 Challenges\n\n### Challenge 1: Simple Calculator (Easy ⭐)\n\n**Goal**: Create a program that adds two numbers and outputs the result\n\n**Hint**: Use variables to store the numbers first\n\n<details>\n<summary>Solution</summary>\n\n```hypercode\n; Store numbers\nnum1 = 15\nnum2 = 27\n\n; Add them\ntotal = num1 + num2\n\n; Show result\nH \"Sum:\"\nH total\n```\n\n</details>\n\n### Challenge 2: Average Calculator (Medium ⭐⭐)\n\n**Goal**: Calculate the average of 4 numbers\n\n**Hint**: Sum all numbers, then divide by 4\n\n<details>\n<summary>Solution</summary>\n\n```hypercode\n; Store numbers\nn1 = 10\nn2 = 20\nn3 = 30\nn4 = 40\n\n; Calculate average\nsum = n1 + n2 + n3 + n4\navg = sum / 4\n\n; Show result\nH \"Average:\"\nH avg\n```\n\n</details>\n\n### Challenge 3: Temperature Converter (Hard ⭐⭐⭐)\n\n**Goal**: Convert Celsius to Fahrenheit (F = C \\* 9/5 + 32)\n\n**Hint**: Be careful with order of operations!\n\n<details>\n<summary>Solution</summary>\n\n```hypercode\n; Store Celsius temperature\ncelsius = 25\n\n; Convert to Fahrenheit\nfahrenheit = (celsius * 9) / 5 + 32\n\n; Show both\nH \"Celsius:\"\nH celsius\nH \"Fahrenheit:\"\nH fahrenheit\n```\n\n</details>\n\n---\n\n## 🎉 Conclusion\n\nCongratulations! You've successfully:\n\n- Learned all basic math operations\n- Understood order of operations\n- Created calculator programs\n- Combined math with variables\n\n**Key Takeaways:**\n\n- Use +, -, \\*, / for math operations\n- Parentheses control the order\n- Store results in variables\n- Math powers up your programs!\n\n---\n\n## 🚀 What's Next?\n\nReady to level up? Here's your learning path:\n\n1. **Tutorial 04: Loops & Repetition** - Learn to repeat actions\n2. **Tutorial 05: Conditional Logic** - Make decisions in code\n3. **Tutorial 06: Functions** - Create reusable code blocks\n\n**Recommended next step:** Try [Tutorial 04: Loops](tutorial-04-loops.md) to learn about\nrepetition!\n\n---\n\n## 📚 See Also\n\n- [Math Operations Reference](math-ref.md)\n- [Variable Guide](variables-guide.md)\n- [Order of Operations Cheat Sheet](order-of-ops.md)\n- [HyperCode Community Forum](https://forum.hypercode.dev)\n\n---\n\n## 🎓 Glossary\n\n- **Operator**: A symbol that performs an operation (+, -, \\*, /)\n- **Operand**: A value that an operator acts on\n- **Expression**: A combination of operators and operands\n- **Order of Operations**: Rules for which operations happen first\n- **Variable**: A named storage location for data\n\n---\n\n## ❓ FAQ\n\n**Q: Can I do complex math like square roots?** A: Basic HyperCode supports simple\narithmetic. Advanced math functions are covered in Tutorial 15.\n\n**Q: What happens if I divide by zero?** A: HyperCode will show an error. Always check\nyour divisor isn't zero!\n\n**Q: Can I mix text and numbers?** A: Not directly. Numbers and text are different\ntypes. We'll cover type conversion in Tutorial 08.\n\n---\n\n## 🙏 Acknowledgments\n\nSpecial thanks to:\n\n- The HyperCode math team for operator implementation\n- Tutorial testers who found edge cases\n- You, for completing this tutorial!\n\n---\n\n**Ready to continue your journey?** 🚀👊\n\n_Keep calculating!_ 🔢",
+  "metadata": {
+    "headers": [
+      "Tutorial 03: Math Operations 🔢",
+      "🎯 Learning Objectives",
+      "📋 Prerequisites & Checklist",
+      "🧠 Concept Overview",
+      "📊 Visual Representation",
+      "Part 1: Basic Math 💻",
+      "Step 1: Addition",
+      "Step 2: All Operations",
+      "Part 2: Combining Operations 🚀",
+      "🔄 Interactive Demo",
+      "Part 3: Common Pitfalls & Solutions ⚠️",
+      "❌ Common Mistake 1",
+      "✅ Fix 1",
+      "🎯 Challenges",
+      "Challenge 1: Simple Calculator (Easy ⭐)",
+      "Challenge 2: Average Calculator (Medium ⭐⭐)",
+      "Challenge 3: Temperature Converter (Hard ⭐⭐⭐)",
+      "🎉 Conclusion",
+      "🚀 What's Next?",
+      "📚 See Also",
+      "🎓 Glossary",
+      "❓ FAQ",
+      "🙏 Acknowledgments"
+    ]
+  },
+  "relative_path": "src\\duelcode\\tutorial-03-math.md",
+  "id": "017a830ae4b879c612adf0221bde11fe"
+}

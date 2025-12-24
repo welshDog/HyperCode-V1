@@ -1,0 +1,14 @@
+{
+  "file_name": "seed_basic_data.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\new files to check\\backend\\research\\scripts\\seed_basic_data.py",
+  "file_size": 2247,
+  "created": "2025-11-30T20:22:52.766024",
+  "modified": "2025-12-04T00:56:56.991537",
+  "file_type": "code",
+  "content_hash": "8976977008d1dc597456f25d8c1fd0a8",
+  "content_type": "text",
+  "content": "\"\"\"\nSeed the research database with initial data.\n\nThis script is intended to be run from the command line during\ndevelopment to populate the database with a minimal set of entries.\nIt creates a default study and a language version so that the\nschema can be inspected and tested without requiring manual\ninteraction through the API.\n\nUsage::\n\n    python hypercode/backend/research/scripts/seed_basic_data.py\n\nBefore running this script ensure that the environment variable\n``RESEARCH_DATABASE_URL`` points to a writable database.  If the\nvariable isn't set then the script will fall back to using a\nlocal SQLite file ``hypercode_research.db`` in the working directory.\n\"\"\"\n\nfrom datetime import datetime\nfrom hypercode.backend.research import Base, SessionLocal\nfrom hypercode.backend.research.models import Study, LanguageVersion\n\n\ndef main() -> None:\n    # Create the database tables.  In a real deployment you'll\n    # typically use Alembic migrations instead of calling\n    # ``create_all`` directly, but this is convenient for local\n    # development.\n    from hypercode.backend.research.db import engine\n\n    Base.metadata.create_all(bind=engine)\n\n    db = SessionLocal()\n    try:\n        # Add a sample study if none exist\n        if not db.query(Study).first():\n            study = Study(\n                slug=\"nd-devs-hypercode-v0-1\",\n                title=\"Neurodivergent Developers & Early HyperCode\",\n                description=\"Initial research on ADHD/dyslexic devs using early HyperCode syntax.\",\n                status=\"running\",\n                tags=[\"adhd\", \"dyslexia\", \"language-design\"],\n                started_at=datetime.utcnow(),\n            )\n            db.add(study)\n        # Add a sample language version if none exist\n        if not db.query(LanguageVersion).first():\n            lv = LanguageVersion(\n                version=\"0.1.0\",\n                codename=\"Proto-Emoji\",\n                changelog=\"First prototype with emoji-native BNF.\",\n                released_at=datetime.utcnow(),\n            )\n            db.add(lv)\n\n        db.commit()\n        print(\"Seed complete.\")\n    finally:\n        db.close()\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\new files to check\\backend\\research\\scripts\\seed_basic_data.py",
+  "id": "8a80c7ccda584688b5c150a3e6e73462"
+}

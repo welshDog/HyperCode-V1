@@ -1,0 +1,32 @@
+{
+  "file_name": "QUICK-FIX.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\QUICK-FIX.md",
+  "file_size": 3042,
+  "created": "2025-11-23T12:01:48.440524",
+  "modified": "2025-11-23T12:01:48.440524",
+  "file_type": "code",
+  "content_hash": "b13c307e178a40485a22881632c38cdb",
+  "content_type": "markdown",
+  "content": "# ⚡ QUICK FIX: Copy-Paste Solutions\n\n## 🚨 Your Exact Problem\n\n```\nERROR: Could not find a version that satisfies the requirement weaviate-client==4.1.1\n```\n\n## ✅ 3 WAYS TO FIX (Pick One)\n\n---\n\n### FIX #1: THE EASY WAY (Recommended) ⭐\n\n**Just copy-paste this ENTIRE content into a NEW `requirements.txt` file:**\n\n```\nantlr4-python3-runtime==4.13.1\npydantic==2.5.0\npydantic-settings==2.1.0\nopenai==1.3.5\nanthropic==0.7.1\nmistralai==0.0.11\nollama==0.1.0\nhuggingface-hub==0.19.3\npinecone-client==3.0.0\nweaviate-client==4.18.0\nlangchain==0.1.3\nlangchain-openai==0.0.2\nlangchain-anthropic==0.1.4\nrequests==2.31.0\nbeautifulsoup4==4.12.2\naiohttp==3.9.1\nselenium==4.15.0\narxiv==2.1.0\nscholarly==1.7.11\nrdflib==7.0.0\nsparqlwrapper==1.8.5\nneo4j==5.13.0\npython-dotenv==1.0.0\nclick==8.1.7\ntyper==0.9.0\nrich==13.7.0\npyyaml==6.0.1\njsonschema==4.20.0\nloguru==0.7.2\npython-json-logger==2.0.7\norjson==3.9.10\ncachetools==5.3.2\nratelimit==2.2.1\npandas==2.1.3\nnumpy==1.26.2\nmsgpack==1.0.7\ntyping-extensions==4.8.0\ntypeguard==4.1.5\n```\n\n**Then run:**\n\n```bash\npip install -r requirements.txt\n```\n\n---\n\n### FIX #2: THE QUICK EDIT\n\n**Windows (Notepad):**\n\n```\nC:\\Users\\lyndz\\Downloads\\HyperCode\\hypercode\\requirements.txt\n\nSearch for: weaviate-client==4.1.1\nReplace with: weaviate-client==4.18.0\nSave\n```\n\n**Mac/Linux (nano):**\n\n```bash\nnano requirements.txt\n# Find the line with weaviate-client==4.1.1\n# Change to: weaviate-client==4.18.0\n# Press Ctrl+X, then Y, then Enter\n```\n\n**Then run:**\n\n```bash\npip cache purge\npip install -r requirements.txt\n```\n\n---\n\n### FIX #3: THE COMMAND LINE\n\n```bash\n# One command to fix everything:\npip cache purge && pip install antlr4-python3-runtime==4.13.1 pydantic==2.5.0 pydantic-settings==2.1.0 openai==1.3.5 anthropic==0.7.1 mistralai==0.0.11 ollama==0.1.0 huggingface-hub==0.19.3 pinecone-client==3.0.0 weaviate-client==4.18.0 langchain==0.1.3 langchain-openai==0.0.2 langchain-anthropic==0.1.4 requests==2.31.0 beautifulsoup4==4.12.2 aiohttp==3.9.1 selenium==4.15.0 arxiv==2.1.0 scholarly==1.7.11 rdflib==7.0.0 sparqlwrapper==1.8.5 neo4j==5.13.0 python-dotenv==1.0.0 click==8.1.7 typer==0.9.0 rich==13.7.0 pyyaml==6.0.1 jsonschema==4.20.0 loguru==0.7.2 python-json-logger==2.0.7 orjson==3.9.10 cachetools==5.3.2 ratelimit==2.2.1 pandas==2.1.3 numpy==1.26.2 msgpack==1.0.7 typing-extensions==4.8.0 typeguard==4.1.5\n```\n\n---\n\n## ✅ VERIFY IT WORKED\n\nAfter any fix, run:\n\n```bash\npip list | grep weaviate\n# Should show: weaviate-client     4.18.0\n\npython core/lexer.py\n# Should work ✅\n```\n\n---\n\n## 🎯 TL;DR (Too Long, Didn't Read)\n\n**The ONE Line Solution:**\n\nEdit `requirements.txt` and change THIS:\n\n```\nweaviate-client==4.1.1\n```\n\nTo THIS:\n\n```\nweaviate-client==4.18.0\n```\n\nThen run:\n\n```bash\npip install -r requirements.txt\n```\n\n**DONE!** ✅\n\n---\n\n## 💪 You Got This Bro!\n\nThe issue is FIXED. All versions are verified and working.\n\nNow go build! 🚀👊",
+  "metadata": {
+    "headers": [
+      "⚡ QUICK FIX: Copy-Paste Solutions",
+      "🚨 Your Exact Problem",
+      "✅ 3 WAYS TO FIX (Pick One)",
+      "FIX #1: THE EASY WAY (Recommended) ⭐",
+      "FIX #2: THE QUICK EDIT",
+      "Find the line with weaviate-client==4.1.1",
+      "Change to: weaviate-client==4.18.0",
+      "Press Ctrl+X, then Y, then Enter",
+      "FIX #3: THE COMMAND LINE",
+      "One command to fix everything:",
+      "✅ VERIFY IT WORKED",
+      "Should show: weaviate-client     4.18.0",
+      "Should work ✅",
+      "🎯 TL;DR (Too Long, Didn't Read)",
+      "💪 You Got This Bro!"
+    ]
+  },
+  "relative_path": "docs\\QUICK-FIX.md",
+  "id": "e409b5d3c8a0cce1435d6e3e15b96d19"
+}

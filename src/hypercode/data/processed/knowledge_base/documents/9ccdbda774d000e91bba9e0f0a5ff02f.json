@@ -1,0 +1,21 @@
+{
+  "file_name": "SECURITY.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\SECURITY.md",
+  "file_size": 1650,
+  "created": "2025-11-17T00:10:54.902255",
+  "modified": "2025-11-26T02:00:12.344826",
+  "file_type": "code",
+  "content_hash": "8d85964d4aa83afde3f51d2731baaa4f",
+  "content_type": "markdown",
+  "content": "# Security Policy\n\n## Supported Versions\n\nThis section outlines which versions of HyperCode are currently supported with security updates.\n\n| Version | Supported          |\n| ------- | ------------------ |\n| 1.0.x   | :white_check_mark: |\n| < 1.0   | :x:                |\n\n## Reporting a Vulnerability\n\nWe take the security of HyperCode seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.\n\nTo report a security vulnerability, please use the **Private Vulnerability Reporting** feature on GitHub. This is the most secure and efficient way to report a vulnerability.\n\n1.  Navigate to the [Security tab](https://github.com/welshDog/hypercode/security) of the HyperCode repository.\n2.  Click on \"Report a vulnerability\".\n3.  Fill out the form with the necessary details, including a description of the vulnerability, steps to reproduce it, and its potential impact.\n\n**Please do not report security vulnerabilities through public GitHub issues.**\n\n**(Note to project maintainers: To enable this feature, go to your repository's \"Settings\" > \"Code security and analysis\" and enable \"Private vulnerability reporting\".)**\n\nWe will acknowledge your report within 48 hours and will work with you to understand and resolve the issue.\n\n## Disclosure Policy\n\nAfter a security vulnerability has been reported, we will coordinate with the reporter on a timeline for public disclosure. We prefer to fully disclose the vulnerability once a fix has been released. We will credit the reporter for their discovery unless they prefer to remain anonymous.",
+  "metadata": {
+    "headers": [
+      "Security Policy",
+      "Supported Versions",
+      "Reporting a Vulnerability",
+      "Disclosure Policy"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\SECURITY.md",
+  "id": "9ccdbda774d000e91bba9e0f0a5ff02f"
+}

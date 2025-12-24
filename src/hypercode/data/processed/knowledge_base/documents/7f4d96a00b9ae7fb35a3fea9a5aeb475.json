@@ -1,0 +1,14 @@
+{
+  "file_name": "console.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\console.py",
+  "file_size": 1718,
+  "created": "2025-12-01T01:58:32.563359",
+  "modified": "2025-12-01T01:58:32.577674",
+  "file_type": "code",
+  "content_hash": "4ef6210b389448a0b5883f2ac7d8d261",
+  "content_type": "text",
+  "content": "\"\"\"\n    pygments.console\n    ~~~~~~~~~~~~~~~~\n\n    Format colored console output.\n\n    :copyright: Copyright 2006-2024 by the Pygments team, see AUTHORS.\n    :license: BSD, see LICENSE for details.\n\"\"\"\n\nesc = \"\\x1b[\"\n\ncodes = {}\ncodes[\"\"] = \"\"\ncodes[\"reset\"] = esc + \"39;49;00m\"\n\ncodes[\"bold\"] = esc + \"01m\"\ncodes[\"faint\"] = esc + \"02m\"\ncodes[\"standout\"] = esc + \"03m\"\ncodes[\"underline\"] = esc + \"04m\"\ncodes[\"blink\"] = esc + \"05m\"\ncodes[\"overline\"] = esc + \"06m\"\n\ndark_colors = [\"black\", \"red\", \"green\", \"yellow\", \"blue\",\n               \"magenta\", \"cyan\", \"gray\"]\nlight_colors = [\"brightblack\", \"brightred\", \"brightgreen\", \"brightyellow\", \"brightblue\",\n                \"brightmagenta\", \"brightcyan\", \"white\"]\n\nx = 30\nfor dark, light in zip(dark_colors, light_colors):\n    codes[dark] = esc + \"%im\" % x\n    codes[light] = esc + \"%im\" % (60 + x)\n    x += 1\n\ndel dark, light, x\n\ncodes[\"white\"] = codes[\"bold\"]\n\n\ndef reset_color():\n    return codes[\"reset\"]\n\n\ndef colorize(color_key, text):\n    return codes[color_key] + text + codes[\"reset\"]\n\n\ndef ansiformat(attr, text):\n    \"\"\"\n    Format ``text`` with a color and/or some attributes::\n\n        color       normal color\n        *color*     bold color\n        _color_     underlined color\n        +color+     blinking color\n    \"\"\"\n    result = []\n    if attr[:1] == attr[-1:] == '+':\n        result.append(codes['blink'])\n        attr = attr[1:-1]\n    if attr[:1] == attr[-1:] == '*':\n        result.append(codes['bold'])\n        attr = attr[1:-1]\n    if attr[:1] == attr[-1:] == '_':\n        result.append(codes['underline'])\n        attr = attr[1:-1]\n    result.append(codes[attr])\n    result.append(text)\n    result.append(codes['reset'])\n    return ''.join(result)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\pygments\\console.py",
+  "id": "7f4d96a00b9ae7fb35a3fea9a5aeb475"
+}

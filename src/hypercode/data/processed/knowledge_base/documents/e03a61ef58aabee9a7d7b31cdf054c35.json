@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\config\\requirements.txt",
+  "file_size": 105,
+  "created": "2025-11-26T23:37:35.370546",
+  "modified": "2025-11-26T23:37:35.370546",
+  "file_type": "code",
+  "content_hash": "ef1fab1cc6bdaa0280532fb3f4c8900d",
+  "content_type": "text",
+  "content": "black>=22.1.0\nflake8>=4.0.0\nmypy>=0.930\n# Development dependencies\npytest>=7.0.0\npytest-cov>=3.0.0\n",
+  "metadata": {},
+  "relative_path": "hypercode\\config\\requirements.txt",
+  "id": "e03a61ef58aabee9a7d7b31cdf054c35"
+}

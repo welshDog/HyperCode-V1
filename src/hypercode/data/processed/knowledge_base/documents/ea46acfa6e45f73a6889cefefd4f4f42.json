@@ -1,0 +1,32 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\docs\\README.md",
+  "file_size": 1742,
+  "created": "2025-11-15T15:54:40.983445",
+  "modified": "2025-11-17T18:15:44.590688",
+  "file_type": "code",
+  "content_hash": "5ccc99d97d7a38188a406e96f28d1836",
+  "content_type": "markdown",
+  "content": "# 🚀 hypercode\n\n> **🌟 [Our Vision & Mission →](VISION.md)** - Understand the philosophy and future of\n> HyperCode\n\nHyperCode: Neurodivergent-First Programming Language with AI Compatibility\n\n## ✨ Features\n\n- **Neurodivergent-First Design**: Built with accessibility in mind\n- **AI Compatibility**: Seamless integration with LLMs\n- **Multi-Backend**: Compile to various targets (Python, JavaScript, WebAssembly, etc.)\n- **Extensible**: Easy to add new language features and backends\n\n## 🚀 Quick Start\n\n```bash\n# Clone the repository\ngit clone https://github.com/welshDog/hypercode.git\ncd hypercode\n\n# Set up virtual environment\npython -m venv venv\nsource venv/bin/activate  # On Windows: venv\\Scripts\u0007ctivate\n\n# Install dependencies\npip install -r requirements.txt\n\n# Run the HyperCode REPL\npython -m hypercode\n```\n\n## 📚 Documentation\n\nCheck out our [documentation](docs/README.md) for detailed usage instructions.\n\n## 🤝 Contributing\n\nWe welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for\ndetails.\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for\ndetails.\n\n## ♿ Accessibility Features\n\nHyperCode is designed with neurodiversity in mind:\n\n### Visual Design\n\n- High contrast color schemes\n- Dyslexia-friendly fonts (via IDE integration)\n- Syntax highlighting optimized for color blindness\n\n### Cognitive Features\n\n- Predictable, consistent syntax\n- Minimal cognitive load\n- Clear error messages with visual aids\n\n### Customization\n\n- Adjustable font sizes\n- Customizable keybindings\n- Screen reader support\n\n### Getting Help\n\n- [Accessibility Guide](docs/accessibility.md)\n- Request accommodations via [Discord](https://discord.gg/hypercode)",
+  "metadata": {
+    "headers": [
+      "🚀 hypercode",
+      "✨ Features",
+      "🚀 Quick Start",
+      "Clone the repository",
+      "Set up virtual environment",
+      "Install dependencies",
+      "Run the HyperCode REPL",
+      "📚 Documentation",
+      "🤝 Contributing",
+      "📄 License",
+      "♿ Accessibility Features",
+      "Visual Design",
+      "Cognitive Features",
+      "Customization",
+      "Getting Help"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\docs\\README.md",
+  "id": "ea46acfa6e45f73a6889cefefd4f4f42"
+}

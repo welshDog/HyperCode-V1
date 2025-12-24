@@ -1,0 +1,14 @@
+{
+  "file_name": "test_intent_blocks.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\test_intent_blocks.py",
+  "file_size": 1638,
+  "created": "2025-11-19T14:48:02.712260",
+  "modified": "2025-11-19T16:11:02.875539",
+  "file_type": "code",
+  "content_hash": "5067ab70587ffef8fc22222f9702b557",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"Test script for Intent Blocks implementation\"\"\"\n\nimport sys\n\nsys.path.append(\"src\")\n\nfrom hypercode.core.lexer import Lexer\nfrom hypercode.core.parser import Parser\nfrom hypercode.core.ast import Intent\n\n\ndef test_intent_block() -> None:\n    \"\"\"Test parsing of intent blocks\"\"\"\n    code = \"\"\"\n    intent \"Authenticate user with GitHub credentials\" {\n        var token = \"github_token\";\n        var user = fetch_user(token);\n        print(\"User authenticated: \" + user.name);\n    }\n    \"\"\"\n\n    print(\"Testing Intent Block parsing...\")\n    print(\"Input code:\")\n    print(code)\n\n    # Lex the code\n    lexer = Lexer(code)\n    tokens = lexer.tokenize()\n\n    print(\"\\nTokens:\")\n    for token in tokens:\n        print(f\"  {token}\")\n\n    # Parse the tokens\n    parser = Parser(tokens)\n    statements = parser.parse()\n\n    print(\"\\nParsed statements:\")\n    for stmt in statements:\n        print(f\"  {type(stmt).__name__}: {stmt}\")\n        if isinstance(stmt, Intent):\n            print(f\"    Description: {stmt.description}\")\n            print(f\"    Statements: {len(stmt.statements)}\")\n\n    # Verify we got an Intent statement\n    assert len(statements) == 1, f\"Expected 1 statement, got {len(statements)}\"\n    assert isinstance(\n        statements[0], Intent\n    ), f\"Expected Intent statement, got {type(statements[0])}\"\n    assert statements[0].description == \"Authenticate user with GitHub credentials\"\n    assert len(statements[0].statements) == 3\n\n    print(\"\\n✅ Intent Block parsing test passed!\")\n\n\nif __name__ == \"__main__\":\n    test_intent_block()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\test_intent_blocks.py",
+  "id": "aa5f900a6536ab4698078c4b45377d20"
+}

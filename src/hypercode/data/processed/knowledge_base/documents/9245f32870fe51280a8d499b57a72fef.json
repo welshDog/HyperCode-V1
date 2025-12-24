@@ -1,0 +1,14 @@
+{
+  "file_name": "demo_hello.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\demo_hello.hc",
+  "file_size": 223,
+  "created": "2025-11-25T17:55:14.442753",
+  "modified": "2025-11-25T17:55:14.486262",
+  "file_type": "other",
+  "content_hash": "e4f2555a79556d268f6b45268d0bb6d8",
+  "content_type": "text/unknown",
+  "content": "// Demo 1: Hello World - The Simplest HyperCode Program\n// This demonstrates basic print statements\n\nprint(\"🌟 Hello, HyperCode!\");\nprint(\"Welcome to neurodivergent-first programming!\");\nprint(\"This code actually runs!\");",
+  "metadata": {},
+  "relative_path": "examples\\demo_hello.hc",
+  "id": "9245f32870fe51280a8d499b57a72fef"
+}

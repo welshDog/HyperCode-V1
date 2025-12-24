@@ -1,0 +1,14 @@
+{
+  "file_name": "errors.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\errors.py",
+  "file_size": 642,
+  "created": "2025-12-01T01:58:33.306042",
+  "modified": "2025-12-01T01:58:33.306664",
+  "file_type": "code",
+  "content_hash": "b7ed359477b4d6beb67ce0e6151da181",
+  "content_type": "text",
+  "content": "class ConsoleError(Exception):\n    \"\"\"An error in console operation.\"\"\"\n\n\nclass StyleError(Exception):\n    \"\"\"An error in styles.\"\"\"\n\n\nclass StyleSyntaxError(ConsoleError):\n    \"\"\"Style was badly formatted.\"\"\"\n\n\nclass MissingStyle(StyleError):\n    \"\"\"No such style.\"\"\"\n\n\nclass StyleStackError(ConsoleError):\n    \"\"\"Style stack is invalid.\"\"\"\n\n\nclass NotRenderableError(ConsoleError):\n    \"\"\"Object is not renderable.\"\"\"\n\n\nclass MarkupError(ConsoleError):\n    \"\"\"Markup was badly formatted.\"\"\"\n\n\nclass LiveError(ConsoleError):\n    \"\"\"Error related to Live display.\"\"\"\n\n\nclass NoAltScreen(ConsoleError):\n    \"\"\"Alt screen mode was required.\"\"\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\errors.py",
+  "id": "8abf62e97384044cb80307b44876f9c7"
+}

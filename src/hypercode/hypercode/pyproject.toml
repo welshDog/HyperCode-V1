@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypercode"
+version = "0.1.0"
+description = "HyperCode programming language implementation"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.1.0",
+    "flake8>=4.0.0",
+    "mypy>=0.930",
+    "pytest-cov>=3.0.0",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+include = '\.pyi?$'

@@ -1,0 +1,14 @@
+{
+  "file_name": "requirements.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\scripts\\requirements.txt",
+  "file_size": 133,
+  "created": "2025-12-03T22:29:59.564622",
+  "modified": "2025-12-03T22:30:02.638963",
+  "file_type": "code",
+  "content_hash": "9374f68b19c559c0be85b852a46a6e16",
+  "content_type": "text",
+  "content": "PyPDF2>=3.0.0\npython-docx>=0.8.11\nmarkdown>=3.3.0\nbeautifulsoup4>=4.12.0\npandas>=2.0.0\npython-frontmatter>=1.0.0\ntqdm>=4.66.0\n",
+  "metadata": {},
+  "relative_path": "requirements.txt",
+  "id": "b4ef698db8ca845e5845c4618278f29a"
+}

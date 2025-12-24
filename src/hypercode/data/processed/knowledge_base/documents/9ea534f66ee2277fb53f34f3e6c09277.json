@@ -1,0 +1,14 @@
+{
+  "file_name": "datetime.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\datetime.py",
+  "file_size": 242,
+  "created": "2025-12-01T01:58:31.417120",
+  "modified": "2025-12-01T01:58:31.419483",
+  "file_type": "code",
+  "content_hash": "913ab688b48547f157b5d13b3e854813",
+  "content_type": "text",
+  "content": "\"\"\"For when pip wants to check the date or time.\n\"\"\"\n\nimport datetime\n\n\ndef today_is_later_than(year: int, month: int, day: int) -> bool:\n    today = datetime.date.today()\n    given = datetime.date(year, month, day)\n\n    return today > given\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\datetime.py",
+  "id": "9ea534f66ee2277fb53f34f3e6c09277"
+}

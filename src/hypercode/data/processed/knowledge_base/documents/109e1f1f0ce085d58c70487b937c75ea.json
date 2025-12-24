@@ -1,0 +1,33 @@
+{
+  "file_name": "CHANGELOG.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\CHANGELOG.md",
+  "file_size": 2021,
+  "created": "2025-11-30T20:22:52.644125",
+  "modified": "2025-11-30T20:22:52.644125",
+  "file_type": "code",
+  "content_hash": "75e62f3a1fdc064c812b16e3d9b4f342",
+  "content_type": "markdown",
+  "content": "# Changelog\n\nAll notable changes to this project will be documented in this file.\n\nThe format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\nand this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n## [Unreleased]\n\n### Added\n- Initial project setup and repository structure\n- Lexer implementation for HyperCode syntax tokenization\n- Parser foundation for AST generation\n- Core interpreter for executing HyperCode programs\n- Example programs (hello, fibonacci, todo)\n- CI/CD pipeline with GitHub Actions\n- Comprehensive CONTRIBUTING.md with neurodivergent-friendly guidelines\n- Security policy for vulnerability reporting\n- This changelog\n\n### Changed\n- (None yet)\n\n### Deprecated\n- (None yet)\n\n### Removed\n- (None yet)\n\n### Fixed\n- (None yet)\n\n### Security\n- (None yet)\n\n---\n\n## [0.1.0] - 2025-11-26\n\n### Added\n- ✨ Initial release of HyperCode\n- 📝 Lexer for basic tokenization\n- 🔧 Parser for syntax analysis\n- 🚀 Interpreter for program execution\n- 🧪 Test suite with pytest\n- 📚 Documentation and README\n- 🤝 Community guidelines\n\n### Known Issues\n- Limited error handling (improvement planned)\n- Parser doesn't handle all edge cases yet\n- Performance optimization pending\n\n---\n\n## How to Update This File\n\n**After Each PR Merge:**\n\n1. Move items from [Unreleased] to a new version section\n2. Add the date in YYYY-MM-DD format\n3. Use these categories:\n   - **Added**: New features\n   - **Changed**: Modifications to existing features\n   - **Deprecated**: Features to be removed soon\n   - **Removed**: Deleted features\n   - **Fixed**: Bug fixes\n   - **Security**: Security fixes\n\n**Example:**\n```markdown\n## [0.2.0] - 2025-12-15\n\n### Added\n- New syntax for function definitions\n- Better error messages\n\n### Fixed\n- Lexer crash on unicode characters (#42)\n\n### Security\n- Sanitize user input in REPL\n```\n\n---\n\n**Questions?** See [CONTRIBUTING.md](./CONTRIBUTING.md)",
+  "metadata": {
+    "headers": [
+      "Changelog",
+      "[Unreleased]",
+      "Added",
+      "Changed",
+      "Deprecated",
+      "Removed",
+      "Fixed",
+      "Security",
+      "[0.1.0] - 2025-11-26",
+      "Added",
+      "Known Issues",
+      "How to Update This File",
+      "[0.2.0] - 2025-12-15",
+      "Added",
+      "Fixed",
+      "Security"
+    ]
+  },
+  "relative_path": "hypercode\\docs\\CHANGELOG.md",
+  "id": "109e1f1f0ce085d58c70487b937c75ea"
+}

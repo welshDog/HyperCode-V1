@@ -1,0 +1,14 @@
+{
+  "file_name": "LICENSE.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\LICENSE.txt",
+  "file_size": 1093,
+  "created": "2025-12-01T01:58:33.839789",
+  "modified": "2025-12-01T01:58:33.841588",
+  "file_type": "code",
+  "content_hash": "63ec52baf95163b597008bb46db68030",
+  "content_type": "text",
+  "content": "Copyright (c) 2008-present The pip developers (see AUTHORS.txt file)\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\LICENSE.txt",
+  "id": "3bbbc734fc5fa84661ccc802c8621260"
+}

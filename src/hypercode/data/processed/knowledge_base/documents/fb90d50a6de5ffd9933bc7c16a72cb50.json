@@ -1,0 +1,26 @@
+{
+  "file_name": "installation.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\getting-started\\installation.md",
+  "file_size": 537,
+  "created": "2025-11-23T12:01:48.455702",
+  "modified": "2025-11-23T12:01:48.455702",
+  "file_type": "code",
+  "content_hash": "cf215946efcb70aff0626ce9f2813a64",
+  "content_type": "markdown",
+  "content": "# Installation\n\n## Prerequisites\n\n- Python 3.8 or later\n- pip (Python package manager)\n\n## Installation Methods\n\n### Using pip\n\n```bash\npip install hypercode\n```\n\n### From Source\n\n```bash\n# Clone the repository\ngit clone https://github.com/welshDog/hypercode.git\ncd hypercode\n\n# Install in development mode\npip install -e \".[dev]\"\n```\n\n## Verifying Installation\n\n```bash\nhypercode --version\n```\n\n## Next Steps\n\n- [Write your first program](first-program.md)\n- [Explore examples](../examples/hello.md)",
+  "metadata": {
+    "headers": [
+      "Installation",
+      "Prerequisites",
+      "Installation Methods",
+      "Using pip",
+      "From Source",
+      "Clone the repository",
+      "Install in development mode",
+      "Verifying Installation",
+      "Next Steps"
+    ]
+  },
+  "relative_path": "docs\\getting-started\\installation.md",
+  "id": "fb90d50a6de5ffd9933bc7c16a72cb50"
+}

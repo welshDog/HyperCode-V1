@@ -1,0 +1,14 @@
+{
+  "file_name": "run_lexer.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\run_lexer.py",
+  "file_size": 1363,
+  "created": "2025-11-26T23:37:35.546882",
+  "modified": "2025-12-04T00:56:57.411699",
+  "file_type": "code",
+  "content_hash": "232fbb18687c37d92803bf29ce767dd1",
+  "content_type": "text",
+  "content": "# run_lexer.py\nimport sys\nfrom pathlib import Path\n\n# Add the project root to the Python path\nproject_root = str(Path(__file__).parent)\nif project_root not in sys.path:\n    sys.path.insert(0, project_root)\n\nfrom src.core.lexer import Lexer\n\n\ndef run_lexer(source_file: str):\n    \"\"\"Run the lexer on a source file and print the tokens.\"\"\"\n    try:\n        with open(source_file, \"r\") as f:\n            source = f.read()\n    except FileNotFoundError:\n        print(f\"Error: File '{source_file}' not found.\")\n        return\n\n    print(f\"Lexing {source_file}...\\n\")\n    lexer = Lexer(source)\n    tokens = lexer.scan_tokens()\n\n    # Print tokens\n    print(\"Tokens:\")\n    print(\"-\" * 80)\n    for token in tokens:\n        print(\n            f\"{token.line:4d}:{token.column:<3d} {token.type.name:<15} {token.lexeme!r}\"\n        )\n\n    # Print any errors\n    if lexer.errors:\n        print(\"\\nErrors:\")\n        print(\"-\" * 80)\n        for error in lexer.errors:\n            print(f\"Line {error.line}, Column {error.column}: {error.message}\")\n\n    print(f\"\\nTotal tokens: {len(tokens)}\")\n    if lexer.errors:\n        print(f\"Errors found: {len(lexer.errors)}\")\n\n\nif __name__ == \"__main__\":\n    if len(sys.argv) != 2:\n        print(\"Usage: python run_lexer.py <source_file>\")\n        sys.exit(1)\n\n    run_lexer(sys.argv[1])\n",
+  "metadata": {},
+  "relative_path": "hypercode\\run_lexer.py",
+  "id": "16b2a8ccab9e8391c9bd409c2ff9f13e"
+}

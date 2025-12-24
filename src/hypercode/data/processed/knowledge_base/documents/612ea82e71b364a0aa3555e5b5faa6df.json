@@ -1,0 +1,14 @@
+{
+  "file_name": "command_context.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\cli\\command_context.py",
+  "file_size": 774,
+  "created": "2025-12-01T01:58:29.961557",
+  "modified": "2025-12-01T01:58:29.963341",
+  "file_type": "code",
+  "content_hash": "fd633c0517dc6329e5de277a63617387",
+  "content_type": "text",
+  "content": "from contextlib import ExitStack, contextmanager\nfrom typing import ContextManager, Generator, TypeVar\n\n_T = TypeVar(\"_T\", covariant=True)\n\n\nclass CommandContextMixIn:\n    def __init__(self) -> None:\n        super().__init__()\n        self._in_main_context = False\n        self._main_context = ExitStack()\n\n    @contextmanager\n    def main_context(self) -> Generator[None, None, None]:\n        assert not self._in_main_context\n\n        self._in_main_context = True\n        try:\n            with self._main_context:\n                yield\n        finally:\n            self._in_main_context = False\n\n    def enter_context(self, context_provider: ContextManager[_T]) -> _T:\n        assert self._in_main_context\n\n        return self._main_context.enter_context(context_provider)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\cli\\command_context.py",
+  "id": "612ea82e71b364a0aa3555e5b5faa6df"
+}

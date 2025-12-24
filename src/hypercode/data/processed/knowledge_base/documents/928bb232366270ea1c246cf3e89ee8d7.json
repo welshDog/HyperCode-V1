@@ -1,0 +1,21 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\architecture\\README.md",
+  "file_size": 506,
+  "created": "2025-12-04T00:09:22.923125",
+  "modified": "2025-12-04T00:22:56.105858",
+  "file_type": "code",
+  "content_hash": "acd9eabe248f2c754ef7bde356038a2a",
+  "content_type": "markdown",
+  "content": "# System Architecture\n\nTechnical documentation of HyperCode's architecture and design decisions.\n\n## Overview\n\n- [Architecture Overview](architecture/ARCHITECTURE.md) - High-level system design\n- [Implementation Guide](HyperCode_Implementation_Guide.md)\n- [Knowledge Base Architecture](knowledge-base-architecture.md)\n\n## Components\n\n- Parser\n- Compiler\n- Runtime\n- Standard Library\n\n## Related\n\n- [Core Concepts](../concepts/0-vision.md)\n- [API Reference](reference/API_REFERENCE.md)",
+  "metadata": {
+    "headers": [
+      "System Architecture",
+      "Overview",
+      "Components",
+      "Related"
+    ]
+  },
+  "relative_path": "docs\\architecture\\README.md",
+  "id": "928bb232366270ea1c246cf3e89ee8d7"
+}

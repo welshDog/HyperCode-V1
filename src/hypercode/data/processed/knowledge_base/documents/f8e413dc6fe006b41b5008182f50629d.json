@@ -1,0 +1,20 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\concepts\\README.md",
+  "file_size": 526,
+  "created": "2025-12-04T00:09:22.903440",
+  "modified": "2025-12-04T00:22:56.475170",
+  "file_type": "code",
+  "content_hash": "51f3be644f2d8edadd408ae76e5a6fce",
+  "content_type": "markdown",
+  "content": "# Core Concepts\n\nDeep dives into HyperCode's design philosophy and architecture.\n\n## Key Topics\n\n- [Vision & Mission](0-vision.md) - What is HyperCode and why it exists\n- [Neurodivergent-First Design](HyperCode_NeuroFirst_Design.md)\n- [Research Foundation](HyperCode-Research-Foundation.md)\n- [Esoteric Language Influences](HyperCode_Esoteric_Study.md)\n\n## Related\n\n- [Roadmap](../roadmaps/1-roadmap.md) - Upcoming features and milestones\n- [Architecture](architecture/ARCHITECTURE.md) - System design overview",
+  "metadata": {
+    "headers": [
+      "Core Concepts",
+      "Key Topics",
+      "Related"
+    ]
+  },
+  "relative_path": "docs\\concepts\\README.md",
+  "id": "f8e413dc6fe006b41b5008182f50629d"
+}

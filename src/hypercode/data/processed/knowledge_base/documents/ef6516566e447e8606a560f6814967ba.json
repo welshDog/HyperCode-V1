@@ -1,0 +1,14 @@
+{
+  "file_name": "__main__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\__main__.py",
+  "file_size": 455,
+  "created": "2025-11-23T12:01:48.551180",
+  "modified": "2025-11-23T12:01:48.551180",
+  "file_type": "code",
+  "content_hash": "28e5e973ce609822dc2a2ed15d6de606",
+  "content_type": "text",
+  "content": "import sys\n\nfrom .repl import run, run_repl\n\n\ndef main():\n    if len(sys.argv) > 1:\n        filepath = sys.argv[1]\n        try:\n            with open(filepath, \"r\", encoding=\"utf-8\") as f:\n                source = f.read()\n            run(source)\n        except FileNotFoundError:\n            print(f\"Error: File not found at '{filepath}'\")\n            sys.exit(1)\n    else:\n        run_repl()\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\__main__.py",
+  "id": "ef6516566e447e8606a560f6814967ba"
+}

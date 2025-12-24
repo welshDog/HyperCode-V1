@@ -1,0 +1,14 @@
+{
+  "file_name": "package_data.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\package_data.py",
+  "file_size": 21,
+  "created": "2025-12-01T01:58:32.122686",
+  "modified": "2025-12-01T01:58:32.123670",
+  "file_type": "code",
+  "content_hash": "c3dfa00426f33a0ab9a2309e1bab1dc9",
+  "content_type": "text",
+  "content": "__version__ = \"3.10\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\idna\\package_data.py",
+  "id": "548d37849b58c8051bff87835008b593"
+}

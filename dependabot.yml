@@ -1,0 +1,55 @@
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "03:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "welshDog"
+    labels:
+      - "dependencies"
+      - "python"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: "chore(deps):"
+      prefix-development: "chore(deps-dev):"
+      include: "scope"
+    pull-request-branch-name:
+      separator: "/"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "welshDog"
+    labels:
+      - "dependencies"
+      - "ci-cd"
+    commit-message:
+      prefix: "chore(ci):"
+      include: "scope"
+
+  # Security updates (daily for critical patches)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "02:00"
+    labels:
+      - "security"
+      - "critical"
+    reviewers:
+      - "welshDog"
+    open-pull-requests-limit: 3
+    allow:
+      - dependency-type: "direct"

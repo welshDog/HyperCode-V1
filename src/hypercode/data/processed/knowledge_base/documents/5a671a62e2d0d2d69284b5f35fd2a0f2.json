@@ -1,0 +1,14 @@
+{
+  "file_name": "perplexity_space_export_20251118_013736.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\config\\perplexity_space_export_20251118_013736.json",
+  "file_size": 1343,
+  "created": "2025-11-23T12:01:48.520775",
+  "modified": "2025-11-23T11:56:45.911699",
+  "file_type": "code",
+  "content_hash": "2b1d5d72b7c1af29408ce676ff796f64",
+  "content_type": "text",
+  "content": "{\n  \"import_info\": {\n    \"source\": \"Perplexity Space - HyperCode Research\",\n    \"export_date\": \"2025-11-18T01:37:36.675624\",\n    \"instructions\": \"Fill in the documents array with your research data\"\n  },\n  \"documents\": [\n    {\n      \"title\": \"Example: HyperCode Core Concepts\",\n      \"content\": \"Paste your research content here about HyperCode's core concepts...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"hypercode\", \"concepts\", \"overview\"],\n      \"category\": \"core-concepts\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Neurodivergent Design Research\",\n      \"content\": \"Paste findings about neurodivergent-first design principles...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"neurodivergent\", \"design\", \"accessibility\", \"adhd\", \"autism\"],\n      \"category\": \"accessibility\",\n      \"date\": \"2025-11-18\"\n    },\n    {\n      \"title\": \"Example: Multi-Backend Architecture\",\n      \"content\": \"Paste research about compilation backends and architecture...\",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"architecture\", \"backend\", \"compilation\", \"quantum\"],\n      \"category\": \"technical\",\n      \"date\": \"2025-11-18\"\n    }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "config\\perplexity_space_export_20251118_013736.json",
+  "id": "5a671a62e2d0d2d69284b5f35fd2a0f2"
+}

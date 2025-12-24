@@ -1,0 +1,31 @@
+{
+  "file_name": "ARCHITECTURE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\ARCHITECTURE.md",
+  "file_size": 3425,
+  "created": "2025-11-26T23:37:35.382592",
+  "modified": "2025-11-26T23:37:35.383599",
+  "file_type": "code",
+  "content_hash": "0d952a4b87ed0f8b5abb32630de43b95",
+  "content_type": "markdown",
+  "content": "# HyperCode Architecture & CodeMap\n\n## System Overview\n\n```mermaid\ngraph TD\n    subgraph HyperCode Core\n        A[Language Server] --> B[Parser]\n        B --> C[AST]\n        C --> D[Semantic Analyzer]\n        D --> E[Code Generator]\n    end\n    \n    subgraph AI Integration\n        F[AI Gateway] --> G[LLM Adapters]\n        G --> H[OpenAI]\n        G --> I[Claude]\n        G --> J[Mistral]\n        F --> K[Prompt Management]\n        F --> L[Context Management]\n    end\n    \n    subgraph Developer Experience\n        M[VSCode Extension] --> N[CodeLens]\n        M --> O[IntelliSense]\n        M --> P[Debugger]\n        Q[Web Playground] --> R[REPL]\n        Q --> S[Visual Editor]\n    end\n    \n    A <--> F\n    M <--> A\n    Q <--> A\n```\n\n## Core Components\n\n### 1. Language Server\n- **Purpose**: Implements the Language Server Protocol (LSP)\n- **Features**:\n  - Real-time syntax checking\n  - Code completion\n  - Go-to-definition\n  - Find references\n  - Hover documentation\n\n### 2. AI Gateway\n- **Purpose**: Central hub for all AI/ML operations\n- **Components**:\n  - Model routing and load balancing\n  - Prompt templating\n  - Response caching\n  - Rate limiting\n  - Fallback mechanisms\n\n### 3. DuelCode Framework\n- **Purpose**: Dual-representation programming system\n- **Features**:\n  - Visual and textual code synchronization\n  - Bidirectional transformation\n  - Validation rules\n  - Template system\n\n## Data Flow\n\n```mermaid\nsequenceDiagram\n    participant D as Developer\n    participant E as Editor\n    participant L as Language Server\n    participant A as AI Gateway\n    participant M as Models\n    \n    D->>E: Writes code\n    E->>L: TextDocument/didChange\n    L->>A: Request analysis\n    A->>M: Generate completion\n    M-->>A: Return completion\n    A-->>L: Return suggestions\n    L-->>E: Show completions\n    E->>D: Display results\n```\n\n## Development Workflow\n\n1. **Local Development**\n   - Write code in VSCode with HyperCode extension\n   - Get real-time AI assistance\n   - Run tests locally\n\n2. **CI/CD Pipeline**\n   - Automated testing\n   - Performance benchmarking\n   - Documentation generation\n   - Container builds\n\n3. **Deployment**\n   - Containerized services\n   - Kubernetes orchestration\n   - Auto-scaling\n   - Monitoring and logging\n\n## Integration Points\n\n### External Services\n- **GitHub/GitLab**: Source control\n- **Docker**: Containerization\n- **Kubernetes**: Orchestration\n- **Prometheus**: Monitoring\n- **Grafana**: Visualization\n\n## Performance Considerations\n\n- **Caching**: Multi-level caching strategy\n- **Concurrency**: Async/await patterns\n- **Memory Management**: Efficient data structures\n- **Network Optimization**: Connection pooling\n\n## Security\n\n- **Authentication**: OAuth2/OpenID Connect\n- **Authorization**: Role-based access control\n- **Data Protection**: Encryption at rest and in transit\n- **Audit Logging**: Comprehensive activity tracking\n\n## Monitoring & Observability\n\n- **Metrics**: Prometheus integration\n- **Logging**: Structured logging with ELK stack\n- **Tracing**: Distributed tracing with Jaeger\n- **Alerting**: AlertManager integration\n\n## Future Extensions\n\n- **Multi-language support**\n- **Advanced refactoring tools**\n- **Collaborative editing**\n- **Enhanced visualization tools**\n\n---\n*Last Updated: $(Get-Date -Format \"yyyy-MM-dd\")*",
+  "metadata": {
+    "headers": [
+      "HyperCode Architecture & CodeMap",
+      "System Overview",
+      "Core Components",
+      "1. Language Server",
+      "2. AI Gateway",
+      "3. DuelCode Framework",
+      "Data Flow",
+      "Development Workflow",
+      "Integration Points",
+      "External Services",
+      "Performance Considerations",
+      "Security",
+      "Monitoring & Observability",
+      "Future Extensions"
+    ]
+  },
+  "relative_path": "hypercode\\docs\\ARCHITECTURE.md",
+  "id": "2177b9199e67808237a147825fa35e69"
+}

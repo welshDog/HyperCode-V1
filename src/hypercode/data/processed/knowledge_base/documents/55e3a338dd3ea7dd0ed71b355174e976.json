@@ -1,0 +1,14 @@
+{
+  "file_name": "scheme.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\models\\scheme.py",
+  "file_size": 575,
+  "created": "2025-12-01T01:58:31.011524",
+  "modified": "2025-12-01T01:58:31.013026",
+  "file_type": "code",
+  "content_hash": "f866549721be296f523dac33e08edcb4",
+  "content_type": "text",
+  "content": "\"\"\"\nFor types associated with installation schemes.\n\nFor a general overview of available schemes and their context, see\nhttps://docs.python.org/3/install/index.html#alternate-installation.\n\"\"\"\n\nfrom dataclasses import dataclass\n\nSCHEME_KEYS = [\"platlib\", \"purelib\", \"headers\", \"scripts\", \"data\"]\n\n\n@dataclass(frozen=True)\nclass Scheme:\n    \"\"\"A Scheme holds paths which are used as the base directories for\n    artifacts associated with a Python package.\n    \"\"\"\n\n    __slots__ = SCHEME_KEYS\n\n    platlib: str\n    purelib: str\n    headers: str\n    scripts: str\n    data: str\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\models\\scheme.py",
+  "id": "55e3a338dd3ea7dd0ed71b355174e976"
+}

@@ -1,0 +1,123 @@
+# Pre-commit hooks for HyperCode
+# Install: pip install pre-commit
+# Setup: pre-commit install
+# Run manually: pre-commit run --all-files
+
+repos:
+  # Code formatting with Black
+  - repo: https://github.com/psf/black
+    rev: 25.11.0
+    hooks:
+      - id: black
+        language_version: python3.10
+        args: ['--line-length=100']
+
+  # Linting with Flake8
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
+        args: ['--max-line-length=100', '--extend-ignore=E203,W503']
+
+  # Import sorting with isort
+  - repo: https://github.com/PyCQA/isort
+    rev: 7.0.0
+    hooks:
+      - id: isort
+        args: ['--profile=black', '--line-length=100']
+
+  # Type checking with mypy
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.19.0
+    hooks:
+      - id: mypy
+        additional_dependencies: [types-all]
+        args: ['--ignore-missing-imports']
+
+  # General pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Prevent large files from being committed
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      
+      # Check for files that would conflict on case-insensitive filesystems
+      - id: check-case-conflict
+      
+      # Ensure files end with a newline
+      - id: end-of-file-fixer
+        exclude: '\.json$'
+      
+      # Remove trailing whitespace
+      - id: trailing-whitespace
+        args: ['--markdown-linebreak-ext=md']
+      
+      # Check YAML files are valid
+      - id: check-yaml
+        args: ['--safe']
+      
+      # Check JSON files are valid
+      - id: check-json
+      
+      # Check for merge conflict markers
+      - id: check-merge-conflict
+      
+      # Prevent committing to main branch directly
+      - id: no-commit-to-branch
+        args: ['--branch=main', '--branch=master']
+      
+      # Check Python AST syntax
+      - id: check-ast
+      
+      # Check for debugger imports
+      - id: debug-statements
+
+  # Security checks with bandit
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.2
+    hooks:
+      - id: bandit
+        args: ['-ll', '-i']
+        files: '\.py$'
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.46.0
+    hooks:
+      - id: markdownlint
+        args: ['--fix']
+
+  # Check for common spelling mistakes
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+      - id: codespell
+        args: ['--skip=*.lock,*.json', '--ignore-words-list=crate,astroid']
+
+# Configuration for specific hooks
+default_language_version:
+  python: python3.10
+
+# Files to exclude from all hooks
+exclude: |
+  (?x)^(
+      \.git/.*|
+      \.venv/.*|
+      venv/.*|
+      __pycache__/.*|
+      \.pytest_cache/.*|
+      \.mypy_cache/.*|
+      \.coverage.*|
+      dist/.*|
+      build/.*|
+      \.snapshots/.*|
+      node_modules/.*|
+      .*\.lock$
+  )$
+
+# Fail fast - stop running hooks after first failure
+fail_fast: false
+
+# Minimum pre-commit version
+minimum_pre_commit_version: '3.0.0'

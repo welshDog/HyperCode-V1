@@ -1,0 +1,14 @@
+{
+  "file_name": "queue.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util\\queue.py",
+  "file_size": 498,
+  "created": "2025-12-01T01:58:33.787076",
+  "modified": "2025-12-01T01:58:33.787732",
+  "file_type": "code",
+  "content_hash": "716426931afad092ec0a85983ba6d094",
+  "content_type": "text",
+  "content": "import collections\n\nfrom ..packages import six\nfrom ..packages.six.moves import queue\n\nif six.PY2:\n    # Queue is imported for side effects on MS Windows. See issue #229.\n    import Queue as _unused_module_Queue  # noqa: F401\n\n\nclass LifoQueue(queue.Queue):\n    def _init(self, _):\n        self.queue = collections.deque()\n\n    def _qsize(self, len=len):\n        return len(self.queue)\n\n    def _put(self, item):\n        self.queue.append(item)\n\n    def _get(self):\n        return self.queue.pop()\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\urllib3\\util\\queue.py",
+  "id": "d11a95a272103a782108748e4f48d314"
+}

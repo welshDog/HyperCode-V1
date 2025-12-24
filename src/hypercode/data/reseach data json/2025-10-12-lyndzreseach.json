@@ -1,0 +1,97 @@
+{
+  "project": "HyperCode",
+  "date": "2025-12-10",
+  "summary": {
+    "tagline": "A neurodivergent-first, AI-native, quantum/DNA/neuromorphic-ready programming language.",
+    "core_message": "Programming languages are more than syntax; they are an expression of how minds think.",
+    "big_idea": "Design a language that fits dyslexic, ADHD, autistic and AI minds by default, while bridging classical, quantum, and molecular computing."
+  },
+  "pillars": {
+    "neurodivergent_first": {
+      "goals": [
+        "Minimize extraneous cognitive load",
+        "Support visual, spatial, textual, and audio coding views",
+        "Make accessibility a default, not a plugin"
+      ],
+      "features": [
+        "Block + text + spatial code representations kept in sync",
+        "Configurable verbosity levels and explanations",
+        "Cognitive-accessible defaults (fonts, spacing, colors, contrast)"
+      ]
+    },
+    "ai_collaboration": {
+      "goals": [
+        "Treat AI as a pair programmer, not autocomplete",
+        "Make human validation explicit in the language",
+        "Let the language teach the AI your style"
+      ],
+      "features": [
+        "Annotations for AI-generated vs human-written code",
+        "@requires_human_review and @ai_optimized regions",
+        "Preference profiles and audit trails for AI suggestions"
+      ]
+    },
+    "emerging_paradigms": {
+      "goals": [
+        "Unify classical, quantum, DNA, and neuromorphic computing",
+        "Hide low-level device details behind clear abstractions",
+        "Support hybrid workflows as a first-class norm"
+      ],
+      "features": [
+        "Inline quantum kernels with automatic classical-quantum data handling",
+        "High-level DNA circuit and sequence design primitives",
+        "Neuromorphic/event-driven constructs for spiking systems"
+      ]
+    },
+    "forgotten_genius": {
+      "goals": [
+        "Revive Plankalkül’s clarity-first philosophy",
+        "Steal the best ideas from esolangs without the chaos",
+        "Blend imperative, functional, reactive, and declarative modes"
+      ],
+      "features": [
+        "Readable, math-friendly notation where it helps understanding",
+        "Optional spatial/code-on-a-grid execution views (Befunge-style but safer)",
+        "FRP and constraint/logic blocks alongside normal functions"
+      ]
+    }
+  },
+  "roadmap": [
+    {
+      "version": "0.9",
+      "stage": "foundation",
+      "focus": ["core syntax", "block editor", "basic quantum hooks"],
+      "audience": "early hackers + researchers"
+    },
+    {
+      "version": "1.0",
+      "stage": "public_alpha",
+      "focus": ["docs", "IDE plugins", "DNA basics", "LSP"],
+      "audience": "community builders + educators"
+    },
+    {
+      "version": "1.5",
+      "stage": "early_adoption",
+      "focus": [
+        "quantum-classical kernels",
+        "dependent typing",
+        "collab editing"
+      ],
+      "audience": "labs, startups, experimental teams"
+    },
+    {
+      "version": "2.0",
+      "stage": "future_vision",
+      "focus": [
+        "neuromorphic targets",
+        "molecular sims",
+        "universal AI integration"
+      ],
+      "audience": "frontier computing + large ecosystems"
+    }
+  ],
+  "mantra": {
+    "short": "Code for every mind. One language, all paradigms.",
+    "hype": "Yo mate, imagine a language built FOR how some of the smartest neurodivergent brains actually think — super visual, minimal noise, and riding the edge of quantum, DNA, and AI. That’s HyperCode. Join us or watch the future get built around you."
+  }
+}

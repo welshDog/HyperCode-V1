@@ -1,0 +1,14 @@
+{
+  "file_name": "base.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\resolution\\base.py",
+  "file_size": 583,
+  "created": "2025-12-01T01:58:31.313991",
+  "modified": "2025-12-01T01:58:31.318098",
+  "file_type": "code",
+  "content_hash": "bbfa436b355a45aa3393c1e1ac9033f2",
+  "content_type": "text",
+  "content": "from typing import Callable, List, Optional\n\nfrom pip._internal.req.req_install import InstallRequirement\nfrom pip._internal.req.req_set import RequirementSet\n\nInstallRequirementProvider = Callable[\n    [str, Optional[InstallRequirement]], InstallRequirement\n]\n\n\nclass BaseResolver:\n    def resolve(\n        self, root_reqs: List[InstallRequirement], check_supported_wheels: bool\n    ) -> RequirementSet:\n        raise NotImplementedError()\n\n    def get_installation_order(\n        self, req_set: RequirementSet\n    ) -> List[InstallRequirement]:\n        raise NotImplementedError()\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\resolution\\base.py",
+  "id": "083746451c0830e5fe0b4be560dec359"
+}

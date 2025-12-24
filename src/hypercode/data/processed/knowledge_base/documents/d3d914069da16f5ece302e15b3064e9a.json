@@ -1,0 +1,37 @@
+{
+  "file_name": "TUTORIAL.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\docs\\TUTORIAL.md",
+  "file_size": 4291,
+  "created": "2025-11-13T00:17:48.045316",
+  "modified": "2025-11-17T18:15:41.933860",
+  "file_type": "code",
+  "content_hash": "58719e5d9bcc87a16e16f4ee04d5f232",
+  "content_type": "markdown",
+  "content": "# HyperCode Tutorial: Getting Started\n\n## Table of Contents\n\n1. [Setting Up](#setting-up)\n2. [Your First Program](#your-first-program)\n3. [Working with Variables](#working-with-variables)\n4. [Control Flow](#control-flow)\n5. [Functions and Reusability](#functions-and-reusability)\n6. [Working with Collections](#working-with-collections)\n7. [Building a Simple Project](#building-a-simple-project)\n8. [Next Steps](#next-steps)\n\n## Setting Up\n\n### Prerequisites\n\n- Python 3.8+\n- Git (optional, for version control)\n\n### Installation\n\n1. Clone the HyperCode repository:\n\n   ```bash\n   git clone https://github.com/yourusername/hypercode.git\n   cd hypercode\n   ```\n\n2. Install dependencies:\n\n   ```bash\n   pip install -r requirements.txt\n   ```\n\n3. Verify installation:\n   ```bash\n   python -m hypercode --version\n   ```\n\n## Your First Program\n\n1. Create a new file called `hello.hc`:\n\n   ```javascript\n   // hello.hc\n   print(\"Welcome to HyperCode!\");\n\n   // Variables and basic math\n   const name = \"Learner\";\n   var age = 25;\n   print(`Hello ${name}, you are ${age} years old!`);\n   ```\n\n2. Run the program:\n   ```bash\n   python -m hypercode hello.hc\n   ```\n\n## Working with Variables\n\n### Basic Types\n\n```javascript\n// Numbers\nvar count = 10;\nvar price = 9.99;\n\n// Strings\nconst greeting = \"Hello\";\nconst name = \"HyperCoder\";\n\n// Booleans\nvar isActive = true;\nvar hasPermission = false;\n\n// Null\nvar emptyValue = null;\n```\n\n### Type Conversion\n\n```javascript\n// String to number\nconst strNum = \"42\"\nconst num = strNum.toNumber()\n\n// Number to string\nconst numStr = 42.toString()\n\n// Boolean conversion\nconst truthy = !!1       // true\nconst falsy = !!0        // false\n```\n\n## Control Flow\n\n### If-Else Statements\n\n```javascript\nvar temperature = 22\n\nif temperature > 30 {\n    print(\"It's hot!\")\n} else if temperature > 15 {\n    print(\"It's pleasant.\")\n} else {\n    print(\"It's cold!\")\n}\n```\n\n### Loops\n\n```javascript\n// While loop\nvar i = 0\nwhile i < 5 {\n    print(\"Count: \" + i)\n    i = i + 1\n}\n\n// For loop\nfor var j = 0; j < 5; j = j + 1 {\n    print(\"For count: \" + j)\n}\n```\n\n## Functions and Reusability\n\n### Basic Functions\n\n```javascript\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n\nprint(greet(\"Developer\")); // \"Hello, Developer!\"\n```\n\n### Higher-Order Functions\n\n```javascript\n// Function as argument\nfunction applyOperation(x, y, operation) {\n    return operation(x, y)\n}\n\nconst add = fn(a, b) { return a + b }\nconst multiply = fn(a, b) { return a * b }\n\nprint(applyOperation(5, 3, add))       // 8\nprint(applyOperation(5, 3, multiply))  // 15\n```\n\n## Working with Collections\n\n### Lists\n\n```javascript\nconst fruits = [\"apple\", \"banana\", \"cherry\"]\n\n// Add/remove items\nfruits.push(\"date\")\nfruits.pop()\n\n// Iteration\nfor var i = 0; i < fruits.length(); i = i + 1 {\n    print(f\"Fruit {i + 1}: {fruits[i]}\")\n}\n```\n\n### Maps\n\n```javascript\nconst user = {\n  name: \"Alice\",\n  age: 30,\n  isAdmin: true,\n};\n\n// Access values\nprint(user[\"name\"]); // \"Alice\"\nprint(user.age); // 30\n\n// Add/update\nuser[\"email\"] = \"alice@example.com\";\n```\n\n## Building a Simple Project\n\nLet's create a simple task manager:\n\n```javascript\n// task_manager.hc\nconst tasks = []\n\nfunction addTask(description) {\n    const task = {\n        id: Date.now(),\n        description: description,\n        completed: false,\n        createdAt: new Date().toISOString()\n    }\n    tasks.push(task)\n    return task\n}\n\nfunction completeTask(taskId) {\n    for var i = 0; i < tasks.length(); i = i + 1 {\n        if tasks[i].id == taskId {\n            tasks[i].completed = true\n            return tasks[i]\n        }\n    }\n    return null\n}\n\n// Example usage\naddTask(\"Learn HyperCode\")\naddTask(\"Build a project\")\n\nconst task = completeTask(tasks[0].id)\nprint(`Task completed: ${task.description}`)\n```\n\n## Next Steps\n\n1. **Explore More Features**\n\n   - Error handling with try/catch\n   - Modules and imports\n   - File I/O operations\n\n2. **Join the Community**\n\n   - [GitHub Discussions](https://github.com/yourusername/hypercode/discussions)\n   - [Discord Channel](#) (coming soon)\n\n3. **Contribute**\n\n   - Report issues\n   - Submit pull requests\n   - Improve documentation\n\n4. **Build Something Cool!**\n   - Web applications\n   - Command-line tools\n   - Automation scripts\n\n---\n\n_Tutorial last updated: November 12, 2025_",
+  "metadata": {
+    "headers": [
+      "HyperCode Tutorial: Getting Started",
+      "Table of Contents",
+      "Setting Up",
+      "Prerequisites",
+      "Installation",
+      "Your First Program",
+      "Working with Variables",
+      "Basic Types",
+      "Type Conversion",
+      "Control Flow",
+      "If-Else Statements",
+      "Loops",
+      "Functions and Reusability",
+      "Basic Functions",
+      "Higher-Order Functions",
+      "Working with Collections",
+      "Lists",
+      "Maps",
+      "Building a Simple Project",
+      "Next Steps"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\docs\\TUTORIAL.md",
+  "id": "d3d914069da16f5ece302e15b3064e9a"
+}

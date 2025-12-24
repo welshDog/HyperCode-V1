@@ -1,0 +1,14 @@
+{
+  "file_name": "__main__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\distro\\__main__.py",
+  "file_size": 64,
+  "created": "2025-12-01T01:58:32.062457",
+  "modified": "2025-12-01T01:58:32.064348",
+  "file_type": "code",
+  "content_hash": "9ba2b2b4dfc91b521f07858fc5547a23",
+  "content_type": "text",
+  "content": "from .distro import main\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\distro\\__main__.py",
+  "id": "f8f7029c6fc8a0e7c724d845a1d5236e"
+}

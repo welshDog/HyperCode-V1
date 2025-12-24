@@ -1,0 +1,14 @@
+{
+  "id": "2025-12-04-4ee402a1",
+  "date": "2025-12-04",
+  "topic": "Programming Language Syntax Design Principles",
+  "tags": [
+    "syntax",
+    "accessibility",
+    "design",
+    "ergonomics"
+  ],
+  "source": "Reddit ProgrammingLanguages, Stephanie Walter Design",
+  "summary": "Ergonomic syntax: shorter keywords for frequent constructs, consistency, avoid weirdness budget, use precedent.",
+  "details": "Design principles: Frequency inversely proportional to keystrokes (common ops = short syntax). Use nouns for objects, verbs for operators. Avoid prefix/infix/postfix confusion. Don't break precedent without reason - users adopt for features, not syntax. Consider visuo-spatial proximity: related concepts should be near. Minimize cognitive load for ADHD/dyslexia (avoid long lines >80 chars, avoid justified text, clear structure). Accessibility: readable fonts, semantic structure, screen reader support."
+}

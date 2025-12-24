@@ -1,0 +1,14 @@
+{
+  "file_name": "dyslexia_formatter.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\accessibility\\dyslexia_formatter.py",
+  "file_size": 679,
+  "created": "2025-11-26T23:37:35.351960",
+  "modified": "2025-11-26T23:37:35.351960",
+  "file_type": "code",
+  "content_hash": "9e62e6f239621af55f0c661504853e22",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nNeurodivergent-first accessibility tools\n\nFile: accessibility\\dyslexia_formatter.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "hypercode\\accessibility\\dyslexia_formatter.py",
+  "id": "e99910e505cf033f4e7ac31531cbba97"
+}

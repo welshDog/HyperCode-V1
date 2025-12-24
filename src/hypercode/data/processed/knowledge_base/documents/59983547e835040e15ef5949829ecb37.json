@@ -1,0 +1,14 @@
+{
+  "file_name": "web_server.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\web_server.hc",
+  "file_size": 2264,
+  "created": "2025-11-26T23:37:35.500289",
+  "modified": "2025-11-26T23:37:35.501887",
+  "file_type": "other",
+  "content_hash": "8d3e20c44deb092aa16f828b5a5762b3",
+  "content_type": "text/unknown",
+  "content": "// web_server.hc - A simple web server in HyperCode\n\n// Import the web server module\nimport { Server, Router } from 'hypercode/web'\n\n// Create a new web server\nconst app = new Server()\nconst router = new Router()\n\n// Sample data store\nlet todos = [\n    { id: 1, task: 'Learn HyperCode', completed: false },\n    { id: 2, task: 'Build an API', completed: false },\n    { id: 3, task: 'Deploy to production', completed: false }\n]\n\n// Middleware for JSON parsing\napp.use(Server.json())\n\n// GET /api/todos - Get all todos\nrouter.get('/todos', (req, res) => {\n    res.json({\n        success: true,\n        data: todos\n    })\n})\n\n// GET /api/todos/:id - Get a single todo\nrouter.get('/todos/:id', (req, res) => {\n    const id = parseInt(req.params.id)\n    const todo = todos.find(t => t.id === id)\n    \n    if (!todo) {\n        return res.status(404).json({\n            success: false,\n            error: 'Todo not found'\n        })\n    }\n    \n    res.json({\n        success: true,\n        data: todo\n    })\n})\n\n// POST /api/todos - Create a new todo\nrouter.post('/todos', (req, res) => {\n    const { task } = req.body\n    \n    if (!task) {\n        return res.status(400).json({\n            success: false,\n            error: 'Task is required'\n        })\n    }\n    \n    const newTodo = {\n        id: todos.length + 1,\n        task,\n        completed: false\n    }\n    \n    todos.push(newTodo)\n    \n    res.status(201).json({\n        success: true,\n        data: newTodo\n    })\n})\n\n// Mount the router\napp.use('/api', router)\n\n// Serve static files from the public directory\napp.static('public')\n\n// Start the server\nconst PORT = 3000\napp.listen(PORT, () => {\n    console.log(`🚀 Server running at http://localhost:${PORT}`)\n    console.log('Available routes:')\n    console.log(`  GET    http://localhost:${PORT}/api/todos`)\n    console.log(`  GET    http://localhost:${PORT}/api/todos/:id`)\n    console.log(`  POST   http://localhost:${PORT}/api/todos`)\n    console.log(`\\nTry it with:`)\n    console.log(`  curl http://localhost:${PORT}/api/todos`)\n    console.log(`  curl -X POST -H \"Content-Type: application/json\" -d '{\"task\":\"New task\"}' http://localhost:${PORT}/api/todos`)\n})\n",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\web_server.hc",
+  "id": "59983547e835040e15ef5949829ecb37"
+}

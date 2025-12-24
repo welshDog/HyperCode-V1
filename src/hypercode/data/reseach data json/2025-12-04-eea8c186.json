@@ -1,0 +1,14 @@
+{
+  "id": "2025-12-04-eea8c186",
+  "date": "2025-12-04",
+  "topic": "DNA & Molecular Computing Languages",
+  "tags": [
+    "DNA",
+    "molecular",
+    "strand-displacement",
+    "chemical-reaction-networks"
+  ],
+  "source": "Nature DNA Computing, Phillips et al.",
+  "summary": "DNA computing uses strand displacement, DNAzymes, toehold exchange for logic gates; compiles from C-like CRN level.",
+  "details": "Full stack: C-like language → Chemical Reaction Networks (CRNs) → Domain-level DNA design → DNA strands. Methods: strand displacement reactions (SDRs), toehold exchange (creates AND/OR/NOT modular gates), DNAzymes (E6, 8-17 for catalytic reactions). 2010: Winfree showed DNA implements arbitrary chemical reactions. Domain-specific languages for DNA circuits enabling simulation & design automation."
+}

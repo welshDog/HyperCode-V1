@@ -1,0 +1,14 @@
+{
+  "file_name": "_extension.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_extension.py",
+  "file_size": 265,
+  "created": "2025-12-01T01:58:33.140121",
+  "modified": "2025-12-01T01:58:33.140828",
+  "file_type": "code",
+  "content_hash": "7977cd9427a2c149488cc83c16e404fb",
+  "content_type": "text",
+  "content": "from typing import Any\n\n\ndef load_ipython_extension(ip: Any) -> None:  # pragma: no cover\n    # prevent circular import\n    from pip._vendor.rich.pretty import install\n    from pip._vendor.rich.traceback import install as tr_install\n\n    install()\n    tr_install()\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_extension.py",
+  "id": "8c9790a03a5ce72a3984bda397d090c5"
+}

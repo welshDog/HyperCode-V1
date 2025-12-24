@@ -1,0 +1,14 @@
+{
+  "file_name": "urls.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\urls.py",
+  "file_size": 1599,
+  "created": "2025-12-01T01:58:31.623538",
+  "modified": "2025-12-01T01:58:31.624890",
+  "file_type": "code",
+  "content_hash": "01c785ae452eba3f93b7404f21d6bf97",
+  "content_type": "text",
+  "content": "import os\nimport string\nimport urllib.parse\nimport urllib.request\n\nfrom .compat import WINDOWS\n\n\ndef path_to_url(path: str) -> str:\n    \"\"\"\n    Convert a path to a file: URL.  The path will be made absolute and have\n    quoted path parts.\n    \"\"\"\n    path = os.path.normpath(os.path.abspath(path))\n    url = urllib.parse.urljoin(\"file:\", urllib.request.pathname2url(path))\n    return url\n\n\ndef url_to_path(url: str) -> str:\n    \"\"\"\n    Convert a file: URL to a path.\n    \"\"\"\n    assert url.startswith(\n        \"file:\"\n    ), f\"You can only turn file: urls into filenames (not {url!r})\"\n\n    _, netloc, path, _, _ = urllib.parse.urlsplit(url)\n\n    if not netloc or netloc == \"localhost\":\n        # According to RFC 8089, same as empty authority.\n        netloc = \"\"\n    elif WINDOWS:\n        # If we have a UNC path, prepend UNC share notation.\n        netloc = \"\\\\\\\\\" + netloc\n    else:\n        raise ValueError(\n            f\"non-local file URIs are not supported on this platform: {url!r}\"\n        )\n\n    path = urllib.request.url2pathname(netloc + path)\n\n    # On Windows, urlsplit parses the path as something like \"/C:/Users/foo\".\n    # This creates issues for path-related functions like io.open(), so we try\n    # to detect and strip the leading slash.\n    if (\n        WINDOWS\n        and not netloc  # Not UNC.\n        and len(path) >= 3\n        and path[0] == \"/\"  # Leading slash to strip.\n        and path[1] in string.ascii_letters  # Drive letter.\n        and path[2:4] in (\":\", \":/\")  # Colon + end of string, or colon + absolute path.\n    ):\n        path = path[1:]\n\n    return path\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\urls.py",
+  "id": "6e079c719d93bd4c8cc00fff2d922527"
+}

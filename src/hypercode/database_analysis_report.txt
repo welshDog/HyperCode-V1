@@ -1,0 +1,47 @@
+================================================================================
+DATABASE ANALYSIS REPORT
+================================================================================
+Database: HYPER_DATABASE.json
+Total entities: 3205
+
+DOCUMENTATION:
+----------------------------------------
+Documentation coverage: 52.4%
+Documents with docstrings: 1679
+Average docstring length: 48.7 chars
+Min/Max docstring length: 13/521
+
+TEST COVERAGE:
+----------------------------------------
+Test coverage: 0.0%
+
+CODE STRUCTURE:
+----------------------------------------
+Average methods per class: 3.6
+
+FILES NEEDING ATTENTION:
+----------------------------------------
+
+Files with most entities (potential refactoring candidates):
+- hypercode\hypercode-proto\app.js: 79 entities, 0.0% documented
+- hypercode\src\core\hypercode-proto\app.js: 79 entities, 0.0% documented
+- hypercode-proto\app.js: 79 entities, 0.0% documented
+- src\core\hypercode-\hypercode-proto\app.js: 79 entities, 0.0% documented
+- src\core\hypercode-proto\app.js: 79 entities, 0.0% documented
+- hypercode\src\hypercode\core\interpreter.py: 49 entities, 0.0% documented
+- src\hypercode\core\interpreter.py: 49 entities, 0.0% documented
+- hypercode\src\core\interpreter.py: 45 entities, 0.0% documented
+- src\core\interpreter.py: 45 entities, 0.0% documented
+- hypercode\tests\test_knowledge_base_comprehensive.py: 40 entities, 50.0% documented
+
+Files with lowest test coverage:
+- server.js: 0.0% coverage (20 entities)
+- build-hyper-database.py: 0.0% coverage (34 entities)
+- run_lexer.py: 0.0% coverage (2 entities)
+- test_mcp_connection.py: 0.0% coverage (10 entities)
+- 5 Core TypeScript Modules\extension.ts: 0.0% coverage (6 entities)
+- 5 Core TypeScript Modules\code-analyzer.ts: 0.0% coverage (14 entities)
+- 5 Core TypeScript Modules\spatial-visualizer.ts: 0.0% coverage (28 entities)
+- 5 Core TypeScript Modules\visualization-panel.ts: 0.0% coverage (10 entities)
+- benchmarks\benchmarks_lexer.py: 0.0% coverage (4 entities)
+- benchmarks\__init__.py: 0.0% coverage (4 entities)

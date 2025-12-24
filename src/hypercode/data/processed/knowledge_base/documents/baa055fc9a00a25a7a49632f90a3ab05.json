@@ -1,0 +1,20 @@
+{
+  "file_name": "README.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\guides\\README.md",
+  "file_size": 499,
+  "created": "2025-12-04T00:09:22.872362",
+  "modified": "2025-12-04T00:22:58.350184",
+  "file_type": "code",
+  "content_hash": "ac79129a9b67d996d4318b532d68eebf",
+  "content_type": "markdown",
+  "content": "# Guides\n\nStep-by-step tutorials and how-to guides for HyperCode.\n\n## Available Guides\n\n- [AI Integration Guide](guides/AI_INTEGRATION_GUIDE.md) - Connect with AI models\n- [Troubleshooting](TROUBLESHOOTING.md) - Common issues and solutions\n- [Build Guide](HyperCode-Build-Guide.md) - Building from source\n- [GitHub Setup](GitHub-Setup-Guide.md) - Configure GitHub for development\n\n## Contributing\n\nWant to add a new guide? See our [contributing guidelines](community/CONTRIBUTING.md).",
+  "metadata": {
+    "headers": [
+      "Guides",
+      "Available Guides",
+      "Contributing"
+    ]
+  },
+  "relative_path": "docs\\guides\\README.md",
+  "id": "baa055fc9a00a25a7a49632f90a3ab05"
+}

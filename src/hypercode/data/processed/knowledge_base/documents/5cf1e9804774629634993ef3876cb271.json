@@ -1,0 +1,14 @@
+{
+  "file_name": "SOURCES.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\hypercode.egg-info\\SOURCES.txt",
+  "file_size": 1238,
+  "created": "2025-11-14T13:33:03.216302",
+  "modified": "2025-11-17T15:46:26.501948",
+  "file_type": "code",
+  "content_hash": "ac2eb7d3af6874c5ea70ebaea4be2404",
+  "content_type": "text",
+  "content": "LICENSE\nREADME.md\npyproject.toml\nsrc/__init__.py\nsrc/build.py\nsrc/hypercode_poc.py\nsrc/scaffold.py\nsrc/setup.py\nsrc/test_env.py\nsrc/core/__init__.py\nsrc/core/ast_nodes.py\nsrc/core/lexer.py\nsrc/core/optimizer.py\nsrc/core/parser.py\nsrc/hypercode/__init__.py\nsrc/hypercode/__main__.py\nsrc/hypercode/config.py\nsrc/hypercode/perplexity_client.py\nsrc/hypercode/repl.py\nsrc/hypercode.egg-info/PKG-INFO\nsrc/hypercode.egg-info/SOURCES.txt\nsrc/hypercode.egg-info/dependency_links.txt\nsrc/hypercode.egg-info/requires.txt\nsrc/hypercode.egg-info/top_level.txt\nsrc/hypercode/core/__init__.py\nsrc/hypercode/core/ast.py\nsrc/hypercode/core/cli.py\nsrc/hypercode/core/error_handler.py\nsrc/hypercode/core/lexer.py\nsrc/hypercode/core/optimizer.py\nsrc/hypercode/core/parser.py\nsrc/hypercode/core/semantic_analyzer.py\nsrc/hypercode/core/tokens.py\nsrc/parser/debug_ascii.py\nsrc/parser/debug_full.py\nsrc/parser/debug_parser.py\nsrc/parser/debug_simple.py\nsrc/parser/simple_test.py\nsrc/parser/test_parser.py\nsrc/parser/visual_syntax_parser.py\ntests/test_accessibility.py\ntests/test_ai_gateway.py\ntests/test_backends.py\ntests/test_core.py\ntests/test_integration.py\ntests/test_lexer.py\ntests/test_lexer_extended.py\ntests/test_parser.py\ntests/test_perplexity_client.py",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\hypercode.egg-info\\SOURCES.txt",
+  "id": "5cf1e9804774629634993ef3876cb271"
+}

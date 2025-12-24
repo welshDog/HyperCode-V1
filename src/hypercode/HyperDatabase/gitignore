@@ -1,0 +1,46 @@
+# Ignore common node/editor files
+node_modules/
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backups
+*.backup.json
+*.backup
+*.bak
+
+# Logs
+*.log
+logs/
+
+# Firebase
+firebase-debug.log
+.firebase/
+.firebaserc
+
+# Temp files
+*.tmp
+*.temp
+*.pid
+*.seed
+
+# Testing
+.coverage/
+*.test.log
+
+# Local env
+firebase-key.json
+.env.production
+
+# Conflict markers
+*.conflicts.json
+*.ours
+*.theirs

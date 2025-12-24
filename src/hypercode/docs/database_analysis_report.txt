@@ -1,0 +1,47 @@
+================================================================================
+DATABASE ANALYSIS REPORT
+================================================================================
+Database: HYPER_DATABASE.json
+Total entities: 9657
+
+DOCUMENTATION:
+----------------------------------------
+Documentation coverage: 49.6%
+Documents with docstrings: 4791
+Average docstring length: 151.4 chars
+Min/Max docstring length: 10/10552
+
+TEST COVERAGE:
+----------------------------------------
+Test coverage: 0.0%
+
+CODE STRUCTURE:
+----------------------------------------
+Average methods per class: 4.0
+
+FILES NEEDING ATTENTION:
+----------------------------------------
+
+Files with most entities (potential refactoring candidates):
+- venv_new\Lib\site-packages\pip\_vendor\pkg_resources\__init__.py: 314 entities, 24.7% documented
+- venv_new\Lib\site-packages\pip\_vendor\typing_extensions.py: 241 entities, 13.1% documented
+- venv_new\Lib\site-packages\pip\_vendor\distlib\util.py: 142 entities, 10.9% documented
+- venv_new\Lib\site-packages\pip\_vendor\rich\console.py: 132 entities, 38.3% documented
+- venv_new\Lib\site-packages\pip\_vendor\rich\progress.py: 115 entities, 28.3% documented
+- venv_new\Lib\site-packages\pip\_vendor\distlib\compat.py: 91 entities, 28.6% documented
+- venv_new\Lib\site-packages\pip\_vendor\urllib3\packages\six.py: 84 entities, 13.1% documented
+- venv_new\Lib\site-packages\pip\_vendor\idna\uts46data.py: 82 entities, 0.0% documented
+- venv_new\Lib\site-packages\pip\_vendor\distlib\database.py: 81 entities, 35.8% documented
+- venv_new\Lib\site-packages\pip\_internal\exceptions.py: 80 entities, 23.8% documented
+
+Files with lowest test coverage:
+- code_insights.py: 0.0% coverage (6 entities)
+- code_quality_report.py: 0.0% coverage (8 entities)
+- hypercode_db.py: 0.0% coverage (16 entities)
+- server.js: 0.0% coverage (20 entities)
+- 5 Core TypeScript Modules\code-analyzer.ts: 0.0% coverage (14 entities)
+- 5 Core TypeScript Modules\extension.ts: 0.0% coverage (6 entities)
+- 5 Core TypeScript Modules\spatial-visualizer.ts: 0.0% coverage (28 entities)
+- 5 Core TypeScript Modules\visualization-panel.ts: 0.0% coverage (10 entities)
+- benchmarks\benchmarks_lexer.py: 0.0% coverage (4 entities)
+- benchmarks\__init__.py: 0.0% coverage (4 entities)

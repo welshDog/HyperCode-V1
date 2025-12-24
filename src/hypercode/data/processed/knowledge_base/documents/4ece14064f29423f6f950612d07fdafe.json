@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\live_research\\web\\__init__.py",
+  "file_size": 54,
+  "created": "2025-12-04T12:44:49.063580",
+  "modified": "2025-12-04T12:44:50.000301",
+  "file_type": "code",
+  "content_hash": "ef43794fae2edfa1c86ff994fb066df6",
+  "content_type": "text",
+  "content": "# This file makes the web directory a Python package\n",
+  "metadata": {},
+  "relative_path": "live_research\\web\\__init__.py",
+  "id": "4ece14064f29423f6f950612d07fdafe"
+}

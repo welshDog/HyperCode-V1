@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "Valkey-Service": {
+      "type": "command",
+      "command": "python",
+      "args": ["-m", "mcp.servers.valkey_service"]
+    },
+    "Dataset-Downloader": {
+      "type": "command",
+      "command": "python",
+      "args": ["-m", "mcp.servers.dataset_downloader"]
+    },
+    "User-Profile-Manager": {
+      "type": "command",
+      "command": "python",
+      "args": ["-m", "mcp.servers.user_profile_manager"]
+    },
+    "AWS-Resource-Manager": {
+      "type": "command",
+      "command": "python",
+      "args": ["-m", "mcp.servers.aws_resource_manager"]
+    },
+    "Path-Service": {
+      "type": "command",
+      "command": "python",
+      "args": ["-m", "mcp.servers.path_service"]
+    }
+  }
+}

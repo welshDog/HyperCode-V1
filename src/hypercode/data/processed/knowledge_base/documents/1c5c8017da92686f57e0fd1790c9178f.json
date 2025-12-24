@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\__init__.py",
+  "file_size": 354,
+  "created": "2025-11-23T12:01:48.549066",
+  "modified": "2025-12-04T12:03:30.328270",
+  "file_type": "code",
+  "content_hash": "2836407b4f6c942bc2d57dbe9482b7a3",
+  "content_type": "text",
+  "content": "\"\"\"\nHyperCode - A neurodivergent-first programming language with AI compatibility.\n\"\"\"\n\n__version__ = \"1.0.0\"\n__author__ = \"welshDog (Lyndz Williams)\"\n__email__ = \"hello@hypercode.dev\"\n\n# Core components\nfrom .core.lexer import Lexer\nfrom .core.tokens import TokenType\n\n# Re-export commonly used components\n__all__ = [\"Lexer\", \"TokenType\"]\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\__init__.py",
+  "id": "1c5c8017da92686f57e0fd1790c9178f"
+}

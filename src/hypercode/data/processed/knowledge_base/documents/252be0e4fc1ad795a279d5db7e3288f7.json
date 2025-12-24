@@ -1,0 +1,14 @@
+{
+  "file_name": "mkdocs.yml",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\config\\mkdocs.yml",
+  "file_size": 1011,
+  "created": "2025-11-26T23:37:35.369254",
+  "modified": "2025-11-26T23:37:35.370546",
+  "file_type": "code",
+  "content_hash": "78eabf01534a95ed9f20d7b076e7550d",
+  "content_type": "text/unknown",
+  "content": "site_name: HyperCode\nsite_url: https://welshdog.github.io/hypercode/\nrepo_url: https://github.com/welshDog/hypercode\n\ntheme:\n  name: material\n  features:\n    - navigation.tabs\n    - navigation.indexes\n    - toc.integrate\n    - content.code.annotate\n\nmarkdown_extensions:\n  - admonition\n  - codehilite\n  - toc:\n      permalink: true\n  - pymdownx.superfences\n  - pymdownx.highlight\n  - pymdownx.arithmatex\n\nnav:\n  - Home: index.md\n  - Getting Started:\n      - Installation: getting-started/installation.md\n      - First Program: getting-started/first-program.md\n  - Language Reference:\n      - Syntax: reference/syntax.md\n      - Types: reference/types.md\n      - Standard Library: reference/stdlib.md\n  - Examples:\n      - Hello World: examples/hello.md\n      - Fibonacci: examples/fibonacci.md\n      - OOP: examples/oop.md\n  - Contributing:\n      - Code Style: contributing/code-style.md\n      - Development Setup: contributing/dev-setup.md\n\nextra_css:\n  - css/extra.css\n",
+  "metadata": {},
+  "relative_path": "hypercode\\config\\mkdocs.yml",
+  "id": "252be0e4fc1ad795a279d5db7e3288f7"
+}

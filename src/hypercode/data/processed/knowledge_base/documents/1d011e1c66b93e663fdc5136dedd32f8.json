@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\core\\__init__.py",
+  "file_size": 356,
+  "created": "2025-11-26T23:37:35.572696",
+  "modified": "2025-12-04T00:56:57.710321",
+  "file_type": "code",
+  "content_hash": "29e641f3a875c6c7953261f43cacf97b",
+  "content_type": "text",
+  "content": "# src/core/__init__.py\n\"\"\"\nHyperCode Core Module\n\nThis is the main package for the HyperCode language implementation.\n\"\"\"\n\n# Import key components to make them available at the package level\nfrom .tokens import Token, TokenType, KEYWORDS\nfrom .lexer import Lexer, LexerError\n\n__all__ = [\"Token\", \"TokenType\", \"KEYWORDS\", \"Lexer\", \"LexerError\"]\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\core\\__init__.py",
+  "id": "1d011e1c66b93e663fdc5136dedd32f8"
+}

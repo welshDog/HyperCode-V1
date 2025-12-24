@@ -1,0 +1,304 @@
+# Core Langu# 1. Data Flow with Pipes
+
+```hypercode
+# Basic pipe syntax
+input | transform1 | transform2 → output
+
+# Real-world example: Data processing
+load "data.json" 
+  | filter { .age > 18 } 
+  | map { name: .first_name + " " + .last_name }
+  | sort
+  → adults
+```
+
+Pattern Matching
+
+```hypercode
+# Basic pattern matching
+result = match value {
+  0 → "Zero"
+  [1, 2, 3] → "List with 1, 2, 3"
+  { type: "user", name: n } → "User: " + n
+  _ → "Default case"
+}
+
+# With guards
+status = match http_response {
+  { code: 200, data: d } if d.valid → "Success"
+  { code: 404 } → "Not Found"
+  { code: c } if c >= 500 → "Server Error"
+  _ → "Unknown status"
+}
+```
+
+Collections and Data Transformation
+
+```hypercode
+# List operations
+numbers = [1, 2, 3, 4, 5]
+
+# Filtering
+evens = numbers | filter { _ % 2 == 0 }  # [2, 4]
+
+# Mapping
+squares = numbers | map { _ * _ }  # [1, 4, 9, 16, 25]
+
+# Reducing
+total = numbers | reduce 0 { acc, x → acc + x }  # 15
+
+# Dictionary operations
+user = {
+  name: "Alex",
+  age: 30,
+  skills: ["Python", "JavaScript", "HyperCode"]
+}
+
+# Access nested data
+user.skills[0]  # "Python"
+user["age"]     # 30
+```
+
+Functions and Composition
+
+```hypercode
+# Function definition
+calculate_tax = { price, rate=0.2 → 
+  price * rate 
+}
+
+# Higher-order functions
+apply_discount = { items, discount_fn →
+  items | map { item → 
+    { 
+      ...item, 
+      price: item.price * (1 - discount_fn(item)) 
+    }
+  }
+}
+
+# Function composition
+process = validate 
+  |>> sanitize 
+  |>> transform 
+  |>> format
+```
+
+Error Handling
+
+```hypercode
+# Using Result type
+divide = { a, b →
+  if b == 0 {
+    error "Division by zero"
+  } else {
+    ok (a / b)
+  }
+}
+
+# Handling results
+result = divide(10, 2) | match {
+  ok(value) → "Result: " + str(value)
+  error(msg) → "Error: " + msg
+}
+```
+
+Concurrency
+
+```hypercode
+# Parallel processing
+urls = [
+  "https://api.example.com/data1",
+  "https://api.example.com/data2",
+  "https://api.example.com/data3"
+]
+
+# Fetch all URLs in parallel
+responses = urls 
+  | map { fetch(_) }  # Returns a list of promises
+  | await_all         # Wait for all to complete
+
+# Process responses
+processed_data = responses 
+  | filter { _.status == 200 }
+  | map { _.json() }
+```
+
+Web Development
+
+```hypercode
+# Simple web server
+server {
+  # Static files
+  static "/static" from "./public"
+  
+  # Routes
+  get "/" → {
+    render "templates/index.html" with { 
+      title: "HyperCode App",
+      items: ["One", "Two", "Three"]
+    }
+  }
+  
+  # API endpoint
+  post "/api/items" → { request →
+    item = request.json()
+    db.insert("items", item)
+    |>> { id: _.inserted_id }
+    |>> json_response(status=201)
+  }
+  
+  # WebSocket
+  ws "/chat" → { ws →
+    ws.on_message { msg →
+      broadcast "chat_room" { 
+        user: ws.user, 
+        message: msg 
+      }
+    }
+  }
+} | start port=3000
+```
+
+Database Integration
+
+```hypercode
+# Connect to database
+db = connect "postgres://user:pass@localhost/db"
+
+# Query examples
+users = db.query("""
+  SELECT * FROM users 
+  WHERE age > ? 
+  ORDER BY created_at DESC
+  LIMIT 10
+""", [18])
+
+# ORM-style
+active_users = User 
+  | where(.status == "active")
+  | order_by(.last_login.desc())
+  | limit(10)
+  | to_list()
+```
+
+Testing
+
+```hypercode
+# Test suite
+test "Math operations" {
+  test "addition" {
+    assert 1 + 1 == 2
+  }
+  
+  test "division" {
+    assert divide(10, 2) == ok(5)
+    assert divide(10, 0) == error("Division by zero")
+  }
+}
+
+# Run tests
+run_tests()
+```
+
+Package Management
+
+```hypercode
+# Importing modules
+import "math.hc"
+import "http/server.hc" as server
+import "utils/{format, validate}"
+
+# Creating a package
+package "my_package" {
+  version: "1.0.0"
+  exports: ["utils", "models", "api"]
+  dependencies: {
+    "http": "^2.0.0",
+    "database": { git: "https://github.com/example/db-driver" }
+  }
+}
+```
+
+Advanced Pattern: Reactive Programming
+
+```hypercode
+# Create a reactive value
+counter = reactive(0)
+
+# Create computed values
+doubled = computed { counter() * 2 }
+
+# Create effects
+effect {
+  print("Counter is now: " + str(counter()))
+}
+
+# Update the value
+counter.set(5)  # Prints "Counter is now: 5"
+```
+
+Working with Time
+
+```hypercode
+# Current time
+now = time.now()
+
+# Formatting
+formatted = now | format_time("%Y-%m-%d %H:%M:%S")
+
+# Time operations
+tomorrow = now + duration(days=1)
+elapsed = time.since(start_time)
+```
+
+File Operations
+
+```hypercode
+# Reading files
+content = read_file("data.txt") 
+  | split_lines()
+  | map(trim)
+
+# Writing files
+data = { name: "Test", value: 42 }
+write_json("output.json", data)
+
+# Directory operations
+files = list_dir(".") 
+  | filter(_.is_file)
+  | map(_.name)
+```
+
+Debugging Techniques
+
+```hypercode
+# Debug print
+debug("Current state:", { user, items, count })
+
+# Breakpoint
+breakpoint()  # Pauses execution in debug mode
+
+# Timing
+with_timing {
+  # Code to measure
+  result = expensive_operation()
+} | print  # Prints execution time
+```
+
+Integration with Python/JS
+
+```hypercode
+# Call Python functions
+python_math = python_import("math")
+result = python_math.sqrt(16)  # 4.0
+
+# Call JavaScript
+js_code = """
+  function greet(name) {
+    return `Hello, ${name}!`;
+  }
+"""
+greet = js_eval(js_code)
+message = greet("HyperCode")  # "Hello, HyperCode!"
+```

@@ -1,0 +1,14 @@
+{
+  "file_name": "_fileno.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_fileno.py",
+  "file_size": 799,
+  "created": "2025-12-01T01:58:33.142101",
+  "modified": "2025-12-01T01:58:33.142732",
+  "file_type": "code",
+  "content_hash": "fa1ea276aabd62b2c707f7e1eab18e36",
+  "content_type": "text",
+  "content": "from __future__ import annotations\n\nfrom typing import IO, Callable\n\n\ndef get_fileno(file_like: IO[str]) -> int | None:\n    \"\"\"Get fileno() from a file, accounting for poorly implemented file-like objects.\n\n    Args:\n        file_like (IO): A file-like object.\n\n    Returns:\n        int | None: The result of fileno if available, or None if operation failed.\n    \"\"\"\n    fileno: Callable[[], int] | None = getattr(file_like, \"fileno\", None)\n    if fileno is not None:\n        try:\n            return fileno()\n        except Exception:\n            # `fileno` is documented as potentially raising a OSError\n            # Alas, from the issues, there are so many poorly implemented file-like objects,\n            # that `fileno()` can raise just about anything.\n            return None\n    return None\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\rich\\_fileno.py",
+  "id": "d7db1a20aa3edf50a161ae0846a59102"
+}

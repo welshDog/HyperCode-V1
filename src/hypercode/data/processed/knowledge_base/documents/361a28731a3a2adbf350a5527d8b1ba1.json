@@ -1,0 +1,14 @@
+{
+  "file_name": "perplexity_space_import_template.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\perplexity_space_import_template.json",
+  "file_size": 1104,
+  "created": "2025-11-18T01:08:44.023217",
+  "modified": "2025-11-18T19:47:56.062416",
+  "file_type": "code",
+  "content_hash": "58c9a11dfc3a441d831057eada8b76d8",
+  "content_type": "text",
+  "content": "{\n  \"documents\": [\n    {\n      \"title\": \"Example: HyperCode Overview\",\n      \"content\": \"\\n                HyperCode is a revolutionary programming language designed for neurodivergent developers.\\n                It features multiple syntax modes, AI integration, and advanced compilation backends.\\n                Key innovations include spatial programming, natural language interfaces, and\\n                built-in accessibility features.\\n                \",\n      \"url\": \"https://www.perplexity.ai/spaces/hypercode-8B7p3SNcRcWhtGCk5ZGzjQ\",\n      \"tags\": [\"overview\", \"introduction\", \"concepts\"]\n    },\n    {\n      \"title\": \"Example: Implementation Roadmap\",\n      \"content\": \"\\n                Phase 1: Core language specification and basic compiler\\n                Phase 2: AI integration and neurodivergent features\\n                Phase 3: Multi-backend support (quantum, DNA)\\n                Phase 4: Spatial programming paradigm\\n                Phase 5: Natural language programming\\n                \",\n      \"url\": null,\n      \"tags\": [\"roadmap\", \"implementation\", \"phases\"]\n    }\n  ]\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\perplexity_space_import_template.json",
+  "id": "361a28731a3a2adbf350a5527d8b1ba1"
+}

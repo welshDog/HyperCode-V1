@@ -1,0 +1,14 @@
+{
+  "file_name": "debug_ascii.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\parser\\debug_ascii.py",
+  "file_size": 746,
+  "created": "2025-11-26T23:37:35.655101",
+  "modified": "2025-11-26T23:37:35.655101",
+  "file_type": "code",
+  "content_hash": "92e895f7e2ca80bb56f6a3edcd3318ac",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nASCII-only debug\n\"\"\"\n\nimport os\nimport sys\n\nsys.path.append(os.path.dirname(__file__))\n\nimport re\n\n\ndef test_regex_patterns():\n    \"\"\"Test regex patterns directly\"\"\"\n\n    # Test pattern\n    pattern = re.compile(r\"@🔍\\s*\\((.*?)\\)\")\n\n    test_lines = [\n        '@verifiable(\"formal_proof\")',\n        \"@verifiable(formal_proof)\",\n        '@🔍(\"formal_proof\")',\n        \"@🔍(formal_proof)\",\n        '🔍 @🔍(\"formal_proof\")',\n    ]\n\n    print(\"Testing regex patterns:\")\n    for line in test_lines:\n        matches = pattern.findall(line)\n        print(f\"Line: {line}\")\n        print(f\"Matches: {matches}\")\n        print()\n\n\nif __name__ == \"__main__\":\n    test_regex_patterns()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\parser\\debug_ascii.py",
+  "id": "aa8a44c792d04a18a3b825807353006e"
+}

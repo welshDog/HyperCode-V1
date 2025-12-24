@@ -1,0 +1,11 @@
+# Core Dependencies
+pytest>=7.0.0
+pytest-cov>=3.0.0
+black>=22.0.0
+isort>=5.10.0
+mypy>=0.910
+flake8>=4.0.0
+pre-commit>=2.17.0
+lark-parser>=0.11.0
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0

@@ -1,0 +1,14 @@
+{
+  "file_name": "hello.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\hello.hc",
+  "file_size": 295,
+  "created": "2025-11-26T23:37:35.484780",
+  "modified": "2025-11-26T23:37:35.484780",
+  "file_type": "other",
+  "content_hash": "19dba9fb07798de0df4925e46a11dc1c",
+  "content_type": "text/unknown",
+  "content": "// Hello World in HyperCode\nvar greeting = \"Hello, HyperCode!\"\nprint(greeting)\n\n// Simple arithmetic\nvar result = (10 + 2) * 3\nprint(\"The result is: \" + result)\n\n// Conditional logic\nif result > 30 {\n    print(\"That's a big number!\")\n} else {\n    print(\"That's a small number.\")\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\hello.hc",
+  "id": "14d5f1abd7da2e4ccdf5a6a1ef12023c"
+}

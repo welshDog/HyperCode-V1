@@ -1,0 +1,241 @@
+#!/usr/bin/env python3
+"""
+HyperCode JSON Data Manager
+Handles versioning, validation, and updates while staying backward compatible
+"""
+
+import json
+import os
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List
+
+
+class HyperCodeDataManager:
+    """Manages HyperCode project data with semantic versioning"""
+    
+    def __init__(self, data_file: str = None, initial_data: Dict = None, auto_save: bool = False):
+        """Initialize the HyperCodeDataManager.
+        
+        Args:
+            data_file: Path to the JSON file to load/save data
+            initial_data: Initial data dictionary (used if data_file doesn't exist)
+            auto_save: Whether to automatically save changes to the file
+        """
+        self.data_file = data_file
+        self.auto_save = auto_save
+        self.schema_file = None
+        
+        # Initialize with default values if no initial data provided
+        self.data = {
+            'schema_version': '0.1.0',
+            'last_updated': self._get_iso_timestamp()
+        }
+        
+        # Update with any provided initial data
+        if initial_data:
+            self.data.update(initial_data)
+        
+        # Load from file if it exists
+        if self.data_file and os.path.exists(self.data_file):
+            self.load()
+        # Otherwise, save initial data
+        elif self.data_file and self.auto_save:
+            self.save()
+    
+    def load_data(self) -> Dict[str, Any]:
+        """Load existing data or return empty structure"""
+        if os.path.exists(self.data_file):
+            with open(self.data_file, 'r') as f:
+                return json.load(f)
+        return self.create_empty_structure()
+    
+    def create_empty_structure(self) -> Dict[str, Any]:
+        """Create base structure with metadata"""
+        return {
+            "schema_version": "1.0.0",
+            "schema_url": "https://hypercode.dev/schema/v1.json",
+            "last_updated": self.get_iso_timestamp(),
+            "update_frequency": "daily",
+            "maintainer": "HyperCode Community",
+            "deprecated_fields": [],
+            "breaking_changes_since_last_version": []
+        }
+    
+    @staticmethod
+    def get_iso_timestamp() -> str:
+        """Get current timestamp in ISO 8601 format"""
+        return datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+    
+    def increment_version(self, change_type: str = "patch"):
+        """
+        Increment semantic version
+        change_type: 'patch', 'minor', or 'major'
+        """
+        version = self.data['schema_version'].split('.')
+        major, minor, patch = map(int, version)
+        
+        if change_type == "patch":
+            patch += 1
+        elif change_type == "minor":
+            minor += 1
+            patch = 0
+        elif change_type == "major":
+            major += 1
+            minor = 0
+            patch = 0
+        
+        self.data['schema_version'] = f"{major}.{minor}.{patch}"
+        self.data['last_updated'] = self.get_iso_timestamp()
+        return self.data['schema_version']
+    
+    def update_field(self, path: str, value: Any, change_type: str = "patch"):
+        """
+        Update a field using dot notation path
+        path: "metrics.lines_of_code" or "project.name"
+        value: new value
+        change_type: 'patch', 'minor', or 'major'
+        """
+        keys = path.split('.')
+        obj = self.data
+        
+        # Navigate to parent object
+        for key in keys[:-1]:
+            if key not in obj:
+                obj[key] = {}
+            obj = obj[key]
+        
+        # Set value
+        obj[keys[-1]] = value
+        
+        # Update timestamp and version
+        self.data['last_updated'] = self.get_iso_timestamp()
+        self.increment_version(change_type)
+        
+        print(f"✅ Updated {path} → {value}")
+        print(f"   Version: {self.data['schema_version']}")
+    
+    def add_array_item(self, path: str, item: Dict[str, Any]):
+        """Add item to array with version tracking"""
+        keys = path.split('.')
+        obj = self.data
+        
+        for key in keys[:-1]:
+            if key not in obj:
+                obj[key] = []
+            obj = obj[key]
+        
+        if keys[-1] not in obj:
+            obj[keys[-1]] = []
+        
+        # Add version tracker to item
+        item['added_in_version'] = self.data['schema_version']
+        obj[keys[-1]].append(item)
+        
+        self.data['last_updated'] = self.get_iso_timestamp()
+        self.increment_version("minor")  # Array changes are usually minor
+        
+        print(f"✅ Added to {path}: {item.get('name', 'unnamed')}")
+        print(f"   Version: {self.data['schema_version']}")
+    
+    def save(self) -> None:
+        """Save the current data to the data file."""
+        if not self.data_file:
+            logger.warning("No data file specified for saving")
+            return
+
+        try:
+            # Ensure directory exists
+            os.makedirs(os.path.dirname(os.path.abspath(self.data_file)), exist_ok=True)
+            
+            # Save the data
+            with open(self.data_file, 'w', encoding='utf-8') as f:
+                json.dump(self.data, f, indent=2, ensure_ascii=False)
+            logger.info(f"Data saved to {self.data_file}")
+        except Exception as e:
+            logger.error(f"Error saving data to {self.data_file}: {e}")
+            raise
+    
+    def validate_schema(self) -> bool:
+        """Validate current data against schema"""
+        try:
+            import jsonschema
+            with open(self.schema_file, 'r') as f:
+                schema = json.load(f)
+            jsonschema.validate(instance=self.data, schema=schema)
+            print("✅ Data validates against schema")
+            return True
+        except ImportError:
+            print("⚠️  jsonschema not installed. Run: pip install jsonschema")
+            return False
+        except Exception as e:
+            print(f"❌ Validation error: {e}")
+            return False
+    
+    def export_summary(self) -> str:
+        """Generate summary of current data"""
+        lines = [
+            "\n📊 HyperCode Data Summary",
+            "=" * 50,
+            f"Schema Version: {self.data['schema_version']}",
+            f"Last Updated: {self.data['last_updated']}",
+            f"File: {self.data_file}",
+        ]
+        
+        if 'project' in self.data:
+            proj = self.data['project']
+            lines.append(f"\nProject: {proj.get('name')} v{proj.get('version')}")
+            lines.append(f"Status: {proj.get('status')}")
+        
+        if 'metrics' in self.data:
+            metrics = self.data['metrics']
+            lines.append(f"\nMetrics:")
+            for key, val in metrics.items():
+                if not key.startswith('last_'):
+                    lines.append(f"  • {key}: {val}")
+        
+        lines.append("\n" + "=" * 50)
+        return "\n".join(lines)
+    
+    def get_change_log(self) -> List[Dict[str, Any]]:
+        """Get deprecated and breaking changes"""
+        return {
+            "deprecated": self.data.get('deprecated_fields', []),
+            "breaking": self.data.get('breaking_changes_since_last_version', [])
+        }
+
+
+# Example Usage
+if __name__ == "__main__":
+    manager = HyperCodeDataManager()
+    
+    # Update metrics (PATCH version)
+    manager.update_field("metrics.lines_of_code", 2500, "patch")
+    manager.update_field("metrics.test_coverage", 75.5, "patch")
+    manager.update_field("metrics.contributors", 3, "patch")
+    
+    # Add new feature (MINOR version)
+    manager.add_array_item(
+        "language_features.new_paradigms",
+        {
+            "name": "spatial_logic",
+            "description": "Two-dimensional code space inspired by Befunge",
+            "status": "planning"
+        }
+    )
+    
+    # Print summary
+    print(manager.export_summary())
+    
+    # Validate
+    manager.validate_schema()
+    
+    # Save
+    manager.save()
+    
+    # Show changelog
+    changelog = manager.get_change_log()
+    print(f"\n📜 Change Summary:")
+    print(f"   Deprecated: {len(changelog['deprecated'])}")
+    print(f"   Breaking: {len(changelog['breaking'])}")

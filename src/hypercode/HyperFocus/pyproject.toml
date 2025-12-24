@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hyperfocus"
+version = "1.0.0"
+description = "Bulk GitHub repo automation for neurodivergent developers"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "LyndzWilliams"}]
+dependencies = ["click>=8.0.0"]
+
+[project.scripts]
+hyperfocus = "hyperfocus.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/LyndzWilliams/hyperfocus"
+Repository = "https://github.com/LyndzWilliams/hyperfocus"

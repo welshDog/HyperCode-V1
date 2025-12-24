@@ -1,0 +1,39 @@
+{
+  "file_name": "counter_tutorial.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\duelcode\\counter_tutorial.md",
+  "file_size": 4360,
+  "created": "2025-12-04T21:42:54.699680",
+  "modified": "2025-12-04T21:48:42.982483",
+  "file_type": "code",
+  "content_hash": "c2076f4baae61dcb570abea6211666f8",
+  "content_type": "markdown",
+  "content": "# 🧠 Building a Counter App with DuelCode\n\n# 🎯 Learning Objective\n- [ ] Understand DuelCode's dual representation\n- [ ] Learn to create interactive components\n- [ ] Connect visual elements to code logic\n\n# 🧩 Prerequisite Knowledge\n- [ ] Basic HTML/CSS/JavaScript.\n- [ ] Understanding of event handling.\n- [ ] Familiarity with DOM manipulation.\n\n# 📋 Before You Start\n- [ ] Install a modern web browser.\n- [ ] Set up a code editor.\n- [ ] Create a new project directory.\n\n# 🎨 Visual Overview\n\n```mermaid\ngraph TD\n    A[Counter: 0] -->|Increment| B[Counter: 1]\n    B -->|Decrement| C[Counter: 0]\n    \n    style A fill:#e1f5fe,stroke:#0288d1\n    style B fill:#e8f5e9,stroke:#4caf50\n    style C fill:#ffebee,stroke:#f44336\n```\n\n# Part 1: Setting Up the Counter\n\n### Visual Representation\n```mermaid\nflowchart LR\n    A[+ Button] -->|click| B[Counter++]\n    C[- Button] -->|click| D[Counter--]\n    B & D --> E[Update Display]\n```\n\n### HTML Structure\n```html-template\n<div class=\"counter\">\n  <h2>Counter: <span id=\"count\">0</span></h2>\n  <div class=\"buttons\">\n    <button id=\"decrement\">-</button>\n    <button id=\"increment\">+</button>\n  </div>\n</div>\n```\n\n### CSS Styling\n```css\n/* Counter styles */\n.counter {\n  text-align: center;\n  font-family: Arial, sans-serif;\n  padding: 2rem;\n  max-width: 300px;\n  margin: 0 auto;\n  border-radius: 8px;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n\n.buttons {\n  margin-top: 1rem;\n  display: flex;\n  gap: 1rem;\n  justify-content: center;\n}\n\nbutton {\n  padding: 0.5rem 1rem;\n  font-size: 1.2rem;\n  cursor: pointer;\n  border: none;\n  border-radius: 4px;\n  transition: transform 0.1s;\n}\n\nbutton:active {\n  transform: scale(0.95);\n}\n\n#increment {\n  background-color: #4caf50;\n  color: white;\n}\n\n#decrement {\n  background-color: #f44336;\n  color: white;\n}\n```\n\n# Part 2: Adding Interactivity\n\n### Visual Data Flow\n```mermaid\nsequenceDiagram\n    participant U as User\n    participant D as DOM\n    participant J as JavaScript\n    \n    U->>D: Clicks + button\n    D->>J: increment event\n    J->>J: count++\n    J->>D: Update counter display\n    D-->>U: Show new count\n```\n\n### JavaScript Logic\n```javascript\n// Get DOM elements\nconst countDisplay = document.getElementById('count');\nconst incrementBtn = document.getElementById('increment');\nconst decrementBtn = document.getElementById('decrement');\n\n// Initial state\nlet count = 0;\n\n// Update display function\nfunction updateDisplay() {\n  countDisplay.textContent = count;\n  \n  // Visual feedback\n  if (count > 0) {\n    countDisplay.style.color = '#4caf50';\n  } else if (count < 0) {\n    countDisplay.style.color = '#f44336';\n  } else {\n    countDisplay.style.color = '#333';\n  }\n}\n\n// Event listeners\nincrementBtn.addEventListener('click', () => {\n  count++;\n  updateDisplay();\n});\n\ndecrementBtn.addEventListener('click', () => {\n  count--;\n  updateDisplay();\n});\n\n// Initial render\nupdateDisplay();\n```\n\n# 🧪 Try It Yourself\n1. [ ] Add a reset button that sets the counter to 0\n   - Hint: Create a new button and add an event listener\n   - Solution: [Spoiler alert!](#)\n\n2. [ ] Add keyboard support (arrow up/down)\n   - Hint: Use `document.addEventListener('keydown', ...)`\n   - Solution: [Spoiler alert!](#)\n\n# 🔍 Review & Recap\n- [ ] Learned to create dual visual/code representations\n- [ ] Implemented interactive counter with visual feedback\n- [ ] Understood the data flow in a simple web app\n\n# 🚀 Next Steps\n- [ ] Explore more complex state management\n- [ ] Add animations to the counter\n- [ ] Implement persistence using localStorage\n\n# 📚 Additional Resources\n- [MDN Web Docs](https://developer.mozilla.org/)\n- [DuelCode Documentation](#)\n- [Interactive JavaScript Tutorials](#)\n\n# ❓ Frequently Asked Questions\n\n### Q: How does DuelCode differ from traditional coding?\nA: DuelCode provides both visual and code representations that stay in sync, making it easier to understand and modify applications.\n\n### Q: Can I use DuelCode with frameworks like React or Vue?\nA: Yes! The dual representation concept works with any framework. The visual elements map directly to the underlying code.\n\n---\n\n*Created with ❤️ by the HyperCode Team*  \n*Last updated: December 2025*",
+  "metadata": {
+    "headers": [
+      "🧠 Building a Counter App with DuelCode",
+      "🎯 Learning Objective",
+      "🧩 Prerequisite Knowledge",
+      "📋 Before You Start",
+      "🎨 Visual Overview",
+      "Part 1: Setting Up the Counter",
+      "Visual Representation",
+      "HTML Structure",
+      "Counter: 0",
+      "CSS Styling",
+      "increment {",
+      "decrement {",
+      "Part 2: Adding Interactivity",
+      "Visual Data Flow",
+      "JavaScript Logic",
+      "🧪 Try It Yourself",
+      "🔍 Review & Recap",
+      "🚀 Next Steps",
+      "📚 Additional Resources",
+      "❓ Frequently Asked Questions",
+      "Q: How does DuelCode differ from traditional coding?",
+      "Q: Can I use DuelCode with frameworks like React or Vue?"
+    ]
+  },
+  "relative_path": "examples\\duelcode\\counter_tutorial.md",
+  "id": "2bfba441022f9f2e69ec8b3dc28c6182"
+}

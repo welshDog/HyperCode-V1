@@ -1,0 +1,14 @@
+{
+  "file_name": "sparql_query.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\knowledge_graph\\sparql_query.py",
+  "file_size": 670,
+  "created": "2025-11-12T10:36:56.934955",
+  "modified": "2025-11-15T15:54:41.013017",
+  "file_type": "code",
+  "content_hash": "f23c90bfa098790d57f7871cc63d035b",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nSemantic knowledge graph management\n\nFile: knowledge_graph\\sparql_query.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\knowledge_graph\\sparql_query.py",
+  "id": "791d2ee97e3c771e7afcb4f619a76ac9"
+}

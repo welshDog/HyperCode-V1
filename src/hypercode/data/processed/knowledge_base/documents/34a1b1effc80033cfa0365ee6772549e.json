@@ -1,0 +1,14 @@
+{
+  "file_name": "index.html",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\index.html",
+  "file_size": 365,
+  "created": "2025-12-02T19:52:33.262208",
+  "modified": "2025-12-02T19:52:33.262208",
+  "file_type": "code",
+  "content_hash": "7a4ecf6b358ddaad4cf3d3be4675986f",
+  "content_type": "text",
+  "content": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/vite.svg\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>hypercode-visual</title>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n    <script type=\"module\" src=\"/src/main.tsx\"></script>\n  </body>\n</html>\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\index.html",
+  "id": "34a1b1effc80033cfa0365ee6772549e"
+}

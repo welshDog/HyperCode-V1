@@ -1,0 +1,27 @@
+[run]
+source = hypercode
+omit = 
+    */tests/*
+    */__init__.py
+    */version.py
+    */setup.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    pass
+    raise ImportError
+    @abstractmethod
+    @property
+    @classmethod
+    @staticmethod
+
+[html]
+directory = htmlcov
+title = HyperCode Test Coverage
+
+[xml]
+output = coverage.xml

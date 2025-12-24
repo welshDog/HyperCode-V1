@@ -1,0 +1,14 @@
+{
+  "file_name": "run_tests.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\scripts\\run_tests.py",
+  "file_size": 1850,
+  "created": "2025-12-04T11:18:54.516122",
+  "modified": "2025-12-04T11:19:07.199215",
+  "file_type": "code",
+  "content_hash": "9268fd9d60029b773d7144d8c1e806e8",
+  "content_type": "text",
+  "content": "#!/usr/bin/env python3\n\"\"\"\nHyperCode Test Runner\n\nThis script provides a unified interface for running tests with coverage reporting\nand other useful features.\n\"\"\"\n\nimport sys\nimport os\nimport argparse\nimport subprocess\nfrom pathlib import Path\n\n\ndef run_tests(args):\n    \"\"\"Run pytest with the given arguments and coverage reporting.\"\"\"\n    # Get the project root directory\n    project_root = Path(__file__).parent.parent\n    os.chdir(project_root)\n\n    # Build the command\n    cmd = [\n        sys.executable,\n        \"-m\",\n        \"pytest\",\n        \"--cov=hypercode\",\n        \"--cov-report=term-missing\",\n        \"--cov-report=html\",\n        \"-v\",\n    ]\n\n    # Add any additional arguments\n    if args.test_path:\n        cmd.append(str(args.test_path))\n    else:\n        cmd.append(\"tests/\")\n\n    if args.fail_fast:\n        cmd.append(\"--exitfirst\")\n\n    if args.verbose:\n        cmd.append(\"-v\")\n\n    # Run the command\n    return subprocess.call(cmd)\n\n\ndef main():\n    \"\"\"Parse command line arguments and run tests.\"\"\"\n    parser = argparse.ArgumentParser(\n        description=\"Run HyperCode tests with coverage reporting.\"\n    )\n    parser.add_argument(\n        \"test_path\", nargs=\"?\", default=None, help=\"Path to test file or directory\"\n    )\n    parser.add_argument(\n        \"--fail-fast\", \"-x\", action=\"store_true\", help=\"Stop after first failure\"\n    )\n    parser.add_argument(\n        \"--verbose\", \"-v\", action=\"store_true\", help=\"Increase verbosity\"\n    )\n\n    args = parser.parse_args()\n\n    # Ensure the tests directory exists\n    tests_dir = Path(\"tests\")\n    if not tests_dir.exists():\n        print(f\"Error: {tests_dir} directory not found.\")\n        return 1\n\n    # Run the tests\n    return run_tests(args)\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\n",
+  "metadata": {},
+  "relative_path": "scripts\\run_tests.py",
+  "id": "50ad5fb12dd6b9db9c7e46913709861c"
+}

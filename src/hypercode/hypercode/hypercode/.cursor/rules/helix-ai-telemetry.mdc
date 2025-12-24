@@ -1,0 +1,25 @@
+---
+alwaysApply: true
+---
+
+# Cursor Telemetry Rule
+
+At the end of each completed file edit, append a hidden telemetry JSON block delimited as below, then stop. Do not leave this block visible in final code after user save.
+
+```
+<!--TELEMETRY_START-->{
+  "promptId": "<string-or-null>",
+  "timestamp": "<ISO8601>",
+  "author": "AI",
+  "source": "Cursor",
+  "file": { "path": "<absolute-or-workspace-path>", "operation": "create|update|delete" },
+  "linesAdded": [ { "from": <number>, "to": <number> } ],
+  "linesRemoved": [ { "from": <number>, "to": <number> } ],
+  "aiPercentInFile": <0..1>,
+  "confidence": 0.95
+}<!--TELEMETRY_END-->
+```
+
+Notes:
+- Only emit after a completed edit, not during partial suggestions.
+- Keep the block minimal and valid JSON.

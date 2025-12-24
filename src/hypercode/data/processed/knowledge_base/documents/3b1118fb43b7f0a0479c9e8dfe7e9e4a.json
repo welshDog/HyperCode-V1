@@ -1,0 +1,14 @@
+{
+  "file_name": "sensory_customizer.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\accessibility\\sensory_customizer.py",
+  "file_size": 679,
+  "created": "2025-11-26T23:37:35.353497",
+  "modified": "2025-11-26T23:37:35.353497",
+  "file_type": "code",
+  "content_hash": "63c60ca0b6388f80bd1d0c4d66d1d29e",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nNeurodivergent-first accessibility tools\n\nFile: accessibility\\sensory_customizer.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "hypercode\\accessibility\\sensory_customizer.py",
+  "id": "3b1118fb43b7f0a0479c9e8dfe7e9e4a"
+}

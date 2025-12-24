@@ -1,0 +1,14 @@
+{
+  "file_name": "setup.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\scripts\\setup.py",
+  "file_size": 453,
+  "created": "2025-11-29T01:56:39.705360",
+  "modified": "2025-11-29T01:56:39.705360",
+  "file_type": "code",
+  "content_hash": "16745eebacab04fab5e175ce1193aff0",
+  "content_type": "text",
+  "content": "# setup.py\nfrom setuptools import setup, find_packages\n\nsetup(\n    name=\"hypercode\",\n    version=\"0.1.0\",\n    packages=find_packages(where=\"src\"),\n    package_dir={\"\": \"src\"},\n    python_requires=\">=3.8\",\n    install_requires=[],\n    extras_require={\n        \"dev\": [\n            \"pytest>=7.0.0\",\n            \"black>=22.1.0\",\n            \"flake8>=4.0.0\",\n            \"mypy>=0.930\",\n            \"pytest-cov>=3.0.0\",\n        ],\n    },\n)",
+  "metadata": {},
+  "relative_path": "scripts\\setup.py",
+  "id": "b14fce762529ba8bdd2e102b61e0bd72"
+}

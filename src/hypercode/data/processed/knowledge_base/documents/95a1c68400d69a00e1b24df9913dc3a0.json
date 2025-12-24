@@ -1,0 +1,14 @@
+{
+  "file_name": "main.tsx",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode-visual\\src\\main.tsx",
+  "file_size": 230,
+  "created": "2025-12-02T19:52:33.283637",
+  "modified": "2025-12-02T19:52:06.663890",
+  "file_type": "code",
+  "content_hash": "787e5a07efeb2bf6209d5937195f2f68",
+  "content_type": "text/unknown",
+  "content": "import { StrictMode } from 'react'\nimport { createRoot } from 'react-dom/client'\nimport './index.css'\nimport App from './App.tsx'\n\ncreateRoot(document.getElementById('root')!).render(\n  <StrictMode>\n    <App />\n  </StrictMode>,\n)\n",
+  "metadata": {},
+  "relative_path": "hypercode-visual\\src\\main.tsx",
+  "id": "95a1c68400d69a00e1b24df9913dc3a0"
+}

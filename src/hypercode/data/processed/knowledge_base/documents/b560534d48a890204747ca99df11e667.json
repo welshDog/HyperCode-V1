@@ -1,0 +1,14 @@
+{
+  "file_name": "test_document.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\test_document.md",
+  "file_size": 50,
+  "created": "2025-11-30T23:53:17.463344",
+  "modified": "2025-11-30T23:52:27.230794",
+  "file_type": "code",
+  "content_hash": "c2b4841e3db9d83005836f486bbc9a3e",
+  "content_type": "markdown",
+  "content": "﻿# Test Document\nThis is a test markdown file.",
+  "metadata": {},
+  "relative_path": "docs\\test_document.md",
+  "id": "b560534d48a890204747ca99df11e667"
+}

@@ -1,0 +1,14 @@
+{
+  "file_name": "retry.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\retry.py",
+  "file_size": 1392,
+  "created": "2025-12-01T01:58:31.588036",
+  "modified": "2025-12-01T01:58:31.590113",
+  "file_type": "code",
+  "content_hash": "aa5bada61863c523f5d44e2393ce9a60",
+  "content_type": "text",
+  "content": "import functools\nfrom time import perf_counter, sleep\nfrom typing import Callable, TypeVar\n\nfrom pip._vendor.typing_extensions import ParamSpec\n\nT = TypeVar(\"T\")\nP = ParamSpec(\"P\")\n\n\ndef retry(\n    wait: float, stop_after_delay: float\n) -> Callable[[Callable[P, T]], Callable[P, T]]:\n    \"\"\"Decorator to automatically retry a function on error.\n\n    If the function raises, the function is recalled with the same arguments\n    until it returns or the time limit is reached. When the time limit is\n    surpassed, the last exception raised is reraised.\n\n    :param wait: The time to wait after an error before retrying, in seconds.\n    :param stop_after_delay: The time limit after which retries will cease,\n        in seconds.\n    \"\"\"\n\n    def wrapper(func: Callable[P, T]) -> Callable[P, T]:\n\n        @functools.wraps(func)\n        def retry_wrapped(*args: P.args, **kwargs: P.kwargs) -> T:\n            # The performance counter is monotonic on all platforms we care\n            # about and has much better resolution than time.monotonic().\n            start_time = perf_counter()\n            while True:\n                try:\n                    return func(*args, **kwargs)\n                except Exception:\n                    if perf_counter() - start_time > stop_after_delay:\n                        raise\n                    sleep(wait)\n\n        return retry_wrapped\n\n    return wrapper\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\retry.py",
+  "id": "5c5a10fa6d9fc2a109b929131ad5146c"
+}

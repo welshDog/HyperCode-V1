@@ -1,0 +1,14 @@
+{
+  "file_name": "hooks.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\hooks.py",
+  "file_size": 733,
+  "created": "2025-12-01T01:58:32.985404",
+  "modified": "2025-12-01T01:58:32.986454",
+  "file_type": "code",
+  "content_hash": "94eb29001b47e2886c00d1e201b8733d",
+  "content_type": "text",
+  "content": "\"\"\"\nrequests.hooks\n~~~~~~~~~~~~~~\n\nThis module provides the capabilities for the Requests hooks system.\n\nAvailable hooks:\n\n``response``:\n    The response generated from a Request.\n\"\"\"\nHOOKS = [\"response\"]\n\n\ndef default_hooks():\n    return {event: [] for event in HOOKS}\n\n\n# TODO: response is the only one\n\n\ndef dispatch_hook(key, hooks, hook_data, **kwargs):\n    \"\"\"Dispatches a hook dictionary on a given piece of data.\"\"\"\n    hooks = hooks or {}\n    hooks = hooks.get(key)\n    if hooks:\n        if hasattr(hooks, \"__call__\"):\n            hooks = [hooks]\n        for hook in hooks:\n            _hook_data = hook(hook_data, **kwargs)\n            if _hook_data is not None:\n                hook_data = _hook_data\n    return hook_data\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\requests\\hooks.py",
+  "id": "2d3a27e5d4a69484c7d4a64e9ff6d886"
+}

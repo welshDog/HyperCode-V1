@@ -1,0 +1,14 @@
+{
+  "file_name": "aws_resource_manager.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\aws_resource_manager.py",
+  "file_size": 162,
+  "created": "2025-11-11T16:50:19.656402",
+  "modified": "2025-11-19T16:10:35.954554",
+  "file_type": "code",
+  "content_hash": "17200f71e90ed83240b990619cb67427",
+  "content_type": "text",
+  "content": "# mcp/servers/aws_resource_manager.py\n\n\ndef main() -> None:\n    print(\"AWS Resource Manager MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\aws_resource_manager.py",
+  "id": "da5e25a4765343b7f660b00f9c663b30"
+}

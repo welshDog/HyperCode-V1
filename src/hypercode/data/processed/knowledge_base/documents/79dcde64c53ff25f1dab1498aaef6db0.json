@@ -1,0 +1,14 @@
+{
+  "file_name": "oop.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\examples\\oop.hc",
+  "file_size": 318,
+  "created": "2025-11-12T18:40:04.616726",
+  "modified": "2025-11-17T17:48:31.505541",
+  "file_type": "other",
+  "content_hash": "f0683493b3885538915194a2ba5e9516",
+  "content_type": "text/unknown",
+  "content": "// Basic OOP in HyperCode\nclass Animal {\n    init(name) {\n        this.name = name\n    }\n\n    speak() {\n        print(\"...\")\n    }\n}\n\nclass Dog extends Animal {\n    speak() {\n        print(\"Woof!\")\n    }\n}\n\nlet dog = Dog(\"Buddy\")\nprint(dog.name)  // Output: Buddy\ndog.speak()      // Output: Woof!\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\examples\\oop.hc",
+  "id": "79dcde64c53ff25f1dab1498aaef6db0"
+}

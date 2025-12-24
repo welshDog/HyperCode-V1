@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hypercode.dev/schema/v1.json",
+  "title": "HyperCode Project Schema",
+  "description": "Schema for HyperCode project data files",
+  "type": "object",
+  
+  "required": [
+    "schema_version",
+    "last_updated",
+    "update_frequency",
+    "maintainer",
+    "deprecated_fields",
+    "breaking_changes_since_last_version"
+  ],
+  
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH)",
+      "examples": ["1.0.0"]
+    },
+    
+    "schema_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the canonical schema definition"
+    },
+    
+    "last_updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of last update"
+    },
+    
+    "update_frequency": {
+      "type": "string",
+      "enum": ["hourly", "daily", "weekly", "monthly", "as_needed"],
+      "description": "How frequently this data is updated"
+    },
+    
+    "maintainer": {
+      "type": "string",
+      "description": "Person or team responsible for this data"
+    },
+    
+    "deprecated_fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": {"type": "string"},
+          "deprecated_in": {"type": "string", "format": "semver"},
+          "message": {"type": "string"},
+          "removal_planned_in": {"type": "string", "format": "semver"},
+          "replacement": {"type": "string"}
+        },
+        "required": ["field", "deprecated_in", "message"]
+      },
+      "description": "List of deprecated fields and their metadata"
+    },
+    
+    "breaking_changes_since_last_version": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {"type": "string", "format": "semver"},
+          "description": {"type": "string"},
+          "impact": {"type": "string"},
+          "migration_guide": {"type": "string"}
+        },
+        "required": ["version", "description"]
+      },
+      "description": "List of breaking changes since last version"
+    },
+    
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "description": {"type": "string"},
+        "status": {
+          "type": "string",
+          "enum": ["planning", "active", "maintenance", "deprecated", "archived"]
+        },
+        "repository": {"type": "string", "format": "uri"},
+        "license": {"type": "string"},
+        "tags": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      },
+      "required": ["name", "version"]
+    },
+    
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "lines_of_code": {"type": "number", "minimum": 0},
+        "test_coverage": {"type": "number", "minimum": 0, "maximum": 100},
+        "dependencies": {
+          "type": "object",
+          "properties": {
+            "total": {"type": "integer", "minimum": 0},
+            "direct": {"type": "integer", "minimum": 0},
+            "indirect": {"type": "integer", "minimum": 0},
+            "vulnerabilities": {
+              "type": "object",
+              "properties": {
+                "critical": {"type": "integer", "minimum": 0},
+                "high": {"type": "integer", "minimum": 0},
+                "medium": {"type": "integer", "minimum": 0},
+                "low": {"type": "integer", "minimum": 0}
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "language_features": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "supported_versions": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "status": {
+            "type": "string",
+            "enum": ["stable", "beta", "experimental", "deprecated"]
+          },
+          "added_in_version": {"type": "string", "format": "semver"},
+          "deprecated_in_version": {"type": "string", "format": "semver"},
+          "documentation": {"type": "string", "format": "uri"}
+        },
+        "required": ["status"]
+      }
+    },
+    
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "email": {"type": "string", "format": "email"},
+          "contributions": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "github_username": {"type": "string"}
+        },
+        "required": ["name", "contributions"]
+      }
+    }
+  },
+  
+  "additionalProperties": true,
+  "definitions": {
+    "semver": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+)?$"
+    }
+  }
+}

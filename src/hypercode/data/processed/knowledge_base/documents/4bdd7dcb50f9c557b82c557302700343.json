@@ -1,0 +1,14 @@
+{
+  "file_name": "file_system.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\mcp\\servers\\file_system.py",
+  "file_size": 144,
+  "created": "2025-11-11T16:42:01.023147",
+  "modified": "2025-11-19T16:10:34.512461",
+  "file_type": "code",
+  "content_hash": "af0198de041c06ea2e86cb54599cf650",
+  "content_type": "text",
+  "content": "# mcp/servers/file_system.py\n\n\ndef main() -> None:\n    print(\"File System MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\mcp\\servers\\file_system.py",
+  "id": "4bdd7dcb50f9c557b82c557302700343"
+}

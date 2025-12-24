@@ -1,0 +1,14 @@
+{
+  "file_name": "human_input.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\mcp\\servers\\human_input.py",
+  "file_size": 136,
+  "created": "2025-11-26T23:37:35.535278",
+  "modified": "2025-11-26T23:37:35.535278",
+  "file_type": "code",
+  "content_hash": "d6e8b96d5a4fb7030d180cb9a766dfd3",
+  "content_type": "text",
+  "content": "# mcp/servers/human_input.py\n\n\ndef main():\n    print(\"Human Input MCP Server started\")\n\n\nif __name__ == \"__main__\":\n    main()\n",
+  "metadata": {},
+  "relative_path": "hypercode\\mcp\\servers\\human_input.py",
+  "id": "1c34fe93a1c344f9b93db698ecf0db75"
+}

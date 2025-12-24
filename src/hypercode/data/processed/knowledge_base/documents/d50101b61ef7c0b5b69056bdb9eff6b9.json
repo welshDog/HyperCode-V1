@@ -1,0 +1,14 @@
+{
+  "file_name": "HyperCode Development Roadmap",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\HyperCode Development Roadmap",
+  "file_size": 1324,
+  "created": "2025-11-24T11:37:35.329118",
+  "modified": "2025-11-24T11:38:48.256948",
+  "file_type": "other",
+  "content_hash": "8d14b914f035ac5c44259d75adf86df1",
+  "content_type": "text/unknown",
+  "content": "%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1a1a2e', 'primaryTextColor': '#f8f8f2', 'primaryBorderColor': '#6272a4', 'lineColor': '#bd93f9', 'secondaryColor': '#44475a', 'tertiaryColor': '#282a36' } } }%%\ngantt\n    title HyperCode Development Roadmap\n    dateFormat  YYYY-MM-DD\n    section Core Language\n    Lexer/Parser Optimization     :done, 2025-01-01, 90d\n    Type System Enhancement       :active, 2025-04-01, 120d\n    Standard Library Expansion    :2025-06-01, 150d\n    Performance Optimization      :2025-08-01, 90d\n    \n    section AI Integration\n    Basic AI Code Completion      :done, 2025-01-01, 60d\n    Context-Aware Suggestions     :active, 2025-03-01, 90d\n    Multi-Model Orchestration     :2025-06-01, 120d\n    Self-Learning Capabilities    :2025-10-01, 180d\n    \n    section IDE & Tooling\n    VS Code Extension             :done, 2025-01-15, 60d\n    Visual Debugger               :active, 2025-03-15, 90d\n    Performance Profiler          :2025-06-01, 60d\n    Collaborative Features        :2025-08-01, 120d\n    \n    section Community & Adoption\n    Documentation Portal          :active, 2025-02-01, 90d\n    Interactive Tutorials         :2025-05-01, 120d\n    Community Challenges          :2025-07-01, 90d\n    Enterprise Adoption Program   :2025-10-01, 180d",
+  "metadata": {},
+  "relative_path": "HyperCode Development Roadmap",
+  "id": "d50101b61ef7c0b5b69056bdb9eff6b9"
+}

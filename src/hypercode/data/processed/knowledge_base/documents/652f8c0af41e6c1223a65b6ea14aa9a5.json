@@ -1,0 +1,14 @@
+{
+  "file_name": "test_validator.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\duelcode\\test_validator.py",
+  "file_size": 2367,
+  "created": "2025-11-26T23:37:35.612160",
+  "modified": "2025-11-26T23:37:35.612160",
+  "file_type": "code",
+  "content_hash": "4cf64dba71bfb17f54c4a7c6ae7c5d97",
+  "content_type": "text",
+  "content": "\"\"\"\nTest script for the DuelCode validator.\n\"\"\"\n\nimport sys\nfrom pathlib import Path\n\nfrom duelcode_validator import DuelCodeValidator, print_validation_results\n\n\ndef test_valid_file() -> bool:\n    \"\"\"Test with a valid DuelCode file.\"\"\"\n    test_file = Path(\"test_valid.md\")\n    test_file.write_text(\n        \"\"\"# Sample DuelCode Tutorial\n\n## 🎯 Learning Objectives\n\n- [ ] Understand the basics of DuelCode\n- [ ] Learn how to validate DuelCode files\n- [ ] Create your own DuelCode tutorials\n\n## 📋 Before You Start (Checklist)\n\n- [ ] Install Python 3.8+\n- [ ] Install required packages\n- [ ] Read the documentation\n\n## Part 1: Introduction\n\n### 🧠 Concept: What is DuelCode?\n\nDuelCode is a documentation format that combines explanations with code.\n\n### 📊 Visual Representation\n\n```mermaid\ngraph TD\n    A[Start] --> B{Is it?}\n    B -->|Yes| C[OK]\n    B -->|No| D[Rethink]\n```\n\n### 💻 Code Example\n\n```python\ndef hello():\n    print(\"Hello, DuelCode!\")\n```\n\"\"\",\n        encoding=\"utf-8\",\n    )\n\n    validator = DuelCodeValidator(str(test_file))\n    is_valid = validator.validate()\n\n    print(f\"Testing valid file: {test_file}\")\n    print(\"-\" * 50)\n    print_validation_results(validator)\n\n    test_file.unlink()\n    return is_valid\n\n\ndef test_invalid_file() -> bool:\n    \"\"\"Test with an invalid DuelCode file.\"\"\"\n    test_file = Path(\"test_invalid.md\")\n    test_file.write_text(\n        \"\"\"# Missing Sections\n\nThis file is missing required sections.\n\n```python\ndef bad():\n    pass  # No language specified\n\"\"\"\n    )\n\n    validator = DuelCodeValidator(str(test_file))\n    is_valid = validator.validate()\n\n    print(f\"\\nTesting invalid file: {test_file}\")\n    print(\"-\" * 50)\n    print_validation_results(validator)\n\n    test_file.unlink()\n    return is_valid\n\n\ndef main() -> int:\n    \"\"\"Run the test suite.\"\"\"\n    print(\"Running DuelCode Validator Tests\")\n    print(\"=\" * 50)\n\n    valid_passed = test_valid_file()\n    invalid_failed = not test_invalid_file()\n\n    print(\"\\nTest Summary:\")\n    print(f\"✅ Valid file test: {'PASSED' if valid_passed else 'FAILED'}\")\n    print(f\"❌ Invalid file test: {'PASSED' if invalid_failed else 'FAILED'}\")\n\n    return 0 if (valid_passed and invalid_failed) else 1\n\n\nif __name__ == \"__main__\":\n    sys.exit(main())\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\duelcode\\test_validator.py",
+  "id": "652f8c0af41e6c1223a65b6ea14aa9a5"
+}

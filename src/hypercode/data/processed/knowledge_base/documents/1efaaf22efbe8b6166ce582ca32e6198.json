@@ -1,0 +1,31 @@
+{
+  "file_name": "CHANGELOG.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\vscode-extension\\CHANGELOG.md",
+  "file_size": 3334,
+  "created": "2025-11-26T23:37:35.747027",
+  "modified": "2025-11-26T23:37:35.747027",
+  "file_type": "code",
+  "content_hash": "e91b67a5af265d82b6058d651556402f",
+  "content_type": "markdown",
+  "content": "# 🎨 HyperCode Visual Syntax - Changelog\n\nAll notable changes to the HyperCode Visual Syntax VS Code extension will be documented in this file.\n\n## [1.0.0] - 2025-11-19\n\n### 🌟 Initial Release\n- **Visual semantic syntax highlighting** for neurodivergent developers\n- **Emoji-based annotations** for code clarity and accessibility\n- **Auto-completion** for semantic annotations\n- **Hover information** with detailed explanations\n- **Real-time parsing** and validation support\n\n### ✨ Features\n- **🎯 @verifiable(...)** - Formal verification annotations\n- **✅ @ensures(...)** - Postconditions and guarantees\n- **📋 @requires(...)** - Preconditions and dependencies  \n- **💡 @intent(...)** - Purpose and cognitive context\n- **♿ @accessibility(...)** - Neurodiversity and inclusive design\n- **⚡ @computation(...)** - Computational complexity indicators\n- **⚙️ @operation(...)** - Runtime operations and side effects\n- **📤 @return(...)** - Return value specifications\n\n### 🧠 Accessibility Features\n- **Reduced cognitive load** through visual clarity\n- **Color-coded comments** for better organization\n- **Consistent visual patterns** for predictability\n- **Neurodiversity-first** design principles\n\n### 📦 Language Support\n- **Python** - Full semantic annotation support\n- **HyperCode** - Native language support\n- **Any language** with comment support (basic emoji highlighting)\n\n### ⚙️ Configuration Options\n- `hypercode.semanticHighlighting` - Enable/disable visual highlighting\n- `hypercode.neurodiversityMode` - Neurodiversity-focused enhancements\n- `hypercode.realtimeParsing` - Real-time parsing and validation\n\n### 🔧 Development\n- **TypeScript** implementation\n- **VS Code Extension API** integration\n- **Semantic token provider** for syntax highlighting\n- **Completion provider** for annotations\n- **Hover provider** for documentation\n\n---\n\n## 🚀 Upcoming Features\n\n### [1.1.0] - Planned\n- **Additional annotation types** for more semantic coverage\n- **Custom emoji themes** for personalization\n- **Integration with HyperCode language server**\n- **Code generation** from semantic annotations\n- **Export to documentation** features\n\n### [1.2.0] - Future\n- **Multi-language support** beyond Python\n- **Collaborative annotation** features\n- **AI-powered annotation suggestions**\n- **Performance profiling** integration\n- **Accessibility testing** tools\n\n---\n\n## 📝 Release Notes Format\n\nThis changelog follows [Keep a Changelog](https://keepachangelog.com/) format and is based on [Semantic Versioning](https://semver.org/).\n\n### Categories\n- 🌟 **Added** - New features\n- 🔧 **Changed** - Changes in existing functionality  \n- 🐛 **Fixed** - Bug fixes\n- 🗑️ **Removed** - Removed features\n- 🔒 **Security** - Security-related changes\n- 🧠 **Accessibility** - Neurodiversity improvements\n\n---\n\n## 🤝 Contributing to Changelog\n\nWhen contributing to the extension, please:\n1. **Add entries** to the \"Unreleased\" section\n2. **Use proper categories** and emojis\n3. **Include version numbers** following semantic versioning\n4. **Date your releases** with YYYY-MM-DD format\n5. **Link to relevant issues** when applicable\n\n---\n\n**Made with ❤️ for the neurodivergent developer community**",
+  "metadata": {
+    "headers": [
+      "🎨 HyperCode Visual Syntax - Changelog",
+      "[1.0.0] - 2025-11-19",
+      "🌟 Initial Release",
+      "✨ Features",
+      "🧠 Accessibility Features",
+      "📦 Language Support",
+      "⚙️ Configuration Options",
+      "🔧 Development",
+      "🚀 Upcoming Features",
+      "[1.1.0] - Planned",
+      "[1.2.0] - Future",
+      "📝 Release Notes Format",
+      "Categories",
+      "🤝 Contributing to Changelog"
+    ]
+  },
+  "relative_path": "hypercode\\vscode-extension\\CHANGELOG.md",
+  "id": "1efaaf22efbe8b6166ce582ca32e6198"
+}

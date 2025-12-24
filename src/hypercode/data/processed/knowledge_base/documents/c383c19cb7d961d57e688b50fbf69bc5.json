@@ -1,0 +1,14 @@
+{
+  "file_name": "tsconfig.json",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\HyperCode showcase\\tsconfig.json",
+  "file_size": 796,
+  "created": "2025-11-26T23:37:35.342080",
+  "modified": "2025-11-26T23:37:35.342080",
+  "file_type": "code",
+  "content_hash": "539ae6f861f87c25b12a5de65538803a",
+  "content_type": "text",
+  "content": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2020\",\n    \"module\": \"commonjs\",\n    \"lib\": [\"ES2020\"],\n    \"outDir\": \"./dist\",\n    \"rootDir\": \"./src\",\n    \"strict\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"resolveJsonModule\": true,\n    \"declaration\": true,\n    \"declarationMap\": true,\n    \"sourceMap\": true,\n    \"noImplicitAny\": true,\n    \"strictNullChecks\": true,\n    \"strictFunctionTypes\": true,\n    \"noUnusedLocals\": true,\n    \"noUnusedParameters\": true,\n    \"noImplicitReturns\": true,\n    \"moduleResolution\": \"node\",\n    \"allowSyntheticDefaultImports\": true,\n    \"types\": [\"node\", \"jest\"]\n  },\n  \"include\": [\"src/**/*\"],\n  \"exclude\": [\"node_modules\", \"dist\", \"**/*.test.ts\", \"**/__tests__/**/*\"]\n}\n",
+  "metadata": {},
+  "relative_path": "hypercode\\HyperCode showcase\\tsconfig.json",
+  "id": "c383c19cb7d961d57e688b50fbf69bc5"
+}

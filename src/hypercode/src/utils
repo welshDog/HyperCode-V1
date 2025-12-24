@@ -1,0 +1,100 @@
+from collections import Counter
+from pathlib import Path
+from typing import Dict, List, Set
+
+from hypercode_db import CodeEntity, HypercodeDB
+
+
+def analyze_code_patterns(db: HypercodeDB) -> None:
+    """Analyze function and class naming patterns."""
+    print("\n🔍 ANALYZING CODE PATTERNS")
+
+    # Get all functions and classes
+    functions = [e for e in db.entities if e.type == "function"]
+    # Removed unused 'classes' variable
+
+    # Analyze function name patterns
+    verb_counts: Dict[str, int] = Counter()
+    for func in functions:
+        # Split function names by underscores and get the first word
+        first_word = func.name.split("_")[0].lower()
+        if first_word:
+            verb_counts[first_word] += 1
+
+    print("\nMost common function name starters:")
+    for verb, count in Counter(verb_counts).most_common(10):
+        print(f"  {verb}(): {count} functions")
+
+
+def find_undocumented_code(db: HypercodeDB) -> None:
+    """Find complex but undocumented code."""
+    print("\n📝 UNDOCUMENTED CODE ANALYSIS")
+
+    # Get all classes with methods but no docstring
+    undocumented_classes = [
+        c
+        for c in db.entities
+        if c.type == "class" and c.methods and not (c.docstring and c.docstring.strip())
+    ]
+
+    print(f"\nFound {len(undocumented_classes)} undocumented classes with methods")
+    for i, cls in enumerate(undocumented_classes[:5], 1):
+        print(f"  {i}. {cls.name} ({len(cls.methods)} methods) in {cls.file}")
+
+
+def analyze_test_coverage(db: HypercodeDB) -> Dict[str, Any]:
+    """Analyze test coverage patterns.
+
+    Returns:
+        Dictionary containing test coverage statistics
+    """
+    try:
+        # Find test files and test functions
+        test_files = [f for f in db.by_file.keys() if "test" in f.lower()]
+        test_functions = [
+            e
+            for e in db.entities
+            if e.type == "function" and e.name.lower().startswith("test_")
+        ]
+
+        # Count testable entities (functions and classes)
+        testable_entities = [
+            e
+            for e in db.entities
+            if e.type in ("function", "class")
+            and not e.name.startswith("_")  # Skip private methods
+            and not any(
+                skip in e.file.lower() for skip in ["test", "venv", "site-packages"]
+            )
+        ]
+
+        # Calculate coverage
+        coverage = {
+            "test_files": len(test_files),
+            "test_functions": len(test_functions),
+            "testable_entities": len(testable_entities),
+            "coverage_ratio": len(test_functions) / max(1, len(testable_entities)),
+        }
+
+        return coverage
+
+    except Exception as e:
+        print(f"Error analyzing test coverage: {str(e)}")
+        return {
+            "test_files": 0,
+            "test_functions": 0,
+            "testable_entities": 0,
+            "coverage_ratio": 0.0,
+            "error": str(e),
+        }
+
+
+if __name__ == "__main__":
+    print("Loading database for advanced analysis...")
+    db = HypercodeDB("HYPER_DATABASE.json")
+
+    analyze_code_patterns(db)
+    find_undocumented_code(db)
+    analyze_test_coverage(db)
+
+    print("\n🎉 Analysis complete! Use hypercode_db.py for interactive searching")

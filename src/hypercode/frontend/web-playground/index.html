@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperCode Playground - Try it in your browser!</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        color: white;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .playground {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .editor-panel,
+      .output-panel {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+      }
+
+      .panel-header {
+        background: #4a5568;
+        color: white;
+        padding: 12px 20px;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .editor-content {
+        height: 400px;
+        position: relative;
+      }
+
+      #code-editor {
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        border: none;
+        outline: none;
+        resize: none;
+        background: #f8f9fa;
+        color: #333;
+      }
+
+      .output-content {
+        height: 400px;
+        padding: 20px;
+        font-family: "Consolas", "Monaco", monospace;
+        font-size: 14px;
+        background: #1a202c;
+        color: #68d391;
+        overflow-y: auto;
+        white-space: pre-wrap;
+      }
+
+      .controls {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: #e2e8f0;
+        color: #4a5568;
+      }
+
+      .btn-secondary:hover {
+        background: #cbd5e0;
+      }
+
+      .examples {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      select {
+        padding: 8px 12px;
+        border: 2px solid #e2e8f0;
+        border-radius: 6px;
+        background: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-ready {
+        background: #c6f6d5;
+        color: #22543d;
+      }
+
+      .status-running {
+        background: #fed7d7;
+        color: #742a2a;
+      }
+
+      .error {
+        color: #fc8181;
+        margin-top: 10px;
+        padding: 10px;
+        background: rgba(252, 129, 129, 0.1);
+        border-radius: 6px;
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .playground {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .examples {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🚀 HyperCode Playground</h1>
+        <p class="subtitle">
+          Try HyperCode in your browser - no installation required!
+        </p>
+      </header>
+
+      <div class="playground">
+        <div class="editor-panel">
+          <div class="panel-header">
+            <span>📝 Write HyperCode</span>
+            <span class="status status-ready" id="status">Ready</span>
+          </div>
+          <div class="editor-content">
+            <textarea
+              id="code-editor"
+              placeholder="// Write your HyperCode here...
+// Example:
+🧠 @intent('Calculate the area of a circle')
+📐 @ensures('Returns positive number')
+function circle_area(radius) {
+    π = 3.14159
+    return π × radius²
+}
+
+🎯 @accessibility('high_contrast', 'screen_reader')
+result = circle_area(5)
+print('Area:', result)"
+            >
+// 🎯 Welcome to HyperCode!
+// A language designed for neurodivergent developers
+
+🧠 @intent('Calculate the area of a circle')
+📐 @ensures('Returns positive number')
+function circle_area(radius) {
+    π = 3.14159
+    return π × radius²
+}
+
+🎯 @accessibility('high_contrast', 'screen_reader')
+result = circle_area(5)
+print('Area:', result)</textarea
+            >
+          </div>
+        </div>
+
+        <div class="output-panel">
+          <div class="panel-header">
+            <span>📊 Output</span>
+            <span id="output-status">Console</span>
+          </div>
+          <div class="output-content" id="output">Ready to run your HyperCode...</div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" onclick="runCode()">▶️ Run Code</button>
+        <button class="btn btn-secondary" onclick="clearOutput()">
+          🗑️ Clear Output
+        </button>
+        <div class="examples">
+          <label for="example-select">Examples:</label>
+          <select id="example-select" onchange="loadExample()">
+            <option value="">Choose an example...</option>
+            <option value="hello">Hello World</option>
+            <option value="math">Math Operations</option>
+            <option value="loop">Loops & Arrays</option>
+            <option value="function">Functions & Annotations</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" onclick="shareCode()">🔗 Share</button>
+      </div>
+
+      <div class="error" id="error-message"></div>
+    </div>
+
+    <script>
+      const examples = {
+        hello: `// Hello World in HyperCode
+🧠 @intent('Display a friendly greeting')
+🎯 @accessibility('screen_reader')
+
+print('🌟 Hello, neurodivergent world!')
+print('Welcome to HyperCode!')`,
+
+        math: `// Math Operations with Visual Symbols
+🧠 @intent('Demonstrate math operations')
+📐 @ensures('All calculations are accurate')
+
+a = 42
+b = 17
+
+sum = a + b
+diff = a - b
+prod = a × b
+quot = a ÷ b
+
+print('a =', a)
+print('b =', b)
+print('Sum:', sum)
+print('Difference:', diff)
+print('Product:', prod)
+print('Quotient:', quot)`,
+
+        loop: `// Loops and Arrays
+🧠 @intent('Process a list of numbers')
+📋 @requires('numbers array')
+
+numbers = [1, 2, 3, 4, 5]
+squares = []
+
+for num in numbers {
+    square = num × num
+    squares.append(square)
+    print(num, 'squared =', square)
+}
+
+print('All squares:', squares)`,
+
+        function: `// Advanced Function with Annotations
+🧠 @intent('Calculate factorial recursively')
+📐 @ensures('Returns positive integer')
+📋 @requires('n >= 0')
+🎯 @accessibility('step_by_step')
+
+function factorial(n) {
+    if n <= 1 {
+        return 1
+    } else {
+        return n × factorial(n - 1)
+    }
+}
+
+// Test the function
+for i in [1, 2, 3, 4, 5] {
+    result = factorial(i)
+    print('factorial(', i, ') =', result)
+}`,
+      };
+
+      function runCode() {
+        const code = document.getElementById("code-editor").value;
+        const output = document.getElementById("output");
+        const status = document.getElementById("status");
+        const errorDiv = document.getElementById("error-message");
+
+        // Update status
+        status.textContent = "Running...";
+        status.className = "status status-running";
+        errorDiv.style.display = "none";
+
+        // Simulate code execution
+        setTimeout(() => {
+          try {
+            // Simple interpreter simulation
+            const lines = code.split("\n");
+            let result = [];
+            let variables = {};
+
+            for (let line of lines) {
+              line = line.trim();
+
+              // Skip comments and annotations
+              if (
+                line.startsWith("//") ||
+                line.startsWith("🧠") ||
+                line.startsWith("📐") ||
+                line.startsWith("📋") ||
+                line.startsWith("🎯")
+              ) {
+                continue;
+              }
+
+              // Handle print statements
+              if (line.includes("print(")) {
+                // Extract content from print
+                const match = line.match(/print\((.*)\)/);
+                if (match) {
+                  let content = match[1];
+                  // Simple variable substitution
+                  content = content.replace(/(\w+)/g, (match) => {
+                    return variables[match] !== undefined ? variables[match] : match;
+                  });
+                  // Clean up quotes and commas
+                  content = content.replace(/'/g, "").replace(/,/g, " ");
+                  result.push(content);
+                }
+              }
+
+              // Handle variable assignment
+              else if (line.includes("=")) {
+                const parts = line.split("=");
+                const varName = parts[0].trim();
+                let value = parts[1].trim();
+
+                // Simple math evaluation
+                if (value.includes("×")) {
+                  const factors = value.split("×").map((v) => v.trim());
+                  value = factors.reduce((a, b) => {
+                    return (
+                      (variables[a] || parseFloat(a)) * (variables[b] || parseFloat(b))
+                    );
+                  }, 1);
+                } else if (value.includes("+")) {
+                  const terms = value.split("+").map((v) => v.trim());
+                  value = terms.reduce((a, b) => {
+                    return (
+                      (variables[a] || parseFloat(a)) + (variables[b] || parseFloat(b))
+                    );
+                  }, 0);
+                } else if (value.includes("-")) {
+                  const terms = value.split("-").map((v) => v.trim());
+                  value = terms.reduce((a, b) => {
+                    return (
+                      (variables[a] || parseFloat(a)) - (variables[b] || parseFloat(b))
+                    );
+                  });
+                } else if (value.includes("÷")) {
+                  const terms = value.split("÷").map((v) => v.trim());
+                  value =
+                    (variables[terms[0]] || parseFloat(terms[0])) /
+                    (variables[terms[1]] || parseFloat(terms[1]));
+                } else if (value.includes("²")) {
+                  const base = value.replace("²", "").trim();
+                  value = Math.pow(variables[base] || parseFloat(base), 2);
+                } else {
+                  value =
+                    variables[value] || parseFloat(value) || value.replace(/'/g, "");
+                }
+
+                variables[varName] = value;
+              }
+            }
+
+            output.textContent =
+              result.length > 0 ? result.join("\n") : "Code executed successfully!";
+            status.textContent = "Ready";
+            status.className = "status status-ready";
+          } catch (error) {
+            errorDiv.textContent = "Error: " + error.message;
+            errorDiv.style.display = "block";
+            output.textContent = "Execution failed";
+            status.textContent = "Error";
+            status.className = "status status-ready";
+          }
+        }, 500);
+      }
+
+      function clearOutput() {
+        document.getElementById("output").textContent =
+          "Ready to run your HyperCode...";
+        document.getElementById("error-message").style.display = "none";
+      }
+
+      function loadExample() {
+        const select = document.getElementById("example-select");
+        const editor = document.getElementById("code-editor");
+
+        if (select.value && examples[select.value]) {
+          editor.value = examples[select.value];
+          clearOutput();
+        }
+      }
+
+      function shareCode() {
+        const code = document.getElementById("code-editor").value;
+        const encoded = btoa(code);
+        const url = window.location.origin + window.location.pathname + "#" + encoded;
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(url).then(() => {
+          alert("Share link copied to clipboard!\n\n" + url);
+        });
+      }
+
+      // Load shared code from URL
+      if (window.location.hash) {
+        try {
+          const encoded = window.location.hash.substring(1);
+          const code = atob(encoded);
+          document.getElementById("code-editor").value = code;
+        } catch (e) {
+          console.error("Invalid share URL");
+        }
+      }
+
+      // Auto-run on Ctrl+Enter
+      document.getElementById("code-editor").addEventListener("keydown", function (e) {
+        if (e.ctrlKey && e.key === "Enter") {
+          runCode();
+        }
+      });
+    </script>
+  </body>
+</html>

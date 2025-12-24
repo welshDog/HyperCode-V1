@@ -1,0 +1,14 @@
+{
+  "file_name": "config.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\config.py",
+  "file_size": 765,
+  "created": "2025-11-23T12:01:48.551775",
+  "modified": "2025-11-23T12:01:48.551775",
+  "file_type": "code",
+  "content_hash": "a35ad5b2bfa8601177fb7a74d078129c",
+  "content_type": "text",
+  "content": "\"\"\"\nConfiguration module for HyperCode.\nHandles environment variables and API keys securely.\n\"\"\"\n\nimport os\nfrom pathlib import Path\n\nfrom dotenv import load_dotenv\n\n# Load environment variables from .env file\nenv_path = Path(\".env\")\nload_dotenv(dotenv_path=env_path)\n\n\nclass Config:\n    \"\"\"Configuration class for HyperCode\"\"\"\n\n    # API Keys\n    PERPLEXITY_API_KEY = os.getenv(\"PERPLEXITY_API_KEY\")\n\n    # API Endpoints\n    PERPLEXITY_API_URL = \"https://api.perplexity.ai/chat/completions\"\n\n    # Headers\n    @classmethod\n    def get_headers(cls):\n        \"\"\"Get headers for API requests\"\"\"\n        return {\n            \"Authorization\": f\"Bearer {cls.PERPLEXITY_API_KEY}\",\n            \"Content-Type\": \"application/json\",\n        }\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\config.py",
+  "id": "a899268ab6ac41b6bfb997da6bd4470f"
+}

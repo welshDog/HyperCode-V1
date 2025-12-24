@@ -1,0 +1,14 @@
+{
+  "file_name": "extension.ts",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\spatial_visualizer\\src\\extension.ts",
+  "file_size": 2304,
+  "created": "2025-11-15T15:54:41.034333",
+  "modified": "2025-11-15T15:54:41.034333",
+  "file_type": "code",
+  "content_hash": "2143b4781b3a734922ecb2b8d4b35ba8",
+  "content_type": "text",
+  "content": "import * as vscode from 'vscode';\nimport { SpatialVisualizer } from './spatial-visualizer';\nimport { CodeAnalyzer } from './code-analyzer';\nimport { VisualizationPanel } from './visualization-panel';\n\nlet visualizer: SpatialVisualizer;\nlet analyzer: CodeAnalyzer;\n\nexport async function activate(context: vscode.ExtensionContext) {\n  console.log('🚀 Spatial Code Visualizer activated');\n\n  // Initialize core components\n  visualizer = new SpatialVisualizer();\n  analyzer = new CodeAnalyzer();\n\n  // Register command: Open Spatial Visualizer\n  let openCommand = vscode.commands.registerCommand(\n    'spatialVisualizer.open',\n    async () => {\n      const editor = vscode.window.activeTextEditor;\n      if (!editor) {\n        vscode.window.showWarningMessage('No active editor. Open a file first.');\n        return;\n      }\n\n      try {\n        // Analyze current file\n        const filePath = editor.document.uri.fsPath;\n        const codeContent = editor.document.getText();\n\n        const analysis = await analyzer.analyze(codeContent, editor.document.languageId);\n\n        // Create visualization panel\n        const panel = new VisualizationPanel(\n          context.extensionUri,\n          filePath,\n          analysis,\n          visualizer\n        );\n\n        panel.show();\n        vscode.window.showInformationMessage('✅ Spatial visualizer opened');\n      } catch (error) {\n        vscode.window.showErrorMessage(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);\n      }\n    }\n  );\n\n  // Register command: Toggle visualization mode\n  let toggleCommand = vscode.commands.registerCommand(\n    'spatialVisualizer.toggleMode',\n    () => {\n      visualizer.toggleMode();\n      vscode.window.showInformationMessage(`📊 Visualization mode toggled`);\n    }\n  );\n\n  // Listen for file changes\n  const fileWatcher = vscode.workspace.onDidChangeTextDocument((event) => {\n    if (event.document === vscode.window.activeTextEditor?.document) {\n      // Trigger re-analysis on file change (debounced)\n      visualizer.updateOnChange();\n    }\n  });\n\n  context.subscriptions.push(openCommand, toggleCommand, fileWatcher);\n}\n\nexport function deactivate() {\n  console.log('🛑 Spatial Code Visualizer deactivated');\n}\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\spatial_visualizer\\src\\extension.ts",
+  "id": "798f8555ae0259f0ee72c4fe90f070ef"
+}

@@ -1,0 +1,22 @@
+{
+  "file_name": "STRUCTURE.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\STRUCTURE.md",
+  "file_size": 3373,
+  "created": "2025-11-26T23:37:35.434638",
+  "modified": "2025-11-26T23:37:35.434638",
+  "file_type": "code",
+  "content_hash": "5eec1aeb759c84d5fa0629423491444a",
+  "content_type": "markdown",
+  "content": "# HyperCode Repository Structure\n\nThis document outlines the organization of the HyperCode repository for better maintainability and development workflow.\n\n## Directory Structure\n\n```\nhypercode/\n├── config/               # Configuration files\n│   ├── *.yaml           # YAML configuration files\n│   ├── *.json           # JSON configuration files\n│   └── *.toml           # TOML configuration files\n│\n├── docs/                 # Documentation\n│   ├── guides/          # How-to guides and tutorials\n│   ├── api/             # API documentation\n│   ├── specs/           # Technical specifications\n│   └── *.md             # General documentation files\n│\n├── examples/             # Example projects and usage examples\n│   ├── basic/           # Basic usage examples\n│   ├── advanced/        # Advanced usage examples\n│   └── integrations/    # Integration examples\n│\n├── scripts/              # Utility scripts\n│   ├── build/           # Build scripts\n│   ├── deploy/          # Deployment scripts\n│   └── tools/           # Development tools\n│\n├── src/                  # Source code\n│   ├── core/            # Core language implementation\n│   ├── compiler/        # Compiler components\n│   ├── runtime/         # Runtime environment\n│   └── utils/           # Utility functions\n│\n├── tests/               # Test suite\n│   ├── unit/           # Unit tests\n│   ├── integration/    # Integration tests\n│   └── e2e/            # End-to-end tests\n│\n├── tools/               # Development tools and utilities\n│\n├── .github/             # GitHub specific files\n├── .vscode/             # VS Code specific files\n├── .gitignore           # Git ignore rules\n├── LICENSE              # License file\n├── pyproject.toml       # Python project configuration\n└── README.md            # Project README\n```\n\n## Key Files and Their Purposes\n\n- `config/`: Contains all configuration files for the project\n- `docs/`: Houses all documentation, including guides and API references\n- `examples/`: Contains example projects demonstrating various features\n- `scripts/`: Holds utility scripts for development and deployment\n- `src/`: Contains all source code for the project\n- `tests/`: Contains all test files\n- `tools/`: Development tools and utilities\n\n## Development Workflow\n\n1. **Setting Up**\n   - Clone the repository\n   - Install dependencies using `pip install -r requirements.txt`\n   - Run `pre-commit install` to set up git hooks\n\n2. **Making Changes**\n   - Create a new branch for your feature/fix\n   - Make your changes following the coding standards\n   - Add tests for your changes\n   - Run tests locally before pushing\n\n3. **Testing**\n   - Run unit tests: `pytest tests/unit`\n   - Run all tests: `pytest`\n   - Run linters: `pre-commit run --all-files`\n\n4. **Documentation**\n   - Update relevant documentation when making changes\n   - Follow the documentation style guide\n\n## Maintenance\n\n- Keep the repository clean and organized\n- Remove unused files and dependencies\n- Update documentation regularly\n- Follow semantic versioning for releases",
+  "metadata": {
+    "headers": [
+      "HyperCode Repository Structure",
+      "Directory Structure",
+      "Key Files and Their Purposes",
+      "Development Workflow",
+      "Maintenance"
+    ]
+  },
+  "relative_path": "hypercode\\docs\\STRUCTURE.md",
+  "id": "f8e68f84757a004356a623064492cd1a"
+}

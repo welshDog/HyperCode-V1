@@ -1,0 +1,14 @@
+{
+  "file_name": "WHEEL",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\WHEEL",
+  "file_size": 91,
+  "created": "2025-12-01T01:58:33.844512",
+  "modified": "2025-12-01T01:58:33.845159",
+  "file_type": "other",
+  "content_hash": "68e6e969da03b3fdebefe35680a5c606",
+  "content_type": "text/unknown",
+  "content": "Wheel-Version: 1.0\nGenerator: setuptools (75.8.0)\nRoot-Is-Purelib: true\nTag: py3-none-any\n\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip-25.0.1.dist-info\\WHEEL",
+  "id": "a719855f6363ac19551177078a5e1151"
+}

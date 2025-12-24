@@ -1,0 +1,14 @@
+{
+  "file_name": "import_sources_from_folder.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\new files to check\\backend\\research\\scripts\\import_sources_from_folder.py",
+  "file_size": 2002,
+  "created": "2025-11-26T20:36:33.598323",
+  "modified": "2025-11-26T20:35:23.344731",
+  "file_type": "code",
+  "content_hash": "e34930608aacf1f715f0c512348a5cc1",
+  "content_type": "text",
+  "content": "\"\"\"\nImport research sources from a folder into the database.\n\nThis script scans a directory for files and registers each file as a\n``Source`` in the database.  It infers the ``kind`` based on file\nextension and preserves the relative path so that the file can be\nretrieved later.  Existing entries are not updated.\n\nUsage::\n\n    python hypercode/backend/research/scripts/import_sources_from_folder.py /path/to/data\n\nThe ``RESEARCH_DATABASE_URL`` environment variable should point to\nyour database; otherwise SQLite will be used.\n\"\"\"\n\nimport sys\nfrom pathlib import Path\nfrom datetime import datetime\n\nfrom hypercode.backend.research import SessionLocal\nfrom hypercode.backend.research.models import Source\n\n\ndef infer_kind(path: Path) -> str:\n    ext = path.suffix.lower()\n    if ext in {\".pdf\"}:\n        return \"paper\"\n    if ext in {\".md\", \".txt\"}:\n        return \"note\"\n    if ext in {\".html\", \".htm\"}:\n        return \"blog\"\n    return \"other\"\n\n\ndef main(data_dir: Path) -> None:\n    if not data_dir.is_dir():\n        raise SystemExit(f\"{data_dir} is not a directory\")\n\n    db = SessionLocal()\n    try:\n        for path in data_dir.iterdir():\n            if not path.is_file():\n                continue\n            title = path.stem.replace(\"_\", \" \")\n            kind = infer_kind(path)\n            storage_path = str(path)\n\n            # skip if a source with the same storage_path already exists\n            if db.query(Source).filter_by(storage_path=storage_path).first():\n                continue\n\n            src = Source(\n                title=title,\n                kind=kind,\n                storage_path=storage_path,\n                imported_at=datetime.utcnow(),\n            )\n            db.add(src)\n\n        db.commit()\n        print(f\"Imported sources from {data_dir}\")\n    finally:\n        db.close()\n\n\nif __name__ == \"__main__\":\n    if len(sys.argv) < 2:\n        print(\"Usage: python import_sources_from_folder.py <directory>\")\n        raise SystemExit(1)\n    main(Path(sys.argv[1]))",
+  "metadata": {},
+  "relative_path": "new files to check\\backend\\research\\scripts\\import_sources_from_folder.py",
+  "id": "73ba96f638b5d3aab924aec12b886741"
+}

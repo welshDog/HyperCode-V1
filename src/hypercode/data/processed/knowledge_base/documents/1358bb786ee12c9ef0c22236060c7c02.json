@@ -1,0 +1,14 @@
+{
+  "file_name": "tests-workflow.yml",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\config\\tests-workflow.yml",
+  "file_size": 1417,
+  "created": "2025-11-30T20:22:52.641401",
+  "modified": "2025-11-30T20:22:52.641401",
+  "file_type": "code",
+  "content_hash": "77e30606c6933673dce84ae82e2175ab",
+  "content_type": "text/unknown",
+  "content": "name: Tests\n\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main, develop ]\n\njobs:\n  test:\n    runs-on: ${{ matrix.os }}\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest, macos-latest]\n        python-version: ['3.10', '3.11', '3.12']\n    \n    steps:\n    - uses: actions/checkout@v4\n    \n    - name: Set up Python ${{ matrix.python-version }}\n      uses: actions/setup-python@v4\n      with:\n        python-version: ${{ matrix.python-version }}\n    \n    - name: Install dependencies\n      run: |\n        python -m pip install --upgrade pip\n        pip install -r requirements.txt\n        pip install pytest pytest-cov\n    \n    - name: Lint with flake8\n      run: |\n        pip install flake8\n        # Stop the build if there are Python syntax errors or undefined names\n        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics\n        # Exit-zero treats all errors as warnings\n        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics\n      continue-on-error: true\n    \n    - name: Test with pytest\n      run: |\n        pytest tests/ -v --cov=hypercode --cov-report=xml\n    \n    - name: Upload coverage\n      uses: codecov/codecov-action@v3\n      with:\n        file: ./coverage.xml\n        flags: unittests\n        name: codecov-umbrella\n      continue-on-error: true",
+  "metadata": {},
+  "relative_path": "hypercode\\config\\tests-workflow.yml",
+  "id": "1358bb786ee12c9ef0c22236060c7c02"
+}

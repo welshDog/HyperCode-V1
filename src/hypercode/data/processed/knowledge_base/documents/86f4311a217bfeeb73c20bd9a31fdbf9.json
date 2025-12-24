@@ -1,0 +1,14 @@
+{
+  "file_name": "ast.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\hypercode\\core\\ast.py",
+  "file_size": 1661,
+  "created": "2025-11-15T15:54:41.058562",
+  "modified": "2025-11-19T14:53:46.597912",
+  "file_type": "code",
+  "content_hash": "4cabb9cc58a584185e5d95deaf02d318",
+  "content_type": "text",
+  "content": "from dataclasses import dataclass\nfrom typing import TYPE_CHECKING, List, Optional, Union\n\nif TYPE_CHECKING:\n    from .tokens import Token\n\n\n# Base Node class\nclass Node:\n    def accept(self, visitor):\n        method_name = f\"visit_{self.__class__.__name__}\"\n        visitor_method = getattr(visitor, method_name, None)\n        if visitor_method is None:\n            raise NotImplementedError(f\"No visit_{self.__class__.__name__} method\")\n        return visitor_method(self)\n\n\n# Expressions\n@dataclass\nclass Expr(Node):\n    pass\n\n\n@dataclass\nclass Literal(Expr):\n    value: Union[str, int, float, bool, None]\n\n\n@dataclass\nclass Variable(Expr):\n    name: \"Token\"\n\n\n@dataclass\nclass Assign(Expr):\n    name: \"Token\"\n    value: Expr\n\n\n@dataclass\nclass Binary(Expr):\n    left: Expr\n    operator: \"Token\"\n    right: Expr\n\n\n@dataclass\nclass Unary(Expr):\n    operator: \"Token\"\n    right: Expr\n\n\n@dataclass\nclass Grouping(Expr):\n    expression: Expr\n\n\n@dataclass\nclass Call(Expr):\n    callee: Expr\n    paren: \"Token\"\n    arguments: List[Expr]\n\n\n@dataclass\nclass Get(Expr):\n    object: Expr\n    name: \"Token\"\n\n\n# Statements\n@dataclass\nclass Stmt(Node):\n    pass\n\n\n@dataclass\nclass Expression(Stmt):\n    expression: Expr\n\n\n@dataclass\nclass Print(Stmt):\n    expression: Expr\n\n\n@dataclass\nclass Var(Stmt):\n    name: \"Token\"\n    initializer: Optional[Expr]\n\n\n@dataclass\nclass Block(Stmt):\n    statements: List[Stmt]\n\n\n@dataclass\nclass Intent(Stmt):\n    description: str\n    statements: List[Stmt]\n\n\n# Program\n@dataclass\nclass Program(Node):\n    statements: List[Stmt]\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\hypercode\\core\\ast.py",
+  "id": "86f4311a217bfeeb73c20bd9a31fdbf9"
+}

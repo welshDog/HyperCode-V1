@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\__init__.py",
+  "file_size": 537,
+  "created": "2025-12-01T01:58:33.053350",
+  "modified": "2025-12-01T01:58:33.054034",
+  "file_type": "code",
+  "content_hash": "8b67527ebde2b292d95bfe62ff92897f",
+  "content_type": "text",
+  "content": "__all__ = [\n    \"__version__\",\n    \"AbstractProvider\",\n    \"AbstractResolver\",\n    \"BaseReporter\",\n    \"InconsistentCandidate\",\n    \"Resolver\",\n    \"RequirementsConflicted\",\n    \"ResolutionError\",\n    \"ResolutionImpossible\",\n    \"ResolutionTooDeep\",\n]\n\n__version__ = \"1.0.1\"\n\n\nfrom .providers import AbstractProvider, AbstractResolver\nfrom .reporters import BaseReporter\nfrom .resolvers import (\n    InconsistentCandidate,\n    RequirementsConflicted,\n    ResolutionError,\n    ResolutionImpossible,\n    ResolutionTooDeep,\n    Resolver,\n)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\resolvelib\\__init__.py",
+  "id": "50af050cbf7d26090dafffb80663f270"
+}

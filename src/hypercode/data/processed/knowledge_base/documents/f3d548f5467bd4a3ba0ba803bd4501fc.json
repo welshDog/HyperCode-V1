@@ -1,0 +1,14 @@
+{
+  "file_name": "backends",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\backends",
+  "file_size": 651,
+  "created": "2025-11-15T15:54:41.038296",
+  "modified": "2025-11-17T17:48:31.574623",
+  "file_type": "other",
+  "content_hash": "1f04ff2d11f960d575ec56dd7ac485c5",
+  "content_type": "text/unknown",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\"\"\"\nMulti-backend compilation targets\n\nFile: backends\\dna.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\backends",
+  "id": "f3d548f5467bd4a3ba0ba803bd4501fc"
+}

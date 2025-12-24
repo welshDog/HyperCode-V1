@@ -1,0 +1,14 @@
+{
+  "file_name": "strings.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\examples\\strings.hc",
+  "file_size": 435,
+  "created": "2025-11-30T20:04:07.228759",
+  "modified": "2025-11-30T20:04:07.228759",
+  "file_type": "other",
+  "content_hash": "5aac7f0d81fdd45749c430878a486635",
+  "content_type": "text/unknown",
+  "content": "// examples/strings.hc\n// A simple example of string manipulation.\n\n// Define a function that adds an exclamation mark.\n// Note: String concatenation uses the '+' operator.\nfunc exclaim(s) {\n  return s + \"!\";\n}\n\nblock \"String Manipulation\" {\n  let greeting = \"Hello, HyperCode\";\n\n  // Pipe the string to the exclaim function\n  greeting | exclaim -> excited_greeting;\n\n  print(excited_greeting);\n\n  return @success(excited_greeting);\n}\n",
+  "metadata": {},
+  "relative_path": "examples\\strings.hc",
+  "id": "48ac693ff0412047728e489fca5c47b8"
+}

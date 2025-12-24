@@ -1,0 +1,14 @@
+{
+  "file_name": "error_handler.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\hypercode\\core\\error_handler.py",
+  "file_size": 395,
+  "created": "2025-11-15T15:54:41.061463",
+  "modified": "2025-11-19T14:48:50.612917",
+  "file_type": "code",
+  "content_hash": "6793b6eec96b030cc32a9b676f500970",
+  "content_type": "text",
+  "content": "from .lexer import Token\nfrom .tokens import TokenType\n\n\ndef report_parse_error(token: Token, message: str) -> None:\n    if token.type == TokenType.EOF:\n        report(token.line, \" at end\", message)\n    else:\n        report(token.line, f\" at '{token.lexeme}'\", message)\n\n\ndef report(line: int, where: str, message: str) -> None:\n    print(f\"[line {line}] Error{where}: {message}\")\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\hypercode\\core\\error_handler.py",
+  "id": "3b9667a61b65625bc2671035598468bd"
+}

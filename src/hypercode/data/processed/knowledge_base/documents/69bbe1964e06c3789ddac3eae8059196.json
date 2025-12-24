@@ -1,0 +1,14 @@
+{
+  "file_name": "demo_fibonacci.hc",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\demo_fibonacci.hc",
+  "file_size": 488,
+  "created": "2025-11-26T23:37:35.482079",
+  "modified": "2025-11-26T23:37:35.482079",
+  "file_type": "other",
+  "content_hash": "ec0462b960c635262d870bb1b2251f25",
+  "content_type": "text/unknown",
+  "content": "// Demo 2: Fibonacci - Recursion Made Simple\n// This demonstrates functions and recursion\n\nfunc fib(n) {\n    if n <= 1 {\n        return n;\n    }\n    return fib(n - 1) + fib(n - 2);\n}\n\n// Calculate first 10 Fibonacci numbers\nprint(\"Fibonacci sequence:\");\nprint(\"fib(0) =\", fib(0));\nprint(\"fib(1) =\", fib(1));\nprint(\"fib(2) =\", fib(2));\nprint(\"fib(3) =\", fib(3));\nprint(\"fib(4) =\", fib(4));\nprint(\"fib(5) =\", fib(5));\nprint(\"fib(6) =\", fib(6));\nprint(\"fib(7) =\", fib(7));",
+  "metadata": {},
+  "relative_path": "hypercode\\examples\\demo_fibonacci.hc",
+  "id": "69bbe1964e06c3789ddac3eae8059196"
+}

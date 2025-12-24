@@ -1,0 +1,25 @@
+{
+  "file_name": "CONTRIBUTING.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\CONTRIBUTING.md",
+  "file_size": 3243,
+  "created": "2025-11-12T16:12:33.478604",
+  "modified": "2025-11-26T02:00:12.342812",
+  "file_type": "code",
+  "content_hash": "5149d0bd34e08a845abdeae8b4eff90c",
+  "content_type": "markdown",
+  "content": "# Contributing to HyperCode\n\nFirst off, thank you for considering contributing to HyperCode! It's people like you that make this project a powerful and inclusive tool.\n\nThis project is founded on the principles of being \"neurodivergent-first.\" This means we prioritize a contribution process that is welcoming, clear, and low-stress for everyone, especially those with ADHD, autism, dyslexia, and other forms of neurodivergence. If you have suggestions for how to make this process better, please let us know by opening an issue.\n\n## Code of Conduct\n\nHyperCode has a [Code of Conduct](CODE_OF_CONDUCT.md) that all contributors are expected to follow. Please make sure you have read and understood it before contributing.\n\n## How Can I Contribute?\n\n### Reporting Bugs or Suggesting Enhancements\n\nIf you find a bug or have an idea for a new feature, please check the [issues page](https://github.com/welshDog/hypercode/issues) to see if it has already been reported. If not, please open a new issue.\n\n### Your First Code Contribution\n\nUnsure where to begin? You can start by looking through these beginner-friendly issues:\n*   [Good first issues](https://github.com/welshDog/hypercode/labels/good%20first%20issue) - Issues that should only require a few lines of code and a test or two.\n*   [Help wanted issues](https://github.com/welshDog/hypercode/labels/help%20wanted) - Issues that are a bit more involved.\n\n### Contribution Workflow\n\n1.  **Fork the repository** and create your branch from `main`.\n2.  **Set up your development environment.** See the `README.md` for instructions.\n3.  **Make your changes.**\n4.  **Add or update tests** for your changes.\n5.  **Update the documentation.** All new features and changes must be documented. This includes updating the `README.md` and any other relevant documentation. Please also make sure to update inline code comments where necessary.\n6.  **Ensure your code lints** and passes all tests.\n7.  **Submit a pull request.** Please reference the issue your pull request resolves.\n\n### Neurodiversity and Accessibility Checklist for Contributions\n\nTo ensure we adhere to our \"neurodivergent-first\" ethos, please review this checklist before submitting your PR:\n\n-   **Clarity over cleverness:** Is the code easy to understand? Have you avoided overly complex or idiomatic code that might be difficult for others to parse?\n-   **Explicit naming:** Are variables, functions, and classes named clearly and descriptively?\n-   **Comprehensive comments (for the 'why'):** Have you added comments to explain *why* the code is written a certain way, especially for complex or non-obvious parts?\n-   **Documentation changes:** If your change affects the user experience, have you updated the documentation to be clear, simple, and easy to follow?\n-   **Error messages:** Are error messages helpful, clear, and free of jargon? Do they suggest a solution?\n-   **Accessibility in UI:** If your change affects the UI, have you considered accessibility (e.g., color contrast, keyboard navigation, screen reader compatibility)?\n\n## Security\n\nIf you find a security vulnerability, please refer to our [Security Policy](SECURITY.md) for instructions on how to report it.",
+  "metadata": {
+    "headers": [
+      "Contributing to HyperCode",
+      "Code of Conduct",
+      "How Can I Contribute?",
+      "Reporting Bugs or Suggesting Enhancements",
+      "Your First Code Contribution",
+      "Contribution Workflow",
+      "Neurodiversity and Accessibility Checklist for Contributions",
+      "Security"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\CONTRIBUTING.md",
+  "id": "9d7fe4c90d34d06d5a34092ddaf1c013"
+}

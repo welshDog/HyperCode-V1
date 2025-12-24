@@ -1,0 +1,24 @@
+{
+  "file_name": "1-roadmap.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\docs\\roadmaps\\1-roadmap.md",
+  "file_size": 1373,
+  "created": "2025-12-02T17:25:07.328328",
+  "modified": "2025-12-03T23:42:28.243356",
+  "file_type": "code",
+  "content_hash": "24a54c8572dc3d65333c0eb81138b60b",
+  "content_type": "markdown",
+  "content": "# HyperCode Roadmap\n\n## NOW (This Week - 2025-12-03)\n\n-   [x] T-001: Set up project management structure → Completed 2025-12-03, @system\n-   [x] T-002: Visual Programming Interface → In progress, @user\n-   [x] T-003: Define core language syntax → In review, @user\n-   [ ] T-004: Documentation structure overhaul → In progress, @system\n\n## NEXT (This Month - December 2025)\n\n-   [ ] T-010: Create basic interpreter prototype → Planned\n-   [ ] T-011: Design neurodivergent-friendly syntax → Planned\n-   [ ] T-012: Implement documentation automation → Planned\n-   [ ] T-013: Set up CI/CD for documentation → Planned\n\n## UPCOMING (Q1 2026)\n\n-   [ ] T-020: AI integration layer → Research phase\n-   [ ] T-021: Quantum computing abstraction → Research phase\n-   [ ] T-022: VS Code extension development → Planned\n-   [ ] T-023: Community documentation portal → Planned\n\n## FUTURE (2026+)\n\n-   [ ] T-100: Version 1.0 Release\n-   [ ] T-101: Community growth initiatives\n-   [ ] T-102: Enterprise features\n\n---\n\n### How to Contribute\n\n1. Pick an unassigned task or propose a new one\n2. Comment on the issue to claim it\n3. Submit a pull request with your changes\n4. Request review from the core team\n\n### Legend\n\n-   ✅ Done\n-   🔄 In Progress\n-   ⏳ Planned\n-   💡 Research Phase\n\nLast updated: 2025-12-03",
+  "metadata": {
+    "headers": [
+      "HyperCode Roadmap",
+      "NOW (This Week - 2025-12-03)",
+      "NEXT (This Month - December 2025)",
+      "UPCOMING (Q1 2026)",
+      "FUTURE (2026+)",
+      "How to Contribute",
+      "Legend"
+    ]
+  },
+  "relative_path": "docs\\roadmaps\\1-roadmap.md",
+  "id": "3669c8b34b044276abe78c4d489d3716"
+}

@@ -1,7 +1,7 @@
 # HyperCode Syntax Specification
 
-> **Version**: 0.1.0-alpha  
-> **Status**: Draft  
+> **Version**: 0.1.0-alpha
+> **Status**: Draft
 > **Last Updated**: 2025-12-18
 
 ## Core Principles
@@ -176,7 +176,7 @@ x: 42  // End-of-line comment
 ### Documentation Blocks
 ```hypercode
 /// Calculates the factorial of a number
-/// 
+///
 /// @param n {Number} - A non-negative integer
 /// @returns {Number} - The factorial of n
 FUNCTION factorial(n)

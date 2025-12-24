@@ -1,0 +1,14 @@
+{
+  "file_name": "scripts",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\src\\scripts",
+  "file_size": 551,
+  "created": "2025-11-15T15:54:41.090615",
+  "modified": "2025-11-15T15:54:41.091637",
+  "file_type": "other",
+  "content_hash": "469f0dd8af95a497fc4b6c5114717cf8",
+  "content_type": "text/unknown",
+  "content": "#!/bin/sh\n# Health check for HyperCode services\n\n# Exit immediately if a command exits with a non-zero status\nset -e\n\n# Check if the API server is running\nif ! curl -sSf http://localhost:8000/health > /dev/null; then\n    echo \"Health check failed: API server is not responding\"\n    exit 1\nfi\n\n# Check if required services are running\n# Example: Check if Redis is accessible\n# if ! redis-cli ping > /dev/null; then\n#     echo \"Health check failed: Redis is not accessible\"\n#     exit 1\n# fi\n\necho \"All services are healthy\"\nexit 0\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\src\\scripts",
+  "id": "252271ba0e6907b95ce83f8baac5cbaf"
+}

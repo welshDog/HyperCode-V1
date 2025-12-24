@@ -1,0 +1,14 @@
+{
+  "file_name": "SOURCES.txt",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\hypercode.egg-info\\SOURCES.txt",
+  "file_size": 1736,
+  "created": "2025-11-12T10:38:32.187563",
+  "modified": "2025-11-12T21:35:49.496330",
+  "file_type": "code",
+  "content_hash": "b4e0997f17b4587d2958f551f1ba82b6",
+  "content_type": "text",
+  "content": "LICENSE\nREADME.md\npyproject.toml\nsetup.py\naccessibility/__init__.py\naccessibility/adhd_optimizer.py\naccessibility/autism_preset.py\naccessibility/dyslexia_formatter.py\naccessibility/sensory_customizer.py\naccessibility/wcag_auditor.py\nai_gateway/__init__.py\nai_gateway/base_gateway.py\nai_gateway/claude_adapter.py\nai_gateway/mistral_adapter.py\nai_gateway/ollama_adapter.py\nai_gateway/openai_adapter.py\nai_gateway/prompt_normalizer.py\nai_gateway/rag_engine.py\nbackends/__init__.py\nbackends/dna.py\nbackends/javascript.py\nbackends/python.py\nbackends/quantum.py\nbackends/wasm.py\ncore/__init__.py\ncore/ast.py\ncore/cli.py\ncore/lexer.py\ncore/optimizer.py\ncore/parser.py\ncore/semantic_analyzer.py\ncore/tokens.py\ndocs/__init__.py\nexamples/__init__.py\nhypercode/__init__.py\nhypercode/__main__.py\nhypercode/config.py\nhypercode/repl.py\nhypercode.egg-info/PKG-INFO\nhypercode.egg-info/SOURCES.txt\nhypercode.egg-info/dependency_links.txt\nhypercode.egg-info/requires.txt\nhypercode.egg-info/top_level.txt\nhypercode/clients/__init__.py\nhypercode/clients/perplexity_client.py\nhypercode/core/__init__.py\nhypercode/core/ast.py\nhypercode/core/error_handler.py\nhypercode/core/lexer.py\nhypercode/core/parser.py\nknowledge_graph/__init__.py\nknowledge_graph/graph_builder.py\nknowledge_graph/sparql_query.py\nknowledge_graph/update_agent.py\nlive_research/__init__.py\nlive_research/doc_generator.py\nlive_research/github_publisher.py\nlive_research/paper_indexer.py\nlive_research/research_crawler.py\nlive_research/synthesis_engine.py\ntests/__init__.py\ntests/test_accessibility.py\ntests/test_ai_gateway.py\ntests/test_backends.py\ntests/test_core.py\ntests/test_integration.py\ntests/test_lexer.py\ntests/test_parser.py\ntests/test_perplexity.py\ntools/__init__.py\ntools/repl.py",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\hypercode.egg-info\\SOURCES.txt",
+  "id": "c8400b506ec12d3a662ce9bd4c8c3843"
+}

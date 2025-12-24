@@ -1,0 +1,112 @@
+
+INSTALLATION & SETUP INSTRUCTIONS
+═════════════════════════════════════════════════════════════════════════
+
+1. UPDATE pyproject.toml:
+   - Add the entries from PYPROJECT_ADDITIONS.txt
+   - Include new console script entries for CLI commands
+
+2. INSTALL DEPENDENCIES:
+   $ pip install -e .
+
+   Or with specific extras:
+   $ pip install -e ".[postgres,mysql,dev]"
+
+3. INITIALIZE DATABASE:
+   $ hypercode-db init
+
+   Or use the integrated CLI:
+   $ hypercode-research database init
+
+4. CHECK STATUS:
+   $ hypercode-research database status
+   $ hypercode-research system health
+
+5. START AUTO-RESEARCH:
+   $ hypercode-research research auto-research \
+       --query "machine learning" \
+       --sources arxiv pubmed \
+       --continuous
+
+6. EXPLORE KNOWLEDGE GRAPH:
+   $ hypercode-research knowledge nodes
+   $ hypercode-research knowledge relationships
+   $ hypercode-research knowledge graph -n 1
+
+═════════════════════════════════════════════════════════════════════════
+
+USAGE EXAMPLES:
+═════════════════════════════════════════════════════════════════════════
+
+# Database Management
+hypercode-research database init              # Initialize
+hypercode-research database status            # Check status
+hypercode-research database reset             # Reset (DANGEROUS)
+
+# Research Operations
+hypercode-research research auto-research \
+    --query "quantum computing" \
+    --sources arxiv pubmed \
+    --limit 100 \
+    --continuous
+
+hypercode-research research process-papers    # Process pending papers
+hypercode-research research agents            # List agents
+
+# Knowledge Graph Queries
+hypercode-research knowledge nodes -t person  # List people
+hypercode-research knowledge relationships    # List relationships
+hypercode-research knowledge graph -n 5       # Explore node 5
+
+# System Management
+hypercode-research system health              # Health check
+hypercode-research system version             # System info
+
+═════════════════════════════════════════════════════════════════════════
+
+PYTHON API USAGE:
+═════════════════════════════════════════════════════════════════════════
+
+from database_utils.db import init_db, get_db_context
+from database_utils.models import ResearchPaper, KnowledgeNode
+from database_utils.research_agent import AutoResearchManager
+import asyncio
+
+# Initialize
+init_db()
+
+# Add paper
+with get_db_context() as session:
+    paper = ResearchPaper(
+        title="My Research",
+        authors="Jane Smith",
+        source_url="https://example.com/paper.pdf"
+    )
+    session.add(paper)
+
+# Query papers
+with get_db_context() as session:
+    pending = session.query(ResearchPaper).filter_by(
+        processing_status="pending"
+    ).all()
+
+# Add knowledge
+with get_db_context() as session:
+    concept = KnowledgeNode(
+        node_type="concept",
+        label="Neural Networks",
+        canonical_form="neural_networks",
+        description="Mathematical models inspired by biological neurons"
+    )
+    session.add(concept)
+
+# Run auto-research
+async def research():
+    manager = AutoResearchManager()
+    manager.initialize_agents()
+    result = await manager.process_research_task(task_id=1)
+    return result
+
+asyncio.run(research())
+
+═════════════════════════════════════════════════════════════════════════

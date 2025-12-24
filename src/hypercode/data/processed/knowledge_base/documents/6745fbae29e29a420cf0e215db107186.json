@@ -1,0 +1,14 @@
+{
+  "file_name": "filetypes.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\filetypes.py",
+  "file_size": 716,
+  "created": "2025-12-01T01:58:31.563053",
+  "modified": "2025-12-01T01:58:31.564348",
+  "file_type": "code",
+  "content_hash": "daae55f86e9bae3d0affc1181f6acd85",
+  "content_type": "text",
+  "content": "\"\"\"Filetype information.\n\"\"\"\n\nfrom typing import Tuple\n\nfrom pip._internal.utils.misc import splitext\n\nWHEEL_EXTENSION = \".whl\"\nBZ2_EXTENSIONS: Tuple[str, ...] = (\".tar.bz2\", \".tbz\")\nXZ_EXTENSIONS: Tuple[str, ...] = (\n    \".tar.xz\",\n    \".txz\",\n    \".tlz\",\n    \".tar.lz\",\n    \".tar.lzma\",\n)\nZIP_EXTENSIONS: Tuple[str, ...] = (\".zip\", WHEEL_EXTENSION)\nTAR_EXTENSIONS: Tuple[str, ...] = (\".tar.gz\", \".tgz\", \".tar\")\nARCHIVE_EXTENSIONS = ZIP_EXTENSIONS + BZ2_EXTENSIONS + TAR_EXTENSIONS + XZ_EXTENSIONS\n\n\ndef is_archive_file(name: str) -> bool:\n    \"\"\"Return True if `name` is a considered as an archive file.\"\"\"\n    ext = splitext(name)[1].lower()\n    if ext in ARCHIVE_EXTENSIONS:\n        return True\n    return False\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_internal\\utils\\filetypes.py",
+  "id": "6745fbae29e29a420cf0e215db107186"
+}

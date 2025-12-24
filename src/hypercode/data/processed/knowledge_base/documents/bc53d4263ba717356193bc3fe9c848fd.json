@@ -1,0 +1,14 @@
+{
+  "file_name": "setup.bat",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\scripts\\windows\\setup\\setup.bat",
+  "file_size": 424,
+  "created": "2025-11-23T12:01:48.532250",
+  "modified": "2025-11-23T12:01:48.533810",
+  "file_type": "code",
+  "content_hash": "34eb467690961c0073c5042bc7a2f840",
+  "content_type": "text/unknown",
+  "content": "@echo off\necho Setting up HyperCode development environment...\n\n:: Create virtual environment\npython -m venv .venv\ncall .venv\\Scripts\\activate\n\n:: Install dependencies\npip install --upgrade pip\npip install -r config\\requirements.txt\npip install -r config\\requirements-dev.txt\n\n:: Install pre-commit hooks\npre-commit install\n\necho Setup complete! Activate the virtual environment with: .venv\\Scripts\\activate\n",
+  "metadata": {},
+  "relative_path": "windows\\setup\\setup.bat",
+  "id": "bc53d4263ba717356193bc3fe9c848fd"
+}

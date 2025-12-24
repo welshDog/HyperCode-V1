@@ -1,0 +1,14 @@
+{
+  "file_name": "activate.bat",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Scripts\\activate.bat",
+  "file_size": 1044,
+  "created": "2025-12-01T02:00:08.618603",
+  "modified": "2025-12-01T02:00:08.621570",
+  "file_type": "code",
+  "content_hash": "f8df757848fc779d4d42d304879344fa",
+  "content_type": "text/unknown",
+  "content": "@echo off\n\nrem This file is UTF-8 encoded, so we need to update the current code page while executing it\nfor /f \"tokens=2 delims=:.\" %%a in ('\"%SystemRoot%\\System32\\chcp.com\"') do (\n    set _OLD_CODEPAGE=%%a\n)\nif defined _OLD_CODEPAGE (\n    \"%SystemRoot%\\System32\\chcp.com\" 65001 > nul\n)\n\nset \"VIRTUAL_ENV=C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\"\n\nif not defined PROMPT set PROMPT=$P$G\n\nif defined _OLD_VIRTUAL_PROMPT set PROMPT=%_OLD_VIRTUAL_PROMPT%\nif defined _OLD_VIRTUAL_PYTHONHOME set PYTHONHOME=%_OLD_VIRTUAL_PYTHONHOME%\n\nset _OLD_VIRTUAL_PROMPT=%PROMPT%\nset PROMPT=(venv_new) %PROMPT%\n\nif defined PYTHONHOME set _OLD_VIRTUAL_PYTHONHOME=%PYTHONHOME%\nset PYTHONHOME=\n\nif defined _OLD_VIRTUAL_PATH set PATH=%_OLD_VIRTUAL_PATH%\nif not defined _OLD_VIRTUAL_PATH set _OLD_VIRTUAL_PATH=%PATH%\n\nset \"PATH=%VIRTUAL_ENV%\\Scripts;%PATH%\"\nset \"VIRTUAL_ENV_PROMPT=(venv_new) \"\n\n:END\nif defined _OLD_CODEPAGE (\n    \"%SystemRoot%\\System32\\chcp.com\" %_OLD_CODEPAGE% > nul\n    set _OLD_CODEPAGE=\n)\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Scripts\\activate.bat",
+  "id": "8d911ba06d0948c78f9a206426ef5096"
+}

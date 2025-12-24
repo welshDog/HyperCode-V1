@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\certifi\\__init__.py",
+  "file_size": 94,
+  "created": "2025-12-01T01:58:31.825628",
+  "modified": "2025-12-01T01:58:31.827319",
+  "file_type": "code",
+  "content_hash": "d55b9b12960db04d3c358f429b5e858f",
+  "content_type": "text",
+  "content": "from .core import contents, where\n\n__all__ = [\"contents\", \"where\"]\n__version__ = \"2024.08.30\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\certifi\\__init__.py",
+  "id": "ed7d17666c1e19056ebdb23820803820"
+}

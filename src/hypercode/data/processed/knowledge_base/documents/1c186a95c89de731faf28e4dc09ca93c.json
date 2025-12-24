@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\packaging\\__init__.py",
+  "file_size": 494,
+  "created": "2025-12-01T01:58:32.158317",
+  "modified": "2025-12-01T01:58:32.160444",
+  "file_type": "code",
+  "content_hash": "32b3d7c2c9c729c18e99c82fffa89764",
+  "content_type": "text",
+  "content": "# This file is dual licensed under the terms of the Apache License, Version\n# 2.0, and the BSD License. See the LICENSE file in the root of this repository\n# for complete details.\n\n__title__ = \"packaging\"\n__summary__ = \"Core utilities for Python packages\"\n__uri__ = \"https://github.com/pypa/packaging\"\n\n__version__ = \"24.2\"\n\n__author__ = \"Donald Stufft and individual contributors\"\n__email__ = \"donald@stufft.io\"\n\n__license__ = \"BSD-2-Clause or Apache-2.0\"\n__copyright__ = f\"2014 {__author__}\"\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\packaging\\__init__.py",
+  "id": "1c186a95c89de731faf28e4dc09ca93c"
+}

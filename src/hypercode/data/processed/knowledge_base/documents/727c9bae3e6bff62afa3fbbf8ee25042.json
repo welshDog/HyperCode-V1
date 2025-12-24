@@ -1,0 +1,14 @@
+{
+  "file_name": "repl.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\hypercode\\repl.py",
+  "file_size": 1782,
+  "created": "2025-11-23T12:01:48.561187",
+  "modified": "2025-11-30T19:04:31.157518",
+  "file_type": "code",
+  "content_hash": "1c396d958fcf364ba41634492b3b391e",
+  "content_type": "text",
+  "content": "import sys\nimport os\nimport sys\nsys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))\n\nfrom core.lexer import Lexer\nfrom core.parser import Parser\nfrom core.interpreter import Interpreter\n\n\ndef run_repl():\n    print(\"🚀 HyperCode REPL v1.0\")\n    print(\"Type 'exit' to quit, 'help' for examples\")\n    print(\"-\" * 40)\n    while True:\n        try:\n            source = input(\"> \")\n            if source.lower() in (\"exit\", \"quit\"):\n                print(\"👋 Goodbye!\")\n                break\n            if source.lower() == \"help\":\n                show_help()\n                continue\n            run(source)\n        except KeyboardInterrupt:\n            print(\"\\n👋 Goodbye!\")\n            break\n        except Exception as e:\n            print(f\"❌ Error: {e}\")\n\n\ndef run(source: str):\n    # Lexical analysis\n    lexer = Lexer(source)\n    tokens = lexer.scan_tokens()\n    \n    if lexer.errors:\n        for error in lexer.errors:\n            print(f\"❌ Lexer Error at line {error.line}:{error.column}: {error.message}\")\n        return\n    \n    # Parsing\n    parser = Parser(tokens)\n    statements = parser.parse()\n    \n    # Execution\n    interpreter = Interpreter()\n    interpreter.interpret(statements)\n\n\ndef show_help():\n    print(\"\"\"\n📚 HyperCode Quick Examples:\n\n1. Print a message:\n   print(\"Hello, HyperCode!\");\n\n2. Variables:\n   let x = 42;\n   print(x);\n\n3. Math:\n   let result = (10 + 2) * 3;\n   print(result);\n\n4. Strings:\n   let name = \"BROski\";\n   print(\"Hello, \" + name);\n\"\"\")\n\n\nif __name__ == \"__main__\":\n    if len(sys.argv) > 1:\n        # Run a file\n        with open(sys.argv[1], \"r\") as f:\n            run(f.read())\n    else:\n        # Start REPL\n        run_repl()\n",
+  "metadata": {},
+  "relative_path": "src\\hypercode\\repl.py",
+  "id": "727c9bae3e6bff62afa3fbbf8ee25042"
+}

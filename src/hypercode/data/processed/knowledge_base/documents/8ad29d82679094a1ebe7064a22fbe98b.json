@@ -1,0 +1,14 @@
+{
+  "file_name": "tokens.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\src\\hypercode\\core\\tokens.py",
+  "file_size": 1340,
+  "created": "2025-11-26T23:37:35.642875",
+  "modified": "2025-11-26T23:37:35.642875",
+  "file_type": "code",
+  "content_hash": "0b61dc795f5ab1d27e0b246e916b75ec",
+  "content_type": "text",
+  "content": "from dataclasses import dataclass\nfrom enum import Enum, auto\nfrom typing import Any\n\n\nclass TokenType(Enum):\n    # Keywords\n    IF = auto()\n    ELSE = auto()\n    FOR = auto()\n    WHILE = auto()\n    FUN = auto()\n    RETURN = auto()\n    LET = auto()\n    CONST = auto()\n    VAR = auto()\n    PRINT = auto()\n    TRUE = auto()\n    FALSE = auto()\n    NIL = auto()\n    CLASS = auto()\n    INTENT = auto()\n\n    # Literals\n    IDENTIFIER = auto()\n    STRING = auto()\n    NUMBER = auto()\n\n    # Operators\n    PLUS = auto()\n    MINUS = auto()\n    STAR = auto()\n    SLASH = auto()\n    EQUAL = auto()\n    EQUAL_EQUAL = auto()\n    BANG = auto()\n    BANG_EQUAL = auto()\n    LESS = auto()\n    LESS_EQUAL = auto()\n    GREATER = auto()\n    GREATER_EQUAL = auto()\n\n    # Punctuation\n    LPAREN = auto()\n    RPAREN = auto()\n    LBRACE = auto()\n    RBRACE = auto()\n    LBRACKET = auto()\n    RBRACKET = auto()\n    COMMA = auto()\n    SEMICOLON = auto()\n    COLON = auto()\n    DOT = auto()\n\n    # Other\n    UNKNOWN = auto()\n    EOF = auto()\n\n\n@dataclass\nclass Token:\n    type: TokenType\n    lexeme: str\n    literal: Any\n    line: int\n    column: int\n\n    def __str__(self):\n        return f\"Token({self.type.name}, {self.lexeme!r}, literal={self.literal!r}, line={self.line}, col={self.column})\"\n",
+  "metadata": {},
+  "relative_path": "hypercode\\src\\hypercode\\core\\tokens.py",
+  "id": "8ad29d82679094a1ebe7064a22fbe98b"
+}

@@ -1,0 +1,219 @@
+{
+  "summary": {
+    "total": 13,
+    "passed": 11,
+    "failed": 2,
+    "skipped": 0,
+    "success_rate": 84.61538461538461
+  },
+  "tests": [
+    {
+      "test_case": {
+        "name": "Validator Integrity Test",
+        "file_path": "self_test",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Test validator can run without errors"
+      },
+      "result": "TestResult.FAILED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "Traceback (most recent call last):\n  File \"C:\\Users\\lyndz\\Downloads\\HyperCode\\hypercode\\DuelCode\\ultra_validator.py\", line 503, in <module>\n    main()\n  File \"C:\\Users\\lyndz\\Downloads\\HyperCode\\hypercode\\DuelCode\\ultra_validator.py\", line 495, in main\n    validator.print_results()\n  File \"C:\\Users\\lyndz\\Downloads\\HyperCode\\hypercode\\DuelCode\\ultra_validator.py\", line 470, in print_results\n    print(f\"  \\U0001f4a1 {result.suggestion}\")\n  File \"C:\\Users\\lyndz\\AppData\\Local\\Programs\\Python\\Python312\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode character '\\U0001f4a1' in position 2: character maps to <undefined>\n",
+      "duration": 0
+    },
+    {
+      "test_case": {
+        "name": "Template Test: TEMPLATE-TUTORIAL-ADVANCED.md",
+        "file_path": "DuelCode\\TEMPLATE-TUTORIAL-ADVANCED.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing template TEMPLATE-TUTORIAL-ADVANCED.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "",
+      "duration": 0
+    },
+    {
+      "test_case": {
+        "name": "Template Test: TEMPLATE-TUTORIAL-QUICK.md",
+        "file_path": "DuelCode\\TEMPLATE-TUTORIAL-QUICK.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing template TEMPLATE-TUTORIAL-QUICK.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nINFOS (6):\n==========\n\u2022 Consider adding practical exercises for better engagement\n",
+      "duration": 0
+    },
+    {
+      "test_case": {
+        "name": "Template Test: TEMPLATE-REFERENCE.md",
+        "file_path": "DuelCode\\TEMPLATE-REFERENCE.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing template TEMPLATE-REFERENCE.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nINFOS (8):\n==========\n\u2022 Consider adding visual representations (diagrams, charts, ASCII art)\n",
+      "duration": 0
+    },
+    {
+      "test_case": {
+        "name": "TEMPLATE-NEW-TUTORIAL.md",
+        "file_path": "DuelCode\\TEMPLATE-NEW-TUTORIAL.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing TEMPLATE-NEW-TUTORIAL.md"
+      },
+      "result": "TestResult.FAILED",
+      "actual_errors": 2,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nERRORS (2):\n===========\n\u2022 Code block is missing a language specification (at line 39)\n",
+      "duration": 0.5950074195861816
+    },
+    {
+      "test_case": {
+        "name": "TEMPLATE-TUTORIAL-ADVANCED.md",
+        "file_path": "DuelCode\\TEMPLATE-TUTORIAL-ADVANCED.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing TEMPLATE-TUTORIAL-ADVANCED.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "",
+      "duration": 1.0928497314453125
+    },
+    {
+      "test_case": {
+        "name": "TEMPLATE-TUTORIAL-QUICK.md",
+        "file_path": "DuelCode\\TEMPLATE-TUTORIAL-QUICK.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing TEMPLATE-TUTORIAL-QUICK.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nINFOS (6):\n==========\n\u2022 Consider adding practical exercises for better engagement\n",
+      "duration": 0.799412727355957
+    },
+    {
+      "test_case": {
+        "name": "tutorial-01-hello-world.md",
+        "file_path": "DuelCode\\tutorial-01-hello-world.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-01-hello-world.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 1,
+      "actual_info": 0,
+      "output": "\nWARNINGS (1):\n=============\n\u2022 More output commands than increments - possible logic error (at line 300)\n",
+      "duration": 0.5939836502075195
+    },
+    {
+      "test_case": {
+        "name": "tutorial-01-hello-world.md",
+        "file_path": "DuelCode\\tutorial-01-hello-world.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-01-hello-world.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 1,
+      "actual_info": 0,
+      "output": "\nWARNINGS (1):\n=============\n\u2022 More output commands than increments - possible logic error (at line 300)\n",
+      "duration": 0.5042414665222168
+    },
+    {
+      "test_case": {
+        "name": "tutorial-02-variables.md",
+        "file_path": "DuelCode\\tutorial-02-variables.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-02-variables.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nINFOS (6):\n==========\n\u2022 Consider adding practical exercises for better engagement\n",
+      "duration": 0.7635374069213867
+    },
+    {
+      "test_case": {
+        "name": "tutorial-02-variables.md",
+        "file_path": "DuelCode\\tutorial-02-variables.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-02-variables.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nINFOS (6):\n==========\n\u2022 Consider adding practical exercises for better engagement\n",
+      "duration": 0.5187363624572754
+    },
+    {
+      "test_case": {
+        "name": "tutorial-03-math.md",
+        "file_path": "DuelCode\\tutorial-03-math.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-03-math.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nSUGGESTIONS (1):\n================\n\u2022 Consider using patterns/shapes instead of just colors for indicators\n",
+      "duration": 1.526526927947998
+    },
+    {
+      "test_case": {
+        "name": "tutorial-03-math.md",
+        "file_path": "DuelCode\\tutorial-03-math.md",
+        "expected_errors": 0,
+        "expected_warnings": 0,
+        "expected_info": 0,
+        "description": "Testing tutorial-03-math.md"
+      },
+      "result": "TestResult.PASSED",
+      "actual_errors": 0,
+      "actual_warnings": 0,
+      "actual_info": 0,
+      "output": "\nSUGGESTIONS (1):\n================\n\u2022 Consider using patterns/shapes instead of just colors for indicators\n",
+      "duration": 0.6082053184509277
+    }
+  ]
+}

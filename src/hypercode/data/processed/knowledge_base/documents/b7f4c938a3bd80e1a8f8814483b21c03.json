@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\venv_new\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\_in_process\\__init__.py",
+  "file_size": 557,
+  "created": "2025-12-01T01:58:32.889224",
+  "modified": "2025-12-01T01:58:32.890639",
+  "file_type": "code",
+  "content_hash": "effca49956796f5fee6d6a0edb6562c5",
+  "content_type": "text",
+  "content": "\"\"\"This is a subpackage because the directory is on sys.path for _in_process.py\n\nThe subpackage should stay as empty as possible to avoid shadowing modules that\nthe backend might import.\n\"\"\"\n\nimport importlib.resources as resources\n\ntry:\n    resources.files\nexcept AttributeError:\n    # Python 3.8 compatibility\n    def _in_proc_script_path():\n        return resources.path(__package__, \"_in_process.py\")\n\nelse:\n\n    def _in_proc_script_path():\n        return resources.as_file(\n            resources.files(__package__).joinpath(\"_in_process.py\")\n        )\n",
+  "metadata": {},
+  "relative_path": "venv_new\\Lib\\site-packages\\pip\\_vendor\\pyproject_hooks\\_in_process\\__init__.py",
+  "id": "b7f4c938a3bd80e1a8f8814483b21c03"
+}

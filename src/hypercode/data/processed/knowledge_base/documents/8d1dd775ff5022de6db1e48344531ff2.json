@@ -1,0 +1,25 @@
+{
+  "file_name": "CODE_OF_CONDUCT.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\CODE_OF_CONDUCT.md",
+  "file_size": 4037,
+  "created": "2025-11-19T01:04:09.163016",
+  "modified": "2025-11-26T02:00:12.342812",
+  "file_type": "code",
+  "content_hash": "d2cb3b9925ff8d4c2d8d3797c2717515",
+  "content_type": "markdown",
+  "content": "# Contributor Covenant Code of Conduct\n\n## Our Pledge\n\nWe as members, contributors, and leaders pledge to make participation in our\ncommunity a harassment-free experience for everyone, regardless of age, body\nsize, visible or invisible disability, ethnicity, sex characteristics, gender\nidentity and expression, level of experience, education, socio-economic status,\nnationality, personal appearance, race, religion, or sexual identity\nand orientation.\n\nWe pledge to act and interact in ways that contribute to an open, welcoming,\ndiverse, inclusive, and healthy community.\n\n## Our Commitment to a Neurodivergent-First Community\n\nHyperCode is a \"neurodivergent-first\" project. This means we are deeply committed to creating a development environment that is not only inclusive but is actively designed to be welcoming and effective for individuals with ADHD, autism, dyslexia, and other forms of neurodivergence.\n\nWe ask all contributors to be mindful of this commitment. This includes being patient, using clear and direct language, and being open to different communication styles and working patterns. We believe that by prioritizing accessibility in our interactions, we can build a stronger, more innovative, and more inclusive community for everyone.\n\n## Our Standards\n\nExamples of behavior that contributes to a positive environment for our\ncommunity include:\n\n*   Demonstrating empathy and kindness toward other people.\n*   Being respectful of differing opinions, viewpoints, and experiences.\n*   Giving and gracefully accepting constructive feedback.\n*   Accepting responsibility and apologizing to those affected by our mistakes,\n    and learning from the experience.\n*   Focusing on what is best not just for us as individuals, but for the\n    overall community.\n*   Using clear, direct language and avoiding jargon where possible.\n*   Being patient and understanding of different communication styles and paces.\n\nExamples of unacceptable behavior include:\n\n*   The use of sexualized language or imagery, and sexual attention or\n    advances of any kind.\n*   Trolling, insulting or derogatory comments, and personal or political attacks.\n*   Public or private harassment.\n*   Publishing others' private information, such as a physical or email\n    address, without their explicit permission.\n*   Other conduct which could reasonably be considered inappropriate in a\n    professional setting.\n\n## Enforcement Responsibilities\n\nCommunity leaders are responsible for clarifying and enforcing our standards and\nwill take appropriate and fair corrective action in response to any behavior that\nthey deem inappropriate, threatening, offensive, or harmful.\n\nCommunity leaders have the right and responsibility to remove, edit, or reject\ncomments, commits, code, wiki edits, issues, and other contributions that are\nnot aligned to this Code of Conduct, and will communicate reasons for moderation\ndecisions when appropriate.\n\n## Scope\n\nThis Code of Conduct applies within all community spaces, and also applies when\nan individual is officially representing the community in public spaces.\nExamples of representing our community include using an official e-mail address,\nposting via an official social media account, or acting as an appointed\nrepresentative at an online or offline event.\n\n## Enforcement\n\nInstances of abusive, harassing, or otherwise unacceptable behavior may be\nreported to the community leaders responsible for enforcement at [EMAIL].\nAll complaints will be reviewed and investigated promptly and fairly.\n\nAll community leaders are obligated to respect the privacy and security of the\nreporter of any incident.\n\n## Attribution\n\nThis Code of Conduct is adapted from the [Contributor Covenant][homepage], version 2.0,\navailable at [https://www.contributor-covenant.org/version/2/0/code_of_conduct.html][v2.0].\n\n[homepage]: https://www.contributor-covenant.org\n[v2.0]: https://www.contributor-covenant.org/version/2/0/code_of_conduct.html",
+  "metadata": {
+    "headers": [
+      "Contributor Covenant Code of Conduct",
+      "Our Pledge",
+      "Our Commitment to a Neurodivergent-First Community",
+      "Our Standards",
+      "Enforcement Responsibilities",
+      "Scope",
+      "Enforcement",
+      "Attribution"
+    ]
+  },
+  "relative_path": "src\\core\\hypercode-\\CODE_OF_CONDUCT.md",
+  "id": "8d1dd775ff5022de6db1e48344531ff2"
+}

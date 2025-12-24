@@ -1,0 +1,14 @@
+{
+  "file_name": "__init__.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\new files to check\\backend\\research\\__init__.py",
+  "file_size": 448,
+  "created": "2025-11-26T20:36:33.586079",
+  "modified": "2025-11-26T20:35:23.318903",
+  "file_type": "code",
+  "content_hash": "e3d0f16eec7a5ece193ad3c4e7f79ea4",
+  "content_type": "text",
+  "content": "\"\"\"\nInitialization for the research module.\n\nThis module contains all of the database plumbing and models\nrequired to persist research‑related information for HyperCode.\n\nThe top level symbols exported here are the SQLAlchemy ``Base``\nclass and the ``SessionLocal`` factory.  Importing these from\n``hypercode.backend.research`` will ensure the engine is set up\nbefore the models are defined.\n\n\"\"\"\n\nfrom .db import Base, SessionLocal  # noqa: F401",
+  "metadata": {},
+  "relative_path": "new files to check\\backend\\research\\__init__.py",
+  "id": "6e8a6a71fb96fb73c421b368d2753da7"
+}

@@ -1,0 +1,23 @@
+{
+  "file_name": "index.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\docs\\index.md",
+  "file_size": 544,
+  "created": "2025-11-26T23:37:35.457203",
+  "modified": "2025-11-26T23:37:35.457203",
+  "file_type": "code",
+  "content_hash": "06b3f10e0131a17481dad3623cbbbdb3",
+  "content_type": "markdown",
+  "content": "# Welcome to HyperCode\n\nHyperCode is a neurodivergent-first programming language designed with AI compatibility\nin mind.\n\n## Features\n\n- 🧠 **Neurodivergent-First Design**\n- 🤖 **AI-First Architecture**\n- 🚀 **Multi-Backend Support**\n- 🎨 **Accessible by Design**\n\n## Quick Start\n\n```bash\n# Install HyperCode\npip install hypercode\n\n# Run the REPL\nhypercode\n```\n\n## Documentation\n\n- [Getting Started](getting-started/installation.md)\n- [Language Reference](reference/syntax.md)\n- [Examples](examples/hello.md)",
+  "metadata": {
+    "headers": [
+      "Welcome to HyperCode",
+      "Features",
+      "Quick Start",
+      "Install HyperCode",
+      "Run the REPL",
+      "Documentation"
+    ]
+  },
+  "relative_path": "hypercode\\docs\\index.md",
+  "id": "81cbf3958c094a0d86090360ab4cbde7"
+}

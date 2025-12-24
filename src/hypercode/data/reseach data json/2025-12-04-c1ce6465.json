@@ -1,0 +1,14 @@
+{
+  "id": "2025-12-04-c1ce6465",
+  "date": "2025-12-04",
+  "topic": "Visuospatial Mental Models in Programming",
+  "tags": [
+    "visuospatial",
+    "cognitive-maps",
+    "code-comprehension",
+    "spatial-ability"
+  ],
+  "source": "PNAS (Groen 2022), ArXiv (Code Canvas Study)",
+  "summary": "Visuospatial coding scaffolds cognition; code canvas & spatial layout improve comprehension for high visuo-spatial working memory devs.",
+  "details": "Visuospatial reference frames found throughout visual cortex & non-visual brain areas. Code-to-concept maps: spatial proximity aids navigation & comprehension. Research: code canvas (free arrangement) vs tab-based visualization; developers with high visuo-spatial working memory benefit from spatial representations. Mental rotation problems activate similar brain areas as tree data structures. Spatial Encoding Strategy (SpES) theory: spatial skills transfer to programming strategies. Neuroimaging shows shared activation patterns."
+}

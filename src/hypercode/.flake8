@@ -1,0 +1,18 @@
+[flake8]
+max-line-length = 88
+extend-ignore = E203, W503
+exclude = 
+    .git,
+    __pycache__,
+    .tox,
+    .mypy_cache,
+    .pytest_cache,
+    venv,
+    .venv,
+    */venv/*,
+    */site-packages/*,
+    */pip/_vendor/*
+per-file-ignores =
+    # Allow some common test patterns
+    tests/*: E501, F401, F403, F405, F811
+    */__init__.py: F401

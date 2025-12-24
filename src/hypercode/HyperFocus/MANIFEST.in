@@ -1,0 +1,5 @@
+include README.md
+include hyperfocus/*.yaml
+recursive-include hyperfocus/ *.yaml
+recursive-include hyperfocus/ *.json
+recursive-include hyperfocus/ *.md

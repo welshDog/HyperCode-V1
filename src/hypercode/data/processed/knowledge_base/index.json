@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "name": "HyperCode Knowledge Base",
+    "version": "1.0.0",
+    "created_at": "2025-12-03T22:58:02.848442",
+    "updated_at": "2025-12-03T22:58:03.556665",
+    "document_count": 11,
+    "file_types": {
+      ".py": 5,
+      ".ps1": 2,
+      ".md": 1,
+      ".txt": 1,
+      ".bat": 2
+    },
+    "stats": {
+      "code_files": 11,
+      "markdown_files": 0,
+      "pdf_files": 0,
+      "document_files": 0,
+      "other_files": 0,
+      "total_files": 11,
+      "processing_errors": 0
+    }
+  },
+  "documents": [
+    {
+      "id": "9af57835b08fde055fe682a4ff5a74a9",
+      "file_name": "build-hyper-database.py",
+      "relative_path": "build-hyper-database.py",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-11-30T09:17:21.451650",
+      "modified": "2025-11-30T20:25:34.799093"
+    },
+    {
+      "id": "268ae6ed8ebb05b2691566d0f4543d53",
+      "file_name": "build_knowledge_base.py",
+      "relative_path": "build_knowledge_base.py",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-12-03T22:50:02.687823",
+      "modified": "2025-12-03T22:50:26.426631"
+    },
+    {
+      "id": "c6220b9c95fdae25331732afba96891b",
+      "file_name": "document_processor.py",
+      "relative_path": "document_processor.py",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-12-03T22:37:12.411597",
+      "modified": "2025-12-03T22:37:24.820415"
+    },
+    {
+      "id": "ee56890db60ca6a226ea55b3fc52d2d4",
+      "file_name": "organize_moved_files.ps1",
+      "relative_path": "organize_moved_files.ps1",
+      "file_type": "code",
+      "content_type": "text/unknown",
+      "created": "2025-11-24T17:58:12.255169",
+      "modified": "2025-11-24T17:58:12.694811"
+    },
+    {
+      "id": "db6066f10978422840b6afb2afa02546",
+      "file_name": "organize_repo.ps1",
+      "relative_path": "organize_repo.ps1",
+      "file_type": "code",
+      "content_type": "text/unknown",
+      "created": "2025-11-24T17:00:51.057240",
+      "modified": "2025-11-24T17:01:02.695954"
+    },
+    {
+      "id": "04c6e90faac2675aa89e2176d2eec7d8",
+      "file_name": "README.md",
+      "relative_path": "README.md",
+      "file_type": "code",
+      "content_type": "markdown",
+      "created": "2025-12-03T22:54:58.119264",
+      "modified": "2025-12-03T22:55:03.735377"
+    },
+    {
+      "id": "b4ef698db8ca845e5845c4618278f29a",
+      "file_name": "requirements.txt",
+      "relative_path": "requirements.txt",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-12-03T22:29:59.564622",
+      "modified": "2025-12-03T22:30:02.638963"
+    },
+    {
+      "id": "725d516543803e88ddf9a0fb091d5de9",
+      "file_name": "style_guide_collector.py",
+      "relative_path": "style_guide_collector.py",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-11-23T12:01:48.529128",
+      "modified": "2025-11-23T12:01:48.529128"
+    },
+    {
+      "id": "16d9d040836c18095e1304b49b51973f",
+      "file_name": "test_perplexity_api.py",
+      "relative_path": "test_perplexity_api.py",
+      "file_type": "code",
+      "content_type": "text",
+      "created": "2025-11-23T12:01:48.531663",
+      "modified": "2025-11-25T15:43:20.185568"
+    },
+    {
+      "id": "3ab9b77282735204932d2ab0754c2055",
+      "file_name": "clean.bat",
+      "relative_path": "windows\\maintenance\\clean.bat",
+      "file_type": "code",
+      "content_type": "text/unknown",
+      "created": "2025-11-23T12:01:48.532250",
+      "modified": "2025-11-23T12:01:48.532250"
+    },
+    {
+      "id": "bc53d4263ba717356193bc3fe9c848fd",
+      "file_name": "setup.bat",
+      "relative_path": "windows\\setup\\setup.bat",
+      "file_type": "code",
+      "content_type": "text/unknown",
+      "created": "2025-11-23T12:01:48.532250",
+      "modified": "2025-11-23T12:01:48.533810"
+    }
+  ]
+}

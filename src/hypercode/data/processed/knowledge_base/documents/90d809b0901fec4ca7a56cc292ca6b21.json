@@ -1,0 +1,25 @@
+{
+  "file_name": "QUICK_START.md",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\hypercode\\examples\\QUICK_START.md",
+  "file_size": 1266,
+  "created": "2025-11-26T23:37:35.470455",
+  "modified": "2025-11-26T23:37:35.470455",
+  "file_type": "code",
+  "content_hash": "7d8c731a04386411bc7c20b4adeb5ea9",
+  "content_type": "markdown",
+  "content": "# 🚀 Quick Start - Try HyperCode in 60 Seconds!\n\n## 3 Simple Demos (Ready to Run!)\n\n### Demo 1: Hello World\n**File**: `demo_hello.hc`  \n**What it does**: Prints friendly messages  \n**Run it**:\n```bash\npython -m src.hypercode examples/demo_hello.hc\n```\n\n### Demo 2: Fibonacci\n**File**: `demo_fibonacci.hc`  \n**What it does**: Calculates Fibonacci numbers using recursion  \n**Run it**:\n```bash\npython -m src.hypercode examples/demo_fibonacci.hc\n```\n\n### Demo 3: Todo List\n**File**: `demo_todo.hc`  \n**What it does**: Manages tasks with variables and conditionals  \n**Run it**:\n```bash\npython -m src.hypercode examples/demo_todo.hc\n```\n\n## What You'll See\n\nHyperCode now produces **REAL OUTPUT**! 🎉\n\nExample from `demo_hello.hc`:\n```\n🌟 Hello, HyperCode!\nWelcome to neurodivergent-first programming!\nThis code actually runs!\n```\n\n### Current Features:\n- ✅ Print statements\n- ✅ String literals\n- ✅ Variables (basic)\n- ✅ Math operations\n- 🚧 Functions (coming soon)\n- 🚧 Conditionals (coming soon)\n\n## Next Steps\n\n- Try modifying the demos\n- Write your own `.hc` file\n- Check out other examples in this folder\n- Join the discussion on GitHub\n\n---\n\n**Made with 💓 for neurodivergent developers**",
+  "metadata": {
+    "headers": [
+      "🚀 Quick Start - Try HyperCode in 60 Seconds!",
+      "3 Simple Demos (Ready to Run!)",
+      "Demo 1: Hello World",
+      "Demo 2: Fibonacci",
+      "Demo 3: Todo List",
+      "What You'll See",
+      "Current Features:",
+      "Next Steps"
+    ]
+  },
+  "relative_path": "hypercode\\examples\\QUICK_START.md",
+  "id": "90d809b0901fec4ca7a56cc292ca6b21"
+}

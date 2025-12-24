@@ -1,0 +1,14 @@
+{
+  "file_name": "paper_indexer.py",
+  "file_path": "C:\\Users\\lyndz\\Downloads\\hypercode PROJECT\\hypercode\\src\\core\\hypercode-\\live_research\\paper_indexer.py",
+  "file_size": 683,
+  "created": "2025-11-12T10:36:56.939171",
+  "modified": "2025-11-15T15:54:41.020403",
+  "file_type": "code",
+  "content_hash": "e2d0641a2cd522414fd185613b4ec4a5",
+  "content_type": "text",
+  "content": "# Copyright 2025 welshDog (Lyndz Williams)\n#\n# Licensed under the MIT License (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     https://opensource.org/licenses/MIT\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\nr\"\"\"\nAutomated research paper collection and synthesis\n\nFile: live_research\\paper_indexer.py\n\"\"\"\n",
+  "metadata": {},
+  "relative_path": "src\\core\\hypercode-\\live_research\\paper_indexer.py",
+  "id": "46b4a3735af700157a944be2bd0d5b37"
+}
