@@ -1,3 +1,5 @@
+![CI](https://github.com/welshDog/HyperCode-V1/actions/workflows/ci.yml/badge.svg)
+
 # HyperCode 🧠⚡
 
 > **A programming language built for how neurodivergent minds actually think**
