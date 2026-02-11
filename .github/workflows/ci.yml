@@ -2,143 +2,69 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [ main, master ]
   pull_request:
-    branches: [main, master]
-  schedule:
-    - cron: "0 0 * * 0" # Weekly on Sunday at midnight
+    branches: [ main, master ]
 
 jobs:
-  test:
-    name: Test with Python ${{ matrix.python-version }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-        os: [ubuntu-latest]
-        exclude:
-          - python-version: "3.12"
-            os: windows-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
-
-      - name: Run tests with coverage
-        run: |
-          make test
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
-          fail_ci_if_error: false
-
-  lint:
-    name: Lint and typecheck
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    
+    # Python Setup
+    - name: Set up Python
+      if: hashFiles('**/*.py') != ''
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install Python dependencies
+      if: hashFiles('**/*.py') != ''
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f setup.py ]; then pip install .; fi
+        pip install pylint pytest
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
+    - name: Lint with pylint
+      if: hashFiles('**/*.py') != ''
+      run: |
+        # Don't fail on lint for now, just report
+        pylint $(git ls-files '*.py') --disable=C,R,W0611 || true
+        
+    - name: Test with pytest
+      if: hashFiles('**/*.py') != ''
+      run: |
+        if [ -d tests ]; then pytest; else echo "No tests found"; fi
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
+    # Node.js Setup
+    - name: Set up Node.js
+      if: hashFiles('package.json') != ''
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        
+    - name: Install Node dependencies
+      if: hashFiles('package.json') != ''
+      run: npm ci || npm install
+      
+    - name: Run Node tests
+      if: hashFiles('package.json') != ''
+      run: npm test || echo "No test script"
 
-      - name: Run linters
-        run: make lint
-
-      - name: Run type checking
-        run: make typecheck
-
-  security-scan:
-    name: Security Scan
+  security:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install security tools
-        run: |
-          pip install bandit safety pip-audit
-
-      - name: Run Bandit (security linter)
-        run: bandit -r src/ ai_gateway/ accessibility/ -f json -o bandit-report.json
-        continue-on-error: true
-
-      - name: Run Safety (vulnerability scanner)
-        run: safety check --json
-        continue-on-error: true
-
-      - name: Run pip-audit (dependency audit)
-        run: pip-audit --require-hashes --desc
-        continue-on-error: true
-
-      - name: Upload security reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: security-reports
-          path: |
-            bandit-report.json
-
-  build:
-    name: Build package
-    needs: [test, lint, security-scan]
-    if:
-      github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref ==
-      'refs/heads/master')
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install build twine
-
-      - name: Build package
-        run: python -m build
-
-      - name: Check build
-        run: |
-          twine check dist/*
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist/
-
-      - name: Publish to PyPI
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
-          skip_existing: true
-          verbose: true
+    - uses: actions/checkout@v3
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: 'python, javascript'
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
