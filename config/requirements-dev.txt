@@ -36,7 +36,7 @@ changelog-md==0.9.2
 colorama==0.4.6
 
 # Coverage reporting
-coverage==7.3.2
+coverage==7.10.7
 coverage-badge==1.1.0
 
 # Linter (Flake8 + plugins)
