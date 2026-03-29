@@ -178,7 +178,7 @@ semver==3.0.2
 # Sphinx (documentation builder)
 sphinx==7.2.6
 sphinx-autodoc-typehints==1.25.2
-sphinx-rtd-theme==2.0.0
+sphinx-rtd-theme==3.0.2
 
 # ============================================================================
 # DATABASE TOOLS (for local dev)
