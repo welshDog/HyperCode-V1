@@ -237,10 +237,10 @@ collision_check > 0 ? "Hit!" : "Safe"
 ```
 
 ### 📖 Full Documentation
-- [Syntax Reference](./docs/SYNTAX.md)
-- [Design Philosophy](./docs/PHILOSOPHY.md)
-- [API Guide](./docs/API.md)
-- [AI Integration](./docs/AI_INTEGRATION.md)
+- [Syntax Reference](./docs/reference/LANGUAGE_REFERENCE.md)
+- [Design Philosophy](./docs/reference/DESIGN_PRINCIPLES.md)
+- [API Guide](./docs/reference/API_REFERENCE.md)
+- [AI Integration](./docs/guides/AI_INTEGRATION_GUIDE.md)
 - [Examples](./examples/)
 
 ---
@@ -275,7 +275,7 @@ We pay neurodivergent developers to contribute:
 - **$50**: Fix a bug or improve docs
 - **$100+**: Build a feature
 
-[View Bounties](./BOUNTIES.md)
+[View Bounties](./docs/community/BOUNTIES.md)
 
 ---
 
